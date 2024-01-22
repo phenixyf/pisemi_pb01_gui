@@ -1,0 +1,5 @@
+# default ignored files
+.idea
+venv
+dist
+build

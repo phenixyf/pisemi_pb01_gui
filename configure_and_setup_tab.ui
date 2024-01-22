@@ -7,24 +7,20 @@
     <x>0</x>
     <y>0</y>
     <width>1256</width>
-    <height>796</height>
+    <height>827</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QGroupBox" name="groupBox_4">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>580</y>
-      <width>261</width>
-      <height>141</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QGroupBox {
+   <layout class="QHBoxLayout" name="horizontalLayout_22">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QGroupBox" name="groupBox_5">
+        <property name="styleSheet">
+         <string notr="true">QGroupBox {
 	font: 75 11pt &quot;Arial&quot;;
   border: 1px solid #C0C0C0; /* 边框颜色与宽度 */
   border-radius: 5px; /* 边框圆角 */
@@ -39,23 +35,343 @@ QGroupBox::title {
   /* 使用负边距将标题上移，使其位于边框外部 */
   margin-top: 0px;
 }</string>
-    </property>
-    <property name="title">
-     <string>Read/Write Device</string>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_7"/>
-   </widget>
-   <widget class="QGroupBox" name="groupBox_5">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>30</y>
-      <width>311</width>
-      <height>241</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QGroupBox {
+        </property>
+        <property name="title">
+         <string>Configure UART Interface</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_8">
+         <item>
+          <widget class="QPushButton" name="pushButton">
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+	font: 75 11pt &quot;Arial&quot;;
+    border: 1px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #f6f7fa, stop:1 #c4c5c8);
+    min-width: 80px;
+    padding: 5px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #dadbde, stop:1 #f6f7fa);
+}
+
+QPushButton:hover {
+    border: 1px solid #1c94c4; /* 更深的边框颜色，当鼠标悬停 */
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #ebeff9, stop:1 #cad4e6);
+}
+
+QPushButton:default {
+    border-color: navy; /* 默认按钮有不同的边框颜色 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>Wakeup</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QFormLayout" name="formLayout">
+           <item row="0" column="0">
+            <widget class="QPushButton" name="pushButton_2">
+             <property name="minimumSize">
+              <size>
+               <width>205</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	font: 75 11pt &quot;Arial&quot;;
+    border: 1px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #f6f7fa, stop:1 #c4c5c8);
+    min-width: 80px;
+    padding: 5px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #dadbde, stop:1 #f6f7fa);
+}
+
+QPushButton:hover {
+    border: 1px solid #1c94c4; /* 更深的边框颜色，当鼠标悬停 */
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #ebeff9, stop:1 #cad4e6);
+}
+
+QPushButton:default {
+    border-color: navy; /* 默认按钮有不同的边框颜色 */
+}
+</string>
+             </property>
+             <property name="text">
+              <string>Chain Address</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="lineEdit_15">
+             <property name="minimumSize">
+              <size>
+               <width>70</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>75</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Arial</family>
+               <pointsize>-1</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLineEdit {
+  border: 1px solid #000000; /* 设置黑色边框 */
+  border-radius: 0px; /* 边框无圆角 */
+  padding: 1px; /* 设置较大的内边距 */
+  font-size: 18px; /* 字体大小 */
+  background: transparent; /* 背景透明 */
+}</string>
+             </property>
+             <property name="text">
+              <string>0x0</string>
+             </property>
+             <property name="frame">
+              <bool>false</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QPushButton" name="pushButton_3">
+             <property name="minimumSize">
+              <size>
+               <width>205</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	font: 75 11pt &quot;Arial&quot;;
+    border: 1px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #f6f7fa, stop:1 #c4c5c8);
+    min-width: 80px;
+    padding: 5px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #dadbde, stop:1 #f6f7fa);
+}
+
+QPushButton:hover {
+    border: 1px solid #1c94c4; /* 更深的边框颜色，当鼠标悬停 */
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #ebeff9, stop:1 #cad4e6);
+}
+
+QPushButton:default {
+    border-color: navy; /* 默认按钮有不同的边框颜色 */
+}
+</string>
+             </property>
+             <property name="text">
+              <string>Write All UIFCFG</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="lineEdit_16">
+             <property name="minimumSize">
+              <size>
+               <width>70</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>75</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Arial</family>
+               <pointsize>-1</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLineEdit {
+  border: 1px solid #000000; /* 设置黑色边框 */
+  border-radius: 0px; /* 边框无圆角 */
+  padding: 1px; /* 设置较大的内边距 */
+  font-size: 18px; /* 字体大小 */
+  background: transparent; /* 背景透明 */
+}</string>
+             </property>
+             <property name="text">
+              <string>0x2600</string>
+             </property>
+             <property name="frame">
+              <bool>false</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QPushButton" name="pushButton_4">
+             <property name="minimumSize">
+              <size>
+               <width>205</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	font: 75 11pt &quot;Arial&quot;;
+    border: 1px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #f6f7fa, stop:1 #c4c5c8);
+    min-width: 80px;
+    padding: 5px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #dadbde, stop:1 #f6f7fa);
+}
+
+QPushButton:hover {
+    border: 1px solid #1c94c4; /* 更深的边框颜色，当鼠标悬停 */
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #ebeff9, stop:1 #cad4e6);
+}
+
+QPushButton:default {
+    border-color: navy; /* 默认按钮有不同的边框颜色 */
+}
+</string>
+             </property>
+             <property name="text">
+              <string>Write All ADDRESSCFG</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="lineEdit_17">
+             <property name="minimumSize">
+              <size>
+               <width>70</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>75</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Arial</family>
+               <pointsize>-1</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLineEdit {
+  border: 1px solid #000000; /* 设置黑色边框 */
+  border-radius: 0px; /* 边框无圆角 */
+  padding: 1px; /* 设置较大的内边距 */
+  font-size: 18px; /* 字体大小 */
+  background: transparent; /* 背景透明 */
+}</string>
+             </property>
+             <property name="text">
+              <string>0x0000</string>
+             </property>
+             <property name="frame">
+              <bool>false</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_5">
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+	font: 75 11pt &quot;Arial&quot;;
+    border: 1px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #f6f7fa, stop:1 #c4c5c8);
+    min-width: 80px;
+    padding: 5px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #dadbde, stop:1 #f6f7fa);
+}
+
+QPushButton:hover {
+    border: 1px solid #1c94c4; /* 更深的边框颜色，当鼠标悬停 */
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #ebeff9, stop:1 #cad4e6);
+}
+
+QPushButton:default {
+    border-color: navy; /* 默认按钮有不同的边框颜色 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>Read All ADDRESSCFG</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupBox_7">
+        <property name="styleSheet">
+         <string notr="true">QGroupBox {
 	font: 75 11pt &quot;Arial&quot;;
   border: 1px solid #C0C0C0; /* 边框颜色与宽度 */
   border-radius: 5px; /* 边框圆角 */
@@ -70,15 +386,15 @@ QGroupBox::title {
   /* 使用负边距将标题上移，使其位于边框外部 */
   margin-top: 0px;
 }</string>
-    </property>
-    <property name="title">
-     <string>Configure UART Interface</string>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_8">
-     <item>
-      <widget class="QPushButton" name="pushButton">
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
+        </property>
+        <property name="title">
+         <string>Initialize/Clear STATUS Register Block</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QPushButton" name="pushButton_6">
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
 	font: 75 11pt &quot;Arial&quot;;
     border: 1px solid #8f8f91;
     border-radius: 6px;
@@ -103,24 +419,30 @@ QPushButton:default {
     border-color: navy; /* 默认按钮有不同的边框颜色 */
 }
 </string>
-       </property>
-       <property name="text">
-        <string>Wakeup</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <layout class="QFormLayout" name="formLayout">
-       <item row="0" column="0">
-        <widget class="QPushButton" name="pushButton_2">
-         <property name="minimumSize">
-          <size>
-           <width>160</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton {
+           </property>
+           <property name="text">
+            <string>Read All STATUS1</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QPushButton" name="pushButton_7">
+             <property name="minimumSize">
+              <size>
+               <width>92</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
 	font: 75 11pt &quot;Arial&quot;;
     border: 1px solid #8f8f91;
     border-radius: 6px;
@@ -145,56 +467,58 @@ QPushButton:default {
     border-color: navy; /* 默认按钮有不同的边框颜色 */
 }
 </string>
-         </property>
-         <property name="text">
-          <string>Chain Address</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QLineEdit" name="lineEdit_15">
-         <property name="minimumSize">
-          <size>
-           <width>110</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>-1</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLineEdit {
+             </property>
+             <property name="text">
+              <string>Write All STATUS1</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_18">
+             <property name="minimumSize">
+              <size>
+               <width>70</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>75</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Arial</family>
+               <pointsize>-1</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLineEdit {
   border: 1px solid #000000; /* 设置黑色边框 */
   border-radius: 0px; /* 边框无圆角 */
   padding: 1px; /* 设置较大的内边距 */
   font-size: 18px; /* 字体大小 */
   background: transparent; /* 背景透明 */
 }</string>
-         </property>
-         <property name="text">
-          <string>0x0</string>
-         </property>
-         <property name="frame">
-          <bool>false</bool>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QPushButton" name="pushButton_3">
-         <property name="minimumSize">
-          <size>
-           <width>160</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton {
+             </property>
+             <property name="text">
+              <string>0x4000</string>
+             </property>
+             <property name="frame">
+              <bool>false</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_8">
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
 	font: 75 11pt &quot;Arial&quot;;
     border: 1px solid #8f8f91;
     border-radius: 6px;
@@ -219,56 +543,106 @@ QPushButton:default {
     border-color: navy; /* 默认按钮有不同的边框颜色 */
 }
 </string>
-         </property>
-         <property name="text">
-          <string>IF Configure</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QLineEdit" name="lineEdit_16">
-         <property name="minimumSize">
-          <size>
-           <width>110</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>-1</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLineEdit {
+           </property>
+           <property name="text">
+            <string>Read All STATUS2</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <widget class="QPushButton" name="pushButton_9">
+             <property name="minimumSize">
+              <size>
+               <width>92</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	font: 75 11pt &quot;Arial&quot;;
+    border: 1px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #f6f7fa, stop:1 #c4c5c8);
+    min-width: 80px;
+    padding: 5px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #dadbde, stop:1 #f6f7fa);
+}
+
+QPushButton:hover {
+    border: 1px solid #1c94c4; /* 更深的边框颜色，当鼠标悬停 */
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #ebeff9, stop:1 #cad4e6);
+}
+
+QPushButton:default {
+    border-color: navy; /* 默认按钮有不同的边框颜色 */
+}
+</string>
+             </property>
+             <property name="text">
+              <string>Write All STATUS2</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_19">
+             <property name="minimumSize">
+              <size>
+               <width>70</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>75</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Arial</family>
+               <pointsize>-1</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLineEdit {
   border: 1px solid #000000; /* 设置黑色边框 */
   border-radius: 0px; /* 边框无圆角 */
   padding: 1px; /* 设置较大的内边距 */
   font-size: 18px; /* 字体大小 */
   background: transparent; /* 背景透明 */
 }</string>
-         </property>
-         <property name="text">
-          <string>0x2600</string>
-         </property>
-         <property name="frame">
-          <bool>false</bool>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QPushButton" name="pushButton_4">
-         <property name="minimumSize">
-          <size>
-           <width>92</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton {
+             </property>
+             <property name="text">
+              <string>0xFF8F</string>
+             </property>
+             <property name="frame">
+              <bool>false</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_11">
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
 	font: 75 11pt &quot;Arial&quot;;
     border: 1px solid #8f8f91;
     border-radius: 6px;
@@ -293,52 +667,106 @@ QPushButton:default {
     border-color: navy; /* 默认按钮有不同的边框颜色 */
 }
 </string>
-         </property>
-         <property name="text">
-          <string>Address Configure</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QLineEdit" name="lineEdit_17">
-         <property name="minimumSize">
-          <size>
-           <width>110</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>-1</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLineEdit {
+           </property>
+           <property name="text">
+            <string>Read All FMEA1</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <item>
+            <widget class="QPushButton" name="pushButton_13">
+             <property name="minimumSize">
+              <size>
+               <width>92</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	font: 75 11pt &quot;Arial&quot;;
+    border: 1px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #f6f7fa, stop:1 #c4c5c8);
+    min-width: 80px;
+    padding: 5px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #dadbde, stop:1 #f6f7fa);
+}
+
+QPushButton:hover {
+    border: 1px solid #1c94c4; /* 更深的边框颜色，当鼠标悬停 */
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #ebeff9, stop:1 #cad4e6);
+}
+
+QPushButton:default {
+    border-color: navy; /* 默认按钮有不同的边框颜色 */
+}
+</string>
+             </property>
+             <property name="text">
+              <string>Write All FMEA1</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_21">
+             <property name="minimumSize">
+              <size>
+               <width>70</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>75</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Arial</family>
+               <pointsize>-1</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLineEdit {
   border: 1px solid #000000; /* 设置黑色边框 */
   border-radius: 0px; /* 边框无圆角 */
   padding: 1px; /* 设置较大的内边距 */
   font-size: 18px; /* 字体大小 */
   background: transparent; /* 背景透明 */
 }</string>
-         </property>
-         <property name="text">
-          <string>0x0000</string>
-         </property>
-         <property name="frame">
-          <bool>false</bool>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_5">
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
+             </property>
+             <property name="text">
+              <string>0x87FF</string>
+             </property>
+             <property name="frame">
+              <bool>false</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_10">
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
 	font: 75 11pt &quot;Arial&quot;;
     border: 1px solid #8f8f91;
     border-radius: 6px;
@@ -363,37 +791,123 @@ QPushButton:default {
     border-color: navy; /* 默认按钮有不同的边框颜色 */
 }
 </string>
-       </property>
-       <property name="text">
-        <string>Read All ADDRESSCFG</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QGroupBox" name="groupBox_6">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>40</y>
-      <width>210</width>
-      <height>682</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>210</width>
-      <height>682</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>16777215</width>
-      <height>16777215</height>
-     </size>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QGroupBox {
+           </property>
+           <property name="text">
+            <string>Read All FMEA2</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <item>
+            <widget class="QPushButton" name="pushButton_12">
+             <property name="minimumSize">
+              <size>
+               <width>92</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	font: 75 11pt &quot;Arial&quot;;
+    border: 1px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #f6f7fa, stop:1 #c4c5c8);
+    min-width: 80px;
+    padding: 5px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #dadbde, stop:1 #f6f7fa);
+}
+
+QPushButton:hover {
+    border: 1px solid #1c94c4; /* 更深的边框颜色，当鼠标悬停 */
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #ebeff9, stop:1 #cad4e6);
+}
+
+QPushButton:default {
+    border-color: navy; /* 默认按钮有不同的边框颜色 */
+}
+</string>
+             </property>
+             <property name="text">
+              <string>Write All FMEA2</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_20">
+             <property name="minimumSize">
+              <size>
+               <width>70</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>75</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Arial</family>
+               <pointsize>-1</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLineEdit {
+  border: 1px solid #000000; /* 设置黑色边框 */
+  border-radius: 0px; /* 边框无圆角 */
+  padding: 1px; /* 设置较大的内边距 */
+  font-size: 18px; /* 字体大小 */
+  background: transparent; /* 背景透明 */
+}</string>
+             </property>
+             <property name="text">
+              <string>0x0004</string>
+             </property>
+             <property name="frame">
+              <bool>false</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="groupBox_6">
+      <property name="minimumSize">
+       <size>
+        <width>210</width>
+        <height>682</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QGroupBox {
 	font: 75 11pt &quot;Arial&quot;;
   border: 1px solid #C0C0C0; /* 边框颜色与宽度 */
   border-radius: 5px; /* 边框圆角 */
@@ -408,42 +922,42 @@ QGroupBox::title {
   /* 使用负边距将标题上移，使其位于边框外部 */
   margin-top: 0px;
 }</string>
-    </property>
-    <property name="title">
-     <string>Read ALL Data</string>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QTableWidget" name="tableWidget_4">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>181</width>
-         <height>631</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-         <pointsize>9</pointsize>
-         <weight>50</weight>
-         <italic>false</italic>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QTableWidget {
+      </property>
+      <property name="title">
+       <string>Read ALL Data</string>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QTableWidget" name="tableWidget_4">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>181</width>
+           <height>631</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>9</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QTableWidget {
     border-radius: 10px; /* 设置外框圆角 */
     gridline-color: lightgray; /* 设置网格线颜色 */
     font-family: Arial; /* 设置字体为Arial */
@@ -466,199 +980,1820 @@ QHeaderView::section {
     font-weight: bold; /* 设置表头字体为加粗 */
 }
 </string>
-       </property>
-       <property name="columnCount">
-        <number>2</number>
-       </property>
-       <attribute name="horizontalHeaderVisible">
-        <bool>true</bool>
-       </attribute>
-       <attribute name="horizontalHeaderDefaultSectionSize">
-        <number>90</number>
-       </attribute>
-       <attribute name="verticalHeaderVisible">
-        <bool>false</bool>
-       </attribute>
-       <row>
-        <property name="text">
-         <string>0</string>
-        </property>
-       </row>
-       <row>
-        <property name="text">
-         <string>1</string>
-        </property>
-       </row>
-       <row>
-        <property name="text">
-         <string>2</string>
-        </property>
-       </row>
-       <row>
-        <property name="text">
-         <string>3</string>
-        </property>
-       </row>
-       <row>
-        <property name="text">
-         <string>4</string>
-        </property>
-       </row>
-       <row>
-        <property name="text">
-         <string>5</string>
-        </property>
-       </row>
-       <row>
-        <property name="text">
-         <string>6</string>
-        </property>
-       </row>
-       <row>
-        <property name="text">
-         <string>7</string>
-        </property>
-       </row>
-       <row>
-        <property name="text">
-         <string>8</string>
-        </property>
-       </row>
-       <row>
-        <property name="text">
-         <string>9</string>
-        </property>
-       </row>
-       <row>
-        <property name="text">
-         <string>10</string>
-        </property>
-       </row>
-       <row>
-        <property name="text">
-         <string>11</string>
-        </property>
-       </row>
-       <row>
-        <property name="text">
-         <string>12</string>
-        </property>
-       </row>
-       <row>
-        <property name="text">
-         <string>13</string>
-        </property>
-       </row>
-       <row>
-        <property name="text">
-         <string>14</string>
-        </property>
-       </row>
-       <row>
-        <property name="text">
-         <string>15</string>
-        </property>
-       </row>
-       <column>
-        <property name="text">
-         <string>DEV NUM</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>DATA</string>
-        </property>
-       </column>
-       <item row="0" column="0">
-        <property name="text">
-         <string>0</string>
-        </property>
-        <property name="font">
-         <font>
-          <family>Arial</family>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
+         </property>
+         <property name="columnCount">
+          <number>2</number>
+         </property>
+         <attribute name="horizontalHeaderVisible">
+          <bool>true</bool>
+         </attribute>
+         <attribute name="horizontalHeaderDefaultSectionSize">
+          <number>90</number>
+         </attribute>
+         <attribute name="verticalHeaderVisible">
+          <bool>false</bool>
+         </attribute>
+         <row>
+          <property name="text">
+           <string>0</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>1</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>2</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>3</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>4</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>5</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>6</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>7</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>8</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>9</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>10</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>11</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>12</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>13</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>14</string>
+          </property>
+         </row>
+         <row>
+          <property name="text">
+           <string>15</string>
+          </property>
+         </row>
+         <column>
+          <property name="text">
+           <string>DEV NUM</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>DATA</string>
+          </property>
+         </column>
+         <item row="0" column="0">
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="font">
+           <font>
+            <family>Arial</family>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
+         </item>
+         <item row="1" column="0">
+          <property name="text">
+           <string>1</string>
+          </property>
+         </item>
+         <item row="2" column="0">
+          <property name="text">
+           <string>2</string>
+          </property>
+         </item>
+         <item row="3" column="0">
+          <property name="text">
+           <string>3</string>
+          </property>
+         </item>
+         <item row="4" column="0">
+          <property name="text">
+           <string>4</string>
+          </property>
+         </item>
+         <item row="5" column="0">
+          <property name="text">
+           <string>5</string>
+          </property>
+         </item>
+         <item row="6" column="0">
+          <property name="text">
+           <string>6</string>
+          </property>
+         </item>
+         <item row="7" column="0">
+          <property name="text">
+           <string>7</string>
+          </property>
+         </item>
+         <item row="8" column="0">
+          <property name="text">
+           <string>8</string>
+          </property>
+         </item>
+         <item row="9" column="0">
+          <property name="text">
+           <string>9</string>
+          </property>
+         </item>
+         <item row="10" column="0">
+          <property name="text">
+           <string>10</string>
+          </property>
+         </item>
+         <item row="11" column="0">
+          <property name="text">
+           <string>11</string>
+          </property>
+         </item>
+         <item row="12" column="0">
+          <property name="text">
+           <string>12</string>
+          </property>
+         </item>
+         <item row="13" column="0">
+          <property name="text">
+           <string>13</string>
+          </property>
+         </item>
+         <item row="14" column="0">
+          <property name="text">
+           <string>14</string>
+          </property>
+         </item>
+         <item row="15" column="0">
+          <property name="text">
+           <string>15</string>
+          </property>
+         </item>
+        </widget>
        </item>
-       <item row="1" column="0">
-        <property name="text">
-         <string>1</string>
-        </property>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="groupBox_4">
+      <property name="styleSheet">
+       <string notr="true">QGroupBox {
+	font: 75 11pt &quot;Arial&quot;;
+  border: 1px solid #C0C0C0; /* 边框颜色与宽度 */
+  border-radius: 5px; /* 边框圆角 */
+  margin-top: 21px; /* 确保有足够的空间显示标题 */
+}
+
+QGroupBox::title {
+  subcontrol-origin: margin; /* 标题定位基于边界之外 */
+  subcontrol-position: top left; /* 标题位置 */
+  padding: 0 3px; /* 标题内边距 */
+  color: #000; /* 标题文本颜色 */
+  /* 使用负边距将标题上移，使其位于边框外部 */
+  margin-top: 0px;
+}</string>
+      </property>
+      <property name="title">
+       <string>Configure Device for Application</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_7">
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>20</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>23</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 75 10pt &quot;Arial&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Cofigure Application Register</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+         </property>
+        </widget>
        </item>
-       <item row="2" column="0">
-        <property name="text">
-         <string>2</string>
-        </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <widget class="QPushButton" name="pushButton_14">
+           <property name="minimumSize">
+            <size>
+             <width>92</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>190</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+	font: 75 9pt &quot;Arial&quot;;
+    border: 1px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #f6f7fa, stop:1 #c4c5c8);
+    min-width: 80px;
+    padding: 5px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #dadbde, stop:1 #f6f7fa);
+}
+
+QPushButton:hover {
+    border: 1px solid #1c94c4; /* 更深的边框颜色，当鼠标悬停 */
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #ebeff9, stop:1 #cad4e6);
+}
+
+QPushButton:default {
+    border-color: navy; /* 默认按钮有不同的边框颜色 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>Write All DEVCFG</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_22">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>75</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>-1</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+  border: 1px solid #000000; /* 设置黑色边框 */
+  border-radius: 0px; /* 边框无圆角 */
+  padding: 1px; /* 设置较大的内边距 */
+  font-size: 18px; /* 字体大小 */
+  background: transparent; /* 背景透明 */
+}</string>
+           </property>
+           <property name="text">
+            <string>0x0000</string>
+           </property>
+           <property name="frame">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
-       <item row="3" column="0">
-        <property name="text">
-         <string>3</string>
-        </property>
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>20</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>23</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 75 10pt &quot;Arial&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Cofigure Alert Register</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+         </property>
+        </widget>
        </item>
-       <item row="4" column="0">
-        <property name="text">
-         <string>4</string>
-        </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="1,0">
+         <item>
+          <widget class="QPushButton" name="pushButton_15">
+           <property name="minimumSize">
+            <size>
+             <width>92</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>190</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+	font: 75 9pt &quot;Arial&quot;;
+    border: 1px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #f6f7fa, stop:1 #c4c5c8);
+    min-width: 80px;
+    padding: 5px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #dadbde, stop:1 #f6f7fa);
+}
+
+QPushButton:hover {
+    border: 1px solid #1c94c4; /* 更深的边框颜色，当鼠标悬停 */
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #ebeff9, stop:1 #cad4e6);
+}
+
+QPushButton:default {
+    border-color: navy; /* 默认按钮有不同的边框颜色 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>Write All ALRTOVCFG</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_23">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>75</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>-1</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+  border: 1px solid #000000; /* 设置黑色边框 */
+  border-radius: 0px; /* 边框无圆角 */
+  padding: 1px; /* 设置较大的内边距 */
+  font-size: 18px; /* 字体大小 */
+  background: transparent; /* 背景透明 */
+}</string>
+           </property>
+           <property name="text">
+            <string>0x0000</string>
+           </property>
+           <property name="frame">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
-       <item row="5" column="0">
-        <property name="text">
-         <string>5</string>
-        </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_8">
+         <item>
+          <widget class="QPushButton" name="pushButton_16">
+           <property name="minimumSize">
+            <size>
+             <width>92</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>190</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+	font: 75 9pt &quot;Arial&quot;;
+    border: 1px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #f6f7fa, stop:1 #c4c5c8);
+    min-width: 80px;
+    padding: 5px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #dadbde, stop:1 #f6f7fa);
+}
+
+QPushButton:hover {
+    border: 1px solid #1c94c4; /* 更深的边框颜色，当鼠标悬停 */
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #ebeff9, stop:1 #cad4e6);
+}
+
+QPushButton:default {
+    border-color: navy; /* 默认按钮有不同的边框颜色 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>Write All ALRTUVCFG</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_24">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>75</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>-1</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+  border: 1px solid #000000; /* 设置黑色边框 */
+  border-radius: 0px; /* 边框无圆角 */
+  padding: 1px; /* 设置较大的内边距 */
+  font-size: 18px; /* 字体大小 */
+  background: transparent; /* 背景透明 */
+}</string>
+           </property>
+           <property name="text">
+            <string>0x0000</string>
+           </property>
+           <property name="frame">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
-       <item row="6" column="0">
-        <property name="text">
-         <string>6</string>
-        </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_10">
+         <item>
+          <widget class="QPushButton" name="pushButton_18">
+           <property name="minimumSize">
+            <size>
+             <width>92</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>190</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+	font: 75 9pt &quot;Arial&quot;;
+    border: 1px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #f6f7fa, stop:1 #c4c5c8);
+    min-width: 80px;
+    padding: 5px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #dadbde, stop:1 #f6f7fa);
+}
+
+QPushButton:hover {
+    border: 1px solid #1c94c4; /* 更深的边框颜色，当鼠标悬停 */
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #ebeff9, stop:1 #cad4e6);
+}
+
+QPushButton:default {
+    border-color: navy; /* 默认按钮有不同的边框颜色 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>Write All ALRTAUXOVCFG</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_26">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>75</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>-1</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+  border: 1px solid #000000; /* 设置黑色边框 */
+  border-radius: 0px; /* 边框无圆角 */
+  padding: 1px; /* 设置较大的内边距 */
+  font-size: 18px; /* 字体大小 */
+  background: transparent; /* 背景透明 */
+}</string>
+           </property>
+           <property name="text">
+            <string>0x0000</string>
+           </property>
+           <property name="frame">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
-       <item row="7" column="0">
-        <property name="text">
-         <string>7</string>
-        </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_9">
+         <item>
+          <widget class="QPushButton" name="pushButton_17">
+           <property name="minimumSize">
+            <size>
+             <width>92</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>190</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+	font: 75 9pt &quot;Arial&quot;;
+    border: 1px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #f6f7fa, stop:1 #c4c5c8);
+    min-width: 80px;
+    padding: 5px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #dadbde, stop:1 #f6f7fa);
+}
+
+QPushButton:hover {
+    border: 1px solid #1c94c4; /* 更深的边框颜色，当鼠标悬停 */
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #ebeff9, stop:1 #cad4e6);
+}
+
+QPushButton:default {
+    border-color: navy; /* 默认按钮有不同的边框颜色 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>Write All ALRTAUXUVCFG</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_25">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>75</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>-1</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+  border: 1px solid #000000; /* 设置黑色边框 */
+  border-radius: 0px; /* 边框无圆角 */
+  padding: 1px; /* 设置较大的内边距 */
+  font-size: 18px; /* 字体大小 */
+  background: transparent; /* 背景透明 */
+}</string>
+           </property>
+           <property name="text">
+            <string>0x0000</string>
+           </property>
+           <property name="frame">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
-       <item row="8" column="0">
-        <property name="text">
-         <string>8</string>
-        </property>
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>20</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>23</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 75 10pt &quot;Arial&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Cofigure Threshold Register</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+         </property>
+        </widget>
        </item>
-       <item row="9" column="0">
-        <property name="text">
-         <string>9</string>
-        </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_14">
+         <item>
+          <widget class="QPushButton" name="pushButton_22">
+           <property name="minimumSize">
+            <size>
+             <width>92</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>190</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+	font: 75 9pt &quot;Arial&quot;;
+    border: 1px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #f6f7fa, stop:1 #c4c5c8);
+    min-width: 80px;
+    padding: 5px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #dadbde, stop:1 #f6f7fa);
+}
+
+QPushButton:hover {
+    border: 1px solid #1c94c4; /* 更深的边框颜色，当鼠标悬停 */
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #ebeff9, stop:1 #cad4e6);
+}
+
+QPushButton:default {
+    border-color: navy; /* 默认按钮有不同的边框颜色 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>Write All OVTHREG</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_30">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>75</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>-1</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+  border: 1px solid #000000; /* 设置黑色边框 */
+  border-radius: 0px; /* 边框无圆角 */
+  padding: 1px; /* 设置较大的内边距 */
+  font-size: 18px; /* 字体大小 */
+  background: transparent; /* 背景透明 */
+}</string>
+           </property>
+           <property name="text">
+            <string>0x0000</string>
+           </property>
+           <property name="frame">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
-       <item row="10" column="0">
-        <property name="text">
-         <string>10</string>
-        </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_13">
+         <item>
+          <widget class="QPushButton" name="pushButton_21">
+           <property name="minimumSize">
+            <size>
+             <width>92</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>190</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+	font: 75 9pt &quot;Arial&quot;;
+    border: 1px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #f6f7fa, stop:1 #c4c5c8);
+    min-width: 80px;
+    padding: 5px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #dadbde, stop:1 #f6f7fa);
+}
+
+QPushButton:hover {
+    border: 1px solid #1c94c4; /* 更深的边框颜色，当鼠标悬停 */
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #ebeff9, stop:1 #cad4e6);
+}
+
+QPushButton:default {
+    border-color: navy; /* 默认按钮有不同的边框颜色 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>Write All UVTHREG</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_29">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>75</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>-1</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+  border: 1px solid #000000; /* 设置黑色边框 */
+  border-radius: 0px; /* 边框无圆角 */
+  padding: 1px; /* 设置较大的内边距 */
+  font-size: 18px; /* 字体大小 */
+  background: transparent; /* 背景透明 */
+}</string>
+           </property>
+           <property name="text">
+            <string>0x0000</string>
+           </property>
+           <property name="frame">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
-       <item row="11" column="0">
-        <property name="text">
-         <string>11</string>
-        </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_12">
+         <item>
+          <widget class="QPushButton" name="pushButton_20">
+           <property name="minimumSize">
+            <size>
+             <width>92</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>190</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+	font: 75 9pt &quot;Arial&quot;;
+    border: 1px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #f6f7fa, stop:1 #c4c5c8);
+    min-width: 80px;
+    padding: 5px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #dadbde, stop:1 #f6f7fa);
+}
+
+QPushButton:hover {
+    border: 1px solid #1c94c4; /* 更深的边框颜色，当鼠标悬停 */
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #ebeff9, stop:1 #cad4e6);
+}
+
+QPushButton:default {
+    border-color: navy; /* 默认按钮有不同的边框颜色 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>Write All ALTOVTHREG</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_28">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>75</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>-1</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+  border: 1px solid #000000; /* 设置黑色边框 */
+  border-radius: 0px; /* 边框无圆角 */
+  padding: 1px; /* 设置较大的内边距 */
+  font-size: 18px; /* 字体大小 */
+  background: transparent; /* 背景透明 */
+}</string>
+           </property>
+           <property name="text">
+            <string>0x0000</string>
+           </property>
+           <property name="frame">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
-       <item row="12" column="0">
-        <property name="text">
-         <string>12</string>
-        </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_11">
+         <item>
+          <widget class="QPushButton" name="pushButton_19">
+           <property name="minimumSize">
+            <size>
+             <width>92</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>190</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+	font: 75 9pt &quot;Arial&quot;;
+    border: 1px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #f6f7fa, stop:1 #c4c5c8);
+    min-width: 80px;
+    padding: 5px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #dadbde, stop:1 #f6f7fa);
+}
+
+QPushButton:hover {
+    border: 1px solid #1c94c4; /* 更深的边框颜色，当鼠标悬停 */
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #ebeff9, stop:1 #cad4e6);
+}
+
+QPushButton:default {
+    border-color: navy; /* 默认按钮有不同的边框颜色 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>Write All ALTUVTHREG</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_27">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>75</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>-1</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+  border: 1px solid #000000; /* 设置黑色边框 */
+  border-radius: 0px; /* 边框无圆角 */
+  padding: 1px; /* 设置较大的内边距 */
+  font-size: 18px; /* 字体大小 */
+  background: transparent; /* 背景透明 */
+}</string>
+           </property>
+           <property name="text">
+            <string>0x0000</string>
+           </property>
+           <property name="frame">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
-       <item row="13" column="0">
-        <property name="text">
-         <string>13</string>
-        </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_15">
+         <item>
+          <widget class="QPushButton" name="pushButton_23">
+           <property name="minimumSize">
+            <size>
+             <width>92</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>190</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+	font: 75 9pt &quot;Arial&quot;;
+    border: 1px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #f6f7fa, stop:1 #c4c5c8);
+    min-width: 80px;
+    padding: 5px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #dadbde, stop:1 #f6f7fa);
+}
+
+QPushButton:hover {
+    border: 1px solid #1c94c4; /* 更深的边框颜色，当鼠标悬停 */
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #ebeff9, stop:1 #cad4e6);
+}
+
+QPushButton:default {
+    border-color: navy; /* 默认按钮有不同的边框颜色 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>Write All AUXROVTHREG</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_31">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>75</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>-1</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+  border: 1px solid #000000; /* 设置黑色边框 */
+  border-radius: 0px; /* 边框无圆角 */
+  padding: 1px; /* 设置较大的内边距 */
+  font-size: 18px; /* 字体大小 */
+  background: transparent; /* 背景透明 */
+}</string>
+           </property>
+           <property name="text">
+            <string>0x0000</string>
+           </property>
+           <property name="frame">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
-       <item row="14" column="0">
-        <property name="text">
-         <string>14</string>
-        </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_17">
+         <item>
+          <widget class="QPushButton" name="pushButton_25">
+           <property name="minimumSize">
+            <size>
+             <width>92</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>190</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+	font: 75 9pt &quot;Arial&quot;;
+    border: 1px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #f6f7fa, stop:1 #c4c5c8);
+    min-width: 80px;
+    padding: 5px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #dadbde, stop:1 #f6f7fa);
+}
+
+QPushButton:hover {
+    border: 1px solid #1c94c4; /* 更深的边框颜色，当鼠标悬停 */
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #ebeff9, stop:1 #cad4e6);
+}
+
+QPushButton:default {
+    border-color: navy; /* 默认按钮有不同的边框颜色 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>Write All AUXRUVTHREG</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_33">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>75</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>-1</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+  border: 1px solid #000000; /* 设置黑色边框 */
+  border-radius: 0px; /* 边框无圆角 */
+  padding: 1px; /* 设置较大的内边距 */
+  font-size: 18px; /* 字体大小 */
+  background: transparent; /* 背景透明 */
+}</string>
+           </property>
+           <property name="text">
+            <string>0x0000</string>
+           </property>
+           <property name="frame">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
-       <item row="15" column="0">
-        <property name="text">
-         <string>15</string>
-        </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_16">
+         <item>
+          <widget class="QPushButton" name="pushButton_24">
+           <property name="minimumSize">
+            <size>
+             <width>92</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>190</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+	font: 75 9pt &quot;Arial&quot;;
+    border: 1px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #f6f7fa, stop:1 #c4c5c8);
+    min-width: 80px;
+    padding: 5px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #dadbde, stop:1 #f6f7fa);
+}
+
+QPushButton:hover {
+    border: 1px solid #1c94c4; /* 更深的边框颜色，当鼠标悬停 */
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #ebeff9, stop:1 #cad4e6);
+}
+
+QPushButton:default {
+    border-color: navy; /* 默认按钮有不同的边框颜色 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>Write All MMTHREG</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_32">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>75</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>-1</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+  border: 1px solid #000000; /* 设置黑色边框 */
+  border-radius: 0px; /* 边框无圆角 */
+  padding: 1px; /* 设置较大的内边距 */
+  font-size: 18px; /* 字体大小 */
+  background: transparent; /* 背景透明 */
+}</string>
+           </property>
+           <property name="text">
+            <string>0x0000</string>
+           </property>
+           <property name="frame">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
-      </widget>
-     </item>
-    </layout>
-   </widget>
+       <item>
+        <widget class="QLabel" name="label_5">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>20</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>23</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 75 10pt &quot;Arial&quot;;</string>
+         </property>
+         <property name="text">
+          <string>Configure Acquisition Register</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_20">
+         <item>
+          <widget class="QPushButton" name="pushButton_28">
+           <property name="minimumSize">
+            <size>
+             <width>92</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>190</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+	font: 75 9pt &quot;Arial&quot;;
+    border: 1px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #f6f7fa, stop:1 #c4c5c8);
+    min-width: 80px;
+    padding: 5px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #dadbde, stop:1 #f6f7fa);
+}
+
+QPushButton:hover {
+    border: 1px solid #1c94c4; /* 更深的边框颜色，当鼠标悬停 */
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #ebeff9, stop:1 #cad4e6);
+}
+
+QPushButton:default {
+    border-color: navy; /* 默认按钮有不同的边框颜色 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>Write All ACQDLY1</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_36">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>75</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>-1</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+  border: 1px solid #000000; /* 设置黑色边框 */
+  border-radius: 0px; /* 边框无圆角 */
+  padding: 1px; /* 设置较大的内边距 */
+  font-size: 18px; /* 字体大小 */
+  background: transparent; /* 背景透明 */
+}</string>
+           </property>
+           <property name="text">
+            <string>0x0000</string>
+           </property>
+           <property name="frame">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_18">
+         <item>
+          <widget class="QPushButton" name="pushButton_26">
+           <property name="minimumSize">
+            <size>
+             <width>92</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>190</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+	font: 75 9pt &quot;Arial&quot;;
+    border: 1px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #f6f7fa, stop:1 #c4c5c8);
+    min-width: 80px;
+    padding: 5px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #dadbde, stop:1 #f6f7fa);
+}
+
+QPushButton:hover {
+    border: 1px solid #1c94c4; /* 更深的边框颜色，当鼠标悬停 */
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #ebeff9, stop:1 #cad4e6);
+}
+
+QPushButton:default {
+    border-color: navy; /* 默认按钮有不同的边框颜色 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>Write All ACQDLY2</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_34">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>75</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>-1</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+  border: 1px solid #000000; /* 设置黑色边框 */
+  border-radius: 0px; /* 边框无圆角 */
+  padding: 1px; /* 设置较大的内边距 */
+  font-size: 18px; /* 字体大小 */
+  background: transparent; /* 背景透明 */
+}</string>
+           </property>
+           <property name="text">
+            <string>0x0000</string>
+           </property>
+           <property name="frame">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_21">
+         <item>
+          <widget class="QPushButton" name="pushButton_29">
+           <property name="minimumSize">
+            <size>
+             <width>92</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>190</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+	font: 75 9pt &quot;Arial&quot;;
+    border: 1px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #f6f7fa, stop:1 #c4c5c8);
+    min-width: 80px;
+    padding: 5px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #dadbde, stop:1 #f6f7fa);
+}
+
+QPushButton:hover {
+    border: 1px solid #1c94c4; /* 更深的边框颜色，当鼠标悬停 */
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #ebeff9, stop:1 #cad4e6);
+}
+
+QPushButton:default {
+    border-color: navy; /* 默认按钮有不同的边框颜色 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>Write All ACQCHSEL</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_37">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>75</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>-1</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+  border: 1px solid #000000; /* 设置黑色边框 */
+  border-radius: 0px; /* 边框无圆角 */
+  padding: 1px; /* 设置较大的内边距 */
+  font-size: 18px; /* 字体大小 */
+  background: transparent; /* 背景透明 */
+}</string>
+           </property>
+           <property name="text">
+            <string>0x0000</string>
+           </property>
+           <property name="frame">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_19">
+         <item>
+          <widget class="QPushButton" name="pushButton_27">
+           <property name="minimumSize">
+            <size>
+             <width>92</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>190</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+	font: 75 9pt &quot;Arial&quot;;
+    border: 1px solid #8f8f91;
+    border-radius: 6px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #f6f7fa, stop:1 #c4c5c8);
+    min-width: 80px;
+    padding: 5px;
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #dadbde, stop:1 #f6f7fa);
+}
+
+QPushButton:hover {
+    border: 1px solid #1c94c4; /* 更深的边框颜色，当鼠标悬停 */
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #ebeff9, stop:1 #cad4e6);
+}
+
+QPushButton:default {
+    border-color: navy; /* 默认按钮有不同的边框颜色 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>Write All ACQAUXSEL</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_35">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>75</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>-1</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+  border: 1px solid #000000; /* 设置黑色边框 */
+  border-radius: 0px; /* 边框无圆角 */
+  padding: 1px; /* 设置较大的内边距 */
+  font-size: 18px; /* 字体大小 */
+  background: transparent; /* 背景透明 */
+}</string>
+           </property>
+           <property name="text">
+            <string>0x0000</string>
+           </property>
+           <property name="frame">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="groupBox_8">
+      <property name="styleSheet">
+       <string notr="true">QGroupBox {
+	font: 75 11pt &quot;Arial&quot;;
+  border: 1px solid #C0C0C0; /* 边框颜色与宽度 */
+  border-radius: 5px; /* 边框圆角 */
+  margin-top: 21px; /* 确保有足够的空间显示标题 */
+}
+
+QGroupBox::title {
+  subcontrol-origin: margin; /* 标题定位基于边界之外 */
+  subcontrol-position: top left; /* 标题位置 */
+  padding: 0 3px; /* 标题内边距 */
+  color: #000; /* 标题文本颜色 */
+  /* 使用负边距将标题上移，使其位于边框外部 */
+  margin-top: 0px;
+}</string>
+      </property>
+      <property name="title">
+       <string>Read/Write Device</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_10">
+       <item>
+        <widget class="QTextEdit" name="textEdit"/>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

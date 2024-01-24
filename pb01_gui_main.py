@@ -25,9 +25,6 @@ class Pb01DemoWindow(QMainWindow, Ui_PB01_Demo):
     def initUI(self):
         self.pushButton_37.clicked.connect(self.btn_handle)     # 定义控件 pushButton_37 单击信号的槽函数为 btn_handle
 
-    ''' 控件 pushButton_37 单击信号槽函数的具体实现 '''
-    def btn_handle(self):
-        print("this is btn slot function")
 
 
 """ step3: 通过下面代码完成 GUI 的显示 """

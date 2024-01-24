@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import QColor
 
-from pb01_dan import Ui_MainWindow
+from dan_chain_configuration_page import Ui_MainWindow
 
 class Pb01DanWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):

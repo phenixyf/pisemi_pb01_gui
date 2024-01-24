@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'pb01_dan.ui'
+# Form implementation generated from reading ui file 'dan_chain_configuration_page.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #

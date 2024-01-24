@@ -12,14 +12,14 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.initUI()  # 定义初始化函数
 
-    def initTableWidget(self, pTableWidget, pListHeader=[], pListItem=[], pGreenCol=3, pYellowCol=3):
+    def initTableWidget(self, pTableWidget, pListHeader=[], pListItem=[], pListGreenCol=[], pListYellowCol=[]):
         """
         used to initial own tablewidget
         :param pTableWidget: tablewidget object
         :param pListHeader: 标题栏内容，列表格式
-        :param pListItem: 各单元格内容
-        :param pGreenCol: 绿色填充的列号
-        :param pYellowCol: 黄色填充列号的前一个列号
+        :param pListItem: 各单元格内容，列表格式
+        :param pListGreenCol: 绿色填充的列号，列表格式
+        :param pListYellowCol: 黄色填充列号，列表格式
         :return:
         """
         # 设置列标题
@@ -34,9 +34,9 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
                 item.setTextAlignment(Qt.AlignHCenter)  # 设置单元格内容水平居中对齐
                 pTableWidget.setItem(row, column, item)
                 # 根据条件设置背景色
-                if column == pGreenCol:  # 设置第 4 列的背景色
+                if column in pListGreenCol:  # 设置绿色背景色
                     item.setBackground(QColor("#b5e6aa"))
-                if column > pYellowCol:  # 设置第 5 ~ 14 列的背景色
+                if column in pListYellowCol:  # 设置黄色背景色
                     item.setBackground(QColor("#fff0b3"))
 
         # 列宽自适应等
@@ -46,7 +46,7 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
     ''' GUI 初始化函数 '''
     def initUI(self):
         ''' 初始化 uart interface configure table1 '''
-        uartif_table1_headers = ["Address", "Register", "Expected {hex}", "Actual {hex}", "UARTDUAL", "UARTLPBK", "UARTWRPATH",
+        uartif_table1_headers = ["Address", "Register", "Expected (hex)", "Actual (hex)", "UARTDUAL", "UARTLPBK", "UARTWRPATH",
                           "TXUIDLEHIZ", "TXLIDLEHIZ", "UARTDCEN", "UARTALVCNTEN", "(Logic Zero)", "DBLBUFEN",
                           "Reserved/SPI[6:0]"]
         uartif_table1_items = [
@@ -55,9 +55,30 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
             ["0x10", "UIFCFG (Dual, Device 1)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"]
         ]
 
-        self.initTableWidget(self.tableWidget_uart_if_cfg1, uartif_table1_headers, uartif_table1_items, 3, 3)
+        self.initTableWidget(self.tableWidget_uart_if_cfg1, uartif_table1_headers, uartif_table1_items, [3],
+                             range(4, 14))
 
+        ''' 初始化 uart interface configure table2 '''
+        uartif_table2_headers = ["Address", "Register", "Expected (hex)", "Actual (hex)", "ADDRUNLOCK", "BOTADDR[4:0]",
+                                 "TOPADDR[4:0]", "DEVADDR[4:0]"]
+        uartif_table2_items = [
+            ["0x11", "ADDRESSCFG (Single AFE)", "0000", "8000", "0", "0000", "0000", "0000"],
+            ["0x11", "ADDRESSCFG (Dual, Device 0)", "0020", "8000", "0", "0000", "0001", "0001"],
+            ["0x11", "ADDRESSCFG (Dual, Device 1)", "0021", "8000", "0", "0000", "0001", "0001"]
+        ]
 
+        self.initTableWidget(self.tableWidget_uart_if_cfg2, uartif_table2_headers, uartif_table2_items, [3], range(4, 8))
+
+        ''' 初始化 status register table '''
+        status_reg_table_headers = ["Address", "Register", "Condition", "Expect (hex)", "Actual (hex)"]
+        status_reg_table_items = [
+            ["0x04", "STATUS (Device 0)", "Power-Up", "4000", "4000"],
+            ["0x04", "STATUS (Device 1)", "Power-Up", "4000", "4000"],
+            ["0x04", "STATUS (Device 0)", "After Initialization", "0000", "0000"],
+            ["0x04", "STATUS (Device 1)", "After Initialization", "0000", "0000"]
+        ]
+
+        self.initTableWidget(self.tableWidget_status_reg_init, status_reg_table_headers, status_reg_table_items, [4], [])
 
 
 """ step3: 通过下面代码完成 GUI 的显示 """

@@ -22,8 +22,8 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
         4. 设置单元格行高度
         5. 显示指定的行数内容
         6. 设置列宽自适应宽度
-        注意：调用该函数后，对应 tablewidget 内的所有数据都会恢复成初始值，这个函数仅用在 CHAIN CONFIGURATION page的
-        single afe 和 dual afe radio button 切换时
+        注意：调用该函数后，对应 tablewidget 内的所有数据都会恢复成初始值，这个函数仅用在 GUI 一开始初始化和
+        CHAIN CONFIGURATION page 的 single afe 和 dual afe radio button 切换操作时
         :param pTableWidget: tablewidget 实例
         :param pShowRowCnt: 要显示的行数
         :param pRowHeight: 行高度值
@@ -49,36 +49,43 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
         # 设置列宽自适应
         pTableWidget.resizeColumnsToContents()
 
+    uartif_table1_headers = ["Address", "Register", "Expected (hex)", "Actual (hex)", "UARTDUAL", "UARTLPBK",
+                             "UARTWRPATH",
+                             "TXUIDLEHIZ", "TXLIDLEHIZ", "UARTDCEN", "UARTALVCNTEN", "(Logic Zero)", "DBLBUFEN",
+                             "Reserved/SPI[6:0]"]
+    uartif_table1_items = [
+        ["0x10", "UIFCFG (Single AFE)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"],
+        ["0x10", "UIFCFG (Dual, Device 0)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"],
+        ["0x10", "UIFCFG (Dual, Device 1)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"]
+    ]
 
-    def initial_table_uart_if_cfg1(self, pTableHeight):
+    uartif_table2_headers = ["Address", "Register", "Expected (hex)", "Actual (hex)", "ADDRUNLOCK", "BOTADDR[4:0]",
+                             "TOPADDR[4:0]", "DEVADDR[4:0]"]
+    uartif_table2_items = [
+        ["0x11", "ADDRESSCFG (Single AFE)", "0000", "8000", "0", "0000", "0000", "0000"],
+        ["0x11", "ADDRESSCFG (Dual, Device 0)", "0020", "8000", "0", "0000", "0001", "0001"],
+        ["0x11", "ADDRESSCFG (Dual, Device 1)", "0021", "8000", "0", "0000", "0001", "0001"]
+    ]
+
+    def initial_tablewidget(self, pTableWidget, pListHeader, pHeaderHeight, pTableHeight):
         """
-        初始化 uart interface configuration table1
+        初始化 tablewidget
         完成下面操作：
-        1. 设置标题栏内容，并设置水平和垂直居中对齐
+        1. 设置标题栏内容、高度，并设置水平和垂直居中对齐
         2. 提供个单元格数据，用一个列表变量的格式
-        3. 设置 table 固定高度
-        :param pTableHeight:
+        3. 设置 tablewidget 固定高度
+        注意：该函数仅初始化了 tablewidget 的标题，一定要同时搭配调用 set_table_item_data_and_background_color 才能
+        完成整个 tablewidget 的初始化动作
+        :param pTableWidget: tablewidget 实例
+        :param pListHeader: 标题栏内容
+        :param pHeaderHeight: 设置标题行高度
+        :param pTableHeight: 设置 tablewidget 高度
         :return:
         """
-        # 标题栏内容列表
-        uartif_table1_headers = ["Address", "Register", "Expected (hex)", "Actual (hex)", "UARTDUAL", "UARTLPBK",
-                                 "UARTWRPATH",
-                                 "TXUIDLEHIZ", "TXLIDLEHIZ", "UARTDCEN", "UARTALVCNTEN", "(Logic Zero)", "DBLBUFEN",
-                                 "Reserved/SPI[6:0]"]
-        self.tableWidget_uart_if_cfg1.setHorizontalHeaderLabels(uartif_table1_headers)  # 设置标题内容
-        self.tableWidget_uart_if_cfg1.horizontalHeader().setDefaultAlignment(Qt.AlignCenter)  # 设置标题内容水平居中对齐
-        # 提供各单元格内容
-        self.uartif_table1_items = [
-            ["row0", "UIFCFG (Single AFE)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"],
-            ["row1", "UIFCFG (Dual, Device 0)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"],
-            ["row2", "UIFCFG (Dual, Device 1)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"]
-        ]
-        # 设置 table 高度
-        self.tableWidget_uart_if_cfg1.setFixedHeight(pTableHeight)
-
-
-        self.set_table_item_data_and_background_color(self.tableWidget_uart_if_cfg1, 3, 20,
-                                                      self.uartif_table1_items, [3], range(4, 14))
+        pTableWidget.setHorizontalHeaderLabels(pListHeader)     # 设置标题内容
+        pTableWidget.horizontalHeader().setDefaultAlignment(Qt.AlignCenter)     # 设置标题内容水平居中对齐
+        pTableWidget.horizontalHeader().setFixedHeight(pHeaderHeight)           # 设置标题行高度
+        pTableWidget.setFixedHeight(pTableHeight)           # 设置 table 高度
 
 
     def initUI(self):
@@ -86,37 +93,13 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
         GUI 初始化函数
         :return:
         """
-        self.initial_table_uart_if_cfg1(150)
+        self.initial_tablewidget(self.tableWidget_uart_if_cfg1, self.uartif_table1_headers, 30, 150)
+        self.initial_tablewidget(self.tableWidget_uart_if_cfg2, self.uartif_table2_headers, 30, 150)
 
-
-        # self.tableWidget_uart_if_cfg1.setFixedHeight(150)
-        # self.tableWidget_uart_if_cfg2.setFixedHeight(150)
+        self.radioButton_single_afe.setChecked(True)
+        self.slot_radio_single_dual_afe()
 
         self.update_led_color(self.label_186, "#aa0000")
-
-        # ''' 初始化 uart interface configure table1 '''
-        # uartif_table1_headers = ["Address", "Register", "Expected (hex)", "Actual (hex)", "UARTDUAL", "UARTLPBK", "UARTWRPATH",
-        #                   "TXUIDLEHIZ", "TXLIDLEHIZ", "UARTDCEN", "UARTALVCNTEN", "(Logic Zero)", "DBLBUFEN",
-        #                   "Reserved/SPI[6:0]"]
-        # uartif_table1_items = [
-        #     ["0x10", "UIFCFG (Single AFE)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"],
-        #     ["0x10", "UIFCFG (Dual, Device 0)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"],
-        #     ["0x10", "UIFCFG (Dual, Device 1)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"]
-        # ]
-        #
-        # self.initTableWidget(self.tableWidget_uart_if_cfg1, uartif_table1_headers, uartif_table1_items, [3],
-        #                      range(4, 14))
-
-        ''' 初始化 uart interface configure table2 '''
-        uartif_table2_headers = ["Address", "Register", "Expected (hex)", "Actual (hex)", "ADDRUNLOCK", "BOTADDR[4:0]",
-                                 "TOPADDR[4:0]", "DEVADDR[4:0]"]
-        uartif_table2_items = [
-            ["0x11", "ADDRESSCFG (Single AFE)", "0000", "8000", "0", "0000", "0000", "0000"],
-            ["0x11", "ADDRESSCFG (Dual, Device 0)", "0020", "8000", "0", "0000", "0001", "0001"],
-            ["0x11", "ADDRESSCFG (Dual, Device 1)", "0021", "8000", "0", "0000", "0001", "0001"]
-        ]
-
-        self.initTableWidget(self.tableWidget_uart_if_cfg2, uartif_table2_headers, uartif_table2_items, [3], range(4, 8))
 
         ''' 初始化 status register table '''
         status_reg_table_headers = ["Address", "Register", "Condition", "Expect (hex)", "Actual (hex)"]
@@ -130,8 +113,8 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
         self.initTableWidget(self.tableWidget_status_reg_init, status_reg_table_headers, status_reg_table_items, [4], [])
 
         ''' 配置信号和槽 '''
-        self.radioButton_single_afe.clicked.connect(self.update_status_register_table_rows)
-        self.radioButton_dual_afe.clicked.connect(self.update_status_register_table_rows)
+        self.radioButton_single_afe.clicked.connect(self.slot_radio_single_dual_afe)
+        self.radioButton_dual_afe.clicked.connect(self.slot_radio_single_dual_afe)
         self.pushButton_cfg_uart_if.clicked.connect(self.cfg_uart_if)
 
     def cfg_uart_if(self):
@@ -160,16 +143,22 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
         label.setStyleSheet(style_sheet)
 
 
-    def update_status_register_table_rows(self):
+    def slot_radio_single_dual_afe(self):
         """
         根据 single afe 和 dual afe radio button 被选择的状态，
         设置 QTableWidget 显示不同的行数
         :return:
         """
         if self.radioButton_single_afe.isChecked():
-            self.tableWidget_status_reg_init.setRowCount(2)  # 如果radio1被选中，则显示2行
+            self.set_table_item_data_and_background_color(self.tableWidget_uart_if_cfg1, 2, 20,
+                                                          self.uartif_table1_items, [3], range(4, 14))
+            self.set_table_item_data_and_background_color(self.tableWidget_uart_if_cfg2, 2, 20,
+                                                          self.uartif_table2_items, [3], range(4, 8))
         elif self.radioButton_dual_afe.isChecked():
-            self.tableWidget_status_reg_init.setRowCount(4)  # 如果radio2被选中，则显示4行
+            self.set_table_item_data_and_background_color(self.tableWidget_uart_if_cfg1, 3, 20,
+                                                          self.uartif_table1_items, [3], range(4, 14))
+            self.set_table_item_data_and_background_color(self.tableWidget_uart_if_cfg2, 3, 20,
+                                                          self.uartif_table2_items, [3], range(4, 8))
 
 
     def initTableWidget(self, pTableWidget, pListHeader=[], pListItem=[], pListGreenCol=[], pListYellowCol=[]):

@@ -12,65 +12,12 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.initUI()  # 定义初始化函数
 
-    def update_led_color(self, label, color):
-        """
-        更新LED颜色的函数。
 
-        :param label: 要更新的QLabel实例。
-        :param color: 一个包含颜色代码的字符串，比如 "#FF0000" 表示红色。
+    def initUI(self):
         """
-        style_sheet = f"""
-        QLabel {{
-            border-radius: 10px; /* 保持圆形 */
-            background: qradialgradient(
-                cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,
-                stop: 0 #ffffff, /* 渐变的中心是白色 */
-                stop: 0.4 {color}, /* 自定义颜色 */
-                stop: 0.5 {color}, /* 稍微改变颜色以实现渐变效果 */
-                stop: 1.0 {color}); /* 边缘颜色 */
-            box-shadow: 0px 0px 8px 0px {color}; /* 阴影颜色 */
-        }}
-        """
-        label.setStyleSheet(style_sheet)
-
-    def initTableWidget(self, pTableWidget, pListHeader=[], pListItem=[], pListGreenCol=[], pListYellowCol=[]):
-        """
-        used to initial own tablewidget
-        :param pTableWidget: tablewidget object
-        :param pListHeader: 标题栏内容，列表格式
-        :param pListItem: 各单元格内容，列表格式
-        :param pListGreenCol: 绿色填充的列号，列表格式
-        :param pListYellowCol: 黄色填充列号，列表格式
+        GUI 初始化函数
         :return:
         """
-        # 设置列标题
-        pTableWidget.horizontalHeader().setDefaultAlignment(Qt.AlignCenter)  # 设置标题内容水平居中对齐
-        # pTableWidget.horizontalHeader().setDefaultAlignment(Qt.AlignVCenter)  # 设置标题内容垂直居中对齐
-        pTableWidget.setHorizontalHeaderLabels(pListHeader)  # 设置标题栏内容
-
-        # 设置单元格数据
-        # 填充数据并设置背景色
-        for row, row_data in enumerate(pListItem):
-            for column, value in enumerate(row_data):
-                item = QTableWidgetItem(value)
-                item.setTextAlignment(Qt.AlignCenter)  # 设置单元格内容水平居中对齐
-                # item.setTextAlignment(Qt.AlignVCenter)  # 设置单元格内容垂直居中对齐
-                pTableWidget.setItem(row, column, item)
-                # 根据条件设置背景色
-                if column in pListGreenCol:  # 设置绿色背景色
-                    item.setBackground(QColor("#b5e6aa"))
-                if column in pListYellowCol:  # 设置黄色背景色
-                    item.setBackground(QColor("#fff0b3"))
-
-            pTableWidget.setRowHeight(row, 20) # 设置行宽度
-
-        # 设置列宽自适应
-        pTableWidget.resizeColumnsToContents()
-
-
-
-    ''' GUI 初始化函数 '''
-    def initUI(self):
         self.update_led_color(self.label_186, "#aa0000")
 
         ''' 初始化 uart interface configure table1 '''
@@ -107,6 +54,79 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
         ]
 
         self.initTableWidget(self.tableWidget_status_reg_init, status_reg_table_headers, status_reg_table_items, [4], [])
+
+        ''' 配置信号和槽 '''
+        self.radioButton_single_afe.clicked.connect(self.update_status_register_table_rows)
+        self.radioButton_dual_afe.clicked.connect(self.update_status_register_table_rows)
+
+
+    def update_led_color(self, label, color):
+        """
+        更新LED颜色的函数。
+
+        :param label: 要更新的QLabel实例。
+        :param color: 一个包含颜色代码的字符串，比如 "#FF0000" 表示红色。
+        """
+        style_sheet = f"""
+           QLabel {{
+               border-radius: 10px; /* 保持圆形 */
+               background: qradialgradient(
+                   cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,
+                   stop: 0 #ffffff, /* 渐变的中心是白色 */
+                   stop: 0.4 {color}, /* 自定义颜色 */
+                   stop: 0.5 {color}, /* 稍微改变颜色以实现渐变效果 */
+                   stop: 1.0 {color}); /* 边缘颜色 */
+               box-shadow: 0px 0px 8px 0px {color}; /* 阴影颜色 */
+           }}
+           """
+        label.setStyleSheet(style_sheet)
+
+
+    def update_status_register_table_rows(self):
+        """
+        根据 single afe 和 dual afe radio button 被选择的状态，
+        设置 QTableWidget 显示不同的行数
+        :return:
+        """
+        if self.radioButton_single_afe.isChecked():
+            self.tableWidget_status_reg_init.setRowCount(2)  # 如果radio1被选中，则显示2行
+        elif self.radioButton_dual_afe.isChecked():
+            self.tableWidget_status_reg_init.setRowCount(4)  # 如果radio2被选中，则显示4行
+
+
+    def initTableWidget(self, pTableWidget, pListHeader=[], pListItem=[], pListGreenCol=[], pListYellowCol=[]):
+        """
+        used to initial own tablewidget
+        :param pTableWidget: tablewidget object
+        :param pListHeader: 标题栏内容，列表格式
+        :param pListItem: 各单元格内容，列表格式
+        :param pListGreenCol: 绿色填充的列号，列表格式
+        :param pListYellowCol: 黄色填充列号，列表格式
+        :return:
+        """
+        # 设置列标题
+        pTableWidget.horizontalHeader().setDefaultAlignment(Qt.AlignCenter)  # 设置标题内容水平居中对齐
+        # pTableWidget.horizontalHeader().setDefaultAlignment(Qt.AlignVCenter)  # 设置标题内容垂直居中对齐
+        pTableWidget.setHorizontalHeaderLabels(pListHeader)  # 设置标题栏内容
+
+        # 设置单元格数据
+        # 填充数据并设置背景色
+        for row, row_data in enumerate(pListItem):
+            for column, value in enumerate(row_data):
+                item = QTableWidgetItem(value)
+                item.setTextAlignment(Qt.AlignCenter)  # 设置单元格内容水平居中对齐
+                # item.setTextAlignment(Qt.AlignVCenter)  # 设置单元格内容垂直居中对齐
+                pTableWidget.setItem(row, column, item)
+                # 根据条件设置背景色
+                if column in pListGreenCol:  # 设置绿色背景色
+                    item.setBackground(QColor("#b5e6aa"))
+                if column in pListYellowCol:  # 设置黄色背景色
+                    item.setBackground(QColor("#fff0b3"))
+
+            pTableWidget.setRowHeight(row, 20)  # 设置行宽度
+
+        # 设置列宽自适应
+        pTableWidget.resizeColumnsToContents()
 
 
 """ step3: 通过下面代码完成 GUI 的显示 """

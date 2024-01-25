@@ -18,6 +18,9 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
         GUI 初始化函数
         :return:
         """
+        self.tableWidget_uart_if_cfg1.setFixedHeight(150)
+        self.tableWidget_uart_if_cfg2.setFixedHeight(150)
+
         self.update_led_color(self.label_186, "#aa0000")
 
         ''' 初始化 uart interface configure table1 '''
@@ -58,6 +61,10 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
         ''' 配置信号和槽 '''
         self.radioButton_single_afe.clicked.connect(self.update_status_register_table_rows)
         self.radioButton_dual_afe.clicked.connect(self.update_status_register_table_rows)
+        self.pushButton_cfg_uart_if.clicked.connect(self.cfg_uart_if)
+
+    def cfg_uart_if(self):
+        self.tableWidget_uart_if_cfg1.item(1,6).setText("try")
 
 
     def update_led_color(self, label, color):

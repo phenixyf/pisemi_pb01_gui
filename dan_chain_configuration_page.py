@@ -17,8 +17,8 @@ class Ui_MainWindow(object):
         MainWindow.resize(1706, 851)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout.setObjectName("verticalLayout")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.frame_3 = QtWidgets.QFrame(self.centralwidget)
         self.frame_3.setStyleSheet("QFrame {\n"
 "    background-color: #a0a0a0; /* 设置背景颜色为灰色 */\n"
@@ -46,17 +46,25 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.addWidget(self.label_23)
         spacerItem = QtWidgets.QSpacerItem(447, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_4.addItem(spacerItem)
-        self.verticalLayout.addWidget(self.frame_3)
+        self.verticalLayout_2.addWidget(self.frame_3)
+        self.verticalLayout = QtWidgets.QVBoxLayout()
+        self.verticalLayout.setSpacing(5)
+        self.verticalLayout.setObjectName("verticalLayout")
         self.radioButton_single_afe = QtWidgets.QRadioButton(self.centralwidget)
-        self.radioButton_single_afe.setStyleSheet("font: 12pt \"Calibri\";\n"
+        self.radioButton_single_afe.setMinimumSize(QtCore.QSize(0, 20))
+        self.radioButton_single_afe.setMaximumSize(QtCore.QSize(16777215, 20))
+        self.radioButton_single_afe.setStyleSheet("font: 10pt \"Calibri\";\n"
 "font-weight: 600; /* 设置字体粗细为600 */")
         self.radioButton_single_afe.setObjectName("radioButton_single_afe")
         self.verticalLayout.addWidget(self.radioButton_single_afe)
         self.radioButton_dual_afe = QtWidgets.QRadioButton(self.centralwidget)
-        self.radioButton_dual_afe.setStyleSheet("font: 12pt \"Calibri\";\n"
+        self.radioButton_dual_afe.setMinimumSize(QtCore.QSize(0, 20))
+        self.radioButton_dual_afe.setMaximumSize(QtCore.QSize(16777215, 20))
+        self.radioButton_dual_afe.setStyleSheet("font: 10pt \"Calibri\";\n"
 "font-weight: 600; /* 设置字体粗细为600 */")
         self.radioButton_dual_afe.setObjectName("radioButton_dual_afe")
         self.verticalLayout.addWidget(self.radioButton_dual_afe)
+        self.verticalLayout_2.addLayout(self.verticalLayout)
         self.frame = QtWidgets.QFrame(self.centralwidget)
         self.frame.setStyleSheet("QFrame {\n"
 "    background-color: #a0a0a0; /* 设置背景颜色为灰色 */\n"
@@ -84,10 +92,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.label_21)
         spacerItem1 = QtWidgets.QSpacerItem(447, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
-        self.pushButton_48 = QtWidgets.QPushButton(self.frame)
-        self.pushButton_48.setMinimumSize(QtCore.QSize(110, 0))
-        self.pushButton_48.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.pushButton_48.setStyleSheet("QPushButton {\n"
+        self.pushButton_cfg_uart_if = QtWidgets.QPushButton(self.frame)
+        self.pushButton_cfg_uart_if.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_cfg_uart_if.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_cfg_uart_if.setStyleSheet("QPushButton {\n"
 "    background-color: #3072B3; /* 按钮背景颜色 */\n"
 "    color: white; /* 文字颜色 */\n"
 "    border-style: solid; /* 边框样式 */\n"
@@ -107,8 +115,8 @@ class Ui_MainWindow(object):
 "    background-color: #1E5A97; /* 按下时的背景颜色 */\n"
 "}\n"
 "")
-        self.pushButton_48.setObjectName("pushButton_48")
-        self.horizontalLayout.addWidget(self.pushButton_48)
+        self.pushButton_cfg_uart_if.setObjectName("pushButton_cfg_uart_if")
+        self.horizontalLayout.addWidget(self.pushButton_cfg_uart_if)
         self.pushButton_50 = QtWidgets.QPushButton(self.frame)
         self.pushButton_50.setMinimumSize(QtCore.QSize(110, 0))
         self.pushButton_50.setMaximumSize(QtCore.QSize(16777215, 16777215))
@@ -134,7 +142,7 @@ class Ui_MainWindow(object):
 "")
         self.pushButton_50.setObjectName("pushButton_50")
         self.horizontalLayout.addWidget(self.pushButton_50)
-        self.verticalLayout.addWidget(self.frame)
+        self.verticalLayout_2.addWidget(self.frame)
         self.tableWidget_uart_if_cfg1 = QtWidgets.QTableWidget(self.centralwidget)
         self.tableWidget_uart_if_cfg1.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
@@ -227,7 +235,7 @@ class Ui_MainWindow(object):
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget_uart_if_cfg1.setItem(2, 3, item)
         self.tableWidget_uart_if_cfg1.verticalHeader().setVisible(False)
-        self.verticalLayout.addWidget(self.tableWidget_uart_if_cfg1)
+        self.verticalLayout_2.addWidget(self.tableWidget_uart_if_cfg1)
         self.tableWidget_uart_if_cfg2 = QtWidgets.QTableWidget(self.centralwidget)
         self.tableWidget_uart_if_cfg2.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
@@ -308,7 +316,7 @@ class Ui_MainWindow(object):
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget_uart_if_cfg2.setItem(2, 3, item)
         self.tableWidget_uart_if_cfg2.verticalHeader().setVisible(False)
-        self.verticalLayout.addWidget(self.tableWidget_uart_if_cfg2)
+        self.verticalLayout_2.addWidget(self.tableWidget_uart_if_cfg2)
         self.frame_2 = QtWidgets.QFrame(self.centralwidget)
         self.frame_2.setStyleSheet("QFrame {\n"
 "    background-color: #a0a0a0; /* 设置背景颜色为灰色 */\n"
@@ -386,7 +394,7 @@ class Ui_MainWindow(object):
 "")
         self.pushButton_51.setObjectName("pushButton_51")
         self.horizontalLayout_2.addWidget(self.pushButton_51)
-        self.verticalLayout.addWidget(self.frame_2)
+        self.verticalLayout_2.addWidget(self.frame_2)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.tableWidget_status_reg_init = QtWidgets.QTableWidget(self.centralwidget)
@@ -2100,7 +2108,7 @@ class Ui_MainWindow(object):
         self.label_211.setObjectName("label_211")
         self.gridLayout.addWidget(self.label_211, 2, 15, 1, 1)
         self.horizontalLayout_3.addWidget(self.frame_4)
-        self.verticalLayout.addLayout(self.horizontalLayout_3)
+        self.verticalLayout_2.addLayout(self.horizontalLayout_3)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1706, 26))
@@ -2120,7 +2128,7 @@ class Ui_MainWindow(object):
         self.radioButton_single_afe.setText(_translate("MainWindow", "Single AFE Device"))
         self.radioButton_dual_afe.setText(_translate("MainWindow", "Dual AFE Daisy Chain"))
         self.label_21.setText(_translate("MainWindow", "Cofigure Alert Register"))
-        self.pushButton_48.setText(_translate("MainWindow", "CONFIGURE"))
+        self.pushButton_cfg_uart_if.setText(_translate("MainWindow", "CONFIGURE"))
         self.pushButton_50.setText(_translate("MainWindow", "READ BACK"))
         item = self.tableWidget_uart_if_cfg1.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))

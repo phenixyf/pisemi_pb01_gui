@@ -12,29 +12,100 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.initUI()  # 定义初始化函数
 
+    def set_table_item_data_and_background_color(self, pTableWidget, pShowRowCnt, pRowHeight,
+                                                 pItemData=[], pListGreenCol=[], pListYellowCol=[]):
+        """
+        该函数用在 tablewidget 控件初始化过程中，实现 3 个功能：
+        1. 设置单元格初始值
+        2. 设置单元格指定列的背景颜色
+        3. 设置单元格内数据水平和垂直居中对齐
+        4. 设置单元格行高度
+        5. 显示指定的行数内容
+        6. 设置列宽自适应宽度
+        注意：调用该函数后，对应 tablewidget 内的所有数据都会恢复成初始值，这个函数仅用在 CHAIN CONFIGURATION page的
+        single afe 和 dual afe radio button 切换时
+        :param pTableWidget: tablewidget 实例
+        :param pShowRowCnt: 要显示的行数
+        :param pRowHeight: 行高度值
+        :param pItemData: 单元格填入的数据，列表格式
+        :param pListGreenCol: 要填充成绿色的列数，列表格式
+        :param pListYellowCol: 要填充成黄色的列数，列表格式
+        :return:
+        """
+        pTableWidget.setRowCount(pShowRowCnt)
+        for row in range(pShowRowCnt):
+            for column in range(pTableWidget.columnCount()):
+                # 设置单元格的初始值
+                pTableWidget.setItem(row, column, QTableWidgetItem(pItemData[row][column]))
+                pTableWidget.item(row, column).setTextAlignment(Qt.AlignCenter)  # 设置单元格内容水平垂直居中对齐
+                # 设置单元格背景色
+                if column in pListGreenCol:
+                    pTableWidget.item(row, column).setBackground(QColor("#b5e6aa"))     # 设置绿色背景色
+                if column in pListYellowCol:
+                    pTableWidget.item(row, column).setBackground(QColor("#fff0b3"))     # 设置黄色背景色
+            # 设置行高度
+            pTableWidget.setRowHeight(row, pRowHeight)
+
+        # 设置列宽自适应
+        pTableWidget.resizeColumnsToContents()
+
+
+    def initial_table_uart_if_cfg1(self, pTableHeight):
+        """
+        初始化 uart interface configuration table1
+        完成下面操作：
+        1. 设置标题栏内容，并设置水平和垂直居中对齐
+        2. 提供个单元格数据，用一个列表变量的格式
+        3. 设置 table 固定高度
+        :param pTableHeight:
+        :return:
+        """
+        # 标题栏内容列表
+        uartif_table1_headers = ["Address", "Register", "Expected (hex)", "Actual (hex)", "UARTDUAL", "UARTLPBK",
+                                 "UARTWRPATH",
+                                 "TXUIDLEHIZ", "TXLIDLEHIZ", "UARTDCEN", "UARTALVCNTEN", "(Logic Zero)", "DBLBUFEN",
+                                 "Reserved/SPI[6:0]"]
+        self.tableWidget_uart_if_cfg1.setHorizontalHeaderLabels(uartif_table1_headers)  # 设置标题内容
+        self.tableWidget_uart_if_cfg1.horizontalHeader().setDefaultAlignment(Qt.AlignCenter)  # 设置标题内容水平居中对齐
+        # 提供各单元格内容
+        self.uartif_table1_items = [
+            ["row0", "UIFCFG (Single AFE)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"],
+            ["row1", "UIFCFG (Dual, Device 0)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"],
+            ["row2", "UIFCFG (Dual, Device 1)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"]
+        ]
+        # 设置 table 高度
+        self.tableWidget_uart_if_cfg1.setFixedHeight(pTableHeight)
+
+
+        self.set_table_item_data_and_background_color(self.tableWidget_uart_if_cfg1, 3, 20,
+                                                      self.uartif_table1_items, [3], range(4, 14))
+
 
     def initUI(self):
         """
         GUI 初始化函数
         :return:
         """
-        self.tableWidget_uart_if_cfg1.setFixedHeight(150)
-        self.tableWidget_uart_if_cfg2.setFixedHeight(150)
+        self.initial_table_uart_if_cfg1(150)
+
+
+        # self.tableWidget_uart_if_cfg1.setFixedHeight(150)
+        # self.tableWidget_uart_if_cfg2.setFixedHeight(150)
 
         self.update_led_color(self.label_186, "#aa0000")
 
-        ''' 初始化 uart interface configure table1 '''
-        uartif_table1_headers = ["Address", "Register", "Expected (hex)", "Actual (hex)", "UARTDUAL", "UARTLPBK", "UARTWRPATH",
-                          "TXUIDLEHIZ", "TXLIDLEHIZ", "UARTDCEN", "UARTALVCNTEN", "(Logic Zero)", "DBLBUFEN",
-                          "Reserved/SPI[6:0]"]
-        uartif_table1_items = [
-            ["0x10", "UIFCFG (Single AFE)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"],
-            ["0x10", "UIFCFG (Dual, Device 0)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"],
-            ["0x10", "UIFCFG (Dual, Device 1)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"]
-        ]
-
-        self.initTableWidget(self.tableWidget_uart_if_cfg1, uartif_table1_headers, uartif_table1_items, [3],
-                             range(4, 14))
+        # ''' 初始化 uart interface configure table1 '''
+        # uartif_table1_headers = ["Address", "Register", "Expected (hex)", "Actual (hex)", "UARTDUAL", "UARTLPBK", "UARTWRPATH",
+        #                   "TXUIDLEHIZ", "TXLIDLEHIZ", "UARTDCEN", "UARTALVCNTEN", "(Logic Zero)", "DBLBUFEN",
+        #                   "Reserved/SPI[6:0]"]
+        # uartif_table1_items = [
+        #     ["0x10", "UIFCFG (Single AFE)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"],
+        #     ["0x10", "UIFCFG (Dual, Device 0)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"],
+        #     ["0x10", "UIFCFG (Dual, Device 1)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"]
+        # ]
+        #
+        # self.initTableWidget(self.tableWidget_uart_if_cfg1, uartif_table1_headers, uartif_table1_items, [3],
+        #                      range(4, 14))
 
         ''' 初始化 uart interface configure table2 '''
         uartif_table2_headers = ["Address", "Register", "Expected (hex)", "Actual (hex)", "ADDRUNLOCK", "BOTADDR[4:0]",
@@ -113,7 +184,6 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
         """
         # 设置列标题
         pTableWidget.horizontalHeader().setDefaultAlignment(Qt.AlignCenter)  # 设置标题内容水平居中对齐
-        # pTableWidget.horizontalHeader().setDefaultAlignment(Qt.AlignVCenter)  # 设置标题内容垂直居中对齐
         pTableWidget.setHorizontalHeaderLabels(pListHeader)  # 设置标题栏内容
 
         # 设置单元格数据

@@ -46,9 +46,57 @@ statusReg_table_items2 = [
     ["0000"]
 ]
 
+""" APPLICATION CONFIGURATION page tablewidget initial content """
+appCfgReg_table_headers = ["Address", "Register", "Pending (hex)", "Device 0 (hex)", "Device 1 (hex)"]
+appCfgReg_table_items = [
+    ["0x12", "STATUSCFG", "3FF", "3FF", "3FFF"],
+    ["0x13", "DEVCFG", "2000", "2000", "2000"],
+    ["0x14", "POLARITYCFG", "0000", "0000", "0000"],
+    ["0x15", "AUXGPIOCFG", "2000", "FF00", "FF00"],
+    ["0x16", "AUXREFCFG", "0000", "0000", "0000"]
+]
+
+alertCfgReg_table_headers = ["Address", "Register", "Pending (hex)", "Device 0 (hex)", "Device 1 (hex)"]
+alertCfgReg_table_items = [
+    ["0x18", "ALRTOVCFG", "FFFF", "0000", "0000"],
+    ["0x19", "ALRTUVCFG", "FFFF", "0000", "0000"],
+    ["0x1A", "ALRTAUXOVCFG", "FFFF", "0000", "0000"],
+    ["0x1G", "ALRTAUXUVCFG", "FFFF", "0000", "0000"]
+]
+
+acquistionReg_table_headers = ["Address", "Register", "Pending (hex)",
+                               "Pending Field", "Pending Value", "Pending Unit",
+                               "Pending Field", "Pending Value", "Pending Unit",
+                               "Device 0 (hex)", "Device 1 (hex)"]
+acquistionReg_table_items = [
+    ["0x40", "ACQDLY1", "1501", "CELLDLY", "2.106", "ms", "SWDLY", "0.096", "ms", "0000", "0000"],
+    ["0x41", "ACQDLY2", "3220", "AUXDLY", "1.200", "ms", "CELLOPNDLY", "12.768", "ms", "0000", "0000"],
+    ["0x42", "ACQCHSEL", "FFFF", "--",  "--",  "--", "--",  "--",  "--", "0000", "0000"],
+    ["0x43", "ACQAUXSEL", "00FF", "--",  "--",  "--", "--",  "--",  "--", "0000", "0000"]
+]
+
+theresholdReg_table_headers = ["Address", "Register", "Pending (hex)",
+                               "Pending Value", "Pending Unit",
+                               "Device 0 (hex)", "Device 1 (hex)"]
+theresholdReg_table_items = [
+    ["0x20", "OVTHREG",         "E667",     "4.500",    "V",            "FFFF",   "FFFF"],
+    ["0x21", "UVTREG",          "8A3D",     "2.700",    "V",            "0000",   "0000"],
+    ["0x22", "BIPOVTHREG",      "051F",     "+0.100",   "V (Bipolar)",  "7FFF",   "7FFF"],
+    ["0x23", "BIPUVTHREG",      "FAE1",     "-0.100",   "V (Bipolar)",  "8000",   "8000"],
+    ["0x24", "ALTOVTHREG",      "E667",     "4.500",    "V",            "FFFF",   "FFFF"],
+    ["0x25", "ALTUVTHREG",      "8A3D",     "2.700",    "V",            "0000",   "0000"],
+    ["0x26", "ALTBIPOVTHREG",   "051F",     "+0.100",   "V (Bipolar)",  "7FFF",   "7FFF"],
+    ["0x27", "ALTBIPUVTHREG",   "FAE1",     "-0.100",   "V (Bipolar)",  "8000",   "8000"],
+    ["0x28", "AUXROVTHREG",     "TBD",      "TBD",      "Ratiometric",  "FFFF",   "FFFF"],
+    ["0x29", "AUXRUVTHREG",     "TBD",      "TBD",      "Ratiometric",  "0000",   "0000"],
+    ["0x2A", "AUXAOVTHREG",     "FFFF",     "2.500",    "V",            "FFFF",   "FFFF"],
+    ["0x2B", "AUXAUVTHREG",     "0000",     "0.000",    "V",            "0000",   "0000"],
+    ["0x2C", "MMTHREG",         "0CCD",     "0.250",    "V",            "FFFF",   "FFFF"],
+    ["0x2D", "TEMPTHREG",       "0C48",     "120",      "C",            "0C48",   "0C48"]
+]
 
 def set_table_item_data_and_background_color(pTableWidget, pShowRowCnt, pRowHeight,
-                                             pItemData=[], pListGreenCol=[], pListYellowCol=[]):
+                                             pItemData=[], pListGreenCol=[], pListYellowCol=[], pListBlueCol=[]):
     """
     该函数用在 tablewidget 控件初始化过程中，实现 3 个功能：
     1. 设置单元格初始值
@@ -65,6 +113,7 @@ def set_table_item_data_and_background_color(pTableWidget, pShowRowCnt, pRowHeig
     :param pItemData: 单元格填入的数据，列表格式
     :param pListGreenCol: 要填充成绿色的列数，列表格式
     :param pListYellowCol: 要填充成黄色的列数，列表格式
+    :param pListBlueCol: 要填充成蓝色的列数，列表格式
     :return:
     """
     pTableWidget.setRowCount(pShowRowCnt)
@@ -75,9 +124,11 @@ def set_table_item_data_and_background_color(pTableWidget, pShowRowCnt, pRowHeig
             pTableWidget.item(row, column).setTextAlignment(Qt.AlignCenter)  # 设置单元格内容水平垂直居中对齐
             # 设置单元格背景色
             if column in pListGreenCol:
-                pTableWidget.item(row, column).setBackground(QColor("#b5e6aa"))  # 设置绿色背景色
+                pTableWidget.item(row, column).setBackground(QColor("#E2F0D9"))  # 设置绿色背景色
             if column in pListYellowCol:
-                pTableWidget.item(row, column).setBackground(QColor("#fff0b3"))  # 设置黄色背景色
+                pTableWidget.item(row, column).setBackground(QColor("#FFF2CC"))  # 设置黄色背景色
+            if column in pListBlueCol:
+                pTableWidget.item(row, column).setBackground(QColor("#DAE3F3"))  # 设置蓝色背景色
         # 设置行高度
         pTableWidget.setRowHeight(row, pRowHeight)
 

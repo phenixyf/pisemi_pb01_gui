@@ -67,6 +67,14 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
         ["0x11", "ADDRESSCFG (Dual, Device 1)", "0021", "8000", "0", "0000", "0001", "0001"]
     ]
 
+    status_reg_table_headers1 = ["Address", "Register", "Expect (hex)", "Device 0 (hex)"]
+    status_reg_table_items1 = [
+        ["0x04", "STATUS1", "4000", "4000"],
+        ["0x05", "STATUS2", "0000", "0000"],
+        ["0x06", "FMEA1", "0000", "0000"],
+        ["0x07", "FMEA2", "0000", "0000"]
+    ]
+
     def initial_tablewidget(self, pTableWidget, pListHeader, pHeaderHeight, pTableHeight):
         """
         初始化 tablewidget
@@ -95,22 +103,15 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
         """
         self.initial_tablewidget(self.tableWidget_uart_if_cfg1, self.uartif_table1_headers, 30, 150)
         self.initial_tablewidget(self.tableWidget_uart_if_cfg2, self.uartif_table2_headers, 30, 150)
+        self.initial_tablewidget(self.tableWidget_status_reg_init, self.status_reg_table_headers1, 30, 150)
+        self.set_table_item_data_and_background_color(self.tableWidget_status_reg_init, 4, 20,
+                                                      self.status_reg_table_items1, [3], [])
 
         self.radioButton_single_afe.setChecked(True)
         self.slot_radio_single_dual_afe()
 
         self.update_led_color(self.label_186, "#aa0000")
 
-        ''' 初始化 status register table '''
-        status_reg_table_headers = ["Address", "Register", "Condition", "Expect (hex)", "Actual (hex)"]
-        status_reg_table_items = [
-            ["0x04", "STATUS (Device 0)", "Power-Up", "4000", "4000"],
-            ["0x04", "STATUS (Device 1)", "Power-Up", "4000", "4000"],
-            ["0x04", "STATUS (Device 0)", "After Initialization", "0000", "0000"],
-            ["0x04", "STATUS (Device 1)", "After Initialization", "0000", "0000"]
-        ]
-
-        self.initTableWidget(self.tableWidget_status_reg_init, status_reg_table_headers, status_reg_table_items, [4], [])
 
         ''' 配置信号和槽 '''
         self.radioButton_single_afe.clicked.connect(self.slot_radio_single_dual_afe)

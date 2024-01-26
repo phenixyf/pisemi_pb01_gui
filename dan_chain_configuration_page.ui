@@ -865,11 +865,6 @@ QTableCornerButton::section {
           <string>Actual {hex}</string>
          </property>
         </column>
-        <column>
-         <property name="text">
-          <string>UARTDUAL</string>
-         </property>
-        </column>
         <item row="0" column="0">
          <property name="text">
           <string>0x10</string>

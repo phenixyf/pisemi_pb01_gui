@@ -46,7 +46,7 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
         ''' 配置信号和槽 '''
         self.radioButton_singleAfe.clicked.connect(self.slot_radio_single_dual_afe)
         self.radioButton_dualAfe.clicked.connect(self.slot_radio_single_dual_afe)
-        self.pushButton_cfg_uart_if.clicked.connect(self.cfg_uart_if)
+        self.pushButton_uartIfConf.clicked.connect(self.cfg_uart_if)
 
     def cfg_uart_if(self):
         self.tableWidget_uartIf_conf.item(1,6).setText("try")

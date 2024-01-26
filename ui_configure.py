@@ -9,7 +9,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import QColor
 
 
-""" tablewidget initial content """
+""" CHAIN CONFIGURATION page tablewidget initial content """
 uartif_table1_headers = ["Address", "Register", "Expected (hex)", "Actual (hex)", "UARTDUAL", "UARTLPBK",
                          "UARTWRPATH",
                          "TXUIDLEHIZ", "TXLIDLEHIZ", "UARTDCEN", "UARTALVCNTEN", "(Logic Zero)", "DBLBUFEN",
@@ -34,6 +34,14 @@ status_reg_table_items1 = [
     ["0x05", "STATUS2", "0000", "0000"],
     ["0x06", "FMEA1", "0000", "0000"],
     ["0x07", "FMEA2", "0000", "0000"]
+]
+
+status_reg_table_headers2 = ["Device 1 (hex)"]
+status_reg_table_items2 = [
+    ["4000"],
+    ["0000"],
+    ["0000"],
+    ["0000"]
 ]
 
 

@@ -22,16 +22,26 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
         ''' inital CHAIN CONFIGURATION page '''
         # uart interface configuration tables
         initial_tablewidget(self.tableWidget_uart_if_cfg1, uartif_table1_headers, 30, 150)
-        initial_tablewidget(self.tableWidget_uart_if_cfg2, uartif_table2_headers, 30, 150)
+        initial_tablewidget(self.tableWidget_uart_if_cfg2, uartif_table2_headers, 30, 130)
         self.radioButton_single_afe.setChecked(True)
         self.slot_radio_single_dual_afe()
         # status register tables
-        initial_tablewidget(self.tableWidget_status_reg_init, status_reg_table_headers1, 30, 150)
-        set_table_item_data_and_background_color(self.tableWidget_status_reg_init, 4, 20,
+        initial_tablewidget(self.tableWidget_status_reg_pwrup_dev0, status_reg_table_headers1, 30, 150)
+        set_table_item_data_and_background_color(self.tableWidget_status_reg_pwrup_dev0, 4, 20,
                                                       status_reg_table_items1, [3], [])
+        initial_tablewidget(self.tableWidget_status_reg_init_dev0, status_reg_table_headers1, 30, 150)
+        set_table_item_data_and_background_color(self.tableWidget_status_reg_init_dev0, 4, 20,
+                                                 status_reg_table_items1, [3], [])
+
+        initial_tablewidget(self.tableWidget_statusReg_pwrUpDev1, status_reg_table_headers2, 30, 150)
+        set_table_item_data_and_background_color(self.tableWidget_statusReg_pwrUpDev1, 4, 20,
+                                                 status_reg_table_items2, [0], [])
+        initial_tablewidget(self.tableWidget_statusReg_pwrUpDev2, status_reg_table_headers2, 30, 150)
+        set_table_item_data_and_background_color(self.tableWidget_statusReg_pwrUpDev2, 4, 20,
+                                                 status_reg_table_items2, [0], [])
 
 
-        update_led_color(self.label_186, "#aa0000")
+        # update_led_color(self.label_186, "#aa0000")
 
         ''' 配置信号和槽 '''
         self.radioButton_single_afe.clicked.connect(self.slot_radio_single_dual_afe)

@@ -10,34 +10,34 @@ from PyQt5.QtGui import QColor
 
 
 """ CHAIN CONFIGURATION page tablewidget initial content """
-uartif_table1_headers = ["Address", "Register", "Expected (hex)", "Actual (hex)", "UARTDUAL", "UARTLPBK",
+uartIf_table1_headers = ["Address", "Register", "Expected (hex)", "Actual (hex)", "UARTDUAL", "UARTLPBK",
                          "UARTWRPATH",
                          "TXUIDLEHIZ", "TXLIDLEHIZ", "UARTDCEN", "UARTALVCNTEN", "(Logic Zero)", "DBLBUFEN",
                          "Reserved/SPI[6:0]"]
-uartif_table1_items = [
+uartIf_table1_items = [
     ["0x10", "UIFCFG (Single AFE)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"],
     ["0x10", "UIFCFG (Dual, Device 0)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"],
     ["0x10", "UIFCFG (Dual, Device 1)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"]
 ]
 
-uartif_table2_headers = ["Address", "Register", "Expected (hex)", "Actual (hex)", "ADDRUNLOCK", "BOTADDR[4:0]",
+uartIf_table2_headers = ["Address", "Register", "Expected (hex)", "Actual (hex)", "ADDRUNLOCK", "BOTADDR[4:0]",
                          "TOPADDR[4:0]", "DEVADDR[4:0]"]
-uartif_table2_items = [
+uartIf_table2_items = [
     ["0x11", "ADDRESSCFG (Single AFE)", "0000", "8000", "0", "0000", "0000", "0000"],
     ["0x11", "ADDRESSCFG (Dual, Device 0)", "0020", "8000", "0", "0000", "0001", "0001"],
     ["0x11", "ADDRESSCFG (Dual, Device 1)", "0021", "8000", "0", "0000", "0001", "0001"]
 ]
 
-status_reg_table_headers1 = ["Address", "Register", "Expect (hex)", "Device 0 (hex)"]
-status_reg_table_items1 = [
+statusReg_table_headers1 = ["Address", "Register", "Expect (hex)", "Device 0 (hex)"]
+statusReg_table_items1 = [
     ["0x04", "STATUS1", "4000", "4000"],
     ["0x05", "STATUS2", "0000", "0000"],
     ["0x06", "FMEA1", "0000", "0000"],
     ["0x07", "FMEA2", "0000", "0000"]
 ]
 
-status_reg_table_headers2 = ["Device 1 (hex)"]
-status_reg_table_items2 = [
+statusReg_table_headers2 = ["Device 1 (hex)"]
+statusReg_table_items2 = [
     ["4000"],
     ["0000"],
     ["0000"],

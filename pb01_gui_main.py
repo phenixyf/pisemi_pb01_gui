@@ -52,28 +52,28 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
     ''' GUI 初始化函数 '''
     def initUI(self):
         ''' 初始化 uart interface configure table1 '''
-        uartif_table1_headers = ["Address", "Register", "Expected (hex)", "Actual (hex)", "UARTDUAL", "UARTLPBK", "UARTWRPATH",
+        uartIf_table1_headers = ["Address", "Register", "Expected (hex)", "Actual (hex)", "UARTDUAL", "UARTLPBK", "UARTWRPATH",
                           "TXUIDLEHIZ", "TXLIDLEHIZ", "UARTDCEN", "UARTALVCNTEN", "(Logic Zero)", "DBLBUFEN",
                           "Reserved/SPI[6:0]"]
-        uartif_table1_items = [
+        uartIf_table1_items = [
             ["0x10", "UIFCFG (Single AFE)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"],
             ["0x10", "UIFCFG (Dual, Device 0)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"],
             ["0x10", "UIFCFG (Dual, Device 1)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"]
         ]
 
-        self.initTableWidget(self.tableWidget_uart_if_cfg1, uartif_table1_headers, uartif_table1_items, [3],
+        self.initTableWidget(self.tableWidget_uartIf_conf, uartIf_table1_headers, uartIf_table1_items, [3],
                              range(4, 14))
 
         ''' 初始化 uart interface configure table2 '''
-        uartif_table2_headers = ["Address", "Register", "Expected (hex)", "Actual (hex)", "ADDRUNLOCK", "BOTADDR[4:0]",
+        uartIf_table2_headers = ["Address", "Register", "Expected (hex)", "Actual (hex)", "ADDRUNLOCK", "BOTADDR[4:0]",
                                  "TOPADDR[4:0]", "DEVADDR[4:0]"]
-        uartif_table2_items = [
+        uartIf_table2_items = [
             ["0x11", "ADDRESSCFG (Single AFE)", "0000", "8000", "0", "0000", "0000", "0000"],
             ["0x11", "ADDRESSCFG (Dual, Device 0)", "0020", "8000", "0", "0000", "0001", "0001"],
             ["0x11", "ADDRESSCFG (Dual, Device 1)", "0021", "8000", "0", "0000", "0001", "0001"]
         ]
 
-        self.initTableWidget(self.tableWidget_uart_if_cfg2, uartif_table2_headers, uartif_table2_items, [3], range(4, 8))
+        self.initTableWidget(self.tableWidget_uartIf_addr, uartIf_table2_headers, uartIf_table2_items, [3], range(4, 8))
 
         ''' 初始化 status register table '''
         status_reg_table_headers = ["Address", "Register", "Condition", "Expect (hex)", "Actual (hex)"]

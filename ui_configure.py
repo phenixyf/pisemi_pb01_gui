@@ -10,6 +10,8 @@ from PyQt5.QtGui import QColor
 
 
 """ CHAIN CONFIGURATION page tablewidget initial content """
+HEADERHEIGHT = 30   # table header row height
+ROWHEIGHT = 15 # table row height
 uartIf_table1_headers = ["Address", "Register", "Expected (hex)", "Actual (hex)", "UARTDUAL", "UARTLPBK",
                          "UARTWRPATH",
                          "TXUIDLEHIZ", "TXLIDLEHIZ", "UARTDCEN", "UARTALVCNTEN", "(Logic Zero)", "DBLBUFEN",

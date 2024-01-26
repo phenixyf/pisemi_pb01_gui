@@ -1,6 +1,13 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2024/1/26 10:42
+# @Author  : yifei.su
+# @File    : ui_configure.py
+
+
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import QColor
+
 
 """ tablewidget initial content """
 uartif_table1_headers = ["Address", "Register", "Expected (hex)", "Actual (hex)", "UARTDUAL", "UARTLPBK",

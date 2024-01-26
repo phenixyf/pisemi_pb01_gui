@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2024/1/26 10:44
+# @Author  : yifei.su
+# @File    : pb01_gui_main.py
+
+
 """ step1: 导入必须的库和 layout 文件 """
 import sys
 from PyQt5.QtWidgets import *

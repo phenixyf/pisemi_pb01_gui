@@ -18,8 +18,10 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout_2.setSpacing(3)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.frame_3 = QtWidgets.QFrame(self.centralwidget)
+        self.frame_3.setMaximumSize(QtCore.QSize(16777215, 23))
         self.frame_3.setStyleSheet("QFrame {\n"
 "    background-color: #a0a0a0; /* 设置背景颜色为灰色 */\n"
 "    border-radius: 10px; /* 设置边框圆角的半径为10px */\n"
@@ -66,6 +68,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.radioButton_dual_afe)
         self.verticalLayout_2.addLayout(self.verticalLayout)
         self.frame = QtWidgets.QFrame(self.centralwidget)
+        self.frame.setMaximumSize(QtCore.QSize(16777215, 23))
         self.frame.setStyleSheet("QFrame {\n"
 "    background-color: #a0a0a0; /* 设置背景颜色为灰色 */\n"
 "    border-radius: 10px; /* 设置边框圆角的半径为10px */\n"
@@ -103,7 +106,7 @@ class Ui_MainWindow(object):
 "    border-radius: 10px; /* 边框圆角半径 */\n"
 "    border-color: #145289; /* 边框颜色 */\n"
 "    padding: 5px; /* 内边距 */\n"
-"    font: 9pt \"Calibri\"; /* 字体 */\n"
+"    font: 8pt \"Calibri\"; /* 字体 */\n"
 "    font-weight: 600; /* 字体粗细 */\n"
 "}\n"
 "\n"
@@ -128,7 +131,7 @@ class Ui_MainWindow(object):
 "    border-radius: 10px; /* 边框圆角半径 */\n"
 "    border-color: #326703; /* 边框颜色 */\n"
 "    padding: 5px; /* 内边距 */\n"
-"    font: 9pt \"Calibri\"; /* 字体 */\n"
+"    font: 8pt \"Calibri\"; /* 字体 */\n"
 "    font-weight: 600; /* 字体粗细 */\n"
 "}\n"
 "\n"
@@ -318,6 +321,7 @@ class Ui_MainWindow(object):
         self.tableWidget_uart_if_cfg2.verticalHeader().setVisible(False)
         self.verticalLayout_2.addWidget(self.tableWidget_uart_if_cfg2)
         self.frame_2 = QtWidgets.QFrame(self.centralwidget)
+        self.frame_2.setMaximumSize(QtCore.QSize(16777215, 23))
         self.frame_2.setStyleSheet("QFrame {\n"
 "    background-color: #a0a0a0; /* 设置背景颜色为灰色 */\n"
 "    border-radius: 10px; /* 设置边框圆角的半径为10px */\n"
@@ -355,7 +359,7 @@ class Ui_MainWindow(object):
 "    border-radius: 10px; /* 边框圆角半径 */\n"
 "    border-color: #145289; /* 边框颜色 */\n"
 "    padding: 5px; /* 内边距 */\n"
-"    font: 9pt \"Calibri\"; /* 字体 */\n"
+"    font: 8pt \"Calibri\"; /* 字体 */\n"
 "    font-weight: 600; /* 字体粗细 */\n"
 "}\n"
 "\n"
@@ -380,7 +384,7 @@ class Ui_MainWindow(object):
 "    border-radius: 10px; /* 边框圆角半径 */\n"
 "    border-color: #326703; /* 边框颜色 */\n"
 "    padding: 5px; /* 内边距 */\n"
-"    font: 9pt \"Calibri\"; /* 字体 */\n"
+"    font: 8pt \"Calibri\"; /* 字体 */\n"
 "    font-weight: 600; /* 字体粗细 */\n"
 "}\n"
 "\n"

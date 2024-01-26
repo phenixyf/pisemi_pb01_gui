@@ -19,14 +19,17 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
         GUI 初始化函数
         :return:
         """
+        ''' inital CHAIN CONFIGURATION page '''
+        # uart interface configuration tables
         initial_tablewidget(self.tableWidget_uart_if_cfg1, uartif_table1_headers, 30, 150)
         initial_tablewidget(self.tableWidget_uart_if_cfg2, uartif_table2_headers, 30, 150)
+        self.radioButton_single_afe.setChecked(True)
+        self.slot_radio_single_dual_afe()
+        # status register tables
         initial_tablewidget(self.tableWidget_status_reg_init, status_reg_table_headers1, 30, 150)
         set_table_item_data_and_background_color(self.tableWidget_status_reg_init, 4, 20,
                                                       status_reg_table_items1, [3], [])
 
-        self.radioButton_single_afe.setChecked(True)
-        self.slot_radio_single_dual_afe()
 
         update_led_color(self.label_186, "#aa0000")
 

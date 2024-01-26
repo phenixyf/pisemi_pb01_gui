@@ -15,8 +15,17 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
+    <property name="spacing">
+     <number>3</number>
+    </property>
     <item>
      <widget class="QFrame" name="frame_3">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>23</height>
+       </size>
+      </property>
       <property name="styleSheet">
        <string notr="true">QFrame {
     background-color: #a0a0a0; /* 设置背景颜色为灰色 */
@@ -140,6 +149,12 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
     </item>
     <item>
      <widget class="QFrame" name="frame">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>23</height>
+       </size>
+      </property>
       <property name="styleSheet">
        <string notr="true">QFrame {
     background-color: #a0a0a0; /* 设置背景颜色为灰色 */
@@ -228,7 +243,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
     border-radius: 10px; /* 边框圆角半径 */
     border-color: #145289; /* 边框颜色 */
     padding: 5px; /* 内边距 */
-	font: 9pt &quot;Calibri&quot;; /* 字体 */
+	font: 8pt &quot;Calibri&quot;; /* 字体 */
     font-weight: 600; /* 字体粗细 */
 }
 
@@ -269,7 +284,7 @@ QPushButton:pressed {
     border-radius: 10px; /* 边框圆角半径 */
     border-color: #326703; /* 边框颜色 */
     padding: 5px; /* 内边距 */
-	font: 9pt &quot;Calibri&quot;; /* 字体 */
+	font: 8pt &quot;Calibri&quot;; /* 字体 */
     font-weight: 600; /* 字体粗细 */
 }
 
@@ -636,6 +651,12 @@ QTableCornerButton::section {
     </item>
     <item>
      <widget class="QFrame" name="frame_2">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>23</height>
+       </size>
+      </property>
       <property name="styleSheet">
        <string notr="true">QFrame {
     background-color: #a0a0a0; /* 设置背景颜色为灰色 */
@@ -724,7 +745,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
     border-radius: 10px; /* 边框圆角半径 */
     border-color: #145289; /* 边框颜色 */
     padding: 5px; /* 内边距 */
-	font: 9pt &quot;Calibri&quot;; /* 字体 */
+	font: 8pt &quot;Calibri&quot;; /* 字体 */
     font-weight: 600; /* 字体粗细 */
 }
 
@@ -765,7 +786,7 @@ QPushButton:pressed {
     border-radius: 10px; /* 边框圆角半径 */
     border-color: #326703; /* 边框颜色 */
     padding: 5px; /* 内边距 */
-	font: 9pt &quot;Calibri&quot;; /* 字体 */
+	font: 8pt &quot;Calibri&quot;; /* 字体 */
     font-weight: 600; /* 字体粗细 */
 }
 

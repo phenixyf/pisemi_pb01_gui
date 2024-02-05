@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'dan_application_config_page.ui'
+# Form implementation generated from reading ui file 'dan_app_cfg_page.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #

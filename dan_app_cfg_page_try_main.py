@@ -6,7 +6,7 @@
 """ step1: 导入必须的库和 layout 文件 """
 import sys
 
-from dan_application_config_page import Ui_MainWindow
+from dan_app_cfg_page import Ui_MainWindow
 
 from ui_configure import *
 

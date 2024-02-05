@@ -10,7 +10,7 @@ import sys
 # from PyQt5.QtCore import *
 # from PyQt5.QtGui import QColor
 
-from main_window import Ui_MainWindow
+from pb01_gui_main_window import Ui_MainWindow
 from ui_configure import *
 
 class Pb01MainWindow(QMainWindow, Ui_MainWindow):
@@ -106,3 +106,4 @@ if __name__ == '__main__':
     win.show()
 
     sys.exit(app.exec_())
+

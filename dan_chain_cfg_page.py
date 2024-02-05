@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'dan_chain_configuration_page.ui'
+# Form implementation generated from reading ui file 'dan_chain_cfg_page.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -17,8 +17,8 @@ class Ui_MainWindow(object):
         MainWindow.resize(1706, 851)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.frame_3 = QtWidgets.QFrame(self.centralwidget)
         self.frame_3.setMaximumSize(QtCore.QSize(16777215, 23))
         self.frame_3.setStyleSheet("QFrame {\n"
@@ -47,7 +47,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.addWidget(self.label_23)
         spacerItem = QtWidgets.QSpacerItem(447, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_4.addItem(spacerItem)
-        self.verticalLayout_3.addWidget(self.frame_3)
+        self.verticalLayout_2.addWidget(self.frame_3)
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setSpacing(5)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -65,7 +65,7 @@ class Ui_MainWindow(object):
 "font-weight: 600; /* 设置字体粗细为600 */")
         self.radioButton_dualAfe.setObjectName("radioButton_dualAfe")
         self.verticalLayout.addWidget(self.radioButton_dualAfe)
-        self.verticalLayout_3.addLayout(self.verticalLayout)
+        self.verticalLayout_2.addLayout(self.verticalLayout)
         self.frame = QtWidgets.QFrame(self.centralwidget)
         self.frame.setMaximumSize(QtCore.QSize(16777215, 23))
         self.frame.setStyleSheet("QFrame {\n"
@@ -144,7 +144,7 @@ class Ui_MainWindow(object):
 "")
         self.pushButton_uartIfReadBack.setObjectName("pushButton_uartIfReadBack")
         self.horizontalLayout.addWidget(self.pushButton_uartIfReadBack)
-        self.verticalLayout_3.addWidget(self.frame)
+        self.verticalLayout_2.addWidget(self.frame)
         self.tableWidget_uartIf_conf = QtWidgets.QTableWidget(self.centralwidget)
         self.tableWidget_uartIf_conf.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
@@ -237,7 +237,7 @@ class Ui_MainWindow(object):
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget_uartIf_conf.setItem(2, 3, item)
         self.tableWidget_uartIf_conf.verticalHeader().setVisible(False)
-        self.verticalLayout_3.addWidget(self.tableWidget_uartIf_conf)
+        self.verticalLayout_2.addWidget(self.tableWidget_uartIf_conf)
         self.tableWidget_uartIf_addr = QtWidgets.QTableWidget(self.centralwidget)
         self.tableWidget_uartIf_addr.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
@@ -318,7 +318,7 @@ class Ui_MainWindow(object):
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget_uartIf_addr.setItem(2, 3, item)
         self.tableWidget_uartIf_addr.verticalHeader().setVisible(False)
-        self.verticalLayout_3.addWidget(self.tableWidget_uartIf_addr)
+        self.verticalLayout_2.addWidget(self.tableWidget_uartIf_addr)
         self.frame_2 = QtWidgets.QFrame(self.centralwidget)
         self.frame_2.setMaximumSize(QtCore.QSize(16777215, 23))
         self.frame_2.setStyleSheet("QFrame {\n"
@@ -373,7 +373,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.lineEdit_warnStatusPwrUp)
         spacerItem3 = QtWidgets.QSpacerItem(447, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem3)
-        self.verticalLayout_3.addWidget(self.frame_2)
+        self.verticalLayout_2.addWidget(self.frame_2)
         self.horizontalLayout_14 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_14.setObjectName("horizontalLayout_14")
         self.tableWidget_statusReg_pwrUpDev0 = QtWidgets.QTableWidget(self.centralwidget)
@@ -5106,7 +5106,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_12.addLayout(self.horizontalLayout_status_led_8)
         self.verticalLayout_8.addLayout(self.verticalLayout_12)
         self.horizontalLayout_14.addWidget(self.frame_statusReg_pwrUp_ledArray)
-        self.verticalLayout_3.addLayout(self.horizontalLayout_14)
+        self.verticalLayout_2.addLayout(self.horizontalLayout_14)
         self.frame_6 = QtWidgets.QFrame(self.centralwidget)
         self.frame_6.setMaximumSize(QtCore.QSize(16777215, 23))
         self.frame_6.setStyleSheet("QFrame {\n"
@@ -5261,7 +5261,7 @@ class Ui_MainWindow(object):
 "")
         self.pushButton_statusRegReadBack.setObjectName("pushButton_statusRegReadBack")
         self.horizontalLayout_5.addWidget(self.pushButton_statusRegReadBack)
-        self.verticalLayout_3.addWidget(self.frame_6)
+        self.verticalLayout_2.addWidget(self.frame_6)
         self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
         self.tableWidget_statusReg_initDev0 = QtWidgets.QTableWidget(self.centralwidget)
@@ -9994,7 +9994,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_17.addLayout(self.horizontalLayout_status_led_12)
         self.verticalLayout_13.addLayout(self.verticalLayout_17)
         self.horizontalLayout_6.addWidget(self.frame_statusReg_init_ledArray)
-        self.verticalLayout_3.addLayout(self.horizontalLayout_6)
+        self.verticalLayout_2.addLayout(self.horizontalLayout_6)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1706, 26))

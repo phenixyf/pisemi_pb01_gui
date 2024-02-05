@@ -4,7 +4,7 @@ import sys
 # from PyQt5.QtCore import *
 # from PyQt5.QtGui import QColor
 
-from dan_chain_configuration_page import Ui_MainWindow
+from dan_chain_cfg_page import Ui_MainWindow
 
 from ui_configure import *
 

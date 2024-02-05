@@ -10,49 +10,52 @@ from PyQt5.QtGui import QColor
 
 
 """ CHAIN CONFIGURATION page tablewidget initial content """
-HEADERHEIGHT = 30   # table header row height
-ROWHEIGHT = 15 # table row height
-uartIf_table1_headers = ["Address", "Register", "Expected (hex)", "Actual (hex)", "UARTDUAL", "UARTLPBK",
+CHAIN_CFG_TABLE_HEHG = 30       # table header row height
+CHAIN_CFG_TABLE_ROWHG = 15      # table row height
+CHAIN_CFG_TABLE_STAHG = 120     # status block 不显示 header 的 4 个 table 的高度
+CHAIN_CFG_TABLE_RSTHG = 60      # reset block table 的高度
+
+table_chainCfg_uartIfHead = ["Address", "Register", "Expected (hex)", "Actual (hex)", "UARTDUAL", "UARTLPBK",
                          "UARTWRPATH",
                          "TXUIDLEHIZ", "TXLIDLEHIZ", "UARTDCEN", "UARTALVCNTEN", "(Logic Zero)", "DBLBUFEN",
                          "Reserved/SPI[6:0]"]
-uartIf_table1_items = [
+table_chainCfg_uartIfItem = [
     ["0x10", "UIFCFG (Single AFE)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"],
     ["0x10", "UIFCFG (Dual, Device 0)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"],
     ["0x10", "UIFCFG (Dual, Device 1)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"]
 ]
 
-uartIf_table2_headers = ["Address", "Register", "Expected (hex)", "Actual (hex)", "ADDRUNLOCK", "BOTADDR[4:0]",
+table_chainCfg_uartAddrHead = ["Address", "Register", "Expected (hex)", "Actual (hex)", "ADDRUNLOCK", "BOTADDR[4:0]",
                          "TOPADDR[4:0]", "DEVADDR[4:0]"]
-uartIf_table2_items = [
+table_chainCfg_uartAddrItem = [
     ["0x11", "ADDRESSCFG (Single AFE)", "0000", "8000", "0", "0000", "0000", "0000"],
     ["0x11", "ADDRESSCFG (Dual, Device 0)", "0020", "8000", "0", "0000", "0001", "0001"],
     ["0x11", "ADDRESSCFG (Dual, Device 1)", "0021", "8000", "0", "0000", "0001", "0001"]
 ]
 
-statusReg_table_headers1 = ["Address", "Register", "Expect (hex)", "Device 0 (hex)"]
-statusReg_table_items1 = [
+table_chainCfg_staHead_dev0 = ["Address", "Register", "Expect (hex)", "Device 0 (hex)"]
+table_chainCfg_staItem_dev0 = [
     ["0x04", "STATUS1", "4000", "4000"],
     ["0x05", "STATUS2", "0000", "0000"],
     ["0x06", "FMEA1", "0000", "0000"],
     ["0x07", "FMEA2", "0000", "0000"]
 ]
 
-statusReg_table_headers2 = ["Device 1 (hex)"]
-statusReg_table_items2 = [
+table_chainCfg_staHead_dev1 = ["Device 1 (hex)"]
+table_chainCfg_staItem_dev1 = [
     ["4000"],
     ["0000"],
     ["0000"],
     ["0000"]
 ]
 
-rstReg_table_headers1 = ["Address", "Register", "FORCEPOR (hex)", "Device 0 (hex)"]
-rstReg_table_items1 = [
+table_chainCfg_rstHead_dev0 = ["Address", "Register", "FORCEPOR (hex)", "Device 0 (hex)"]
+table_chainCfg_rstItem_dev0 = [
     ["0x0F", "RESETCTRL", "0001", "0000"]
 ]
 
-rstReg_table_headers2 = ["Device 1 (hex)"]
-rstReg_table_items2 = [
+table_chainCfg_rstHead_dev1 = ["Device 1 (hex)"]
+table_chainCfg_rstItem_dev1 = [
     ["0000"]
 ]
 

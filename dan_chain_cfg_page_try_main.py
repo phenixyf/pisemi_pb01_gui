@@ -21,30 +21,46 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
         """
         ''' inital CHAIN CONFIGURATION page '''
         # uart interface configuration tables
-        initial_tablewidget(self.table_chainCfg_uartIfCfg, uartIf_table1_headers, 30, 150)
-        initial_tablewidget(self.table_chainCfg_uartIfAddr, uartIf_table2_headers, 30, 130)
+        initial_tablewidget(self.table_chainCfg_uartIfCfg, table_chainCfg_uartIfHead,
+                            CHAIN_CFG_TABLE_HEHG, 150)
+        initial_tablewidget(self.table_chainCfg_uartIfAddr, table_chainCfg_uartAddrHead,
+                            CHAIN_CFG_TABLE_HEHG, 130)
         self.radioButton_singleAfe.setChecked(True)
         self.slot_radio_single_dual_afe()
         # status register tables
-        initial_tablewidget(self.table_chainCfg_statusBlk_pwrUpDev0, statusReg_table_headers1, 30, 150)
-        set_table_item_data_and_background_color(self.table_chainCfg_statusBlk_pwrUpDev0, 4, 20,
-                                                      statusReg_table_items1, [3], [])
-        initial_tablewidget(self.table_chainCfg_statusBlk_initDev0, statusReg_table_headers1, 30, 150)
-        set_table_item_data_and_background_color(self.table_chainCfg_statusBlk_initDev0, 4, 20,
-                                                 statusReg_table_items1, [3], [])
-        initial_tablewidget(self.table_chainCfg_rstBlk_Dev0, rstReg_table_headers1, 30, 150)
-        set_table_item_data_and_background_color(self.table_chainCfg_rstBlk_Dev0, 1, 20,
-                                                 rstReg_table_items1, [3], [])
+        initial_tablewidget(self.table_chainCfg_statusBlk_pwrUpDev0, table_chainCfg_staHead_dev0,
+                            CHAIN_CFG_TABLE_HEHG, 150)
+        set_table_item_data_and_background_color(self.table_chainCfg_statusBlk_pwrUpDev0, 4, CHAIN_CFG_TABLE_ROWHG,
+                                                      table_chainCfg_staItem_dev0, [3], [])
+        initial_tablewidget(self.table_chainCfg_statusBlk_initDev0, table_chainCfg_staHead_dev0,
+                            CHAIN_CFG_TABLE_HEHG, CHAIN_CFG_TABLE_STAHG)
+        set_table_item_data_and_background_color(self.table_chainCfg_statusBlk_initDev0, 4, CHAIN_CFG_TABLE_ROWHG,
+                                                 table_chainCfg_staItem_dev0, [3], [])
+        initial_tablewidget(self.table_chainCfg_statusBlk_curDev0, table_chainCfg_staHead_dev0,
+                            CHAIN_CFG_TABLE_HEHG, CHAIN_CFG_TABLE_STAHG)
+        set_table_item_data_and_background_color(self.table_chainCfg_statusBlk_curDev0, 4, CHAIN_CFG_TABLE_ROWHG,
+                                                 table_chainCfg_staItem_dev0, [3], [])
+        initial_tablewidget(self.table_chainCfg_rstBlk_Dev0, table_chainCfg_rstHead_dev0,
+                            CHAIN_CFG_TABLE_HEHG, CHAIN_CFG_TABLE_RSTHG)
+        set_table_item_data_and_background_color(self.table_chainCfg_rstBlk_Dev0, 1, CHAIN_CFG_TABLE_ROWHG,
+                                                 table_chainCfg_rstItem_dev0, [3], [])
 
-        initial_tablewidget(self.table_chainCfg_statusBlk_pwrUpDev1, statusReg_table_headers2, 30, 150)
-        set_table_item_data_and_background_color(self.table_chainCfg_statusBlk_pwrUpDev1, 4, 20,
-                                                 statusReg_table_items2, [0], [])
-        initial_tablewidget(self.table_chainCfg_statusBlk_initDev1, statusReg_table_headers2, 30, 150)
-        set_table_item_data_and_background_color(self.table_chainCfg_statusBlk_initDev1, 4, 20,
-                                                 statusReg_table_items2, [0], [])
-        initial_tablewidget(self.table_chainCfg_rstBlk_Dev1, rstReg_table_headers2, 30, 150)
-        set_table_item_data_and_background_color(self.table_chainCfg_rstBlk_Dev1, 1, 20,
-                                                 rstReg_table_items2, [0], [])
+        initial_tablewidget(self.table_chainCfg_statusBlk_pwrUpDev1, table_chainCfg_staHead_dev1,
+                            CHAIN_CFG_TABLE_HEHG, 150)
+        set_table_item_data_and_background_color(self.table_chainCfg_statusBlk_pwrUpDev1, 4, CHAIN_CFG_TABLE_ROWHG,
+                                                 table_chainCfg_staItem_dev1, [0], [])
+        initial_tablewidget(self.table_chainCfg_statusBlk_initDev1, table_chainCfg_staHead_dev1,
+                            CHAIN_CFG_TABLE_HEHG, CHAIN_CFG_TABLE_STAHG)
+        set_table_item_data_and_background_color(self.table_chainCfg_statusBlk_initDev1, 4, CHAIN_CFG_TABLE_ROWHG,
+                                                 table_chainCfg_staItem_dev1, [0], [])
+        initial_tablewidget(self.table_chainCfg_statusBlk_curDev1, table_chainCfg_staHead_dev1,
+                            CHAIN_CFG_TABLE_HEHG, CHAIN_CFG_TABLE_STAHG)
+        set_table_item_data_and_background_color(self.table_chainCfg_statusBlk_curDev1, 4, CHAIN_CFG_TABLE_ROWHG,
+                                                 table_chainCfg_staItem_dev1, [0], [])
+        initial_tablewidget(self.table_chainCfg_rstBlk_Dev1, table_chainCfg_rstHead_dev1,
+                            CHAIN_CFG_TABLE_HEHG, CHAIN_CFG_TABLE_RSTHG)
+        set_table_item_data_and_background_color(self.table_chainCfg_rstBlk_Dev1, 1, CHAIN_CFG_TABLE_ROWHG,
+                                                 table_chainCfg_rstItem_dev1, [0], [])
 
 
         # update_led_color(self.label_186, "#aa0000")
@@ -64,19 +80,19 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
         :return:
         """
         if self.radioButton_singleAfe.isChecked():
-            set_table_item_data_and_background_color(self.table_chainCfg_uartIfCfg, 2, 20,
-                                                     uartIf_table1_items, [3], range(4, 14))
-            set_table_item_data_and_background_color(self.table_chainCfg_uartIfAddr, 2, 20,
-                                                          uartIf_table2_items, [3], range(4, 8))
+            set_table_item_data_and_background_color(self.table_chainCfg_uartIfCfg, 2, CHAIN_CFG_TABLE_ROWHG,
+                                                     table_chainCfg_uartIfItem	, [3], range(4, 14))
+            set_table_item_data_and_background_color(self.table_chainCfg_uartIfAddr, 2, CHAIN_CFG_TABLE_ROWHG,
+                                                          table_chainCfg_uartAddrItem, [3], range(4, 8))
             self.table_chainCfg_statusBlk_pwrUpDev1.hide()
             self.table_chainCfg_statusBlk_initDev1.hide()
             self.frame_statusReg_pwrUp_ledArray.hide()
             self.frame_statusReg_init_ledArray.hide()
         elif self.radioButton_dualAfe.isChecked():
-            set_table_item_data_and_background_color(self.table_chainCfg_uartIfCfg, 3, 20,
-                                                     uartIf_table1_items, [3], range(4, 14))
-            set_table_item_data_and_background_color(self.table_chainCfg_uartIfAddr, 3, 20,
-                                                          uartIf_table2_items, [3], range(4, 8))
+            set_table_item_data_and_background_color(self.table_chainCfg_uartIfCfg, 3, CHAIN_CFG_TABLE_ROWHG,
+                                                     table_chainCfg_uartIfItem	, [3], range(4, 14))
+            set_table_item_data_and_background_color(self.table_chainCfg_uartIfAddr, 3, CHAIN_CFG_TABLE_ROWHG,
+                                                          table_chainCfg_uartAddrItem, [3], range(4, 8))
             self.table_chainCfg_statusBlk_pwrUpDev1.show()
             self.table_chainCfg_statusBlk_initDev1.show()
             self.frame_statusReg_pwrUp_ledArray.show()

@@ -10796,6 +10796,9 @@ QTableCornerButton::section {
 }
 </string>
         </property>
+        <attribute name="horizontalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
         <attribute name="verticalHeaderVisible">
          <bool>false</bool>
         </attribute>
@@ -15673,6 +15676,9 @@ QTableCornerButton::section {
 }
 </string>
         </property>
+        <attribute name="horizontalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
         <attribute name="verticalHeaderVisible">
          <bool>false</bool>
         </attribute>
@@ -20713,6 +20719,9 @@ QTableCornerButton::section {
 }
 </string>
         </property>
+        <attribute name="horizontalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
         <attribute name="verticalHeaderVisible">
          <bool>false</bool>
         </attribute>
@@ -25590,6 +25599,9 @@ QTableCornerButton::section {
 }
 </string>
         </property>
+        <attribute name="horizontalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
         <attribute name="verticalHeaderVisible">
          <bool>false</bool>
         </attribute>
@@ -30597,7 +30609,7 @@ QPushButton:pressed {
        <widget class="QTableWidget" name="table_chainCfg_rstBlk_Dev0">
         <property name="maximumSize">
          <size>
-          <width>418</width>
+          <width>450</width>
           <height>16777215</height>
          </size>
         </property>
@@ -30687,7 +30699,7 @@ QTableCornerButton::section {
        <widget class="QFrame" name="frame_9">
         <property name="minimumSize">
          <size>
-          <width>500</width>
+          <width>470</width>
           <height>0</height>
          </size>
         </property>

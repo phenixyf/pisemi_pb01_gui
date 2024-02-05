@@ -5338,6 +5338,7 @@ class Ui_MainWindow(object):
         self.table_chainCfg_statusBlk_initDev0.setItem(2, 2, item)
         item = QtWidgets.QTableWidgetItem()
         self.table_chainCfg_statusBlk_initDev0.setItem(2, 3, item)
+        self.table_chainCfg_statusBlk_initDev0.horizontalHeader().setVisible(False)
         self.table_chainCfg_statusBlk_initDev0.verticalHeader().setVisible(False)
         self.horizontalLayout_6.addWidget(self.table_chainCfg_statusBlk_initDev0)
         self.frame_7 = QtWidgets.QFrame(self.centralwidget)
@@ -7687,6 +7688,7 @@ class Ui_MainWindow(object):
         self.table_chainCfg_statusBlk_initDev1.setVerticalHeaderItem(3, item)
         item = QtWidgets.QTableWidgetItem()
         self.table_chainCfg_statusBlk_initDev1.setHorizontalHeaderItem(0, item)
+        self.table_chainCfg_statusBlk_initDev1.horizontalHeader().setVisible(False)
         self.table_chainCfg_statusBlk_initDev1.verticalHeader().setVisible(False)
         self.horizontalLayout_6.addWidget(self.table_chainCfg_statusBlk_initDev1)
         self.frame_statusReg_init_ledArray = QtWidgets.QFrame(self.centralwidget)
@@ -10200,6 +10202,7 @@ class Ui_MainWindow(object):
         self.table_chainCfg_statusBlk_curDev0.setItem(2, 2, item)
         item = QtWidgets.QTableWidgetItem()
         self.table_chainCfg_statusBlk_curDev0.setItem(2, 3, item)
+        self.table_chainCfg_statusBlk_curDev0.horizontalHeader().setVisible(False)
         self.table_chainCfg_statusBlk_curDev0.verticalHeader().setVisible(False)
         self.horizontalLayout_22.addWidget(self.table_chainCfg_statusBlk_curDev0)
         self.frame_11 = QtWidgets.QFrame(self.centralwidget)
@@ -12549,6 +12552,7 @@ class Ui_MainWindow(object):
         self.table_chainCfg_statusBlk_curDev1.setVerticalHeaderItem(3, item)
         item = QtWidgets.QTableWidgetItem()
         self.table_chainCfg_statusBlk_curDev1.setHorizontalHeaderItem(0, item)
+        self.table_chainCfg_statusBlk_curDev1.horizontalHeader().setVisible(False)
         self.table_chainCfg_statusBlk_curDev1.verticalHeader().setVisible(False)
         self.horizontalLayout_22.addWidget(self.table_chainCfg_statusBlk_curDev1)
         self.frame_statusReg_init_ledArray_3 = QtWidgets.QFrame(self.centralwidget)
@@ -14989,7 +14993,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.table_chainCfg_rstBlk_Dev0 = QtWidgets.QTableWidget(self.centralwidget)
-        self.table_chainCfg_rstBlk_Dev0.setMaximumSize(QtCore.QSize(418, 16777215))
+        self.table_chainCfg_rstBlk_Dev0.setMaximumSize(QtCore.QSize(450, 16777215))
         self.table_chainCfg_rstBlk_Dev0.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
@@ -15042,7 +15046,7 @@ class Ui_MainWindow(object):
         self.table_chainCfg_rstBlk_Dev0.verticalHeader().setVisible(False)
         self.horizontalLayout_3.addWidget(self.table_chainCfg_rstBlk_Dev0)
         self.frame_9 = QtWidgets.QFrame(self.centralwidget)
-        self.frame_9.setMinimumSize(QtCore.QSize(500, 0))
+        self.frame_9.setMinimumSize(QtCore.QSize(470, 0))
         self.frame_9.setStyleSheet("QFrame {\n"
 "    background-color: #fff0b3; /* 替换为您想要的颜色 */\n"
 "}\n"

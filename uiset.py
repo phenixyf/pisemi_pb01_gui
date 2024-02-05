@@ -135,13 +135,15 @@ def add_led_txt(pLedNum, pTableWidget, pRow, pCol):
 
     pFrame = QtWidgets.QFrame()
     pLayout = QtWidgets.QGridLayout(pFrame)
-    pLayout.setSpacing(2)
+    pLayout.setSpacing(0)
     # 为布局设置外边距：左、上、右、下
-    pLayout.setContentsMargins(0, 0, 0, 2)
+    pLayout.setContentsMargins(0, 0, 0, 0)
 
     for i in range(0, pLedNum):
         pLayout.addWidget(pList_txt[i], 0, i)
         pLayout.addWidget(pList_led[i], 1, i)
+        pLayout.setAlignment(pList_txt[i], Qt.AlignCenter)
+        pLayout.setAlignment(pList_led[i], Qt.AlignCenter)
 
     pTableWidget.setCellWidget(pRow, pCol, pFrame)
 

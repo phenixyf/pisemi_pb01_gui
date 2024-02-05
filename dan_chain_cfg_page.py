@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1706, 956)
+        MainWindow.resize(1706, 1011)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -145,8 +145,8 @@ class Ui_MainWindow(object):
         self.pushButton_uartIfReadBack.setObjectName("pushButton_uartIfReadBack")
         self.horizontalLayout.addWidget(self.pushButton_uartIfReadBack)
         self.verticalLayout_2.addWidget(self.frame)
-        self.tableWidget_uartIf_conf = QtWidgets.QTableWidget(self.centralwidget)
-        self.tableWidget_uartIf_conf.setStyleSheet("QTableWidget {\n"
+        self.table_chainCfg_uartIfCfg = QtWidgets.QTableWidget(self.centralwidget)
+        self.table_chainCfg_uartIfCfg.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
 "    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
@@ -173,73 +173,73 @@ class Ui_MainWindow(object):
 "    /* 添加其他您需要的样式 */\n"
 "}\n"
 "")
-        self.tableWidget_uartIf_conf.setObjectName("tableWidget_uartIf_conf")
-        self.tableWidget_uartIf_conf.setColumnCount(14)
-        self.tableWidget_uartIf_conf.setRowCount(3)
+        self.table_chainCfg_uartIfCfg.setObjectName("table_chainCfg_uartIfCfg")
+        self.table_chainCfg_uartIfCfg.setColumnCount(14)
+        self.table_chainCfg_uartIfCfg.setRowCount(3)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_conf.setVerticalHeaderItem(0, item)
+        self.table_chainCfg_uartIfCfg.setVerticalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_conf.setVerticalHeaderItem(1, item)
+        self.table_chainCfg_uartIfCfg.setVerticalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_conf.setVerticalHeaderItem(2, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignCenter)
-        self.tableWidget_uartIf_conf.setHorizontalHeaderItem(0, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_conf.setHorizontalHeaderItem(1, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_conf.setHorizontalHeaderItem(2, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_conf.setHorizontalHeaderItem(3, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_conf.setHorizontalHeaderItem(4, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_conf.setHorizontalHeaderItem(5, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_conf.setHorizontalHeaderItem(6, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_conf.setHorizontalHeaderItem(7, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_conf.setHorizontalHeaderItem(8, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_conf.setHorizontalHeaderItem(9, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_conf.setHorizontalHeaderItem(10, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_conf.setHorizontalHeaderItem(11, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_conf.setHorizontalHeaderItem(12, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_conf.setHorizontalHeaderItem(13, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_conf.setItem(0, 0, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_conf.setItem(0, 1, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_conf.setItem(0, 2, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_conf.setItem(0, 3, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_conf.setItem(1, 0, item)
+        self.table_chainCfg_uartIfCfg.setVerticalHeaderItem(2, item)
         item = QtWidgets.QTableWidgetItem()
         item.setTextAlignment(QtCore.Qt.AlignCenter)
-        self.tableWidget_uartIf_conf.setItem(1, 1, item)
+        self.table_chainCfg_uartIfCfg.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_conf.setItem(1, 2, item)
+        self.table_chainCfg_uartIfCfg.setHorizontalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_conf.setItem(1, 3, item)
+        self.table_chainCfg_uartIfCfg.setHorizontalHeaderItem(2, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_conf.setItem(2, 0, item)
+        self.table_chainCfg_uartIfCfg.setHorizontalHeaderItem(3, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_conf.setItem(2, 1, item)
+        self.table_chainCfg_uartIfCfg.setHorizontalHeaderItem(4, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_conf.setItem(2, 2, item)
+        self.table_chainCfg_uartIfCfg.setHorizontalHeaderItem(5, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_conf.setItem(2, 3, item)
-        self.tableWidget_uartIf_conf.verticalHeader().setVisible(False)
-        self.verticalLayout_2.addWidget(self.tableWidget_uartIf_conf)
-        self.tableWidget_uartIf_addr = QtWidgets.QTableWidget(self.centralwidget)
-        self.tableWidget_uartIf_addr.setStyleSheet("QTableWidget {\n"
+        self.table_chainCfg_uartIfCfg.setHorizontalHeaderItem(6, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfCfg.setHorizontalHeaderItem(7, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfCfg.setHorizontalHeaderItem(8, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfCfg.setHorizontalHeaderItem(9, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfCfg.setHorizontalHeaderItem(10, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfCfg.setHorizontalHeaderItem(11, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfCfg.setHorizontalHeaderItem(12, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfCfg.setHorizontalHeaderItem(13, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfCfg.setItem(0, 0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfCfg.setItem(0, 1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfCfg.setItem(0, 2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfCfg.setItem(0, 3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfCfg.setItem(1, 0, item)
+        item = QtWidgets.QTableWidgetItem()
+        item.setTextAlignment(QtCore.Qt.AlignCenter)
+        self.table_chainCfg_uartIfCfg.setItem(1, 1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfCfg.setItem(1, 2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfCfg.setItem(1, 3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfCfg.setItem(2, 0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfCfg.setItem(2, 1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfCfg.setItem(2, 2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfCfg.setItem(2, 3, item)
+        self.table_chainCfg_uartIfCfg.verticalHeader().setVisible(False)
+        self.verticalLayout_2.addWidget(self.table_chainCfg_uartIfCfg)
+        self.table_chainCfg_uartIfAddr = QtWidgets.QTableWidget(self.centralwidget)
+        self.table_chainCfg_uartIfAddr.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
 "    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
@@ -266,59 +266,59 @@ class Ui_MainWindow(object):
 "    /* 添加其他您需要的样式 */\n"
 "}\n"
 "")
-        self.tableWidget_uartIf_addr.setObjectName("tableWidget_uartIf_addr")
-        self.tableWidget_uartIf_addr.setColumnCount(8)
-        self.tableWidget_uartIf_addr.setRowCount(3)
+        self.table_chainCfg_uartIfAddr.setObjectName("table_chainCfg_uartIfAddr")
+        self.table_chainCfg_uartIfAddr.setColumnCount(8)
+        self.table_chainCfg_uartIfAddr.setRowCount(3)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_addr.setVerticalHeaderItem(0, item)
+        self.table_chainCfg_uartIfAddr.setVerticalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_addr.setVerticalHeaderItem(1, item)
+        self.table_chainCfg_uartIfAddr.setVerticalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_addr.setVerticalHeaderItem(2, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignCenter)
-        self.tableWidget_uartIf_addr.setHorizontalHeaderItem(0, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_addr.setHorizontalHeaderItem(1, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_addr.setHorizontalHeaderItem(2, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_addr.setHorizontalHeaderItem(3, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_addr.setHorizontalHeaderItem(4, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_addr.setHorizontalHeaderItem(5, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_addr.setHorizontalHeaderItem(6, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_addr.setHorizontalHeaderItem(7, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_addr.setItem(0, 0, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_addr.setItem(0, 1, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_addr.setItem(0, 2, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_addr.setItem(0, 3, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_addr.setItem(1, 0, item)
+        self.table_chainCfg_uartIfAddr.setVerticalHeaderItem(2, item)
         item = QtWidgets.QTableWidgetItem()
         item.setTextAlignment(QtCore.Qt.AlignCenter)
-        self.tableWidget_uartIf_addr.setItem(1, 1, item)
+        self.table_chainCfg_uartIfAddr.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_addr.setItem(1, 2, item)
+        self.table_chainCfg_uartIfAddr.setHorizontalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_addr.setItem(1, 3, item)
+        self.table_chainCfg_uartIfAddr.setHorizontalHeaderItem(2, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_addr.setItem(2, 0, item)
+        self.table_chainCfg_uartIfAddr.setHorizontalHeaderItem(3, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_addr.setItem(2, 1, item)
+        self.table_chainCfg_uartIfAddr.setHorizontalHeaderItem(4, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_addr.setItem(2, 2, item)
+        self.table_chainCfg_uartIfAddr.setHorizontalHeaderItem(5, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_uartIf_addr.setItem(2, 3, item)
-        self.tableWidget_uartIf_addr.verticalHeader().setVisible(False)
-        self.verticalLayout_2.addWidget(self.tableWidget_uartIf_addr)
+        self.table_chainCfg_uartIfAddr.setHorizontalHeaderItem(6, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfAddr.setHorizontalHeaderItem(7, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfAddr.setItem(0, 0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfAddr.setItem(0, 1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfAddr.setItem(0, 2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfAddr.setItem(0, 3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfAddr.setItem(1, 0, item)
+        item = QtWidgets.QTableWidgetItem()
+        item.setTextAlignment(QtCore.Qt.AlignCenter)
+        self.table_chainCfg_uartIfAddr.setItem(1, 1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfAddr.setItem(1, 2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfAddr.setItem(1, 3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfAddr.setItem(2, 0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfAddr.setItem(2, 1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfAddr.setItem(2, 2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_uartIfAddr.setItem(2, 3, item)
+        self.table_chainCfg_uartIfAddr.verticalHeader().setVisible(False)
+        self.verticalLayout_2.addWidget(self.table_chainCfg_uartIfAddr)
         self.frame_2 = QtWidgets.QFrame(self.centralwidget)
         self.frame_2.setMaximumSize(QtCore.QSize(16777215, 23))
         self.frame_2.setStyleSheet("QFrame {\n"
@@ -376,9 +376,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.addWidget(self.frame_2)
         self.horizontalLayout_14 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_14.setObjectName("horizontalLayout_14")
-        self.tableWidget_statusReg_pwrUpDev0 = QtWidgets.QTableWidget(self.centralwidget)
-        self.tableWidget_statusReg_pwrUpDev0.setMaximumSize(QtCore.QSize(418, 16777215))
-        self.tableWidget_statusReg_pwrUpDev0.setStyleSheet("QTableWidget {\n"
+        self.table_chainCfg_statusBlk_pwrUpDev0 = QtWidgets.QTableWidget(self.centralwidget)
+        self.table_chainCfg_statusBlk_pwrUpDev0.setMaximumSize(QtCore.QSize(418, 16777215))
+        self.table_chainCfg_statusBlk_pwrUpDev0.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
 "    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
@@ -405,53 +405,53 @@ class Ui_MainWindow(object):
 "    /* 添加其他您需要的样式 */\n"
 "}\n"
 "")
-        self.tableWidget_statusReg_pwrUpDev0.setObjectName("tableWidget_statusReg_pwrUpDev0")
-        self.tableWidget_statusReg_pwrUpDev0.setColumnCount(4)
-        self.tableWidget_statusReg_pwrUpDev0.setRowCount(4)
+        self.table_chainCfg_statusBlk_pwrUpDev0.setObjectName("table_chainCfg_statusBlk_pwrUpDev0")
+        self.table_chainCfg_statusBlk_pwrUpDev0.setColumnCount(4)
+        self.table_chainCfg_statusBlk_pwrUpDev0.setRowCount(4)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_pwrUpDev0.setVerticalHeaderItem(0, item)
+        self.table_chainCfg_statusBlk_pwrUpDev0.setVerticalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_pwrUpDev0.setVerticalHeaderItem(1, item)
+        self.table_chainCfg_statusBlk_pwrUpDev0.setVerticalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_pwrUpDev0.setVerticalHeaderItem(2, item)
+        self.table_chainCfg_statusBlk_pwrUpDev0.setVerticalHeaderItem(2, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_pwrUpDev0.setVerticalHeaderItem(3, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignCenter)
-        self.tableWidget_statusReg_pwrUpDev0.setHorizontalHeaderItem(0, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_pwrUpDev0.setHorizontalHeaderItem(1, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_pwrUpDev0.setHorizontalHeaderItem(2, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_pwrUpDev0.setHorizontalHeaderItem(3, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_pwrUpDev0.setItem(0, 0, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_pwrUpDev0.setItem(0, 1, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_pwrUpDev0.setItem(0, 2, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_pwrUpDev0.setItem(0, 3, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_pwrUpDev0.setItem(1, 0, item)
+        self.table_chainCfg_statusBlk_pwrUpDev0.setVerticalHeaderItem(3, item)
         item = QtWidgets.QTableWidgetItem()
         item.setTextAlignment(QtCore.Qt.AlignCenter)
-        self.tableWidget_statusReg_pwrUpDev0.setItem(1, 1, item)
+        self.table_chainCfg_statusBlk_pwrUpDev0.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_pwrUpDev0.setItem(1, 2, item)
+        self.table_chainCfg_statusBlk_pwrUpDev0.setHorizontalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_pwrUpDev0.setItem(1, 3, item)
+        self.table_chainCfg_statusBlk_pwrUpDev0.setHorizontalHeaderItem(2, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_pwrUpDev0.setItem(2, 0, item)
+        self.table_chainCfg_statusBlk_pwrUpDev0.setHorizontalHeaderItem(3, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_pwrUpDev0.setItem(2, 1, item)
+        self.table_chainCfg_statusBlk_pwrUpDev0.setItem(0, 0, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_pwrUpDev0.setItem(2, 2, item)
+        self.table_chainCfg_statusBlk_pwrUpDev0.setItem(0, 1, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_pwrUpDev0.setItem(2, 3, item)
-        self.tableWidget_statusReg_pwrUpDev0.verticalHeader().setVisible(False)
-        self.horizontalLayout_14.addWidget(self.tableWidget_statusReg_pwrUpDev0)
+        self.table_chainCfg_statusBlk_pwrUpDev0.setItem(0, 2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_pwrUpDev0.setItem(0, 3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_pwrUpDev0.setItem(1, 0, item)
+        item = QtWidgets.QTableWidgetItem()
+        item.setTextAlignment(QtCore.Qt.AlignCenter)
+        self.table_chainCfg_statusBlk_pwrUpDev0.setItem(1, 1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_pwrUpDev0.setItem(1, 2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_pwrUpDev0.setItem(1, 3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_pwrUpDev0.setItem(2, 0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_pwrUpDev0.setItem(2, 1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_pwrUpDev0.setItem(2, 2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_pwrUpDev0.setItem(2, 3, item)
+        self.table_chainCfg_statusBlk_pwrUpDev0.verticalHeader().setVisible(False)
+        self.horizontalLayout_14.addWidget(self.table_chainCfg_statusBlk_pwrUpDev0)
         self.frame_4 = QtWidgets.QFrame(self.centralwidget)
         self.frame_4.setMinimumSize(QtCore.QSize(500, 0))
         self.frame_4.setStyleSheet("QFrame {\n"
@@ -2757,9 +2757,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_24.addLayout(self.horizontalLayout_status_led)
         self.verticalLayout_5.addLayout(self.verticalLayout_24)
         self.horizontalLayout_14.addWidget(self.frame_4)
-        self.tableWidget_statusReg_pwrUpDev1 = QtWidgets.QTableWidget(self.centralwidget)
-        self.tableWidget_statusReg_pwrUpDev1.setMaximumSize(QtCore.QSize(130, 16777215))
-        self.tableWidget_statusReg_pwrUpDev1.setStyleSheet("QTableWidget {\n"
+        self.table_chainCfg_statusBlk_pwrUpDev1 = QtWidgets.QTableWidget(self.centralwidget)
+        self.table_chainCfg_statusBlk_pwrUpDev1.setMaximumSize(QtCore.QSize(130, 16777215))
+        self.table_chainCfg_statusBlk_pwrUpDev1.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
 "    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
@@ -2786,21 +2786,21 @@ class Ui_MainWindow(object):
 "    /* 添加其他您需要的样式 */\n"
 "}\n"
 "")
-        self.tableWidget_statusReg_pwrUpDev1.setObjectName("tableWidget_statusReg_pwrUpDev1")
-        self.tableWidget_statusReg_pwrUpDev1.setColumnCount(1)
-        self.tableWidget_statusReg_pwrUpDev1.setRowCount(4)
+        self.table_chainCfg_statusBlk_pwrUpDev1.setObjectName("table_chainCfg_statusBlk_pwrUpDev1")
+        self.table_chainCfg_statusBlk_pwrUpDev1.setColumnCount(1)
+        self.table_chainCfg_statusBlk_pwrUpDev1.setRowCount(4)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_pwrUpDev1.setVerticalHeaderItem(0, item)
+        self.table_chainCfg_statusBlk_pwrUpDev1.setVerticalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_pwrUpDev1.setVerticalHeaderItem(1, item)
+        self.table_chainCfg_statusBlk_pwrUpDev1.setVerticalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_pwrUpDev1.setVerticalHeaderItem(2, item)
+        self.table_chainCfg_statusBlk_pwrUpDev1.setVerticalHeaderItem(2, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_pwrUpDev1.setVerticalHeaderItem(3, item)
+        self.table_chainCfg_statusBlk_pwrUpDev1.setVerticalHeaderItem(3, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_pwrUpDev1.setHorizontalHeaderItem(0, item)
-        self.tableWidget_statusReg_pwrUpDev1.verticalHeader().setVisible(False)
-        self.horizontalLayout_14.addWidget(self.tableWidget_statusReg_pwrUpDev1)
+        self.table_chainCfg_statusBlk_pwrUpDev1.setHorizontalHeaderItem(0, item)
+        self.table_chainCfg_statusBlk_pwrUpDev1.verticalHeader().setVisible(False)
+        self.horizontalLayout_14.addWidget(self.table_chainCfg_statusBlk_pwrUpDev1)
         self.frame_statusReg_pwrUp_ledArray = QtWidgets.QFrame(self.centralwidget)
         self.frame_statusReg_pwrUp_ledArray.setMinimumSize(QtCore.QSize(500, 0))
         self.frame_statusReg_pwrUp_ledArray.setStyleSheet("QFrame {\n"
@@ -5264,9 +5264,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.addWidget(self.frame_6)
         self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
-        self.tableWidget_statusReg_initDev0 = QtWidgets.QTableWidget(self.centralwidget)
-        self.tableWidget_statusReg_initDev0.setMaximumSize(QtCore.QSize(418, 16777215))
-        self.tableWidget_statusReg_initDev0.setStyleSheet("QTableWidget {\n"
+        self.table_chainCfg_statusBlk_initDev0 = QtWidgets.QTableWidget(self.centralwidget)
+        self.table_chainCfg_statusBlk_initDev0.setMaximumSize(QtCore.QSize(418, 16777215))
+        self.table_chainCfg_statusBlk_initDev0.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
 "    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
@@ -5293,53 +5293,53 @@ class Ui_MainWindow(object):
 "    /* 添加其他您需要的样式 */\n"
 "}\n"
 "")
-        self.tableWidget_statusReg_initDev0.setObjectName("tableWidget_statusReg_initDev0")
-        self.tableWidget_statusReg_initDev0.setColumnCount(4)
-        self.tableWidget_statusReg_initDev0.setRowCount(4)
+        self.table_chainCfg_statusBlk_initDev0.setObjectName("table_chainCfg_statusBlk_initDev0")
+        self.table_chainCfg_statusBlk_initDev0.setColumnCount(4)
+        self.table_chainCfg_statusBlk_initDev0.setRowCount(4)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_initDev0.setVerticalHeaderItem(0, item)
+        self.table_chainCfg_statusBlk_initDev0.setVerticalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_initDev0.setVerticalHeaderItem(1, item)
+        self.table_chainCfg_statusBlk_initDev0.setVerticalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_initDev0.setVerticalHeaderItem(2, item)
+        self.table_chainCfg_statusBlk_initDev0.setVerticalHeaderItem(2, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_initDev0.setVerticalHeaderItem(3, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignCenter)
-        self.tableWidget_statusReg_initDev0.setHorizontalHeaderItem(0, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_initDev0.setHorizontalHeaderItem(1, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_initDev0.setHorizontalHeaderItem(2, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_initDev0.setHorizontalHeaderItem(3, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_initDev0.setItem(0, 0, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_initDev0.setItem(0, 1, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_initDev0.setItem(0, 2, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_initDev0.setItem(0, 3, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_initDev0.setItem(1, 0, item)
+        self.table_chainCfg_statusBlk_initDev0.setVerticalHeaderItem(3, item)
         item = QtWidgets.QTableWidgetItem()
         item.setTextAlignment(QtCore.Qt.AlignCenter)
-        self.tableWidget_statusReg_initDev0.setItem(1, 1, item)
+        self.table_chainCfg_statusBlk_initDev0.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_initDev0.setItem(1, 2, item)
+        self.table_chainCfg_statusBlk_initDev0.setHorizontalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_initDev0.setItem(1, 3, item)
+        self.table_chainCfg_statusBlk_initDev0.setHorizontalHeaderItem(2, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_initDev0.setItem(2, 0, item)
+        self.table_chainCfg_statusBlk_initDev0.setHorizontalHeaderItem(3, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_initDev0.setItem(2, 1, item)
+        self.table_chainCfg_statusBlk_initDev0.setItem(0, 0, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_initDev0.setItem(2, 2, item)
+        self.table_chainCfg_statusBlk_initDev0.setItem(0, 1, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_initDev0.setItem(2, 3, item)
-        self.tableWidget_statusReg_initDev0.verticalHeader().setVisible(False)
-        self.horizontalLayout_6.addWidget(self.tableWidget_statusReg_initDev0)
+        self.table_chainCfg_statusBlk_initDev0.setItem(0, 2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_initDev0.setItem(0, 3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_initDev0.setItem(1, 0, item)
+        item = QtWidgets.QTableWidgetItem()
+        item.setTextAlignment(QtCore.Qt.AlignCenter)
+        self.table_chainCfg_statusBlk_initDev0.setItem(1, 1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_initDev0.setItem(1, 2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_initDev0.setItem(1, 3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_initDev0.setItem(2, 0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_initDev0.setItem(2, 1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_initDev0.setItem(2, 2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_initDev0.setItem(2, 3, item)
+        self.table_chainCfg_statusBlk_initDev0.verticalHeader().setVisible(False)
+        self.horizontalLayout_6.addWidget(self.table_chainCfg_statusBlk_initDev0)
         self.frame_7 = QtWidgets.QFrame(self.centralwidget)
         self.frame_7.setMinimumSize(QtCore.QSize(500, 0))
         self.frame_7.setStyleSheet("QFrame {\n"
@@ -7645,9 +7645,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_22.addLayout(self.horizontalLayout_status_led_4)
         self.verticalLayout_18.addLayout(self.verticalLayout_22)
         self.horizontalLayout_6.addWidget(self.frame_7)
-        self.tableWidget_statusReg_initDev1 = QtWidgets.QTableWidget(self.centralwidget)
-        self.tableWidget_statusReg_initDev1.setMaximumSize(QtCore.QSize(130, 16777215))
-        self.tableWidget_statusReg_initDev1.setStyleSheet("QTableWidget {\n"
+        self.table_chainCfg_statusBlk_initDev1 = QtWidgets.QTableWidget(self.centralwidget)
+        self.table_chainCfg_statusBlk_initDev1.setMaximumSize(QtCore.QSize(130, 16777215))
+        self.table_chainCfg_statusBlk_initDev1.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
 "    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
@@ -7674,21 +7674,21 @@ class Ui_MainWindow(object):
 "    /* 添加其他您需要的样式 */\n"
 "}\n"
 "")
-        self.tableWidget_statusReg_initDev1.setObjectName("tableWidget_statusReg_initDev1")
-        self.tableWidget_statusReg_initDev1.setColumnCount(1)
-        self.tableWidget_statusReg_initDev1.setRowCount(4)
+        self.table_chainCfg_statusBlk_initDev1.setObjectName("table_chainCfg_statusBlk_initDev1")
+        self.table_chainCfg_statusBlk_initDev1.setColumnCount(1)
+        self.table_chainCfg_statusBlk_initDev1.setRowCount(4)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_initDev1.setVerticalHeaderItem(0, item)
+        self.table_chainCfg_statusBlk_initDev1.setVerticalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_initDev1.setVerticalHeaderItem(1, item)
+        self.table_chainCfg_statusBlk_initDev1.setVerticalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_initDev1.setVerticalHeaderItem(2, item)
+        self.table_chainCfg_statusBlk_initDev1.setVerticalHeaderItem(2, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_initDev1.setVerticalHeaderItem(3, item)
+        self.table_chainCfg_statusBlk_initDev1.setVerticalHeaderItem(3, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_statusReg_initDev1.setHorizontalHeaderItem(0, item)
-        self.tableWidget_statusReg_initDev1.verticalHeader().setVisible(False)
-        self.horizontalLayout_6.addWidget(self.tableWidget_statusReg_initDev1)
+        self.table_chainCfg_statusBlk_initDev1.setHorizontalHeaderItem(0, item)
+        self.table_chainCfg_statusBlk_initDev1.verticalHeader().setVisible(False)
+        self.horizontalLayout_6.addWidget(self.table_chainCfg_statusBlk_initDev1)
         self.frame_statusReg_init_ledArray = QtWidgets.QFrame(self.centralwidget)
         self.frame_statusReg_init_ledArray.setMinimumSize(QtCore.QSize(500, 0))
         self.frame_statusReg_init_ledArray.setStyleSheet("QFrame {\n"
@@ -9995,6 +9995,4868 @@ class Ui_MainWindow(object):
         self.verticalLayout_13.addLayout(self.verticalLayout_17)
         self.horizontalLayout_6.addWidget(self.frame_statusReg_init_ledArray)
         self.verticalLayout_2.addLayout(self.horizontalLayout_6)
+        self.frame_10 = QtWidgets.QFrame(self.centralwidget)
+        self.frame_10.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.frame_10.setStyleSheet("QFrame {\n"
+"    background-color: #a0a0a0; /* 设置背景颜色为灰色 */\n"
+"    border-radius: 10px; /* 设置边框圆角的半径为10px */\n"
+"}\n"
+"")
+        self.frame_10.setFrameShape(QtWidgets.QFrame.Box)
+        self.frame_10.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_10.setObjectName("frame_10")
+        self.horizontalLayout_21 = QtWidgets.QHBoxLayout(self.frame_10)
+        self.horizontalLayout_21.setContentsMargins(-1, 0, -1, 0)
+        self.horizontalLayout_21.setObjectName("horizontalLayout_21")
+        self.label_26 = QtWidgets.QLabel(self.frame_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_26.sizePolicy().hasHeightForWidth())
+        self.label_26.setSizePolicy(sizePolicy)
+        self.label_26.setMinimumSize(QtCore.QSize(0, 20))
+        self.label_26.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.label_26.setStyleSheet("font: 11pt \"Calibri\";\n"
+"font-weight: 600; /* 设置字体粗细为600 */")
+        self.label_26.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
+        self.label_26.setObjectName("label_26")
+        self.horizontalLayout_21.addWidget(self.label_26)
+        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_21.addItem(spacerItem6)
+        self.pushButton_statusRegReInit_3 = QtWidgets.QPushButton(self.frame_10)
+        self.pushButton_statusRegReInit_3.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_statusRegReInit_3.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_statusRegReInit_3.setStyleSheet("QPushButton {\n"
+"    background-color: #e84d00; /* 按钮背景颜色 1*/\n"
+"    color: white; /* 文字颜色 */\n"
+"    border-style: solid; /* 边框样式 */\n"
+"    border-width: 2px; /* 边框宽度 */\n"
+"    border-radius: 10px; /* 边框圆角半径 */\n"
+"    border-color: #ce4500; /* 边框颜色 3*/\n"
+"    padding: 5px; /* 内边距 */\n"
+"    font: 8pt \"Calibri\"; /* 字体 */\n"
+"    font-weight: 600; /* 字体粗细 */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #ff5500; /* 悬停时的背景颜色 0*/\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #df4a00; /* 按下时的背景颜色 2*/\n"
+"}\n"
+"")
+        self.pushButton_statusRegReInit_3.setObjectName("pushButton_statusRegReInit_3")
+        self.horizontalLayout_21.addWidget(self.pushButton_statusRegReInit_3)
+        self.pushButton_statusRegClear_3 = QtWidgets.QPushButton(self.frame_10)
+        self.pushButton_statusRegClear_3.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_statusRegClear_3.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_statusRegClear_3.setStyleSheet("QPushButton {\n"
+"    background-color: #f3d22d; /* 按钮背景颜色 1*/\n"
+"    color: white; /* 文字颜色 */\n"
+"    border-style: solid; /* 边框样式 */\n"
+"    border-width: 2px; /* 边框宽度 */\n"
+"    border-radius: 10px; /* 边框圆角半径 */\n"
+"    border-color: #cbaf25; /* 边框颜色 3*/\n"
+"    padding: 5px; /* 内边距 */\n"
+"    font: 8pt \"Calibri\"; /* 字体 */\n"
+"    font-weight: 600; /* 字体粗细 */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #ffdc2f; /* 悬停时的背景颜色 0*/\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #d8bb28; /* 按下时的背景颜色 2*/\n"
+"}\n"
+"")
+        self.pushButton_statusRegClear_3.setObjectName("pushButton_statusRegClear_3")
+        self.horizontalLayout_21.addWidget(self.pushButton_statusRegClear_3)
+        self.pushButton_statusRegInit_3 = QtWidgets.QPushButton(self.frame_10)
+        self.pushButton_statusRegInit_3.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_statusRegInit_3.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_statusRegInit_3.setStyleSheet("QPushButton {\n"
+"    background-color: #3072B3; /* 按钮背景颜色 */\n"
+"    color: white; /* 文字颜色 */\n"
+"    border-style: solid; /* 边框样式 */\n"
+"    border-width: 2px; /* 边框宽度 */\n"
+"    border-radius: 10px; /* 边框圆角半径 */\n"
+"    border-color: #145289; /* 边框颜色 */\n"
+"    padding: 5px; /* 内边距 */\n"
+"    font: 8pt \"Calibri\"; /* 字体 */\n"
+"    font-weight: 600; /* 字体粗细 */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #5591D2; /* 悬停时的背景颜色 */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #1E5A97; /* 按下时的背景颜色 */\n"
+"}\n"
+"")
+        self.pushButton_statusRegInit_3.setObjectName("pushButton_statusRegInit_3")
+        self.horizontalLayout_21.addWidget(self.pushButton_statusRegInit_3)
+        self.pushButton_statusRegReadBack_3 = QtWidgets.QPushButton(self.frame_10)
+        self.pushButton_statusRegReadBack_3.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_statusRegReadBack_3.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_statusRegReadBack_3.setStyleSheet("QPushButton {\n"
+"    background-color: #3b8303; /* 按钮背景颜色 */\n"
+"    color: white; /* 文字颜色 */\n"
+"    border-style: solid; /* 边框样式 */\n"
+"    border-width: 2px; /* 边框宽度 */\n"
+"    border-radius: 10px; /* 边框圆角半径 */\n"
+"    border-color: #326703; /* 边框颜色 */\n"
+"    padding: 5px; /* 内边距 */\n"
+"    font: 8pt \"Calibri\"; /* 字体 */\n"
+"    font-weight: 600; /* 字体粗细 */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #459403; /* 悬停时的背景颜色 */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #397303; /* 按下时的背景颜色 */\n"
+"}\n"
+"")
+        self.pushButton_statusRegReadBack_3.setObjectName("pushButton_statusRegReadBack_3")
+        self.horizontalLayout_21.addWidget(self.pushButton_statusRegReadBack_3)
+        self.verticalLayout_2.addWidget(self.frame_10)
+        self.horizontalLayout_22 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_22.setObjectName("horizontalLayout_22")
+        self.table_chainCfg_statusBlk_curDev0 = QtWidgets.QTableWidget(self.centralwidget)
+        self.table_chainCfg_statusBlk_curDev0.setMaximumSize(QtCore.QSize(418, 16777215))
+        self.table_chainCfg_statusBlk_curDev0.setStyleSheet("QTableWidget {\n"
+"    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
+"    gridline-color: white; /* 网格线颜色 */\n"
+"    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
+"    font-family: \"Calibri\"; /* 单元格字体 */\n"
+"    font-size: 10pt; /* 单元格字体大小 */\n"
+"}\n"
+"\n"
+"QTableWidget::item {\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"    background-color: #f0f0f0; /* 表头背景颜色 */\n"
+"    padding: 5px; /* 表头内边距 */\n"
+"    border-style: none; /* 表头边框样式 */\n"
+"    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */\n"
+"    border-right: 2px solid white; /* 表头右边框宽度调整为2px */\n"
+"    font-family: \"Calibri\"; /* 表头字体 */\n"
+"    font-size: 10pt; /* 表头字体大小 */\n"
+"    font-weight: 600; /* 表头字体粗细 */\n"
+"}\n"
+"\n"
+"QTableCornerButton::section {\n"
+"    background-color: #f0f0f0; /* 角落按钮背景颜色 */\n"
+"    /* 添加其他您需要的样式 */\n"
+"}\n"
+"")
+        self.table_chainCfg_statusBlk_curDev0.setObjectName("table_chainCfg_statusBlk_curDev0")
+        self.table_chainCfg_statusBlk_curDev0.setColumnCount(4)
+        self.table_chainCfg_statusBlk_curDev0.setRowCount(4)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_curDev0.setVerticalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_curDev0.setVerticalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_curDev0.setVerticalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_curDev0.setVerticalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        item.setTextAlignment(QtCore.Qt.AlignCenter)
+        self.table_chainCfg_statusBlk_curDev0.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_curDev0.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_curDev0.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_curDev0.setHorizontalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_curDev0.setItem(0, 0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_curDev0.setItem(0, 1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_curDev0.setItem(0, 2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_curDev0.setItem(0, 3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_curDev0.setItem(1, 0, item)
+        item = QtWidgets.QTableWidgetItem()
+        item.setTextAlignment(QtCore.Qt.AlignCenter)
+        self.table_chainCfg_statusBlk_curDev0.setItem(1, 1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_curDev0.setItem(1, 2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_curDev0.setItem(1, 3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_curDev0.setItem(2, 0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_curDev0.setItem(2, 1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_curDev0.setItem(2, 2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_curDev0.setItem(2, 3, item)
+        self.table_chainCfg_statusBlk_curDev0.verticalHeader().setVisible(False)
+        self.horizontalLayout_22.addWidget(self.table_chainCfg_statusBlk_curDev0)
+        self.frame_11 = QtWidgets.QFrame(self.centralwidget)
+        self.frame_11.setMinimumSize(QtCore.QSize(500, 0))
+        self.frame_11.setStyleSheet("QFrame {\n"
+"    background-color: #fff0b3; /* 替换为您想要的颜色 */\n"
+"}\n"
+"")
+        self.frame_11.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_11.setLineWidth(0)
+        self.frame_11.setObjectName("frame_11")
+        self.layoutWidget_9 = QtWidgets.QWidget(self.frame_11)
+        self.layoutWidget_9.setGeometry(QtCore.QRect(0, 10, 502, 131))
+        self.layoutWidget_9.setObjectName("layoutWidget_9")
+        self.verticalLayout_25 = QtWidgets.QVBoxLayout(self.layoutWidget_9)
+        self.verticalLayout_25.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_25.setSpacing(3)
+        self.verticalLayout_25.setObjectName("verticalLayout_25")
+        self.verticalLayout_26 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_26.setSpacing(1)
+        self.verticalLayout_26.setObjectName("verticalLayout_26")
+        self.horizontalLayout_23 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_23.setSpacing(0)
+        self.horizontalLayout_23.setObjectName("horizontalLayout_23")
+        self.label_596 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_596.sizePolicy().hasHeightForWidth())
+        self.label_596.setSizePolicy(sizePolicy)
+        self.label_596.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_596.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_596.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_596.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_596.setObjectName("label_596")
+        self.horizontalLayout_23.addWidget(self.label_596)
+        self.label_597 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_597.sizePolicy().hasHeightForWidth())
+        self.label_597.setSizePolicy(sizePolicy)
+        self.label_597.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_597.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_597.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_597.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_597.setObjectName("label_597")
+        self.horizontalLayout_23.addWidget(self.label_597)
+        self.label_598 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_598.sizePolicy().hasHeightForWidth())
+        self.label_598.setSizePolicy(sizePolicy)
+        self.label_598.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_598.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_598.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_598.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_598.setObjectName("label_598")
+        self.horizontalLayout_23.addWidget(self.label_598)
+        self.label_599 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_599.sizePolicy().hasHeightForWidth())
+        self.label_599.setSizePolicy(sizePolicy)
+        self.label_599.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_599.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_599.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_599.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_599.setObjectName("label_599")
+        self.horizontalLayout_23.addWidget(self.label_599)
+        self.label_600 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_600.sizePolicy().hasHeightForWidth())
+        self.label_600.setSizePolicy(sizePolicy)
+        self.label_600.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_600.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_600.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_600.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_600.setObjectName("label_600")
+        self.horizontalLayout_23.addWidget(self.label_600)
+        self.label_601 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_601.sizePolicy().hasHeightForWidth())
+        self.label_601.setSizePolicy(sizePolicy)
+        self.label_601.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_601.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_601.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_601.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_601.setObjectName("label_601")
+        self.horizontalLayout_23.addWidget(self.label_601)
+        self.label_602 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_602.sizePolicy().hasHeightForWidth())
+        self.label_602.setSizePolicy(sizePolicy)
+        self.label_602.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_602.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_602.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_602.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_602.setObjectName("label_602")
+        self.horizontalLayout_23.addWidget(self.label_602)
+        self.label_603 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_603.sizePolicy().hasHeightForWidth())
+        self.label_603.setSizePolicy(sizePolicy)
+        self.label_603.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_603.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_603.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_603.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_603.setObjectName("label_603")
+        self.horizontalLayout_23.addWidget(self.label_603)
+        self.label_604 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_604.sizePolicy().hasHeightForWidth())
+        self.label_604.setSizePolicy(sizePolicy)
+        self.label_604.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_604.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_604.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_604.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_604.setObjectName("label_604")
+        self.horizontalLayout_23.addWidget(self.label_604)
+        self.label_605 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_605.sizePolicy().hasHeightForWidth())
+        self.label_605.setSizePolicy(sizePolicy)
+        self.label_605.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_605.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_605.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_605.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_605.setObjectName("label_605")
+        self.horizontalLayout_23.addWidget(self.label_605)
+        self.label_606 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_606.sizePolicy().hasHeightForWidth())
+        self.label_606.setSizePolicy(sizePolicy)
+        self.label_606.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_606.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_606.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_606.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_606.setObjectName("label_606")
+        self.horizontalLayout_23.addWidget(self.label_606)
+        self.label_607 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_607.sizePolicy().hasHeightForWidth())
+        self.label_607.setSizePolicy(sizePolicy)
+        self.label_607.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_607.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_607.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_607.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_607.setObjectName("label_607")
+        self.horizontalLayout_23.addWidget(self.label_607)
+        self.label_608 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_608.sizePolicy().hasHeightForWidth())
+        self.label_608.setSizePolicy(sizePolicy)
+        self.label_608.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_608.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_608.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_608.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_608.setObjectName("label_608")
+        self.horizontalLayout_23.addWidget(self.label_608)
+        self.label_609 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_609.sizePolicy().hasHeightForWidth())
+        self.label_609.setSizePolicy(sizePolicy)
+        self.label_609.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_609.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_609.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_609.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_609.setObjectName("label_609")
+        self.horizontalLayout_23.addWidget(self.label_609)
+        self.label_610 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_610.sizePolicy().hasHeightForWidth())
+        self.label_610.setSizePolicy(sizePolicy)
+        self.label_610.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_610.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_610.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_610.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_610.setObjectName("label_610")
+        self.horizontalLayout_23.addWidget(self.label_610)
+        self.label_611 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_611.sizePolicy().hasHeightForWidth())
+        self.label_611.setSizePolicy(sizePolicy)
+        self.label_611.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_611.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_611.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_611.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_611.setObjectName("label_611")
+        self.horizontalLayout_23.addWidget(self.label_611)
+        self.verticalLayout_26.addLayout(self.horizontalLayout_23)
+        self.horizontalLayout_status_led_15 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_status_led_15.setSpacing(10)
+        self.horizontalLayout_status_led_15.setObjectName("horizontalLayout_status_led_15")
+        self.label_612 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_612.sizePolicy().hasHeightForWidth())
+        self.label_612.setSizePolicy(sizePolicy)
+        self.label_612.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_612.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_612.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #ffffff, /* 渐变为绿色 */\n"
+"    stop: 0.5 #ffffff, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #cccccc); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_612.setText("")
+        self.label_612.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_612.setObjectName("label_612")
+        self.horizontalLayout_status_led_15.addWidget(self.label_612)
+        self.label_613 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_613.sizePolicy().hasHeightForWidth())
+        self.label_613.setSizePolicy(sizePolicy)
+        self.label_613.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_613.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_613.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #aa0000, /* 渐变为绿色 */\n"
+"    stop: 0.5 #990000, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #660000); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_613.setText("")
+        self.label_613.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_613.setObjectName("label_613")
+        self.horizontalLayout_status_led_15.addWidget(self.label_613)
+        self.label_614 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_614.sizePolicy().hasHeightForWidth())
+        self.label_614.setSizePolicy(sizePolicy)
+        self.label_614.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_614.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_614.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_614.setText("")
+        self.label_614.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_614.setObjectName("label_614")
+        self.horizontalLayout_status_led_15.addWidget(self.label_614)
+        self.label_615 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_615.sizePolicy().hasHeightForWidth())
+        self.label_615.setSizePolicy(sizePolicy)
+        self.label_615.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_615.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_615.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_615.setText("")
+        self.label_615.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_615.setObjectName("label_615")
+        self.horizontalLayout_status_led_15.addWidget(self.label_615)
+        self.label_616 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_616.sizePolicy().hasHeightForWidth())
+        self.label_616.setSizePolicy(sizePolicy)
+        self.label_616.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_616.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_616.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_616.setText("")
+        self.label_616.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_616.setObjectName("label_616")
+        self.horizontalLayout_status_led_15.addWidget(self.label_616)
+        self.label_617 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_617.sizePolicy().hasHeightForWidth())
+        self.label_617.setSizePolicy(sizePolicy)
+        self.label_617.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_617.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_617.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_617.setText("")
+        self.label_617.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_617.setObjectName("label_617")
+        self.horizontalLayout_status_led_15.addWidget(self.label_617)
+        self.label_618 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_618.sizePolicy().hasHeightForWidth())
+        self.label_618.setSizePolicy(sizePolicy)
+        self.label_618.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_618.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_618.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_618.setText("")
+        self.label_618.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_618.setObjectName("label_618")
+        self.horizontalLayout_status_led_15.addWidget(self.label_618)
+        self.label_619 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_619.sizePolicy().hasHeightForWidth())
+        self.label_619.setSizePolicy(sizePolicy)
+        self.label_619.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_619.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_619.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_619.setText("")
+        self.label_619.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_619.setObjectName("label_619")
+        self.horizontalLayout_status_led_15.addWidget(self.label_619)
+        self.label_620 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_620.sizePolicy().hasHeightForWidth())
+        self.label_620.setSizePolicy(sizePolicy)
+        self.label_620.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_620.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_620.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_620.setText("")
+        self.label_620.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_620.setObjectName("label_620")
+        self.horizontalLayout_status_led_15.addWidget(self.label_620)
+        self.label_621 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_621.sizePolicy().hasHeightForWidth())
+        self.label_621.setSizePolicy(sizePolicy)
+        self.label_621.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_621.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_621.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_621.setText("")
+        self.label_621.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_621.setObjectName("label_621")
+        self.horizontalLayout_status_led_15.addWidget(self.label_621)
+        self.label_622 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_622.sizePolicy().hasHeightForWidth())
+        self.label_622.setSizePolicy(sizePolicy)
+        self.label_622.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_622.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_622.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_622.setText("")
+        self.label_622.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_622.setObjectName("label_622")
+        self.horizontalLayout_status_led_15.addWidget(self.label_622)
+        self.label_623 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_623.sizePolicy().hasHeightForWidth())
+        self.label_623.setSizePolicy(sizePolicy)
+        self.label_623.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_623.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_623.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_623.setText("")
+        self.label_623.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_623.setObjectName("label_623")
+        self.horizontalLayout_status_led_15.addWidget(self.label_623)
+        self.label_624 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_624.sizePolicy().hasHeightForWidth())
+        self.label_624.setSizePolicy(sizePolicy)
+        self.label_624.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_624.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_624.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_624.setText("")
+        self.label_624.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_624.setObjectName("label_624")
+        self.horizontalLayout_status_led_15.addWidget(self.label_624)
+        self.label_625 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_625.sizePolicy().hasHeightForWidth())
+        self.label_625.setSizePolicy(sizePolicy)
+        self.label_625.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_625.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_625.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_625.setText("")
+        self.label_625.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_625.setObjectName("label_625")
+        self.horizontalLayout_status_led_15.addWidget(self.label_625)
+        self.label_626 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_626.sizePolicy().hasHeightForWidth())
+        self.label_626.setSizePolicy(sizePolicy)
+        self.label_626.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_626.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_626.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_626.setText("")
+        self.label_626.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_626.setObjectName("label_626")
+        self.horizontalLayout_status_led_15.addWidget(self.label_626)
+        self.label_627 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_627.sizePolicy().hasHeightForWidth())
+        self.label_627.setSizePolicy(sizePolicy)
+        self.label_627.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_627.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_627.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_627.setText("")
+        self.label_627.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_627.setObjectName("label_627")
+        self.horizontalLayout_status_led_15.addWidget(self.label_627)
+        self.verticalLayout_26.addLayout(self.horizontalLayout_status_led_15)
+        self.verticalLayout_25.addLayout(self.verticalLayout_26)
+        self.verticalLayout_27 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_27.setSpacing(1)
+        self.verticalLayout_27.setObjectName("verticalLayout_27")
+        self.horizontalLayout_24 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_24.setSpacing(0)
+        self.horizontalLayout_24.setObjectName("horizontalLayout_24")
+        self.label_628 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_628.sizePolicy().hasHeightForWidth())
+        self.label_628.setSizePolicy(sizePolicy)
+        self.label_628.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_628.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_628.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_628.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_628.setObjectName("label_628")
+        self.horizontalLayout_24.addWidget(self.label_628)
+        self.label_629 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_629.sizePolicy().hasHeightForWidth())
+        self.label_629.setSizePolicy(sizePolicy)
+        self.label_629.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_629.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_629.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_629.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_629.setObjectName("label_629")
+        self.horizontalLayout_24.addWidget(self.label_629)
+        self.label_630 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_630.sizePolicy().hasHeightForWidth())
+        self.label_630.setSizePolicy(sizePolicy)
+        self.label_630.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_630.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_630.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_630.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_630.setObjectName("label_630")
+        self.horizontalLayout_24.addWidget(self.label_630)
+        self.label_631 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_631.sizePolicy().hasHeightForWidth())
+        self.label_631.setSizePolicy(sizePolicy)
+        self.label_631.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_631.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_631.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_631.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_631.setObjectName("label_631")
+        self.horizontalLayout_24.addWidget(self.label_631)
+        self.label_632 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_632.sizePolicy().hasHeightForWidth())
+        self.label_632.setSizePolicy(sizePolicy)
+        self.label_632.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_632.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_632.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_632.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_632.setObjectName("label_632")
+        self.horizontalLayout_24.addWidget(self.label_632)
+        self.label_633 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_633.sizePolicy().hasHeightForWidth())
+        self.label_633.setSizePolicy(sizePolicy)
+        self.label_633.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_633.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_633.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_633.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_633.setObjectName("label_633")
+        self.horizontalLayout_24.addWidget(self.label_633)
+        self.label_634 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_634.sizePolicy().hasHeightForWidth())
+        self.label_634.setSizePolicy(sizePolicy)
+        self.label_634.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_634.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_634.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_634.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_634.setObjectName("label_634")
+        self.horizontalLayout_24.addWidget(self.label_634)
+        self.label_635 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_635.sizePolicy().hasHeightForWidth())
+        self.label_635.setSizePolicy(sizePolicy)
+        self.label_635.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_635.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_635.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_635.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_635.setObjectName("label_635")
+        self.horizontalLayout_24.addWidget(self.label_635)
+        self.label_636 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_636.sizePolicy().hasHeightForWidth())
+        self.label_636.setSizePolicy(sizePolicy)
+        self.label_636.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_636.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_636.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_636.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_636.setObjectName("label_636")
+        self.horizontalLayout_24.addWidget(self.label_636)
+        self.label_637 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_637.sizePolicy().hasHeightForWidth())
+        self.label_637.setSizePolicy(sizePolicy)
+        self.label_637.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_637.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_637.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_637.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_637.setObjectName("label_637")
+        self.horizontalLayout_24.addWidget(self.label_637)
+        self.label_638 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_638.sizePolicy().hasHeightForWidth())
+        self.label_638.setSizePolicy(sizePolicy)
+        self.label_638.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_638.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_638.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_638.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_638.setObjectName("label_638")
+        self.horizontalLayout_24.addWidget(self.label_638)
+        self.label_639 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_639.sizePolicy().hasHeightForWidth())
+        self.label_639.setSizePolicy(sizePolicy)
+        self.label_639.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_639.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_639.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_639.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_639.setObjectName("label_639")
+        self.horizontalLayout_24.addWidget(self.label_639)
+        self.label_640 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_640.sizePolicy().hasHeightForWidth())
+        self.label_640.setSizePolicy(sizePolicy)
+        self.label_640.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_640.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_640.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_640.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_640.setObjectName("label_640")
+        self.horizontalLayout_24.addWidget(self.label_640)
+        self.label_641 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_641.sizePolicy().hasHeightForWidth())
+        self.label_641.setSizePolicy(sizePolicy)
+        self.label_641.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_641.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_641.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_641.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_641.setObjectName("label_641")
+        self.horizontalLayout_24.addWidget(self.label_641)
+        self.label_642 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_642.sizePolicy().hasHeightForWidth())
+        self.label_642.setSizePolicy(sizePolicy)
+        self.label_642.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_642.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_642.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_642.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_642.setObjectName("label_642")
+        self.horizontalLayout_24.addWidget(self.label_642)
+        self.label_643 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_643.sizePolicy().hasHeightForWidth())
+        self.label_643.setSizePolicy(sizePolicy)
+        self.label_643.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_643.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_643.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_643.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_643.setObjectName("label_643")
+        self.horizontalLayout_24.addWidget(self.label_643)
+        self.verticalLayout_27.addLayout(self.horizontalLayout_24)
+        self.horizontalLayout_status_led_16 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_status_led_16.setSpacing(10)
+        self.horizontalLayout_status_led_16.setObjectName("horizontalLayout_status_led_16")
+        self.label_692 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_692.sizePolicy().hasHeightForWidth())
+        self.label_692.setSizePolicy(sizePolicy)
+        self.label_692.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_692.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_692.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_692.setText("")
+        self.label_692.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_692.setObjectName("label_692")
+        self.horizontalLayout_status_led_16.addWidget(self.label_692)
+        self.label_693 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_693.sizePolicy().hasHeightForWidth())
+        self.label_693.setSizePolicy(sizePolicy)
+        self.label_693.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_693.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_693.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_693.setText("")
+        self.label_693.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_693.setObjectName("label_693")
+        self.horizontalLayout_status_led_16.addWidget(self.label_693)
+        self.label_694 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_694.sizePolicy().hasHeightForWidth())
+        self.label_694.setSizePolicy(sizePolicy)
+        self.label_694.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_694.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_694.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_694.setText("")
+        self.label_694.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_694.setObjectName("label_694")
+        self.horizontalLayout_status_led_16.addWidget(self.label_694)
+        self.label_695 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_695.sizePolicy().hasHeightForWidth())
+        self.label_695.setSizePolicy(sizePolicy)
+        self.label_695.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_695.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_695.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_695.setText("")
+        self.label_695.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_695.setObjectName("label_695")
+        self.horizontalLayout_status_led_16.addWidget(self.label_695)
+        self.label_696 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_696.sizePolicy().hasHeightForWidth())
+        self.label_696.setSizePolicy(sizePolicy)
+        self.label_696.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_696.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_696.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_696.setText("")
+        self.label_696.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_696.setObjectName("label_696")
+        self.horizontalLayout_status_led_16.addWidget(self.label_696)
+        self.label_697 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_697.sizePolicy().hasHeightForWidth())
+        self.label_697.setSizePolicy(sizePolicy)
+        self.label_697.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_697.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_697.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_697.setText("")
+        self.label_697.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_697.setObjectName("label_697")
+        self.horizontalLayout_status_led_16.addWidget(self.label_697)
+        self.label_698 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_698.sizePolicy().hasHeightForWidth())
+        self.label_698.setSizePolicy(sizePolicy)
+        self.label_698.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_698.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_698.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_698.setText("")
+        self.label_698.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_698.setObjectName("label_698")
+        self.horizontalLayout_status_led_16.addWidget(self.label_698)
+        self.label_699 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_699.sizePolicy().hasHeightForWidth())
+        self.label_699.setSizePolicy(sizePolicy)
+        self.label_699.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_699.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_699.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_699.setText("")
+        self.label_699.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_699.setObjectName("label_699")
+        self.horizontalLayout_status_led_16.addWidget(self.label_699)
+        self.label_700 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_700.sizePolicy().hasHeightForWidth())
+        self.label_700.setSizePolicy(sizePolicy)
+        self.label_700.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_700.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_700.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_700.setText("")
+        self.label_700.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_700.setObjectName("label_700")
+        self.horizontalLayout_status_led_16.addWidget(self.label_700)
+        self.label_701 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_701.sizePolicy().hasHeightForWidth())
+        self.label_701.setSizePolicy(sizePolicy)
+        self.label_701.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_701.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_701.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #ffffff, /* 渐变为绿色 */\n"
+"    stop: 0.5 #ffffff, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #cccccc); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_701.setText("")
+        self.label_701.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_701.setObjectName("label_701")
+        self.horizontalLayout_status_led_16.addWidget(self.label_701)
+        self.label_702 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_702.sizePolicy().hasHeightForWidth())
+        self.label_702.setSizePolicy(sizePolicy)
+        self.label_702.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_702.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_702.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #ffffff, /* 渐变为绿色 */\n"
+"    stop: 0.5 #ffffff, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #cccccc); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_702.setText("")
+        self.label_702.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_702.setObjectName("label_702")
+        self.horizontalLayout_status_led_16.addWidget(self.label_702)
+        self.label_703 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_703.sizePolicy().hasHeightForWidth())
+        self.label_703.setSizePolicy(sizePolicy)
+        self.label_703.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_703.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_703.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_703.setText("")
+        self.label_703.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_703.setObjectName("label_703")
+        self.horizontalLayout_status_led_16.addWidget(self.label_703)
+        self.label_704 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_704.sizePolicy().hasHeightForWidth())
+        self.label_704.setSizePolicy(sizePolicy)
+        self.label_704.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_704.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_704.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_704.setText("")
+        self.label_704.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_704.setObjectName("label_704")
+        self.horizontalLayout_status_led_16.addWidget(self.label_704)
+        self.label_705 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_705.sizePolicy().hasHeightForWidth())
+        self.label_705.setSizePolicy(sizePolicy)
+        self.label_705.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_705.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_705.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_705.setText("")
+        self.label_705.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_705.setObjectName("label_705")
+        self.horizontalLayout_status_led_16.addWidget(self.label_705)
+        self.label_706 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_706.sizePolicy().hasHeightForWidth())
+        self.label_706.setSizePolicy(sizePolicy)
+        self.label_706.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_706.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_706.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_706.setText("")
+        self.label_706.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_706.setObjectName("label_706")
+        self.horizontalLayout_status_led_16.addWidget(self.label_706)
+        self.label_707 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_707.sizePolicy().hasHeightForWidth())
+        self.label_707.setSizePolicy(sizePolicy)
+        self.label_707.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_707.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_707.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_707.setText("")
+        self.label_707.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_707.setObjectName("label_707")
+        self.horizontalLayout_status_led_16.addWidget(self.label_707)
+        self.verticalLayout_27.addLayout(self.horizontalLayout_status_led_16)
+        self.verticalLayout_25.addLayout(self.verticalLayout_27)
+        self.verticalLayout_28 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_28.setSpacing(1)
+        self.verticalLayout_28.setObjectName("verticalLayout_28")
+        self.horizontalLayout_25 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_25.setSpacing(0)
+        self.horizontalLayout_25.setObjectName("horizontalLayout_25")
+        self.label_708 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_708.sizePolicy().hasHeightForWidth())
+        self.label_708.setSizePolicy(sizePolicy)
+        self.label_708.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_708.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_708.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_708.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_708.setObjectName("label_708")
+        self.horizontalLayout_25.addWidget(self.label_708)
+        self.label_709 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_709.sizePolicy().hasHeightForWidth())
+        self.label_709.setSizePolicy(sizePolicy)
+        self.label_709.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_709.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_709.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_709.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_709.setObjectName("label_709")
+        self.horizontalLayout_25.addWidget(self.label_709)
+        self.label_710 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_710.sizePolicy().hasHeightForWidth())
+        self.label_710.setSizePolicy(sizePolicy)
+        self.label_710.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_710.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_710.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_710.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_710.setObjectName("label_710")
+        self.horizontalLayout_25.addWidget(self.label_710)
+        self.label_711 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_711.sizePolicy().hasHeightForWidth())
+        self.label_711.setSizePolicy(sizePolicy)
+        self.label_711.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_711.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_711.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_711.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_711.setObjectName("label_711")
+        self.horizontalLayout_25.addWidget(self.label_711)
+        self.label_712 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_712.sizePolicy().hasHeightForWidth())
+        self.label_712.setSizePolicy(sizePolicy)
+        self.label_712.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_712.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_712.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_712.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_712.setObjectName("label_712")
+        self.horizontalLayout_25.addWidget(self.label_712)
+        self.label_713 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_713.sizePolicy().hasHeightForWidth())
+        self.label_713.setSizePolicy(sizePolicy)
+        self.label_713.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_713.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_713.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_713.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_713.setObjectName("label_713")
+        self.horizontalLayout_25.addWidget(self.label_713)
+        self.label_714 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_714.sizePolicy().hasHeightForWidth())
+        self.label_714.setSizePolicy(sizePolicy)
+        self.label_714.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_714.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_714.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_714.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_714.setObjectName("label_714")
+        self.horizontalLayout_25.addWidget(self.label_714)
+        self.label_715 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_715.sizePolicy().hasHeightForWidth())
+        self.label_715.setSizePolicy(sizePolicy)
+        self.label_715.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_715.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_715.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_715.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_715.setObjectName("label_715")
+        self.horizontalLayout_25.addWidget(self.label_715)
+        self.label_716 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_716.sizePolicy().hasHeightForWidth())
+        self.label_716.setSizePolicy(sizePolicy)
+        self.label_716.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_716.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_716.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_716.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_716.setObjectName("label_716")
+        self.horizontalLayout_25.addWidget(self.label_716)
+        self.label_717 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_717.sizePolicy().hasHeightForWidth())
+        self.label_717.setSizePolicy(sizePolicy)
+        self.label_717.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_717.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_717.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_717.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_717.setObjectName("label_717")
+        self.horizontalLayout_25.addWidget(self.label_717)
+        self.label_718 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_718.sizePolicy().hasHeightForWidth())
+        self.label_718.setSizePolicy(sizePolicy)
+        self.label_718.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_718.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_718.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_718.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_718.setObjectName("label_718")
+        self.horizontalLayout_25.addWidget(self.label_718)
+        self.label_719 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_719.sizePolicy().hasHeightForWidth())
+        self.label_719.setSizePolicy(sizePolicy)
+        self.label_719.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_719.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_719.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_719.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_719.setObjectName("label_719")
+        self.horizontalLayout_25.addWidget(self.label_719)
+        self.label_720 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_720.sizePolicy().hasHeightForWidth())
+        self.label_720.setSizePolicy(sizePolicy)
+        self.label_720.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_720.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_720.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_720.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_720.setObjectName("label_720")
+        self.horizontalLayout_25.addWidget(self.label_720)
+        self.label_721 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_721.sizePolicy().hasHeightForWidth())
+        self.label_721.setSizePolicy(sizePolicy)
+        self.label_721.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_721.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_721.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_721.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_721.setObjectName("label_721")
+        self.horizontalLayout_25.addWidget(self.label_721)
+        self.label_722 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_722.sizePolicy().hasHeightForWidth())
+        self.label_722.setSizePolicy(sizePolicy)
+        self.label_722.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_722.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_722.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_722.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_722.setObjectName("label_722")
+        self.horizontalLayout_25.addWidget(self.label_722)
+        self.label_723 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_723.sizePolicy().hasHeightForWidth())
+        self.label_723.setSizePolicy(sizePolicy)
+        self.label_723.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_723.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_723.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_723.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_723.setObjectName("label_723")
+        self.horizontalLayout_25.addWidget(self.label_723)
+        self.verticalLayout_28.addLayout(self.horizontalLayout_25)
+        self.horizontalLayout_status_led_19 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_status_led_19.setSpacing(10)
+        self.horizontalLayout_status_led_19.setObjectName("horizontalLayout_status_led_19")
+        self.label_724 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_724.sizePolicy().hasHeightForWidth())
+        self.label_724.setSizePolicy(sizePolicy)
+        self.label_724.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_724.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_724.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_724.setText("")
+        self.label_724.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_724.setObjectName("label_724")
+        self.horizontalLayout_status_led_19.addWidget(self.label_724)
+        self.label_725 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_725.sizePolicy().hasHeightForWidth())
+        self.label_725.setSizePolicy(sizePolicy)
+        self.label_725.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_725.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_725.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #aaaaaa, /* 渐变为绿色 */\n"
+"    stop: 0.5 #999999, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #666666); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_725.setText("")
+        self.label_725.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_725.setObjectName("label_725")
+        self.horizontalLayout_status_led_19.addWidget(self.label_725)
+        self.label_726 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_726.sizePolicy().hasHeightForWidth())
+        self.label_726.setSizePolicy(sizePolicy)
+        self.label_726.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_726.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_726.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #aaaaaa, /* 渐变为绿色 */\n"
+"    stop: 0.5 #999999, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #666666); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_726.setText("")
+        self.label_726.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_726.setObjectName("label_726")
+        self.horizontalLayout_status_led_19.addWidget(self.label_726)
+        self.label_727 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_727.sizePolicy().hasHeightForWidth())
+        self.label_727.setSizePolicy(sizePolicy)
+        self.label_727.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_727.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_727.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #aaaaaa, /* 渐变为绿色 */\n"
+"    stop: 0.5 #999999, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #666666); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_727.setText("")
+        self.label_727.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_727.setObjectName("label_727")
+        self.horizontalLayout_status_led_19.addWidget(self.label_727)
+        self.label_728 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_728.sizePolicy().hasHeightForWidth())
+        self.label_728.setSizePolicy(sizePolicy)
+        self.label_728.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_728.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_728.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #aaaaaa, /* 渐变为绿色 */\n"
+"    stop: 0.5 #999999, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #666666); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_728.setText("")
+        self.label_728.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_728.setObjectName("label_728")
+        self.horizontalLayout_status_led_19.addWidget(self.label_728)
+        self.label_729 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_729.sizePolicy().hasHeightForWidth())
+        self.label_729.setSizePolicy(sizePolicy)
+        self.label_729.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_729.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_729.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_729.setText("")
+        self.label_729.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_729.setObjectName("label_729")
+        self.horizontalLayout_status_led_19.addWidget(self.label_729)
+        self.label_730 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_730.sizePolicy().hasHeightForWidth())
+        self.label_730.setSizePolicy(sizePolicy)
+        self.label_730.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_730.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_730.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_730.setText("")
+        self.label_730.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_730.setObjectName("label_730")
+        self.horizontalLayout_status_led_19.addWidget(self.label_730)
+        self.label_731 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_731.sizePolicy().hasHeightForWidth())
+        self.label_731.setSizePolicy(sizePolicy)
+        self.label_731.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_731.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_731.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_731.setText("")
+        self.label_731.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_731.setObjectName("label_731")
+        self.horizontalLayout_status_led_19.addWidget(self.label_731)
+        self.label_732 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_732.sizePolicy().hasHeightForWidth())
+        self.label_732.setSizePolicy(sizePolicy)
+        self.label_732.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_732.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_732.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_732.setText("")
+        self.label_732.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_732.setObjectName("label_732")
+        self.horizontalLayout_status_led_19.addWidget(self.label_732)
+        self.label_733 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_733.sizePolicy().hasHeightForWidth())
+        self.label_733.setSizePolicy(sizePolicy)
+        self.label_733.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_733.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_733.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_733.setText("")
+        self.label_733.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_733.setObjectName("label_733")
+        self.horizontalLayout_status_led_19.addWidget(self.label_733)
+        self.label_734 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_734.sizePolicy().hasHeightForWidth())
+        self.label_734.setSizePolicy(sizePolicy)
+        self.label_734.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_734.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_734.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_734.setText("")
+        self.label_734.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_734.setObjectName("label_734")
+        self.horizontalLayout_status_led_19.addWidget(self.label_734)
+        self.label_735 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_735.sizePolicy().hasHeightForWidth())
+        self.label_735.setSizePolicy(sizePolicy)
+        self.label_735.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_735.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_735.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_735.setText("")
+        self.label_735.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_735.setObjectName("label_735")
+        self.horizontalLayout_status_led_19.addWidget(self.label_735)
+        self.label_736 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_736.sizePolicy().hasHeightForWidth())
+        self.label_736.setSizePolicy(sizePolicy)
+        self.label_736.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_736.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_736.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_736.setText("")
+        self.label_736.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_736.setObjectName("label_736")
+        self.horizontalLayout_status_led_19.addWidget(self.label_736)
+        self.label_737 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_737.sizePolicy().hasHeightForWidth())
+        self.label_737.setSizePolicy(sizePolicy)
+        self.label_737.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_737.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_737.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_737.setText("")
+        self.label_737.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_737.setObjectName("label_737")
+        self.horizontalLayout_status_led_19.addWidget(self.label_737)
+        self.label_738 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_738.sizePolicy().hasHeightForWidth())
+        self.label_738.setSizePolicy(sizePolicy)
+        self.label_738.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_738.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_738.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_738.setText("")
+        self.label_738.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_738.setObjectName("label_738")
+        self.horizontalLayout_status_led_19.addWidget(self.label_738)
+        self.label_739 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_739.sizePolicy().hasHeightForWidth())
+        self.label_739.setSizePolicy(sizePolicy)
+        self.label_739.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_739.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_739.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_739.setText("")
+        self.label_739.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_739.setObjectName("label_739")
+        self.horizontalLayout_status_led_19.addWidget(self.label_739)
+        self.verticalLayout_28.addLayout(self.horizontalLayout_status_led_19)
+        self.verticalLayout_25.addLayout(self.verticalLayout_28)
+        self.verticalLayout_29 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_29.setSpacing(1)
+        self.verticalLayout_29.setObjectName("verticalLayout_29")
+        self.horizontalLayout_status_bit_6 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_status_bit_6.setSpacing(0)
+        self.horizontalLayout_status_bit_6.setObjectName("horizontalLayout_status_bit_6")
+        self.label_740 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_740.sizePolicy().hasHeightForWidth())
+        self.label_740.setSizePolicy(sizePolicy)
+        self.label_740.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_740.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_740.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_740.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_740.setObjectName("label_740")
+        self.horizontalLayout_status_bit_6.addWidget(self.label_740)
+        self.label_741 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_741.sizePolicy().hasHeightForWidth())
+        self.label_741.setSizePolicy(sizePolicy)
+        self.label_741.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_741.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_741.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_741.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_741.setObjectName("label_741")
+        self.horizontalLayout_status_bit_6.addWidget(self.label_741)
+        self.label_742 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_742.sizePolicy().hasHeightForWidth())
+        self.label_742.setSizePolicy(sizePolicy)
+        self.label_742.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_742.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_742.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_742.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_742.setObjectName("label_742")
+        self.horizontalLayout_status_bit_6.addWidget(self.label_742)
+        self.label_743 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_743.sizePolicy().hasHeightForWidth())
+        self.label_743.setSizePolicy(sizePolicy)
+        self.label_743.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_743.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_743.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_743.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_743.setObjectName("label_743")
+        self.horizontalLayout_status_bit_6.addWidget(self.label_743)
+        self.label_744 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_744.sizePolicy().hasHeightForWidth())
+        self.label_744.setSizePolicy(sizePolicy)
+        self.label_744.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_744.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_744.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_744.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_744.setObjectName("label_744")
+        self.horizontalLayout_status_bit_6.addWidget(self.label_744)
+        self.label_745 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_745.sizePolicy().hasHeightForWidth())
+        self.label_745.setSizePolicy(sizePolicy)
+        self.label_745.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_745.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_745.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_745.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_745.setObjectName("label_745")
+        self.horizontalLayout_status_bit_6.addWidget(self.label_745)
+        self.label_746 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_746.sizePolicy().hasHeightForWidth())
+        self.label_746.setSizePolicy(sizePolicy)
+        self.label_746.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_746.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_746.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_746.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_746.setObjectName("label_746")
+        self.horizontalLayout_status_bit_6.addWidget(self.label_746)
+        self.label_747 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_747.sizePolicy().hasHeightForWidth())
+        self.label_747.setSizePolicy(sizePolicy)
+        self.label_747.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_747.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_747.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_747.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_747.setObjectName("label_747")
+        self.horizontalLayout_status_bit_6.addWidget(self.label_747)
+        self.label_748 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_748.sizePolicy().hasHeightForWidth())
+        self.label_748.setSizePolicy(sizePolicy)
+        self.label_748.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_748.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_748.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_748.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_748.setObjectName("label_748")
+        self.horizontalLayout_status_bit_6.addWidget(self.label_748)
+        self.label_749 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_749.sizePolicy().hasHeightForWidth())
+        self.label_749.setSizePolicy(sizePolicy)
+        self.label_749.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_749.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_749.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_749.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_749.setObjectName("label_749")
+        self.horizontalLayout_status_bit_6.addWidget(self.label_749)
+        self.label_750 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_750.sizePolicy().hasHeightForWidth())
+        self.label_750.setSizePolicy(sizePolicy)
+        self.label_750.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_750.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_750.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_750.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_750.setObjectName("label_750")
+        self.horizontalLayout_status_bit_6.addWidget(self.label_750)
+        self.label_751 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_751.sizePolicy().hasHeightForWidth())
+        self.label_751.setSizePolicy(sizePolicy)
+        self.label_751.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_751.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_751.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_751.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_751.setObjectName("label_751")
+        self.horizontalLayout_status_bit_6.addWidget(self.label_751)
+        self.label_752 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_752.sizePolicy().hasHeightForWidth())
+        self.label_752.setSizePolicy(sizePolicy)
+        self.label_752.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_752.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_752.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_752.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_752.setObjectName("label_752")
+        self.horizontalLayout_status_bit_6.addWidget(self.label_752)
+        self.label_753 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_753.sizePolicy().hasHeightForWidth())
+        self.label_753.setSizePolicy(sizePolicy)
+        self.label_753.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_753.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_753.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_753.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_753.setObjectName("label_753")
+        self.horizontalLayout_status_bit_6.addWidget(self.label_753)
+        self.label_754 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_754.sizePolicy().hasHeightForWidth())
+        self.label_754.setSizePolicy(sizePolicy)
+        self.label_754.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_754.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_754.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_754.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_754.setObjectName("label_754")
+        self.horizontalLayout_status_bit_6.addWidget(self.label_754)
+        self.label_755 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_755.sizePolicy().hasHeightForWidth())
+        self.label_755.setSizePolicy(sizePolicy)
+        self.label_755.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_755.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_755.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_755.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_755.setObjectName("label_755")
+        self.horizontalLayout_status_bit_6.addWidget(self.label_755)
+        self.verticalLayout_29.addLayout(self.horizontalLayout_status_bit_6)
+        self.horizontalLayout_status_led_20 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_status_led_20.setSpacing(10)
+        self.horizontalLayout_status_led_20.setObjectName("horizontalLayout_status_led_20")
+        self.label_756 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_756.sizePolicy().hasHeightForWidth())
+        self.label_756.setSizePolicy(sizePolicy)
+        self.label_756.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_756.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_756.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_756.setText("")
+        self.label_756.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_756.setObjectName("label_756")
+        self.horizontalLayout_status_led_20.addWidget(self.label_756)
+        self.label_757 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_757.sizePolicy().hasHeightForWidth())
+        self.label_757.setSizePolicy(sizePolicy)
+        self.label_757.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_757.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_757.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_757.setText("")
+        self.label_757.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_757.setObjectName("label_757")
+        self.horizontalLayout_status_led_20.addWidget(self.label_757)
+        self.label_758 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_758.sizePolicy().hasHeightForWidth())
+        self.label_758.setSizePolicy(sizePolicy)
+        self.label_758.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_758.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_758.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #aaaaaa, /* 渐变为绿色 */\n"
+"    stop: 0.5 #999999, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #666666); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_758.setText("")
+        self.label_758.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_758.setObjectName("label_758")
+        self.horizontalLayout_status_led_20.addWidget(self.label_758)
+        self.label_759 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_759.sizePolicy().hasHeightForWidth())
+        self.label_759.setSizePolicy(sizePolicy)
+        self.label_759.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_759.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_759.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #aaaaaa, /* 渐变为绿色 */\n"
+"    stop: 0.5 #999999, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #666666); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_759.setText("")
+        self.label_759.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_759.setObjectName("label_759")
+        self.horizontalLayout_status_led_20.addWidget(self.label_759)
+        self.label_760 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_760.sizePolicy().hasHeightForWidth())
+        self.label_760.setSizePolicy(sizePolicy)
+        self.label_760.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_760.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_760.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_760.setText("")
+        self.label_760.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_760.setObjectName("label_760")
+        self.horizontalLayout_status_led_20.addWidget(self.label_760)
+        self.label_761 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_761.sizePolicy().hasHeightForWidth())
+        self.label_761.setSizePolicy(sizePolicy)
+        self.label_761.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_761.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_761.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_761.setText("")
+        self.label_761.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_761.setObjectName("label_761")
+        self.horizontalLayout_status_led_20.addWidget(self.label_761)
+        self.label_762 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_762.sizePolicy().hasHeightForWidth())
+        self.label_762.setSizePolicy(sizePolicy)
+        self.label_762.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_762.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_762.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_762.setText("")
+        self.label_762.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_762.setObjectName("label_762")
+        self.horizontalLayout_status_led_20.addWidget(self.label_762)
+        self.label_763 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_763.sizePolicy().hasHeightForWidth())
+        self.label_763.setSizePolicy(sizePolicy)
+        self.label_763.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_763.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_763.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_763.setText("")
+        self.label_763.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_763.setObjectName("label_763")
+        self.horizontalLayout_status_led_20.addWidget(self.label_763)
+        self.label_764 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_764.sizePolicy().hasHeightForWidth())
+        self.label_764.setSizePolicy(sizePolicy)
+        self.label_764.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_764.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_764.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_764.setText("")
+        self.label_764.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_764.setObjectName("label_764")
+        self.horizontalLayout_status_led_20.addWidget(self.label_764)
+        self.label_765 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_765.sizePolicy().hasHeightForWidth())
+        self.label_765.setSizePolicy(sizePolicy)
+        self.label_765.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_765.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_765.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_765.setText("")
+        self.label_765.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_765.setObjectName("label_765")
+        self.horizontalLayout_status_led_20.addWidget(self.label_765)
+        self.label_766 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_766.sizePolicy().hasHeightForWidth())
+        self.label_766.setSizePolicy(sizePolicy)
+        self.label_766.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_766.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_766.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_766.setText("")
+        self.label_766.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_766.setObjectName("label_766")
+        self.horizontalLayout_status_led_20.addWidget(self.label_766)
+        self.label_767 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_767.sizePolicy().hasHeightForWidth())
+        self.label_767.setSizePolicy(sizePolicy)
+        self.label_767.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_767.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_767.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_767.setText("")
+        self.label_767.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_767.setObjectName("label_767")
+        self.horizontalLayout_status_led_20.addWidget(self.label_767)
+        self.label_768 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_768.sizePolicy().hasHeightForWidth())
+        self.label_768.setSizePolicy(sizePolicy)
+        self.label_768.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_768.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_768.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_768.setText("")
+        self.label_768.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_768.setObjectName("label_768")
+        self.horizontalLayout_status_led_20.addWidget(self.label_768)
+        self.label_769 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_769.sizePolicy().hasHeightForWidth())
+        self.label_769.setSizePolicy(sizePolicy)
+        self.label_769.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_769.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_769.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_769.setText("")
+        self.label_769.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_769.setObjectName("label_769")
+        self.horizontalLayout_status_led_20.addWidget(self.label_769)
+        self.label_770 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_770.sizePolicy().hasHeightForWidth())
+        self.label_770.setSizePolicy(sizePolicy)
+        self.label_770.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_770.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_770.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_770.setText("")
+        self.label_770.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_770.setObjectName("label_770")
+        self.horizontalLayout_status_led_20.addWidget(self.label_770)
+        self.label_771 = QtWidgets.QLabel(self.layoutWidget_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_771.sizePolicy().hasHeightForWidth())
+        self.label_771.setSizePolicy(sizePolicy)
+        self.label_771.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_771.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_771.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_771.setText("")
+        self.label_771.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_771.setObjectName("label_771")
+        self.horizontalLayout_status_led_20.addWidget(self.label_771)
+        self.verticalLayout_29.addLayout(self.horizontalLayout_status_led_20)
+        self.verticalLayout_25.addLayout(self.verticalLayout_29)
+        self.horizontalLayout_22.addWidget(self.frame_11)
+        self.table_chainCfg_statusBlk_curDev1 = QtWidgets.QTableWidget(self.centralwidget)
+        self.table_chainCfg_statusBlk_curDev1.setMaximumSize(QtCore.QSize(130, 16777215))
+        self.table_chainCfg_statusBlk_curDev1.setStyleSheet("QTableWidget {\n"
+"    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
+"    gridline-color: white; /* 网格线颜色 */\n"
+"    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
+"    font-family: \"Calibri\"; /* 单元格字体 */\n"
+"    font-size: 10pt; /* 单元格字体大小 */\n"
+"}\n"
+"\n"
+"QTableWidget::item {\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"    background-color: #f0f0f0; /* 表头背景颜色 */\n"
+"    padding: 5px; /* 表头内边距 */\n"
+"    border-style: none; /* 表头边框样式 */\n"
+"    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */\n"
+"    border-right: 2px solid white; /* 表头右边框宽度调整为2px */\n"
+"    font-family: \"Calibri\"; /* 表头字体 */\n"
+"    font-size: 10pt; /* 表头字体大小 */\n"
+"    font-weight: 600; /* 表头字体粗细 */\n"
+"}\n"
+"\n"
+"QTableCornerButton::section {\n"
+"    background-color: #f0f0f0; /* 角落按钮背景颜色 */\n"
+"    /* 添加其他您需要的样式 */\n"
+"}\n"
+"")
+        self.table_chainCfg_statusBlk_curDev1.setObjectName("table_chainCfg_statusBlk_curDev1")
+        self.table_chainCfg_statusBlk_curDev1.setColumnCount(1)
+        self.table_chainCfg_statusBlk_curDev1.setRowCount(4)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_curDev1.setVerticalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_curDev1.setVerticalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_curDev1.setVerticalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_curDev1.setVerticalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_statusBlk_curDev1.setHorizontalHeaderItem(0, item)
+        self.table_chainCfg_statusBlk_curDev1.verticalHeader().setVisible(False)
+        self.horizontalLayout_22.addWidget(self.table_chainCfg_statusBlk_curDev1)
+        self.frame_statusReg_init_ledArray_3 = QtWidgets.QFrame(self.centralwidget)
+        self.frame_statusReg_init_ledArray_3.setMinimumSize(QtCore.QSize(500, 0))
+        self.frame_statusReg_init_ledArray_3.setStyleSheet("QFrame {\n"
+"    background-color: #fff0b3; /* 替换为您想要的颜色 */\n"
+"}\n"
+"")
+        self.frame_statusReg_init_ledArray_3.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_statusReg_init_ledArray_3.setLineWidth(0)
+        self.frame_statusReg_init_ledArray_3.setObjectName("frame_statusReg_init_ledArray_3")
+        self.layoutWidget_10 = QtWidgets.QWidget(self.frame_statusReg_init_ledArray_3)
+        self.layoutWidget_10.setGeometry(QtCore.QRect(0, 10, 502, 131))
+        self.layoutWidget_10.setObjectName("layoutWidget_10")
+        self.verticalLayout_30 = QtWidgets.QVBoxLayout(self.layoutWidget_10)
+        self.verticalLayout_30.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_30.setSpacing(3)
+        self.verticalLayout_30.setObjectName("verticalLayout_30")
+        self.verticalLayout_31 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_31.setSpacing(1)
+        self.verticalLayout_31.setObjectName("verticalLayout_31")
+        self.horizontalLayout_26 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_26.setSpacing(0)
+        self.horizontalLayout_26.setObjectName("horizontalLayout_26")
+        self.label_772 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_772.sizePolicy().hasHeightForWidth())
+        self.label_772.setSizePolicy(sizePolicy)
+        self.label_772.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_772.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_772.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_772.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_772.setObjectName("label_772")
+        self.horizontalLayout_26.addWidget(self.label_772)
+        self.label_773 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_773.sizePolicy().hasHeightForWidth())
+        self.label_773.setSizePolicy(sizePolicy)
+        self.label_773.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_773.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_773.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_773.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_773.setObjectName("label_773")
+        self.horizontalLayout_26.addWidget(self.label_773)
+        self.label_774 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_774.sizePolicy().hasHeightForWidth())
+        self.label_774.setSizePolicy(sizePolicy)
+        self.label_774.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_774.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_774.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_774.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_774.setObjectName("label_774")
+        self.horizontalLayout_26.addWidget(self.label_774)
+        self.label_775 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_775.sizePolicy().hasHeightForWidth())
+        self.label_775.setSizePolicy(sizePolicy)
+        self.label_775.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_775.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_775.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_775.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_775.setObjectName("label_775")
+        self.horizontalLayout_26.addWidget(self.label_775)
+        self.label_776 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_776.sizePolicy().hasHeightForWidth())
+        self.label_776.setSizePolicy(sizePolicy)
+        self.label_776.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_776.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_776.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_776.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_776.setObjectName("label_776")
+        self.horizontalLayout_26.addWidget(self.label_776)
+        self.label_777 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_777.sizePolicy().hasHeightForWidth())
+        self.label_777.setSizePolicy(sizePolicy)
+        self.label_777.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_777.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_777.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_777.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_777.setObjectName("label_777")
+        self.horizontalLayout_26.addWidget(self.label_777)
+        self.label_778 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_778.sizePolicy().hasHeightForWidth())
+        self.label_778.setSizePolicy(sizePolicy)
+        self.label_778.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_778.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_778.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_778.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_778.setObjectName("label_778")
+        self.horizontalLayout_26.addWidget(self.label_778)
+        self.label_779 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_779.sizePolicy().hasHeightForWidth())
+        self.label_779.setSizePolicy(sizePolicy)
+        self.label_779.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_779.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_779.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_779.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_779.setObjectName("label_779")
+        self.horizontalLayout_26.addWidget(self.label_779)
+        self.label_780 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_780.sizePolicy().hasHeightForWidth())
+        self.label_780.setSizePolicy(sizePolicy)
+        self.label_780.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_780.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_780.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_780.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_780.setObjectName("label_780")
+        self.horizontalLayout_26.addWidget(self.label_780)
+        self.label_781 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_781.sizePolicy().hasHeightForWidth())
+        self.label_781.setSizePolicy(sizePolicy)
+        self.label_781.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_781.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_781.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_781.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_781.setObjectName("label_781")
+        self.horizontalLayout_26.addWidget(self.label_781)
+        self.label_782 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_782.sizePolicy().hasHeightForWidth())
+        self.label_782.setSizePolicy(sizePolicy)
+        self.label_782.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_782.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_782.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_782.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_782.setObjectName("label_782")
+        self.horizontalLayout_26.addWidget(self.label_782)
+        self.label_783 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_783.sizePolicy().hasHeightForWidth())
+        self.label_783.setSizePolicy(sizePolicy)
+        self.label_783.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_783.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_783.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_783.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_783.setObjectName("label_783")
+        self.horizontalLayout_26.addWidget(self.label_783)
+        self.label_784 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_784.sizePolicy().hasHeightForWidth())
+        self.label_784.setSizePolicy(sizePolicy)
+        self.label_784.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_784.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_784.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_784.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_784.setObjectName("label_784")
+        self.horizontalLayout_26.addWidget(self.label_784)
+        self.label_785 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_785.sizePolicy().hasHeightForWidth())
+        self.label_785.setSizePolicy(sizePolicy)
+        self.label_785.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_785.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_785.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_785.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_785.setObjectName("label_785")
+        self.horizontalLayout_26.addWidget(self.label_785)
+        self.label_786 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_786.sizePolicy().hasHeightForWidth())
+        self.label_786.setSizePolicy(sizePolicy)
+        self.label_786.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_786.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_786.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_786.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_786.setObjectName("label_786")
+        self.horizontalLayout_26.addWidget(self.label_786)
+        self.label_787 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_787.sizePolicy().hasHeightForWidth())
+        self.label_787.setSizePolicy(sizePolicy)
+        self.label_787.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_787.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_787.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_787.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_787.setObjectName("label_787")
+        self.horizontalLayout_26.addWidget(self.label_787)
+        self.verticalLayout_31.addLayout(self.horizontalLayout_26)
+        self.horizontalLayout_status_led_21 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_status_led_21.setSpacing(10)
+        self.horizontalLayout_status_led_21.setObjectName("horizontalLayout_status_led_21")
+        self.label_788 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_788.sizePolicy().hasHeightForWidth())
+        self.label_788.setSizePolicy(sizePolicy)
+        self.label_788.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_788.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_788.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #ffffff, /* 渐变为绿色 */\n"
+"    stop: 0.5 #ffffff, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #cccccc); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_788.setText("")
+        self.label_788.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_788.setObjectName("label_788")
+        self.horizontalLayout_status_led_21.addWidget(self.label_788)
+        self.label_789 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_789.sizePolicy().hasHeightForWidth())
+        self.label_789.setSizePolicy(sizePolicy)
+        self.label_789.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_789.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_789.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #aa0000, /* 渐变为绿色 */\n"
+"    stop: 0.5 #990000, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #660000); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_789.setText("")
+        self.label_789.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_789.setObjectName("label_789")
+        self.horizontalLayout_status_led_21.addWidget(self.label_789)
+        self.label_790 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_790.sizePolicy().hasHeightForWidth())
+        self.label_790.setSizePolicy(sizePolicy)
+        self.label_790.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_790.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_790.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_790.setText("")
+        self.label_790.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_790.setObjectName("label_790")
+        self.horizontalLayout_status_led_21.addWidget(self.label_790)
+        self.label_791 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_791.sizePolicy().hasHeightForWidth())
+        self.label_791.setSizePolicy(sizePolicy)
+        self.label_791.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_791.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_791.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_791.setText("")
+        self.label_791.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_791.setObjectName("label_791")
+        self.horizontalLayout_status_led_21.addWidget(self.label_791)
+        self.label_792 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_792.sizePolicy().hasHeightForWidth())
+        self.label_792.setSizePolicy(sizePolicy)
+        self.label_792.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_792.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_792.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_792.setText("")
+        self.label_792.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_792.setObjectName("label_792")
+        self.horizontalLayout_status_led_21.addWidget(self.label_792)
+        self.label_793 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_793.sizePolicy().hasHeightForWidth())
+        self.label_793.setSizePolicy(sizePolicy)
+        self.label_793.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_793.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_793.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_793.setText("")
+        self.label_793.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_793.setObjectName("label_793")
+        self.horizontalLayout_status_led_21.addWidget(self.label_793)
+        self.label_794 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_794.sizePolicy().hasHeightForWidth())
+        self.label_794.setSizePolicy(sizePolicy)
+        self.label_794.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_794.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_794.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_794.setText("")
+        self.label_794.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_794.setObjectName("label_794")
+        self.horizontalLayout_status_led_21.addWidget(self.label_794)
+        self.label_795 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_795.sizePolicy().hasHeightForWidth())
+        self.label_795.setSizePolicy(sizePolicy)
+        self.label_795.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_795.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_795.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_795.setText("")
+        self.label_795.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_795.setObjectName("label_795")
+        self.horizontalLayout_status_led_21.addWidget(self.label_795)
+        self.label_796 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_796.sizePolicy().hasHeightForWidth())
+        self.label_796.setSizePolicy(sizePolicy)
+        self.label_796.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_796.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_796.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_796.setText("")
+        self.label_796.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_796.setObjectName("label_796")
+        self.horizontalLayout_status_led_21.addWidget(self.label_796)
+        self.label_797 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_797.sizePolicy().hasHeightForWidth())
+        self.label_797.setSizePolicy(sizePolicy)
+        self.label_797.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_797.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_797.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_797.setText("")
+        self.label_797.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_797.setObjectName("label_797")
+        self.horizontalLayout_status_led_21.addWidget(self.label_797)
+        self.label_798 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_798.sizePolicy().hasHeightForWidth())
+        self.label_798.setSizePolicy(sizePolicy)
+        self.label_798.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_798.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_798.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_798.setText("")
+        self.label_798.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_798.setObjectName("label_798")
+        self.horizontalLayout_status_led_21.addWidget(self.label_798)
+        self.label_799 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_799.sizePolicy().hasHeightForWidth())
+        self.label_799.setSizePolicy(sizePolicy)
+        self.label_799.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_799.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_799.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_799.setText("")
+        self.label_799.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_799.setObjectName("label_799")
+        self.horizontalLayout_status_led_21.addWidget(self.label_799)
+        self.label_800 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_800.sizePolicy().hasHeightForWidth())
+        self.label_800.setSizePolicy(sizePolicy)
+        self.label_800.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_800.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_800.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_800.setText("")
+        self.label_800.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_800.setObjectName("label_800")
+        self.horizontalLayout_status_led_21.addWidget(self.label_800)
+        self.label_801 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_801.sizePolicy().hasHeightForWidth())
+        self.label_801.setSizePolicy(sizePolicy)
+        self.label_801.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_801.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_801.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_801.setText("")
+        self.label_801.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_801.setObjectName("label_801")
+        self.horizontalLayout_status_led_21.addWidget(self.label_801)
+        self.label_802 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_802.sizePolicy().hasHeightForWidth())
+        self.label_802.setSizePolicy(sizePolicy)
+        self.label_802.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_802.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_802.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_802.setText("")
+        self.label_802.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_802.setObjectName("label_802")
+        self.horizontalLayout_status_led_21.addWidget(self.label_802)
+        self.label_803 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_803.sizePolicy().hasHeightForWidth())
+        self.label_803.setSizePolicy(sizePolicy)
+        self.label_803.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_803.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_803.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_803.setText("")
+        self.label_803.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_803.setObjectName("label_803")
+        self.horizontalLayout_status_led_21.addWidget(self.label_803)
+        self.verticalLayout_31.addLayout(self.horizontalLayout_status_led_21)
+        self.verticalLayout_30.addLayout(self.verticalLayout_31)
+        self.verticalLayout_32 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_32.setSpacing(1)
+        self.verticalLayout_32.setObjectName("verticalLayout_32")
+        self.horizontalLayout_27 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_27.setSpacing(0)
+        self.horizontalLayout_27.setObjectName("horizontalLayout_27")
+        self.label_804 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_804.sizePolicy().hasHeightForWidth())
+        self.label_804.setSizePolicy(sizePolicy)
+        self.label_804.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_804.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_804.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_804.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_804.setObjectName("label_804")
+        self.horizontalLayout_27.addWidget(self.label_804)
+        self.label_805 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_805.sizePolicy().hasHeightForWidth())
+        self.label_805.setSizePolicy(sizePolicy)
+        self.label_805.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_805.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_805.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_805.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_805.setObjectName("label_805")
+        self.horizontalLayout_27.addWidget(self.label_805)
+        self.label_806 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_806.sizePolicy().hasHeightForWidth())
+        self.label_806.setSizePolicy(sizePolicy)
+        self.label_806.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_806.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_806.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_806.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_806.setObjectName("label_806")
+        self.horizontalLayout_27.addWidget(self.label_806)
+        self.label_807 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_807.sizePolicy().hasHeightForWidth())
+        self.label_807.setSizePolicy(sizePolicy)
+        self.label_807.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_807.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_807.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_807.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_807.setObjectName("label_807")
+        self.horizontalLayout_27.addWidget(self.label_807)
+        self.label_808 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_808.sizePolicy().hasHeightForWidth())
+        self.label_808.setSizePolicy(sizePolicy)
+        self.label_808.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_808.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_808.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_808.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_808.setObjectName("label_808")
+        self.horizontalLayout_27.addWidget(self.label_808)
+        self.label_809 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_809.sizePolicy().hasHeightForWidth())
+        self.label_809.setSizePolicy(sizePolicy)
+        self.label_809.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_809.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_809.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_809.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_809.setObjectName("label_809")
+        self.horizontalLayout_27.addWidget(self.label_809)
+        self.label_810 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_810.sizePolicy().hasHeightForWidth())
+        self.label_810.setSizePolicy(sizePolicy)
+        self.label_810.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_810.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_810.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_810.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_810.setObjectName("label_810")
+        self.horizontalLayout_27.addWidget(self.label_810)
+        self.label_811 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_811.sizePolicy().hasHeightForWidth())
+        self.label_811.setSizePolicy(sizePolicy)
+        self.label_811.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_811.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_811.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_811.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_811.setObjectName("label_811")
+        self.horizontalLayout_27.addWidget(self.label_811)
+        self.label_812 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_812.sizePolicy().hasHeightForWidth())
+        self.label_812.setSizePolicy(sizePolicy)
+        self.label_812.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_812.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_812.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_812.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_812.setObjectName("label_812")
+        self.horizontalLayout_27.addWidget(self.label_812)
+        self.label_813 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_813.sizePolicy().hasHeightForWidth())
+        self.label_813.setSizePolicy(sizePolicy)
+        self.label_813.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_813.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_813.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_813.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_813.setObjectName("label_813")
+        self.horizontalLayout_27.addWidget(self.label_813)
+        self.label_814 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_814.sizePolicy().hasHeightForWidth())
+        self.label_814.setSizePolicy(sizePolicy)
+        self.label_814.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_814.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_814.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_814.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_814.setObjectName("label_814")
+        self.horizontalLayout_27.addWidget(self.label_814)
+        self.label_815 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_815.sizePolicy().hasHeightForWidth())
+        self.label_815.setSizePolicy(sizePolicy)
+        self.label_815.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_815.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_815.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_815.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_815.setObjectName("label_815")
+        self.horizontalLayout_27.addWidget(self.label_815)
+        self.label_816 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_816.sizePolicy().hasHeightForWidth())
+        self.label_816.setSizePolicy(sizePolicy)
+        self.label_816.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_816.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_816.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_816.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_816.setObjectName("label_816")
+        self.horizontalLayout_27.addWidget(self.label_816)
+        self.label_817 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_817.sizePolicy().hasHeightForWidth())
+        self.label_817.setSizePolicy(sizePolicy)
+        self.label_817.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_817.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_817.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_817.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_817.setObjectName("label_817")
+        self.horizontalLayout_27.addWidget(self.label_817)
+        self.label_818 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_818.sizePolicy().hasHeightForWidth())
+        self.label_818.setSizePolicy(sizePolicy)
+        self.label_818.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_818.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_818.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_818.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_818.setObjectName("label_818")
+        self.horizontalLayout_27.addWidget(self.label_818)
+        self.label_819 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_819.sizePolicy().hasHeightForWidth())
+        self.label_819.setSizePolicy(sizePolicy)
+        self.label_819.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_819.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_819.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_819.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_819.setObjectName("label_819")
+        self.horizontalLayout_27.addWidget(self.label_819)
+        self.verticalLayout_32.addLayout(self.horizontalLayout_27)
+        self.horizontalLayout_status_led_22 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_status_led_22.setSpacing(10)
+        self.horizontalLayout_status_led_22.setObjectName("horizontalLayout_status_led_22")
+        self.label_820 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_820.sizePolicy().hasHeightForWidth())
+        self.label_820.setSizePolicy(sizePolicy)
+        self.label_820.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_820.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_820.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_820.setText("")
+        self.label_820.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_820.setObjectName("label_820")
+        self.horizontalLayout_status_led_22.addWidget(self.label_820)
+        self.label_821 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_821.sizePolicy().hasHeightForWidth())
+        self.label_821.setSizePolicy(sizePolicy)
+        self.label_821.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_821.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_821.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_821.setText("")
+        self.label_821.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_821.setObjectName("label_821")
+        self.horizontalLayout_status_led_22.addWidget(self.label_821)
+        self.label_822 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_822.sizePolicy().hasHeightForWidth())
+        self.label_822.setSizePolicy(sizePolicy)
+        self.label_822.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_822.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_822.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_822.setText("")
+        self.label_822.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_822.setObjectName("label_822")
+        self.horizontalLayout_status_led_22.addWidget(self.label_822)
+        self.label_823 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_823.sizePolicy().hasHeightForWidth())
+        self.label_823.setSizePolicy(sizePolicy)
+        self.label_823.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_823.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_823.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_823.setText("")
+        self.label_823.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_823.setObjectName("label_823")
+        self.horizontalLayout_status_led_22.addWidget(self.label_823)
+        self.label_824 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_824.sizePolicy().hasHeightForWidth())
+        self.label_824.setSizePolicy(sizePolicy)
+        self.label_824.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_824.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_824.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_824.setText("")
+        self.label_824.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_824.setObjectName("label_824")
+        self.horizontalLayout_status_led_22.addWidget(self.label_824)
+        self.label_825 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_825.sizePolicy().hasHeightForWidth())
+        self.label_825.setSizePolicy(sizePolicy)
+        self.label_825.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_825.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_825.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_825.setText("")
+        self.label_825.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_825.setObjectName("label_825")
+        self.horizontalLayout_status_led_22.addWidget(self.label_825)
+        self.label_826 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_826.sizePolicy().hasHeightForWidth())
+        self.label_826.setSizePolicy(sizePolicy)
+        self.label_826.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_826.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_826.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_826.setText("")
+        self.label_826.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_826.setObjectName("label_826")
+        self.horizontalLayout_status_led_22.addWidget(self.label_826)
+        self.label_827 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_827.sizePolicy().hasHeightForWidth())
+        self.label_827.setSizePolicy(sizePolicy)
+        self.label_827.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_827.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_827.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_827.setText("")
+        self.label_827.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_827.setObjectName("label_827")
+        self.horizontalLayout_status_led_22.addWidget(self.label_827)
+        self.label_828 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_828.sizePolicy().hasHeightForWidth())
+        self.label_828.setSizePolicy(sizePolicy)
+        self.label_828.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_828.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_828.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_828.setText("")
+        self.label_828.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_828.setObjectName("label_828")
+        self.horizontalLayout_status_led_22.addWidget(self.label_828)
+        self.label_829 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_829.sizePolicy().hasHeightForWidth())
+        self.label_829.setSizePolicy(sizePolicy)
+        self.label_829.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_829.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_829.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #ffffff, /* 渐变为绿色 */\n"
+"    stop: 0.5 #ffffff, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #cccccc); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_829.setText("")
+        self.label_829.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_829.setObjectName("label_829")
+        self.horizontalLayout_status_led_22.addWidget(self.label_829)
+        self.label_830 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_830.sizePolicy().hasHeightForWidth())
+        self.label_830.setSizePolicy(sizePolicy)
+        self.label_830.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_830.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_830.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #ffffff, /* 渐变为绿色 */\n"
+"    stop: 0.5 #ffffff, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #cccccc); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_830.setText("")
+        self.label_830.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_830.setObjectName("label_830")
+        self.horizontalLayout_status_led_22.addWidget(self.label_830)
+        self.label_831 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_831.sizePolicy().hasHeightForWidth())
+        self.label_831.setSizePolicy(sizePolicy)
+        self.label_831.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_831.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_831.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_831.setText("")
+        self.label_831.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_831.setObjectName("label_831")
+        self.horizontalLayout_status_led_22.addWidget(self.label_831)
+        self.label_832 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_832.sizePolicy().hasHeightForWidth())
+        self.label_832.setSizePolicy(sizePolicy)
+        self.label_832.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_832.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_832.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_832.setText("")
+        self.label_832.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_832.setObjectName("label_832")
+        self.horizontalLayout_status_led_22.addWidget(self.label_832)
+        self.label_833 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_833.sizePolicy().hasHeightForWidth())
+        self.label_833.setSizePolicy(sizePolicy)
+        self.label_833.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_833.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_833.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_833.setText("")
+        self.label_833.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_833.setObjectName("label_833")
+        self.horizontalLayout_status_led_22.addWidget(self.label_833)
+        self.label_834 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_834.sizePolicy().hasHeightForWidth())
+        self.label_834.setSizePolicy(sizePolicy)
+        self.label_834.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_834.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_834.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_834.setText("")
+        self.label_834.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_834.setObjectName("label_834")
+        self.horizontalLayout_status_led_22.addWidget(self.label_834)
+        self.label_835 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_835.sizePolicy().hasHeightForWidth())
+        self.label_835.setSizePolicy(sizePolicy)
+        self.label_835.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_835.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_835.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_835.setText("")
+        self.label_835.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_835.setObjectName("label_835")
+        self.horizontalLayout_status_led_22.addWidget(self.label_835)
+        self.verticalLayout_32.addLayout(self.horizontalLayout_status_led_22)
+        self.verticalLayout_30.addLayout(self.verticalLayout_32)
+        self.verticalLayout_33 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_33.setSpacing(1)
+        self.verticalLayout_33.setObjectName("verticalLayout_33")
+        self.horizontalLayout_28 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_28.setSpacing(0)
+        self.horizontalLayout_28.setObjectName("horizontalLayout_28")
+        self.label_836 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_836.sizePolicy().hasHeightForWidth())
+        self.label_836.setSizePolicy(sizePolicy)
+        self.label_836.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_836.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_836.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_836.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_836.setObjectName("label_836")
+        self.horizontalLayout_28.addWidget(self.label_836)
+        self.label_837 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_837.sizePolicy().hasHeightForWidth())
+        self.label_837.setSizePolicy(sizePolicy)
+        self.label_837.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_837.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_837.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_837.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_837.setObjectName("label_837")
+        self.horizontalLayout_28.addWidget(self.label_837)
+        self.label_838 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_838.sizePolicy().hasHeightForWidth())
+        self.label_838.setSizePolicy(sizePolicy)
+        self.label_838.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_838.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_838.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_838.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_838.setObjectName("label_838")
+        self.horizontalLayout_28.addWidget(self.label_838)
+        self.label_839 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_839.sizePolicy().hasHeightForWidth())
+        self.label_839.setSizePolicy(sizePolicy)
+        self.label_839.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_839.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_839.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_839.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_839.setObjectName("label_839")
+        self.horizontalLayout_28.addWidget(self.label_839)
+        self.label_840 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_840.sizePolicy().hasHeightForWidth())
+        self.label_840.setSizePolicy(sizePolicy)
+        self.label_840.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_840.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_840.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_840.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_840.setObjectName("label_840")
+        self.horizontalLayout_28.addWidget(self.label_840)
+        self.label_841 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_841.sizePolicy().hasHeightForWidth())
+        self.label_841.setSizePolicy(sizePolicy)
+        self.label_841.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_841.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_841.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_841.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_841.setObjectName("label_841")
+        self.horizontalLayout_28.addWidget(self.label_841)
+        self.label_842 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_842.sizePolicy().hasHeightForWidth())
+        self.label_842.setSizePolicy(sizePolicy)
+        self.label_842.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_842.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_842.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_842.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_842.setObjectName("label_842")
+        self.horizontalLayout_28.addWidget(self.label_842)
+        self.label_843 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_843.sizePolicy().hasHeightForWidth())
+        self.label_843.setSizePolicy(sizePolicy)
+        self.label_843.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_843.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_843.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_843.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_843.setObjectName("label_843")
+        self.horizontalLayout_28.addWidget(self.label_843)
+        self.label_844 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_844.sizePolicy().hasHeightForWidth())
+        self.label_844.setSizePolicy(sizePolicy)
+        self.label_844.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_844.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_844.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_844.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_844.setObjectName("label_844")
+        self.horizontalLayout_28.addWidget(self.label_844)
+        self.label_845 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_845.sizePolicy().hasHeightForWidth())
+        self.label_845.setSizePolicy(sizePolicy)
+        self.label_845.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_845.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_845.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_845.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_845.setObjectName("label_845")
+        self.horizontalLayout_28.addWidget(self.label_845)
+        self.label_846 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_846.sizePolicy().hasHeightForWidth())
+        self.label_846.setSizePolicy(sizePolicy)
+        self.label_846.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_846.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_846.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_846.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_846.setObjectName("label_846")
+        self.horizontalLayout_28.addWidget(self.label_846)
+        self.label_847 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_847.sizePolicy().hasHeightForWidth())
+        self.label_847.setSizePolicy(sizePolicy)
+        self.label_847.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_847.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_847.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_847.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_847.setObjectName("label_847")
+        self.horizontalLayout_28.addWidget(self.label_847)
+        self.label_848 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_848.sizePolicy().hasHeightForWidth())
+        self.label_848.setSizePolicy(sizePolicy)
+        self.label_848.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_848.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_848.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_848.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_848.setObjectName("label_848")
+        self.horizontalLayout_28.addWidget(self.label_848)
+        self.label_849 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_849.sizePolicy().hasHeightForWidth())
+        self.label_849.setSizePolicy(sizePolicy)
+        self.label_849.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_849.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_849.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_849.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_849.setObjectName("label_849")
+        self.horizontalLayout_28.addWidget(self.label_849)
+        self.label_850 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_850.sizePolicy().hasHeightForWidth())
+        self.label_850.setSizePolicy(sizePolicy)
+        self.label_850.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_850.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_850.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_850.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_850.setObjectName("label_850")
+        self.horizontalLayout_28.addWidget(self.label_850)
+        self.label_851 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_851.sizePolicy().hasHeightForWidth())
+        self.label_851.setSizePolicy(sizePolicy)
+        self.label_851.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_851.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_851.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_851.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_851.setObjectName("label_851")
+        self.horizontalLayout_28.addWidget(self.label_851)
+        self.verticalLayout_33.addLayout(self.horizontalLayout_28)
+        self.horizontalLayout_status_led_23 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_status_led_23.setSpacing(10)
+        self.horizontalLayout_status_led_23.setObjectName("horizontalLayout_status_led_23")
+        self.label_852 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_852.sizePolicy().hasHeightForWidth())
+        self.label_852.setSizePolicy(sizePolicy)
+        self.label_852.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_852.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_852.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_852.setText("")
+        self.label_852.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_852.setObjectName("label_852")
+        self.horizontalLayout_status_led_23.addWidget(self.label_852)
+        self.label_853 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_853.sizePolicy().hasHeightForWidth())
+        self.label_853.setSizePolicy(sizePolicy)
+        self.label_853.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_853.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_853.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #aaaaaa, /* 渐变为绿色 */\n"
+"    stop: 0.5 #999999, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #666666); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_853.setText("")
+        self.label_853.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_853.setObjectName("label_853")
+        self.horizontalLayout_status_led_23.addWidget(self.label_853)
+        self.label_854 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_854.sizePolicy().hasHeightForWidth())
+        self.label_854.setSizePolicy(sizePolicy)
+        self.label_854.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_854.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_854.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #aaaaaa, /* 渐变为绿色 */\n"
+"    stop: 0.5 #999999, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #666666); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_854.setText("")
+        self.label_854.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_854.setObjectName("label_854")
+        self.horizontalLayout_status_led_23.addWidget(self.label_854)
+        self.label_855 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_855.sizePolicy().hasHeightForWidth())
+        self.label_855.setSizePolicy(sizePolicy)
+        self.label_855.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_855.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_855.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #aaaaaa, /* 渐变为绿色 */\n"
+"    stop: 0.5 #999999, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #666666); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_855.setText("")
+        self.label_855.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_855.setObjectName("label_855")
+        self.horizontalLayout_status_led_23.addWidget(self.label_855)
+        self.label_856 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_856.sizePolicy().hasHeightForWidth())
+        self.label_856.setSizePolicy(sizePolicy)
+        self.label_856.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_856.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_856.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #aaaaaa, /* 渐变为绿色 */\n"
+"    stop: 0.5 #999999, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #666666); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_856.setText("")
+        self.label_856.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_856.setObjectName("label_856")
+        self.horizontalLayout_status_led_23.addWidget(self.label_856)
+        self.label_857 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_857.sizePolicy().hasHeightForWidth())
+        self.label_857.setSizePolicy(sizePolicy)
+        self.label_857.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_857.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_857.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_857.setText("")
+        self.label_857.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_857.setObjectName("label_857")
+        self.horizontalLayout_status_led_23.addWidget(self.label_857)
+        self.label_858 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_858.sizePolicy().hasHeightForWidth())
+        self.label_858.setSizePolicy(sizePolicy)
+        self.label_858.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_858.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_858.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_858.setText("")
+        self.label_858.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_858.setObjectName("label_858")
+        self.horizontalLayout_status_led_23.addWidget(self.label_858)
+        self.label_859 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_859.sizePolicy().hasHeightForWidth())
+        self.label_859.setSizePolicy(sizePolicy)
+        self.label_859.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_859.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_859.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_859.setText("")
+        self.label_859.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_859.setObjectName("label_859")
+        self.horizontalLayout_status_led_23.addWidget(self.label_859)
+        self.label_860 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_860.sizePolicy().hasHeightForWidth())
+        self.label_860.setSizePolicy(sizePolicy)
+        self.label_860.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_860.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_860.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_860.setText("")
+        self.label_860.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_860.setObjectName("label_860")
+        self.horizontalLayout_status_led_23.addWidget(self.label_860)
+        self.label_861 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_861.sizePolicy().hasHeightForWidth())
+        self.label_861.setSizePolicy(sizePolicy)
+        self.label_861.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_861.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_861.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_861.setText("")
+        self.label_861.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_861.setObjectName("label_861")
+        self.horizontalLayout_status_led_23.addWidget(self.label_861)
+        self.label_862 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_862.sizePolicy().hasHeightForWidth())
+        self.label_862.setSizePolicy(sizePolicy)
+        self.label_862.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_862.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_862.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_862.setText("")
+        self.label_862.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_862.setObjectName("label_862")
+        self.horizontalLayout_status_led_23.addWidget(self.label_862)
+        self.label_863 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_863.sizePolicy().hasHeightForWidth())
+        self.label_863.setSizePolicy(sizePolicy)
+        self.label_863.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_863.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_863.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_863.setText("")
+        self.label_863.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_863.setObjectName("label_863")
+        self.horizontalLayout_status_led_23.addWidget(self.label_863)
+        self.label_864 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_864.sizePolicy().hasHeightForWidth())
+        self.label_864.setSizePolicy(sizePolicy)
+        self.label_864.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_864.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_864.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_864.setText("")
+        self.label_864.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_864.setObjectName("label_864")
+        self.horizontalLayout_status_led_23.addWidget(self.label_864)
+        self.label_865 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_865.sizePolicy().hasHeightForWidth())
+        self.label_865.setSizePolicy(sizePolicy)
+        self.label_865.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_865.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_865.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_865.setText("")
+        self.label_865.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_865.setObjectName("label_865")
+        self.horizontalLayout_status_led_23.addWidget(self.label_865)
+        self.label_866 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_866.sizePolicy().hasHeightForWidth())
+        self.label_866.setSizePolicy(sizePolicy)
+        self.label_866.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_866.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_866.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_866.setText("")
+        self.label_866.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_866.setObjectName("label_866")
+        self.horizontalLayout_status_led_23.addWidget(self.label_866)
+        self.label_867 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_867.sizePolicy().hasHeightForWidth())
+        self.label_867.setSizePolicy(sizePolicy)
+        self.label_867.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_867.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_867.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_867.setText("")
+        self.label_867.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_867.setObjectName("label_867")
+        self.horizontalLayout_status_led_23.addWidget(self.label_867)
+        self.verticalLayout_33.addLayout(self.horizontalLayout_status_led_23)
+        self.verticalLayout_30.addLayout(self.verticalLayout_33)
+        self.verticalLayout_34 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_34.setSpacing(1)
+        self.verticalLayout_34.setObjectName("verticalLayout_34")
+        self.horizontalLayout_status_bit_7 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_status_bit_7.setSpacing(0)
+        self.horizontalLayout_status_bit_7.setObjectName("horizontalLayout_status_bit_7")
+        self.label_868 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_868.sizePolicy().hasHeightForWidth())
+        self.label_868.setSizePolicy(sizePolicy)
+        self.label_868.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_868.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_868.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_868.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_868.setObjectName("label_868")
+        self.horizontalLayout_status_bit_7.addWidget(self.label_868)
+        self.label_869 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_869.sizePolicy().hasHeightForWidth())
+        self.label_869.setSizePolicy(sizePolicy)
+        self.label_869.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_869.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_869.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_869.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_869.setObjectName("label_869")
+        self.horizontalLayout_status_bit_7.addWidget(self.label_869)
+        self.label_870 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_870.sizePolicy().hasHeightForWidth())
+        self.label_870.setSizePolicy(sizePolicy)
+        self.label_870.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_870.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_870.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_870.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_870.setObjectName("label_870")
+        self.horizontalLayout_status_bit_7.addWidget(self.label_870)
+        self.label_871 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_871.sizePolicy().hasHeightForWidth())
+        self.label_871.setSizePolicy(sizePolicy)
+        self.label_871.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_871.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_871.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_871.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_871.setObjectName("label_871")
+        self.horizontalLayout_status_bit_7.addWidget(self.label_871)
+        self.label_872 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_872.sizePolicy().hasHeightForWidth())
+        self.label_872.setSizePolicy(sizePolicy)
+        self.label_872.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_872.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_872.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_872.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_872.setObjectName("label_872")
+        self.horizontalLayout_status_bit_7.addWidget(self.label_872)
+        self.label_873 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_873.sizePolicy().hasHeightForWidth())
+        self.label_873.setSizePolicy(sizePolicy)
+        self.label_873.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_873.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_873.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_873.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_873.setObjectName("label_873")
+        self.horizontalLayout_status_bit_7.addWidget(self.label_873)
+        self.label_874 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_874.sizePolicy().hasHeightForWidth())
+        self.label_874.setSizePolicy(sizePolicy)
+        self.label_874.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_874.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_874.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_874.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_874.setObjectName("label_874")
+        self.horizontalLayout_status_bit_7.addWidget(self.label_874)
+        self.label_875 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_875.sizePolicy().hasHeightForWidth())
+        self.label_875.setSizePolicy(sizePolicy)
+        self.label_875.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_875.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_875.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_875.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_875.setObjectName("label_875")
+        self.horizontalLayout_status_bit_7.addWidget(self.label_875)
+        self.label_876 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_876.sizePolicy().hasHeightForWidth())
+        self.label_876.setSizePolicy(sizePolicy)
+        self.label_876.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_876.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_876.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_876.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_876.setObjectName("label_876")
+        self.horizontalLayout_status_bit_7.addWidget(self.label_876)
+        self.label_877 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_877.sizePolicy().hasHeightForWidth())
+        self.label_877.setSizePolicy(sizePolicy)
+        self.label_877.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_877.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_877.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_877.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_877.setObjectName("label_877")
+        self.horizontalLayout_status_bit_7.addWidget(self.label_877)
+        self.label_878 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_878.sizePolicy().hasHeightForWidth())
+        self.label_878.setSizePolicy(sizePolicy)
+        self.label_878.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_878.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_878.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_878.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_878.setObjectName("label_878")
+        self.horizontalLayout_status_bit_7.addWidget(self.label_878)
+        self.label_879 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_879.sizePolicy().hasHeightForWidth())
+        self.label_879.setSizePolicy(sizePolicy)
+        self.label_879.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_879.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_879.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_879.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_879.setObjectName("label_879")
+        self.horizontalLayout_status_bit_7.addWidget(self.label_879)
+        self.label_880 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_880.sizePolicy().hasHeightForWidth())
+        self.label_880.setSizePolicy(sizePolicy)
+        self.label_880.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_880.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_880.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_880.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_880.setObjectName("label_880")
+        self.horizontalLayout_status_bit_7.addWidget(self.label_880)
+        self.label_881 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_881.sizePolicy().hasHeightForWidth())
+        self.label_881.setSizePolicy(sizePolicy)
+        self.label_881.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_881.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_881.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_881.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_881.setObjectName("label_881")
+        self.horizontalLayout_status_bit_7.addWidget(self.label_881)
+        self.label_882 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_882.sizePolicy().hasHeightForWidth())
+        self.label_882.setSizePolicy(sizePolicy)
+        self.label_882.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_882.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_882.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_882.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_882.setObjectName("label_882")
+        self.horizontalLayout_status_bit_7.addWidget(self.label_882)
+        self.label_883 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_883.sizePolicy().hasHeightForWidth())
+        self.label_883.setSizePolicy(sizePolicy)
+        self.label_883.setMinimumSize(QtCore.QSize(31, 8))
+        self.label_883.setMaximumSize(QtCore.QSize(31, 8))
+        self.label_883.setStyleSheet("font: 7pt \"Calibri\";\n"
+"font-weight: 400; /* 设置字体粗细为600 */")
+        self.label_883.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_883.setObjectName("label_883")
+        self.horizontalLayout_status_bit_7.addWidget(self.label_883)
+        self.verticalLayout_34.addLayout(self.horizontalLayout_status_bit_7)
+        self.horizontalLayout_status_led_24 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_status_led_24.setSpacing(10)
+        self.horizontalLayout_status_led_24.setObjectName("horizontalLayout_status_led_24")
+        self.label_884 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_884.sizePolicy().hasHeightForWidth())
+        self.label_884.setSizePolicy(sizePolicy)
+        self.label_884.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_884.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_884.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_884.setText("")
+        self.label_884.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_884.setObjectName("label_884")
+        self.horizontalLayout_status_led_24.addWidget(self.label_884)
+        self.label_885 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_885.sizePolicy().hasHeightForWidth())
+        self.label_885.setSizePolicy(sizePolicy)
+        self.label_885.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_885.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_885.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_885.setText("")
+        self.label_885.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_885.setObjectName("label_885")
+        self.horizontalLayout_status_led_24.addWidget(self.label_885)
+        self.label_886 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_886.sizePolicy().hasHeightForWidth())
+        self.label_886.setSizePolicy(sizePolicy)
+        self.label_886.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_886.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_886.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #aaaaaa, /* 渐变为绿色 */\n"
+"    stop: 0.5 #999999, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #666666); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_886.setText("")
+        self.label_886.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_886.setObjectName("label_886")
+        self.horizontalLayout_status_led_24.addWidget(self.label_886)
+        self.label_887 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_887.sizePolicy().hasHeightForWidth())
+        self.label_887.setSizePolicy(sizePolicy)
+        self.label_887.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_887.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_887.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #aaaaaa, /* 渐变为绿色 */\n"
+"    stop: 0.5 #999999, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #666666); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_887.setText("")
+        self.label_887.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_887.setObjectName("label_887")
+        self.horizontalLayout_status_led_24.addWidget(self.label_887)
+        self.label_888 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_888.sizePolicy().hasHeightForWidth())
+        self.label_888.setSizePolicy(sizePolicy)
+        self.label_888.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_888.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_888.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_888.setText("")
+        self.label_888.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_888.setObjectName("label_888")
+        self.horizontalLayout_status_led_24.addWidget(self.label_888)
+        self.label_889 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_889.sizePolicy().hasHeightForWidth())
+        self.label_889.setSizePolicy(sizePolicy)
+        self.label_889.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_889.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_889.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_889.setText("")
+        self.label_889.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_889.setObjectName("label_889")
+        self.horizontalLayout_status_led_24.addWidget(self.label_889)
+        self.label_890 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_890.sizePolicy().hasHeightForWidth())
+        self.label_890.setSizePolicy(sizePolicy)
+        self.label_890.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_890.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_890.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_890.setText("")
+        self.label_890.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_890.setObjectName("label_890")
+        self.horizontalLayout_status_led_24.addWidget(self.label_890)
+        self.label_891 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_891.sizePolicy().hasHeightForWidth())
+        self.label_891.setSizePolicy(sizePolicy)
+        self.label_891.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_891.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_891.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_891.setText("")
+        self.label_891.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_891.setObjectName("label_891")
+        self.horizontalLayout_status_led_24.addWidget(self.label_891)
+        self.label_892 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_892.sizePolicy().hasHeightForWidth())
+        self.label_892.setSizePolicy(sizePolicy)
+        self.label_892.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_892.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_892.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_892.setText("")
+        self.label_892.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_892.setObjectName("label_892")
+        self.horizontalLayout_status_led_24.addWidget(self.label_892)
+        self.label_893 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_893.sizePolicy().hasHeightForWidth())
+        self.label_893.setSizePolicy(sizePolicy)
+        self.label_893.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_893.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_893.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_893.setText("")
+        self.label_893.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_893.setObjectName("label_893")
+        self.horizontalLayout_status_led_24.addWidget(self.label_893)
+        self.label_894 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_894.sizePolicy().hasHeightForWidth())
+        self.label_894.setSizePolicy(sizePolicy)
+        self.label_894.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_894.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_894.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_894.setText("")
+        self.label_894.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_894.setObjectName("label_894")
+        self.horizontalLayout_status_led_24.addWidget(self.label_894)
+        self.label_895 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_895.sizePolicy().hasHeightForWidth())
+        self.label_895.setSizePolicy(sizePolicy)
+        self.label_895.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_895.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_895.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_895.setText("")
+        self.label_895.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_895.setObjectName("label_895")
+        self.horizontalLayout_status_led_24.addWidget(self.label_895)
+        self.label_896 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_896.sizePolicy().hasHeightForWidth())
+        self.label_896.setSizePolicy(sizePolicy)
+        self.label_896.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_896.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_896.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_896.setText("")
+        self.label_896.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_896.setObjectName("label_896")
+        self.horizontalLayout_status_led_24.addWidget(self.label_896)
+        self.label_897 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_897.sizePolicy().hasHeightForWidth())
+        self.label_897.setSizePolicy(sizePolicy)
+        self.label_897.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_897.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_897.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_897.setText("")
+        self.label_897.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_897.setObjectName("label_897")
+        self.horizontalLayout_status_led_24.addWidget(self.label_897)
+        self.label_898 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_898.sizePolicy().hasHeightForWidth())
+        self.label_898.setSizePolicy(sizePolicy)
+        self.label_898.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_898.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_898.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_898.setText("")
+        self.label_898.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_898.setObjectName("label_898")
+        self.horizontalLayout_status_led_24.addWidget(self.label_898)
+        self.label_899 = QtWidgets.QLabel(self.layoutWidget_10)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_899.sizePolicy().hasHeightForWidth())
+        self.label_899.setSizePolicy(sizePolicy)
+        self.label_899.setMinimumSize(QtCore.QSize(12, 12))
+        self.label_899.setMaximumSize(QtCore.QSize(12, 12))
+        self.label_899.setStyleSheet("QLabel {\n"
+"  border-radius: 6px; /* 使得QLabel成为圆形 */\n"
+"  background: qradialgradient(\n"
+"    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n"
+"    stop: 0 #ffffff, /* 渐变的中心是白色 */\n"
+"    stop: 0.4 #00aa00, /* 渐变为绿色 */\n"
+"    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */\n"
+"    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n"
+"  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n"
+"}")
+        self.label_899.setText("")
+        self.label_899.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_899.setObjectName("label_899")
+        self.horizontalLayout_status_led_24.addWidget(self.label_899)
+        self.verticalLayout_34.addLayout(self.horizontalLayout_status_led_24)
+        self.verticalLayout_30.addLayout(self.verticalLayout_34)
+        self.horizontalLayout_22.addWidget(self.frame_statusReg_init_ledArray_3)
+        self.verticalLayout_2.addLayout(self.horizontalLayout_22)
         self.frame_8 = QtWidgets.QFrame(self.centralwidget)
         self.frame_8.setMaximumSize(QtCore.QSize(16777215, 23))
         self.frame_8.setStyleSheet("QFrame {\n"
@@ -10021,8 +14883,8 @@ class Ui_MainWindow(object):
         self.label_25.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
         self.label_25.setObjectName("label_25")
         self.horizontalLayout_20.addWidget(self.label_25)
-        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_20.addItem(spacerItem6)
+        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_20.addItem(spacerItem7)
         self.pushButton_statusRegReInit_2 = QtWidgets.QPushButton(self.frame_8)
         self.pushButton_statusRegReInit_2.setMinimumSize(QtCore.QSize(110, 0))
         self.pushButton_statusRegReInit_2.setMaximumSize(QtCore.QSize(16777215, 16777215))
@@ -10126,9 +14988,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.addWidget(self.frame_8)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.tableWidget_chainCfg_rstReg_Dev0 = QtWidgets.QTableWidget(self.centralwidget)
-        self.tableWidget_chainCfg_rstReg_Dev0.setMaximumSize(QtCore.QSize(418, 16777215))
-        self.tableWidget_chainCfg_rstReg_Dev0.setStyleSheet("QTableWidget {\n"
+        self.table_chainCfg_rstBlk_Dev0 = QtWidgets.QTableWidget(self.centralwidget)
+        self.table_chainCfg_rstBlk_Dev0.setMaximumSize(QtCore.QSize(418, 16777215))
+        self.table_chainCfg_rstBlk_Dev0.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
 "    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
@@ -10155,30 +15017,30 @@ class Ui_MainWindow(object):
 "    /* 添加其他您需要的样式 */\n"
 "}\n"
 "")
-        self.tableWidget_chainCfg_rstReg_Dev0.setObjectName("tableWidget_chainCfg_rstReg_Dev0")
-        self.tableWidget_chainCfg_rstReg_Dev0.setColumnCount(4)
-        self.tableWidget_chainCfg_rstReg_Dev0.setRowCount(1)
+        self.table_chainCfg_rstBlk_Dev0.setObjectName("table_chainCfg_rstBlk_Dev0")
+        self.table_chainCfg_rstBlk_Dev0.setColumnCount(4)
+        self.table_chainCfg_rstBlk_Dev0.setRowCount(1)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_chainCfg_rstReg_Dev0.setVerticalHeaderItem(0, item)
+        self.table_chainCfg_rstBlk_Dev0.setVerticalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
         item.setTextAlignment(QtCore.Qt.AlignCenter)
-        self.tableWidget_chainCfg_rstReg_Dev0.setHorizontalHeaderItem(0, item)
+        self.table_chainCfg_rstBlk_Dev0.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_chainCfg_rstReg_Dev0.setHorizontalHeaderItem(1, item)
+        self.table_chainCfg_rstBlk_Dev0.setHorizontalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_chainCfg_rstReg_Dev0.setHorizontalHeaderItem(2, item)
+        self.table_chainCfg_rstBlk_Dev0.setHorizontalHeaderItem(2, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_chainCfg_rstReg_Dev0.setHorizontalHeaderItem(3, item)
+        self.table_chainCfg_rstBlk_Dev0.setHorizontalHeaderItem(3, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_chainCfg_rstReg_Dev0.setItem(0, 0, item)
+        self.table_chainCfg_rstBlk_Dev0.setItem(0, 0, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_chainCfg_rstReg_Dev0.setItem(0, 1, item)
+        self.table_chainCfg_rstBlk_Dev0.setItem(0, 1, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_chainCfg_rstReg_Dev0.setItem(0, 2, item)
+        self.table_chainCfg_rstBlk_Dev0.setItem(0, 2, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_chainCfg_rstReg_Dev0.setItem(0, 3, item)
-        self.tableWidget_chainCfg_rstReg_Dev0.verticalHeader().setVisible(False)
-        self.horizontalLayout_3.addWidget(self.tableWidget_chainCfg_rstReg_Dev0)
+        self.table_chainCfg_rstBlk_Dev0.setItem(0, 3, item)
+        self.table_chainCfg_rstBlk_Dev0.verticalHeader().setVisible(False)
+        self.horizontalLayout_3.addWidget(self.table_chainCfg_rstBlk_Dev0)
         self.frame_9 = QtWidgets.QFrame(self.centralwidget)
         self.frame_9.setMinimumSize(QtCore.QSize(500, 0))
         self.frame_9.setStyleSheet("QFrame {\n"
@@ -10189,9 +15051,9 @@ class Ui_MainWindow(object):
         self.frame_9.setLineWidth(0)
         self.frame_9.setObjectName("frame_9")
         self.horizontalLayout_3.addWidget(self.frame_9)
-        self.tableWidget_chainCfg_rstReg_Dev1 = QtWidgets.QTableWidget(self.centralwidget)
-        self.tableWidget_chainCfg_rstReg_Dev1.setMaximumSize(QtCore.QSize(130, 16777215))
-        self.tableWidget_chainCfg_rstReg_Dev1.setStyleSheet("QTableWidget {\n"
+        self.table_chainCfg_rstBlk_Dev1 = QtWidgets.QTableWidget(self.centralwidget)
+        self.table_chainCfg_rstBlk_Dev1.setMaximumSize(QtCore.QSize(130, 16777215))
+        self.table_chainCfg_rstBlk_Dev1.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
 "    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
@@ -10218,17 +15080,17 @@ class Ui_MainWindow(object):
 "    /* 添加其他您需要的样式 */\n"
 "}\n"
 "")
-        self.tableWidget_chainCfg_rstReg_Dev1.setObjectName("tableWidget_chainCfg_rstReg_Dev1")
-        self.tableWidget_chainCfg_rstReg_Dev1.setColumnCount(1)
-        self.tableWidget_chainCfg_rstReg_Dev1.setRowCount(1)
+        self.table_chainCfg_rstBlk_Dev1.setObjectName("table_chainCfg_rstBlk_Dev1")
+        self.table_chainCfg_rstBlk_Dev1.setColumnCount(1)
+        self.table_chainCfg_rstBlk_Dev1.setRowCount(1)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_chainCfg_rstReg_Dev1.setVerticalHeaderItem(0, item)
+        self.table_chainCfg_rstBlk_Dev1.setVerticalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_chainCfg_rstReg_Dev1.setHorizontalHeaderItem(0, item)
+        self.table_chainCfg_rstBlk_Dev1.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_chainCfg_rstReg_Dev1.setItem(0, 0, item)
-        self.tableWidget_chainCfg_rstReg_Dev1.verticalHeader().setVisible(False)
-        self.horizontalLayout_3.addWidget(self.tableWidget_chainCfg_rstReg_Dev1)
+        self.table_chainCfg_rstBlk_Dev1.setItem(0, 0, item)
+        self.table_chainCfg_rstBlk_Dev1.verticalHeader().setVisible(False)
+        self.horizontalLayout_3.addWidget(self.table_chainCfg_rstBlk_Dev1)
         self.frame_statusReg_init_ledArray_2 = QtWidgets.QFrame(self.centralwidget)
         self.frame_statusReg_init_ledArray_2.setMinimumSize(QtCore.QSize(500, 0))
         self.frame_statusReg_init_ledArray_2.setStyleSheet("QFrame {\n"
@@ -10261,161 +15123,161 @@ class Ui_MainWindow(object):
         self.label_21.setText(_translate("MainWindow", "UART Interface Configuration"))
         self.pushButton_uartIfConf.setText(_translate("MainWindow", "CONFIGURE"))
         self.pushButton_uartIfReadBack.setText(_translate("MainWindow", "READ BACK"))
-        item = self.tableWidget_uartIf_conf.verticalHeaderItem(0)
+        item = self.table_chainCfg_uartIfCfg.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
-        item = self.tableWidget_uartIf_conf.verticalHeaderItem(1)
+        item = self.table_chainCfg_uartIfCfg.verticalHeaderItem(1)
         item.setText(_translate("MainWindow", "1"))
-        item = self.tableWidget_uartIf_conf.verticalHeaderItem(2)
+        item = self.table_chainCfg_uartIfCfg.verticalHeaderItem(2)
         item.setText(_translate("MainWindow", "2"))
-        item = self.tableWidget_uartIf_conf.horizontalHeaderItem(0)
+        item = self.table_chainCfg_uartIfCfg.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Address"))
-        item = self.tableWidget_uartIf_conf.horizontalHeaderItem(1)
+        item = self.table_chainCfg_uartIfCfg.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "Register"))
-        item = self.tableWidget_uartIf_conf.horizontalHeaderItem(2)
+        item = self.table_chainCfg_uartIfCfg.horizontalHeaderItem(2)
         item.setText(_translate("MainWindow", "Expected {hex}"))
-        item = self.tableWidget_uartIf_conf.horizontalHeaderItem(3)
+        item = self.table_chainCfg_uartIfCfg.horizontalHeaderItem(3)
         item.setText(_translate("MainWindow", "Actual {hex}"))
-        item = self.tableWidget_uartIf_conf.horizontalHeaderItem(4)
+        item = self.table_chainCfg_uartIfCfg.horizontalHeaderItem(4)
         item.setText(_translate("MainWindow", "UARTDUAL"))
-        item = self.tableWidget_uartIf_conf.horizontalHeaderItem(5)
+        item = self.table_chainCfg_uartIfCfg.horizontalHeaderItem(5)
         item.setText(_translate("MainWindow", "UARTLPBK"))
-        item = self.tableWidget_uartIf_conf.horizontalHeaderItem(6)
+        item = self.table_chainCfg_uartIfCfg.horizontalHeaderItem(6)
         item.setText(_translate("MainWindow", "UARTWRPATH"))
-        item = self.tableWidget_uartIf_conf.horizontalHeaderItem(7)
+        item = self.table_chainCfg_uartIfCfg.horizontalHeaderItem(7)
         item.setText(_translate("MainWindow", "TXUIDLEHIZ"))
-        item = self.tableWidget_uartIf_conf.horizontalHeaderItem(8)
+        item = self.table_chainCfg_uartIfCfg.horizontalHeaderItem(8)
         item.setText(_translate("MainWindow", "TXLIDLEHIZ"))
-        item = self.tableWidget_uartIf_conf.horizontalHeaderItem(9)
+        item = self.table_chainCfg_uartIfCfg.horizontalHeaderItem(9)
         item.setText(_translate("MainWindow", "UARTDCEN"))
-        item = self.tableWidget_uartIf_conf.horizontalHeaderItem(10)
+        item = self.table_chainCfg_uartIfCfg.horizontalHeaderItem(10)
         item.setText(_translate("MainWindow", "UARTALVCNTEN"))
-        item = self.tableWidget_uartIf_conf.horizontalHeaderItem(11)
+        item = self.table_chainCfg_uartIfCfg.horizontalHeaderItem(11)
         item.setText(_translate("MainWindow", "{logic Zero}"))
-        item = self.tableWidget_uartIf_conf.horizontalHeaderItem(12)
+        item = self.table_chainCfg_uartIfCfg.horizontalHeaderItem(12)
         item.setText(_translate("MainWindow", "DBLBUFEN"))
-        item = self.tableWidget_uartIf_conf.horizontalHeaderItem(13)
+        item = self.table_chainCfg_uartIfCfg.horizontalHeaderItem(13)
         item.setText(_translate("MainWindow", "Reseved/SPI[6:0]"))
-        __sortingEnabled = self.tableWidget_uartIf_conf.isSortingEnabled()
-        self.tableWidget_uartIf_conf.setSortingEnabled(False)
-        item = self.tableWidget_uartIf_conf.item(0, 0)
+        __sortingEnabled = self.table_chainCfg_uartIfCfg.isSortingEnabled()
+        self.table_chainCfg_uartIfCfg.setSortingEnabled(False)
+        item = self.table_chainCfg_uartIfCfg.item(0, 0)
         item.setText(_translate("MainWindow", "0x10"))
-        item = self.tableWidget_uartIf_conf.item(0, 1)
+        item = self.table_chainCfg_uartIfCfg.item(0, 1)
         item.setText(_translate("MainWindow", "UIFCFG (Signle AFE)"))
-        item = self.tableWidget_uartIf_conf.item(0, 2)
+        item = self.table_chainCfg_uartIfCfg.item(0, 2)
         item.setText(_translate("MainWindow", "2600"))
-        item = self.tableWidget_uartIf_conf.item(0, 3)
+        item = self.table_chainCfg_uartIfCfg.item(0, 3)
         item.setText(_translate("MainWindow", "A410"))
-        item = self.tableWidget_uartIf_conf.item(1, 0)
+        item = self.table_chainCfg_uartIfCfg.item(1, 0)
         item.setText(_translate("MainWindow", "0x10"))
-        item = self.tableWidget_uartIf_conf.item(1, 1)
+        item = self.table_chainCfg_uartIfCfg.item(1, 1)
         item.setText(_translate("MainWindow", "UIFCFG (Dual, Device 0)"))
-        item = self.tableWidget_uartIf_conf.item(1, 2)
+        item = self.table_chainCfg_uartIfCfg.item(1, 2)
         item.setText(_translate("MainWindow", "2600"))
-        item = self.tableWidget_uartIf_conf.item(1, 3)
+        item = self.table_chainCfg_uartIfCfg.item(1, 3)
         item.setText(_translate("MainWindow", "A410"))
-        item = self.tableWidget_uartIf_conf.item(2, 0)
+        item = self.table_chainCfg_uartIfCfg.item(2, 0)
         item.setText(_translate("MainWindow", "0x10"))
-        item = self.tableWidget_uartIf_conf.item(2, 1)
+        item = self.table_chainCfg_uartIfCfg.item(2, 1)
         item.setText(_translate("MainWindow", "UIFCFG (Dual, Device 1)"))
-        item = self.tableWidget_uartIf_conf.item(2, 2)
+        item = self.table_chainCfg_uartIfCfg.item(2, 2)
         item.setText(_translate("MainWindow", "2600"))
-        item = self.tableWidget_uartIf_conf.item(2, 3)
+        item = self.table_chainCfg_uartIfCfg.item(2, 3)
         item.setText(_translate("MainWindow", "A410"))
-        self.tableWidget_uartIf_conf.setSortingEnabled(__sortingEnabled)
-        item = self.tableWidget_uartIf_addr.verticalHeaderItem(0)
+        self.table_chainCfg_uartIfCfg.setSortingEnabled(__sortingEnabled)
+        item = self.table_chainCfg_uartIfAddr.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
-        item = self.tableWidget_uartIf_addr.verticalHeaderItem(1)
+        item = self.table_chainCfg_uartIfAddr.verticalHeaderItem(1)
         item.setText(_translate("MainWindow", "1"))
-        item = self.tableWidget_uartIf_addr.verticalHeaderItem(2)
+        item = self.table_chainCfg_uartIfAddr.verticalHeaderItem(2)
         item.setText(_translate("MainWindow", "2"))
-        item = self.tableWidget_uartIf_addr.horizontalHeaderItem(0)
+        item = self.table_chainCfg_uartIfAddr.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Address"))
-        item = self.tableWidget_uartIf_addr.horizontalHeaderItem(1)
+        item = self.table_chainCfg_uartIfAddr.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "Register"))
-        item = self.tableWidget_uartIf_addr.horizontalHeaderItem(2)
+        item = self.table_chainCfg_uartIfAddr.horizontalHeaderItem(2)
         item.setText(_translate("MainWindow", "Expected {hex}"))
-        item = self.tableWidget_uartIf_addr.horizontalHeaderItem(3)
+        item = self.table_chainCfg_uartIfAddr.horizontalHeaderItem(3)
         item.setText(_translate("MainWindow", "Actual {hex}"))
-        item = self.tableWidget_uartIf_addr.horizontalHeaderItem(4)
+        item = self.table_chainCfg_uartIfAddr.horizontalHeaderItem(4)
         item.setText(_translate("MainWindow", "UARTDUAL"))
-        item = self.tableWidget_uartIf_addr.horizontalHeaderItem(5)
+        item = self.table_chainCfg_uartIfAddr.horizontalHeaderItem(5)
         item.setText(_translate("MainWindow", "UARTLPBK"))
-        item = self.tableWidget_uartIf_addr.horizontalHeaderItem(6)
+        item = self.table_chainCfg_uartIfAddr.horizontalHeaderItem(6)
         item.setText(_translate("MainWindow", "UARTWRPATH"))
-        item = self.tableWidget_uartIf_addr.horizontalHeaderItem(7)
+        item = self.table_chainCfg_uartIfAddr.horizontalHeaderItem(7)
         item.setText(_translate("MainWindow", "TXUIDLEHIZ"))
-        __sortingEnabled = self.tableWidget_uartIf_addr.isSortingEnabled()
-        self.tableWidget_uartIf_addr.setSortingEnabled(False)
-        item = self.tableWidget_uartIf_addr.item(0, 0)
+        __sortingEnabled = self.table_chainCfg_uartIfAddr.isSortingEnabled()
+        self.table_chainCfg_uartIfAddr.setSortingEnabled(False)
+        item = self.table_chainCfg_uartIfAddr.item(0, 0)
         item.setText(_translate("MainWindow", "0x10"))
-        item = self.tableWidget_uartIf_addr.item(0, 1)
+        item = self.table_chainCfg_uartIfAddr.item(0, 1)
         item.setText(_translate("MainWindow", "UIFCFG (Signle AFE)"))
-        item = self.tableWidget_uartIf_addr.item(0, 2)
+        item = self.table_chainCfg_uartIfAddr.item(0, 2)
         item.setText(_translate("MainWindow", "2600"))
-        item = self.tableWidget_uartIf_addr.item(0, 3)
+        item = self.table_chainCfg_uartIfAddr.item(0, 3)
         item.setText(_translate("MainWindow", "A410"))
-        item = self.tableWidget_uartIf_addr.item(1, 0)
+        item = self.table_chainCfg_uartIfAddr.item(1, 0)
         item.setText(_translate("MainWindow", "0x10"))
-        item = self.tableWidget_uartIf_addr.item(1, 1)
+        item = self.table_chainCfg_uartIfAddr.item(1, 1)
         item.setText(_translate("MainWindow", "UIFCFG (Dual, Device 0)"))
-        item = self.tableWidget_uartIf_addr.item(1, 2)
+        item = self.table_chainCfg_uartIfAddr.item(1, 2)
         item.setText(_translate("MainWindow", "2600"))
-        item = self.tableWidget_uartIf_addr.item(1, 3)
+        item = self.table_chainCfg_uartIfAddr.item(1, 3)
         item.setText(_translate("MainWindow", "A410"))
-        item = self.tableWidget_uartIf_addr.item(2, 0)
+        item = self.table_chainCfg_uartIfAddr.item(2, 0)
         item.setText(_translate("MainWindow", "0x10"))
-        item = self.tableWidget_uartIf_addr.item(2, 1)
+        item = self.table_chainCfg_uartIfAddr.item(2, 1)
         item.setText(_translate("MainWindow", "UIFCFG (Dual, Device 1)"))
-        item = self.tableWidget_uartIf_addr.item(2, 2)
+        item = self.table_chainCfg_uartIfAddr.item(2, 2)
         item.setText(_translate("MainWindow", "2600"))
-        item = self.tableWidget_uartIf_addr.item(2, 3)
+        item = self.table_chainCfg_uartIfAddr.item(2, 3)
         item.setText(_translate("MainWindow", "A410"))
-        self.tableWidget_uartIf_addr.setSortingEnabled(__sortingEnabled)
+        self.table_chainCfg_uartIfAddr.setSortingEnabled(__sortingEnabled)
         self.label_22.setText(_translate("MainWindow", "General Summary Information (Power-Up)"))
         self.lineEdit_warnStatusPwrUp.setText(_translate("MainWindow", "WARNING: Uexpected Power-Up Status - Confirm Setup"))
-        item = self.tableWidget_statusReg_pwrUpDev0.verticalHeaderItem(0)
+        item = self.table_chainCfg_statusBlk_pwrUpDev0.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
-        item = self.tableWidget_statusReg_pwrUpDev0.verticalHeaderItem(1)
+        item = self.table_chainCfg_statusBlk_pwrUpDev0.verticalHeaderItem(1)
         item.setText(_translate("MainWindow", "1"))
-        item = self.tableWidget_statusReg_pwrUpDev0.verticalHeaderItem(2)
+        item = self.table_chainCfg_statusBlk_pwrUpDev0.verticalHeaderItem(2)
         item.setText(_translate("MainWindow", "2"))
-        item = self.tableWidget_statusReg_pwrUpDev0.verticalHeaderItem(3)
+        item = self.table_chainCfg_statusBlk_pwrUpDev0.verticalHeaderItem(3)
         item.setText(_translate("MainWindow", "3"))
-        item = self.tableWidget_statusReg_pwrUpDev0.horizontalHeaderItem(0)
+        item = self.table_chainCfg_statusBlk_pwrUpDev0.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Address"))
-        item = self.tableWidget_statusReg_pwrUpDev0.horizontalHeaderItem(1)
+        item = self.table_chainCfg_statusBlk_pwrUpDev0.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "Register"))
-        item = self.tableWidget_statusReg_pwrUpDev0.horizontalHeaderItem(2)
+        item = self.table_chainCfg_statusBlk_pwrUpDev0.horizontalHeaderItem(2)
         item.setText(_translate("MainWindow", "Expected {hex}"))
-        item = self.tableWidget_statusReg_pwrUpDev0.horizontalHeaderItem(3)
+        item = self.table_chainCfg_statusBlk_pwrUpDev0.horizontalHeaderItem(3)
         item.setText(_translate("MainWindow", "Actual {hex}"))
-        __sortingEnabled = self.tableWidget_statusReg_pwrUpDev0.isSortingEnabled()
-        self.tableWidget_statusReg_pwrUpDev0.setSortingEnabled(False)
-        item = self.tableWidget_statusReg_pwrUpDev0.item(0, 0)
+        __sortingEnabled = self.table_chainCfg_statusBlk_pwrUpDev0.isSortingEnabled()
+        self.table_chainCfg_statusBlk_pwrUpDev0.setSortingEnabled(False)
+        item = self.table_chainCfg_statusBlk_pwrUpDev0.item(0, 0)
         item.setText(_translate("MainWindow", "0x10"))
-        item = self.tableWidget_statusReg_pwrUpDev0.item(0, 1)
+        item = self.table_chainCfg_statusBlk_pwrUpDev0.item(0, 1)
         item.setText(_translate("MainWindow", "UIFCFG (Signle AFE)"))
-        item = self.tableWidget_statusReg_pwrUpDev0.item(0, 2)
+        item = self.table_chainCfg_statusBlk_pwrUpDev0.item(0, 2)
         item.setText(_translate("MainWindow", "2600"))
-        item = self.tableWidget_statusReg_pwrUpDev0.item(0, 3)
+        item = self.table_chainCfg_statusBlk_pwrUpDev0.item(0, 3)
         item.setText(_translate("MainWindow", "A410"))
-        item = self.tableWidget_statusReg_pwrUpDev0.item(1, 0)
+        item = self.table_chainCfg_statusBlk_pwrUpDev0.item(1, 0)
         item.setText(_translate("MainWindow", "0x10"))
-        item = self.tableWidget_statusReg_pwrUpDev0.item(1, 1)
+        item = self.table_chainCfg_statusBlk_pwrUpDev0.item(1, 1)
         item.setText(_translate("MainWindow", "UIFCFG (Dual, Device 0)"))
-        item = self.tableWidget_statusReg_pwrUpDev0.item(1, 2)
+        item = self.table_chainCfg_statusBlk_pwrUpDev0.item(1, 2)
         item.setText(_translate("MainWindow", "2600"))
-        item = self.tableWidget_statusReg_pwrUpDev0.item(1, 3)
+        item = self.table_chainCfg_statusBlk_pwrUpDev0.item(1, 3)
         item.setText(_translate("MainWindow", "A410"))
-        item = self.tableWidget_statusReg_pwrUpDev0.item(2, 0)
+        item = self.table_chainCfg_statusBlk_pwrUpDev0.item(2, 0)
         item.setText(_translate("MainWindow", "0x10"))
-        item = self.tableWidget_statusReg_pwrUpDev0.item(2, 1)
+        item = self.table_chainCfg_statusBlk_pwrUpDev0.item(2, 1)
         item.setText(_translate("MainWindow", "UIFCFG (Dual, Device 1)"))
-        item = self.tableWidget_statusReg_pwrUpDev0.item(2, 2)
+        item = self.table_chainCfg_statusBlk_pwrUpDev0.item(2, 2)
         item.setText(_translate("MainWindow", "2600"))
-        item = self.tableWidget_statusReg_pwrUpDev0.item(2, 3)
+        item = self.table_chainCfg_statusBlk_pwrUpDev0.item(2, 3)
         item.setText(_translate("MainWindow", "A410"))
-        self.tableWidget_statusReg_pwrUpDev0.setSortingEnabled(__sortingEnabled)
+        self.table_chainCfg_statusBlk_pwrUpDev0.setSortingEnabled(__sortingEnabled)
         self.label_219.setText(_translate("MainWindow", "ACQ"))
         self.label_223.setText(_translate("MainWindow", "RSET"))
         self.label_224.setText(_translate("MainWindow", "RJCT"))
@@ -10480,15 +15342,15 @@ class Ui_MainWindow(object):
         self.label_283.setText(_translate("MainWindow", "REGE"))
         self.label_284.setText(_translate("MainWindow", "MMBT"))
         self.label_285.setText(_translate("MainWindow", "CBBT"))
-        item = self.tableWidget_statusReg_pwrUpDev1.verticalHeaderItem(0)
+        item = self.table_chainCfg_statusBlk_pwrUpDev1.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
-        item = self.tableWidget_statusReg_pwrUpDev1.verticalHeaderItem(1)
+        item = self.table_chainCfg_statusBlk_pwrUpDev1.verticalHeaderItem(1)
         item.setText(_translate("MainWindow", "1"))
-        item = self.tableWidget_statusReg_pwrUpDev1.verticalHeaderItem(2)
+        item = self.table_chainCfg_statusBlk_pwrUpDev1.verticalHeaderItem(2)
         item.setText(_translate("MainWindow", "2"))
-        item = self.tableWidget_statusReg_pwrUpDev1.verticalHeaderItem(3)
+        item = self.table_chainCfg_statusBlk_pwrUpDev1.verticalHeaderItem(3)
         item.setText(_translate("MainWindow", "3"))
-        item = self.tableWidget_statusReg_pwrUpDev1.horizontalHeaderItem(0)
+        item = self.table_chainCfg_statusBlk_pwrUpDev1.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Device1"))
         self.label_132.setText(_translate("MainWindow", "ACQ"))
         self.label_133.setText(_translate("MainWindow", "RSET"))
@@ -10560,49 +15422,49 @@ class Ui_MainWindow(object):
         self.pushButton_statusRegClear.setText(_translate("MainWindow", "CLERA COMM"))
         self.pushButton_statusRegInit.setText(_translate("MainWindow", "INITIALIZE"))
         self.pushButton_statusRegReadBack.setText(_translate("MainWindow", "READ BACK"))
-        item = self.tableWidget_statusReg_initDev0.verticalHeaderItem(0)
+        item = self.table_chainCfg_statusBlk_initDev0.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
-        item = self.tableWidget_statusReg_initDev0.verticalHeaderItem(1)
+        item = self.table_chainCfg_statusBlk_initDev0.verticalHeaderItem(1)
         item.setText(_translate("MainWindow", "1"))
-        item = self.tableWidget_statusReg_initDev0.verticalHeaderItem(2)
+        item = self.table_chainCfg_statusBlk_initDev0.verticalHeaderItem(2)
         item.setText(_translate("MainWindow", "2"))
-        item = self.tableWidget_statusReg_initDev0.verticalHeaderItem(3)
+        item = self.table_chainCfg_statusBlk_initDev0.verticalHeaderItem(3)
         item.setText(_translate("MainWindow", "3"))
-        item = self.tableWidget_statusReg_initDev0.horizontalHeaderItem(0)
+        item = self.table_chainCfg_statusBlk_initDev0.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Address"))
-        item = self.tableWidget_statusReg_initDev0.horizontalHeaderItem(1)
+        item = self.table_chainCfg_statusBlk_initDev0.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "Register"))
-        item = self.tableWidget_statusReg_initDev0.horizontalHeaderItem(2)
+        item = self.table_chainCfg_statusBlk_initDev0.horizontalHeaderItem(2)
         item.setText(_translate("MainWindow", "Expected {hex}"))
-        item = self.tableWidget_statusReg_initDev0.horizontalHeaderItem(3)
+        item = self.table_chainCfg_statusBlk_initDev0.horizontalHeaderItem(3)
         item.setText(_translate("MainWindow", "Actual {hex}"))
-        __sortingEnabled = self.tableWidget_statusReg_initDev0.isSortingEnabled()
-        self.tableWidget_statusReg_initDev0.setSortingEnabled(False)
-        item = self.tableWidget_statusReg_initDev0.item(0, 0)
+        __sortingEnabled = self.table_chainCfg_statusBlk_initDev0.isSortingEnabled()
+        self.table_chainCfg_statusBlk_initDev0.setSortingEnabled(False)
+        item = self.table_chainCfg_statusBlk_initDev0.item(0, 0)
         item.setText(_translate("MainWindow", "0x10"))
-        item = self.tableWidget_statusReg_initDev0.item(0, 1)
+        item = self.table_chainCfg_statusBlk_initDev0.item(0, 1)
         item.setText(_translate("MainWindow", "UIFCFG (Signle AFE)"))
-        item = self.tableWidget_statusReg_initDev0.item(0, 2)
+        item = self.table_chainCfg_statusBlk_initDev0.item(0, 2)
         item.setText(_translate("MainWindow", "2600"))
-        item = self.tableWidget_statusReg_initDev0.item(0, 3)
+        item = self.table_chainCfg_statusBlk_initDev0.item(0, 3)
         item.setText(_translate("MainWindow", "A410"))
-        item = self.tableWidget_statusReg_initDev0.item(1, 0)
+        item = self.table_chainCfg_statusBlk_initDev0.item(1, 0)
         item.setText(_translate("MainWindow", "0x10"))
-        item = self.tableWidget_statusReg_initDev0.item(1, 1)
+        item = self.table_chainCfg_statusBlk_initDev0.item(1, 1)
         item.setText(_translate("MainWindow", "UIFCFG (Dual, Device 0)"))
-        item = self.tableWidget_statusReg_initDev0.item(1, 2)
+        item = self.table_chainCfg_statusBlk_initDev0.item(1, 2)
         item.setText(_translate("MainWindow", "2600"))
-        item = self.tableWidget_statusReg_initDev0.item(1, 3)
+        item = self.table_chainCfg_statusBlk_initDev0.item(1, 3)
         item.setText(_translate("MainWindow", "A410"))
-        item = self.tableWidget_statusReg_initDev0.item(2, 0)
+        item = self.table_chainCfg_statusBlk_initDev0.item(2, 0)
         item.setText(_translate("MainWindow", "0x10"))
-        item = self.tableWidget_statusReg_initDev0.item(2, 1)
+        item = self.table_chainCfg_statusBlk_initDev0.item(2, 1)
         item.setText(_translate("MainWindow", "UIFCFG (Dual, Device 1)"))
-        item = self.tableWidget_statusReg_initDev0.item(2, 2)
+        item = self.table_chainCfg_statusBlk_initDev0.item(2, 2)
         item.setText(_translate("MainWindow", "2600"))
-        item = self.tableWidget_statusReg_initDev0.item(2, 3)
+        item = self.table_chainCfg_statusBlk_initDev0.item(2, 3)
         item.setText(_translate("MainWindow", "A410"))
-        self.tableWidget_statusReg_initDev0.setSortingEnabled(__sortingEnabled)
+        self.table_chainCfg_statusBlk_initDev0.setSortingEnabled(__sortingEnabled)
         self.label_313.setText(_translate("MainWindow", "ACQ"))
         self.label_314.setText(_translate("MainWindow", "RSET"))
         self.label_315.setText(_translate("MainWindow", "RJCT"))
@@ -10667,15 +15529,15 @@ class Ui_MainWindow(object):
         self.label_577.setText(_translate("MainWindow", "REGE"))
         self.label_578.setText(_translate("MainWindow", "MMBT"))
         self.label_579.setText(_translate("MainWindow", "CBBT"))
-        item = self.tableWidget_statusReg_initDev1.verticalHeaderItem(0)
+        item = self.table_chainCfg_statusBlk_initDev1.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
-        item = self.tableWidget_statusReg_initDev1.verticalHeaderItem(1)
+        item = self.table_chainCfg_statusBlk_initDev1.verticalHeaderItem(1)
         item.setText(_translate("MainWindow", "1"))
-        item = self.tableWidget_statusReg_initDev1.verticalHeaderItem(2)
+        item = self.table_chainCfg_statusBlk_initDev1.verticalHeaderItem(2)
         item.setText(_translate("MainWindow", "2"))
-        item = self.tableWidget_statusReg_initDev1.verticalHeaderItem(3)
+        item = self.table_chainCfg_statusBlk_initDev1.verticalHeaderItem(3)
         item.setText(_translate("MainWindow", "3"))
-        item = self.tableWidget_statusReg_initDev1.horizontalHeaderItem(0)
+        item = self.table_chainCfg_statusBlk_initDev1.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Device1"))
         self.label_196.setText(_translate("MainWindow", "ACQ"))
         self.label_197.setText(_translate("MainWindow", "RSET"))
@@ -10741,38 +15603,224 @@ class Ui_MainWindow(object):
         self.label_497.setText(_translate("MainWindow", "REGE"))
         self.label_498.setText(_translate("MainWindow", "MMBT"))
         self.label_499.setText(_translate("MainWindow", "CBBT"))
+        self.label_26.setText(_translate("MainWindow", "General Summary Information (Current Status)"))
+        self.pushButton_statusRegReInit_3.setText(_translate("MainWindow", "RE-INITIALIZE"))
+        self.pushButton_statusRegClear_3.setText(_translate("MainWindow", "CLERA COMM"))
+        self.pushButton_statusRegInit_3.setText(_translate("MainWindow", "INITIALIZE"))
+        self.pushButton_statusRegReadBack_3.setText(_translate("MainWindow", "READ BACK"))
+        item = self.table_chainCfg_statusBlk_curDev0.verticalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_chainCfg_statusBlk_curDev0.verticalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_chainCfg_statusBlk_curDev0.verticalHeaderItem(2)
+        item.setText(_translate("MainWindow", "2"))
+        item = self.table_chainCfg_statusBlk_curDev0.verticalHeaderItem(3)
+        item.setText(_translate("MainWindow", "3"))
+        item = self.table_chainCfg_statusBlk_curDev0.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "Address"))
+        item = self.table_chainCfg_statusBlk_curDev0.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "Register"))
+        item = self.table_chainCfg_statusBlk_curDev0.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "Expected {hex}"))
+        item = self.table_chainCfg_statusBlk_curDev0.horizontalHeaderItem(3)
+        item.setText(_translate("MainWindow", "Actual {hex}"))
+        __sortingEnabled = self.table_chainCfg_statusBlk_curDev0.isSortingEnabled()
+        self.table_chainCfg_statusBlk_curDev0.setSortingEnabled(False)
+        item = self.table_chainCfg_statusBlk_curDev0.item(0, 0)
+        item.setText(_translate("MainWindow", "0x10"))
+        item = self.table_chainCfg_statusBlk_curDev0.item(0, 1)
+        item.setText(_translate("MainWindow", "UIFCFG (Signle AFE)"))
+        item = self.table_chainCfg_statusBlk_curDev0.item(0, 2)
+        item.setText(_translate("MainWindow", "2600"))
+        item = self.table_chainCfg_statusBlk_curDev0.item(0, 3)
+        item.setText(_translate("MainWindow", "A410"))
+        item = self.table_chainCfg_statusBlk_curDev0.item(1, 0)
+        item.setText(_translate("MainWindow", "0x10"))
+        item = self.table_chainCfg_statusBlk_curDev0.item(1, 1)
+        item.setText(_translate("MainWindow", "UIFCFG (Dual, Device 0)"))
+        item = self.table_chainCfg_statusBlk_curDev0.item(1, 2)
+        item.setText(_translate("MainWindow", "2600"))
+        item = self.table_chainCfg_statusBlk_curDev0.item(1, 3)
+        item.setText(_translate("MainWindow", "A410"))
+        item = self.table_chainCfg_statusBlk_curDev0.item(2, 0)
+        item.setText(_translate("MainWindow", "0x10"))
+        item = self.table_chainCfg_statusBlk_curDev0.item(2, 1)
+        item.setText(_translate("MainWindow", "UIFCFG (Dual, Device 1)"))
+        item = self.table_chainCfg_statusBlk_curDev0.item(2, 2)
+        item.setText(_translate("MainWindow", "2600"))
+        item = self.table_chainCfg_statusBlk_curDev0.item(2, 3)
+        item.setText(_translate("MainWindow", "A410"))
+        self.table_chainCfg_statusBlk_curDev0.setSortingEnabled(__sortingEnabled)
+        self.label_596.setText(_translate("MainWindow", "ACQ"))
+        self.label_597.setText(_translate("MainWindow", "RSET"))
+        self.label_598.setText(_translate("MainWindow", "RJCT"))
+        self.label_599.setText(_translate("MainWindow", "UIF"))
+        self.label_600.setText(_translate("MainWindow", "OVST"))
+        self.label_601.setText(_translate("MainWindow", "UVST"))
+        self.label_602.setText(_translate("MainWindow", "ATOV"))
+        self.label_603.setText(_translate("MainWindow", "ATUV"))
+        self.label_604.setText(_translate("MainWindow", "AXOV"))
+        self.label_605.setText(_translate("MainWindow", "AXUV"))
+        self.label_606.setText(_translate("MainWindow", "DGOV"))
+        self.label_607.setText(_translate("MainWindow", "DGUV"))
+        self.label_608.setText(_translate("MainWindow", "MM"))
+        self.label_609.setText(_translate("MainWindow", "CBAL"))
+        self.label_610.setText(_translate("MainWindow", "FME1"))
+        self.label_611.setText(_translate("MainWindow", "FME2"))
+        self.label_628.setText(_translate("MainWindow", "PEUP"))
+        self.label_629.setText(_translate("MainWindow", "PEDN"))
+        self.label_630.setText(_translate("MainWindow", "MNUP"))
+        self.label_631.setText(_translate("MainWindow", "MNDN"))
+        self.label_632.setText(_translate("MainWindow", "PRUP"))
+        self.label_633.setText(_translate("MainWindow", "PRDN"))
+        self.label_634.setText(_translate("MainWindow", "RGUP"))
+        self.label_635.setText(_translate("MainWindow", "RGDN"))
+        self.label_636.setText(_translate("MainWindow", "DUAL"))
+        self.label_637.setText(_translate("MainWindow", "CBTF"))
+        self.label_638.setText(_translate("MainWindow", "CBDO"))
+        self.label_639.setText(_translate("MainWindow", "CBER"))
+        self.label_640.setText(_translate("MainWindow", "SPRW"))
+        self.label_641.setText(_translate("MainWindow", "SPCK"))
+        self.label_642.setText(_translate("MainWindow", "SPCR"))
+        self.label_643.setText(_translate("MainWindow", "SPRG"))
+        self.label_708.setText(_translate("MainWindow", "OSC"))
+        self.label_709.setText(_translate("MainWindow", "----"))
+        self.label_710.setText(_translate("MainWindow", "----"))
+        self.label_711.setText(_translate("MainWindow", "----"))
+        self.label_712.setText(_translate("MainWindow", "----"))
+        self.label_713.setText(_translate("MainWindow", "VAA"))
+        self.label_714.setText(_translate("MainWindow", "VDD"))
+        self.label_715.setText(_translate("MainWindow", "VIO"))
+        self.label_716.setText(_translate("MainWindow", "AGD2"))
+        self.label_717.setText(_translate("MainWindow", "AGND"))
+        self.label_718.setText(_translate("MainWindow", "DGND"))
+        self.label_719.setText(_translate("MainWindow", "IOGD"))
+        self.label_720.setText(_translate("MainWindow", "HVOV"))
+        self.label_721.setText(_translate("MainWindow", "HVUV"))
+        self.label_722.setText(_translate("MainWindow", "TEM2"))
+        self.label_723.setText(_translate("MainWindow", "TEM1"))
+        self.label_740.setText(_translate("MainWindow", "HVHD"))
+        self.label_741.setText(_translate("MainWindow", "AQTO"))
+        self.label_742.setText(_translate("MainWindow", "----"))
+        self.label_743.setText(_translate("MainWindow", "----"))
+        self.label_744.setText(_translate("MainWindow", "A1ZS"))
+        self.label_745.setText(_translate("MainWindow", "A1FS"))
+        self.label_746.setText(_translate("MainWindow", "A2ZS"))
+        self.label_747.setText(_translate("MainWindow", "A2FS"))
+        self.label_748.setText(_translate("MainWindow", "USER"))
+        self.label_749.setText(_translate("MainWindow", "MODE"))
+        self.label_750.setText(_translate("MainWindow", "AQIN"))
+        self.label_751.setText(_translate("MainWindow", "DVIN"))
+        self.label_752.setText(_translate("MainWindow", "OTPE"))
+        self.label_753.setText(_translate("MainWindow", "REGE"))
+        self.label_754.setText(_translate("MainWindow", "MMBT"))
+        self.label_755.setText(_translate("MainWindow", "CBBT"))
+        item = self.table_chainCfg_statusBlk_curDev1.verticalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_chainCfg_statusBlk_curDev1.verticalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_chainCfg_statusBlk_curDev1.verticalHeaderItem(2)
+        item.setText(_translate("MainWindow", "2"))
+        item = self.table_chainCfg_statusBlk_curDev1.verticalHeaderItem(3)
+        item.setText(_translate("MainWindow", "3"))
+        item = self.table_chainCfg_statusBlk_curDev1.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "Device1"))
+        self.label_772.setText(_translate("MainWindow", "ACQ"))
+        self.label_773.setText(_translate("MainWindow", "RSET"))
+        self.label_774.setText(_translate("MainWindow", "RJCT"))
+        self.label_775.setText(_translate("MainWindow", "UIF"))
+        self.label_776.setText(_translate("MainWindow", "OVST"))
+        self.label_777.setText(_translate("MainWindow", "UVST"))
+        self.label_778.setText(_translate("MainWindow", "ATOV"))
+        self.label_779.setText(_translate("MainWindow", "ATUV"))
+        self.label_780.setText(_translate("MainWindow", "AXOV"))
+        self.label_781.setText(_translate("MainWindow", "AXUV"))
+        self.label_782.setText(_translate("MainWindow", "DGOV"))
+        self.label_783.setText(_translate("MainWindow", "DGUV"))
+        self.label_784.setText(_translate("MainWindow", "MM"))
+        self.label_785.setText(_translate("MainWindow", "CBAL"))
+        self.label_786.setText(_translate("MainWindow", "FME1"))
+        self.label_787.setText(_translate("MainWindow", "FME2"))
+        self.label_804.setText(_translate("MainWindow", "PEUP"))
+        self.label_805.setText(_translate("MainWindow", "PEDN"))
+        self.label_806.setText(_translate("MainWindow", "MNUP"))
+        self.label_807.setText(_translate("MainWindow", "MNDN"))
+        self.label_808.setText(_translate("MainWindow", "PRUP"))
+        self.label_809.setText(_translate("MainWindow", "PRDN"))
+        self.label_810.setText(_translate("MainWindow", "RGUP"))
+        self.label_811.setText(_translate("MainWindow", "RGDN"))
+        self.label_812.setText(_translate("MainWindow", "DUAL"))
+        self.label_813.setText(_translate("MainWindow", "CBTF"))
+        self.label_814.setText(_translate("MainWindow", "CBDO"))
+        self.label_815.setText(_translate("MainWindow", "CBER"))
+        self.label_816.setText(_translate("MainWindow", "SPRW"))
+        self.label_817.setText(_translate("MainWindow", "SPCK"))
+        self.label_818.setText(_translate("MainWindow", "SPCR"))
+        self.label_819.setText(_translate("MainWindow", "SPRG"))
+        self.label_836.setText(_translate("MainWindow", "OSC"))
+        self.label_837.setText(_translate("MainWindow", "----"))
+        self.label_838.setText(_translate("MainWindow", "----"))
+        self.label_839.setText(_translate("MainWindow", "----"))
+        self.label_840.setText(_translate("MainWindow", "----"))
+        self.label_841.setText(_translate("MainWindow", "VAA"))
+        self.label_842.setText(_translate("MainWindow", "VDD"))
+        self.label_843.setText(_translate("MainWindow", "VIO"))
+        self.label_844.setText(_translate("MainWindow", "AGD2"))
+        self.label_845.setText(_translate("MainWindow", "AGND"))
+        self.label_846.setText(_translate("MainWindow", "DGND"))
+        self.label_847.setText(_translate("MainWindow", "IOGD"))
+        self.label_848.setText(_translate("MainWindow", "HVOV"))
+        self.label_849.setText(_translate("MainWindow", "HVUV"))
+        self.label_850.setText(_translate("MainWindow", "TEM2"))
+        self.label_851.setText(_translate("MainWindow", "TEM1"))
+        self.label_868.setText(_translate("MainWindow", "HVHD"))
+        self.label_869.setText(_translate("MainWindow", "AQTO"))
+        self.label_870.setText(_translate("MainWindow", "----"))
+        self.label_871.setText(_translate("MainWindow", "----"))
+        self.label_872.setText(_translate("MainWindow", "A1ZS"))
+        self.label_873.setText(_translate("MainWindow", "A1FS"))
+        self.label_874.setText(_translate("MainWindow", "A2ZS"))
+        self.label_875.setText(_translate("MainWindow", "A2FS"))
+        self.label_876.setText(_translate("MainWindow", "USER"))
+        self.label_877.setText(_translate("MainWindow", "MODE"))
+        self.label_878.setText(_translate("MainWindow", "AQIN"))
+        self.label_879.setText(_translate("MainWindow", "DVIN"))
+        self.label_880.setText(_translate("MainWindow", "OTPE"))
+        self.label_881.setText(_translate("MainWindow", "REGE"))
+        self.label_882.setText(_translate("MainWindow", "MMBT"))
+        self.label_883.setText(_translate("MainWindow", "CBBT"))
         self.label_25.setText(_translate("MainWindow", "Reset"))
         self.pushButton_statusRegReInit_2.setText(_translate("MainWindow", "RE-INITIALIZE"))
         self.pushButton_statusRegClear_2.setText(_translate("MainWindow", "CLERA COMM"))
         self.pushButton_statusRegInit_2.setText(_translate("MainWindow", "INITIALIZE"))
         self.pushButton_statusRegReadBack_2.setText(_translate("MainWindow", "READ BACK"))
-        item = self.tableWidget_chainCfg_rstReg_Dev0.verticalHeaderItem(0)
+        item = self.table_chainCfg_rstBlk_Dev0.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
-        item = self.tableWidget_chainCfg_rstReg_Dev0.horizontalHeaderItem(0)
+        item = self.table_chainCfg_rstBlk_Dev0.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Address"))
-        item = self.tableWidget_chainCfg_rstReg_Dev0.horizontalHeaderItem(1)
+        item = self.table_chainCfg_rstBlk_Dev0.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "Register"))
-        item = self.tableWidget_chainCfg_rstReg_Dev0.horizontalHeaderItem(2)
+        item = self.table_chainCfg_rstBlk_Dev0.horizontalHeaderItem(2)
         item.setText(_translate("MainWindow", "Expected {hex}"))
-        item = self.tableWidget_chainCfg_rstReg_Dev0.horizontalHeaderItem(3)
+        item = self.table_chainCfg_rstBlk_Dev0.horizontalHeaderItem(3)
         item.setText(_translate("MainWindow", "Actual {hex}"))
-        __sortingEnabled = self.tableWidget_chainCfg_rstReg_Dev0.isSortingEnabled()
-        self.tableWidget_chainCfg_rstReg_Dev0.setSortingEnabled(False)
-        item = self.tableWidget_chainCfg_rstReg_Dev0.item(0, 0)
+        __sortingEnabled = self.table_chainCfg_rstBlk_Dev0.isSortingEnabled()
+        self.table_chainCfg_rstBlk_Dev0.setSortingEnabled(False)
+        item = self.table_chainCfg_rstBlk_Dev0.item(0, 0)
         item.setText(_translate("MainWindow", "0x10"))
-        item = self.tableWidget_chainCfg_rstReg_Dev0.item(0, 1)
+        item = self.table_chainCfg_rstBlk_Dev0.item(0, 1)
         item.setText(_translate("MainWindow", "UIFCFG (Signle AFE)"))
-        item = self.tableWidget_chainCfg_rstReg_Dev0.item(0, 2)
+        item = self.table_chainCfg_rstBlk_Dev0.item(0, 2)
         item.setText(_translate("MainWindow", "2600"))
-        item = self.tableWidget_chainCfg_rstReg_Dev0.item(0, 3)
+        item = self.table_chainCfg_rstBlk_Dev0.item(0, 3)
         item.setText(_translate("MainWindow", "A410"))
-        self.tableWidget_chainCfg_rstReg_Dev0.setSortingEnabled(__sortingEnabled)
-        item = self.tableWidget_chainCfg_rstReg_Dev1.verticalHeaderItem(0)
+        self.table_chainCfg_rstBlk_Dev0.setSortingEnabled(__sortingEnabled)
+        item = self.table_chainCfg_rstBlk_Dev1.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
-        item = self.tableWidget_chainCfg_rstReg_Dev1.horizontalHeaderItem(0)
+        item = self.table_chainCfg_rstBlk_Dev1.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Device1"))
-        __sortingEnabled = self.tableWidget_chainCfg_rstReg_Dev1.isSortingEnabled()
-        self.tableWidget_chainCfg_rstReg_Dev1.setSortingEnabled(False)
-        item = self.tableWidget_chainCfg_rstReg_Dev1.item(0, 0)
+        __sortingEnabled = self.table_chainCfg_rstBlk_Dev1.isSortingEnabled()
+        self.table_chainCfg_rstBlk_Dev1.setSortingEnabled(False)
+        item = self.table_chainCfg_rstBlk_Dev1.item(0, 0)
         item.setText(_translate("MainWindow", "0000"))
-        self.tableWidget_chainCfg_rstReg_Dev1.setSortingEnabled(__sortingEnabled)
+        self.table_chainCfg_rstBlk_Dev1.setSortingEnabled(__sortingEnabled)

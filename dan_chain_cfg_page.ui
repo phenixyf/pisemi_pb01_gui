@@ -258,47 +258,6 @@ QPushButton:pressed {
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_uartIfReadBack">
-         <property name="minimumSize">
-          <size>
-           <width>110</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton {
-    background-color: #3b8303; /* 按钮背景颜色 */
-    color: white; /* 文字颜色 */
-    border-style: solid; /* 边框样式 */
-    border-width: 2px; /* 边框宽度 */
-    border-radius: 10px; /* 边框圆角半径 */
-    border-color: #326703; /* 边框颜色 */
-    padding: 5px; /* 内边距 */
-	font: 8pt &quot;Calibri&quot;; /* 字体 */
-    font-weight: 600; /* 字体粗细 */
-}
-
-QPushButton:hover {
-    background-color: #459403; /* 悬停时的背景颜色 */
-}
-
-QPushButton:pressed {
-    background-color: #397303; /* 按下时的背景颜色 */
-}
-</string>
-         </property>
-         <property name="text">
-          <string>READ BACK</string>
-         </property>
-        </widget>
-       </item>
       </layout>
      </widget>
     </item>
@@ -868,7 +827,7 @@ QTableCornerButton::section {
         </column>
         <column>
          <property name="text">
-          <string> </string>
+          <string/>
          </property>
         </column>
         <item row="0" column="0">
@@ -1413,7 +1372,7 @@ QTableCornerButton::section {
         </column>
         <column>
          <property name="text">
-          <string> </string>
+          <string/>
          </property>
         </column>
         <item row="0" column="0">
@@ -1551,7 +1510,7 @@ QTableCornerButton::section {
         </column>
         <column>
          <property name="text">
-          <string> </string>
+          <string/>
          </property>
         </column>
        </widget>
@@ -1888,7 +1847,7 @@ QTableCornerButton::section {
         </column>
         <column>
          <property name="text">
-          <string> </string>
+          <string/>
          </property>
         </column>
         <item row="0" column="0">
@@ -2026,7 +1985,7 @@ QTableCornerButton::section {
         </column>
         <column>
          <property name="text">
-          <string> </string>
+          <string/>
          </property>
         </column>
        </widget>

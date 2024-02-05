@@ -24,53 +24,62 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         GUI 初始化函数
         :return:
         """
+        self.tabWidget.tabBar().setExpanding(True)
         ''' inital CHAIN CONFIGURATION page '''
         # uart interface configuration tables
-        set_table_head(self.table_chainCfg_uartIfCfg, table_chainCfg_uartIfHead	, HEADERHEIGHT, 130)
-        set_table_head(self.table_chainCfg_uartIfAddr, table_chainCfg_uartAddrHead, HEADERHEIGHT, 130)
+        set_table_head(self.table_chainCfg_uartIfCfg, table_chainCfg_uartIfHead,
+                       CHAIN_CFG_TABLE_HEHG, 150)
+        set_table_head(self.table_chainCfg_uartIfAddr, table_chainCfg_uartAddrHead,
+                       CHAIN_CFG_TABLE_HEHG, 130)
+
         self.radioButton_singleAfe.setChecked(True)
         self.slot_radio_single_dual_afe()
-        # status register tables
-        set_table_head(self.table_chainCfg_statusBlk_pwrUpDev0, table_chainCfg_staHead_dev0, HEADERHEIGHT, 160)
-        set_table_item(self.table_chainCfg_statusBlk_pwrUpDev0, 4, ROWHEIGHT,
-                                                 table_chainCfg_staItem_dev0, [3], [],[])
-        set_table_head(self.table_chainCfg_statusBlk_initDev0, table_chainCfg_staHead_dev0, HEADERHEIGHT, 160)
-        set_table_item(self.table_chainCfg_statusBlk_initDev0, 4, ROWHEIGHT,
-                                                 table_chainCfg_staItem_dev0, [3], [],[])
 
-        set_table_head(self.table_chainCfg_statusBlk_pwrUpDev1, table_chainCfg_staHead_dev1, HEADERHEIGHT, 160)
-        set_table_item(self.table_chainCfg_statusBlk_pwrUpDev1, 4, ROWHEIGHT,
-                                                 table_chainCfg_staItem_dev1, [0], [],[])
-        set_table_head(self.table_chainCfg_statusBlk_initDev1, table_chainCfg_staHead_dev1, HEADERHEIGHT, 160)
-        set_table_item(self.table_chainCfg_statusBlk_initDev1, 4, ROWHEIGHT,
-                                                 table_chainCfg_staItem_dev1, [0], [],[])
+        # status power up dev0 table initial
+        ledList_pageChain_st1pu_dev0, ledList_pageChain_st2pu_dev0, ledList_pageChain_fm1pu_dev0, \
+        ledList_pageChain_fm2pu_dev0 = init_status_led_table_dev0(self.table_chainCfg_statusBlk_pwrUpDev0, 150)
 
-        ''' initial application configuration page '''
-        set_table_head(self.tableWidget_appCfgRegBlock, appCfgReg_table_headers, HEADERHEIGHT, 190)
-        set_table_item(self.tableWidget_appCfgRegBlock, 5, ROWHEIGHT,
-                                                 appCfgReg_table_items, [3, 4], [], [2])
+        update_led_color(ledList_pageChain_st1pu_dev0[3], "#aa0000")
 
-        set_table_head(self.tableWidget_alertCfgRegBlock, alertCfgReg_table_headers, HEADERHEIGHT, 160)
-        set_table_item(self.tableWidget_alertCfgRegBlock, 4, ROWHEIGHT,
-                                                 alertCfgReg_table_items, [3, 4], [], [2])
+        # status power up dev1 table initial
+        ledList_pageChain_st1pu_dev1, ledList_pageChain_st2pu_dev1, ledList_pageChain_fm1pu_dev1, \
+        ledList_pageChain_fm2pu_dev1 = init_status_led_table_dev1(self.table_chainCfg_statusBlk_pwrUpDev1, 150)
 
-        set_table_head(self.tableWidget_acquisitionRegBlock, acquistionReg_table_headers, HEADERHEIGHT, 160)
-        set_table_item(self.tableWidget_acquisitionRegBlock, 4, ROWHEIGHT,
-                                                 acquistionReg_table_items, [9, 10], [], [2])
+        # status initial dev0 table initial
+        ledList_pageChain_st1in_dev0, ledList_pageChain_st2in_dev0, ledList_pageChain_fm1in_dev0, \
+        ledList_pageChain_fm2in_dev0 = init_status_led_table_dev0(self.table_chainCfg_statusBlk_initDev0, 120)
 
-        set_table_head(self.tableWidget_thresholdRegBlock, theresholdReg_table_headers, HEADERHEIGHT, 460)
-        set_table_item(self.tableWidget_thresholdRegBlock, 14, ROWHEIGHT,
-                                                 theresholdReg_table_items, [5, 6], [], [2])
+        # status initial dev1 table initial
+        ledList_pageChain_st1in_dev1, ledList_pageChain_st2in_dev1, ledList_pageChain_fm1in_dev1, \
+        ledList_pageChain_fm2in_dev1 = init_status_led_table_dev1(self.table_chainCfg_statusBlk_initDev1, 120)
+
+        # status current dev0 table initial
+        ledList_pageChain_st1cu_dev0, ledList_pageChain_st2cu_dev0, ledList_pageChain_fm1cu_dev0, \
+        ledList_pageChain_fm2cu_dev0 = init_status_led_table_dev0(self.table_chainCfg_statusBlk_curDev0, 120)
+
+        # status current dev1 table initial
+        ledList_pageChain_st1cu_dev1, ledList_pageChain_st2cu_dev1, ledList_pageChain_fm1cu_dev1, \
+        ledList_pageChain_fm2cu_dev1 = init_status_led_table_dev1(self.table_chainCfg_statusBlk_curDev1, 120)
+
+        # reset dev0 table initial
+        set_table_head(self.table_chainCfg_rstBlk_Dev0, table_chainCfg_rstHead_dev0,
+                       CHAIN_CFG_TABLE_HEHG, CHAIN_CFG_TABLE_RSTHG)
+        set_table_item(self.table_chainCfg_rstBlk_Dev0, 1, CHAIN_CFG_TABLE_ROWHG,
+                       table_chainCfg_rstItem_dev0)
+        self.table_chainCfg_rstBlk_Dev0.item(0, 3).setBackground(QColor("#E2F0D9"))
+        # reset dev1 table initial
+        set_table_head(self.table_chainCfg_rstBlk_Dev1, table_chainCfg_rstHead_dev1,
+                       CHAIN_CFG_TABLE_HEHG, CHAIN_CFG_TABLE_RSTHG)
+        set_table_item(self.table_chainCfg_rstBlk_Dev1, 1, CHAIN_CFG_TABLE_ROWHG,
+                       table_chainCfg_rstItem_dev1)
+        self.table_chainCfg_rstBlk_Dev1.item(0, 0).setBackground(QColor("#E2F0D9"))
 
         # update_led_color(self.label_186, "#aa0000")
 
         ''' 配置信号和槽 '''
         self.radioButton_singleAfe.clicked.connect(self.slot_radio_single_dual_afe)
         self.radioButton_dualAfe.clicked.connect(self.slot_radio_single_dual_afe)
-        self.pushButton_uartIfConf.clicked.connect(self.cfg_uart_if)
 
-    def cfg_uart_if(self):
-        self.table_chainCfg_uartIfCfg.item(1, 6).setText("try")
 
     def slot_radio_single_dual_afe(self):
         """
@@ -79,23 +88,21 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         :return:
         """
         if self.radioButton_singleAfe.isChecked():
-            set_table_item(self.table_chainCfg_uartIfCfg, 2, ROWHEIGHT,
-                                                     table_chainCfg_uartIfItem	, [3], range(4, 14),[])
-            set_table_item(self.table_chainCfg_uartIfAddr, 2, ROWHEIGHT,
-                                                     table_chainCfg_uartAddrItem, [3], range(4, 8),[])
+            set_table_item(self.table_chainCfg_uartIfCfg, 2, CHAIN_CFG_TABLE_ROWHG,
+                           table_chainCfg_uartIfItem)
+            set_table_item(self.table_chainCfg_uartIfAddr, 2, CHAIN_CFG_TABLE_ROWHG,
+                           table_chainCfg_uartAddrItem)
             self.table_chainCfg_statusBlk_pwrUpDev1.hide()
             self.table_chainCfg_statusBlk_initDev1.hide()
-            self.frame_statusReg_pwrUp_ledArray.hide()
-            self.frame_statusReg_init_ledArray.hide()
+            self.table_chainCfg_statusBlk_curDev1.hide()
         elif self.radioButton_dualAfe.isChecked():
-            set_table_item(self.table_chainCfg_uartIfCfg, 3, ROWHEIGHT,
-                                                     table_chainCfg_uartIfItem	, [3], range(4, 14),[])
-            set_table_item(self.table_chainCfg_uartIfAddr, 3, ROWHEIGHT,
-                                                     table_chainCfg_uartAddrItem, [3], range(4, 8),[])
+            set_table_item(self.table_chainCfg_uartIfCfg, 3, CHAIN_CFG_TABLE_ROWHG,
+                           table_chainCfg_uartIfItem)
+            set_table_item(self.table_chainCfg_uartIfAddr, 3, CHAIN_CFG_TABLE_ROWHG,
+                           table_chainCfg_uartAddrItem)
             self.table_chainCfg_statusBlk_pwrUpDev1.show()
             self.table_chainCfg_statusBlk_initDev1.show()
-            self.frame_statusReg_pwrUp_ledArray.show()
-            self.frame_statusReg_init_ledArray.show()
+            self.table_chainCfg_statusBlk_curDev1.show()
 
 
 """ step3: 通过下面代码完成 GUI 的显示 """

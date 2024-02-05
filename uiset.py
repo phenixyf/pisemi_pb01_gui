@@ -12,6 +12,16 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt
 
+LED_STA1_LAB = ["ACQ", "REST", "RJCT", "UIF", "OVST", "UVST", "ATOV", "ATUV",
+                "AXOV", "AXUV", "DGOV", "DGUV", "MM", "CBAL", "FME1", "FME2"]
+LED_STA2_LAB = ["PEUP", "PEDN", "MNUP", "MNDN", "PRUP", "PRDN", "RGUP", "RGDN",
+                "DUAL", "CBTF", "CBDO", "CBER", "CBER", "SPCK", "SPCR", "SPRG"]
+LED_FME1_LAB = ["OSC", "----", "----", "----", "----", "VAA", "VDD", "VIO",
+                "AGD2", "AGND", "DGND", "IOGD", "HVOV", "HVUV", "TEM2", "TEM1"]
+LED_FME2_LAB = ["HVHD", "AQTO", "----", "----", "A1ZS", "A1FS", "A2ZS", "A2FS",
+                "USER", "MODE", "AQIN", "DVIN", "OTPE", "REGE", "MMBT", "CBBT"]
+
+
 led_qss = "QLabel {\n" \
           "  border-radius: 5px; /* 使得QLabel成为圆形 */\n" \
           "  background: qradialgradient(\n" \
@@ -124,14 +134,27 @@ def page_rendering_1(pSumTableDev0, pSumTableDev1):
         pSumTableDev1.setSpan(i, 7, 1, 4)
 
 
-def add_led_txt(pLedNum, pTableWidget, pRow, pCol):
+def add_led_txt(pLedNum, pTableWidget, pRow, pCol, pLabelList):
+    """
+    将 led 及其上标插入到 table 表的某个单元格内
+    :param pLedNum: 要插入的 led 数量
+    :param pTableWidget: 要插入的 table 控件名
+    :param pRow: 插入位置行号
+    :param pCol: 插入位置列号
+    :param pLabelList: led 上标
+    :return: 返回插入的 led 对象列表
+             通过返回的 led 对象列表，可以控制各 led，比如修改 led 的颜色
+    """
     pList_led = []
     pList_txt = []
     for i in range(0, pLedNum):
         pList_led.append(led_generator())
 
     for i in range(0, pLedNum):
-        pList_txt.append(txt_generator("LED"+str(i)))
+        pList_txt.append(txt_generator(pLabelList[i]))
+
+    # for i in range(0, pLedNum):
+    #     pList_txt.append(txt_generator("LED"+str(i)))
 
     pFrame = QtWidgets.QFrame()
     pLayout = QtWidgets.QGridLayout(pFrame)

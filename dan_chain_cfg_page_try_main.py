@@ -26,14 +26,15 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
                             CHAIN_CFG_TABLE_HEHG, 150)
         set_table_head(self.table_chainCfg_uartIfAddr, table_chainCfg_uartAddrHead,
                             CHAIN_CFG_TABLE_HEHG, 130)
+
         self.radioButton_singleAfe.setChecked(True)
         self.slot_radio_single_dual_afe()
 
         # status power up dev0 table initial
-        ledList_pageChain_st1_dev0, ledList_pageChain_st1_dev1, ledList_pageChain_st1_dev2,\
-        ledList_pageChain_st1_dev3 = init_status_led_table_dev0(self.table_chainCfg_statusBlk_pwrUpDev0, 150)
+        ledList_pageChain_st1pu_dev0, ledList_pageChain_st1pu_dev1, ledList_pageChain_st1pu_dev2,\
+        ledList_pageChain_st1pu_dev3 = init_status_led_table_dev0(self.table_chainCfg_statusBlk_pwrUpDev0, 150)
 
-        update_led_color(ledList_pageChain_st1_dev0[3], "#aa0000")
+        update_led_color(ledList_pageChain_st1pu_dev0[3], "#aa0000")
 
         init_status_led_table_dev1(self.table_chainCfg_statusBlk_pwrUpDev1, 150)
 

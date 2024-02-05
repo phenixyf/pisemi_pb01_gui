@@ -182,10 +182,10 @@ def init_status_led_table_dev0(pTableWidget, pTableHeight):
     pTableWidget.resizeColumnsToContents()
 
     # 插入 LED 图标对象
-    ledList0 = add_led_txt(16, pTableWidget, 0, 4)  # 第一行插入
-    ledList1 = add_led_txt(16, pTableWidget, 1, 4)  # 第二行插入
-    ledList2 = add_led_txt(16, pTableWidget, 2, 4)  # 第三行插入
-    ledList3 = add_led_txt(16, pTableWidget, 3, 4)  # 第四行插入
+    ledList0 = add_led_txt(16, pTableWidget, 0, 4, LED_STA1_LAB)  # 第一行插入
+    ledList1 = add_led_txt(16, pTableWidget, 1, 4, LED_STA2_LAB)  # 第二行插入
+    ledList2 = add_led_txt(16, pTableWidget, 2, 4, LED_FME1_LAB)  # 第三行插入
+    ledList3 = add_led_txt(16, pTableWidget, 3, 4, LED_FME2_LAB)  # 第四行插入
     # 设置 LED 列宽度
     pTableWidget.setColumnWidth(4, 450)
 
@@ -214,10 +214,10 @@ def init_status_led_table_dev1(pTableWidget, pTableHeight):
     pTableWidget.resizeColumnsToContents()
 
     # 插入 LED 图标对象
-    ledList0 = add_led_txt(16, pTableWidget, 0, 1)  # 第一行插入
-    ledList1 = add_led_txt(16, pTableWidget, 1, 1)  # 第二行插入
-    ledList2 = add_led_txt(16, pTableWidget, 2, 1)  # 第三行插入
-    ledList3 = add_led_txt(16, pTableWidget, 3, 1)  # 第四行插入
+    ledList0 = add_led_txt(16, pTableWidget, 0, 1, LED_STA1_LAB)  # 第一行插入
+    ledList1 = add_led_txt(16, pTableWidget, 1, 1, LED_STA2_LAB)  # 第二行插入
+    ledList2 = add_led_txt(16, pTableWidget, 2, 1, LED_FME1_LAB)  # 第三行插入
+    ledList3 = add_led_txt(16, pTableWidget, 3, 1, LED_FME2_LAB)  # 第四行插入
     # 设置 LED 列宽度
     pTableWidget.setColumnWidth(1, 450)
 

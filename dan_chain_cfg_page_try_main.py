@@ -1,13 +1,8 @@
 """ step1: 导入必须的库和 layout 文件 """
 import sys
-# from PyQt5.QtWidgets import *
-# from PyQt5.QtCore import *
-# from PyQt5.QtGui import QColor
-
 from dan_chain_cfg_page import Ui_MainWindow
-
 from ui_configure import *
-from uiset import *
+
 
 class Pb01DanWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
@@ -31,52 +26,43 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
         self.slot_radio_single_dual_afe()
 
         # status power up dev0 table initial
-        ledList_pageChain_st1pu_dev0, ledList_pageChain_st1pu_dev1, ledList_pageChain_st1pu_dev2,\
-        ledList_pageChain_st1pu_dev3 = init_status_led_table_dev0(self.table_chainCfg_statusBlk_pwrUpDev0, 150)
+        ledList_pageChain_st1pu_dev0, ledList_pageChain_st2pu_dev0, ledList_pageChain_fm1pu_dev0,\
+        ledList_pageChain_fm2pu_dev0 = init_status_led_table_dev0(self.table_chainCfg_statusBlk_pwrUpDev0, 150)
 
         update_led_color(ledList_pageChain_st1pu_dev0[3], "#aa0000")
 
-        init_status_led_table_dev1(self.table_chainCfg_statusBlk_pwrUpDev1, 150)
+        # status power up dev1 table initial
+        ledList_pageChain_st1pu_dev1, ledList_pageChain_st2pu_dev1, ledList_pageChain_fm1pu_dev1, \
+        ledList_pageChain_fm2pu_dev1 = init_status_led_table_dev1(self.table_chainCfg_statusBlk_pwrUpDev1, 150)
 
+        # status initial dev0 table initial
+        ledList_pageChain_st1in_dev0, ledList_pageChain_st2in_dev0, ledList_pageChain_fm1in_dev0, \
+        ledList_pageChain_fm2in_dev0 = init_status_led_table_dev0(self.table_chainCfg_statusBlk_initDev0, 120)
 
+        # status initial dev1 table initial
+        ledList_pageChain_st1in_dev1, ledList_pageChain_st2in_dev1, ledList_pageChain_fm1in_dev1, \
+        ledList_pageChain_fm2in_dev1 = init_status_led_table_dev1(self.table_chainCfg_statusBlk_initDev1, 120)
 
-        # set_table_head(self.table_chainCfg_statusBlk_pwrUpDev0, table_chainCfg_staHead_dev0,
-        #                     CHAIN_CFG_TABLE_HEHG, 150)
-        #
-        # set_led_table(self.table_chainCfg_statusBlk_pwrUpDev0, 4, CHAIN_CFG_TABLE_ROWHG,
-        #                                               table_chainCfg_staItem_dev0, [3], [])
-        # add_led_txt(16, self.table_chainCfg_statusBlk_pwrUpDev0, 0, 4)
-        # self.table_chainCfg_statusBlk_pwrUpDev0.setColumnWidth(4, 450)
+        # status current dev0 table initial
+        ledList_pageChain_st1cu_dev0, ledList_pageChain_st2cu_dev0, ledList_pageChain_fm1cu_dev0, \
+        ledList_pageChain_fm2cu_dev0 = init_status_led_table_dev0(self.table_chainCfg_statusBlk_curDev0, 120)
 
-        set_table_head(self.table_chainCfg_statusBlk_initDev0, table_chainCfg_staHead_dev0,
-                            CHAIN_CFG_TABLE_HEHG, CHAIN_CFG_TABLE_STAHG)
-        set_table_item(self.table_chainCfg_statusBlk_initDev0, 4, CHAIN_CFG_TABLE_ROWHG,
-                                                 table_chainCfg_staItem_dev0)
-        set_table_head(self.table_chainCfg_statusBlk_curDev0, table_chainCfg_staHead_dev0,
-                            CHAIN_CFG_TABLE_HEHG, CHAIN_CFG_TABLE_STAHG)
-        set_table_item(self.table_chainCfg_statusBlk_curDev0, 4, CHAIN_CFG_TABLE_ROWHG,
-                                                 table_chainCfg_staItem_dev0)
+        # status current dev1 table initial
+        ledList_pageChain_st1cu_dev1, ledList_pageChain_st2cu_dev1, ledList_pageChain_fm1cu_dev1, \
+        ledList_pageChain_fm2cu_dev1 = init_status_led_table_dev1(self.table_chainCfg_statusBlk_curDev1, 120)
+
+        # reset dev0 table initial
         set_table_head(self.table_chainCfg_rstBlk_Dev0, table_chainCfg_rstHead_dev0,
                             CHAIN_CFG_TABLE_HEHG, CHAIN_CFG_TABLE_RSTHG)
         set_table_item(self.table_chainCfg_rstBlk_Dev0, 1, CHAIN_CFG_TABLE_ROWHG,
                                                  table_chainCfg_rstItem_dev0)
-
-        # set_table_head(self.table_chainCfg_statusBlk_pwrUpDev1, table_chainCfg_staHead_dev1,
-        #                     CHAIN_CFG_TABLE_HEHG, 150)
-        # set_led_table(self.table_chainCfg_statusBlk_pwrUpDev1, 4, CHAIN_CFG_TABLE_ROWHG,
-        #                                          table_chainCfg_staItem_dev1, [0], [])
-        set_table_head(self.table_chainCfg_statusBlk_initDev1, table_chainCfg_staHead_dev1,
-                            CHAIN_CFG_TABLE_HEHG, CHAIN_CFG_TABLE_STAHG)
-        set_table_item(self.table_chainCfg_statusBlk_initDev1, 4, CHAIN_CFG_TABLE_ROWHG,
-                                                 table_chainCfg_staItem_dev1)
-        set_table_head(self.table_chainCfg_statusBlk_curDev1, table_chainCfg_staHead_dev1,
-                            CHAIN_CFG_TABLE_HEHG, CHAIN_CFG_TABLE_STAHG)
-        set_table_item(self.table_chainCfg_statusBlk_curDev1, 4, CHAIN_CFG_TABLE_ROWHG,
-                                                 table_chainCfg_staItem_dev1)
+        self.table_chainCfg_rstBlk_Dev0.item(0,3).setBackground(QColor("#E2F0D9"))
+        # reset dev1 table initial
         set_table_head(self.table_chainCfg_rstBlk_Dev1, table_chainCfg_rstHead_dev1,
                             CHAIN_CFG_TABLE_HEHG, CHAIN_CFG_TABLE_RSTHG)
         set_table_item(self.table_chainCfg_rstBlk_Dev1, 1, CHAIN_CFG_TABLE_ROWHG,
                                                  table_chainCfg_rstItem_dev1)
+        self.table_chainCfg_rstBlk_Dev1.item(0, 0).setBackground(QColor("#E2F0D9"))
 
 
         # update_led_color(self.label_186, "#aa0000")
@@ -102,7 +88,7 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
                                                           table_chainCfg_uartAddrItem)
             self.table_chainCfg_statusBlk_pwrUpDev1.hide()
             self.table_chainCfg_statusBlk_initDev1.hide()
-            self.frame_statusReg_init_ledArray.hide()
+            self.table_chainCfg_statusBlk_curDev1.hide()
         elif self.radioButton_dualAfe.isChecked():
             set_table_item(self.table_chainCfg_uartIfCfg, 3, CHAIN_CFG_TABLE_ROWHG,
                                                      table_chainCfg_uartIfItem)
@@ -110,7 +96,7 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
                                                           table_chainCfg_uartAddrItem)
             self.table_chainCfg_statusBlk_pwrUpDev1.show()
             self.table_chainCfg_statusBlk_initDev1.show()
-            self.frame_statusReg_init_ledArray.show()
+            self.table_chainCfg_statusBlk_curDev1.show()
 
 
 """ step3: 通过下面代码完成 GUI 的显示 """

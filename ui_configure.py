@@ -49,7 +49,7 @@ table_chainCfg_staItem_dev1 = [
     ["0000"]
 ]
 
-table_chainCfg_rstHead_dev0 = ["Address", "Register", "FORCEPOR (hex)", "Device 0 (hex)"]
+table_chainCfg_rstHead_dev0 = ["Address", "Register", "FORCEPOR (hex)", "Device 0 (hex)", ""]
 table_chainCfg_rstItem_dev0 = [
     ["0x0F", "RESETCTRL", "0001", "0000"]
 ]
@@ -147,6 +147,29 @@ def set_table_item_data_and_background_color(pTableWidget, pShowRowCnt, pRowHeig
 
     # 设置列宽自适应
     pTableWidget.resizeColumnsToContents()
+
+
+def set_led_table(pTableWidget, pShowRowCnt, pRowHeight,
+                  pItemData=[], pListGreenCol=[], pListYellowCol=[], pListBlueCol=[]):
+    pTableWidget.setRowCount(pShowRowCnt)
+    for row in range(pShowRowCnt):
+        for column in range(pTableWidget.columnCount()-1):
+            # 设置单元格的初始值
+            pTableWidget.setItem(row, column, QTableWidgetItem(pItemData[row][column]))
+            pTableWidget.item(row, column).setTextAlignment(Qt.AlignCenter)  # 设置单元格内容水平垂直居中对齐
+            # 设置单元格背景色
+            if column in pListGreenCol:
+                pTableWidget.item(row, column).setBackground(QColor("#E2F0D9"))  # 设置绿色背景色
+            if column in pListYellowCol:
+                pTableWidget.item(row, column).setBackground(QColor("#FFF2CC"))  # 设置黄色背景色
+            if column in pListBlueCol:
+                pTableWidget.item(row, column).setBackground(QColor("#DAE3F3"))  # 设置蓝色背景色
+        # 设置行高度
+        pTableWidget.setRowHeight(row, pRowHeight)
+
+    # 设置列宽自适应
+    pTableWidget.resizeColumnsToContents()
+
 
 
 def initial_tablewidget(pTableWidget, pListHeader, pHeaderHeight, pTableHeight):

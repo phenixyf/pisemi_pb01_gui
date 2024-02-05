@@ -7,6 +7,7 @@ import sys
 from dan_chain_cfg_page import Ui_MainWindow
 
 from ui_configure import *
+from uiset import *
 
 class Pb01DanWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
@@ -30,8 +31,12 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
         # status register tables
         initial_tablewidget(self.table_chainCfg_statusBlk_pwrUpDev0, table_chainCfg_staHead_dev0,
                             CHAIN_CFG_TABLE_HEHG, 150)
-        set_table_item_data_and_background_color(self.table_chainCfg_statusBlk_pwrUpDev0, 4, CHAIN_CFG_TABLE_ROWHG,
+
+        set_led_table(self.table_chainCfg_statusBlk_pwrUpDev0, 4, CHAIN_CFG_TABLE_ROWHG,
                                                       table_chainCfg_staItem_dev0, [3], [])
+        add_led_txt(16, self.table_chainCfg_statusBlk_pwrUpDev0, 0, 4)
+        self.table_chainCfg_statusBlk_pwrUpDev0.setColumnWidth(4, 600)
+
         initial_tablewidget(self.table_chainCfg_statusBlk_initDev0, table_chainCfg_staHead_dev0,
                             CHAIN_CFG_TABLE_HEHG, CHAIN_CFG_TABLE_STAHG)
         set_table_item_data_and_background_color(self.table_chainCfg_statusBlk_initDev0, 4, CHAIN_CFG_TABLE_ROWHG,
@@ -47,7 +52,7 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
 
         initial_tablewidget(self.table_chainCfg_statusBlk_pwrUpDev1, table_chainCfg_staHead_dev1,
                             CHAIN_CFG_TABLE_HEHG, 150)
-        set_table_item_data_and_background_color(self.table_chainCfg_statusBlk_pwrUpDev1, 4, CHAIN_CFG_TABLE_ROWHG,
+        set_led_table(self.table_chainCfg_statusBlk_pwrUpDev1, 4, CHAIN_CFG_TABLE_ROWHG,
                                                  table_chainCfg_staItem_dev1, [0], [])
         initial_tablewidget(self.table_chainCfg_statusBlk_initDev1, table_chainCfg_staHead_dev1,
                             CHAIN_CFG_TABLE_HEHG, CHAIN_CFG_TABLE_STAHG)
@@ -86,7 +91,6 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
                                                           table_chainCfg_uartAddrItem, [3], range(4, 8))
             self.table_chainCfg_statusBlk_pwrUpDev1.hide()
             self.table_chainCfg_statusBlk_initDev1.hide()
-            self.frame_statusReg_pwrUp_ledArray.hide()
             self.frame_statusReg_init_ledArray.hide()
         elif self.radioButton_dualAfe.isChecked():
             set_table_item_data_and_background_color(self.table_chainCfg_uartIfCfg, 3, CHAIN_CFG_TABLE_ROWHG,
@@ -95,7 +99,6 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
                                                           table_chainCfg_uartAddrItem, [3], range(4, 8))
             self.table_chainCfg_statusBlk_pwrUpDev1.show()
             self.table_chainCfg_statusBlk_initDev1.show()
-            self.frame_statusReg_pwrUp_ledArray.show()
             self.frame_statusReg_init_ledArray.show()
 
 

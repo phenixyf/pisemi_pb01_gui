@@ -32,6 +32,9 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
         initial_tablewidget(self.tableWidget_statusReg_initDev0, statusReg_table_headers1, 30, 150)
         set_table_item_data_and_background_color(self.tableWidget_statusReg_initDev0, 4, 20,
                                                  statusReg_table_items1, [3], [])
+        initial_tablewidget(self.tableWidget_chainCfg_rstReg_Dev0, rstReg_table_headers1, 30, 150)
+        set_table_item_data_and_background_color(self.tableWidget_chainCfg_rstReg_Dev0, 1, 20,
+                                                 rstReg_table_items1, [3], [])
 
         initial_tablewidget(self.tableWidget_statusReg_pwrUpDev1, statusReg_table_headers2, 30, 150)
         set_table_item_data_and_background_color(self.tableWidget_statusReg_pwrUpDev1, 4, 20,
@@ -39,6 +42,9 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
         initial_tablewidget(self.tableWidget_statusReg_initDev1, statusReg_table_headers2, 30, 150)
         set_table_item_data_and_background_color(self.tableWidget_statusReg_initDev1, 4, 20,
                                                  statusReg_table_items2, [0], [])
+        initial_tablewidget(self.tableWidget_chainCfg_rstReg_Dev1, rstReg_table_headers2, 30, 150)
+        set_table_item_data_and_background_color(self.tableWidget_chainCfg_rstReg_Dev1, 1, 20,
+                                                 rstReg_table_items2, [0], [])
 
 
         # update_led_color(self.label_186, "#aa0000")

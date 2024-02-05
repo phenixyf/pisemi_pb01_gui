@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1706</width>
-    <height>851</height>
+    <height>956</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20430,6 +20430,441 @@ font-weight: 400; /* 设置字体粗细为600 */</string>
           </item>
          </layout>
         </widget>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QFrame" name="frame_8">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>23</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QFrame {
+    background-color: #a0a0a0; /* 设置背景颜色为灰色 */
+    border-radius: 10px; /* 设置边框圆角的半径为10px */
+}
+</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_20">
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label_25">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>20</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>23</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 11pt &quot;Calibri&quot;;
+font-weight: 600; /* 设置字体粗细为600 */</string>
+         </property>
+         <property name="text">
+          <string>Reset</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_8">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_statusRegReInit_2">
+         <property name="minimumSize">
+          <size>
+           <width>110</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    background-color: #e84d00; /* 按钮背景颜色 1*/
+    color: white; /* 文字颜色 */
+    border-style: solid; /* 边框样式 */
+    border-width: 2px; /* 边框宽度 */
+    border-radius: 10px; /* 边框圆角半径 */
+    border-color: #ce4500; /* 边框颜色 3*/
+    padding: 5px; /* 内边距 */
+	font: 8pt &quot;Calibri&quot;; /* 字体 */
+    font-weight: 600; /* 字体粗细 */
+}
+
+QPushButton:hover {
+    background-color: #ff5500; /* 悬停时的背景颜色 0*/
+}
+
+QPushButton:pressed {
+    background-color: #df4a00; /* 按下时的背景颜色 2*/
+}
+</string>
+         </property>
+         <property name="text">
+          <string>RE-INITIALIZE</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_statusRegClear_2">
+         <property name="minimumSize">
+          <size>
+           <width>110</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    background-color: #f3d22d; /* 按钮背景颜色 1*/
+    color: white; /* 文字颜色 */
+    border-style: solid; /* 边框样式 */
+    border-width: 2px; /* 边框宽度 */
+    border-radius: 10px; /* 边框圆角半径 */
+    border-color: #cbaf25; /* 边框颜色 3*/
+    padding: 5px; /* 内边距 */
+	font: 8pt &quot;Calibri&quot;; /* 字体 */
+    font-weight: 600; /* 字体粗细 */
+}
+
+QPushButton:hover {
+    background-color: #ffdc2f; /* 悬停时的背景颜色 0*/
+}
+
+QPushButton:pressed {
+    background-color: #d8bb28; /* 按下时的背景颜色 2*/
+}
+</string>
+         </property>
+         <property name="text">
+          <string>CLERA COMM</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_statusRegInit_2">
+         <property name="minimumSize">
+          <size>
+           <width>110</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    background-color: #3072B3; /* 按钮背景颜色 */
+    color: white; /* 文字颜色 */
+    border-style: solid; /* 边框样式 */
+    border-width: 2px; /* 边框宽度 */
+    border-radius: 10px; /* 边框圆角半径 */
+    border-color: #145289; /* 边框颜色 */
+    padding: 5px; /* 内边距 */
+	font: 8pt &quot;Calibri&quot;; /* 字体 */
+    font-weight: 600; /* 字体粗细 */
+}
+
+QPushButton:hover {
+    background-color: #5591D2; /* 悬停时的背景颜色 */
+}
+
+QPushButton:pressed {
+    background-color: #1E5A97; /* 按下时的背景颜色 */
+}
+</string>
+         </property>
+         <property name="text">
+          <string>INITIALIZE</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_statusRegReadBack_2">
+         <property name="minimumSize">
+          <size>
+           <width>110</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    background-color: #3b8303; /* 按钮背景颜色 */
+    color: white; /* 文字颜色 */
+    border-style: solid; /* 边框样式 */
+    border-width: 2px; /* 边框宽度 */
+    border-radius: 10px; /* 边框圆角半径 */
+    border-color: #326703; /* 边框颜色 */
+    padding: 5px; /* 内边距 */
+	font: 8pt &quot;Calibri&quot;; /* 字体 */
+    font-weight: 600; /* 字体粗细 */
+}
+
+QPushButton:hover {
+    background-color: #459403; /* 悬停时的背景颜色 */
+}
+
+QPushButton:pressed {
+    background-color: #397303; /* 按下时的背景颜色 */
+}
+</string>
+         </property>
+         <property name="text">
+          <string>READ BACK</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QTableWidget" name="tableWidget_chainCfg_rstReg_Dev0">
+        <property name="maximumSize">
+         <size>
+          <width>418</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QTableWidget {
+    border: 2px solid white; /* 边框颜色与粗细调整为2px */
+    gridline-color: white; /* 网格线颜色 */
+    background-color: #f0f0f0; /* 单元格背景颜色 */
+    font-family: &quot;Calibri&quot;; /* 单元格字体 */
+    font-size: 10pt; /* 单元格字体大小 */
+}
+
+QTableWidget::item {
+}
+
+QHeaderView::section {
+    background-color: #f0f0f0; /* 表头背景颜色 */
+    padding: 5px; /* 表头内边距 */
+    border-style: none; /* 表头边框样式 */
+    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */
+    border-right: 2px solid white; /* 表头右边框宽度调整为2px */
+    font-family: &quot;Calibri&quot;; /* 表头字体 */
+    font-size: 10pt; /* 表头字体大小 */
+    font-weight: 600; /* 表头字体粗细 */
+}
+
+QTableCornerButton::section {
+    background-color: #f0f0f0; /* 角落按钮背景颜色 */
+    /* 添加其他您需要的样式 */
+}
+</string>
+        </property>
+        <attribute name="verticalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
+        <row>
+         <property name="text">
+          <string>0</string>
+         </property>
+        </row>
+        <column>
+         <property name="text">
+          <string>Address</string>
+         </property>
+         <property name="textAlignment">
+          <set>AlignCenter</set>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Register</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Expected {hex}</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Actual {hex}</string>
+         </property>
+        </column>
+        <item row="0" column="0">
+         <property name="text">
+          <string>0x10</string>
+         </property>
+        </item>
+        <item row="0" column="1">
+         <property name="text">
+          <string>UIFCFG (Signle AFE)</string>
+         </property>
+        </item>
+        <item row="0" column="2">
+         <property name="text">
+          <string>2600</string>
+         </property>
+        </item>
+        <item row="0" column="3">
+         <property name="text">
+          <string>A410</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="frame_9">
+        <property name="minimumSize">
+         <size>
+          <width>500</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QFrame {
+    background-color: #fff0b3; /* 替换为您想要的颜色 */
+}
+</string>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <property name="lineWidth">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTableWidget" name="tableWidget_chainCfg_rstReg_Dev1">
+        <property name="maximumSize">
+         <size>
+          <width>130</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QTableWidget {
+    border: 2px solid white; /* 边框颜色与粗细调整为2px */
+    gridline-color: white; /* 网格线颜色 */
+    background-color: #f0f0f0; /* 单元格背景颜色 */
+    font-family: &quot;Calibri&quot;; /* 单元格字体 */
+    font-size: 10pt; /* 单元格字体大小 */
+}
+
+QTableWidget::item {
+}
+
+QHeaderView::section {
+    background-color: #f0f0f0; /* 表头背景颜色 */
+    padding: 5px; /* 表头内边距 */
+    border-style: none; /* 表头边框样式 */
+    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */
+    border-right: 2px solid white; /* 表头右边框宽度调整为2px */
+    font-family: &quot;Calibri&quot;; /* 表头字体 */
+    font-size: 10pt; /* 表头字体大小 */
+    font-weight: 600; /* 表头字体粗细 */
+}
+
+QTableCornerButton::section {
+    background-color: #f0f0f0; /* 角落按钮背景颜色 */
+    /* 添加其他您需要的样式 */
+}
+</string>
+        </property>
+        <attribute name="verticalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
+        <row>
+         <property name="text">
+          <string>0</string>
+         </property>
+        </row>
+        <column>
+         <property name="text">
+          <string>Device1</string>
+         </property>
+        </column>
+        <item row="0" column="0">
+         <property name="text">
+          <string>0000</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="frame_statusReg_init_ledArray_2">
+        <property name="minimumSize">
+         <size>
+          <width>500</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QFrame {
+    background-color: #fff0b3; /* 替换为您想要的颜色 */
+}
+</string>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <property name="lineWidth">
+         <number>0</number>
+        </property>
        </widget>
       </item>
      </layout>

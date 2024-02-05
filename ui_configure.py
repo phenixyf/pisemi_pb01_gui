@@ -46,6 +46,16 @@ statusReg_table_items2 = [
     ["0000"]
 ]
 
+rstReg_table_headers1 = ["Address", "Register", "FORCEPOR (hex)", "Device 0 (hex)"]
+rstReg_table_items1 = [
+    ["0x0F", "RESETCTRL", "0001", "0000"]
+]
+
+rstReg_table_headers2 = ["Device 1 (hex)"]
+rstReg_table_items2 = [
+    ["0000"]
+]
+
 """ APPLICATION CONFIGURATION page tablewidget initial content """
 appCfgReg_table_headers = ["Address", "Register", "Pending (hex)", "Device 0 (hex)", "Device 1 (hex)"]
 appCfgReg_table_items = [

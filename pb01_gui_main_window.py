@@ -14,11 +14,11 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1648, 1019)
+        MainWindow.resize(1505, 1019)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.centralwidget)
-        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.horizontalLayout_11 = QtWidgets.QHBoxLayout(self.centralwidget)
+        self.horizontalLayout_11.setObjectName("horizontalLayout_11")
         self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
         self.tabWidget.setStyleSheet("QTabWidget::pane { /* Tab页面的容器样式 */\n"
 "    border: 1px solid #C2C7CB; /* 边框颜色和宽度 */\n"
@@ -54,9 +54,9 @@ class Ui_MainWindow(object):
         self.tabWidget.setObjectName("tabWidget")
         self.tab_chainCfg = QtWidgets.QWidget()
         self.tab_chainCfg.setObjectName("tab_chainCfg")
-        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.tab_chainCfg)
-        self.verticalLayout_4.setSpacing(3)
-        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.tab_chainCfg)
+        self.verticalLayout_9.setSpacing(3)
+        self.verticalLayout_9.setObjectName("verticalLayout_9")
         self.frame_3 = QtWidgets.QFrame(self.tab_chainCfg)
         self.frame_3.setMaximumSize(QtCore.QSize(16777215, 23))
         self.frame_3.setStyleSheet("QFrame {\n"
@@ -85,25 +85,46 @@ class Ui_MainWindow(object):
         self.horizontalLayout_17.addWidget(self.label_34)
         spacerItem = QtWidgets.QSpacerItem(447, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_17.addItem(spacerItem)
-        self.verticalLayout_4.addWidget(self.frame_3)
+        self.verticalLayout_9.addWidget(self.frame_3)
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.radioButton_singleAfe = QtWidgets.QRadioButton(self.tab_chainCfg)
         self.radioButton_singleAfe.setMinimumSize(QtCore.QSize(0, 20))
         self.radioButton_singleAfe.setMaximumSize(QtCore.QSize(16777215, 20))
-        self.radioButton_singleAfe.setStyleSheet("font: 10pt \"Calibri\";\n"
+        self.radioButton_singleAfe.setStyleSheet("font: 12pt \"Calibri\";\n"
 "font-weight: 600; /* 设置字体粗细为600 */")
         self.radioButton_singleAfe.setObjectName("radioButton_singleAfe")
         self.verticalLayout.addWidget(self.radioButton_singleAfe)
         self.radioButton_dualAfe = QtWidgets.QRadioButton(self.tab_chainCfg)
         self.radioButton_dualAfe.setMinimumSize(QtCore.QSize(0, 20))
         self.radioButton_dualAfe.setMaximumSize(QtCore.QSize(16777215, 20))
-        self.radioButton_dualAfe.setStyleSheet("font: 10pt \"Calibri\";\n"
+        self.radioButton_dualAfe.setStyleSheet("font: 12pt \"Calibri\";\n"
 "font-weight: 600; /* 设置字体粗细为600 */")
         self.radioButton_dualAfe.setObjectName("radioButton_dualAfe")
         self.verticalLayout.addWidget(self.radioButton_dualAfe)
-        self.verticalLayout_4.addLayout(self.verticalLayout)
+        self.horizontalLayout.addLayout(self.verticalLayout)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem1)
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.radio_chainCfg_swCorEn = QtWidgets.QRadioButton(self.tab_chainCfg)
+        self.radio_chainCfg_swCorEn.setMinimumSize(QtCore.QSize(0, 20))
+        self.radio_chainCfg_swCorEn.setMaximumSize(QtCore.QSize(16777215, 20))
+        self.radio_chainCfg_swCorEn.setStyleSheet("font: 12pt \"Calibri\";\n"
+"font-weight: 600; /* 设置字体粗细为600 */")
+        self.radio_chainCfg_swCorEn.setObjectName("radio_chainCfg_swCorEn")
+        self.verticalLayout_4.addWidget(self.radio_chainCfg_swCorEn)
+        self.label = QtWidgets.QLabel(self.tab_chainCfg)
+        self.label.setText("")
+        self.label.setObjectName("label")
+        self.verticalLayout_4.addWidget(self.label)
+        self.horizontalLayout.addLayout(self.verticalLayout_4)
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem2)
+        self.verticalLayout_9.addLayout(self.horizontalLayout)
         self.frame = QtWidgets.QFrame(self.tab_chainCfg)
         self.frame.setMaximumSize(QtCore.QSize(16777215, 23))
         self.frame.setStyleSheet("QFrame {\n"
@@ -130,8 +151,8 @@ class Ui_MainWindow(object):
         self.label_35.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
         self.label_35.setObjectName("label_35")
         self.horizontalLayout_19.addWidget(self.label_35)
-        spacerItem1 = QtWidgets.QSpacerItem(447, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_19.addItem(spacerItem1)
+        spacerItem3 = QtWidgets.QSpacerItem(447, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_19.addItem(spacerItem3)
         self.pushButton_uartIfConf_2 = QtWidgets.QPushButton(self.frame)
         self.pushButton_uartIfConf_2.setMinimumSize(QtCore.QSize(110, 0))
         self.pushButton_uartIfConf_2.setMaximumSize(QtCore.QSize(16777215, 16777215))
@@ -143,7 +164,7 @@ class Ui_MainWindow(object):
 "    border-radius: 10px; /* 边框圆角半径 */\n"
 "    border-color: #145289; /* 边框颜色 */\n"
 "    padding: 5px; /* 内边距 */\n"
-"    font: 8pt \"Calibri\"; /* 字体 */\n"
+"    font: 10pt \"Calibri\"; /* 字体 */\n"
 "    font-weight: 600; /* 字体粗细 */\n"
 "}\n"
 "\n"
@@ -157,7 +178,7 @@ class Ui_MainWindow(object):
 "")
         self.pushButton_uartIfConf_2.setObjectName("pushButton_uartIfConf_2")
         self.horizontalLayout_19.addWidget(self.pushButton_uartIfConf_2)
-        self.verticalLayout_4.addWidget(self.frame)
+        self.verticalLayout_9.addWidget(self.frame)
         self.table_chainCfg_devIdBlk = QtWidgets.QTableWidget(self.tab_chainCfg)
         self.table_chainCfg_devIdBlk.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
@@ -223,7 +244,7 @@ class Ui_MainWindow(object):
         item.setBackground(brush)
         self.table_chainCfg_devIdBlk.setItem(0, 3, item)
         self.table_chainCfg_devIdBlk.verticalHeader().setVisible(False)
-        self.verticalLayout_4.addWidget(self.table_chainCfg_devIdBlk)
+        self.verticalLayout_9.addWidget(self.table_chainCfg_devIdBlk)
         self.table_chainCfg_uifcfgReg = QtWidgets.QTableWidget(self.tab_chainCfg)
         self.table_chainCfg_uifcfgReg.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
@@ -290,7 +311,7 @@ class Ui_MainWindow(object):
         item = QtWidgets.QTableWidgetItem()
         self.table_chainCfg_uifcfgReg.setItem(0, 0, item)
         self.table_chainCfg_uifcfgReg.verticalHeader().setVisible(False)
-        self.verticalLayout_4.addWidget(self.table_chainCfg_uifcfgReg)
+        self.verticalLayout_9.addWidget(self.table_chainCfg_uifcfgReg)
         self.table_chainCfg_addcfgReg = QtWidgets.QTableWidget(self.tab_chainCfg)
         self.table_chainCfg_addcfgReg.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
@@ -345,7 +366,7 @@ class Ui_MainWindow(object):
         item = QtWidgets.QTableWidgetItem()
         self.table_chainCfg_addcfgReg.setItem(0, 0, item)
         self.table_chainCfg_addcfgReg.verticalHeader().setVisible(False)
-        self.verticalLayout_4.addWidget(self.table_chainCfg_addcfgReg)
+        self.verticalLayout_9.addWidget(self.table_chainCfg_addcfgReg)
         self.frame_2 = QtWidgets.QFrame(self.tab_chainCfg)
         self.frame_2.setMaximumSize(QtCore.QSize(16777215, 23))
         self.frame_2.setStyleSheet("QFrame {\n"
@@ -372,21 +393,21 @@ class Ui_MainWindow(object):
         self.label_36.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
         self.label_36.setObjectName("label_36")
         self.horizontalLayout_26.addWidget(self.label_36)
-        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_26.addItem(spacerItem2)
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_26.addItem(spacerItem4)
         self.lineEdit_warnStatusPwrUp_2 = QtWidgets.QLineEdit(self.frame_2)
         self.lineEdit_warnStatusPwrUp_2.setMinimumSize(QtCore.QSize(70, 0))
         self.lineEdit_warnStatusPwrUp_2.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
         font.setFamily("Calibri")
-        font.setPointSize(8)
+        font.setPointSize(11)
         font.setBold(True)
         font.setItalic(False)
-        font.setWeight(75)
+        font.setWeight(87)
         self.lineEdit_warnStatusPwrUp_2.setFont(font)
         self.lineEdit_warnStatusPwrUp_2.setStyleSheet("QLineEdit {\n"
-"  font: 8pt \"Calibri\"; /* 字体 */\n"
-"  font-weight: 600; /* 字体粗细 */\n"
+"  font: 11pt \"Calibri\"; /* 字体 */\n"
+"  font-weight: 700; /* 字体粗细 */\n"
 "  color: white; /* 文字颜色 */\n"
 "  background-color: #ff0000; /* 按钮背景颜色 1*/\n"
 "border-color: #ce4500; /* 边框颜色 3*/\n"
@@ -398,9 +419,9 @@ class Ui_MainWindow(object):
         self.lineEdit_warnStatusPwrUp_2.setAlignment(QtCore.Qt.AlignCenter)
         self.lineEdit_warnStatusPwrUp_2.setObjectName("lineEdit_warnStatusPwrUp_2")
         self.horizontalLayout_26.addWidget(self.lineEdit_warnStatusPwrUp_2)
-        spacerItem3 = QtWidgets.QSpacerItem(447, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_26.addItem(spacerItem3)
-        self.verticalLayout_4.addWidget(self.frame_2)
+        spacerItem5 = QtWidgets.QSpacerItem(447, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_26.addItem(spacerItem5)
+        self.verticalLayout_9.addWidget(self.frame_2)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.table_chainCfg_statusBlk_pwrUpDev0 = QtWidgets.QTableWidget(self.tab_chainCfg)
@@ -532,7 +553,7 @@ class Ui_MainWindow(object):
         self.table_chainCfg_statusBlk_pwrUpDev1.setHorizontalHeaderItem(1, item)
         self.table_chainCfg_statusBlk_pwrUpDev1.verticalHeader().setVisible(False)
         self.horizontalLayout_2.addWidget(self.table_chainCfg_statusBlk_pwrUpDev1)
-        self.verticalLayout_4.addLayout(self.horizontalLayout_2)
+        self.verticalLayout_9.addLayout(self.horizontalLayout_2)
         self.frame_6 = QtWidgets.QFrame(self.tab_chainCfg)
         self.frame_6.setMaximumSize(QtCore.QSize(16777215, 23))
         self.frame_6.setStyleSheet("QFrame {\n"
@@ -559,21 +580,21 @@ class Ui_MainWindow(object):
         self.label_32.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
         self.label_32.setObjectName("label_32")
         self.horizontalLayout_15.addWidget(self.label_32)
-        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_15.addItem(spacerItem4)
+        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_15.addItem(spacerItem6)
         self.lineEdit_warnStatusInit_2 = QtWidgets.QLineEdit(self.frame_6)
         self.lineEdit_warnStatusInit_2.setMinimumSize(QtCore.QSize(400, 0))
         self.lineEdit_warnStatusInit_2.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
         font.setFamily("Calibri")
-        font.setPointSize(8)
+        font.setPointSize(11)
         font.setBold(True)
         font.setItalic(False)
-        font.setWeight(75)
+        font.setWeight(87)
         self.lineEdit_warnStatusInit_2.setFont(font)
         self.lineEdit_warnStatusInit_2.setStyleSheet("QLineEdit {\n"
-"  font: 8pt \"Calibri\"; /* 字体 */\n"
-"  font-weight: 600; /* 字体粗细 */\n"
+"  font: 11pt \"Calibri\"; /* 字体 */\n"
+"  font-weight: 700; /* 字体粗细 */\n"
 "  color: white; /* 文字颜色 */\n"
 "  background-color: #ff0000; /* 按钮背景颜色 1*/\n"
 "border-color: #ce4500; /* 边框颜色 3*/\n"
@@ -585,58 +606,33 @@ class Ui_MainWindow(object):
         self.lineEdit_warnStatusInit_2.setAlignment(QtCore.Qt.AlignCenter)
         self.lineEdit_warnStatusInit_2.setObjectName("lineEdit_warnStatusInit_2")
         self.horizontalLayout_15.addWidget(self.lineEdit_warnStatusInit_2)
-        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_15.addItem(spacerItem5)
+        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_15.addItem(spacerItem7)
         self.pushButton_statusRegReInit_5 = QtWidgets.QPushButton(self.frame_6)
         self.pushButton_statusRegReInit_5.setMinimumSize(QtCore.QSize(110, 0))
         self.pushButton_statusRegReInit_5.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.pushButton_statusRegReInit_5.setStyleSheet("QPushButton {\n"
-"    background-color: #e84d00; /* 按钮背景颜色 1*/\n"
+"    background-color: #ED7D31; /* 按钮背景颜色 1*/\n"
 "    color: white; /* 文字颜色 */\n"
 "    border-style: solid; /* 边框样式 */\n"
 "    border-width: 2px; /* 边框宽度 */\n"
 "    border-radius: 10px; /* 边框圆角半径 */\n"
-"    border-color: #ce4500; /* 边框颜色 3*/\n"
+"    border-color: #BC5610; /* 边框颜色 3*/\n"
 "    padding: 5px; /* 内边距 */\n"
-"    font: 8pt \"Calibri\"; /* 字体 */\n"
+"    font: 10pt \"Calibri\"; /* 字体 */\n"
 "    font-weight: 600; /* 字体粗细 */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"    background-color: #ff5500; /* 悬停时的背景颜色 0*/\n"
+"    background-color: #F5B487; /* 悬停时的背景颜色 0*/\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: #df4a00; /* 按下时的背景颜色 2*/\n"
+"    background-color: #CC5D12; /* 按下时的背景颜色 2*/\n"
 "}\n"
 "")
         self.pushButton_statusRegReInit_5.setObjectName("pushButton_statusRegReInit_5")
         self.horizontalLayout_15.addWidget(self.pushButton_statusRegReInit_5)
-        self.pushButton_statusRegClear_5 = QtWidgets.QPushButton(self.frame_6)
-        self.pushButton_statusRegClear_5.setMinimumSize(QtCore.QSize(110, 0))
-        self.pushButton_statusRegClear_5.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.pushButton_statusRegClear_5.setStyleSheet("QPushButton {\n"
-"    background-color: #f3d22d; /* 按钮背景颜色 1*/\n"
-"    color: white; /* 文字颜色 */\n"
-"    border-style: solid; /* 边框样式 */\n"
-"    border-width: 2px; /* 边框宽度 */\n"
-"    border-radius: 10px; /* 边框圆角半径 */\n"
-"    border-color: #cbaf25; /* 边框颜色 3*/\n"
-"    padding: 5px; /* 内边距 */\n"
-"    font: 8pt \"Calibri\"; /* 字体 */\n"
-"    font-weight: 600; /* 字体粗细 */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #ffdc2f; /* 悬停时的背景颜色 0*/\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #d8bb28; /* 按下时的背景颜色 2*/\n"
-"}\n"
-"")
-        self.pushButton_statusRegClear_5.setObjectName("pushButton_statusRegClear_5")
-        self.horizontalLayout_15.addWidget(self.pushButton_statusRegClear_5)
         self.pushButton_statusRegInit_5 = QtWidgets.QPushButton(self.frame_6)
         self.pushButton_statusRegInit_5.setMinimumSize(QtCore.QSize(110, 0))
         self.pushButton_statusRegInit_5.setMaximumSize(QtCore.QSize(16777215, 16777215))
@@ -648,7 +644,7 @@ class Ui_MainWindow(object):
 "    border-radius: 10px; /* 边框圆角半径 */\n"
 "    border-color: #145289; /* 边框颜色 */\n"
 "    padding: 5px; /* 内边距 */\n"
-"    font: 8pt \"Calibri\"; /* 字体 */\n"
+"    font: 10pt \"Calibri\"; /* 字体 */\n"
 "    font-weight: 600; /* 字体粗细 */\n"
 "}\n"
 "\n"
@@ -662,32 +658,7 @@ class Ui_MainWindow(object):
 "")
         self.pushButton_statusRegInit_5.setObjectName("pushButton_statusRegInit_5")
         self.horizontalLayout_15.addWidget(self.pushButton_statusRegInit_5)
-        self.pushButton_statusRegReadBack_5 = QtWidgets.QPushButton(self.frame_6)
-        self.pushButton_statusRegReadBack_5.setMinimumSize(QtCore.QSize(110, 0))
-        self.pushButton_statusRegReadBack_5.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.pushButton_statusRegReadBack_5.setStyleSheet("QPushButton {\n"
-"    background-color: #3b8303; /* 按钮背景颜色 */\n"
-"    color: white; /* 文字颜色 */\n"
-"    border-style: solid; /* 边框样式 */\n"
-"    border-width: 2px; /* 边框宽度 */\n"
-"    border-radius: 10px; /* 边框圆角半径 */\n"
-"    border-color: #326703; /* 边框颜色 */\n"
-"    padding: 5px; /* 内边距 */\n"
-"    font: 8pt \"Calibri\"; /* 字体 */\n"
-"    font-weight: 600; /* 字体粗细 */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #459403; /* 悬停时的背景颜色 */\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #397303; /* 按下时的背景颜色 */\n"
-"}\n"
-"")
-        self.pushButton_statusRegReadBack_5.setObjectName("pushButton_statusRegReadBack_5")
-        self.horizontalLayout_15.addWidget(self.pushButton_statusRegReadBack_5)
-        self.verticalLayout_4.addWidget(self.frame_6)
+        self.verticalLayout_9.addWidget(self.frame_6)
         self.horizontalLayout_10 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_10.setObjectName("horizontalLayout_10")
         self.table_chainCfg_statusBlk_initDev0 = QtWidgets.QTableWidget(self.tab_chainCfg)
@@ -816,7 +787,7 @@ class Ui_MainWindow(object):
         self.table_chainCfg_statusBlk_initDev1.horizontalHeader().setVisible(False)
         self.table_chainCfg_statusBlk_initDev1.verticalHeader().setVisible(False)
         self.horizontalLayout_10.addWidget(self.table_chainCfg_statusBlk_initDev1)
-        self.verticalLayout_4.addLayout(self.horizontalLayout_10)
+        self.verticalLayout_9.addLayout(self.horizontalLayout_10)
         self.frame_10 = QtWidgets.QFrame(self.tab_chainCfg)
         self.frame_10.setMaximumSize(QtCore.QSize(16777215, 23))
         self.frame_10.setStyleSheet("QFrame {\n"
@@ -843,109 +814,59 @@ class Ui_MainWindow(object):
         self.label_33.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
         self.label_33.setObjectName("label_33")
         self.horizontalLayout_25.addWidget(self.label_33)
-        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_25.addItem(spacerItem6)
-        self.pushButton_statusRegReInit_6 = QtWidgets.QPushButton(self.frame_10)
-        self.pushButton_statusRegReInit_6.setMinimumSize(QtCore.QSize(110, 0))
-        self.pushButton_statusRegReInit_6.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.pushButton_statusRegReInit_6.setStyleSheet("QPushButton {\n"
-"    background-color: #e84d00; /* 按钮背景颜色 1*/\n"
-"    color: white; /* 文字颜色 */\n"
-"    border-style: solid; /* 边框样式 */\n"
-"    border-width: 2px; /* 边框宽度 */\n"
-"    border-radius: 10px; /* 边框圆角半径 */\n"
-"    border-color: #ce4500; /* 边框颜色 3*/\n"
-"    padding: 5px; /* 内边距 */\n"
-"    font: 8pt \"Calibri\"; /* 字体 */\n"
-"    font-weight: 600; /* 字体粗细 */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #ff5500; /* 悬停时的背景颜色 0*/\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #df4a00; /* 按下时的背景颜色 2*/\n"
-"}\n"
-"")
-        self.pushButton_statusRegReInit_6.setObjectName("pushButton_statusRegReInit_6")
-        self.horizontalLayout_25.addWidget(self.pushButton_statusRegReInit_6)
+        spacerItem8 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_25.addItem(spacerItem8)
         self.pushButton_statusRegClear_6 = QtWidgets.QPushButton(self.frame_10)
         self.pushButton_statusRegClear_6.setMinimumSize(QtCore.QSize(110, 0))
         self.pushButton_statusRegClear_6.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.pushButton_statusRegClear_6.setStyleSheet("QPushButton {\n"
-"    background-color: #f3d22d; /* 按钮背景颜色 1*/\n"
+"    background-color: #FFC000; /* 按钮背景颜色 1*/\n"
 "    color: white; /* 文字颜色 */\n"
 "    border-style: solid; /* 边框样式 */\n"
 "    border-width: 2px; /* 边框宽度 */\n"
 "    border-radius: 10px; /* 边框圆角半径 */\n"
-"    border-color: #cbaf25; /* 边框颜色 3*/\n"
+"    border-color: #BC8F00; /* 边框颜色 3*/\n"
 "    padding: 5px; /* 内边距 */\n"
-"    font: 8pt \"Calibri\"; /* 字体 */\n"
+"    font: 10pt \"Calibri\"; /* 字体 */\n"
 "    font-weight: 600; /* 字体粗细 */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"    background-color: #ffdc2f; /* 悬停时的背景颜色 0*/\n"
+"    background-color: #FFDB69; /* 悬停时的背景颜色 0*/\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: #d8bb28; /* 按下时的背景颜色 2*/\n"
+"    background-color: #DEA900; /* 按下时的背景颜色 2*/\n"
 "}\n"
 "")
         self.pushButton_statusRegClear_6.setObjectName("pushButton_statusRegClear_6")
         self.horizontalLayout_25.addWidget(self.pushButton_statusRegClear_6)
-        self.pushButton_statusRegInit_6 = QtWidgets.QPushButton(self.frame_10)
-        self.pushButton_statusRegInit_6.setMinimumSize(QtCore.QSize(110, 0))
-        self.pushButton_statusRegInit_6.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.pushButton_statusRegInit_6.setStyleSheet("QPushButton {\n"
-"    background-color: #3072B3; /* 按钮背景颜色 */\n"
-"    color: white; /* 文字颜色 */\n"
-"    border-style: solid; /* 边框样式 */\n"
-"    border-width: 2px; /* 边框宽度 */\n"
-"    border-radius: 10px; /* 边框圆角半径 */\n"
-"    border-color: #145289; /* 边框颜色 */\n"
-"    padding: 5px; /* 内边距 */\n"
-"    font: 8pt \"Calibri\"; /* 字体 */\n"
-"    font-weight: 600; /* 字体粗细 */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #5591D2; /* 悬停时的背景颜色 */\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #1E5A97; /* 按下时的背景颜色 */\n"
-"}\n"
-"")
-        self.pushButton_statusRegInit_6.setObjectName("pushButton_statusRegInit_6")
-        self.horizontalLayout_25.addWidget(self.pushButton_statusRegInit_6)
         self.pushButton_statusRegReadBack_6 = QtWidgets.QPushButton(self.frame_10)
         self.pushButton_statusRegReadBack_6.setMinimumSize(QtCore.QSize(110, 0))
         self.pushButton_statusRegReadBack_6.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.pushButton_statusRegReadBack_6.setStyleSheet("QPushButton {\n"
-"    background-color: #3b8303; /* 按钮背景颜色 */\n"
+"    background-color: #00B050; /* 按钮背景颜色 */\n"
 "    color: white; /* 文字颜色 */\n"
 "    border-style: solid; /* 边框样式 */\n"
 "    border-width: 2px; /* 边框宽度 */\n"
 "    border-radius: 10px; /* 边框圆角半径 */\n"
-"    border-color: #326703; /* 边框颜色 */\n"
+"    border-color: #00823B; /* 边框颜色 */\n"
 "    padding: 5px; /* 内边距 */\n"
-"    font: 8pt \"Calibri\"; /* 字体 */\n"
+"    font: 10pt \"Calibri\"; /* 字体 */\n"
 "    font-weight: 600; /* 字体粗细 */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"    background-color: #459403; /* 悬停时的背景颜色 */\n"
+"    background-color: #00EA6A; /* 悬停时的背景颜色 */\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: #397303; /* 按下时的背景颜色 */\n"
+"    background-color: #009644; /* 按下时的背景颜色 */\n"
 "}\n"
 "")
         self.pushButton_statusRegReadBack_6.setObjectName("pushButton_statusRegReadBack_6")
         self.horizontalLayout_25.addWidget(self.pushButton_statusRegReadBack_6)
-        self.verticalLayout_4.addWidget(self.frame_10)
+        self.verticalLayout_9.addWidget(self.frame_10)
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.table_chainCfg_statusBlk_curDev0 = QtWidgets.QTableWidget(self.tab_chainCfg)
@@ -1074,11 +995,11 @@ class Ui_MainWindow(object):
         self.table_chainCfg_statusBlk_curDev1.horizontalHeader().setVisible(False)
         self.table_chainCfg_statusBlk_curDev1.verticalHeader().setVisible(False)
         self.horizontalLayout_4.addWidget(self.table_chainCfg_statusBlk_curDev1)
-        self.verticalLayout_4.addLayout(self.horizontalLayout_4)
+        self.verticalLayout_9.addLayout(self.horizontalLayout_4)
         self.frame_9 = QtWidgets.QFrame(self.tab_chainCfg)
         self.frame_9.setMaximumSize(QtCore.QSize(16777215, 23))
         self.frame_9.setStyleSheet("QFrame {\n"
-"    background-color: #a0a0a0; /* 设置背景颜色为灰色 */\n"
+"    background-color: #FFBFBF; /* 设置背景颜色 */\n"
 "    border-radius: 10px; /* 设置边框圆角的半径为10px */\n"
 "}\n"
 "")
@@ -1101,8 +1022,8 @@ class Ui_MainWindow(object):
         self.label_31.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
         self.label_31.setObjectName("label_31")
         self.horizontalLayout_23.addWidget(self.label_31)
-        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_23.addItem(spacerItem7)
+        spacerItem9 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_23.addItem(spacerItem9)
         self.pushButton_statusRegReInit_4 = QtWidgets.QPushButton(self.frame_9)
         self.pushButton_statusRegReInit_4.setMinimumSize(QtCore.QSize(110, 0))
         self.pushButton_statusRegReInit_4.setMaximumSize(QtCore.QSize(16777215, 16777215))
@@ -1114,7 +1035,7 @@ class Ui_MainWindow(object):
 "    border-radius: 10px; /* 边框圆角半径 */\n"
 "    border-color: #ce4500; /* 边框颜色 3*/\n"
 "    padding: 5px; /* 内边距 */\n"
-"    font: 8pt \"Calibri\"; /* 字体 */\n"
+"    font: 10pt \"Calibri\"; /* 字体 */\n"
 "    font-weight: 600; /* 字体粗细 */\n"
 "}\n"
 "\n"
@@ -1128,82 +1049,7 @@ class Ui_MainWindow(object):
 "")
         self.pushButton_statusRegReInit_4.setObjectName("pushButton_statusRegReInit_4")
         self.horizontalLayout_23.addWidget(self.pushButton_statusRegReInit_4)
-        self.pushButton_statusRegClear_4 = QtWidgets.QPushButton(self.frame_9)
-        self.pushButton_statusRegClear_4.setMinimumSize(QtCore.QSize(110, 0))
-        self.pushButton_statusRegClear_4.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.pushButton_statusRegClear_4.setStyleSheet("QPushButton {\n"
-"    background-color: #f3d22d; /* 按钮背景颜色 1*/\n"
-"    color: white; /* 文字颜色 */\n"
-"    border-style: solid; /* 边框样式 */\n"
-"    border-width: 2px; /* 边框宽度 */\n"
-"    border-radius: 10px; /* 边框圆角半径 */\n"
-"    border-color: #cbaf25; /* 边框颜色 3*/\n"
-"    padding: 5px; /* 内边距 */\n"
-"    font: 8pt \"Calibri\"; /* 字体 */\n"
-"    font-weight: 600; /* 字体粗细 */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #ffdc2f; /* 悬停时的背景颜色 0*/\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #d8bb28; /* 按下时的背景颜色 2*/\n"
-"}\n"
-"")
-        self.pushButton_statusRegClear_4.setObjectName("pushButton_statusRegClear_4")
-        self.horizontalLayout_23.addWidget(self.pushButton_statusRegClear_4)
-        self.pushButton_statusRegInit_4 = QtWidgets.QPushButton(self.frame_9)
-        self.pushButton_statusRegInit_4.setMinimumSize(QtCore.QSize(110, 0))
-        self.pushButton_statusRegInit_4.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.pushButton_statusRegInit_4.setStyleSheet("QPushButton {\n"
-"    background-color: #3072B3; /* 按钮背景颜色 */\n"
-"    color: white; /* 文字颜色 */\n"
-"    border-style: solid; /* 边框样式 */\n"
-"    border-width: 2px; /* 边框宽度 */\n"
-"    border-radius: 10px; /* 边框圆角半径 */\n"
-"    border-color: #145289; /* 边框颜色 */\n"
-"    padding: 5px; /* 内边距 */\n"
-"    font: 8pt \"Calibri\"; /* 字体 */\n"
-"    font-weight: 600; /* 字体粗细 */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #5591D2; /* 悬停时的背景颜色 */\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #1E5A97; /* 按下时的背景颜色 */\n"
-"}\n"
-"")
-        self.pushButton_statusRegInit_4.setObjectName("pushButton_statusRegInit_4")
-        self.horizontalLayout_23.addWidget(self.pushButton_statusRegInit_4)
-        self.pushButton_statusRegReadBack_4 = QtWidgets.QPushButton(self.frame_9)
-        self.pushButton_statusRegReadBack_4.setMinimumSize(QtCore.QSize(110, 0))
-        self.pushButton_statusRegReadBack_4.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.pushButton_statusRegReadBack_4.setStyleSheet("QPushButton {\n"
-"    background-color: #3b8303; /* 按钮背景颜色 */\n"
-"    color: white; /* 文字颜色 */\n"
-"    border-style: solid; /* 边框样式 */\n"
-"    border-width: 2px; /* 边框宽度 */\n"
-"    border-radius: 10px; /* 边框圆角半径 */\n"
-"    border-color: #326703; /* 边框颜色 */\n"
-"    padding: 5px; /* 内边距 */\n"
-"    font: 8pt \"Calibri\"; /* 字体 */\n"
-"    font-weight: 600; /* 字体粗细 */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #459403; /* 悬停时的背景颜色 */\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #397303; /* 按下时的背景颜色 */\n"
-"}\n"
-"")
-        self.pushButton_statusRegReadBack_4.setObjectName("pushButton_statusRegReadBack_4")
-        self.horizontalLayout_23.addWidget(self.pushButton_statusRegReadBack_4)
-        self.verticalLayout_4.addWidget(self.frame_9)
+        self.verticalLayout_9.addWidget(self.frame_9)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.table_chainCfg_rstBlk_Dev0 = QtWidgets.QTableWidget(self.tab_chainCfg)
@@ -1259,8 +1105,8 @@ class Ui_MainWindow(object):
         self.table_chainCfg_rstBlk_Dev0.setItem(0, 3, item)
         self.table_chainCfg_rstBlk_Dev0.verticalHeader().setVisible(False)
         self.horizontalLayout_3.addWidget(self.table_chainCfg_rstBlk_Dev0)
-        spacerItem8 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem8)
+        spacerItem10 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem10)
         self.table_chainCfg_rstBlk_Dev1 = QtWidgets.QTableWidget(self.tab_chainCfg)
         self.table_chainCfg_rstBlk_Dev1.setMaximumSize(QtCore.QSize(130, 16777215))
         self.table_chainCfg_rstBlk_Dev1.setStyleSheet("QTableWidget {\n"
@@ -1301,9 +1147,9 @@ class Ui_MainWindow(object):
         self.table_chainCfg_rstBlk_Dev1.setItem(0, 0, item)
         self.table_chainCfg_rstBlk_Dev1.verticalHeader().setVisible(False)
         self.horizontalLayout_3.addWidget(self.table_chainCfg_rstBlk_Dev1)
-        spacerItem9 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem9)
-        self.verticalLayout_4.addLayout(self.horizontalLayout_3)
+        spacerItem11 = QtWidgets.QSpacerItem(800, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem11)
+        self.verticalLayout_9.addLayout(self.horizontalLayout_3)
         self.tabWidget.addTab(self.tab_chainCfg, "")
         self.tab_appCfg = QtWidgets.QWidget()
         self.tab_appCfg.setObjectName("tab_appCfg")
@@ -1341,8 +1187,8 @@ class Ui_MainWindow(object):
         self.label_26.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
         self.label_26.setObjectName("label_26")
         self.horizontalLayout_6.addWidget(self.label_26)
-        spacerItem10 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_6.addItem(spacerItem10)
+        spacerItem12 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_6.addItem(spacerItem12)
         self.pushButton_58 = QtWidgets.QPushButton(self.frame_5)
         self.pushButton_58.setMinimumSize(QtCore.QSize(110, 0))
         self.pushButton_58.setMaximumSize(QtCore.QSize(16777215, 16777215))
@@ -1487,8 +1333,8 @@ class Ui_MainWindow(object):
         self.label_28.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
         self.label_28.setObjectName("label_28")
         self.horizontalLayout_8.addWidget(self.label_28)
-        spacerItem11 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_8.addItem(spacerItem11)
+        spacerItem13 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_8.addItem(spacerItem13)
         self.pushButton_62 = QtWidgets.QPushButton(self.frame_7)
         self.pushButton_62.setMinimumSize(QtCore.QSize(110, 0))
         self.pushButton_62.setMaximumSize(QtCore.QSize(16777215, 16777215))
@@ -1630,8 +1476,8 @@ class Ui_MainWindow(object):
         self.label_25.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
         self.label_25.setObjectName("label_25")
         self.horizontalLayout_5.addWidget(self.label_25)
-        spacerItem12 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_5.addItem(spacerItem12)
+        spacerItem14 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_5.addItem(spacerItem14)
         self.pushButton_56 = QtWidgets.QPushButton(self.frame_8)
         self.pushButton_56.setMinimumSize(QtCore.QSize(110, 0))
         self.pushButton_56.setMaximumSize(QtCore.QSize(16777215, 16777215))
@@ -1799,8 +1645,8 @@ class Ui_MainWindow(object):
         self.label_27.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
         self.label_27.setObjectName("label_27")
         self.horizontalLayout_7.addWidget(self.label_27)
-        spacerItem13 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_7.addItem(spacerItem13)
+        spacerItem15 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_7.addItem(spacerItem15)
         self.pushButton_60 = QtWidgets.QPushButton(self.frame_4)
         self.pushButton_60.setMinimumSize(QtCore.QSize(110, 0))
         self.pushButton_60.setMaximumSize(QtCore.QSize(16777215, 16777215))
@@ -1928,10 +1774,10 @@ class Ui_MainWindow(object):
         self.tab_2 = QtWidgets.QWidget()
         self.tab_2.setObjectName("tab_2")
         self.tabWidget.addTab(self.tab_2, "")
-        self.horizontalLayout.addWidget(self.tabWidget)
+        self.horizontalLayout_11.addWidget(self.tabWidget)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1648, 23))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1505, 23))
         self.menubar.setObjectName("menubar")
         self.menuPython = QtWidgets.QMenu(self.menubar)
         self.menuPython.setObjectName("menuPython")
@@ -1960,7 +1806,8 @@ class Ui_MainWindow(object):
         self.label_34.setText(_translate("MainWindow", "Setup Option Selection"))
         self.radioButton_singleAfe.setText(_translate("MainWindow", "Single AFE Device"))
         self.radioButton_dualAfe.setText(_translate("MainWindow", "Dual AFE Daisy Chain"))
-        self.label_35.setText(_translate("MainWindow", "UART Interface Configuration"))
+        self.radio_chainCfg_swCorEn.setText(_translate("MainWindow", "Enable Software Accuracy Correction"))
+        self.label_35.setText(_translate("MainWindow", "INTERFACE CONFIGURATION & ID Register Block"))
         self.pushButton_uartIfConf_2.setText(_translate("MainWindow", "CONFIGURE"))
         item = self.table_chainCfg_devIdBlk.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
@@ -2115,9 +1962,7 @@ class Ui_MainWindow(object):
         self.label_32.setText(_translate("MainWindow", "General Summary Information (Initialization)"))
         self.lineEdit_warnStatusInit_2.setText(_translate("MainWindow", "WARNING: Uexpected Post-Initialization Status - Confirm Setup"))
         self.pushButton_statusRegReInit_5.setText(_translate("MainWindow", "RE-INITIALIZE"))
-        self.pushButton_statusRegClear_5.setText(_translate("MainWindow", "CLERA COMM"))
         self.pushButton_statusRegInit_5.setText(_translate("MainWindow", "INITIALIZE"))
-        self.pushButton_statusRegReadBack_5.setText(_translate("MainWindow", "READ BACK"))
         item = self.table_chainCfg_statusBlk_initDev0.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
         item = self.table_chainCfg_statusBlk_initDev0.verticalHeaderItem(1)
@@ -2172,9 +2017,7 @@ class Ui_MainWindow(object):
         item = self.table_chainCfg_statusBlk_initDev1.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Device1"))
         self.label_33.setText(_translate("MainWindow", "General Summary Information (Current Status)"))
-        self.pushButton_statusRegReInit_6.setText(_translate("MainWindow", "RE-INITIALIZE"))
         self.pushButton_statusRegClear_6.setText(_translate("MainWindow", "CLERA COMM"))
-        self.pushButton_statusRegInit_6.setText(_translate("MainWindow", "INITIALIZE"))
         self.pushButton_statusRegReadBack_6.setText(_translate("MainWindow", "READ BACK"))
         item = self.table_chainCfg_statusBlk_curDev0.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
@@ -2229,11 +2072,8 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "3"))
         item = self.table_chainCfg_statusBlk_curDev1.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Device1"))
-        self.label_31.setText(_translate("MainWindow", "Reset"))
-        self.pushButton_statusRegReInit_4.setText(_translate("MainWindow", "RE-INITIALIZE"))
-        self.pushButton_statusRegClear_4.setText(_translate("MainWindow", "CLERA COMM"))
-        self.pushButton_statusRegInit_4.setText(_translate("MainWindow", "INITIALIZE"))
-        self.pushButton_statusRegReadBack_4.setText(_translate("MainWindow", "READ BACK"))
+        self.label_31.setText(_translate("MainWindow", "RESET Register Block (Resets the entire AFE Chain and all Configuration Settings, use only if necessory)"))
+        self.pushButton_statusRegReInit_4.setText(_translate("MainWindow", "RESET"))
         item = self.table_chainCfg_rstBlk_Dev0.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
         item = self.table_chainCfg_rstBlk_Dev0.horizontalHeaderItem(0)

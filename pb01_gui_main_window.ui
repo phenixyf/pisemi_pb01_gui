@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1648</width>
+    <width>1505</width>
     <height>1019</height>
    </rect>
   </property>
@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QHBoxLayout" name="horizontalLayout">
+   <layout class="QHBoxLayout" name="horizontalLayout_11">
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="styleSheet">
@@ -57,7 +57,7 @@ QTabBar::tab:!selected { /* 未被选中的Tab标题的样式 */
        <attribute name="title">
         <string>Chain Configuration</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_4">
+       <layout class="QVBoxLayout" name="verticalLayout_9">
         <property name="spacing">
          <number>3</number>
         </property>
@@ -138,55 +138,119 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
          </widget>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout">
-          <property name="spacing">
-           <number>0</number>
-          </property>
+         <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
-           <widget class="QRadioButton" name="radioButton_singleAfe">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>20</height>
-             </size>
+           <layout class="QVBoxLayout" name="verticalLayout">
+            <property name="spacing">
+             <number>0</number>
             </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>20</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">font: 10pt &quot;Calibri&quot;;
+            <item>
+             <widget class="QRadioButton" name="radioButton_singleAfe">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 12pt &quot;Calibri&quot;;
 font-weight: 600; /* 设置字体粗细为600 */</string>
-            </property>
-            <property name="text">
-             <string>Single AFE Device</string>
-            </property>
-           </widget>
+              </property>
+              <property name="text">
+               <string>Single AFE Device</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_dualAfe">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 12pt &quot;Calibri&quot;;
+font-weight: 600; /* 设置字体粗细为600 */</string>
+              </property>
+              <property name="text">
+               <string>Dual AFE Daisy Chain</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item>
-           <widget class="QRadioButton" name="radioButton_dualAfe">
-            <property name="minimumSize">
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
              <size>
-              <width>0</width>
+              <width>40</width>
               <height>20</height>
              </size>
             </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>20</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">font: 10pt &quot;Calibri&quot;;
+           </spacer>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <item>
+             <widget class="QRadioButton" name="radio_chainCfg_swCorEn">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 12pt &quot;Calibri&quot;;
 font-weight: 600; /* 设置字体粗细为600 */</string>
+              </property>
+              <property name="text">
+               <string>Enable Software Accuracy Correction</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
             </property>
-            <property name="text">
-             <string>Dual AFE Daisy Chain</string>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
             </property>
-           </widget>
+           </spacer>
           </item>
          </layout>
         </item>
@@ -243,7 +307,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
 font-weight: 600; /* 设置字体粗细为600 */</string>
              </property>
              <property name="text">
-              <string>UART Interface Configuration</string>
+              <string>INTERFACE CONFIGURATION &amp; ID Register Block</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
@@ -286,7 +350,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
     border-radius: 10px; /* 边框圆角半径 */
     border-color: #145289; /* 边框颜色 */
     padding: 5px; /* 内边距 */
-	font: 8pt &quot;Calibri&quot;; /* 字体 */
+	font: 10pt &quot;Calibri&quot;; /* 字体 */
     font-weight: 600; /* 字体粗细 */
 }
 
@@ -726,16 +790,16 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
              <property name="font">
               <font>
                <family>Calibri</family>
-               <pointsize>8</pointsize>
-               <weight>75</weight>
+               <pointsize>11</pointsize>
+               <weight>87</weight>
                <italic>false</italic>
                <bold>true</bold>
               </font>
              </property>
              <property name="styleSheet">
               <string notr="true">QLineEdit {
-  font: 8pt &quot;Calibri&quot;; /* 字体 */
-  font-weight: 600; /* 字体粗细 */
+  font: 11pt &quot;Calibri&quot;; /* 字体 */
+  font-weight: 700; /* 字体粗细 */
   color: white; /* 文字颜色 */
   background-color: #ff0000; /* 按钮背景颜色 1*/
 border-color: #ce4500; /* 边框颜色 3*/
@@ -1104,16 +1168,16 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
              <property name="font">
               <font>
                <family>Calibri</family>
-               <pointsize>8</pointsize>
-               <weight>75</weight>
+               <pointsize>11</pointsize>
+               <weight>87</weight>
                <italic>false</italic>
                <bold>true</bold>
               </font>
              </property>
              <property name="styleSheet">
               <string notr="true">QLineEdit {
-  font: 8pt &quot;Calibri&quot;; /* 字体 */
-  font-weight: 600; /* 字体粗细 */
+  font: 11pt &quot;Calibri&quot;; /* 字体 */
+  font-weight: 700; /* 字体粗细 */
   color: white; /* 文字颜色 */
   background-color: #ff0000; /* 按钮背景颜色 1*/
 border-color: #ce4500; /* 边框颜色 3*/
@@ -1162,69 +1226,28 @@ padding: 5px; /* 内边距 */
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton {
-    background-color: #e84d00; /* 按钮背景颜色 1*/
+    background-color: #ED7D31; /* 按钮背景颜色 1*/
     color: white; /* 文字颜色 */
     border-style: solid; /* 边框样式 */
     border-width: 2px; /* 边框宽度 */
     border-radius: 10px; /* 边框圆角半径 */
-    border-color: #ce4500; /* 边框颜色 3*/
+    border-color: #BC5610; /* 边框颜色 3*/
     padding: 5px; /* 内边距 */
-	font: 8pt &quot;Calibri&quot;; /* 字体 */
+	font: 10pt &quot;Calibri&quot;; /* 字体 */
     font-weight: 600; /* 字体粗细 */
 }
 
 QPushButton:hover {
-    background-color: #ff5500; /* 悬停时的背景颜色 0*/
+    background-color: #F5B487; /* 悬停时的背景颜色 0*/
 }
 
 QPushButton:pressed {
-    background-color: #df4a00; /* 按下时的背景颜色 2*/
+    background-color: #CC5D12; /* 按下时的背景颜色 2*/
 }
 </string>
              </property>
              <property name="text">
               <string>RE-INITIALIZE</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="pushButton_statusRegClear_5">
-             <property name="minimumSize">
-              <size>
-               <width>110</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QPushButton {
-    background-color: #f3d22d; /* 按钮背景颜色 1*/
-    color: white; /* 文字颜色 */
-    border-style: solid; /* 边框样式 */
-    border-width: 2px; /* 边框宽度 */
-    border-radius: 10px; /* 边框圆角半径 */
-    border-color: #cbaf25; /* 边框颜色 3*/
-    padding: 5px; /* 内边距 */
-	font: 8pt &quot;Calibri&quot;; /* 字体 */
-    font-weight: 600; /* 字体粗细 */
-}
-
-QPushButton:hover {
-    background-color: #ffdc2f; /* 悬停时的背景颜色 0*/
-}
-
-QPushButton:pressed {
-    background-color: #d8bb28; /* 按下时的背景颜色 2*/
-}
-</string>
-             </property>
-             <property name="text">
-              <string>CLERA COMM</string>
              </property>
             </widget>
            </item>
@@ -1251,7 +1274,7 @@ QPushButton:pressed {
     border-radius: 10px; /* 边框圆角半径 */
     border-color: #145289; /* 边框颜色 */
     padding: 5px; /* 内边距 */
-	font: 8pt &quot;Calibri&quot;; /* 字体 */
+	font: 10pt &quot;Calibri&quot;; /* 字体 */
     font-weight: 600; /* 字体粗细 */
 }
 
@@ -1266,47 +1289,6 @@ QPushButton:pressed {
              </property>
              <property name="text">
               <string>INITIALIZE</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="pushButton_statusRegReadBack_5">
-             <property name="minimumSize">
-              <size>
-               <width>110</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QPushButton {
-    background-color: #3b8303; /* 按钮背景颜色 */
-    color: white; /* 文字颜色 */
-    border-style: solid; /* 边框样式 */
-    border-width: 2px; /* 边框宽度 */
-    border-radius: 10px; /* 边框圆角半径 */
-    border-color: #326703; /* 边框颜色 */
-    padding: 5px; /* 内边距 */
-	font: 8pt &quot;Calibri&quot;; /* 字体 */
-    font-weight: 600; /* 字体粗细 */
-}
-
-QPushButton:hover {
-    background-color: #459403; /* 悬停时的背景颜色 */
-}
-
-QPushButton:pressed {
-    background-color: #397303; /* 按下时的背景颜色 */
-}
-</string>
-             </property>
-             <property name="text">
-              <string>READ BACK</string>
              </property>
             </widget>
            </item>
@@ -1622,47 +1604,6 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </spacer>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_statusRegReInit_6">
-             <property name="minimumSize">
-              <size>
-               <width>110</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QPushButton {
-    background-color: #e84d00; /* 按钮背景颜色 1*/
-    color: white; /* 文字颜色 */
-    border-style: solid; /* 边框样式 */
-    border-width: 2px; /* 边框宽度 */
-    border-radius: 10px; /* 边框圆角半径 */
-    border-color: #ce4500; /* 边框颜色 3*/
-    padding: 5px; /* 内边距 */
-	font: 8pt &quot;Calibri&quot;; /* 字体 */
-    font-weight: 600; /* 字体粗细 */
-}
-
-QPushButton:hover {
-    background-color: #ff5500; /* 悬停时的背景颜色 0*/
-}
-
-QPushButton:pressed {
-    background-color: #df4a00; /* 按下时的背景颜色 2*/
-}
-</string>
-             </property>
-             <property name="text">
-              <string>RE-INITIALIZE</string>
-             </property>
-            </widget>
-           </item>
-           <item>
             <widget class="QPushButton" name="pushButton_statusRegClear_6">
              <property name="minimumSize">
               <size>
@@ -1678,69 +1619,28 @@ QPushButton:pressed {
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton {
-    background-color: #f3d22d; /* 按钮背景颜色 1*/
+    background-color: #FFC000; /* 按钮背景颜色 1*/
     color: white; /* 文字颜色 */
     border-style: solid; /* 边框样式 */
     border-width: 2px; /* 边框宽度 */
     border-radius: 10px; /* 边框圆角半径 */
-    border-color: #cbaf25; /* 边框颜色 3*/
+    border-color: #BC8F00; /* 边框颜色 3*/
     padding: 5px; /* 内边距 */
-	font: 8pt &quot;Calibri&quot;; /* 字体 */
+	font: 10pt &quot;Calibri&quot;; /* 字体 */
     font-weight: 600; /* 字体粗细 */
 }
 
 QPushButton:hover {
-    background-color: #ffdc2f; /* 悬停时的背景颜色 0*/
+    background-color: #FFDB69; /* 悬停时的背景颜色 0*/
 }
 
 QPushButton:pressed {
-    background-color: #d8bb28; /* 按下时的背景颜色 2*/
+    background-color: #DEA900; /* 按下时的背景颜色 2*/
 }
 </string>
              </property>
              <property name="text">
               <string>CLERA COMM</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="pushButton_statusRegInit_6">
-             <property name="minimumSize">
-              <size>
-               <width>110</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QPushButton {
-    background-color: #3072B3; /* 按钮背景颜色 */
-    color: white; /* 文字颜色 */
-    border-style: solid; /* 边框样式 */
-    border-width: 2px; /* 边框宽度 */
-    border-radius: 10px; /* 边框圆角半径 */
-    border-color: #145289; /* 边框颜色 */
-    padding: 5px; /* 内边距 */
-	font: 8pt &quot;Calibri&quot;; /* 字体 */
-    font-weight: 600; /* 字体粗细 */
-}
-
-QPushButton:hover {
-    background-color: #5591D2; /* 悬停时的背景颜色 */
-}
-
-QPushButton:pressed {
-    background-color: #1E5A97; /* 按下时的背景颜色 */
-}
-</string>
-             </property>
-             <property name="text">
-              <string>INITIALIZE</string>
              </property>
             </widget>
            </item>
@@ -1760,23 +1660,23 @@ QPushButton:pressed {
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton {
-    background-color: #3b8303; /* 按钮背景颜色 */
+    background-color: #00B050; /* 按钮背景颜色 */
     color: white; /* 文字颜色 */
     border-style: solid; /* 边框样式 */
     border-width: 2px; /* 边框宽度 */
     border-radius: 10px; /* 边框圆角半径 */
-    border-color: #326703; /* 边框颜色 */
+    border-color: #00823B; /* 边框颜色 */
     padding: 5px; /* 内边距 */
-	font: 8pt &quot;Calibri&quot;; /* 字体 */
+	font: 10pt &quot;Calibri&quot;; /* 字体 */
     font-weight: 600; /* 字体粗细 */
 }
 
 QPushButton:hover {
-    background-color: #459403; /* 悬停时的背景颜色 */
+    background-color: #00EA6A; /* 悬停时的背景颜色 */
 }
 
 QPushButton:pressed {
-    background-color: #397303; /* 按下时的背景颜色 */
+    background-color: #009644; /* 按下时的背景颜色 */
 }
 </string>
              </property>
@@ -2033,7 +1933,7 @@ QTableCornerButton::section {
           </property>
           <property name="styleSheet">
            <string notr="true">QFrame {
-    background-color: #a0a0a0; /* 设置背景颜色为灰色 */
+    background-color: #FFBFBF; /* 设置背景颜色 */
     border-radius: 10px; /* 设置边框圆角的半径为10px */
 }
 </string>
@@ -2076,7 +1976,7 @@ QTableCornerButton::section {
 font-weight: 600; /* 设置字体粗细为600 */</string>
              </property>
              <property name="text">
-              <string>Reset</string>
+              <string>RESET Register Block (Resets the entire AFE Chain and all Configuration Settings, use only if necessory)</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
@@ -2119,7 +2019,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
     border-radius: 10px; /* 边框圆角半径 */
     border-color: #ce4500; /* 边框颜色 3*/
     padding: 5px; /* 内边距 */
-	font: 8pt &quot;Calibri&quot;; /* 字体 */
+	font: 10pt &quot;Calibri&quot;; /* 字体 */
     font-weight: 600; /* 字体粗细 */
 }
 
@@ -2133,130 +2033,7 @@ QPushButton:pressed {
 </string>
              </property>
              <property name="text">
-              <string>RE-INITIALIZE</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="pushButton_statusRegClear_4">
-             <property name="minimumSize">
-              <size>
-               <width>110</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QPushButton {
-    background-color: #f3d22d; /* 按钮背景颜色 1*/
-    color: white; /* 文字颜色 */
-    border-style: solid; /* 边框样式 */
-    border-width: 2px; /* 边框宽度 */
-    border-radius: 10px; /* 边框圆角半径 */
-    border-color: #cbaf25; /* 边框颜色 3*/
-    padding: 5px; /* 内边距 */
-	font: 8pt &quot;Calibri&quot;; /* 字体 */
-    font-weight: 600; /* 字体粗细 */
-}
-
-QPushButton:hover {
-    background-color: #ffdc2f; /* 悬停时的背景颜色 0*/
-}
-
-QPushButton:pressed {
-    background-color: #d8bb28; /* 按下时的背景颜色 2*/
-}
-</string>
-             </property>
-             <property name="text">
-              <string>CLERA COMM</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="pushButton_statusRegInit_4">
-             <property name="minimumSize">
-              <size>
-               <width>110</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QPushButton {
-    background-color: #3072B3; /* 按钮背景颜色 */
-    color: white; /* 文字颜色 */
-    border-style: solid; /* 边框样式 */
-    border-width: 2px; /* 边框宽度 */
-    border-radius: 10px; /* 边框圆角半径 */
-    border-color: #145289; /* 边框颜色 */
-    padding: 5px; /* 内边距 */
-	font: 8pt &quot;Calibri&quot;; /* 字体 */
-    font-weight: 600; /* 字体粗细 */
-}
-
-QPushButton:hover {
-    background-color: #5591D2; /* 悬停时的背景颜色 */
-}
-
-QPushButton:pressed {
-    background-color: #1E5A97; /* 按下时的背景颜色 */
-}
-</string>
-             </property>
-             <property name="text">
-              <string>INITIALIZE</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="pushButton_statusRegReadBack_4">
-             <property name="minimumSize">
-              <size>
-               <width>110</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QPushButton {
-    background-color: #3b8303; /* 按钮背景颜色 */
-    color: white; /* 文字颜色 */
-    border-style: solid; /* 边框样式 */
-    border-width: 2px; /* 边框宽度 */
-    border-radius: 10px; /* 边框圆角半径 */
-    border-color: #326703; /* 边框颜色 */
-    padding: 5px; /* 内边距 */
-	font: 8pt &quot;Calibri&quot;; /* 字体 */
-    font-weight: 600; /* 字体粗细 */
-}
-
-QPushButton:hover {
-    background-color: #459403; /* 悬停时的背景颜色 */
-}
-
-QPushButton:pressed {
-    background-color: #397303; /* 按下时的背景颜色 */
-}
-</string>
-             </property>
-             <property name="text">
-              <string>READ BACK</string>
+              <string>RESET</string>
              </property>
             </widget>
            </item>
@@ -2356,7 +2133,7 @@ QTableCornerButton::section {
            </widget>
           </item>
           <item>
-           <spacer name="horizontalSpacer_15">
+           <spacer name="horizontalSpacer">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -2426,13 +2203,13 @@ QTableCornerButton::section {
            </widget>
           </item>
           <item>
-           <spacer name="horizontalSpacer_16">
+           <spacer name="horizontalSpacer_2">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
-              <width>40</width>
+              <width>800</width>
               <height>20</height>
              </size>
             </property>
@@ -3658,7 +3435,7 @@ QTableCornerButton::section {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1648</width>
+     <width>1505</width>
      <height>23</height>
     </rect>
    </property>

@@ -26,6 +26,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         :return:
         """
         ''' inital CHAIN CONFIGURATION page '''
+        # initial single AFE radio
         self.radioButton_dualAfe.setChecked(True)
         # self.radioButton_singleAfe.setChecked(True)
 
@@ -45,8 +46,6 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         # status power up dev0 table initial
         ledList_pageChain_st1pu_dev0, ledList_pageChain_st2pu_dev0, ledList_pageChain_fm1pu_dev0, \
         ledList_pageChain_fm2pu_dev0 = init_status_led_table_dev0(self.table_chainCfg_statusBlk_pwrUpDev0, 150)
-
-        update_led_color(ledList_pageChain_st1pu_dev0[3], "#aa0000")
 
         # status power up dev1 table initial
         ledList_pageChain_st1pu_dev1, ledList_pageChain_st2pu_dev1, ledList_pageChain_fm1pu_dev1, \
@@ -95,6 +94,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.table_chainCfg_statusBlk_initDev0.setColumnWidth(2, self.table_chainCfg_rstBlk_Dev0.columnWidth(2))
         self.table_chainCfg_statusBlk_curDev0.setColumnWidth(2, self.table_chainCfg_rstBlk_Dev0.columnWidth(2))
 
+        update_led_color(ledList_pageChain_st1pu_dev0[3], "#aa0000")
         # update_led_color(self.label_186, "#aa0000")
 
         ''' 配置信号和槽 '''
@@ -115,10 +115,11 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                            table_chainCfg_uartIfItem)
             set_table_item(self.table_chainCfg_addcfgReg, 1, CHAIN_CFG_TABLE_ROWHG,
                            table_chainCfg_uartAddrItem)
+            self.table_chainCfg_devIdBlk.setRowCount(1)
             self.table_chainCfg_statusBlk_pwrUpDev1.hide()
             self.table_chainCfg_statusBlk_initDev1.hide()
             self.table_chainCfg_statusBlk_curDev1.hide()
-            self.table_chainCfg_devIdBlk.setRowCount(1)
+            self.table_chainCfg_rstBlk_Dev1.hide()
             adjust_if_id_tables(self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
                                 self.table_chainCfg_addcfgReg)
             set_if_id_tables_color(1, self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
@@ -130,10 +131,11 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                            table_chainCfg_uartIfItem)
             set_table_item(self.table_chainCfg_addcfgReg, 2, CHAIN_CFG_TABLE_ROWHG,
                            table_chainCfg_uartAddrItem)
+            self.table_chainCfg_devIdBlk.setRowCount(2)
             self.table_chainCfg_statusBlk_pwrUpDev1.show()
             self.table_chainCfg_statusBlk_initDev1.show()
             self.table_chainCfg_statusBlk_curDev1.show()
-            self.table_chainCfg_devIdBlk.setRowCount(2)
+            self.table_chainCfg_rstBlk_Dev1.show()
             adjust_if_id_tables(self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
                                 self.table_chainCfg_addcfgReg)
             set_if_id_tables_color(2, self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,

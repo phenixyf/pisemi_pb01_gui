@@ -89,14 +89,14 @@ CHAIN_CFG_TABLE_STAHG = 120     # status block 不显示 header 的 4 个 table 
 CHAIN_CFG_TABLE_RSTHG = 60      # reset block table 的高度
 
 ''' 16 led label '''
-LED_STA1_LAB = ["ACQ", "REST", "RJCT", "UIF", "OVST", "UVST", "ATOV", "ATUV",
-                "AXOV", "AXUV", "DGOV", "DGUV", "MM", "CBAL", "FME1", "FME2"]
-LED_STA2_LAB = ["PEUP", "PEDN", "MNUP", "MNDN", "PRUP", "PRDN", "RGUP", "RGDN",
-                "DUAL", "CBTF", "CBDO", "CBER", "CBER", "SPCK", "SPCR", "SPRG"]
+LED_STA1_LAB = ["ACQ", "RESET", "RJCT", "UIF", "OV", "UV", "ALTOV", "ALTUV",
+                "AUXOV", "AUXUV", "DIAGOV", "DIAGUV", "MM", "CBAL", "FMEA1", "FMEA2"]
+LED_STA2_LAB = ["PECUP", "PECDN", "MANUP", "MANDN", "PARUP", "PARDN", "REGUP", "REGDN",
+                "DUAL", "CBNTFY", "CBDONE", "CBERR", "SPIRW", "SPICLK", "SPICRC", "SPIREG"]
 LED_FME1_LAB = ["OSC", "----", "----", "----", "----", "VAA", "VDD", "VIO",
-                "AGD2", "AGND", "DGND", "IOGD", "HVOV", "HVUV", "TEM2", "TEM1"]
-LED_FME2_LAB = ["HVHD", "AQTO", "----", "----", "A1ZS", "A1FS", "A2ZS", "A2FS",
-                "USER", "MODE", "AQIN", "DVIN", "OTPE", "REGE", "MMBT", "CBBT"]
+                "AGND2", "AGND", "DGND", "IOGND", "HVOV", "HVUV", "TEMP2", "TEMP1"]
+LED_FME2_LAB = ["HVHDRM", "ACQTO", "----", "----", "ADC1ZS", "ADC1FS", "ADC2ZS", "ADC2FS",
+                "USER", "MODE", "AINIT", "DINIT", "OTPERR", "REGECC", "MBIST", "CBIST"]
 
 ''' '''
 table_chainCfg_devidHead = ["Address", "Register", "Expected (hex)","DEVIDD (hex)", "DEVID1 (hex)", "DEVID2 (hex)",

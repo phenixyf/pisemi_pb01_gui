@@ -24,16 +24,20 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         GUI 初始化函数
         :return:
         """
-        self.tabWidget.tabBar().setExpanding(True)
         ''' inital CHAIN CONFIGURATION page '''
-        # uart interface configuration tables
-        set_table_head(self.table_chainCfg_uartIfCfg, table_chainCfg_uartIfHead,
-                       CHAIN_CFG_TABLE_HEHG, 150)
-        set_table_head(self.table_chainCfg_uartIfAddr, table_chainCfg_uartAddrHead,
-                       CHAIN_CFG_TABLE_HEHG, 130)
-
         self.radioButton_singleAfe.setChecked(True)
-        self.slot_radio_single_dual_afe()
+
+        # device id tables initial
+        set_table_head(self.table_chainCfg_devIdBlk, table_chainCfg_devidHead,
+                       CHAIN_CFG_TABLE_HEHG, 80)
+
+        # uifcfg register tables initial
+        set_table_head(self.table_chainCfg_uifcfgReg, table_chainCfg_uartIfHead,
+                       CHAIN_CFG_TABLE_HEHG, 80)
+
+        # address register tables initial
+        set_table_head(self.table_chainCfg_addcfgReg, table_chainCfg_uartAddrHead,
+                       CHAIN_CFG_TABLE_HEHG, 80)
 
         # status power up dev0 table initial
         ledList_pageChain_st1pu_dev0, ledList_pageChain_st2pu_dev0, ledList_pageChain_fm1pu_dev0, \
@@ -47,19 +51,19 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
         # status initial dev0 table initial
         ledList_pageChain_st1in_dev0, ledList_pageChain_st2in_dev0, ledList_pageChain_fm1in_dev0, \
-        ledList_pageChain_fm2in_dev0 = init_status_led_table_dev0(self.table_chainCfg_statusBlk_initDev0, 120)
+        ledList_pageChain_fm2in_dev0 = init_status_led_table_dev0(self.table_chainCfg_statusBlk_initDev0, 110)
 
         # status initial dev1 table initial
         ledList_pageChain_st1in_dev1, ledList_pageChain_st2in_dev1, ledList_pageChain_fm1in_dev1, \
-        ledList_pageChain_fm2in_dev1 = init_status_led_table_dev1(self.table_chainCfg_statusBlk_initDev1, 120)
+        ledList_pageChain_fm2in_dev1 = init_status_led_table_dev1(self.table_chainCfg_statusBlk_initDev1, 110)
 
         # status current dev0 table initial
         ledList_pageChain_st1cu_dev0, ledList_pageChain_st2cu_dev0, ledList_pageChain_fm1cu_dev0, \
-        ledList_pageChain_fm2cu_dev0 = init_status_led_table_dev0(self.table_chainCfg_statusBlk_curDev0, 120)
+        ledList_pageChain_fm2cu_dev0 = init_status_led_table_dev0(self.table_chainCfg_statusBlk_curDev0, 110)
 
         # status current dev1 table initial
         ledList_pageChain_st1cu_dev1, ledList_pageChain_st2cu_dev1, ledList_pageChain_fm1cu_dev1, \
-        ledList_pageChain_fm2cu_dev1 = init_status_led_table_dev1(self.table_chainCfg_statusBlk_curDev1, 120)
+        ledList_pageChain_fm2cu_dev1 = init_status_led_table_dev1(self.table_chainCfg_statusBlk_curDev1, 110)
 
         # reset dev0 table initial
         set_table_head(self.table_chainCfg_rstBlk_Dev0, table_chainCfg_rstHead_dev0,
@@ -74,6 +78,8 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                        table_chainCfg_rstItem_dev1)
         self.table_chainCfg_rstBlk_Dev1.item(0, 0).setBackground(QColor("#E2F0D9"))
 
+        # single afe initial ui as default
+        self.slot_radio_single_dual_afe()
         # update_led_color(self.label_186, "#aa0000")
 
         ''' 配置信号和槽 '''
@@ -88,21 +94,25 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         :return:
         """
         if self.radioButton_singleAfe.isChecked():
-            set_table_item(self.table_chainCfg_uartIfCfg, 2, CHAIN_CFG_TABLE_ROWHG,
-                           table_chainCfg_uartIfItem)
-            set_table_item(self.table_chainCfg_uartIfAddr, 2, CHAIN_CFG_TABLE_ROWHG,
-                           table_chainCfg_uartAddrItem)
             self.table_chainCfg_statusBlk_pwrUpDev1.hide()
             self.table_chainCfg_statusBlk_initDev1.hide()
             self.table_chainCfg_statusBlk_curDev1.hide()
-        elif self.radioButton_dualAfe.isChecked():
-            set_table_item(self.table_chainCfg_uartIfCfg, 3, CHAIN_CFG_TABLE_ROWHG,
+            set_table_item(self.table_chainCfg_devIdBlk, 1, CHAIN_CFG_TABLE_ROWHG,
+                           table_chainCfg_devidItem)
+            set_table_item(self.table_chainCfg_uifcfgReg, 1, CHAIN_CFG_TABLE_ROWHG,
                            table_chainCfg_uartIfItem)
-            set_table_item(self.table_chainCfg_uartIfAddr, 3, CHAIN_CFG_TABLE_ROWHG,
+            set_table_item(self.table_chainCfg_addcfgReg, 1, CHAIN_CFG_TABLE_ROWHG,
                            table_chainCfg_uartAddrItem)
+        elif self.radioButton_dualAfe.isChecked():
             self.table_chainCfg_statusBlk_pwrUpDev1.show()
             self.table_chainCfg_statusBlk_initDev1.show()
             self.table_chainCfg_statusBlk_curDev1.show()
+            set_table_item(self.table_chainCfg_devIdBlk, 2, CHAIN_CFG_TABLE_ROWHG,
+                           table_chainCfg_devidItem)
+            set_table_item(self.table_chainCfg_uifcfgReg, 2, CHAIN_CFG_TABLE_ROWHG,
+                           table_chainCfg_uartIfItem)
+            set_table_item(self.table_chainCfg_addcfgReg, 2, CHAIN_CFG_TABLE_ROWHG,
+                           table_chainCfg_uartAddrItem)
 
 
 """ step3: 通过下面代码完成 GUI 的显示 """

@@ -89,7 +89,7 @@ CHAIN_CFG_TABLE_ROWHG = 15      # table row height
 CHAIN_CFG_TABLE_STAHG = 120     # status block 不显示 header 的 4 个 table 的高度
 CHAIN_CFG_TABLE_RSTHG = 60      # reset block table 的高度
 
-
+''' 16 led label '''
 LED_STA1_LAB = ["ACQ", "REST", "RJCT", "UIF", "OVST", "UVST", "ATOV", "ATUV",
                 "AXOV", "AXUV", "DGOV", "DGUV", "MM", "CBAL", "FME1", "FME2"]
 LED_STA2_LAB = ["PEUP", "PEDN", "MNUP", "MNDN", "PRUP", "PRDN", "RGUP", "RGDN",
@@ -99,22 +99,28 @@ LED_FME1_LAB = ["OSC", "----", "----", "----", "----", "VAA", "VDD", "VIO",
 LED_FME2_LAB = ["HVHD", "AQTO", "----", "----", "A1ZS", "A1FS", "A2ZS", "A2FS",
                 "USER", "MODE", "AQIN", "DVIN", "OTPE", "REGE", "MMBT", "CBBT"]
 
-table_chainCfg_uartIfHead = ["Address", "Register", "Expected (hex)", "Actual (hex)", "UARTDUAL", "UARTLPBK",
-                         "UARTWRPATH",
-                         "TXUIDLEHIZ", "TXLIDLEHIZ", "UARTDCEN", "UARTALVCNTEN", "(Logic Zero)", "DBLBUFEN",
-                         "Reserved/SPI[6:0]"]
-table_chainCfg_uartIfItem = [
-    ["0x10", "UIFCFG (Single AFE)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"],
-    ["0x10", "UIFCFG (Dual, Device 0)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"],
-    ["0x10", "UIFCFG (Dual, Device 1)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"]
+''' '''
+table_chainCfg_devidHead = ["Address", "DEVIDD (hex)", "DEVID1 (hex)", "DEVID2 (hex)", "VERSION (hex)",
+                            "GENERATION[2:0] (dec)", "CHANNEL_COUNT[4:0] (dec)", "SWVER[3:0] (hex)",
+                            "HWVER[3:0] (hex)"]
+table_chainCfg_devidItem = [
+    ["0x00 - 0x03", "DEVID0,1,2 & VERSION (Device0)", "Unique ID", "????", "????", "????", "????", "1", "16", "0", "1"],
+    ["0x00 - 0x03", "DEVID0,1,2 & VERSION (Device1)", "Unique ID", "????", "????", "????", "????", "1", "16", "0", "1"]
 ]
 
-table_chainCfg_uartAddrHead = ["Address", "Register", "Expected (hex)", "Actual (hex)", "ADDRUNLOCK", "BOTADDR[4:0]",
-                         "TOPADDR[4:0]", "DEVADDR[4:0]"]
+table_chainCfg_uartIfHead = ["Address", "Register", "Expected (hex)", "Actual (hex)", "UARTDUAL", "UARTLPBK",
+                            "UARTWRPATH", "TXUIDLEHIZ", "TXLIDLEHIZ", "UARTDCEN", "UARTALVCNTEN", "(Logic Zero)",
+                            "DBLBUFEN", "Reserved/SPI[6:0] (bin)"]
+table_chainCfg_uartIfItem = [
+    ["0x10", "UIFCFG (Device 0)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"],
+    ["0x10", "UIFCFG (Device 1)", "2600", "A410", "0", "0", "1", "0", "0", "1", "1", "0", "0", "0000000"]
+]
+
+table_chainCfg_uartAddrHead = ["Address", "Register", "Expected (hex)", "Actual (hex)", "ADDRUNLOCK",
+                               "BOTADDR[4:0] (hex)", "TOPADDR[4:0] (hex)", "DEVADDR[4:0] (hex)"]
 table_chainCfg_uartAddrItem = [
-    ["0x11", "ADDRESSCFG (Single AFE)", "0000", "8000", "0", "0000", "0000", "0000"],
-    ["0x11", "ADDRESSCFG (Dual, Device 0)", "0020", "8000", "0", "0000", "0001", "0001"],
-    ["0x11", "ADDRESSCFG (Dual, Device 1)", "0021", "8000", "0", "0000", "0001", "0001"]
+    ["0x11", "ADDRESSCFG (Device 0)", "0000/0020", "8000", "0", "0000", "00/01", "00"],
+    ["0x11", "ADDRESSCFG (Device 1)", "0021", "8000", "0", "0000", "01", "01"]
 ]
 
 table_chainCfg_staHead_dev0 = ["Address", "Register", "Expect (hex)", "Device 0 (hex)", ""]

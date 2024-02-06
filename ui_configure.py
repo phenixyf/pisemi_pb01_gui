@@ -9,7 +9,6 @@ from PyQt5.QtCore import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QColor
 
-
 """ led string related """
 ''' led qss '''
 led_qss = "QLabel {\n" \
@@ -100,8 +99,8 @@ LED_FME2_LAB = ["HVHD", "AQTO", "----", "----", "A1ZS", "A1FS", "A2ZS", "A2FS",
                 "USER", "MODE", "AQIN", "DVIN", "OTPE", "REGE", "MMBT", "CBBT"]
 
 ''' '''
-table_chainCfg_devidHead = ["Address", "DEVIDD (hex)", "DEVID1 (hex)", "DEVID2 (hex)", "VERSION (hex)",
-                            "GENERATION[2:0] (dec)", "CHANNEL_COUNT[4:0] (dec)", "SWVER[3:0] (hex)",
+table_chainCfg_devidHead = ["Address", "Register", "Expected (hex)","DEVIDD (hex)", "DEVID1 (hex)", "DEVID2 (hex)",
+                            "VERSION (hex)", "GENERATION[2:0] (dec)", "CHANNEL_COUNT[4:0] (dec)", "SWVER[3:0] (hex)",
                             "HWVER[3:0] (hex)"]
 table_chainCfg_devidItem = [
     ["0x00 - 0x03", "DEVID0,1,2 & VERSION (Device0)", "Unique ID", "????", "????", "????", "????", "1", "16", "0", "1"],
@@ -249,7 +248,22 @@ def set_table_item(pTableWidget, pShowRowCnt, pRowHeight, pItemData=[]):
     # 设置列宽自适应
     pTableWidget.resizeColumnsToContents()
 
+
 def init_status_led_table_dev0(pTableWidget, pTableHeight):
+    """
+    初始化 chain configuration page，status dev0 的 3 个 table
+    这三个 table 会在最后一列插入 led 串
+    :param pTableWidget: 要初始化的 table
+                         有 powerup, initial, current 3 个 table，每个 tabale 初始化时分别调用该函数
+    :param pTableHeight: 设置 table 的总高度
+                         powerup 会显示标题栏，另外两个不用，所以总高度不一样
+    :return: 该函数会返回 4 行 led 串的 4 个列表，每个列表对应一行 led 串。
+             返回各列表中的每个元素，分别对应各 led 对象，进而可以用来更新 led 的颜色
+             ledList0 - STATUS1 led 串
+             ledList1 - STATUS2 led 串
+             ledList2 - FMEA1 led 串
+             ledList3 - FMEA2 led 串
+    """
     pTableWidget.setHorizontalHeaderLabels(table_chainCfg_staHead_dev0)  # 设置标题内容
     pTableWidget.horizontalHeader().setDefaultAlignment(Qt.AlignCenter)  # 设置标题内容水平居中对齐
     pTableWidget.horizontalHeader().setFixedHeight(CHAIN_CFG_TABLE_HEHG)  # 设置标题行高度
@@ -278,10 +292,25 @@ def init_status_led_table_dev0(pTableWidget, pTableHeight):
     # 设置 LED 列宽度
     pTableWidget.setColumnWidth(4, 450)
 
+    # 返回各 led 对象
     return ledList0, ledList1, ledList2, ledList3
 
 
 def init_status_led_table_dev1(pTableWidget, pTableHeight):
+    """
+    初始化 chain configuration page，status dev1 的 3 个 table
+    这三个 table 会在最后一列插入 led 串
+    :param pTableWidget: 要初始化的 table
+                         有 powerup, initial, current 3 个 table，每个 tabale 初始化时分别调用该函数
+    :param pTableHeight: 设置 table 的总高度
+                         powerup 会显示标题栏，另外两个不用，所以总高度不一样
+    :return: 该函数会返回 4 行 led 串的 4 个列表，每个列表对应一行 led 串。
+             返回各列表中的每个元素，分别对应各 led 对象，进而可以用来更新 led 的颜色
+             ledList0 - STATUS1 led 串
+             ledList1 - STATUS2 led 串
+             ledList2 - FMEA1 led 串
+             ledList3 - FMEA2 led 串
+    """
     pTableWidget.setHorizontalHeaderLabels(table_chainCfg_staHead_dev1)  # 设置标题内容
     pTableWidget.horizontalHeader().setDefaultAlignment(Qt.AlignCenter)  # 设置标题内容水平居中对齐
     pTableWidget.horizontalHeader().setFixedHeight(CHAIN_CFG_TABLE_HEHG)  # 设置标题行高度
@@ -310,29 +339,80 @@ def init_status_led_table_dev1(pTableWidget, pTableHeight):
     # 设置 LED 列宽度
     pTableWidget.setColumnWidth(1, 450)
 
+    # 返回各 led 对象
     return ledList0, ledList1, ledList2, ledList3
 
 
-def set_led_table(pTableWidget, pShowRowCnt, pRowHeight,
-                  pItemData=[], pListGreenCol=[], pListYellowCol=[], pListBlueCol=[]):
-    pTableWidget.setRowCount(pShowRowCnt)
-    for row in range(pShowRowCnt):
-        for column in range(pTableWidget.columnCount()-1):
-            # 设置单元格的初始值
-            pTableWidget.setItem(row, column, QTableWidgetItem(pItemData[row][column]))
-            pTableWidget.item(row, column).setTextAlignment(Qt.AlignCenter)  # 设置单元格内容水平垂直居中对齐
-            # 设置单元格背景色
-            if column in pListGreenCol:
-                pTableWidget.item(row, column).setBackground(QColor("#E2F0D9"))  # 设置绿色背景色
-            if column in pListYellowCol:
-                pTableWidget.item(row, column).setBackground(QColor("#FFF2CC"))  # 设置黄色背景色
-            if column in pListBlueCol:
-                pTableWidget.item(row, column).setBackground(QColor("#DAE3F3"))  # 设置蓝色背景色
-        # 设置行高度
-        pTableWidget.setRowHeight(row, pRowHeight)
+def adjust_if_id_tables(pDevIdTable, puifCfgTable, paddCfgTable):
+    """
+    调整 chain configuration page device id, uart interface, address register tables 的尺寸，列宽
+    :param pDevIdTable: device id table object name
+    :param puifCfgTable: uart interface table object name
+    :param paddCfgTable: address table object name
+    :return: none
+    """
+    puifCfgTable.setColumnWidth(0, pDevIdTable.columnWidth(0))
+    paddCfgTable.setColumnWidth(0, pDevIdTable.columnWidth(0))
+    puifCfgTable.setColumnWidth(1, pDevIdTable.columnWidth(1))
+    paddCfgTable.setColumnWidth(1, pDevIdTable.columnWidth(1))
+    puifCfgTable.setColumnWidth(2, pDevIdTable.columnWidth(2))
+    paddCfgTable.setColumnWidth(2, pDevIdTable.columnWidth(2))
+    puifCfgTable.setColumnWidth(3, pDevIdTable.columnWidth(3))
+    paddCfgTable.setColumnWidth(3, pDevIdTable.columnWidth(3))
+    puifCfgTable.setColumnWidth(4, pDevIdTable.columnWidth(4))
+    puifCfgTable.setColumnWidth(5, pDevIdTable.columnWidth(5))
+    puifCfgTable.setColumnWidth(6, pDevIdTable.columnWidth(6))
+    paddCfgTable.setColumnWidth(4, puifCfgTable.columnWidth(4)
+                                + puifCfgTable.columnWidth(5))
+    paddCfgTable.setColumnWidth(5, puifCfgTable.columnWidth(6)
+                                + puifCfgTable.columnWidth(7))
+    paddCfgTable.setColumnWidth(6, puifCfgTable.columnWidth(8)
+                                + puifCfgTable.columnWidth(9))
+    paddCfgTable.setColumnWidth(7, puifCfgTable.columnWidth(10)
+                                + puifCfgTable.columnWidth(11))
+    pDevIdTable.setColumnWidth(7, puifCfgTable.columnWidth(7)
+                               + puifCfgTable.columnWidth(8))
+    pDevIdTable.setColumnWidth(8, puifCfgTable.columnWidth(9)
+                               + puifCfgTable.columnWidth(10))
+    pDevIdTable.setColumnWidth(9, puifCfgTable.columnWidth(11)
+                               + puifCfgTable.columnWidth(12))
+    pDevIdTable.setColumnWidth(10, puifCfgTable.columnWidth(13))
 
-    # 设置列宽自适应
-    pTableWidget.resizeColumnsToContents()
+
+def set_if_id_tables_color(pRowNum, pDevIdTable, puifCfgTable, paddCfgTable):
+    """
+     设置 chain configuration page device id, uart interface, address register tables 的背景颜色
+    :param pRowNum: 因 single,dual AFE radio 的选择，显示的行数不同，所以这里用一个参数来区分
+    :param pDevIdTable: device id table object name
+    :param puifCfgTable: uart interface table object name
+    :param paddCfgTable: address table object name
+    :return: none
+    """
+    for r in range(pRowNum):
+        # 设置 pDevIdTable 的背景颜色
+        for c in range(3, 11):  # 列索引从 3 到 10
+            if 3 <= c <= 6:
+                color = QColor("#E2F0D9")
+            else:  # 7 到 10 列
+                color = QColor("#FFF2CC")
+            pDevIdTable.item(r, c).setBackground(color)
+
+        # 设置 puifCfgTable 的背景颜色
+        for c in range(3, 14):  # 列索引从 3 到 13
+            if c == 3:
+                color = QColor("#E2F0D9")
+            else:  # 4 到 13 列
+                color = QColor("#FFF2CC")
+            puifCfgTable.item(r, c).setBackground(color)
+
+        # 设置 paddCfgTable 的背景颜色
+        for c in range(3, 8):  # 列索引从 3 到 7
+            if c == 3:
+                color = QColor("#E2F0D9")
+            else:  # 4 到 7 列
+                color = QColor("#FFF2CC")
+            paddCfgTable.item(r, c).setBackground(color)
+
 
 def update_led_color(label, color):
     """

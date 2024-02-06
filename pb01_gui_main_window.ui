@@ -59,7 +59,7 @@ QTabBar::tab:!selected { /* 未被选中的Tab标题的样式 */
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_4">
         <property name="spacing">
-         <number>5</number>
+         <number>3</number>
         </property>
         <item>
          <widget class="QFrame" name="frame_3">
@@ -406,6 +406,22 @@ QTableCornerButton::section {
             <string>10</string>
            </property>
           </column>
+          <item row="0" column="0">
+           <property name="text">
+            <string>DEVID</string>
+           </property>
+          </item>
+          <item row="0" column="3">
+           <property name="background">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>255</red>
+              <green>242</green>
+              <blue>204</blue>
+             </color>
+            </brush>
+           </property>
+          </item>
          </widget>
         </item>
         <item>
@@ -522,6 +538,11 @@ QTableCornerButton::section {
             <string>13</string>
            </property>
           </column>
+          <item row="0" column="0">
+           <property name="text">
+            <string>UIFCFG</string>
+           </property>
+          </item>
          </widget>
         </item>
         <item>
@@ -608,6 +629,11 @@ QTableCornerButton::section {
             <string>7</string>
            </property>
           </column>
+          <item row="0" column="0">
+           <property name="text">
+            <string>ADDRCFG</string>
+           </property>
+          </item>
          </widget>
         </item>
         <item>
@@ -3633,7 +3659,7 @@ QTableCornerButton::section {
      <x>0</x>
      <y>0</y>
      <width>1648</width>
-     <height>26</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuPython">

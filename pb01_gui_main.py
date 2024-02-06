@@ -94,6 +94,25 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.table_chainCfg_statusBlk_initDev0.setColumnWidth(2, self.table_chainCfg_rstBlk_Dev0.columnWidth(2))
         self.table_chainCfg_statusBlk_curDev0.setColumnWidth(2, self.table_chainCfg_rstBlk_Dev0.columnWidth(2))
 
+        ''' initial application configuration page '''
+        set_table_head(self.table_appCfgPage_appCfg, table_appCfgPage_headers,
+                       CHAIN_CFG_TABLE_HEHG, 160)
+        set_table_item(self.table_appCfgPage_appCfg, 5, CHAIN_CFG_TABLE_ROWHG,
+                       table_appCfgPage_appCfgReg_items)
+        set_table_head(self.table_appCfgPage_alertCfg, table_appCfgPage_headers,
+                       CHAIN_CFG_TABLE_HEHG, 130)
+        set_table_item(self.table_appCfgPage_alertCfg, 4, CHAIN_CFG_TABLE_ROWHG,
+                       table_appCfgPage_alertCfgReg_items)
+        set_table_head(self.table_appCfgPage_thresholdReg, table_appCfgPage_headers,
+                       CHAIN_CFG_TABLE_HEHG, 380)
+        set_table_item(self.table_appCfgPage_thresholdReg, 14, CHAIN_CFG_TABLE_ROWHG,
+                       table_appCfgPage_theresholdReg_items)
+        set_table_head(self.table_appCfgPage_acqReg, table_appCfgPage_headers,
+                       CHAIN_CFG_TABLE_HEHG, 130)
+        set_table_item(self.table_appCfgPage_acqReg, 4, CHAIN_CFG_TABLE_ROWHG,
+                       table_appCfgPage_acqReg_items)
+
+
         update_led_color(ledList_pageChain_st1pu_dev0[3], "#aa0000")
         # update_led_color(self.label_186, "#aa0000")
 

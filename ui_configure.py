@@ -149,52 +149,45 @@ table_chainCfg_rstItem_dev1 = [
 ]
 
 """ APPLICATION CONFIGURATION page tablewidget initial content """
-appCfgReg_table_headers = ["Address", "Register", "Pending (hex)", "Device 0 (hex)", "Device 1 (hex)"]
-appCfgReg_table_items = [
-    ["0x12", "STATUSCFG", "3FF", "3FF", "3FFF"],
-    ["0x13", "DEVCFG", "2000", "2000", "2000"],
-    ["0x14", "POLARITYCFG", "0000", "0000", "0000"],
-    ["0x15", "AUXGPIOCFG", "2000", "FF00", "FF00"],
-    ["0x16", "AUXREFCFG", "0000", "0000", "0000"]
+table_appCfgPage_headers = ["Address", "Register", "Pending (hex)", "Pending Value (bin)", "Pending Field",
+                           "Pending Value (bin)", "Pending Field", "Device 0 (hex)", "Device 1 (hex)"]
+table_appCfgPage_appCfgReg_items = [
+    ["0x12", "STATUSCFG", "3FF", "0111111", "STATUSCFG[15:8]", "1111111", "STATUSCFG[7:0]", "3FFF", "3FFF"],
+    ["0x13", "DEVCFG", "2000", "010", "IIRFC[2:0]", "000", "DEVCFG[10:8]", "2000", "2000"],
+    ["0x14", "DEVCFG", "2000", "010", "IIRFC[2:0]", "000", "DEVCFG[10:8]", "2000", "2000"],
+    ["0x15", "DEVCFG", "2000", "010", "IIRFC[2:0]", "000", "DEVCFG[10:8]", "2000", "2000"],
+    ["0x16", "DEVCFG", "2000", "010", "IIRFC[2:0]", "000", "DEVCFG[10:8]", "2000", "2000"]
 ]
 
-alertCfgReg_table_headers = ["Address", "Register", "Pending (hex)", "Device 0 (hex)", "Device 1 (hex)"]
-alertCfgReg_table_items = [
-    ["0x18", "ALRTOVCFG", "FFFF", "0000", "0000"],
-    ["0x19", "ALRTUVCFG", "FFFF", "0000", "0000"],
-    ["0x1A", "ALRTAUXOVCFG", "FFFF", "0000", "0000"],
-    ["0x1G", "ALRTAUXUVCFG", "FFFF", "0000", "0000"]
+table_appCfgPage_alertCfgReg_items = [
+    ["0x18", "ALRTOVCFG", "FFFF", "1111111", "ALRTAUXUVEN[7:0]", "1111111", "ALRTAUXUVEN[7:0]", "0000", "0000"],
+    ["0x19", "ALRTUVCFG", "FFFF", "1111111", "ALRTAUXUVEN[7:0]", "1111111", "ALRTAUXUVEN[7:0]", "0000", "0000"],
+    ["0x1A", "ALRTAUXOVCFG", "FFFF", "1111111", "ALRTAUXUVEN[7:0]", "1111111", "ALRTAUXUVEN[7:0]", "0000", "0000"],
+    ["0x1G", "ALRTAUXUVCFG", "FFFF", "1111111", "ALRTAUXUVEN[7:0]", "1111111", "ALRTAUXUVEN[7:0]", "0000", "0000"]
 ]
 
-acquistionReg_table_headers = ["Address", "Register", "Pending (hex)",
-                               "Pending Field", "Pending Value", "Pending Unit",
-                               "Pending Field", "Pending Value", "Pending Unit",
-                               "Device 0 (hex)", "Device 1 (hex)"]
-acquistionReg_table_items = [
-    ["0x40", "ACQDLY1", "1501", "CELLDLY", "2.106", "ms", "SWDLY", "0.096", "ms", "0000", "0000"],
-    ["0x41", "ACQDLY2", "3220", "AUXDLY", "1.200", "ms", "CELLOPNDLY", "12.768", "ms", "0000", "0000"],
-    ["0x42", "ACQCHSEL", "FFFF", "--",  "--",  "--", "--",  "--",  "--", "0000", "0000"],
-    ["0x43", "ACQAUXSEL", "00FF", "--",  "--",  "--", "--",  "--",  "--", "0000", "0000"]
+table_appCfgPage_acqReg_items = [
+    ["0x40", "ACQDLY1", "1501", "2.106", "CELLDLY(ms)", "0.096", "SWDLY(ms)", "0000", "0000"],
+    ["0x41", "ACQDLY2", "3220", "2.106", "CELLDLY(ms)", "0.096", "SWDLY(ms)", "0000", "0000"],
+    ["0x42", "ACQCHSEL", "FFFF", "2.106", "CELLDLY(ms)", "0.096", "SWDLY(ms)", "0000", "0000"],
+    ["0x43", "ACQAUXSEL", "FFFF", "2.106", "CELLDLY(ms)", "0.096", "SWDLY(ms)", "0000", "0000"]
 ]
 
-theresholdReg_table_headers = ["Address", "Register", "Pending (hex)",
-                               "Pending Value", "Pending Unit",
-                               "Device 0 (hex)", "Device 1 (hex)"]
-theresholdReg_table_items = [
-    ["0x20", "OVTHREG",         "E667",     "4.500",    "V",            "FFFF",   "FFFF"],
-    ["0x21", "UVTREG",          "8A3D",     "2.700",    "V",            "0000",   "0000"],
-    ["0x22", "BIPOVTHREG",      "051F",     "+0.100",   "V (Bipolar)",  "7FFF",   "7FFF"],
-    ["0x23", "BIPUVTHREG",      "FAE1",     "-0.100",   "V (Bipolar)",  "8000",   "8000"],
-    ["0x24", "ALTOVTHREG",      "E667",     "4.500",    "V",            "FFFF",   "FFFF"],
-    ["0x25", "ALTUVTHREG",      "8A3D",     "2.700",    "V",            "0000",   "0000"],
-    ["0x26", "ALTBIPOVTHREG",   "051F",     "+0.100",   "V (Bipolar)",  "7FFF",   "7FFF"],
-    ["0x27", "ALTBIPUVTHREG",   "FAE1",     "-0.100",   "V (Bipolar)",  "8000",   "8000"],
-    ["0x28", "AUXROVTHREG",     "TBD",      "TBD",      "Ratiometric",  "FFFF",   "FFFF"],
-    ["0x29", "AUXRUVTHREG",     "TBD",      "TBD",      "Ratiometric",  "0000",   "0000"],
-    ["0x2A", "AUXAOVTHREG",     "FFFF",     "2.500",    "V",            "FFFF",   "FFFF"],
-    ["0x2B", "AUXAUVTHREG",     "0000",     "0.000",    "V",            "0000",   "0000"],
-    ["0x2C", "MMTHREG",         "0CCD",     "0.250",    "V",            "FFFF",   "FFFF"],
-    ["0x2D", "TEMPTHREG",       "0C48",     "120",      "C",            "0C48",   "0C48"]
+table_appCfgPage_theresholdReg_items = [
+    ["0x20", "OVTHREG",         "E667",     "4.500",    "V",           " ", " ", "FFFF",   "FFFF"],
+    ["0x21", "UVTREG",          "8A3D",     "2.700",    "V",           " ", " ", "0000",   "0000"],
+    ["0x22", "BIPOVTHREG",      "051F",     "+0.100",   "V (Bipolar)", " ", " ", "7FFF",   "7FFF"],
+    ["0x23", "BIPUVTHREG",      "FAE1",     "-0.100",   "V (Bipolar)", " ", " ", "8000",   "8000"],
+    ["0x24", "ALTOVTHREG",      "E667",     "4.500",    "V",           " ", " ", "FFFF",   "FFFF"],
+    ["0x25", "ALTUVTHREG",      "8A3D",     "2.700",    "V",           " ", " ", "0000",   "0000"],
+    ["0x26", "ALTBIPOVTHREG",   "051F",     "+0.100",   "V (Bipolar)", " ", " ", "7FFF",   "7FFF"],
+    ["0x27", "ALTBIPUVTHREG",   "FAE1",     "-0.100",   "V (Bipolar)", " ", " ", "8000",   "8000"],
+    ["0x28", "AUXROVTHREG",     "TBD",      "TBD",      "Ratiometric", " ", " ", "FFFF",   "FFFF"],
+    ["0x29", "AUXRUVTHREG",     "TBD",      "TBD",      "Ratiometric", " ", " ", "0000",   "0000"],
+    ["0x2A", "AUXAOVTHREG",     "FFFF",     "2.500",    "V",           " ", " ", "FFFF",   "FFFF"],
+    ["0x2B", "AUXAUVTHREG",     "0000",     "0.000",    "V",           " ", " ", "0000",   "0000"],
+    ["0x2C", "MMTHREG",         "0CCD",     "0.250",    "V",           " ", " ", "FFFF",   "FFFF"],
+    ["0x2D", "TEMPTHREG",       "0C48",     "120",      "C",           " ", " ", "0C48",   "0C48"]
 ]
 
 
@@ -247,6 +240,7 @@ def set_table_item(pTableWidget, pShowRowCnt, pRowHeight, pItemData=[]):
 
     # 设置列宽自适应
     pTableWidget.resizeColumnsToContents()
+
 
 
 def init_status_led_table_dev0(pTableWidget, pTableHeight):

@@ -85,9 +85,9 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
         # adjust chain configuration page interface & ID register table size and background color
         time.sleep(0.5)
-        adjust_if_id_tables(self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
+        adjust_chainPage_ifid_tables(self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
                             self.table_chainCfg_addcfgReg)
-        set_if_id_tables_color(2, self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
+        set_chainPage_ifid_color(2, self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
                             self.table_chainCfg_addcfgReg)
 
         self.table_chainCfg_statusBlk_pwrUpDev0.setColumnWidth(2, self.table_chainCfg_rstBlk_Dev0.columnWidth(2))
@@ -111,6 +111,26 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                        CHAIN_CFG_TABLE_HEHG, 130)
         set_table_item(self.table_appCfgPage_acqReg, 4, CHAIN_CFG_TABLE_ROWHG,
                        table_appCfgPage_acqReg_items)
+
+        ''' initial diagnostic configuration page '''
+        set_table_head(self.table_diagCfgPage_testCurCfgReg, table_diagCfgPage_testCfg_headers,
+                       CHAIN_CFG_TABLE_HEHG, 120)
+        set_table_item(self.table_diagCfgPage_testCurCfgReg, 3, CHAIN_CFG_TABLE_ROWHG,
+                       table_diagCfgPage_testCfg_items)
+        set_table_head(self.table_diagCfgPage_diagThresReg, table_diagCfgPage_diagThre_headers,
+                       CHAIN_CFG_TABLE_HEHG, 360)
+        set_table_item(self.table_diagCfgPage_diagThresReg, 12, CHAIN_CFG_TABLE_ROWHG,
+                       table_diagCfgPage_diagThre_items)
+        set_table_head(self.table_diagCfgPage_aluTestDiagReg, table_diagCfgPage_aluTeDiag_headers,
+                       CHAIN_CFG_TABLE_HEHG, 150)
+        set_table_item(self.table_diagCfgPage_aluTestDiagReg, 4, CHAIN_CFG_TABLE_ROWHG,
+                       table_diagCfgPage_aluTeDiag_items)
+
+        adjust_diagCfgPage_tables(self.table_diagCfgPage_testCurCfgReg, self.table_diagCfgPage_diagThresReg,
+                                  self.table_diagCfgPage_aluTestDiagReg)
+
+        set_diagCfgPage_table_color(self.table_diagCfgPage_testCurCfgReg, self.table_diagCfgPage_diagThresReg,
+                                  self.table_diagCfgPage_aluTestDiagReg)
 
 
         update_led_color(ledList_pageChain_st1pu_dev0[3], "#aa0000")
@@ -139,9 +159,9 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             self.table_chainCfg_statusBlk_initDev1.hide()
             self.table_chainCfg_statusBlk_curDev1.hide()
             self.table_chainCfg_rstBlk_Dev1.hide()
-            adjust_if_id_tables(self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
+            adjust_chainPage_ifid_tables(self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
                                 self.table_chainCfg_addcfgReg)
-            set_if_id_tables_color(1, self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
+            set_chainPage_ifid_color(1, self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
                                    self.table_chainCfg_addcfgReg)
         elif self.radioButton_dualAfe.isChecked():
             set_table_item(self.table_chainCfg_devIdBlk, 2, CHAIN_CFG_TABLE_ROWHG,
@@ -155,9 +175,9 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             self.table_chainCfg_statusBlk_initDev1.show()
             self.table_chainCfg_statusBlk_curDev1.show()
             self.table_chainCfg_rstBlk_Dev1.show()
-            adjust_if_id_tables(self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
+            adjust_chainPage_ifid_tables(self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
                                 self.table_chainCfg_addcfgReg)
-            set_if_id_tables_color(2, self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
+            set_chainPage_ifid_color(2, self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
                                    self.table_chainCfg_addcfgReg)
 
 

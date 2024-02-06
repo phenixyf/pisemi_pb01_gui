@@ -190,6 +190,46 @@ table_appCfgPage_theresholdReg_items = [
     ["0x2D", "TEMPTHREG",       "0C48",     "120",      "C",           " ", " ", "0C48",   "0C48"]
 ]
 
+"""  diagnostic configuration page tablewidget initial content """
+table_diagCfgPage_testCfg_headers = ["Address", "Register", "Pending (hex)", "Pending Value (bin)", "Pending Field",
+                           "Pending Value (bin)", "Pending Field", "Pending Value (bin)", "Pending Field",
+                            "Pending Value (bin)", "Pending Field", "Device 0 (hex)", "Device 1 (hex)"]
+table_diagCfgPage_testCfg_items = [
+    ["0x1C", "CTSTCFG1", "0001", "00", "HVMUXTSTEN[1:0]", "0", "CTSTPOL1", "0", "CTSTMAN", "1",
+                                                "CTSTEN[16]", "0000", "0000"],
+    ["0x1D", "CTSTCFG1", "0001", "00", "HVMUXTSTEN[1:0]", "0", "CTSTPOL1", "0", "CTSTMAN", "1",
+                                                "CTSTEN[16]", "0000", "0000"],
+    ["0x1E", "CTSTCFG1", "0001", "00", "HVMUXTSTEN[1:0]", "0", "CTSTPOL1", "0", "CTSTMAN", "1",
+                                                "CTSTEN[16]", "0000", "0000"]
+]
+
+table_diagCfgPage_diagThre_headers = ["Address", "Register", "Pending (hex)", "Pending Value", "Pending Unit",
+                                      "Pending Value", "Pending Unit", "Device 0 (hex)", "Device 1 (hex)"]
+table_diagCfgPage_diagThre_items = [
+    ["0x2F", "BALSHTUVTHREG", "0000", "0.000", "V", " ", " ", "0000", "0000"],
+    ["0x30", "BALSHTUVTHREG", "0000", "0.000", "V", " ", " ", "0000", "0000"],
+    ["0x31", "BALSHTUVTHREG", "0000", "0.000", "V", " ", " ", "0000", "0000"],
+    ["0x32", "BALSHTUVTHREG", "0000", "0.000", "V", " ", " ", "0000", "0000"],
+    ["0x33", "BALSHTUVTHREG", "0000", "0.000", "V", " ", " ", "0000", "0000"],
+    ["0x34", "BALSHTUVTHREG", "0000", "0.000", "V", " ", " ", "0000", "0000"],
+    ["0x35", "BALSHTUVTHREG", "0000", "0.000", "V", " ", " ", "0000", "0000"],
+    ["0x36", "BALSHTUVTHREG", "0000", "0.000", "V", " ", " ", "0000", "0000"],
+    ["0x37", "BALSHTUVTHREG", "0000", "0.000", "V", " ", " ", "0000", "0000"],
+    ["0x38", "BALSHTUVTHREG", "0000", "0.000", "V", " ", " ", "0000", "0000"],
+    ["0x39", "BALSHTUVTHREG", "0000", "0.000", "V", " ", " ", "0000", "0000"],
+    ["0x3A", "BALSHTUVTHREG", "0000", "0.000", "V", " ", " ", "0000", "0000"],
+    ["0x3B", "BALSHTUVTHREG", "0000", "0.000", "V", " ", " ", "0000", "0000"]
+]
+
+table_diagCfgPage_aluTeDiag_headers = ["Address", "Register", "Pending (hex)", "Pending Value", "Pending Unit",
+                                      "Pending Value", "Pending Unit", "Device 0 (hex)", "Device 1 (hex)"]
+table_diagCfgPage_aluTeDiag_items = [
+    ["0x3C", "BALSHTUVTHREG", "0000", " ", " ", " ", " ", "0000", "0000"],
+    ["0x3D", "BALSHTUVTHREG", "0000", " ", " ", " ", " ", "0000", "0000"],
+    ["0x3E", "BALSHTUVTHREG", "0000", " ", " ", " ", " ", "0000", "0000"],
+    ["0x3F", "BALSHTUVTHREG", "0000", " ", " ", " ", " ", "0000", "0000"]
+]
+
 
 def set_table_head(pTableWidget, pListHeader, pHeaderHeight, pTableHeight):
     """
@@ -337,7 +377,7 @@ def init_status_led_table_dev1(pTableWidget, pTableHeight):
     return ledList0, ledList1, ledList2, ledList3
 
 
-def adjust_if_id_tables(pDevIdTable, puifCfgTable, paddCfgTable):
+def adjust_chainPage_ifid_tables(pDevIdTable, puifCfgTable, paddCfgTable):
     """
     调整 chain configuration page device id, uart interface, address register tables 的尺寸，列宽
     :param pDevIdTable: device id table object name
@@ -373,7 +413,7 @@ def adjust_if_id_tables(pDevIdTable, puifCfgTable, paddCfgTable):
     pDevIdTable.setColumnWidth(10, puifCfgTable.columnWidth(13))
 
 
-def set_if_id_tables_color(pRowNum, pDevIdTable, puifCfgTable, paddCfgTable):
+def set_chainPage_ifid_color(pRowNum, pDevIdTable, puifCfgTable, paddCfgTable):
     """
      设置 chain configuration page device id, uart interface, address register tables 的背景颜色
     :param pRowNum: 因 single,dual AFE radio 的选择，显示的行数不同，所以这里用一个参数来区分
@@ -394,9 +434,9 @@ def set_if_id_tables_color(pRowNum, pDevIdTable, puifCfgTable, paddCfgTable):
         # 设置 puifCfgTable 的背景颜色
         for c in range(3, 14):  # 列索引从 3 到 13
             if c == 3:
-                color = QColor("#E2F0D9")
+                color = QColor("#E2F0D9")   # 绿色
             else:  # 4 到 13 列
-                color = QColor("#FFF2CC")
+                color = QColor("#FFF2CC")   # 黄色
             puifCfgTable.item(r, c).setBackground(color)
 
         # 设置 paddCfgTable 的背景颜色
@@ -406,6 +446,45 @@ def set_if_id_tables_color(pRowNum, pDevIdTable, puifCfgTable, paddCfgTable):
             else:  # 4 到 7 列
                 color = QColor("#FFF2CC")
             paddCfgTable.item(r, c).setBackground(color)
+
+
+def adjust_diagCfgPage_tables(pTeCurTable, pDiagThrTable, pAluTable):
+     pTeCurTable.setColumnWidth(0, pDiagThrTable.columnWidth(0))
+     pAluTable.setColumnWidth(0, pDiagThrTable.columnWidth(0))
+     pTeCurTable.setColumnWidth(1, pDiagThrTable.columnWidth(1))
+     pAluTable.setColumnWidth(1, pDiagThrTable.columnWidth(1))
+     pTeCurTable.setColumnWidth(2, pDiagThrTable.columnWidth(2))
+     pAluTable.setColumnWidth(2, pDiagThrTable.columnWidth(2))
+     pDiagThrTable.setColumnWidth(3, pTeCurTable.columnWidth(3)+pTeCurTable.columnWidth(4))
+     pAluTable.setColumnWidth(3, pDiagThrTable.columnWidth(3))
+     pDiagThrTable.setColumnWidth(4, pTeCurTable.columnWidth(5) + pTeCurTable.columnWidth(6))
+     pAluTable.setColumnWidth(4, pDiagThrTable.columnWidth(4))
+     pDiagThrTable.setColumnWidth(5, pTeCurTable.columnWidth(7) + pTeCurTable.columnWidth(8))
+     pAluTable.setColumnWidth(5, pDiagThrTable.columnWidth(5))
+     pDiagThrTable.setColumnWidth(6, pTeCurTable.columnWidth(9) + pTeCurTable.columnWidth(10))
+     pAluTable.setColumnWidth(6, pDiagThrTable.columnWidth(6))
+
+
+def set_diagCfgPage_table_color(pTeCurTable, pDiagThrTable, pAluTable):
+    for r in range(3):
+        for c in range(2, 13):
+            if c == 2:
+                pTeCurTable.item(r, c).setBackground(QColor("#DAE3F3"))     # 紫色
+            elif c == 3 or c == 5 or c == 7 or c == 9:
+                pTeCurTable.item(r, c).setBackground(QColor("#FFF2CC"))     # 黄色
+            elif c == 11 or c == 12:
+                pTeCurTable.item(r, c).setBackground(QColor("#E2F0D9"))     # 绿色
+
+    for r in range(12):
+        if r < 4:
+            pAluTable.item(r, 2).setBackground(QColor("#DAE3F3"))  # 紫色
+            pAluTable.item(r, 7).setBackground(QColor("#E2F0D9"))  # 绿色
+            pAluTable.item(r, 8).setBackground(QColor("#E2F0D9"))  # 绿色
+        pDiagThrTable.item(r, 2).setBackground(QColor("#DAE3F3"))  # 紫色
+        pDiagThrTable.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
+        pDiagThrTable.item(r, 7).setBackground(QColor("#E2F0D9"))  # 绿色
+        pDiagThrTable.item(r, 8).setBackground(QColor("#E2F0D9"))  # 绿色
+
 
 
 def update_led_color(label, color):

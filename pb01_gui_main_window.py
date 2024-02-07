@@ -4385,6 +4385,458 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.tab_meaAcqDetail, "")
         self.tab_diagAcqData = QtWidgets.QWidget()
         self.tab_diagAcqData.setObjectName("tab_diagAcqData")
+        self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.tab_diagAcqData)
+        self.verticalLayout_6.setSpacing(3)
+        self.verticalLayout_6.setObjectName("verticalLayout_6")
+        self.frame_33 = QtWidgets.QFrame(self.tab_diagAcqData)
+        self.frame_33.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.frame_33.setStyleSheet("QFrame {\n"
+"    background-color: #a0a0a0; /* 设置背景颜色为灰色 */\n"
+"    border-radius: 10px; /* 设置边框圆角的半径为10px */\n"
+"}\n"
+"")
+        self.frame_33.setFrameShape(QtWidgets.QFrame.Box)
+        self.frame_33.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_33.setObjectName("frame_33")
+        self.horizontalLayout_48 = QtWidgets.QHBoxLayout(self.frame_33)
+        self.horizontalLayout_48.setContentsMargins(11, 0, -1, 0)
+        self.horizontalLayout_48.setObjectName("horizontalLayout_48")
+        self.label_55 = QtWidgets.QLabel(self.frame_33)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_55.sizePolicy().hasHeightForWidth())
+        self.label_55.setSizePolicy(sizePolicy)
+        self.label_55.setMinimumSize(QtCore.QSize(0, 20))
+        self.label_55.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.label_55.setStyleSheet("font: 11pt \"Calibri\";\n"
+"font-weight: 600; /* 设置字体粗细为600 */")
+        self.label_55.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
+        self.label_55.setObjectName("label_55")
+        self.horizontalLayout_48.addWidget(self.label_55)
+        spacerItem30 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_48.addItem(spacerItem30)
+        self.verticalLayout_6.addWidget(self.frame_33)
+        self.table_diagAcqPage_status = QtWidgets.QTableWidget(self.tab_diagAcqData)
+        self.table_diagAcqPage_status.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.table_diagAcqPage_status.setStyleSheet("QTableWidget {\n"
+"    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
+"    gridline-color: white; /* 网格线颜色 */\n"
+"    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
+"    font-family: \"Calibri\"; /* 单元格字体 */\n"
+"    font-size: 10pt; /* 单元格字体大小 */\n"
+"}\n"
+"\n"
+"QTableWidget::item {\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"    background-color: #f0f0f0; /* 表头背景颜色 */\n"
+"    padding: 2px; /* 表头内边距 */\n"
+"    border-style: none; /* 表头边框样式 */\n"
+"    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */\n"
+"    border-right: 2px solid white; /* 表头右边框宽度调整为2px */\n"
+"    font-family: \"Calibri\"; /* 表头字体 */\n"
+"    font-size: 10pt; /* 表头字体大小 */\n"
+"    font-weight: 600; /* 表头字体粗细 */\n"
+"}\n"
+"\n"
+"QTableCornerButton::section {\n"
+"    background-color: #f0f0f0; /* 角落按钮背景颜色 */\n"
+"    /* 添加其他您需要的样式 */\n"
+"}\n"
+"")
+        self.table_diagAcqPage_status.setObjectName("table_diagAcqPage_status")
+        self.table_diagAcqPage_status.setColumnCount(12)
+        self.table_diagAcqPage_status.setRowCount(15)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_status.setVerticalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_status.setVerticalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_status.setVerticalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_status.setVerticalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_status.setVerticalHeaderItem(4, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_status.setVerticalHeaderItem(5, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_status.setVerticalHeaderItem(6, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_status.setVerticalHeaderItem(7, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_status.setVerticalHeaderItem(8, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_status.setVerticalHeaderItem(9, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_status.setVerticalHeaderItem(10, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_status.setVerticalHeaderItem(11, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_status.setVerticalHeaderItem(12, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_status.setVerticalHeaderItem(13, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_status.setVerticalHeaderItem(14, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_status.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_status.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_status.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_status.setHorizontalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_status.setHorizontalHeaderItem(4, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_status.setHorizontalHeaderItem(5, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_status.setHorizontalHeaderItem(6, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_status.setHorizontalHeaderItem(7, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_status.setHorizontalHeaderItem(8, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_status.setHorizontalHeaderItem(9, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_status.setHorizontalHeaderItem(10, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_status.setHorizontalHeaderItem(11, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_status.setItem(0, 0, item)
+        self.table_diagAcqPage_status.horizontalHeader().setVisible(False)
+        self.table_diagAcqPage_status.verticalHeader().setVisible(False)
+        self.verticalLayout_6.addWidget(self.table_diagAcqPage_status)
+        self.frame_diagAcqDataPage_alertDev0 = QtWidgets.QFrame(self.tab_diagAcqData)
+        self.frame_diagAcqDataPage_alertDev0.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.frame_diagAcqDataPage_alertDev0.setStyleSheet("QFrame {\n"
+"    background-color: #a0a0a0; /* 设置背景颜色为灰色 */\n"
+"    border-radius: 10px; /* 设置边框圆角的半径为10px */\n"
+"}\n"
+"")
+        self.frame_diagAcqDataPage_alertDev0.setFrameShape(QtWidgets.QFrame.Box)
+        self.frame_diagAcqDataPage_alertDev0.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_diagAcqDataPage_alertDev0.setObjectName("frame_diagAcqDataPage_alertDev0")
+        self.horizontalLayout_49 = QtWidgets.QHBoxLayout(self.frame_diagAcqDataPage_alertDev0)
+        self.horizontalLayout_49.setContentsMargins(11, 0, -1, 0)
+        self.horizontalLayout_49.setObjectName("horizontalLayout_49")
+        self.label_57 = QtWidgets.QLabel(self.frame_diagAcqDataPage_alertDev0)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_57.sizePolicy().hasHeightForWidth())
+        self.label_57.setSizePolicy(sizePolicy)
+        self.label_57.setMinimumSize(QtCore.QSize(0, 20))
+        self.label_57.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.label_57.setStyleSheet("font: 11pt \"Calibri\";\n"
+"font-weight: 600; /* 设置字体粗细为600 */")
+        self.label_57.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
+        self.label_57.setObjectName("label_57")
+        self.horizontalLayout_49.addWidget(self.label_57)
+        spacerItem31 = QtWidgets.QSpacerItem(1194, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_49.addItem(spacerItem31)
+        self.verticalLayout_6.addWidget(self.frame_diagAcqDataPage_alertDev0)
+        self.table_diagAcqPage_alertReg_dev0 = QtWidgets.QTableWidget(self.tab_diagAcqData)
+        self.table_diagAcqPage_alertReg_dev0.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.table_diagAcqPage_alertReg_dev0.setStyleSheet("QTableWidget {\n"
+"    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
+"    gridline-color: white; /* 网格线颜色 */\n"
+"    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
+"    font-family: \"Calibri\"; /* 单元格字体 */\n"
+"    font-size: 10pt; /* 单元格字体大小 */\n"
+"}\n"
+"\n"
+"QTableWidget::item {\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"    background-color: #f0f0f0; /* 表头背景颜色 */\n"
+"    padding: 5px; /* 表头内边距 */\n"
+"    border-style: none; /* 表头边框样式 */\n"
+"    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */\n"
+"    border-right: 2px solid white; /* 表头右边框宽度调整为2px */\n"
+"    font-family: \"Calibri\"; /* 表头字体 */\n"
+"    font-size: 10pt; /* 表头字体大小 */\n"
+"    font-weight: 600; /* 表头字体粗细 */\n"
+"}\n"
+"\n"
+"QTableCornerButton::section {\n"
+"    background-color: #f0f0f0; /* 角落按钮背景颜色 */\n"
+"    /* 添加其他您需要的样式 */\n"
+"}\n"
+"")
+        self.table_diagAcqPage_alertReg_dev0.setObjectName("table_diagAcqPage_alertReg_dev0")
+        self.table_diagAcqPage_alertReg_dev0.setColumnCount(4)
+        self.table_diagAcqPage_alertReg_dev0.setRowCount(2)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_alertReg_dev0.setVerticalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_alertReg_dev0.setVerticalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_alertReg_dev0.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_alertReg_dev0.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_alertReg_dev0.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_alertReg_dev0.setHorizontalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        brush = QtGui.QBrush(QtGui.QColor(255, 242, 204))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        item.setBackground(brush)
+        self.table_diagAcqPage_alertReg_dev0.setItem(0, 0, item)
+        self.table_diagAcqPage_alertReg_dev0.horizontalHeader().setVisible(False)
+        self.table_diagAcqPage_alertReg_dev0.verticalHeader().setVisible(False)
+        self.verticalLayout_6.addWidget(self.table_diagAcqPage_alertReg_dev0)
+        self.frame_diagAcqDataPage_dataDev0 = QtWidgets.QFrame(self.tab_diagAcqData)
+        self.frame_diagAcqDataPage_dataDev0.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.frame_diagAcqDataPage_dataDev0.setStyleSheet("QFrame {\n"
+"    background-color: #a0a0a0; /* 设置背景颜色为灰色 */\n"
+"    border-radius: 10px; /* 设置边框圆角的半径为10px */\n"
+"}\n"
+"")
+        self.frame_diagAcqDataPage_dataDev0.setFrameShape(QtWidgets.QFrame.Box)
+        self.frame_diagAcqDataPage_dataDev0.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_diagAcqDataPage_dataDev0.setObjectName("frame_diagAcqDataPage_dataDev0")
+        self.horizontalLayout_50 = QtWidgets.QHBoxLayout(self.frame_diagAcqDataPage_dataDev0)
+        self.horizontalLayout_50.setContentsMargins(11, 0, -1, 0)
+        self.horizontalLayout_50.setObjectName("horizontalLayout_50")
+        self.label_58 = QtWidgets.QLabel(self.frame_diagAcqDataPage_dataDev0)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_58.sizePolicy().hasHeightForWidth())
+        self.label_58.setSizePolicy(sizePolicy)
+        self.label_58.setMinimumSize(QtCore.QSize(0, 20))
+        self.label_58.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.label_58.setStyleSheet("font: 11pt \"Calibri\";\n"
+"font-weight: 600; /* 设置字体粗细为600 */")
+        self.label_58.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
+        self.label_58.setObjectName("label_58")
+        self.horizontalLayout_50.addWidget(self.label_58)
+        spacerItem32 = QtWidgets.QSpacerItem(1194, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_50.addItem(spacerItem32)
+        self.verticalLayout_6.addWidget(self.frame_diagAcqDataPage_dataDev0)
+        self.table_diagAcqPage_dataReg_dev0 = QtWidgets.QTableWidget(self.tab_diagAcqData)
+        self.table_diagAcqPage_dataReg_dev0.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.table_diagAcqPage_dataReg_dev0.setStyleSheet("QTableWidget {\n"
+"    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
+"    gridline-color: white; /* 网格线颜色 */\n"
+"    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
+"    font-family: \"Calibri\"; /* 单元格字体 */\n"
+"    font-size: 10pt; /* 单元格字体大小 */\n"
+"}\n"
+"\n"
+"QTableWidget::item {\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"    background-color: #f0f0f0; /* 表头背景颜色 */\n"
+"    padding: 5px; /* 表头内边距 */\n"
+"    border-style: none; /* 表头边框样式 */\n"
+"    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */\n"
+"    border-right: 2px solid white; /* 表头右边框宽度调整为2px */\n"
+"    font-family: \"Calibri\"; /* 表头字体 */\n"
+"    font-size: 10pt; /* 表头字体大小 */\n"
+"    font-weight: 600; /* 表头字体粗细 */\n"
+"}\n"
+"\n"
+"QTableCornerButton::section {\n"
+"    background-color: #f0f0f0; /* 角落按钮背景颜色 */\n"
+"    /* 添加其他您需要的样式 */\n"
+"}\n"
+"")
+        self.table_diagAcqPage_dataReg_dev0.setObjectName("table_diagAcqPage_dataReg_dev0")
+        self.table_diagAcqPage_dataReg_dev0.setColumnCount(4)
+        self.table_diagAcqPage_dataReg_dev0.setRowCount(2)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_dataReg_dev0.setVerticalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_dataReg_dev0.setVerticalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_dataReg_dev0.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_dataReg_dev0.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_dataReg_dev0.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_dataReg_dev0.setHorizontalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        brush = QtGui.QBrush(QtGui.QColor(255, 242, 204))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        item.setBackground(brush)
+        self.table_diagAcqPage_dataReg_dev0.setItem(0, 0, item)
+        self.table_diagAcqPage_dataReg_dev0.horizontalHeader().setVisible(False)
+        self.table_diagAcqPage_dataReg_dev0.verticalHeader().setVisible(False)
+        self.verticalLayout_6.addWidget(self.table_diagAcqPage_dataReg_dev0)
+        self.frame_diagAcqDataPage_alertDev1 = QtWidgets.QFrame(self.tab_diagAcqData)
+        self.frame_diagAcqDataPage_alertDev1.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.frame_diagAcqDataPage_alertDev1.setStyleSheet("QFrame {\n"
+"    background-color: #a0a0a0; /* 设置背景颜色为灰色 */\n"
+"    border-radius: 10px; /* 设置边框圆角的半径为10px */\n"
+"}\n"
+"")
+        self.frame_diagAcqDataPage_alertDev1.setFrameShape(QtWidgets.QFrame.Box)
+        self.frame_diagAcqDataPage_alertDev1.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_diagAcqDataPage_alertDev1.setObjectName("frame_diagAcqDataPage_alertDev1")
+        self.horizontalLayout_52 = QtWidgets.QHBoxLayout(self.frame_diagAcqDataPage_alertDev1)
+        self.horizontalLayout_52.setContentsMargins(11, 0, -1, 0)
+        self.horizontalLayout_52.setObjectName("horizontalLayout_52")
+        self.label_60 = QtWidgets.QLabel(self.frame_diagAcqDataPage_alertDev1)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_60.sizePolicy().hasHeightForWidth())
+        self.label_60.setSizePolicy(sizePolicy)
+        self.label_60.setMinimumSize(QtCore.QSize(0, 20))
+        self.label_60.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.label_60.setStyleSheet("font: 11pt \"Calibri\";\n"
+"font-weight: 600; /* 设置字体粗细为600 */")
+        self.label_60.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
+        self.label_60.setObjectName("label_60")
+        self.horizontalLayout_52.addWidget(self.label_60)
+        spacerItem33 = QtWidgets.QSpacerItem(1194, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_52.addItem(spacerItem33)
+        self.verticalLayout_6.addWidget(self.frame_diagAcqDataPage_alertDev1)
+        self.table_diagAcqPage_alertReg_dev1 = QtWidgets.QTableWidget(self.tab_diagAcqData)
+        self.table_diagAcqPage_alertReg_dev1.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.table_diagAcqPage_alertReg_dev1.setStyleSheet("QTableWidget {\n"
+"    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
+"    gridline-color: white; /* 网格线颜色 */\n"
+"    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
+"    font-family: \"Calibri\"; /* 单元格字体 */\n"
+"    font-size: 10pt; /* 单元格字体大小 */\n"
+"}\n"
+"\n"
+"QTableWidget::item {\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"    background-color: #f0f0f0; /* 表头背景颜色 */\n"
+"    padding: 5px; /* 表头内边距 */\n"
+"    border-style: none; /* 表头边框样式 */\n"
+"    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */\n"
+"    border-right: 2px solid white; /* 表头右边框宽度调整为2px */\n"
+"    font-family: \"Calibri\"; /* 表头字体 */\n"
+"    font-size: 10pt; /* 表头字体大小 */\n"
+"    font-weight: 600; /* 表头字体粗细 */\n"
+"}\n"
+"\n"
+"QTableCornerButton::section {\n"
+"    background-color: #f0f0f0; /* 角落按钮背景颜色 */\n"
+"    /* 添加其他您需要的样式 */\n"
+"}\n"
+"")
+        self.table_diagAcqPage_alertReg_dev1.setObjectName("table_diagAcqPage_alertReg_dev1")
+        self.table_diagAcqPage_alertReg_dev1.setColumnCount(4)
+        self.table_diagAcqPage_alertReg_dev1.setRowCount(2)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_alertReg_dev1.setVerticalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_alertReg_dev1.setVerticalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_alertReg_dev1.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_alertReg_dev1.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_alertReg_dev1.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_alertReg_dev1.setHorizontalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        brush = QtGui.QBrush(QtGui.QColor(255, 242, 204))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        item.setBackground(brush)
+        self.table_diagAcqPage_alertReg_dev1.setItem(0, 0, item)
+        self.table_diagAcqPage_alertReg_dev1.horizontalHeader().setVisible(False)
+        self.table_diagAcqPage_alertReg_dev1.verticalHeader().setVisible(False)
+        self.verticalLayout_6.addWidget(self.table_diagAcqPage_alertReg_dev1)
+        self.frame_diagAcqDataPage_dataDev1 = QtWidgets.QFrame(self.tab_diagAcqData)
+        self.frame_diagAcqDataPage_dataDev1.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.frame_diagAcqDataPage_dataDev1.setStyleSheet("QFrame {\n"
+"    background-color: #a0a0a0; /* 设置背景颜色为灰色 */\n"
+"    border-radius: 10px; /* 设置边框圆角的半径为10px */\n"
+"}\n"
+"")
+        self.frame_diagAcqDataPage_dataDev1.setFrameShape(QtWidgets.QFrame.Box)
+        self.frame_diagAcqDataPage_dataDev1.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_diagAcqDataPage_dataDev1.setObjectName("frame_diagAcqDataPage_dataDev1")
+        self.horizontalLayout_51 = QtWidgets.QHBoxLayout(self.frame_diagAcqDataPage_dataDev1)
+        self.horizontalLayout_51.setContentsMargins(11, 0, -1, 0)
+        self.horizontalLayout_51.setObjectName("horizontalLayout_51")
+        self.label_59 = QtWidgets.QLabel(self.frame_diagAcqDataPage_dataDev1)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_59.sizePolicy().hasHeightForWidth())
+        self.label_59.setSizePolicy(sizePolicy)
+        self.label_59.setMinimumSize(QtCore.QSize(0, 20))
+        self.label_59.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.label_59.setStyleSheet("font: 11pt \"Calibri\";\n"
+"font-weight: 600; /* 设置字体粗细为600 */")
+        self.label_59.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
+        self.label_59.setObjectName("label_59")
+        self.horizontalLayout_51.addWidget(self.label_59)
+        spacerItem34 = QtWidgets.QSpacerItem(1194, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_51.addItem(spacerItem34)
+        self.verticalLayout_6.addWidget(self.frame_diagAcqDataPage_dataDev1)
+        self.table_diagAcqPage_dataReg_dev1 = QtWidgets.QTableWidget(self.tab_diagAcqData)
+        self.table_diagAcqPage_dataReg_dev1.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.table_diagAcqPage_dataReg_dev1.setStyleSheet("QTableWidget {\n"
+"    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
+"    gridline-color: white; /* 网格线颜色 */\n"
+"    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
+"    font-family: \"Calibri\"; /* 单元格字体 */\n"
+"    font-size: 10pt; /* 单元格字体大小 */\n"
+"}\n"
+"\n"
+"QTableWidget::item {\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"    background-color: #f0f0f0; /* 表头背景颜色 */\n"
+"    padding: 5px; /* 表头内边距 */\n"
+"    border-style: none; /* 表头边框样式 */\n"
+"    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */\n"
+"    border-right: 2px solid white; /* 表头右边框宽度调整为2px */\n"
+"    font-family: \"Calibri\"; /* 表头字体 */\n"
+"    font-size: 10pt; /* 表头字体大小 */\n"
+"    font-weight: 600; /* 表头字体粗细 */\n"
+"}\n"
+"\n"
+"QTableCornerButton::section {\n"
+"    background-color: #f0f0f0; /* 角落按钮背景颜色 */\n"
+"    /* 添加其他您需要的样式 */\n"
+"}\n"
+"")
+        self.table_diagAcqPage_dataReg_dev1.setObjectName("table_diagAcqPage_dataReg_dev1")
+        self.table_diagAcqPage_dataReg_dev1.setColumnCount(4)
+        self.table_diagAcqPage_dataReg_dev1.setRowCount(2)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_dataReg_dev1.setVerticalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_dataReg_dev1.setVerticalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_dataReg_dev1.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_dataReg_dev1.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_dataReg_dev1.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_dataReg_dev1.setHorizontalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        brush = QtGui.QBrush(QtGui.QColor(255, 242, 204))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        item.setBackground(brush)
+        self.table_diagAcqPage_dataReg_dev1.setItem(0, 0, item)
+        self.table_diagAcqPage_dataReg_dev1.horizontalHeader().setVisible(False)
+        self.table_diagAcqPage_dataReg_dev1.verticalHeader().setVisible(False)
+        self.verticalLayout_6.addWidget(self.table_diagAcqPage_dataReg_dev1)
+        self.verticalLayout_6.setStretch(1, 5)
+        self.verticalLayout_6.setStretch(3, 1)
+        self.verticalLayout_6.setStretch(5, 1)
+        self.verticalLayout_6.setStretch(7, 1)
+        self.verticalLayout_6.setStretch(9, 1)
         self.tabWidget.addTab(self.tab_diagAcqData, "")
         self.tab_cellBal = QtWidgets.QWidget()
         self.tab_cellBal.setObjectName("tab_cellBal")
@@ -4412,7 +4864,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuAbout.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(5)
+        self.tabWidget.setCurrentIndex(6)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -5816,6 +6268,138 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "ALERTCFG"))
         self.table_meaAcqDetailData_dataRegDev1.setSortingEnabled(__sortingEnabled)
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_meaAcqDetail), _translate("MainWindow", "MEA ACQ Detail Data"))
+        self.label_55.setText(_translate("MainWindow", "STATUS, LOG, and ADC ZS/FS DIAGNOSTIC DATA Register Blocks (Diagnostic Acquisition)"))
+        item = self.table_diagAcqPage_status.verticalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_diagAcqPage_status.verticalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_diagAcqPage_status.verticalHeaderItem(2)
+        item.setText(_translate("MainWindow", "2"))
+        item = self.table_diagAcqPage_status.verticalHeaderItem(3)
+        item.setText(_translate("MainWindow", "3"))
+        item = self.table_diagAcqPage_status.verticalHeaderItem(4)
+        item.setText(_translate("MainWindow", "4"))
+        item = self.table_diagAcqPage_status.verticalHeaderItem(5)
+        item.setText(_translate("MainWindow", "5"))
+        item = self.table_diagAcqPage_status.verticalHeaderItem(6)
+        item.setText(_translate("MainWindow", "6"))
+        item = self.table_diagAcqPage_status.verticalHeaderItem(7)
+        item.setText(_translate("MainWindow", "7"))
+        item = self.table_diagAcqPage_status.verticalHeaderItem(8)
+        item.setText(_translate("MainWindow", "8"))
+        item = self.table_diagAcqPage_status.verticalHeaderItem(9)
+        item.setText(_translate("MainWindow", "9"))
+        item = self.table_diagAcqPage_status.verticalHeaderItem(10)
+        item.setText(_translate("MainWindow", "10"))
+        item = self.table_diagAcqPage_status.verticalHeaderItem(11)
+        item.setText(_translate("MainWindow", "11"))
+        item = self.table_diagAcqPage_status.verticalHeaderItem(12)
+        item.setText(_translate("MainWindow", "12"))
+        item = self.table_diagAcqPage_status.verticalHeaderItem(13)
+        item.setText(_translate("MainWindow", "13"))
+        item = self.table_diagAcqPage_status.verticalHeaderItem(14)
+        item.setText(_translate("MainWindow", "14"))
+        item = self.table_diagAcqPage_status.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_diagAcqPage_status.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_diagAcqPage_status.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "2"))
+        item = self.table_diagAcqPage_status.horizontalHeaderItem(3)
+        item.setText(_translate("MainWindow", "3"))
+        item = self.table_diagAcqPage_status.horizontalHeaderItem(4)
+        item.setText(_translate("MainWindow", "4"))
+        item = self.table_diagAcqPage_status.horizontalHeaderItem(5)
+        item.setText(_translate("MainWindow", "5"))
+        item = self.table_diagAcqPage_status.horizontalHeaderItem(6)
+        item.setText(_translate("MainWindow", "6"))
+        item = self.table_diagAcqPage_status.horizontalHeaderItem(7)
+        item.setText(_translate("MainWindow", "7"))
+        item = self.table_diagAcqPage_status.horizontalHeaderItem(8)
+        item.setText(_translate("MainWindow", "8"))
+        item = self.table_diagAcqPage_status.horizontalHeaderItem(9)
+        item.setText(_translate("MainWindow", "9"))
+        item = self.table_diagAcqPage_status.horizontalHeaderItem(10)
+        item.setText(_translate("MainWindow", "10"))
+        item = self.table_diagAcqPage_status.horizontalHeaderItem(11)
+        item.setText(_translate("MainWindow", "11"))
+        __sortingEnabled = self.table_diagAcqPage_status.isSortingEnabled()
+        self.table_diagAcqPage_status.setSortingEnabled(False)
+        item = self.table_diagAcqPage_status.item(0, 0)
+        item.setText(_translate("MainWindow", "ALERTCFG"))
+        self.table_diagAcqPage_status.setSortingEnabled(__sortingEnabled)
+        self.label_57.setText(_translate("MainWindow", "DIAGNOSTIC ALERT Register Block (Device 0)"))
+        item = self.table_diagAcqPage_alertReg_dev0.verticalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_diagAcqPage_alertReg_dev0.verticalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_diagAcqPage_alertReg_dev0.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_diagAcqPage_alertReg_dev0.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_diagAcqPage_alertReg_dev0.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "2"))
+        item = self.table_diagAcqPage_alertReg_dev0.horizontalHeaderItem(3)
+        item.setText(_translate("MainWindow", "3"))
+        __sortingEnabled = self.table_diagAcqPage_alertReg_dev0.isSortingEnabled()
+        self.table_diagAcqPage_alertReg_dev0.setSortingEnabled(False)
+        item = self.table_diagAcqPage_alertReg_dev0.item(0, 0)
+        item.setText(_translate("MainWindow", "0x80"))
+        self.table_diagAcqPage_alertReg_dev0.setSortingEnabled(__sortingEnabled)
+        self.label_58.setText(_translate("MainWindow", "DIAGNOSTIC DATA Register Block (Device 0)"))
+        item = self.table_diagAcqPage_dataReg_dev0.verticalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_diagAcqPage_dataReg_dev0.verticalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_diagAcqPage_dataReg_dev0.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_diagAcqPage_dataReg_dev0.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_diagAcqPage_dataReg_dev0.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "2"))
+        item = self.table_diagAcqPage_dataReg_dev0.horizontalHeaderItem(3)
+        item.setText(_translate("MainWindow", "3"))
+        __sortingEnabled = self.table_diagAcqPage_dataReg_dev0.isSortingEnabled()
+        self.table_diagAcqPage_dataReg_dev0.setSortingEnabled(False)
+        item = self.table_diagAcqPage_dataReg_dev0.item(0, 0)
+        item.setText(_translate("MainWindow", "0x80"))
+        self.table_diagAcqPage_dataReg_dev0.setSortingEnabled(__sortingEnabled)
+        self.label_60.setText(_translate("MainWindow", "DIAGNOSTIC ALERT Register Block (Device 1)"))
+        item = self.table_diagAcqPage_alertReg_dev1.verticalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_diagAcqPage_alertReg_dev1.verticalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_diagAcqPage_alertReg_dev1.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_diagAcqPage_alertReg_dev1.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_diagAcqPage_alertReg_dev1.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "2"))
+        item = self.table_diagAcqPage_alertReg_dev1.horizontalHeaderItem(3)
+        item.setText(_translate("MainWindow", "3"))
+        __sortingEnabled = self.table_diagAcqPage_alertReg_dev1.isSortingEnabled()
+        self.table_diagAcqPage_alertReg_dev1.setSortingEnabled(False)
+        item = self.table_diagAcqPage_alertReg_dev1.item(0, 0)
+        item.setText(_translate("MainWindow", "0x80"))
+        self.table_diagAcqPage_alertReg_dev1.setSortingEnabled(__sortingEnabled)
+        self.label_59.setText(_translate("MainWindow", "DIAGNOSTIC DATA Register Block (Device 1)"))
+        item = self.table_diagAcqPage_dataReg_dev1.verticalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_diagAcqPage_dataReg_dev1.verticalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_diagAcqPage_dataReg_dev1.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_diagAcqPage_dataReg_dev1.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_diagAcqPage_dataReg_dev1.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "2"))
+        item = self.table_diagAcqPage_dataReg_dev1.horizontalHeaderItem(3)
+        item.setText(_translate("MainWindow", "3"))
+        __sortingEnabled = self.table_diagAcqPage_dataReg_dev1.isSortingEnabled()
+        self.table_diagAcqPage_dataReg_dev1.setSortingEnabled(False)
+        item = self.table_diagAcqPage_dataReg_dev1.item(0, 0)
+        item.setText(_translate("MainWindow", "0x80"))
+        self.table_diagAcqPage_dataReg_dev1.setSortingEnabled(__sortingEnabled)
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_diagAcqData), _translate("MainWindow", "Diagnostic ACQ Data"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_cellBal), _translate("MainWindow", "Cell Balance"))
         self.menuPython.setTitle(_translate("MainWindow", "Python"))

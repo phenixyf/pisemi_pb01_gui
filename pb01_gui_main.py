@@ -33,25 +33,25 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         # device id tables initial
         set_table_head(self.table_chainCfg_devIdBlk, table_chainCfg_devidHead,
                        CHAIN_CFG_TABLE_HEHG, 85)
-        set_table_item(self.table_chainCfg_devIdBlk, 2, CHAIN_CFG_TABLE_ROWHG,
+        set_table_item(self.table_chainCfg_devIdBlk, CHAIN_CFG_TABLE_ROWHG,
                        table_chainCfg_devidItem)
 
 
         # uifcfg register tables initial
         set_table_head(self.table_chainCfg_uifcfgReg, table_chainCfg_uartIfHead,
                        CHAIN_CFG_TABLE_HEHG, 85)
-        set_table_item(self.table_chainCfg_uifcfgReg, 2, CHAIN_CFG_TABLE_ROWHG,
+        set_table_item(self.table_chainCfg_uifcfgReg, CHAIN_CFG_TABLE_ROWHG,
                        table_chainCfg_uartIfItem)
-        set_table_item(self.table_chainCfg_addcfgReg, 2, CHAIN_CFG_TABLE_ROWHG,
+        set_table_item(self.table_chainCfg_addcfgReg, CHAIN_CFG_TABLE_ROWHG,
                        table_chainCfg_uartAddrItem)
 
 
         # address register tables initial
         set_table_head(self.table_chainCfg_addcfgReg, table_chainCfg_uartAddrHead,
                        CHAIN_CFG_TABLE_HEHG, 85)
-        set_table_item(self.table_chainCfg_uifcfgReg, 2, CHAIN_CFG_TABLE_ROWHG,
+        set_table_item(self.table_chainCfg_uifcfgReg,CHAIN_CFG_TABLE_ROWHG,
                        table_chainCfg_uartIfItem)
-        set_table_item(self.table_chainCfg_addcfgReg, 2, CHAIN_CFG_TABLE_ROWHG,
+        set_table_item(self.table_chainCfg_addcfgReg, CHAIN_CFG_TABLE_ROWHG,
                        table_chainCfg_uartAddrItem)
 
         # status power up dev0 table initial
@@ -81,13 +81,13 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         # reset dev0 table initial
         set_table_head(self.table_chainCfg_rstBlk_Dev0, table_chainCfg_rstHead_dev0,
                        CHAIN_CFG_TABLE_HEHG, CHAIN_CFG_TABLE_RSTHG)
-        set_table_item(self.table_chainCfg_rstBlk_Dev0, 1, CHAIN_CFG_TABLE_ROWHG,
+        set_table_item(self.table_chainCfg_rstBlk_Dev0,CHAIN_CFG_TABLE_ROWHG,
                        table_chainCfg_rstItem_dev0)
         self.table_chainCfg_rstBlk_Dev0.item(0, 3).setBackground(QColor("#E2F0D9"))
         # reset dev1 table initial
         set_table_head(self.table_chainCfg_rstBlk_Dev1, table_chainCfg_rstHead_dev1,
                        CHAIN_CFG_TABLE_HEHG, CHAIN_CFG_TABLE_RSTHG)
-        set_table_item(self.table_chainCfg_rstBlk_Dev1, 1, CHAIN_CFG_TABLE_ROWHG,
+        set_table_item(self.table_chainCfg_rstBlk_Dev1, CHAIN_CFG_TABLE_ROWHG,
                        table_chainCfg_rstItem_dev1)
         self.table_chainCfg_rstBlk_Dev1.item(0, 0).setBackground(QColor("#E2F0D9"))
 
@@ -105,19 +105,19 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         ''' initial application configuration page '''
         set_table_head(self.table_appCfgPage_appCfg, table_appCfgPage_headers,
                        CHAIN_CFG_TABLE_HEHG, 0)
-        set_table_item(self.table_appCfgPage_appCfg, 5, CHAIN_CFG_TABLE_ROWHG,
+        set_table_item(self.table_appCfgPage_appCfg, CHAIN_CFG_TABLE_ROWHG,
                        table_appCfgPage_appCfgReg_items)
         set_table_head(self.table_appCfgPage_alertCfg, table_appCfgPage_headers,
                        CHAIN_CFG_TABLE_HEHG, 0)
-        set_table_item(self.table_appCfgPage_alertCfg, 4, CHAIN_CFG_TABLE_ROWHG,
+        set_table_item(self.table_appCfgPage_alertCfg, CHAIN_CFG_TABLE_ROWHG,
                        table_appCfgPage_alertCfgReg_items)
         set_table_head(self.table_appCfgPage_thresholdReg, table_appCfgPage_headers,
                        CHAIN_CFG_TABLE_HEHG, 0)
-        set_table_item(self.table_appCfgPage_thresholdReg, 14, CHAIN_CFG_TABLE_ROWHG,
+        set_table_item(self.table_appCfgPage_thresholdReg, CHAIN_CFG_TABLE_ROWHG,
                        table_appCfgPage_theresholdReg_items)
         set_table_head(self.table_appCfgPage_acqReg, table_appCfgPage_headers,
                        CHAIN_CFG_TABLE_HEHG, 0)
-        set_table_item(self.table_appCfgPage_acqReg, 4, CHAIN_CFG_TABLE_ROWHG,
+        set_table_item(self.table_appCfgPage_acqReg, CHAIN_CFG_TABLE_ROWHG,
                        table_appCfgPage_acqReg_items)
 
         adjust_appCfgPage_tables(self.table_appCfgPage_appCfg, self.table_appCfgPage_alertCfg,
@@ -128,15 +128,15 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         ''' initial diagnostic configuration page '''
         set_table_head(self.table_diagCfgPage_testCurCfgReg, table_diagCfgPage_testCfg_headers,
                        CHAIN_CFG_TABLE_HEHG, 120)
-        set_table_item(self.table_diagCfgPage_testCurCfgReg, 3, CHAIN_CFG_TABLE_ROWHG,
+        set_table_item(self.table_diagCfgPage_testCurCfgReg, CHAIN_CFG_TABLE_ROWHG,
                        table_diagCfgPage_testCfg_items)
         set_table_head(self.table_diagCfgPage_diagThresReg, table_diagCfgPage_diagThre_headers,
                        CHAIN_CFG_TABLE_HEHG, 360)
-        set_table_item(self.table_diagCfgPage_diagThresReg, 12, CHAIN_CFG_TABLE_ROWHG,
+        set_table_item(self.table_diagCfgPage_diagThresReg, CHAIN_CFG_TABLE_ROWHG,
                        table_diagCfgPage_diagThre_items)
         set_table_head(self.table_diagCfgPage_aluTestDiagReg, table_diagCfgPage_aluTeDiag_headers,
                        CHAIN_CFG_TABLE_HEHG, 150)
-        set_table_item(self.table_diagCfgPage_aluTestDiagReg, 4, CHAIN_CFG_TABLE_ROWHG,
+        set_table_item(self.table_diagCfgPage_aluTestDiagReg, CHAIN_CFG_TABLE_ROWHG,
                        table_diagCfgPage_aluTeDiag_items)
 
         adjust_diagCfgPage_tables(self.table_diagCfgPage_testCurCfgReg, self.table_diagCfgPage_diagThresReg,
@@ -146,20 +146,19 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                   self.table_diagCfgPage_aluTestDiagReg)
 
         ''' initial measurement acquisition detailed data page '''
-        set_table_item(self.table_meaAcqDetailData_alertRegDev0, 6, CHAIN_CFG_TABLE_ROWHG,
+        set_table_item(self.table_meaAcqDetailData_alertRegDev0, CHAIN_CFG_TABLE_ROWHG,
                        table_meaAcqDetailPage_alertRegItems)
         # self.table_meaAcqDetailData_alertRegDev0.setFixedHeight(150)  # 设置 table 高度
-        set_table_item(self.table_meaAcqDetailData_dataRegDev0, 12, CHAIN_CFG_TABLE_ROWHG,
+        set_table_item(self.table_meaAcqDetailData_dataRegDev0, CHAIN_CFG_TABLE_ROWHG,
                        table_meaAcqDetailPage_dataRegItems)
         # self.table_meaAcqDetailData_dataRegDev0.setFixedHeight(300)  # 设置 table 高度
 
-        set_table_item(self.table_meaAcqDetailData_alertRegDev1, 6, CHAIN_CFG_TABLE_ROWHG,
+        set_table_item(self.table_meaAcqDetailData_alertRegDev1,CHAIN_CFG_TABLE_ROWHG,
                        table_meaAcqDetailPage_alertRegItems)
         # self.table_meaAcqDetailData_alertRegDev1.setFixedHeight(150)  # 设置 table 高度
-        set_table_item(self.table_meaAcqDetailData_dataRegDev1, 12, CHAIN_CFG_TABLE_ROWHG,
+        set_table_item(self.table_meaAcqDetailData_dataRegDev1, CHAIN_CFG_TABLE_ROWHG,
                        table_meaAcqDetailPage_dataRegItems)
         # self.table_meaAcqDetailData_dataRegDev1.setFixedHeight(300)  # 设置 table 高度
-
 
         # single afe initial ui as default
         self.slot_radio_single_dual_afe()
@@ -179,37 +178,27 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         :return:
         """
         if self.radioButton_singleAfe.isChecked():
-            set_table_item(self.table_chainCfg_devIdBlk, 1, CHAIN_CFG_TABLE_ROWHG,
-                           table_chainCfg_devidItem)
-            set_table_item(self.table_chainCfg_uifcfgReg, 1, CHAIN_CFG_TABLE_ROWHG,
-                           table_chainCfg_uartIfItem)
-            set_table_item(self.table_chainCfg_addcfgReg, 1, CHAIN_CFG_TABLE_ROWHG,
-                           table_chainCfg_uartAddrItem)
-            self.table_chainCfg_devIdBlk.setRowCount(1)
+            # chain configuration page
+            self.table_chainCfg_devIdBlk.hideRow(1)
+            self.table_chainCfg_uifcfgReg.hideRow(1)
+            self.table_chainCfg_addcfgReg.hideRow(1)
             self.table_chainCfg_statusBlk_pwrUpDev1.hide()
             self.table_chainCfg_statusBlk_initDev1.hide()
             self.table_chainCfg_statusBlk_curDev1.hide()
             self.table_chainCfg_rstBlk_Dev1.hide()
-            adjust_chainPage_ifid_tables(self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
-                                self.table_chainCfg_addcfgReg)
-            set_chainPage_ifid_color(1, self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
-                                   self.table_chainCfg_addcfgReg)
+            # application configuration page
+            self.table_appCfgPage_appCfg.hideColumn(8)
         elif self.radioButton_dualAfe.isChecked():
-            set_table_item(self.table_chainCfg_devIdBlk, 2, CHAIN_CFG_TABLE_ROWHG,
-                           table_chainCfg_devidItem)
-            set_table_item(self.table_chainCfg_uifcfgReg, 2, CHAIN_CFG_TABLE_ROWHG,
-                           table_chainCfg_uartIfItem)
-            set_table_item(self.table_chainCfg_addcfgReg, 2, CHAIN_CFG_TABLE_ROWHG,
-                           table_chainCfg_uartAddrItem)
-            self.table_chainCfg_devIdBlk.setRowCount(2)
+            # chain configuration page
+            self.table_chainCfg_devIdBlk.showRow(1)
+            self.table_chainCfg_uifcfgReg.showRow(1)
+            self.table_chainCfg_addcfgReg.showRow(1)
             self.table_chainCfg_statusBlk_pwrUpDev1.show()
             self.table_chainCfg_statusBlk_initDev1.show()
             self.table_chainCfg_statusBlk_curDev1.show()
             self.table_chainCfg_rstBlk_Dev1.show()
-            adjust_chainPage_ifid_tables(self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
-                                self.table_chainCfg_addcfgReg)
-            set_chainPage_ifid_color(2, self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
-                                   self.table_chainCfg_addcfgReg)
+            # application configuration page
+            self.table_appCfgPage_appCfg.showColumn(8)
 
 
 """ step3: 通过下面代码完成 GUI 的显示 """

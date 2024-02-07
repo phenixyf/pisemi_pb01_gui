@@ -18,20 +18,20 @@ class DanApplicationCfgPageWindow(QMainWindow, Ui_MainWindow):
 
     def initUI(self):
         set_table_head(self.tableWidget_appCfgRegBlock, appCfgReg_table_headers, HEADERHEIGHT, 160)
-        set_table_item(self.tableWidget_appCfgRegBlock, 5, ROWHEIGHT,
-                                                 appCfgReg_table_items, [3, 4], [])
+        set_table_item(self.tableWidget_appCfgRegBlock,  ROWHEIGHT,
+                                                 appCfgReg_table_items )
 
         set_table_head(self.tableWidget_alertCfgRegBlock, alertCfgReg_table_headers, HEADERHEIGHT, 140)
-        set_table_item(self.tableWidget_alertCfgRegBlock, 4, ROWHEIGHT,
-                                                 alertCfgReg_table_items, [3, 4], [])
+        set_table_item(self.tableWidget_alertCfgRegBlock, ROWHEIGHT,
+                                                 alertCfgReg_table_items )
 
         set_table_head(self.tableWidget_acquisitionRegBlock, acquistionReg_table_headers, HEADERHEIGHT, 140)
-        set_table_item(self.tableWidget_acquisitionRegBlock, 4, ROWHEIGHT,
-                                                 acquistionReg_table_items, [9, 10], [])
+        set_table_item(self.tableWidget_acquisitionRegBlock, ROWHEIGHT,
+                                                 acquistionReg_table_items)
 
         set_table_head(self.tableWidget_thresholdRegBlock, theresholdReg_table_headers, HEADERHEIGHT, 600)
-        set_table_item(self.tableWidget_thresholdRegBlock, 14, ROWHEIGHT,
-                                                 theresholdReg_table_items, [5, 6], [])
+        set_table_item(self.tableWidget_thresholdRegBlock, ROWHEIGHT,
+                                                 theresholdReg_table_items)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

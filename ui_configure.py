@@ -194,13 +194,18 @@ table_appCfgPage_theresholdReg_items = [
 table_diagCfgPage_testCfg_headers = ["Address", "Register", "Pending (hex)", "Pending Value (bin)", "Pending Field",
                            "Pending Value (bin)", "Pending Field", "Pending Value (bin)", "Pending Field",
                             "Pending Value (bin)", "Pending Field", "Device 0 (hex)", "Device 1 (hex)"]
+# table_diagCfgPage_testCfg_items = [
+#     ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"],
+#     ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"],
+#     ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"]
+# ]
 table_diagCfgPage_testCfg_items = [
     ["0x1C", "CTSTCFG1", "0001", "00", "HVMUXTSTEN[1:0]", "0", "CTSTPOL1", "0", "CTSTMAN", "1",
-                                                "CTSTEN[16]", "0000", "0000"],
+                                                "CTSTEN[16]", "0000", "0000","0000"],
     ["0x1D", "CTSTCFG1", "0001", "00", "HVMUXTSTEN[1:0]", "0", "CTSTPOL1", "0", "CTSTMAN", "1",
-                                                "CTSTEN[16]", "0000", "0000"],
+                                                "CTSTEN[16]", "0000", "0000","0000"],
     ["0x1E", "CTSTCFG1", "0001", "00", "HVMUXTSTEN[1:0]", "0", "CTSTPOL1", "0", "CTSTMAN", "1",
-                                                "CTSTEN[16]", "0000", "0000"]
+                                                "CTSTEN[16]", "0000", "0000","0000"]
 ]
 
 table_diagCfgPage_diagThre_headers = ["Address", "Register", "Pending (hex)", "Pending Value", "Pending Unit",
@@ -303,7 +308,7 @@ def set_table_head(pTableWidget, pListHeader, pHeaderHeight, pTableHeight):
         pTableWidget.setFixedHeight(pTableHeight)  # 设置 table 高度
 
 
-def set_table_item(pTableWidget, pShowRowCnt, pRowHeight, pItemData=[]):
+def set_table_item(pTableWidget, pRowHeight, pItemData=[]):
     """
     该函数用在 tablewidget 控件初始化过程中，实现 3 个功能：
     1. 显示指定的行数内容
@@ -319,9 +324,10 @@ def set_table_item(pTableWidget, pShowRowCnt, pRowHeight, pItemData=[]):
     :param pItemData: 单元格填入的数据，列表格式
     :return:
     """
-    pTableWidget.setRowCount(pShowRowCnt)
-    for row in range(pShowRowCnt):
-        for column in range(pTableWidget.columnCount()):
+    r = pTableWidget.rowCount()
+    c = pTableWidget.columnCount()
+    for row in range(r):
+        for column in range(c):
             # 设置单元格的初始值
             pTableWidget.setItem(row, column, QTableWidgetItem(pItemData[row][column]))
             pTableWidget.item(row, column).setTextAlignment(Qt.AlignCenter)  # 设置单元格内容水平垂直居中对齐

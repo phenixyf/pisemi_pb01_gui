@@ -54,13 +54,13 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
         # reset dev0 table initial
         set_table_head(self.table_chainCfg_rstBlk_Dev0, table_chainCfg_rstHead_dev0,
                             CHAIN_CFG_TABLE_HEHG, CHAIN_CFG_TABLE_RSTHG)
-        set_table_item(self.table_chainCfg_rstBlk_Dev0, 1, CHAIN_CFG_TABLE_ROWHG,
+        set_table_item(self.table_chainCfg_rstBlk_Dev0,CHAIN_CFG_TABLE_ROWHG,
                                                  table_chainCfg_rstItem_dev0)
         self.table_chainCfg_rstBlk_Dev0.item(0,3).setBackground(QColor("#E2F0D9"))
         # reset dev1 table initial
         set_table_head(self.table_chainCfg_rstBlk_Dev1, table_chainCfg_rstHead_dev1,
                             CHAIN_CFG_TABLE_HEHG, CHAIN_CFG_TABLE_RSTHG)
-        set_table_item(self.table_chainCfg_rstBlk_Dev1, 1, CHAIN_CFG_TABLE_ROWHG,
+        set_table_item(self.table_chainCfg_rstBlk_Dev1,CHAIN_CFG_TABLE_ROWHG,
                                                  table_chainCfg_rstItem_dev1)
         self.table_chainCfg_rstBlk_Dev1.item(0, 0).setBackground(QColor("#E2F0D9"))
 
@@ -82,17 +82,17 @@ class Pb01DanWindow(QMainWindow, Ui_MainWindow):
         :return:
         """
         if self.radioButton_singleAfe.isChecked():
-            set_table_item(self.table_chainCfg_uartIfCfg, 2, CHAIN_CFG_TABLE_ROWHG,
+            set_table_item(self.table_chainCfg_uartIfCfg, CHAIN_CFG_TABLE_ROWHG,
                                                      table_chainCfg_uartIfItem	)
-            set_table_item(self.table_chainCfg_uartIfAddr, 2, CHAIN_CFG_TABLE_ROWHG,
+            set_table_item(self.table_chainCfg_uartIfAddr, CHAIN_CFG_TABLE_ROWHG,
                                                           table_chainCfg_uartAddrItem)
             self.table_chainCfg_statusBlk_pwrUpDev1.hide()
             self.table_chainCfg_statusBlk_initDev1.hide()
             self.table_chainCfg_statusBlk_curDev1.hide()
         elif self.radioButton_dualAfe.isChecked():
-            set_table_item(self.table_chainCfg_uartIfCfg, 3, CHAIN_CFG_TABLE_ROWHG,
+            set_table_item(self.table_chainCfg_uartIfCfg, CHAIN_CFG_TABLE_ROWHG,
                                                      table_chainCfg_uartIfItem)
-            set_table_item(self.table_chainCfg_uartIfAddr, 3, CHAIN_CFG_TABLE_ROWHG,
+            set_table_item(self.table_chainCfg_uartIfAddr, CHAIN_CFG_TABLE_ROWHG,
                                                           table_chainCfg_uartAddrItem)
             self.table_chainCfg_statusBlk_pwrUpDev1.show()
             self.table_chainCfg_statusBlk_initDev1.show()

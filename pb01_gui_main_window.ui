@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QHBoxLayout" name="horizontalLayout_9">
+   <layout class="QVBoxLayout" name="verticalLayout_3">
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="styleSheet">
@@ -51,7 +51,7 @@ QTabBar::tab:!selected { /* 未被选中的Tab标题的样式 */
 }</string>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>5</number>
       </property>
       <property name="tabBarAutoHide">
        <bool>false</bool>
@@ -8659,7 +8659,7 @@ QTableCornerButton::section {
        <attribute name="title">
         <string>MEA ACQ Detail Data</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_21" stretch="0,0,0,3,0,0,0,2">
+       <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,1,0,3,0,1,0,3">
         <property name="spacing">
          <number>3</number>
         </property>
@@ -9142,7 +9142,7 @@ QTableCornerButton::section {
          </widget>
         </item>
         <item>
-         <widget class="QFrame" name="frame_34">
+         <widget class="QFrame" name="frame_meaAcqDetailPage_alertDev1">
           <property name="maximumSize">
            <size>
             <width>16777215</width>
@@ -9173,7 +9173,7 @@ QTableCornerButton::section {
             <number>0</number>
            </property>
            <item>
-            <widget class="QLabel" name="label_55">
+            <widget class="QLabel" name="label_56">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
                <horstretch>0</horstretch>
@@ -9205,13 +9205,13 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </widget>
            </item>
            <item>
-            <spacer name="horizontalSpacer_44">
+            <spacer name="horizontalSpacer_45">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
-               <width>20</width>
+               <width>1194</width>
                <height>20</height>
               </size>
              </property>
@@ -9330,7 +9330,7 @@ QTableCornerButton::section {
          </widget>
         </item>
         <item>
-         <widget class="QFrame" name="frame_33">
+         <widget class="QFrame" name="frame_meaAcqDetailPage_dataDev1">
           <property name="maximumSize">
            <size>
             <width>16777215</width>
@@ -9399,7 +9399,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
-               <width>20</width>
+               <width>1199</width>
                <height>20</height>
               </size>
              </property>

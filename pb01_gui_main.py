@@ -160,6 +160,15 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                        table_meaAcqDetailPage_dataRegItems)
         # self.table_meaAcqDetailData_dataRegDev1.setFixedHeight(300)  # 设置 table 高度
 
+        adjust_meaAcqDetailPage_tables(self.table_meaAcqDetailData_alertRegDev0,self.table_meaAcqDetailData_dataRegDev0,
+                                       self.table_meaAcqDetailData_alertRegDev1,self.table_meaAcqDetailData_dataRegDev1)
+
+        set_meaAcqDetailPage_table_color(self.table_meaAcqDetailData_alertRegDev0,self.table_meaAcqDetailData_dataRegDev0,
+                                       self.table_meaAcqDetailData_alertRegDev1,self.table_meaAcqDetailData_dataRegDev1)
+
+        meaAcqDetailPage_insert_led(self.table_meaAcqDetailData_alertRegDev0,self.table_meaAcqDetailData_alertRegDev1)
+
+
         # single afe initial ui as default
         self.slot_radio_single_dual_afe()
 
@@ -195,6 +204,11 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             self.table_diagCfgPage_testCurCfgReg.hideColumn(12)
             self.table_diagCfgPage_diagThresReg.hideColumn(8)
             self.table_diagCfgPage_aluTestDiagReg.hideColumn(8)
+            # measure acquisition detail data page
+            self.frame_meaAcqDetailPage_alertDev1.hide()
+            self.frame_meaAcqDetailPage_dataDev1.hide()
+            self.table_meaAcqDetailData_alertRegDev1.hide()
+            self.table_meaAcqDetailData_dataRegDev0.hide()
         elif self.radioButton_dualAfe.isChecked():
             # chain configuration page
             self.table_chainCfg_devIdBlk.showRow(1)
@@ -213,6 +227,11 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             self.table_diagCfgPage_testCurCfgReg.showColumn(12)
             self.table_diagCfgPage_diagThresReg.showColumn(8)
             self.table_diagCfgPage_aluTestDiagReg.showColumn(8)
+            # measure acquisition detail data page
+            self.frame_meaAcqDetailPage_alertDev1.show()
+            self.frame_meaAcqDetailPage_dataDev1.show()
+            self.table_meaAcqDetailData_alertRegDev1.show()
+            self.table_meaAcqDetailData_dataRegDev0.show()
 
 
 

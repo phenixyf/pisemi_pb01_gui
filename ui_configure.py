@@ -7,7 +7,7 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtGui import QColor
+from PyQt5.QtGui import QColor, QFont
 
 """ led string related """
 ''' led qss '''
@@ -97,6 +97,8 @@ LED_FME1_LAB = ["OSC", "----", "----", "----", "----", "VAA", "VDD", "VIO",
                 "AGND2", "AGND", "DGND", "IOGND", "HVOV", "HVUV", "TEMP2", "TEMP1"]
 LED_FME2_LAB = ["HVHDRM", "ACQTO", "----", "----", "ADC1ZS", "ADC1FS", "ADC2ZS", "ADC2FS",
                 "USER", "MODE", "AINIT", "DINIT", "OTPERR", "REGECC", "MBIST", "CBIST"]
+LED_LAB = ["LED15", "LED14", "LED13", "LED12", "LED11", "LED10", "LED9", "LED8",
+           "LED7", "LED6", "LED5", "LED4", "LED3", "LED2", "LED1", "LED0", ]
 
 ''' chain configuration page tablewidget initial content '''
 table_chainCfg_devidHead = ["Address", "Register", "Expected (hex)","DEVIDD (hex)", "DEVID1 (hex)", "DEVID2 (hex)",
@@ -586,6 +588,73 @@ def set_diagCfgPage_table_color(pTeCurTable, pDiagThrTable, pAluTable):
         pDiagThrTable.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
         pDiagThrTable.item(r, 7).setBackground(QColor("#E2F0D9"))  # 绿色
         pDiagThrTable.item(r, 8).setBackground(QColor("#E2F0D9"))  # 绿色
+
+
+def adjust_meaAcqDetailPage_tables(pAlertRegDev0, pDataRegDev0, pAlertRegDev1, pDataRegDev1):
+    pAlertRegDev0.setColumnWidth(0, 100)
+    pAlertRegDev0.setColumnWidth(1, 150)
+    pAlertRegDev0.setColumnWidth(2, 100)
+    pDataRegDev0.setColumnWidth(0, 100)
+    pDataRegDev0.setColumnWidth(1, 150)
+    pDataRegDev0.setColumnWidth(2, 100)
+    pAlertRegDev1.setColumnWidth(0, 100)
+    pAlertRegDev1.setColumnWidth(1, 150)
+    pAlertRegDev1.setColumnWidth(2, 100)
+    pDataRegDev1.setColumnWidth(0, 100)
+    pDataRegDev1.setColumnWidth(1, 150)
+    pDataRegDev1.setColumnWidth(2, 100)
+
+    for i in range(3, 19):
+        pDataRegDev0.setColumnWidth(i, 90)
+        pDataRegDev1.setColumnWidth(i, 90)
+
+    pAlertRegDev0.setColumnWidth(3, 90 * 16)
+    pAlertRegDev1.setColumnWidth(3, 90 * 16)
+
+def set_meaAcqDetailPage_table_color(pAlertRegDev0, pDataRegDev0, pAlertRegDev1, pDataRegDev1):
+    for r in range(6):
+        pAlertRegDev0.item(r, 2).setBackground(QColor("#E2F0D9"))  # 绿色
+        pAlertRegDev1.item(r, 2).setBackground(QColor("#E2F0D9"))  # 绿色
+        pAlertRegDev0.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
+        pAlertRegDev1.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
+
+    boldFont = QFont()
+    boldFont.setBold(True)
+    for r in range(12):
+        for c in range(0, 19):
+            if r == 0 or r == 3 or r == 6 or r == 9:
+                pDataRegDev0.item(r, c).setBackground(QColor("#BFBFBF"))  # 灰色
+                pDataRegDev1.item(r, c).setBackground(QColor("#BFBFBF"))  # 灰色
+                pDataRegDev0.item(r, c).setFont(boldFont)  # 字体加粗
+                pDataRegDev1.item(r, c).setFont(boldFont)  # 字体加粗
+            if c > 2:
+                if r == 1 or r == 4 or r == 7 or r == 10:
+                    pDataRegDev0.item(r, c).setBackground(QColor("#E2F0D9"))  # 绿色
+                    pDataRegDev1.item(r, c).setBackground(QColor("#E2F0D9"))  # 绿色
+                if r == 2 or r == 5 or r == 8 or r == 11:
+                    pDataRegDev0.item(r, c).setBackground(QColor("#FFF2CC"))  # 黄色
+                    pDataRegDev1.item(r, c).setBackground(QColor("#FFF2CC"))  # 黄色
+
+def meaAcqDetailPage_insert_led(pAlertRegDev0, pAlertRegDev1):
+        # 插入 LED 图标对象
+        ledList0 = add_led_txt(16, pAlertRegDev0, 0, 3, LED_LAB)  # 第一行插入
+        ledList1 = add_led_txt(16, pAlertRegDev0, 1, 3, LED_LAB)  # 第二行插入
+        ledList2 = add_led_txt(16, pAlertRegDev0, 2, 3, LED_LAB)  # 第三行插入
+        ledList3 = add_led_txt(16, pAlertRegDev0, 3, 3, LED_LAB)  # 第四行插入
+        ledList4 = add_led_txt(16, pAlertRegDev0, 4, 3, LED_LAB)  # 第三行插入
+        ledList5 = add_led_txt(16, pAlertRegDev0, 5, 3, LED_LAB)  # 第四行插入
+
+        ledList6 = add_led_txt(16, pAlertRegDev1, 0, 3, LED_LAB)  # 第一行插入
+        ledList7 = add_led_txt(16, pAlertRegDev1, 1, 3, LED_LAB)  # 第二行插入
+        ledList8 = add_led_txt(16, pAlertRegDev1, 2, 3, LED_LAB)  # 第三行插入
+        ledList9 = add_led_txt(16, pAlertRegDev1, 3, 3, LED_LAB)  # 第四行插入
+        ledList10 = add_led_txt(16, pAlertRegDev1, 4, 3, LED_LAB)  # 第三行插入
+        ledList11 = add_led_txt(16, pAlertRegDev1, 5, 3, LED_LAB)  # 第四行插入
+
+        dev0_led_list = [ledList0, ledList1, ledList2, ledList3, ledList4, ledList5]
+        dev1_led_list = [ledList6, ledList7, ledList8, ledList9, ledList10, ledList11]
+
+        return dev0_led_list, dev1_led_list
 
 
 

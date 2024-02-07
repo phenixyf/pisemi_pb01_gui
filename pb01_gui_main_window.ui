@@ -8872,20 +8872,12 @@ QTableCornerButton::section {
 }
 </string>
             </property>
-            <attribute name="horizontalHeaderVisible">
-             <bool>false</bool>
-            </attribute>
             <attribute name="verticalHeaderVisible">
              <bool>false</bool>
             </attribute>
             <row>
              <property name="text">
               <string>0</string>
-             </property>
-            </row>
-            <row>
-             <property name="text">
-              <string>1</string>
              </property>
             </row>
             <column>
@@ -8900,7 +8892,7 @@ QTableCornerButton::section {
             </column>
             <item row="0" column="0">
              <property name="text">
-              <string>ALERTCFG</string>
+              <string>0x45</string>
              </property>
             </item>
            </widget>
@@ -8915,20 +8907,20 @@ QTableCornerButton::section {
             </property>
            </widget>
           </item>
-          <item>
-           <spacer name="horizontalSpacer_16">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
          </layout>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_16">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>1412</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
         </item>
         <item>
          <widget class="QFrame" name="frame_16">
@@ -9598,6 +9590,9 @@ QTableCornerButton::section {
 }
 </string>
           </property>
+          <attribute name="horizontalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
           <attribute name="verticalHeaderVisible">
            <bool>false</bool>
           </attribute>
@@ -9613,17 +9608,22 @@ QTableCornerButton::section {
           </row>
           <row>
            <property name="text">
-            <string>新建行</string>
-           </property>
-          </row>
-          <row>
-           <property name="text">
             <string>2</string>
            </property>
           </row>
           <row>
            <property name="text">
+            <string>3</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
             <string>4</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>5</string>
            </property>
           </row>
           <column>
@@ -9654,11 +9654,6 @@ QTableCornerButton::section {
           <column>
            <property name="text">
             <string>5</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>新建列</string>
            </property>
           </column>
           <column>
@@ -9699,6 +9694,11 @@ QTableCornerButton::section {
           <column>
            <property name="text">
             <string>13</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>14</string>
            </property>
           </column>
           <column>

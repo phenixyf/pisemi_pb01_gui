@@ -199,6 +199,23 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                                             self.table_diagAcqPage_alertReg_dev1,
                                                             self.table_diagAcqPage_dataReg_dev1)
 
+        ''' initial cell balance page '''
+        set_table_head(self.table_cblPage_cblExpTime, table_cblPage_cblExpTimHeaders,
+                       CHAIN_CFG_TABLE_HEHG, 0)
+        set_table_item(self.table_cblPage_cblExpTime, CHAIN_CFG_TABLE_ROWHG, table_cblPage_cblExpTimItems)
+
+        set_table_head(self.table_cblPage_cblCfgReg, table_cblPage_cblCfgRegHeaders,
+                       CHAIN_CFG_TABLE_HEHG, 0)
+        set_table_item(self.table_cblPage_cblCfgReg, CHAIN_CFG_TABLE_ROWHG, table_cblPage_cblCfgRegItems)
+
+        set_table_head(self.table_cblPage_cblCtrlSimDemo, table_cblPage_cblCtrlDemoHeaders,
+                       CHAIN_CFG_TABLE_HEHG, 0)
+        set_table_item(self.table_cblPage_cblCtrlSimDemo, CHAIN_CFG_TABLE_ROWHG, table_cblPage_cblCtrlDemoItems)
+
+        set_table_item(self.table_cblPage_cblCtrlStaInf, CHAIN_CFG_TABLE_ROWHG, table_cblPage_cblCtrlInfItems)
+
+        adjust_cblPage_tables(self.table_cblPage_cblExpTime, self.table_cblPage_cblCfgReg,
+                                    self.table_cblPage_cblCtrlSimDemo, self.table_cblPage_cblCtrlStaInf)
 
 
         # single afe initial ui as default

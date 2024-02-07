@@ -376,6 +376,49 @@ table_diagAcqDataPage_dataItems = [
      "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16"]
 ]
 
+""" cell balance page tablewidget initial content """
+table_cblPage_cblExpTimHeaders = ["CBEXP[10:0] (hex)", "CBEXP (dec)"]
+table_cblPage_cblCfgRegHeaders =["Address", "Register", "Pending (hex)", "Comment", "Device 0 (hex)", "Device 1 (hex)"]
+table_cblPage_cblCtrlDemoHeaders =["Address", "Register", "Pending (hex)", "Comment", "Device 0 (hex)", "Device 1 (hex)"]
+
+table_cblPage_cblExpTimItems = ["002", "2"]
+table_cblPage_cblCfgRegItems = [
+    ["0x45", "CBALUVTHREG", "FFFF",
+     "CBMODE[2:0] is determined by selection.  CBTEMPEN=0b1 for safety.  CBDUTY[3:0]=0xF (50%) for Semi-Automatic Mode."
+     "  All other options are not used in this Demo.", "01F0", "01F0"],
+    ["0x46", "CBALUVTHREG", "FFFF",
+     "CBMODE[2:0] is determined by selection.  CBTEMPEN=0b1 for safety.  CBDUTY[3:0]=0xF (50%) for Semi-Automatic Mode."
+     "  All other options are not used in this Demo.", "01F0", "01F0"],
+    ["0x47", "CBALUVTHREG", "FFFF",
+     "CBMODE[2:0] is determined by selection.  CBTEMPEN=0b1 for safety.  CBDUTY[3:0]=0xF (50%) for Semi-Automatic Mode."
+     "  All other options are not used in this Demo.", "01F0", "01F0"],
+    ["0x48", "CBALUVTHREG", "FFFF",
+     "CBMODE[2:0] is determined by selection.  CBTEMPEN=0b1 for safety.  CBDUTY[3:0]=0xF (50%) for Semi-Automatic Mode."
+     "  All other options are not used in this Demo.", "01F0", "01F0"],
+    ["0x49", "CBALUVTHREG", "FFFF",
+     "CBMODE[2:0] is determined by selection.  CBTEMPEN=0b1 for safety.  CBDUTY[3:0]=0xF (50%) for Semi-Automatic Mode."
+     "  All other options are not used in this Demo.", "01F0", "01F0"]
+]
+table_cblPage_cblCtrlDemoItems = [
+    ["0x4A","BALCTRL (START)", "4000", "This is the command issued for a Cell Balancing Start Request.", " ", " "],
+    ["0x4A","BALCTRL (START)", "2000", "This is the command issued for a Cell Balancing Start Request.", " ", " "]
+]
+table_cblPage_cblCtrlInfItems = [
+    ["Address", "Register", "Device 0 (hex)", " ", " ", " ", " ", " ", " ",
+                                "Device 1 (hex)", " ", " ", " ", " ", " ", " "],
+    ["0x4A", "CBALCTRL (READ)", "0000", "0", "Hours (dec)", "0", "Min (dec)", "0", "Sec (dec)",
+                                "0000", "0", "Hours (dec)", "0", "Min (dec)", "0", "Sec (dec)"],
+    ["0x4A", "CBALCTRL (READ)", "0000", "0", "Hours (dec)", "0", "Min (dec)", "0", "Sec (dec)",
+                                "0000", "0", "Hours (dec)", "0", "Min (dec)", "0", "Sec (dec)"],
+    ["0x4A", "CBALCTRL (READ)", "0000", "0", "Hours (dec)", "0", "Min (dec)", "0", "Sec (dec)",
+                                "0000", "0", "Hours (dec)", "0", "Min (dec)", "0", "Sec (dec)"],
+    ["0x4A", "CBALCTRL (READ)", "0000", "0", "Hours (dec)", "0", "Min (dec)", "0", "Sec (dec)",
+                                "0000", "0", "Hours (dec)", "0", "Min (dec)", "0", "Sec (dec)"],
+    ["0x4A", "CBALCTRL (READ)", "0000", "0", "Hours (dec)", "0", "Min (dec)", "0", "Sec (dec)",
+                                "0000", "0", "Hours (dec)", "0", "Min (dec)", "0", "Sec (dec)"]
+]
+
+
 def set_table_head(pTableWidget, pListHeader, pHeaderHeight, pTableHeight):
     """
     初始化 tablewidget
@@ -844,6 +887,7 @@ def adjust_diagAcqDataPage_tables(pStaTable, pAlerDev0Table, pDataDev0Table, pAl
 
     return led8List, led32List, led16Dev0, led16Dev1
 
+
 def adjust_meaAcqSumPage_tables(pStaTable, pSumDataDev0Table, pSumDataDev1Table):
     ''' adjust status table '''
     # adjust status table column size
@@ -939,6 +983,32 @@ def adjust_meaAcqSumPage_tables(pStaTable, pSumDataDev0Table, pSumDataDev1Table)
     pSumDataDev1Table.item(0, 9).setBackground(QColor("#FFF2CC"))  # 黄色
     pSumDataDev1Table.item(7, 5).setBackground(QColor("#FFF2CC"))  # 黄色
     pSumDataDev1Table.item(7, 9).setBackground(QColor("#FFF2CC"))  # 黄色
+
+    return led8List, led32List, led16Dev0, led16Dev1
+
+
+def adjust_cblPage_tables(pExpTable, pCfgTable, pCtrlDemoTable, pCtrlInfTable):
+    ''' adjust expiration time table '''
+    pExpTable.setColumnWidth(1, 120)
+    pExpTable.setColumnWidth(2, 120)
+    pExpTable.item(0, 0).setBackground(QColor("#DAE3F3"))  # 蓝色
+    pExpTable.item(0, 1).setBackground(QColor("#FFF2CC"))  # 黄色
+
+    ''' adjust status information table '''
+    # adjust status information table column size
+    for c in range(16):
+        if c == 0 or c == 2 or c == 9:
+            pCtrlInfTable.setColumnWidth(c, 100)
+        elif c == 1:
+            pCtrlInfTable.setColumnWidth(c, 150)
+        else:
+            pCtrlInfTable.setColumnWidth(c, 80)
+
+    # status information table set span and background color
+    # for r in range(5):
+    #     pCtrlInfTable.setSpan(0, 2, 1, 10)
+    #     pCtrlInfTable.item(0, 2).setText(' ')
+    #     pCtrlInfTable.item(0, 1).setBackground(QColor("#E2F0D9"))  # 绿色
 
 
 

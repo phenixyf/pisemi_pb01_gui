@@ -98,7 +98,7 @@ LED_FME1_LAB = ["OSC", "----", "----", "----", "----", "VAA", "VDD", "VIO",
 LED_FME2_LAB = ["HVHDRM", "ACQTO", "----", "----", "ADC1ZS", "ADC1FS", "ADC2ZS", "ADC2FS",
                 "USER", "MODE", "AINIT", "DINIT", "OTPERR", "REGECC", "MBIST", "CBIST"]
 
-''' '''
+''' chain configuration page tablewidget initial content '''
 table_chainCfg_devidHead = ["Address", "Register", "Expected (hex)","DEVIDD (hex)", "DEVID1 (hex)", "DEVID2 (hex)",
                             "VERSION (hex)", "GENERATION[2:0] (dec)", "CHANNEL_COUNT[4:0] (dec)", "SWVER[3:0] (hex)",
                             "HWVER[3:0] (hex)"]
@@ -148,7 +148,7 @@ table_chainCfg_rstItem_dev1 = [
     ["0000"]
 ]
 
-""" APPLICATION CONFIGURATION page tablewidget initial content """
+""" application configuration page tablewidget initial content """
 table_appCfgPage_headers = ["Address", "Register", "Pending (hex)", "Pending Value (bin)", "Pending Field",
                            "Pending Value (bin)", "Pending Field", "Device 0 (hex)", "Device 1 (hex)"]
 table_appCfgPage_appCfgReg_items = [
@@ -230,6 +230,55 @@ table_diagCfgPage_aluTeDiag_items = [
     ["0x3F", "BALSHTUVTHREG", "0000", " ", " ", " ", " ", "0000", "0000"]
 ]
 
+""" measurement acquisition detailed data page tablewidget initial content """
+table_meaAcqDetailPage_alertRegItems = [
+    ["0x80", "ALRTALTOVREG", "0000", " "],
+    ["0x80", "ALRTALTOVREG", "0000", " "],
+    ["0x80", "ALRTALTOVREG", "0000", " "],
+    ["0x80", "ALRTALTOVREG", "0000", " "],
+    ["0x80", "ALRTALTOVREG", "0000", " "],
+    ["0x80", "ALRTALTOVREG", "0000", " "]
+]
+
+table_meaAcqDetailPage_dataRegItems = [
+    ["0x90 ~ - 0x9F", "AUXILIARY DATA", " ",
+     "CELLIIR 15", "CELLIIR 14","CELLIIR 13", "CELLIIR 12", "CELLIIR 11", "CELLIIR 10", "CELLIIR 9", "CELLIIR 8",
+     "CELLIIR 7", "CELLIIR 6","CELLIIR 5", "CELLIIR 4", "CELLIIR 3", "CELLIIR 2", "CELLIIR 1", "CELLIIR 0"],
+    ["0x90 ~ - 0x9F", "AUXILIARY DATA", " ",
+     "CELLIIR 15", "CELLIIR 14","CELLIIR 13", "CELLIIR 12", "CELLIIR 11", "CELLIIR 10", "CELLIIR 9", "CELLIIR 8",
+     "CELLIIR 7", "CELLIIR 6","CELLIIR 5", "CELLIIR 4", "CELLIIR 3", "CELLIIR 2", "CELLIIR 1", "CELLIIR 0"],
+    ["0x90 ~ - 0x9F", "AUXILIARY DATA", " ",
+     "CELLIIR 15", "CELLIIR 14","CELLIIR 13", "CELLIIR 12", "CELLIIR 11", "CELLIIR 10", "CELLIIR 9", "CELLIIR 8",
+     "CELLIIR 7", "CELLIIR 6","CELLIIR 5", "CELLIIR 4", "CELLIIR 3", "CELLIIR 2", "CELLIIR 1", "CELLIIR 0"],
+    ["0xA0 ~ - 0xAF", "AUXILIARY DATA", " ",
+     "CELLIIR 15", "CELLIIR 14","CELLIIR 13", "CELLIIR 12", "CELLIIR 11", "CELLIIR 10", "CELLIIR 9", "CELLIIR 8",
+     "CELLIIR 7", "CELLIIR 6","CELLIIR 5", "CELLIIR 4", "CELLIIR 3", "CELLIIR 2", "CELLIIR 1", "CELLIIR 0"],
+    ["0xA0 ~ - 0xAF", "AUXILIARY DATA", " ",
+     "CELLIIR 15", "CELLIIR 14","CELLIIR 13", "CELLIIR 12", "CELLIIR 11", "CELLIIR 10", "CELLIIR 9", "CELLIIR 8",
+     "CELLIIR 7", "CELLIIR 6","CELLIIR 5", "CELLIIR 4", "CELLIIR 3", "CELLIIR 2", "CELLIIR 1", "CELLIIR 0"],
+    ["0xA0 ~ - 0xAF", "AUXILIARY DATA", " ",
+     "CELLIIR 15", "CELLIIR 14","CELLIIR 13", "CELLIIR 12", "CELLIIR 11", "CELLIIR 10", "CELLIIR 9", "CELLIIR 8",
+     "CELLIIR 7", "CELLIIR 6","CELLIIR 5", "CELLIIR 4", "CELLIIR 3", "CELLIIR 2", "CELLIIR 1", "CELLIIR 0"],
+    ["0xB0 ~ - 0xBF", "AUXILIARY DATA", " ",
+     "CELLIIR 15", "CELLIIR 14","CELLIIR 13", "CELLIIR 12", "CELLIIR 11", "CELLIIR 10", "CELLIIR 9", "CELLIIR 8",
+     "CELLIIR 7", "CELLIIR 6","CELLIIR 5", "CELLIIR 4", "CELLIIR 3", "CELLIIR 2", "CELLIIR 1", "CELLIIR 0"],
+    ["0xB0 ~ - 0xBF", "AUXILIARY DATA", " ",
+     "CELLIIR 15", "CELLIIR 14","CELLIIR 13", "CELLIIR 12", "CELLIIR 11", "CELLIIR 10", "CELLIIR 9", "CELLIIR 8",
+     "CELLIIR 7", "CELLIIR 6","CELLIIR 5", "CELLIIR 4", "CELLIIR 3", "CELLIIR 2", "CELLIIR 1", "CELLIIR 0"],
+    ["0xB0 ~ - 0xBF", "AUXILIARY DATA", " ",
+     "CELLIIR 15", "CELLIIR 14","CELLIIR 13", "CELLIIR 12", "CELLIIR 11", "CELLIIR 10", "CELLIIR 9", "CELLIIR 8",
+     "CELLIIR 7", "CELLIIR 6","CELLIIR 5", "CELLIIR 4", "CELLIIR 3", "CELLIIR 2", "CELLIIR 1", "CELLIIR 0"],
+    ["0xC0 ~ - 0xCF", "AUXILIARY DATA", " ",
+     "CELLIIR 15", "CELLIIR 14","CELLIIR 13", "CELLIIR 12", "CELLIIR 11", "CELLIIR 10", "CELLIIR 9", "CELLIIR 8",
+     "CELLIIR 7", "CELLIIR 6","CELLIIR 5", "CELLIIR 4", "CELLIIR 3", "CELLIIR 2", "CELLIIR 1", "CELLIIR 0"],
+    ["0xC0 ~ - 0xCF", "AUXILIARY DATA", " ",
+     "CELLIIR 15", "CELLIIR 14","CELLIIR 13", "CELLIIR 12", "CELLIIR 11", "CELLIIR 10", "CELLIIR 9", "CELLIIR 8",
+     "CELLIIR 7", "CELLIIR 6","CELLIIR 5", "CELLIIR 4", "CELLIIR 3", "CELLIIR 2", "CELLIIR 1", "CELLIIR 0"],
+    ["0xC0 ~ - 0xCF", "AUXILIARY DATA", " ",
+     "CELLIIR 15", "CELLIIR 14","CELLIIR 13", "CELLIIR 12", "CELLIIR 11", "CELLIIR 10", "CELLIIR 9", "CELLIIR 8",
+     "CELLIIR 7", "CELLIIR 6","CELLIIR 5", "CELLIIR 4", "CELLIIR 3", "CELLIIR 2", "CELLIIR 1", "CELLIIR 0"]
+]
+
 
 def set_table_head(pTableWidget, pListHeader, pHeaderHeight, pTableHeight):
     """
@@ -250,7 +299,8 @@ def set_table_head(pTableWidget, pListHeader, pHeaderHeight, pTableHeight):
     pTableWidget.setHorizontalHeaderLabels(pListHeader)  # 设置标题内容
     pTableWidget.horizontalHeader().setDefaultAlignment(Qt.AlignCenter)  # 设置标题内容水平居中对齐
     pTableWidget.horizontalHeader().setFixedHeight(pHeaderHeight)  # 设置标题行高度
-    pTableWidget.setFixedHeight(pTableHeight)  # 设置 table 高度
+    if pTableHeight != 0:
+        pTableWidget.setFixedHeight(pTableHeight)  # 设置 table 高度
 
 
 def set_table_item(pTableWidget, pShowRowCnt, pRowHeight, pItemData=[]):

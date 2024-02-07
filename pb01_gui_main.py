@@ -33,15 +33,26 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         # device id tables initial
         set_table_head(self.table_chainCfg_devIdBlk, table_chainCfg_devidHead,
                        CHAIN_CFG_TABLE_HEHG, 85)
+        set_table_item(self.table_chainCfg_devIdBlk, 2, CHAIN_CFG_TABLE_ROWHG,
+                       table_chainCfg_devidItem)
+
 
         # uifcfg register tables initial
         set_table_head(self.table_chainCfg_uifcfgReg, table_chainCfg_uartIfHead,
                        CHAIN_CFG_TABLE_HEHG, 85)
+        set_table_item(self.table_chainCfg_uifcfgReg, 2, CHAIN_CFG_TABLE_ROWHG,
+                       table_chainCfg_uartIfItem)
+        set_table_item(self.table_chainCfg_addcfgReg, 2, CHAIN_CFG_TABLE_ROWHG,
+                       table_chainCfg_uartAddrItem)
 
 
         # address register tables initial
         set_table_head(self.table_chainCfg_addcfgReg, table_chainCfg_uartAddrHead,
                        CHAIN_CFG_TABLE_HEHG, 85)
+        set_table_item(self.table_chainCfg_uifcfgReg, 2, CHAIN_CFG_TABLE_ROWHG,
+                       table_chainCfg_uartIfItem)
+        set_table_item(self.table_chainCfg_addcfgReg, 2, CHAIN_CFG_TABLE_ROWHG,
+                       table_chainCfg_uartAddrItem)
 
         # status power up dev0 table initial
         ledList_pageChain_st1pu_dev0, ledList_pageChain_st2pu_dev0, ledList_pageChain_fm1pu_dev0, \
@@ -80,9 +91,6 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                        table_chainCfg_rstItem_dev1)
         self.table_chainCfg_rstBlk_Dev1.item(0, 0).setBackground(QColor("#E2F0D9"))
 
-        # single afe initial ui as default
-        self.slot_radio_single_dual_afe()
-
         # adjust chain configuration page interface & ID register table size and background color
         time.sleep(0.5)
         adjust_chainPage_ifid_tables(self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
@@ -96,19 +104,19 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
         ''' initial application configuration page '''
         set_table_head(self.table_appCfgPage_appCfg, table_appCfgPage_headers,
-                       CHAIN_CFG_TABLE_HEHG, 160)
+                       CHAIN_CFG_TABLE_HEHG, 0)
         set_table_item(self.table_appCfgPage_appCfg, 5, CHAIN_CFG_TABLE_ROWHG,
                        table_appCfgPage_appCfgReg_items)
         set_table_head(self.table_appCfgPage_alertCfg, table_appCfgPage_headers,
-                       CHAIN_CFG_TABLE_HEHG, 130)
+                       CHAIN_CFG_TABLE_HEHG, 0)
         set_table_item(self.table_appCfgPage_alertCfg, 4, CHAIN_CFG_TABLE_ROWHG,
                        table_appCfgPage_alertCfgReg_items)
         set_table_head(self.table_appCfgPage_thresholdReg, table_appCfgPage_headers,
-                       CHAIN_CFG_TABLE_HEHG, 380)
+                       CHAIN_CFG_TABLE_HEHG, 0)
         set_table_item(self.table_appCfgPage_thresholdReg, 14, CHAIN_CFG_TABLE_ROWHG,
                        table_appCfgPage_theresholdReg_items)
         set_table_head(self.table_appCfgPage_acqReg, table_appCfgPage_headers,
-                       CHAIN_CFG_TABLE_HEHG, 130)
+                       CHAIN_CFG_TABLE_HEHG, 0)
         set_table_item(self.table_appCfgPage_acqReg, 4, CHAIN_CFG_TABLE_ROWHG,
                        table_appCfgPage_acqReg_items)
 
@@ -132,6 +140,24 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         set_diagCfgPage_table_color(self.table_diagCfgPage_testCurCfgReg, self.table_diagCfgPage_diagThresReg,
                                   self.table_diagCfgPage_aluTestDiagReg)
 
+        ''' initial measurement acquisition detailed data page '''
+        set_table_item(self.table_meaAcqDetailData_alertRegDev0, 6, CHAIN_CFG_TABLE_ROWHG,
+                       table_meaAcqDetailPage_alertRegItems)
+        # self.table_meaAcqDetailData_alertRegDev0.setFixedHeight(150)  # 设置 table 高度
+        set_table_item(self.table_meaAcqDetailData_dataRegDev0, 12, CHAIN_CFG_TABLE_ROWHG,
+                       table_meaAcqDetailPage_dataRegItems)
+        # self.table_meaAcqDetailData_dataRegDev0.setFixedHeight(300)  # 设置 table 高度
+
+        set_table_item(self.table_meaAcqDetailData_alertRegDev1, 6, CHAIN_CFG_TABLE_ROWHG,
+                       table_meaAcqDetailPage_alertRegItems)
+        # self.table_meaAcqDetailData_alertRegDev1.setFixedHeight(150)  # 设置 table 高度
+        set_table_item(self.table_meaAcqDetailData_dataRegDev1, 12, CHAIN_CFG_TABLE_ROWHG,
+                       table_meaAcqDetailPage_dataRegItems)
+        # self.table_meaAcqDetailData_dataRegDev1.setFixedHeight(300)  # 设置 table 高度
+
+
+        # single afe initial ui as default
+        self.slot_radio_single_dual_afe()
 
         update_led_color(ledList_pageChain_st1pu_dev0[3], "#aa0000")
         # update_led_color(self.label_186, "#aa0000")

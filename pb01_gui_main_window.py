@@ -2658,6 +2658,7 @@ class Ui_MainWindow(object):
         self.tab_meaAcqSum = QtWidgets.QWidget()
         self.tab_meaAcqSum.setObjectName("tab_meaAcqSum")
         self.verticalLayout_20 = QtWidgets.QVBoxLayout(self.tab_meaAcqSum)
+        self.verticalLayout_20.setSpacing(6)
         self.verticalLayout_20.setObjectName("verticalLayout_20")
         self.verticalLayout_19 = QtWidgets.QVBoxLayout()
         self.verticalLayout_19.setSizeConstraint(QtWidgets.QLayout.SetMaximumSize)
@@ -3937,6 +3938,446 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.tab_meaAcqSum, "")
         self.tab_meaAcqDetail = QtWidgets.QWidget()
         self.tab_meaAcqDetail.setObjectName("tab_meaAcqDetail")
+        self.verticalLayout_21 = QtWidgets.QVBoxLayout(self.tab_meaAcqDetail)
+        self.verticalLayout_21.setContentsMargins(-1, 0, -1, 0)
+        self.verticalLayout_21.setSpacing(3)
+        self.verticalLayout_21.setObjectName("verticalLayout_21")
+        self.frame_31 = QtWidgets.QFrame(self.tab_meaAcqDetail)
+        self.frame_31.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.frame_31.setStyleSheet("QFrame {\n"
+"    background-color: #a0a0a0; /* 设置背景颜色为灰色 */\n"
+"    border-radius: 10px; /* 设置边框圆角的半径为10px */\n"
+"}\n"
+"")
+        self.frame_31.setFrameShape(QtWidgets.QFrame.Box)
+        self.frame_31.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_31.setObjectName("frame_31")
+        self.horizontalLayout_44 = QtWidgets.QHBoxLayout(self.frame_31)
+        self.horizontalLayout_44.setContentsMargins(11, 0, -1, 0)
+        self.horizontalLayout_44.setObjectName("horizontalLayout_44")
+        self.label_52 = QtWidgets.QLabel(self.frame_31)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_52.sizePolicy().hasHeightForWidth())
+        self.label_52.setSizePolicy(sizePolicy)
+        self.label_52.setMinimumSize(QtCore.QSize(0, 20))
+        self.label_52.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.label_52.setStyleSheet("font: 11pt \"Calibri\";\n"
+"font-weight: 600; /* 设置字体粗细为600 */")
+        self.label_52.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
+        self.label_52.setObjectName("label_52")
+        self.horizontalLayout_44.addWidget(self.label_52)
+        spacerItem26 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_44.addItem(spacerItem26)
+        self.verticalLayout_21.addWidget(self.frame_31)
+        self.table_meaAcqDetailData_alertRegDev0 = QtWidgets.QTableWidget(self.tab_meaAcqDetail)
+        self.table_meaAcqDetailData_alertRegDev0.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.table_meaAcqDetailData_alertRegDev0.setStyleSheet("QTableWidget {\n"
+"    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
+"    gridline-color: white; /* 网格线颜色 */\n"
+"    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
+"    font-family: \"Calibri\"; /* 单元格字体 */\n"
+"    font-size: 10pt; /* 单元格字体大小 */\n"
+"}\n"
+"\n"
+"QTableWidget::item {\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"    background-color: #f0f0f0; /* 表头背景颜色 */\n"
+"    padding: 5px; /* 表头内边距 */\n"
+"    border-style: none; /* 表头边框样式 */\n"
+"    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */\n"
+"    border-right: 2px solid white; /* 表头右边框宽度调整为2px */\n"
+"    font-family: \"Calibri\"; /* 表头字体 */\n"
+"    font-size: 10pt; /* 表头字体大小 */\n"
+"    font-weight: 600; /* 表头字体粗细 */\n"
+"}\n"
+"\n"
+"QTableCornerButton::section {\n"
+"    background-color: #f0f0f0; /* 角落按钮背景颜色 */\n"
+"    /* 添加其他您需要的样式 */\n"
+"}\n"
+"")
+        self.table_meaAcqDetailData_alertRegDev0.setObjectName("table_meaAcqDetailData_alertRegDev0")
+        self.table_meaAcqDetailData_alertRegDev0.setColumnCount(4)
+        self.table_meaAcqDetailData_alertRegDev0.setRowCount(6)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_alertRegDev0.setVerticalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_alertRegDev0.setVerticalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_alertRegDev0.setVerticalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_alertRegDev0.setVerticalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_alertRegDev0.setVerticalHeaderItem(4, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_alertRegDev0.setVerticalHeaderItem(5, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_alertRegDev0.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_alertRegDev0.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_alertRegDev0.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_alertRegDev0.setHorizontalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        brush = QtGui.QBrush(QtGui.QColor(255, 242, 204))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        item.setBackground(brush)
+        self.table_meaAcqDetailData_alertRegDev0.setItem(0, 0, item)
+        self.table_meaAcqDetailData_alertRegDev0.horizontalHeader().setVisible(False)
+        self.table_meaAcqDetailData_alertRegDev0.verticalHeader().setVisible(False)
+        self.verticalLayout_21.addWidget(self.table_meaAcqDetailData_alertRegDev0)
+        self.frame_32 = QtWidgets.QFrame(self.tab_meaAcqDetail)
+        self.frame_32.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.frame_32.setStyleSheet("QFrame {\n"
+"    background-color: #a0a0a0; /* 设置背景颜色为灰色 */\n"
+"    border-radius: 10px; /* 设置边框圆角的半径为10px */\n"
+"}\n"
+"")
+        self.frame_32.setFrameShape(QtWidgets.QFrame.Box)
+        self.frame_32.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_32.setObjectName("frame_32")
+        self.horizontalLayout_45 = QtWidgets.QHBoxLayout(self.frame_32)
+        self.horizontalLayout_45.setContentsMargins(11, 0, -1, 0)
+        self.horizontalLayout_45.setObjectName("horizontalLayout_45")
+        self.label_53 = QtWidgets.QLabel(self.frame_32)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_53.sizePolicy().hasHeightForWidth())
+        self.label_53.setSizePolicy(sizePolicy)
+        self.label_53.setMinimumSize(QtCore.QSize(0, 20))
+        self.label_53.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.label_53.setStyleSheet("font: 11pt \"Calibri\";\n"
+"font-weight: 600; /* 设置字体粗细为600 */")
+        self.label_53.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
+        self.label_53.setObjectName("label_53")
+        self.horizontalLayout_45.addWidget(self.label_53)
+        spacerItem27 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_45.addItem(spacerItem27)
+        self.verticalLayout_21.addWidget(self.frame_32)
+        self.table_meaAcqDetailData_dataRegDev0 = QtWidgets.QTableWidget(self.tab_meaAcqDetail)
+        self.table_meaAcqDetailData_dataRegDev0.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.table_meaAcqDetailData_dataRegDev0.setStyleSheet("QTableWidget {\n"
+"    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
+"    gridline-color: white; /* 网格线颜色 */\n"
+"    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
+"    font-family: \"Calibri\"; /* 单元格字体 */\n"
+"    font-size: 10pt; /* 单元格字体大小 */\n"
+"}\n"
+"\n"
+"QTableWidget::item {\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"    background-color: #f0f0f0; /* 表头背景颜色 */\n"
+"    padding: 2px; /* 表头内边距 */\n"
+"    border-style: none; /* 表头边框样式 */\n"
+"    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */\n"
+"    border-right: 2px solid white; /* 表头右边框宽度调整为2px */\n"
+"    font-family: \"Calibri\"; /* 表头字体 */\n"
+"    font-size: 10pt; /* 表头字体大小 */\n"
+"    font-weight: 600; /* 表头字体粗细 */\n"
+"}\n"
+"\n"
+"QTableCornerButton::section {\n"
+"    background-color: #f0f0f0; /* 角落按钮背景颜色 */\n"
+"    /* 添加其他您需要的样式 */\n"
+"}\n"
+"")
+        self.table_meaAcqDetailData_dataRegDev0.setObjectName("table_meaAcqDetailData_dataRegDev0")
+        self.table_meaAcqDetailData_dataRegDev0.setColumnCount(19)
+        self.table_meaAcqDetailData_dataRegDev0.setRowCount(12)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setVerticalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setVerticalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setVerticalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setVerticalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setVerticalHeaderItem(4, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setVerticalHeaderItem(5, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setVerticalHeaderItem(6, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setVerticalHeaderItem(7, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setVerticalHeaderItem(8, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setVerticalHeaderItem(9, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setVerticalHeaderItem(10, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setVerticalHeaderItem(11, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setHorizontalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setHorizontalHeaderItem(4, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setHorizontalHeaderItem(5, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setHorizontalHeaderItem(6, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setHorizontalHeaderItem(7, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setHorizontalHeaderItem(8, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setHorizontalHeaderItem(9, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setHorizontalHeaderItem(10, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setHorizontalHeaderItem(11, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setHorizontalHeaderItem(12, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setHorizontalHeaderItem(13, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setHorizontalHeaderItem(14, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setHorizontalHeaderItem(15, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setHorizontalHeaderItem(16, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setHorizontalHeaderItem(17, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setHorizontalHeaderItem(18, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev0.setItem(0, 0, item)
+        self.table_meaAcqDetailData_dataRegDev0.horizontalHeader().setVisible(False)
+        self.table_meaAcqDetailData_dataRegDev0.verticalHeader().setVisible(False)
+        self.verticalLayout_21.addWidget(self.table_meaAcqDetailData_dataRegDev0)
+        self.frame_34 = QtWidgets.QFrame(self.tab_meaAcqDetail)
+        self.frame_34.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.frame_34.setStyleSheet("QFrame {\n"
+"    background-color: #a0a0a0; /* 设置背景颜色为灰色 */\n"
+"    border-radius: 10px; /* 设置边框圆角的半径为10px */\n"
+"}\n"
+"")
+        self.frame_34.setFrameShape(QtWidgets.QFrame.Box)
+        self.frame_34.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_34.setObjectName("frame_34")
+        self.horizontalLayout_47 = QtWidgets.QHBoxLayout(self.frame_34)
+        self.horizontalLayout_47.setContentsMargins(11, 0, -1, 0)
+        self.horizontalLayout_47.setObjectName("horizontalLayout_47")
+        self.label_55 = QtWidgets.QLabel(self.frame_34)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_55.sizePolicy().hasHeightForWidth())
+        self.label_55.setSizePolicy(sizePolicy)
+        self.label_55.setMinimumSize(QtCore.QSize(0, 20))
+        self.label_55.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.label_55.setStyleSheet("font: 11pt \"Calibri\";\n"
+"font-weight: 600; /* 设置字体粗细为600 */")
+        self.label_55.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
+        self.label_55.setObjectName("label_55")
+        self.horizontalLayout_47.addWidget(self.label_55)
+        spacerItem28 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_47.addItem(spacerItem28)
+        self.verticalLayout_21.addWidget(self.frame_34)
+        self.table_meaAcqDetailData_alertRegDev1 = QtWidgets.QTableWidget(self.tab_meaAcqDetail)
+        self.table_meaAcqDetailData_alertRegDev1.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.table_meaAcqDetailData_alertRegDev1.setStyleSheet("QTableWidget {\n"
+"    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
+"    gridline-color: white; /* 网格线颜色 */\n"
+"    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
+"    font-family: \"Calibri\"; /* 单元格字体 */\n"
+"    font-size: 10pt; /* 单元格字体大小 */\n"
+"}\n"
+"\n"
+"QTableWidget::item {\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"    background-color: #f0f0f0; /* 表头背景颜色 */\n"
+"    padding: 5px; /* 表头内边距 */\n"
+"    border-style: none; /* 表头边框样式 */\n"
+"    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */\n"
+"    border-right: 2px solid white; /* 表头右边框宽度调整为2px */\n"
+"    font-family: \"Calibri\"; /* 表头字体 */\n"
+"    font-size: 10pt; /* 表头字体大小 */\n"
+"    font-weight: 600; /* 表头字体粗细 */\n"
+"}\n"
+"\n"
+"QTableCornerButton::section {\n"
+"    background-color: #f0f0f0; /* 角落按钮背景颜色 */\n"
+"    /* 添加其他您需要的样式 */\n"
+"}\n"
+"")
+        self.table_meaAcqDetailData_alertRegDev1.setObjectName("table_meaAcqDetailData_alertRegDev1")
+        self.table_meaAcqDetailData_alertRegDev1.setColumnCount(4)
+        self.table_meaAcqDetailData_alertRegDev1.setRowCount(6)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_alertRegDev1.setVerticalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_alertRegDev1.setVerticalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_alertRegDev1.setVerticalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_alertRegDev1.setVerticalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_alertRegDev1.setVerticalHeaderItem(4, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_alertRegDev1.setVerticalHeaderItem(5, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_alertRegDev1.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_alertRegDev1.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_alertRegDev1.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_alertRegDev1.setHorizontalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        brush = QtGui.QBrush(QtGui.QColor(255, 242, 204))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        item.setBackground(brush)
+        self.table_meaAcqDetailData_alertRegDev1.setItem(0, 0, item)
+        self.table_meaAcqDetailData_alertRegDev1.horizontalHeader().setVisible(False)
+        self.table_meaAcqDetailData_alertRegDev1.verticalHeader().setVisible(False)
+        self.verticalLayout_21.addWidget(self.table_meaAcqDetailData_alertRegDev1)
+        self.frame_33 = QtWidgets.QFrame(self.tab_meaAcqDetail)
+        self.frame_33.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.frame_33.setStyleSheet("QFrame {\n"
+"    background-color: #a0a0a0; /* 设置背景颜色为灰色 */\n"
+"    border-radius: 10px; /* 设置边框圆角的半径为10px */\n"
+"}\n"
+"")
+        self.frame_33.setFrameShape(QtWidgets.QFrame.Box)
+        self.frame_33.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_33.setObjectName("frame_33")
+        self.horizontalLayout_46 = QtWidgets.QHBoxLayout(self.frame_33)
+        self.horizontalLayout_46.setContentsMargins(11, 0, -1, 0)
+        self.horizontalLayout_46.setObjectName("horizontalLayout_46")
+        self.label_54 = QtWidgets.QLabel(self.frame_33)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_54.sizePolicy().hasHeightForWidth())
+        self.label_54.setSizePolicy(sizePolicy)
+        self.label_54.setMinimumSize(QtCore.QSize(0, 20))
+        self.label_54.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.label_54.setStyleSheet("font: 11pt \"Calibri\";\n"
+"font-weight: 600; /* 设置字体粗细为600 */")
+        self.label_54.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
+        self.label_54.setObjectName("label_54")
+        self.horizontalLayout_46.addWidget(self.label_54)
+        spacerItem29 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_46.addItem(spacerItem29)
+        self.verticalLayout_21.addWidget(self.frame_33)
+        self.table_meaAcqDetailData_dataRegDev1 = QtWidgets.QTableWidget(self.tab_meaAcqDetail)
+        self.table_meaAcqDetailData_dataRegDev1.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.table_meaAcqDetailData_dataRegDev1.setStyleSheet("QTableWidget {\n"
+"    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
+"    gridline-color: white; /* 网格线颜色 */\n"
+"    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
+"    font-family: \"Calibri\"; /* 单元格字体 */\n"
+"    font-size: 10pt; /* 单元格字体大小 */\n"
+"}\n"
+"\n"
+"QTableWidget::item {\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"    background-color: #f0f0f0; /* 表头背景颜色 */\n"
+"    padding: 2px; /* 表头内边距 */\n"
+"    border-style: none; /* 表头边框样式 */\n"
+"    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */\n"
+"    border-right: 2px solid white; /* 表头右边框宽度调整为2px */\n"
+"    font-family: \"Calibri\"; /* 表头字体 */\n"
+"    font-size: 10pt; /* 表头字体大小 */\n"
+"    font-weight: 600; /* 表头字体粗细 */\n"
+"}\n"
+"\n"
+"QTableCornerButton::section {\n"
+"    background-color: #f0f0f0; /* 角落按钮背景颜色 */\n"
+"    /* 添加其他您需要的样式 */\n"
+"}\n"
+"")
+        self.table_meaAcqDetailData_dataRegDev1.setObjectName("table_meaAcqDetailData_dataRegDev1")
+        self.table_meaAcqDetailData_dataRegDev1.setColumnCount(19)
+        self.table_meaAcqDetailData_dataRegDev1.setRowCount(12)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setVerticalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setVerticalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setVerticalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setVerticalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setVerticalHeaderItem(4, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setVerticalHeaderItem(5, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setVerticalHeaderItem(6, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setVerticalHeaderItem(7, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setVerticalHeaderItem(8, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setVerticalHeaderItem(9, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setVerticalHeaderItem(10, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setVerticalHeaderItem(11, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setHorizontalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setHorizontalHeaderItem(4, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setHorizontalHeaderItem(5, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setHorizontalHeaderItem(6, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setHorizontalHeaderItem(7, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setHorizontalHeaderItem(8, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setHorizontalHeaderItem(9, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setHorizontalHeaderItem(10, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setHorizontalHeaderItem(11, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setHorizontalHeaderItem(12, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setHorizontalHeaderItem(13, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setHorizontalHeaderItem(14, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setHorizontalHeaderItem(15, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setHorizontalHeaderItem(16, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setHorizontalHeaderItem(17, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setHorizontalHeaderItem(18, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_dataRegDev1.setItem(0, 0, item)
+        self.table_meaAcqDetailData_dataRegDev1.horizontalHeader().setVisible(False)
+        self.table_meaAcqDetailData_dataRegDev1.verticalHeader().setVisible(False)
+        self.verticalLayout_21.addWidget(self.table_meaAcqDetailData_dataRegDev1)
+        self.verticalLayout_21.setStretch(3, 3)
+        self.verticalLayout_21.setStretch(7, 2)
         self.tabWidget.addTab(self.tab_meaAcqDetail, "")
         self.tab_diagAcqData = QtWidgets.QWidget()
         self.tab_diagAcqData.setObjectName("tab_diagAcqData")
@@ -3967,7 +4408,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuAbout.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(5)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -5184,6 +5625,194 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "ACQCOUNT[9:0]"))
         self.tableWidget_17.setSortingEnabled(__sortingEnabled)
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_meaAcqSum), _translate("MainWindow", "MEA ACQ Summary Data"))
+        self.label_52.setText(_translate("MainWindow", "ALERT Register Block (Device 0)"))
+        item = self.table_meaAcqDetailData_alertRegDev0.verticalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_meaAcqDetailData_alertRegDev0.verticalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_meaAcqDetailData_alertRegDev0.verticalHeaderItem(2)
+        item.setText(_translate("MainWindow", "2"))
+        item = self.table_meaAcqDetailData_alertRegDev0.verticalHeaderItem(3)
+        item.setText(_translate("MainWindow", "3"))
+        item = self.table_meaAcqDetailData_alertRegDev0.verticalHeaderItem(4)
+        item.setText(_translate("MainWindow", "4"))
+        item = self.table_meaAcqDetailData_alertRegDev0.verticalHeaderItem(5)
+        item.setText(_translate("MainWindow", "5"))
+        item = self.table_meaAcqDetailData_alertRegDev0.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_meaAcqDetailData_alertRegDev0.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_meaAcqDetailData_alertRegDev0.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "2"))
+        item = self.table_meaAcqDetailData_alertRegDev0.horizontalHeaderItem(3)
+        item.setText(_translate("MainWindow", "3"))
+        __sortingEnabled = self.table_meaAcqDetailData_alertRegDev0.isSortingEnabled()
+        self.table_meaAcqDetailData_alertRegDev0.setSortingEnabled(False)
+        item = self.table_meaAcqDetailData_alertRegDev0.item(0, 0)
+        item.setText(_translate("MainWindow", "0x80"))
+        self.table_meaAcqDetailData_alertRegDev0.setSortingEnabled(__sortingEnabled)
+        self.label_53.setText(_translate("MainWindow", "DATA Register Block (Device 0)"))
+        item = self.table_meaAcqDetailData_dataRegDev0.verticalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_meaAcqDetailData_dataRegDev0.verticalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_meaAcqDetailData_dataRegDev0.verticalHeaderItem(2)
+        item.setText(_translate("MainWindow", "2"))
+        item = self.table_meaAcqDetailData_dataRegDev0.verticalHeaderItem(3)
+        item.setText(_translate("MainWindow", "3"))
+        item = self.table_meaAcqDetailData_dataRegDev0.verticalHeaderItem(4)
+        item.setText(_translate("MainWindow", "4"))
+        item = self.table_meaAcqDetailData_dataRegDev0.verticalHeaderItem(5)
+        item.setText(_translate("MainWindow", "5"))
+        item = self.table_meaAcqDetailData_dataRegDev0.verticalHeaderItem(6)
+        item.setText(_translate("MainWindow", "6"))
+        item = self.table_meaAcqDetailData_dataRegDev0.verticalHeaderItem(7)
+        item.setText(_translate("MainWindow", "7"))
+        item = self.table_meaAcqDetailData_dataRegDev0.verticalHeaderItem(8)
+        item.setText(_translate("MainWindow", "8"))
+        item = self.table_meaAcqDetailData_dataRegDev0.verticalHeaderItem(9)
+        item.setText(_translate("MainWindow", "9"))
+        item = self.table_meaAcqDetailData_dataRegDev0.verticalHeaderItem(10)
+        item.setText(_translate("MainWindow", "10"))
+        item = self.table_meaAcqDetailData_dataRegDev0.verticalHeaderItem(11)
+        item.setText(_translate("MainWindow", "11"))
+        item = self.table_meaAcqDetailData_dataRegDev0.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_meaAcqDetailData_dataRegDev0.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_meaAcqDetailData_dataRegDev0.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "2"))
+        item = self.table_meaAcqDetailData_dataRegDev0.horizontalHeaderItem(3)
+        item.setText(_translate("MainWindow", "3"))
+        item = self.table_meaAcqDetailData_dataRegDev0.horizontalHeaderItem(4)
+        item.setText(_translate("MainWindow", "4"))
+        item = self.table_meaAcqDetailData_dataRegDev0.horizontalHeaderItem(5)
+        item.setText(_translate("MainWindow", "5"))
+        item = self.table_meaAcqDetailData_dataRegDev0.horizontalHeaderItem(6)
+        item.setText(_translate("MainWindow", "6"))
+        item = self.table_meaAcqDetailData_dataRegDev0.horizontalHeaderItem(7)
+        item.setText(_translate("MainWindow", "7"))
+        item = self.table_meaAcqDetailData_dataRegDev0.horizontalHeaderItem(8)
+        item.setText(_translate("MainWindow", "8"))
+        item = self.table_meaAcqDetailData_dataRegDev0.horizontalHeaderItem(9)
+        item.setText(_translate("MainWindow", "9"))
+        item = self.table_meaAcqDetailData_dataRegDev0.horizontalHeaderItem(10)
+        item.setText(_translate("MainWindow", "10"))
+        item = self.table_meaAcqDetailData_dataRegDev0.horizontalHeaderItem(11)
+        item.setText(_translate("MainWindow", "11"))
+        item = self.table_meaAcqDetailData_dataRegDev0.horizontalHeaderItem(12)
+        item.setText(_translate("MainWindow", "12"))
+        item = self.table_meaAcqDetailData_dataRegDev0.horizontalHeaderItem(13)
+        item.setText(_translate("MainWindow", "13"))
+        item = self.table_meaAcqDetailData_dataRegDev0.horizontalHeaderItem(14)
+        item.setText(_translate("MainWindow", "14"))
+        item = self.table_meaAcqDetailData_dataRegDev0.horizontalHeaderItem(15)
+        item.setText(_translate("MainWindow", "15"))
+        item = self.table_meaAcqDetailData_dataRegDev0.horizontalHeaderItem(16)
+        item.setText(_translate("MainWindow", "16"))
+        item = self.table_meaAcqDetailData_dataRegDev0.horizontalHeaderItem(17)
+        item.setText(_translate("MainWindow", "17"))
+        item = self.table_meaAcqDetailData_dataRegDev0.horizontalHeaderItem(18)
+        item.setText(_translate("MainWindow", "18"))
+        __sortingEnabled = self.table_meaAcqDetailData_dataRegDev0.isSortingEnabled()
+        self.table_meaAcqDetailData_dataRegDev0.setSortingEnabled(False)
+        item = self.table_meaAcqDetailData_dataRegDev0.item(0, 0)
+        item.setText(_translate("MainWindow", "ALERTCFG"))
+        self.table_meaAcqDetailData_dataRegDev0.setSortingEnabled(__sortingEnabled)
+        self.label_55.setText(_translate("MainWindow", "ALERT Register Block (Device 1)"))
+        item = self.table_meaAcqDetailData_alertRegDev1.verticalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_meaAcqDetailData_alertRegDev1.verticalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_meaAcqDetailData_alertRegDev1.verticalHeaderItem(2)
+        item.setText(_translate("MainWindow", "2"))
+        item = self.table_meaAcqDetailData_alertRegDev1.verticalHeaderItem(3)
+        item.setText(_translate("MainWindow", "3"))
+        item = self.table_meaAcqDetailData_alertRegDev1.verticalHeaderItem(4)
+        item.setText(_translate("MainWindow", "4"))
+        item = self.table_meaAcqDetailData_alertRegDev1.verticalHeaderItem(5)
+        item.setText(_translate("MainWindow", "5"))
+        item = self.table_meaAcqDetailData_alertRegDev1.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_meaAcqDetailData_alertRegDev1.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_meaAcqDetailData_alertRegDev1.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "2"))
+        item = self.table_meaAcqDetailData_alertRegDev1.horizontalHeaderItem(3)
+        item.setText(_translate("MainWindow", "3"))
+        __sortingEnabled = self.table_meaAcqDetailData_alertRegDev1.isSortingEnabled()
+        self.table_meaAcqDetailData_alertRegDev1.setSortingEnabled(False)
+        item = self.table_meaAcqDetailData_alertRegDev1.item(0, 0)
+        item.setText(_translate("MainWindow", "0x80"))
+        self.table_meaAcqDetailData_alertRegDev1.setSortingEnabled(__sortingEnabled)
+        self.label_54.setText(_translate("MainWindow", "DATA Register Block (Device 1)"))
+        item = self.table_meaAcqDetailData_dataRegDev1.verticalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_meaAcqDetailData_dataRegDev1.verticalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_meaAcqDetailData_dataRegDev1.verticalHeaderItem(2)
+        item.setText(_translate("MainWindow", "2"))
+        item = self.table_meaAcqDetailData_dataRegDev1.verticalHeaderItem(3)
+        item.setText(_translate("MainWindow", "3"))
+        item = self.table_meaAcqDetailData_dataRegDev1.verticalHeaderItem(4)
+        item.setText(_translate("MainWindow", "4"))
+        item = self.table_meaAcqDetailData_dataRegDev1.verticalHeaderItem(5)
+        item.setText(_translate("MainWindow", "5"))
+        item = self.table_meaAcqDetailData_dataRegDev1.verticalHeaderItem(6)
+        item.setText(_translate("MainWindow", "6"))
+        item = self.table_meaAcqDetailData_dataRegDev1.verticalHeaderItem(7)
+        item.setText(_translate("MainWindow", "7"))
+        item = self.table_meaAcqDetailData_dataRegDev1.verticalHeaderItem(8)
+        item.setText(_translate("MainWindow", "8"))
+        item = self.table_meaAcqDetailData_dataRegDev1.verticalHeaderItem(9)
+        item.setText(_translate("MainWindow", "9"))
+        item = self.table_meaAcqDetailData_dataRegDev1.verticalHeaderItem(10)
+        item.setText(_translate("MainWindow", "10"))
+        item = self.table_meaAcqDetailData_dataRegDev1.verticalHeaderItem(11)
+        item.setText(_translate("MainWindow", "11"))
+        item = self.table_meaAcqDetailData_dataRegDev1.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_meaAcqDetailData_dataRegDev1.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_meaAcqDetailData_dataRegDev1.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "2"))
+        item = self.table_meaAcqDetailData_dataRegDev1.horizontalHeaderItem(3)
+        item.setText(_translate("MainWindow", "3"))
+        item = self.table_meaAcqDetailData_dataRegDev1.horizontalHeaderItem(4)
+        item.setText(_translate("MainWindow", "4"))
+        item = self.table_meaAcqDetailData_dataRegDev1.horizontalHeaderItem(5)
+        item.setText(_translate("MainWindow", "5"))
+        item = self.table_meaAcqDetailData_dataRegDev1.horizontalHeaderItem(6)
+        item.setText(_translate("MainWindow", "6"))
+        item = self.table_meaAcqDetailData_dataRegDev1.horizontalHeaderItem(7)
+        item.setText(_translate("MainWindow", "7"))
+        item = self.table_meaAcqDetailData_dataRegDev1.horizontalHeaderItem(8)
+        item.setText(_translate("MainWindow", "8"))
+        item = self.table_meaAcqDetailData_dataRegDev1.horizontalHeaderItem(9)
+        item.setText(_translate("MainWindow", "9"))
+        item = self.table_meaAcqDetailData_dataRegDev1.horizontalHeaderItem(10)
+        item.setText(_translate("MainWindow", "10"))
+        item = self.table_meaAcqDetailData_dataRegDev1.horizontalHeaderItem(11)
+        item.setText(_translate("MainWindow", "11"))
+        item = self.table_meaAcqDetailData_dataRegDev1.horizontalHeaderItem(12)
+        item.setText(_translate("MainWindow", "12"))
+        item = self.table_meaAcqDetailData_dataRegDev1.horizontalHeaderItem(13)
+        item.setText(_translate("MainWindow", "13"))
+        item = self.table_meaAcqDetailData_dataRegDev1.horizontalHeaderItem(14)
+        item.setText(_translate("MainWindow", "14"))
+        item = self.table_meaAcqDetailData_dataRegDev1.horizontalHeaderItem(15)
+        item.setText(_translate("MainWindow", "15"))
+        item = self.table_meaAcqDetailData_dataRegDev1.horizontalHeaderItem(16)
+        item.setText(_translate("MainWindow", "16"))
+        item = self.table_meaAcqDetailData_dataRegDev1.horizontalHeaderItem(17)
+        item.setText(_translate("MainWindow", "17"))
+        item = self.table_meaAcqDetailData_dataRegDev1.horizontalHeaderItem(18)
+        item.setText(_translate("MainWindow", "18"))
+        __sortingEnabled = self.table_meaAcqDetailData_dataRegDev1.isSortingEnabled()
+        self.table_meaAcqDetailData_dataRegDev1.setSortingEnabled(False)
+        item = self.table_meaAcqDetailData_dataRegDev1.item(0, 0)
+        item.setText(_translate("MainWindow", "ALERTCFG"))
+        self.table_meaAcqDetailData_dataRegDev1.setSortingEnabled(__sortingEnabled)
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_meaAcqDetail), _translate("MainWindow", "MEA ACQ Detail Data"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_diagAcqData), _translate("MainWindow", "Diagnostic ACQ Data"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_cellBal), _translate("MainWindow", "Cell Balance"))

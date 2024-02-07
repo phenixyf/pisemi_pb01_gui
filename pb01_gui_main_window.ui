@@ -51,7 +51,7 @@ QTabBar::tab:!selected { /* 未被选中的Tab标题的样式 */
 }</string>
       </property>
       <property name="currentIndex">
-       <number>5</number>
+       <number>1</number>
       </property>
       <property name="tabBarAutoHide">
        <bool>false</bool>
@@ -2235,7 +2235,7 @@ QTableCornerButton::section {
        <attribute name="title">
         <string>Application Configuration</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_2">
+       <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,2,0,2,0,5,0,2">
         <item>
          <widget class="QFrame" name="frame_5">
           <property name="maximumSize">

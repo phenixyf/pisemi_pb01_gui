@@ -497,6 +497,52 @@ def set_chainPage_ifid_color(pRowNum, pDevIdTable, puifCfgTable, paddCfgTable):
                 color = QColor("#FFF2CC")
             paddCfgTable.item(r, c).setBackground(color)
 
+def adjust_appCfgPage_tables(pAppCfgTable, pAlertTable, pThreTable, pAcqTable):
+    pAppCfgTable.setColumnWidth(0, 100)
+    pAppCfgTable.setColumnWidth(1, 150)
+    pAppCfgTable.setColumnWidth(2, 100)
+    pAppCfgTable.setColumnWidth(3, 300)
+    pAppCfgTable.setColumnWidth(4, 300)
+    pAppCfgTable.setColumnWidth(5, 300)
+    pAppCfgTable.setColumnWidth(6, 300)
+    pAppCfgTable.setColumnWidth(7, 100)
+    pAppCfgTable.setColumnWidth(8, 100)
+
+    for c in range(10):
+        pAlertTable.setColumnWidth(c, pAppCfgTable.columnWidth(c))
+        pThreTable.setColumnWidth(c, pAppCfgTable.columnWidth(c))
+        pAcqTable.setColumnWidth(c, pAppCfgTable.columnWidth(c))
+
+def set_appCfgPage_table_color(pAppCfgTable, pAlertTable, pThreTable, pAcqTable):
+    for r in range(5):
+        for c in range(2, 9):
+            pAppCfgTable.item(r, 2).setBackground(QColor("#DAE3F3"))  # 紫色
+            pAppCfgTable.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
+            pAppCfgTable.item(r, 5).setBackground(QColor("#FFF2CC"))  # 黄色
+            pAppCfgTable.item(r, 7).setBackground(QColor("#E2F0D9"))  # 绿色
+            pAppCfgTable.item(r, 8).setBackground(QColor("#E2F0D9"))  # 绿色
+
+    for r in range(4):
+        for c in range(2, 9):
+            pAlertTable.item(r, 2).setBackground(QColor("#DAE3F3"))  # 紫色
+            pAlertTable.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
+            pAlertTable.item(r, 5).setBackground(QColor("#FFF2CC"))  # 黄色
+            pAlertTable.item(r, 7).setBackground(QColor("#E2F0D9"))  # 绿色
+            pAlertTable.item(r, 8).setBackground(QColor("#E2F0D9"))  # 绿色
+            pAcqTable.item(r, 2).setBackground(QColor("#DAE3F3"))  # 紫色
+            pAcqTable.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
+            pAcqTable.item(r, 5).setBackground(QColor("#FFF2CC"))  # 黄色
+            pAcqTable.item(r, 7).setBackground(QColor("#E2F0D9"))  # 绿色
+            pAcqTable.item(r, 8).setBackground(QColor("#E2F0D9"))  # 绿色
+
+    for r in range(14):
+        for c in range(2, 9):
+            pThreTable.item(r, 2).setBackground(QColor("#DAE3F3"))  # 紫色
+            pThreTable.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
+            pThreTable.item(r, 7).setBackground(QColor("#E2F0D9"))  # 绿色
+            pThreTable.item(r, 8).setBackground(QColor("#E2F0D9"))  # 绿色
+
+
 
 def adjust_diagCfgPage_tables(pTeCurTable, pDiagThrTable, pAluTable):
      pTeCurTable.setColumnWidth(0, pDiagThrTable.columnWidth(0))

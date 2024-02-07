@@ -120,6 +120,11 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         set_table_item(self.table_appCfgPage_acqReg, 4, CHAIN_CFG_TABLE_ROWHG,
                        table_appCfgPage_acqReg_items)
 
+        adjust_appCfgPage_tables(self.table_appCfgPage_appCfg, self.table_appCfgPage_alertCfg,
+                                 self.table_appCfgPage_thresholdReg, self.table_appCfgPage_acqReg)
+        set_appCfgPage_table_color(self.table_appCfgPage_appCfg, self.table_appCfgPage_alertCfg,
+                                 self.table_appCfgPage_thresholdReg, self.table_appCfgPage_acqReg)
+
         ''' initial diagnostic configuration page '''
         set_table_head(self.table_diagCfgPage_testCurCfgReg, table_diagCfgPage_testCfg_headers,
                        CHAIN_CFG_TABLE_HEHG, 120)

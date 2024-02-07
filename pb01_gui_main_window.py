@@ -1744,6 +1744,10 @@ class Ui_MainWindow(object):
         self.table_appCfgPage_acqReg.setItem(0, 0, item)
         self.table_appCfgPage_acqReg.verticalHeader().setVisible(False)
         self.verticalLayout_2.addWidget(self.table_appCfgPage_acqReg)
+        self.verticalLayout_2.setStretch(1, 2)
+        self.verticalLayout_2.setStretch(3, 2)
+        self.verticalLayout_2.setStretch(5, 5)
+        self.verticalLayout_2.setStretch(7, 2)
         self.tabWidget.addTab(self.tab_appCfg, "")
         self.tab_diagCfg = QtWidgets.QWidget()
         self.tab_diagCfg.setObjectName("tab_diagCfg")
@@ -4408,7 +4412,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuAbout.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(5)
+        self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

@@ -168,6 +168,38 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
         meaAcqDetailPage_insert_led(self.table_meaAcqDetailData_alertRegDev0,self.table_meaAcqDetailData_alertRegDev1)
 
+        ''' initial measurement acquisition summary data page '''
+        set_table_item(self.table_meaAcqSumPage_status, CHAIN_CFG_TABLE_ROWHG,
+                       table_diagAcqDataPage_statusTableItems)
+
+        set_table_item(self.table_meaAcqSumPage_sumDataDev0, CHAIN_CFG_TABLE_ROWHG,
+                       table_meaAcqSumDataPage_sumDataItems)
+
+        set_table_item(self.table_meaAcqSumPage_sumDataDev1, CHAIN_CFG_TABLE_ROWHG,
+                       table_meaAcqSumDataPage_sumDataItems)
+
+        led8_meaAcqSumPage = adjust_meaAcqSumPage_tables(self.table_meaAcqSumPage_status,
+                                                         self.table_meaAcqSumPage_sumDataDev0,
+                                                         self.table_meaAcqSumPage_sumDataDev1)
+
+        ''' initial diagnostic acquisition data page '''
+        set_table_item(self.table_diagAcqPage_status, CHAIN_CFG_TABLE_ROWHG, table_diagAcqDataPage_statusTableItems)
+
+        set_table_item(self.table_diagAcqPage_alertReg_dev0, CHAIN_CFG_TABLE_ROWHG, table_diagAcqDataPage_alertItems)
+
+        set_table_item(self.table_diagAcqPage_dataReg_dev0, CHAIN_CFG_TABLE_ROWHG, table_diagAcqDataPage_dataItems)
+
+        set_table_item(self.table_diagAcqPage_alertReg_dev1, CHAIN_CFG_TABLE_ROWHG, table_diagAcqDataPage_alertItems)
+
+        set_table_item(self.table_diagAcqPage_dataReg_dev1, CHAIN_CFG_TABLE_ROWHG, table_diagAcqDataPage_dataItems)
+
+        led8_diaAcqDataPage = adjust_diagAcqDataPage_tables(self.table_diagAcqPage_status,
+                                                            self.table_diagAcqPage_alertReg_dev0,
+                                                            self.table_diagAcqPage_dataReg_dev0,
+                                                            self.table_diagAcqPage_alertReg_dev1,
+                                                            self.table_diagAcqPage_dataReg_dev1)
+
+
 
         # single afe initial ui as default
         self.slot_radio_single_dual_afe()

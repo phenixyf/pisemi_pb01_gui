@@ -97,8 +97,16 @@ LED_FME1_LAB = ["OSC", "----", "----", "----", "----", "VAA", "VDD", "VIO",
                 "AGND2", "AGND", "DGND", "IOGND", "HVOV", "HVUV", "TEMP2", "TEMP1"]
 LED_FME2_LAB = ["HVHDRM", "ACQTO", "----", "----", "ADC1ZS", "ADC1FS", "ADC2ZS", "ADC2FS",
                 "USER", "MODE", "AINIT", "DINIT", "OTPERR", "REGECC", "MBIST", "CBIST"]
-LED_LAB = ["LED15", "LED14", "LED13", "LED12", "LED11", "LED10", "LED9", "LED8",
-           "LED7", "LED6", "LED5", "LED4", "LED3", "LED2", "LED1", "LED0", ]
+LED_LAB_16 = ["LED15", "LED14", "LED13", "LED12", "LED11", "LED10", "LED9", "LED8",
+                "LED7", "LED6", "LED5", "LED4", "LED3", "LED2", "LED1", "LED0"]
+LED_LAB_8 = ["LED7", "LED6", "LED5", "LED4", "LED3", "LED2", "LED1", "LED0"]
+LED_LAB_17 = ["LED16", "LED15", "LED14", "LED13", "LED12", "LED11", "LED10", "LED9", "LED8",
+                "LED7", "LED6", "LED5", "LED4", "LED3", "LED2", "LED1", "LED0"]
+LED_LAB_32 = ["LED31", "LED30", "LED29", "LED28", "LED27", "LED26", "LED25", "LED24",
+                "LED23", "LED22", "LED21", "LED20", "LED19", "LED18", "LED17", "LED16",
+              "LED15", "LED14", "LED13", "LED12", "LED11", "LED10", "LED9", "LED8",
+                "LED7", "LED6", "LED5", "LED4", "LED3", "LED2", "LED1", "LED0"]
+
 
 ''' chain configuration page tablewidget initial content '''
 table_chainCfg_devidHead = ["Address", "Register", "Expected (hex)","DEVIDD (hex)", "DEVID1 (hex)", "DEVID2 (hex)",
@@ -196,11 +204,7 @@ table_appCfgPage_theresholdReg_items = [
 table_diagCfgPage_testCfg_headers = ["Address", "Register", "Pending (hex)", "Pending Value (bin)", "Pending Field",
                            "Pending Value (bin)", "Pending Field", "Pending Value (bin)", "Pending Field",
                             "Pending Value (bin)", "Pending Field", "Device 0 (hex)", "Device 1 (hex)"]
-# table_diagCfgPage_testCfg_items = [
-#     ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"],
-#     ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"],
-#     ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"]
-# ]
+
 table_diagCfgPage_testCfg_items = [
     ["0x1C", "CTSTCFG1", "0001", "00", "HVMUXTSTEN[1:0]", "0", "CTSTPOL1", "0", "CTSTMAN", "1",
                                                 "CTSTEN[16]", "0000", "0000","0000"],
@@ -286,6 +290,91 @@ table_meaAcqDetailPage_dataRegItems = [
      "CELLIIR 7", "CELLIIR 6","CELLIIR 5", "CELLIIR 4", "CELLIIR 3", "CELLIIR 2", "CELLIIR 1", "CELLIIR 0"]
 ]
 
+""" measurement acquisition summary data page tablewidget initial content """
+table_meaAcqSumDataPage_sumDataItems = [
+    ["0x86", "ALTTOTALREG", "0000", "0", "MAXCELLLOC[3:0]", "0", "MINCELLLOC[3:0]",
+     "0", "MAXCELLLOC[3:0]", "0", "MINCELLLOC[3:0]"],
+    ["0x86", "ALTTOTALREG", "0000", "0", "MAXCELLLOC[3:0]", "0", "MINCELLLOC[3:0]",
+     "0", "MAXCELLLOC[3:0]", "0", "MINCELLLOC[3:0]"],
+    ["0x86", "ALTTOTALREG", "0000", "0", "MAXCELLLOC[3:0]", "0", "MINCELLLOC[3:0]",
+     "0", "MAXCELLLOC[3:0]", "0", "MINCELLLOC[3:0]"],
+    ["0x86", "ALTTOTALREG", "0000", "0", "MAXCELLLOC[3:0]", "0", "MINCELLLOC[3:0]",
+     "0", "MAXCELLLOC[3:0]", "0", "MINCELLLOC[3:0]"],
+    ["0x86", "ALTTOTALREG", "0000", "0", "MAXCELLLOC[3:0]", "0", "MINCELLLOC[3:0]",
+     "0", "MAXCELLLOC[3:0]", "0", "MINCELLLOC[3:0]"],
+    ["0x86", "ALTTOTALREG", "0000", "0", "MAXCELLLOC[3:0]", "0", "MINCELLLOC[3:0]",
+     "0", "MAXCELLLOC[3:0]", "0", "MINCELLLOC[3:0]"],
+    ["0x86", "ALTTOTALREG", "0000", "0", "MAXCELLLOC[3:0]", "0", "MINCELLLOC[3:0]",
+     "0", "MAXCELLLOC[3:0]", "0", "MINCELLLOC[3:0]"],
+    ["0x86", "ALTTOTALREG", "0000", "0", "MAXCELLLOC[3:0]", "0", "MINCELLLOC[3:0]",
+     "0", "MAXCELLLOC[3:0]", "0", "MINCELLLOC[3:0]"],
+    ["0x86", "ALTTOTALREG", "0000", "0", "MAXCELLLOC[3:0]", "0", "MINCELLLOC[3:0]",
+     "0", "MAXCELLLOC[3:0]", "0", "MINCELLLOC[3:0]"],
+    ["0x86", "ALTTOTALREG", "0000", "0", "MAXCELLLOC[3:0]", "0", "MINCELLLOC[3:0]",
+     "0", "MAXCELLLOC[3:0]", "0", "MINCELLLOC[3:0]"]
+
+]
+
+""" diagnostic acquisition data page tablewidget initial content """
+table_diagAcqDataPage_statusTableItems = [
+    ["ALERTPACKTE", "0000_0000_0001/3", "Device 0 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]",
+     "Device 1 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]"],
+    ["ALERTPACKTE", "0000_0000_0001/3", "Device 0 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]",
+     "Device 1 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]"],
+    ["ALERTPACKTE", "0000_0000_0001/3", "Device 0 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]",
+     "Device 1 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]"],
+    ["ALERTPACKTE", "0000_0000_0001/3", "Device 0 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]",
+     "Device 1 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]"],
+    ["ALERTPACKTE", "0000_0000_0001/3", "Device 0 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]",
+     "Device 1 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]"],
+    ["ALERTPACKTE", "0000_0000_0001/3", "Device 0 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]",
+     "Device 1 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]"],
+    ["ALERTPACKTE", "0000_0000_0001/3", "Device 0 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]",
+     "Device 1 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]"],
+    ["ALERTPACKTE", "0000_0000_0001/3", "Device 0 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]",
+     "Device 1 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]"],
+    ["ALERTPACKTE", "0000_0000_0001/3", "Device 0 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]",
+     "Device 1 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]"],
+    ["ALERTPACKTE", "0000_0000_0001/3", "Device 0 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]",
+     "Device 1 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]"],
+    ["ALERTPACKTE", "0000_0000_0001/3", "Device 0 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]",
+     "Device 1 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]"],
+    ["ALERTPACKTE", "0000_0000_0001/3", "Device 0 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]",
+     "Device 1 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]"],
+    ["ALERTPACKTE", "0000_0000_0001/3", "Device 0 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]",
+     "Device 1 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]"],
+    ["ALERTPACKTE", "0000_0000_0001/3", "Device 0 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]",
+     "Device 1 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]"],
+    ["ALERTPACKTE", "0000_0000_0001/3", "Device 0 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]",
+     "Device 1 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]"],
+    ["ALERTPACKTE", "0000_0000_0001/3", "Device 0 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]",
+     "Device 1 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]"],
+    ["ALERTPACKTE", "0000_0000_0001/3", "Device 0 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]",
+     "Device 1 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]"],
+    ["ALERTPACKTE", "0000_0000_0001/3", "Device 0 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]",
+     "Device 1 (hex)", "26.9", "GPIODOUT[7:0]", "80.3", "DIAGCOUNT[9:0]"]
+]
+
+table_diagAcqDataPage_alertItems = [
+    ["0xD2 ~ 0xD3", "ALRTDIAGOVREG1/2", "0000", "DIAG 16",
+     "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16",
+     "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16"],
+    ["0xD2 ~ 0xD3", "ALRTDIAGOVREG1/2", "0000", "DIAG 16",
+     "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16",
+     "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16"]
+]
+
+table_diagAcqDataPage_dataItems = [
+    ["0xD2 ~ 0xD3", "ALRTDIAGOVREG1/2", "0000", "DIAG 16",
+     "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16",
+     "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16"],
+    ["0xD2 ~ 0xD3", "ALRTDIAGOVREG1/2", "0000", "DIAG 16",
+     "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16",
+     "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16"],
+    ["0xD2 ~ 0xD3", "ALRTDIAGOVREG1/2", "0000", "DIAG 16",
+     "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16",
+     "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16", "DIAG 16"]
+]
 
 def set_table_head(pTableWidget, pListHeader, pHeaderHeight, pTableHeight):
     """
@@ -637,24 +726,219 @@ def set_meaAcqDetailPage_table_color(pAlertRegDev0, pDataRegDev0, pAlertRegDev1,
 
 def meaAcqDetailPage_insert_led(pAlertRegDev0, pAlertRegDev1):
         # 插入 LED 图标对象
-        ledList0 = add_led_txt(16, pAlertRegDev0, 0, 3, LED_LAB)  # 第一行插入
-        ledList1 = add_led_txt(16, pAlertRegDev0, 1, 3, LED_LAB)  # 第二行插入
-        ledList2 = add_led_txt(16, pAlertRegDev0, 2, 3, LED_LAB)  # 第三行插入
-        ledList3 = add_led_txt(16, pAlertRegDev0, 3, 3, LED_LAB)  # 第四行插入
-        ledList4 = add_led_txt(16, pAlertRegDev0, 4, 3, LED_LAB)  # 第三行插入
-        ledList5 = add_led_txt(16, pAlertRegDev0, 5, 3, LED_LAB)  # 第四行插入
+        ledList0 = add_led_txt(16, pAlertRegDev0, 0, 3, LED_LAB_16)  # 第一行插入
+        ledList1 = add_led_txt(16, pAlertRegDev0, 1, 3, LED_LAB_16)  # 第二行插入
+        ledList2 = add_led_txt(16, pAlertRegDev0, 2, 3, LED_LAB_16)  # 第三行插入
+        ledList3 = add_led_txt(16, pAlertRegDev0, 3, 3, LED_LAB_16)  # 第四行插入
+        ledList4 = add_led_txt(16, pAlertRegDev0, 4, 3, LED_LAB_16)  # 第三行插入
+        ledList5 = add_led_txt(16, pAlertRegDev0, 5, 3, LED_LAB_16)  # 第四行插入
 
-        ledList6 = add_led_txt(16, pAlertRegDev1, 0, 3, LED_LAB)  # 第一行插入
-        ledList7 = add_led_txt(16, pAlertRegDev1, 1, 3, LED_LAB)  # 第二行插入
-        ledList8 = add_led_txt(16, pAlertRegDev1, 2, 3, LED_LAB)  # 第三行插入
-        ledList9 = add_led_txt(16, pAlertRegDev1, 3, 3, LED_LAB)  # 第四行插入
-        ledList10 = add_led_txt(16, pAlertRegDev1, 4, 3, LED_LAB)  # 第三行插入
-        ledList11 = add_led_txt(16, pAlertRegDev1, 5, 3, LED_LAB)  # 第四行插入
+        ledList6 = add_led_txt(16, pAlertRegDev1, 0, 3, LED_LAB_16)  # 第一行插入
+        ledList7 = add_led_txt(16, pAlertRegDev1, 1, 3, LED_LAB_16)  # 第二行插入
+        ledList8 = add_led_txt(16, pAlertRegDev1, 2, 3, LED_LAB_16)  # 第三行插入
+        ledList9 = add_led_txt(16, pAlertRegDev1, 3, 3, LED_LAB_16)  # 第四行插入
+        ledList10 = add_led_txt(16, pAlertRegDev1, 4, 3, LED_LAB_16)  # 第三行插入
+        ledList11 = add_led_txt(16, pAlertRegDev1, 5, 3, LED_LAB_16)  # 第四行插入
 
         dev0_led_list = [ledList0, ledList1, ledList2, ledList3, ledList4, ledList5]
         dev1_led_list = [ledList6, ledList7, ledList8, ledList9, ledList10, ledList11]
 
         return dev0_led_list, dev1_led_list
+
+
+def adjust_diagAcqDataPage_tables(pStaTable, pAlerDev0Table, pDataDev0Table, pAlerDev1Table, pDataDev1Table):
+    ''' adjust status table '''
+    # set status table column size
+    for c in range(12):
+        if c == 0 or c == 2 or c == 7:
+            pStaTable.setColumnWidth(c, 111)
+        elif c == 1:
+            pStaTable.setColumnWidth(c, 150)
+        else:
+            pStaTable.setColumnWidth(c, 120)
+
+    # span status table and set background color
+    pStaTable.setSpan(0, 2, 1, 10)
+    pStaTable.item(0,2).setText(' ')
+    pStaTable.item(0,1).setBackground(QColor("#E2F0D9"))  # 绿色
+    pStaTable.item(0,2).setBackground(QColor("#FFF2CC"))  # 黄色
+    pStaTable.setSpan(1, 2, 1, 10)
+    pStaTable.item(1, 2).setText(' ')
+    pStaTable.item(1, 1).setBackground(QColor("#E2F0D9"))  # 绿色
+    pStaTable.item(1, 2).setBackground(QColor("#FFF2CC"))  # 黄色
+
+    # status table insert led
+    led8List = add_led_txt(8, pStaTable, 0, 2, LED_LAB_8)
+    led32List = add_led_txt(32, pStaTable, 1, 2, LED_LAB_32)
+
+    led16Dev0 = []
+    led16Dev1 = []
+
+    for r in range(2, 15):
+        if r != 7 and r!=8 and r!=9 and r!=10:
+            pStaTable.setSpan(r, 3, 1, 4)
+            pStaTable.item(r, 3).setText(' ')
+            pStaTable.setSpan(r, 8, 1, 4)
+            pStaTable.item(r, 8).setText(' ')
+            if 2 < r < 7:
+                pStaTable.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
+                led16Dev0.append(add_led_txt(16, pStaTable, r, 3, LED_LAB_16))   # insert led
+                pStaTable.item(r, 8).setBackground(QColor("#FFF2CC"))  # 黄色
+                led16Dev1.append(add_led_txt(16, pStaTable, r, 8, LED_LAB_16))   # insert led
+        else:
+            pStaTable.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
+            pStaTable.item(r, 5).setBackground(QColor("#FFF2CC"))  # 黄色
+            pStaTable.item(r, 8).setBackground(QColor("#FFF2CC"))  # 黄色
+            pStaTable.item(r, 10).setBackground(QColor("#FFF2CC"))  # 黄色
+        if r != 2:
+            pStaTable.item(r, 2).setBackground(QColor("#E2F0D9"))  # 绿色
+            pStaTable.item(r, 7).setBackground(QColor("#E2F0D9"))  # 绿色
+
+    boldFont = QFont()
+    boldFont.setBold(True)
+    for c in range (12):
+        pStaTable.item(2, c).setFont(boldFont)  # 字体加粗
+
+    ''' adjust device tables '''
+    # set device tables column size
+    for c in range(20):
+        if c == 0 or c == 2:
+            pAlerDev0Table.setColumnWidth(c, 111)
+            pDataDev0Table.setColumnWidth(c, 111)
+            pAlerDev1Table.setColumnWidth(c, 111)
+            pDataDev1Table.setColumnWidth(c, 111)
+        elif c == 1:
+            pAlerDev0Table.setColumnWidth(c, 150)
+            pDataDev0Table.setColumnWidth(c, 150)
+            pAlerDev1Table.setColumnWidth(c, 150)
+            pDataDev1Table.setColumnWidth(c, 150)
+        else:
+            pAlerDev0Table.setColumnWidth(c, 63)
+            pDataDev0Table.setColumnWidth(c, 63)
+            pAlerDev1Table.setColumnWidth(c, 63)
+            pDataDev1Table.setColumnWidth(c, 63)
+
+    # set device tables background color
+    for c in range (20):
+        pDataDev0Table.item(0, c).setFont(boldFont)  # 字体加粗
+        pDataDev1Table.item(0, c).setFont(boldFont)  # 字体加粗
+        if c > 2:
+            pDataDev0Table.item(1, c).setBackground(QColor("#E2F0D9"))  # 绿色
+            pDataDev1Table.item(1, c).setBackground(QColor("#E2F0D9"))  # 绿色
+            pDataDev0Table.item(2, c).setBackground(QColor("#FFF2CC"))  # 黄色
+            pDataDev1Table.item(2, c).setBackground(QColor("#FFF2CC"))  # 黄色
+
+    # device tables insert led
+    led17Dev0 = []
+    led17Dev1 = []
+
+    for r in range(2):
+        pAlerDev0Table.setSpan(r, 3, 1, 18)
+        pAlerDev0Table.item(r, 3).setText(' ')
+        pAlerDev0Table.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
+        led17Dev0.append(add_led_txt(17, pAlerDev0Table, r, 3, LED_LAB_17))   # insert led
+        pAlerDev1Table.setSpan(r, 3, 1, 18)
+        pAlerDev1Table.item(r, 3).setText(' ')
+        pAlerDev1Table.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
+        led17Dev1.append(add_led_txt(17, pAlerDev1Table, r, 3, LED_LAB_17))  # insert led
+
+    return led8List, led32List, led16Dev0, led16Dev1
+
+def adjust_meaAcqSumPage_tables(pStaTable, pSumDataDev0Table, pSumDataDev1Table):
+    ''' adjust status table '''
+    # adjust status table column size
+    for c in range(12):
+        if c == 0 or c == 2 or c == 7:
+            pStaTable.setColumnWidth(c, 104)
+        elif c == 1:
+            pStaTable.setColumnWidth(c, 150)
+        else:
+            pStaTable.setColumnWidth(c, 120)
+
+    # span status table and set background color
+    pStaTable.setSpan(0, 2, 1, 10)
+    pStaTable.item(0,2).setText(' ')
+    pStaTable.item(0,1).setBackground(QColor("#E2F0D9"))  # 绿色
+    pStaTable.item(0,2).setBackground(QColor("#FFF2CC"))  # 黄色
+    pStaTable.setSpan(1, 2, 1, 10)
+    pStaTable.item(1, 2).setText(' ')
+    pStaTable.item(1, 1).setBackground(QColor("#E2F0D9"))  # 绿色
+    pStaTable.item(1, 2).setBackground(QColor("#FFF2CC"))  # 黄色
+
+    # insert led
+    led8List = add_led_txt(8, pStaTable, 0, 2, LED_LAB_8)
+    led32List = add_led_txt(32, pStaTable, 1, 2, LED_LAB_32)
+
+    led16Dev0 = []
+    led16Dev1 = []
+
+    for r in range(2, 15):
+        if r != 7 and r!=8 and r!=9 and r!=10:
+            pStaTable.setSpan(r, 3, 1, 4)
+            pStaTable.item(r, 3).setText(' ')
+            pStaTable.setSpan(r, 8, 1, 4)
+            pStaTable.item(r, 8).setText(' ')
+            if 2 < r < 7:
+                pStaTable.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
+                led16Dev0.append(add_led_txt(16, pStaTable, r, 3, LED_LAB_16))   # insert led
+                pStaTable.item(r, 8).setBackground(QColor("#FFF2CC"))  # 黄色
+                led16Dev1.append(add_led_txt(16, pStaTable, r, 8, LED_LAB_16))   # insert led
+        else:
+            pStaTable.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
+            pStaTable.item(r, 5).setBackground(QColor("#FFF2CC"))  # 黄色
+            pStaTable.item(r, 8).setBackground(QColor("#FFF2CC"))  # 黄色
+            pStaTable.item(r, 10).setBackground(QColor("#FFF2CC"))  # 黄色
+        if r != 2:
+            pStaTable.item(r, 2).setBackground(QColor("#E2F0D9"))  # 绿色
+            pStaTable.item(r, 7).setBackground(QColor("#E2F0D9"))  # 绿色
+
+    boldFont = QFont()
+    boldFont.setBold(True)
+    for c in range (12):
+        pStaTable.item(2, c).setFont(boldFont)  # 字体加粗
+
+    ''' adjust device tables '''
+    # set device tables column size
+    for c in range(20):
+        if c == 0 or c == 2:
+            pSumDataDev0Table.setColumnWidth(c, 104)
+            pSumDataDev1Table.setColumnWidth(c, 104)
+        elif c == 1:
+            pSumDataDev0Table.setColumnWidth(c, 150)
+            pSumDataDev1Table.setColumnWidth(c, 150)
+        else:
+            pSumDataDev0Table.setColumnWidth(c, 133)
+            pSumDataDev1Table.setColumnWidth(c, 133)
+
+    # span device tables and set background color
+    for r in range(1,10):
+        if r!= 7:
+            # dev0
+            pSumDataDev0Table.setSpan(r, 3, 1, 4)
+            pSumDataDev0Table.item(r, 3).setText('0')
+            pSumDataDev0Table.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
+            pSumDataDev0Table.setSpan(r, 7, 1, 4)
+            pSumDataDev0Table.item(r, 7).setText('% (Ratiometric 100% Full Scale, 1.526e-3% LSB)')
+            # dev1
+            pSumDataDev1Table.setSpan(r, 3, 1, 4)
+            pSumDataDev1Table.item(r, 3).setText('0')
+            pSumDataDev1Table.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
+            pSumDataDev1Table.setSpan(r, 7, 1, 4)
+            pSumDataDev1Table.item(r, 7).setText('% (Ratiometric 100% Full Scale, 1.526e-3% LSB)')
+
+    pSumDataDev0Table.item(0, 3).setBackground(QColor("#FFF2CC"))  # 黄色
+    pSumDataDev0Table.item(0, 5).setBackground(QColor("#FFF2CC"))  # 黄色
+    pSumDataDev0Table.item(0, 7).setBackground(QColor("#FFF2CC"))  # 黄色
+    pSumDataDev0Table.item(0, 9).setBackground(QColor("#FFF2CC"))  # 黄色
+    pSumDataDev0Table.item(7, 5).setBackground(QColor("#FFF2CC"))  # 黄色
+    pSumDataDev0Table.item(7, 9).setBackground(QColor("#FFF2CC"))  # 黄色
+
+    pSumDataDev1Table.item(0, 3).setBackground(QColor("#FFF2CC"))  # 黄色
+    pSumDataDev1Table.item(0, 5).setBackground(QColor("#FFF2CC"))  # 黄色
+    pSumDataDev1Table.item(0, 7).setBackground(QColor("#FFF2CC"))  # 黄色
+    pSumDataDev1Table.item(0, 9).setBackground(QColor("#FFF2CC"))  # 黄色
+    pSumDataDev1Table.item(7, 5).setBackground(QColor("#FFF2CC"))  # 黄色
+    pSumDataDev1Table.item(7, 9).setBackground(QColor("#FFF2CC"))  # 黄色
 
 
 

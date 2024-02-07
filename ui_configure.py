@@ -997,18 +997,87 @@ def adjust_cblPage_tables(pExpTable, pCfgTable, pCtrlDemoTable, pCtrlInfTable):
     ''' adjust status information table '''
     # adjust status information table column size
     for c in range(16):
-        if c == 0 or c == 2 or c == 9:
-            pCtrlInfTable.setColumnWidth(c, 100)
-        elif c == 1:
+        if c == 1:
             pCtrlInfTable.setColumnWidth(c, 150)
         else:
-            pCtrlInfTable.setColumnWidth(c, 80)
+            pCtrlInfTable.setColumnWidth(c, 100)
 
     # status information table set span and background color
-    # for r in range(5):
-    #     pCtrlInfTable.setSpan(0, 2, 1, 10)
-    #     pCtrlInfTable.item(0, 2).setText(' ')
-    #     pCtrlInfTable.item(0, 1).setBackground(QColor("#E2F0D9"))  # 绿色
+    for r in range(6):
+        if r!=3 and r!=4:
+            pCtrlInfTable.setSpan(r, 3, 1, 6)
+            pCtrlInfTable.setSpan(r, 10, 1, 6)
+            if r == 1:
+                pCtrlInfTable.item(r, 3).setText('Current CBAL details, updated in response to a Start, '
+                                                 'Stop, or Read Back request.')
+            else:
+                pCtrlInfTable.item(r, 3).setText(' ')
+        if r == 3:
+            pCtrlInfTable.setSpan(r, 3, 1, 3)
+            pCtrlInfTable.item(r, 3).setText('0')
+            pCtrlInfTable.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
+            pCtrlInfTable.setSpan(r, 6, 1, 3)
+            pCtrlInfTable.item(r, 6).setText('Time per Channel Group (Minutes, decimal)')
+            pCtrlInfTable.setSpan(r, 10, 1, 3)
+            pCtrlInfTable.item(r, 10).setText('0')
+            pCtrlInfTable.item(r, 10).setBackground(QColor("#FFF2CC"))  # 黄色
+            pCtrlInfTable.setSpan(r, 13, 1, 3)
+            pCtrlInfTable.item(r, 13).setText('Time per Channel Group (Minutes, decimal)')
+
+    for r in range(6):
+        if r == 2 or r == 5:
+            pCtrlInfTable.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
+            pCtrlInfTable.item(r, 10).setBackground(QColor("#FFF2CC"))  # 黄色
+        if r != 0:
+            pCtrlInfTable.item(r, 2).setBackground(QColor("#E2F0D9"))  # 绿色
+            pCtrlInfTable.item(r, 9).setBackground(QColor("#E2F0D9"))  # 绿色
+        if r == 4:
+            pCtrlInfTable.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
+            pCtrlInfTable.item(r, 5).setBackground(QColor("#FFF2CC"))  # 黄色
+            pCtrlInfTable.item(r, 7).setBackground(QColor("#FFF2CC"))  # 黄色
+            pCtrlInfTable.item(r, 10).setBackground(QColor("#FFF2CC"))  # 黄色
+            pCtrlInfTable.item(r, 12).setBackground(QColor("#FFF2CC"))  # 黄色
+            pCtrlInfTable.item(r, 14).setBackground(QColor("#FFF2CC"))  # 黄色
+
+    boldFont = QFont()
+    boldFont.setBold(True)
+    for c in [0,1,2,3,9,10]:
+        pCtrlInfTable.item(0, c).setFont(boldFont)  # 字体加粗
+
+    # insert led
+    led16StaDev0 = []
+    led16StaDev1 = []
+    led16UvDev0 = []
+    led16UvDev1 = []
+    led16StaDev0.append(add_led_txt(16, pCtrlInfTable, 2, 3, LED_LAB_16))
+    led16StaDev1.append(add_led_txt(16, pCtrlInfTable, 2, 10, LED_LAB_16))
+    led16UvDev0.append(add_led_txt(16, pCtrlInfTable, 5, 3, LED_LAB_16))
+    led16UvDev1.append(add_led_txt(16, pCtrlInfTable, 5, 10, LED_LAB_16))
+
+    ''' adjust cblCfg & ctrlDemo tables '''
+    for c in range(6):
+        if c == 1:
+            pCfgTable.setColumnWidth(c, 150)
+            pCtrlDemoTable.setColumnWidth(c, 150)
+        elif c == 3:
+            pCfgTable.setColumnWidth(c, 1100)
+            pCtrlDemoTable.setColumnWidth(c, 1100)
+        else:
+            pCfgTable.setColumnWidth(c, 100)
+            pCtrlDemoTable.setColumnWidth(c, 100)
+
+    for r in range(5):
+        if r < 2:
+            pCtrlDemoTable.item(r, 2).setBackground(QColor("#DAE3F3"))  # 蓝色
+        pCfgTable.item(r, 2).setBackground(QColor("#DAE3F3"))  # 蓝色
+        pCfgTable.item(r, 4).setBackground(QColor("#E2F0D9"))  # 绿色
+        pCfgTable.item(r, 5).setBackground(QColor("#E2F0D9"))  # 绿色
+
+    for c in range(3,6):
+        pCtrlDemoTable.item(0, c).setBackground(QColor("#FFC000"))  # 橙色
+        pCtrlDemoTable.item(1, c).setBackground(QColor("#FF0000"))  # 红色
+
+    return led16StaDev0, led16StaDev1, led16UvDev0, led16UvDev1
 
 
 

@@ -188,6 +188,13 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             self.table_chainCfg_rstBlk_Dev1.hide()
             # application configuration page
             self.table_appCfgPage_appCfg.hideColumn(8)
+            self.table_appCfgPage_alertCfg.hideColumn(8)
+            self.table_appCfgPage_thresholdReg.hideColumn(8)
+            self.table_appCfgPage_acqReg.hideColumn(8)
+            # diagnostic configuration page
+            self.table_diagCfgPage_testCurCfgReg.hideColumn(12)
+            self.table_diagCfgPage_diagThresReg.hideColumn(8)
+            self.table_diagCfgPage_aluTestDiagReg.hideColumn(8)
         elif self.radioButton_dualAfe.isChecked():
             # chain configuration page
             self.table_chainCfg_devIdBlk.showRow(1)
@@ -199,6 +206,14 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             self.table_chainCfg_rstBlk_Dev1.show()
             # application configuration page
             self.table_appCfgPage_appCfg.showColumn(8)
+            self.table_appCfgPage_alertCfg.showColumn(8)
+            self.table_appCfgPage_thresholdReg.showColumn(8)
+            self.table_appCfgPage_acqReg.showColumn(8)
+            # diagnostic configuration page
+            self.table_diagCfgPage_testCurCfgReg.showColumn(12)
+            self.table_diagCfgPage_diagThresReg.showColumn(8)
+            self.table_diagCfgPage_aluTestDiagReg.showColumn(8)
+
 
 
 """ step3: 通过下面代码完成 GUI 的显示 """

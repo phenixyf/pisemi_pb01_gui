@@ -4042,6 +4042,607 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.tab_diagAcqData, "")
         self.tab_cellBal = QtWidgets.QWidget()
         self.tab_cellBal.setObjectName("tab_cellBal")
+        self.verticalLayout_19 = QtWidgets.QVBoxLayout(self.tab_cellBal)
+        self.verticalLayout_19.setObjectName("verticalLayout_19")
+        self.frame_11 = QtWidgets.QFrame(self.tab_cellBal)
+        self.frame_11.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.frame_11.setStyleSheet("QFrame {\n"
+"    background-color: #a0a0a0; /* 设置背景颜色为灰色 */\n"
+"    border-radius: 10px; /* 设置边框圆角的半径为10px */\n"
+"}\n"
+"")
+        self.frame_11.setFrameShape(QtWidgets.QFrame.Box)
+        self.frame_11.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_11.setObjectName("frame_11")
+        self.horizontalLayout_11 = QtWidgets.QHBoxLayout(self.frame_11)
+        self.horizontalLayout_11.setContentsMargins(11, 0, -1, 0)
+        self.horizontalLayout_11.setObjectName("horizontalLayout_11")
+        self.label_29 = QtWidgets.QLabel(self.frame_11)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_29.sizePolicy().hasHeightForWidth())
+        self.label_29.setSizePolicy(sizePolicy)
+        self.label_29.setMinimumSize(QtCore.QSize(0, 20))
+        self.label_29.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.label_29.setStyleSheet("font: 11pt \"Calibri\";\n"
+"font-weight: 600; /* 设置字体粗细为600 */")
+        self.label_29.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
+        self.label_29.setObjectName("label_29")
+        self.horizontalLayout_11.addWidget(self.label_29)
+        spacerItem38 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_11.addItem(spacerItem38)
+        self.verticalLayout_19.addWidget(self.frame_11)
+        self.horizontalLayout_12 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_12.setObjectName("horizontalLayout_12")
+        self.frame_12 = QtWidgets.QFrame(self.tab_cellBal)
+        self.frame_12.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_12.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_12.setObjectName("frame_12")
+        self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.frame_12)
+        self.verticalLayout_10.setObjectName("verticalLayout_10")
+        self.radioButton_singleAfe_2 = QtWidgets.QRadioButton(self.frame_12)
+        self.radioButton_singleAfe_2.setMinimumSize(QtCore.QSize(0, 20))
+        self.radioButton_singleAfe_2.setMaximumSize(QtCore.QSize(16777215, 20))
+        self.radioButton_singleAfe_2.setStyleSheet("font: 12pt \"Calibri\";\n"
+"font-weight: 600; /* 设置字体粗细为600 */")
+        self.radioButton_singleAfe_2.setObjectName("radioButton_singleAfe_2")
+        self.verticalLayout_10.addWidget(self.radioButton_singleAfe_2)
+        self.radioButton_singleAfe_22 = QtWidgets.QRadioButton(self.frame_12)
+        self.radioButton_singleAfe_22.setMinimumSize(QtCore.QSize(0, 20))
+        self.radioButton_singleAfe_22.setMaximumSize(QtCore.QSize(16777215, 30))
+        self.radioButton_singleAfe_22.setStyleSheet("font: 12pt \"Calibri\";\n"
+"font-weight: 600; /* 设置字体粗细为600 */")
+        self.radioButton_singleAfe_22.setObjectName("radioButton_singleAfe_22")
+        self.verticalLayout_10.addWidget(self.radioButton_singleAfe_22)
+        self.radioButton_singleAfe_23 = QtWidgets.QRadioButton(self.frame_12)
+        self.radioButton_singleAfe_23.setMinimumSize(QtCore.QSize(0, 20))
+        self.radioButton_singleAfe_23.setMaximumSize(QtCore.QSize(16777215, 30))
+        self.radioButton_singleAfe_23.setStyleSheet("font: 12pt \"Calibri\";\n"
+"font-weight: 600; /* 设置字体粗细为600 */")
+        self.radioButton_singleAfe_23.setObjectName("radioButton_singleAfe_23")
+        self.verticalLayout_10.addWidget(self.radioButton_singleAfe_23)
+        self.horizontalLayout_12.addWidget(self.frame_12)
+        spacerItem39 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_12.addItem(spacerItem39)
+        self.frame_13 = QtWidgets.QFrame(self.tab_cellBal)
+        self.frame_13.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_13.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_13.setObjectName("frame_13")
+        self.verticalLayout_17 = QtWidgets.QVBoxLayout(self.frame_13)
+        self.verticalLayout_17.setObjectName("verticalLayout_17")
+        self.radioButton_singleAfe_24 = QtWidgets.QRadioButton(self.frame_13)
+        self.radioButton_singleAfe_24.setMinimumSize(QtCore.QSize(0, 20))
+        self.radioButton_singleAfe_24.setMaximumSize(QtCore.QSize(16777215, 20))
+        self.radioButton_singleAfe_24.setStyleSheet("font: 12pt \"Calibri\";\n"
+"font-weight: 600; /* 设置字体粗细为600 */")
+        self.radioButton_singleAfe_24.setObjectName("radioButton_singleAfe_24")
+        self.verticalLayout_17.addWidget(self.radioButton_singleAfe_24)
+        self.radioButton_singleAfe_25 = QtWidgets.QRadioButton(self.frame_13)
+        self.radioButton_singleAfe_25.setMinimumSize(QtCore.QSize(0, 20))
+        self.radioButton_singleAfe_25.setMaximumSize(QtCore.QSize(16777215, 30))
+        self.radioButton_singleAfe_25.setStyleSheet("font: 12pt \"Calibri\";\n"
+"font-weight: 600; /* 设置字体粗细为600 */")
+        self.radioButton_singleAfe_25.setObjectName("radioButton_singleAfe_25")
+        self.verticalLayout_17.addWidget(self.radioButton_singleAfe_25)
+        self.radioButton_singleAfe_26 = QtWidgets.QRadioButton(self.frame_13)
+        self.radioButton_singleAfe_26.setMinimumSize(QtCore.QSize(0, 20))
+        self.radioButton_singleAfe_26.setMaximumSize(QtCore.QSize(16777215, 30))
+        self.radioButton_singleAfe_26.setStyleSheet("font: 12pt \"Calibri\";\n"
+"font-weight: 600; /* 设置字体粗细为600 */")
+        self.radioButton_singleAfe_26.setObjectName("radioButton_singleAfe_26")
+        self.verticalLayout_17.addWidget(self.radioButton_singleAfe_26)
+        self.horizontalLayout_12.addWidget(self.frame_13)
+        spacerItem40 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_12.addItem(spacerItem40)
+        self.frame_14 = QtWidgets.QFrame(self.tab_cellBal)
+        self.frame_14.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_14.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_14.setObjectName("frame_14")
+        self.verticalLayout_18 = QtWidgets.QVBoxLayout(self.frame_14)
+        self.verticalLayout_18.setObjectName("verticalLayout_18")
+        self.radioButton_singleAfe_27 = QtWidgets.QRadioButton(self.frame_14)
+        self.radioButton_singleAfe_27.setMinimumSize(QtCore.QSize(0, 20))
+        self.radioButton_singleAfe_27.setMaximumSize(QtCore.QSize(16777215, 20))
+        self.radioButton_singleAfe_27.setStyleSheet("font: 12pt \"Calibri\";\n"
+"font-weight: 600; /* 设置字体粗细为600 */")
+        self.radioButton_singleAfe_27.setObjectName("radioButton_singleAfe_27")
+        self.verticalLayout_18.addWidget(self.radioButton_singleAfe_27)
+        self.radioButton_singleAfe_28 = QtWidgets.QRadioButton(self.frame_14)
+        self.radioButton_singleAfe_28.setMinimumSize(QtCore.QSize(0, 20))
+        self.radioButton_singleAfe_28.setMaximumSize(QtCore.QSize(16777215, 30))
+        self.radioButton_singleAfe_28.setStyleSheet("font: 12pt \"Calibri\";\n"
+"font-weight: 600; /* 设置字体粗细为600 */")
+        self.radioButton_singleAfe_28.setObjectName("radioButton_singleAfe_28")
+        self.verticalLayout_18.addWidget(self.radioButton_singleAfe_28)
+        self.horizontalLayout_12.addWidget(self.frame_14)
+        self.verticalLayout_19.addLayout(self.horizontalLayout_12)
+        self.label_2 = QtWidgets.QLabel(self.tab_cellBal)
+        self.label_2.setStyleSheet("font: italic 12pt \"Calibri\";")
+        self.label_2.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_2.setObjectName("label_2")
+        self.verticalLayout_19.addWidget(self.label_2)
+        self.frame_15 = QtWidgets.QFrame(self.tab_cellBal)
+        self.frame_15.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.frame_15.setStyleSheet("QFrame {\n"
+"    background-color: #a0a0a0; /* 设置背景颜色为灰色 */\n"
+"    border-radius: 10px; /* 设置边框圆角的半径为10px */\n"
+"}\n"
+"")
+        self.frame_15.setFrameShape(QtWidgets.QFrame.Box)
+        self.frame_15.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_15.setObjectName("frame_15")
+        self.horizontalLayout_13 = QtWidgets.QHBoxLayout(self.frame_15)
+        self.horizontalLayout_13.setContentsMargins(11, 0, -1, 0)
+        self.horizontalLayout_13.setObjectName("horizontalLayout_13")
+        self.label_30 = QtWidgets.QLabel(self.frame_15)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_30.sizePolicy().hasHeightForWidth())
+        self.label_30.setSizePolicy(sizePolicy)
+        self.label_30.setMinimumSize(QtCore.QSize(0, 20))
+        self.label_30.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.label_30.setStyleSheet("font: 11pt \"Calibri\";\n"
+"font-weight: 600; /* 设置字体粗细为600 */")
+        self.label_30.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
+        self.label_30.setObjectName("label_30")
+        self.horizontalLayout_13.addWidget(self.label_30)
+        spacerItem41 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_13.addItem(spacerItem41)
+        self.verticalLayout_19.addWidget(self.frame_15)
+        self.horizontalLayout_20 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_20.setObjectName("horizontalLayout_20")
+        self.table_cblPage_cblExpTime = QtWidgets.QTableWidget(self.tab_cellBal)
+        self.table_cblPage_cblExpTime.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.table_cblPage_cblExpTime.setStyleSheet("QTableWidget {\n"
+"    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
+"    gridline-color: white; /* 网格线颜色 */\n"
+"    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
+"    font-family: \"Calibri\"; /* 单元格字体 */\n"
+"    font-size: 10pt; /* 单元格字体大小 */\n"
+"}\n"
+"\n"
+"QTableWidget::item {\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"    background-color: #f0f0f0; /* 表头背景颜色 */\n"
+"    padding: 2px; /* 表头内边距 */\n"
+"    border-style: none; /* 表头边框样式 */\n"
+"    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */\n"
+"    border-right: 2px solid white; /* 表头右边框宽度调整为2px */\n"
+"    font-family: \"Calibri\"; /* 表头字体 */\n"
+"    font-size: 10pt; /* 表头字体大小 */\n"
+"    font-weight: 600; /* 表头字体粗细 */\n"
+"}\n"
+"\n"
+"QTableCornerButton::section {\n"
+"    background-color: #f0f0f0; /* 角落按钮背景颜色 */\n"
+"    /* 添加其他您需要的样式 */\n"
+"}\n"
+"")
+        self.table_cblPage_cblExpTime.setObjectName("table_cblPage_cblExpTime")
+        self.table_cblPage_cblExpTime.setColumnCount(2)
+        self.table_cblPage_cblExpTime.setRowCount(2)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblExpTime.setVerticalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblExpTime.setVerticalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblExpTime.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblExpTime.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblExpTime.setItem(0, 0, item)
+        self.table_cblPage_cblExpTime.horizontalHeader().setVisible(False)
+        self.table_cblPage_cblExpTime.verticalHeader().setVisible(False)
+        self.horizontalLayout_20.addWidget(self.table_cblPage_cblExpTime)
+        self.label_5 = QtWidgets.QLabel(self.tab_cellBal)
+        self.label_5.setStyleSheet("font: 12pt \"Calibri\";")
+        self.label_5.setObjectName("label_5")
+        self.horizontalLayout_20.addWidget(self.label_5)
+        self.verticalLayout_19.addLayout(self.horizontalLayout_20)
+        self.frame_16 = QtWidgets.QFrame(self.tab_cellBal)
+        self.frame_16.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.frame_16.setStyleSheet("QFrame {\n"
+"    background-color: #a0a0a0; /* 设置背景颜色为灰色 */\n"
+"    border-radius: 10px; /* 设置边框圆角的半径为10px */\n"
+"}\n"
+"")
+        self.frame_16.setFrameShape(QtWidgets.QFrame.Box)
+        self.frame_16.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_16.setObjectName("frame_16")
+        self.horizontalLayout_14 = QtWidgets.QHBoxLayout(self.frame_16)
+        self.horizontalLayout_14.setContentsMargins(11, 0, -1, 0)
+        self.horizontalLayout_14.setObjectName("horizontalLayout_14")
+        self.label_37 = QtWidgets.QLabel(self.frame_16)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_37.sizePolicy().hasHeightForWidth())
+        self.label_37.setSizePolicy(sizePolicy)
+        self.label_37.setMinimumSize(QtCore.QSize(0, 20))
+        self.label_37.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.label_37.setStyleSheet("font: 11pt \"Calibri\";\n"
+"font-weight: 600; /* 设置字体粗细为600 */")
+        self.label_37.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
+        self.label_37.setObjectName("label_37")
+        self.horizontalLayout_14.addWidget(self.label_37)
+        spacerItem42 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_14.addItem(spacerItem42)
+        self.pushButton_68 = QtWidgets.QPushButton(self.frame_16)
+        self.pushButton_68.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_68.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_68.setStyleSheet("QPushButton {\n"
+"    background-color: #3072B3; /* 按钮背景颜色 */\n"
+"    color: white; /* 文字颜色 */\n"
+"    border-style: solid; /* 边框样式 */\n"
+"    border-width: 2px; /* 边框宽度 */\n"
+"    border-radius: 10px; /* 边框圆角半径 */\n"
+"    border-color: #145289; /* 边框颜色 */\n"
+"    padding: 5px; /* 内边距 */\n"
+"    font: 8pt \"Calibri\"; /* 字体 */\n"
+"    font-weight: 600; /* 字体粗细 */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #5591D2; /* 悬停时的背景颜色 */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #1E5A97; /* 按下时的背景颜色 */\n"
+"}\n"
+"")
+        self.pushButton_68.setObjectName("pushButton_68")
+        self.horizontalLayout_14.addWidget(self.pushButton_68)
+        self.pushButton_69 = QtWidgets.QPushButton(self.frame_16)
+        self.pushButton_69.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_69.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_69.setStyleSheet("QPushButton {\n"
+"    background-color: #3b8303; /* 按钮背景颜色 */\n"
+"    color: white; /* 文字颜色 */\n"
+"    border-style: solid; /* 边框样式 */\n"
+"    border-width: 2px; /* 边框宽度 */\n"
+"    border-radius: 10px; /* 边框圆角半径 */\n"
+"    border-color: #326703; /* 边框颜色 */\n"
+"    padding: 5px; /* 内边距 */\n"
+"    font: 8pt \"Calibri\"; /* 字体 */\n"
+"    font-weight: 600; /* 字体粗细 */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #459403; /* 悬停时的背景颜色 */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #397303; /* 按下时的背景颜色 */\n"
+"}\n"
+"")
+        self.pushButton_69.setObjectName("pushButton_69")
+        self.horizontalLayout_14.addWidget(self.pushButton_69)
+        self.verticalLayout_19.addWidget(self.frame_16)
+        self.table_cblPage_cblCfgReg = QtWidgets.QTableWidget(self.tab_cellBal)
+        self.table_cblPage_cblCfgReg.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.table_cblPage_cblCfgReg.setStyleSheet("QTableWidget {\n"
+"    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
+"    gridline-color: white; /* 网格线颜色 */\n"
+"    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
+"    font-family: \"Calibri\"; /* 单元格字体 */\n"
+"    font-size: 10pt; /* 单元格字体大小 */\n"
+"}\n"
+"\n"
+"QTableWidget::item {\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"    background-color: #f0f0f0; /* 表头背景颜色 */\n"
+"    padding: 2px; /* 表头内边距 */\n"
+"    border-style: none; /* 表头边框样式 */\n"
+"    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */\n"
+"    border-right: 2px solid white; /* 表头右边框宽度调整为2px */\n"
+"    font-family: \"Calibri\"; /* 表头字体 */\n"
+"    font-size: 10pt; /* 表头字体大小 */\n"
+"    font-weight: 600; /* 表头字体粗细 */\n"
+"}\n"
+"\n"
+"QTableCornerButton::section {\n"
+"    background-color: #f0f0f0; /* 角落按钮背景颜色 */\n"
+"    /* 添加其他您需要的样式 */\n"
+"}\n"
+"")
+        self.table_cblPage_cblCfgReg.setObjectName("table_cblPage_cblCfgReg")
+        self.table_cblPage_cblCfgReg.setColumnCount(6)
+        self.table_cblPage_cblCfgReg.setRowCount(5)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCfgReg.setVerticalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCfgReg.setVerticalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCfgReg.setVerticalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCfgReg.setVerticalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCfgReg.setVerticalHeaderItem(4, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCfgReg.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCfgReg.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCfgReg.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCfgReg.setHorizontalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCfgReg.setHorizontalHeaderItem(4, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCfgReg.setHorizontalHeaderItem(5, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCfgReg.setItem(0, 0, item)
+        self.table_cblPage_cblCfgReg.verticalHeader().setVisible(False)
+        self.verticalLayout_19.addWidget(self.table_cblPage_cblCfgReg)
+        self.frame_17 = QtWidgets.QFrame(self.tab_cellBal)
+        self.frame_17.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.frame_17.setStyleSheet("QFrame {\n"
+"    background-color: #a0a0a0; /* 设置背景颜色为灰色 */\n"
+"    border-radius: 10px; /* 设置边框圆角的半径为10px */\n"
+"}\n"
+"")
+        self.frame_17.setFrameShape(QtWidgets.QFrame.Box)
+        self.frame_17.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_17.setObjectName("frame_17")
+        self.horizontalLayout_16 = QtWidgets.QHBoxLayout(self.frame_17)
+        self.horizontalLayout_16.setContentsMargins(11, 0, -1, 0)
+        self.horizontalLayout_16.setObjectName("horizontalLayout_16")
+        self.label_38 = QtWidgets.QLabel(self.frame_17)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_38.sizePolicy().hasHeightForWidth())
+        self.label_38.setSizePolicy(sizePolicy)
+        self.label_38.setMinimumSize(QtCore.QSize(0, 20))
+        self.label_38.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.label_38.setStyleSheet("font: 11pt \"Calibri\";\n"
+"font-weight: 600; /* 设置字体粗细为600 */")
+        self.label_38.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
+        self.label_38.setObjectName("label_38")
+        self.horizontalLayout_16.addWidget(self.label_38)
+        spacerItem43 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_16.addItem(spacerItem43)
+        self.pushButton_statusRegReInit_6 = QtWidgets.QPushButton(self.frame_17)
+        self.pushButton_statusRegReInit_6.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_statusRegReInit_6.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_statusRegReInit_6.setStyleSheet("QPushButton {\n"
+"    background-color: #e84d00; /* 按钮背景颜色 1*/\n"
+"    color: white; /* 文字颜色 */\n"
+"    border-style: solid; /* 边框样式 */\n"
+"    border-width: 2px; /* 边框宽度 */\n"
+"    border-radius: 10px; /* 边框圆角半径 */\n"
+"    border-color: #ce4500; /* 边框颜色 3*/\n"
+"    padding: 5px; /* 内边距 */\n"
+"    font: 10pt \"Calibri\"; /* 字体 */\n"
+"    font-weight: 600; /* 字体粗细 */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #ff5500; /* 悬停时的背景颜色 0*/\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #df4a00; /* 按下时的背景颜色 2*/\n"
+"}\n"
+"")
+        self.pushButton_statusRegReInit_6.setObjectName("pushButton_statusRegReInit_6")
+        self.horizontalLayout_16.addWidget(self.pushButton_statusRegReInit_6)
+        self.pushButton_statusRegClear_7 = QtWidgets.QPushButton(self.frame_17)
+        self.pushButton_statusRegClear_7.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_statusRegClear_7.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_statusRegClear_7.setStyleSheet("QPushButton {\n"
+"    background-color: #FFC000; /* 按钮背景颜色 1*/\n"
+"    color: white; /* 文字颜色 */\n"
+"    border-style: solid; /* 边框样式 */\n"
+"    border-width: 2px; /* 边框宽度 */\n"
+"    border-radius: 10px; /* 边框圆角半径 */\n"
+"    border-color: #BC8F00; /* 边框颜色 3*/\n"
+"    padding: 5px; /* 内边距 */\n"
+"    font: 10pt \"Calibri\"; /* 字体 */\n"
+"    font-weight: 600; /* 字体粗细 */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #FFDB69; /* 悬停时的背景颜色 0*/\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #DEA900; /* 按下时的背景颜色 2*/\n"
+"}\n"
+"")
+        self.pushButton_statusRegClear_7.setObjectName("pushButton_statusRegClear_7")
+        self.horizontalLayout_16.addWidget(self.pushButton_statusRegClear_7)
+        self.pushButton_71 = QtWidgets.QPushButton(self.frame_17)
+        self.pushButton_71.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_71.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_71.setStyleSheet("QPushButton {\n"
+"    background-color: #3b8303; /* 按钮背景颜色 */\n"
+"    color: white; /* 文字颜色 */\n"
+"    border-style: solid; /* 边框样式 */\n"
+"    border-width: 2px; /* 边框宽度 */\n"
+"    border-radius: 10px; /* 边框圆角半径 */\n"
+"    border-color: #326703; /* 边框颜色 */\n"
+"    padding: 5px; /* 内边距 */\n"
+"    font: 8pt \"Calibri\"; /* 字体 */\n"
+"    font-weight: 600; /* 字体粗细 */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #459403; /* 悬停时的背景颜色 */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #397303; /* 按下时的背景颜色 */\n"
+"}\n"
+"")
+        self.pushButton_71.setObjectName("pushButton_71")
+        self.horizontalLayout_16.addWidget(self.pushButton_71)
+        self.verticalLayout_19.addWidget(self.frame_17)
+        self.table_cblPage_cblCtrlSimDemo = QtWidgets.QTableWidget(self.tab_cellBal)
+        self.table_cblPage_cblCtrlSimDemo.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.table_cblPage_cblCtrlSimDemo.setStyleSheet("QTableWidget {\n"
+"    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
+"    gridline-color: white; /* 网格线颜色 */\n"
+"    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
+"    font-family: \"Calibri\"; /* 单元格字体 */\n"
+"    font-size: 10pt; /* 单元格字体大小 */\n"
+"}\n"
+"\n"
+"QTableWidget::item {\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"    background-color: #f0f0f0; /* 表头背景颜色 */\n"
+"    padding: 2px; /* 表头内边距 */\n"
+"    border-style: none; /* 表头边框样式 */\n"
+"    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */\n"
+"    border-right: 2px solid white; /* 表头右边框宽度调整为2px */\n"
+"    font-family: \"Calibri\"; /* 表头字体 */\n"
+"    font-size: 10pt; /* 表头字体大小 */\n"
+"    font-weight: 600; /* 表头字体粗细 */\n"
+"}\n"
+"\n"
+"QTableCornerButton::section {\n"
+"    background-color: #f0f0f0; /* 角落按钮背景颜色 */\n"
+"    /* 添加其他您需要的样式 */\n"
+"}\n"
+"")
+        self.table_cblPage_cblCtrlSimDemo.setObjectName("table_cblPage_cblCtrlSimDemo")
+        self.table_cblPage_cblCtrlSimDemo.setColumnCount(6)
+        self.table_cblPage_cblCtrlSimDemo.setRowCount(2)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlSimDemo.setVerticalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlSimDemo.setVerticalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlSimDemo.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlSimDemo.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlSimDemo.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlSimDemo.setHorizontalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlSimDemo.setHorizontalHeaderItem(4, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlSimDemo.setHorizontalHeaderItem(5, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlSimDemo.setItem(0, 0, item)
+        self.table_cblPage_cblCtrlSimDemo.verticalHeader().setVisible(False)
+        self.verticalLayout_19.addWidget(self.table_cblPage_cblCtrlSimDemo)
+        self.frame_18 = QtWidgets.QFrame(self.tab_cellBal)
+        self.frame_18.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.frame_18.setStyleSheet("QFrame {\n"
+"    background-color: #a0a0a0; /* 设置背景颜色为灰色 */\n"
+"    border-radius: 10px; /* 设置边框圆角的半径为10px */\n"
+"}\n"
+"")
+        self.frame_18.setFrameShape(QtWidgets.QFrame.Box)
+        self.frame_18.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_18.setObjectName("frame_18")
+        self.horizontalLayout_18 = QtWidgets.QHBoxLayout(self.frame_18)
+        self.horizontalLayout_18.setContentsMargins(11, 0, -1, 0)
+        self.horizontalLayout_18.setObjectName("horizontalLayout_18")
+        self.label_39 = QtWidgets.QLabel(self.frame_18)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_39.sizePolicy().hasHeightForWidth())
+        self.label_39.setSizePolicy(sizePolicy)
+        self.label_39.setMinimumSize(QtCore.QSize(0, 20))
+        self.label_39.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.label_39.setStyleSheet("font: 11pt \"Calibri\";\n"
+"font-weight: 600; /* 设置字体粗细为600 */")
+        self.label_39.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
+        self.label_39.setObjectName("label_39")
+        self.horizontalLayout_18.addWidget(self.label_39)
+        spacerItem44 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_18.addItem(spacerItem44)
+        self.verticalLayout_19.addWidget(self.frame_18)
+        self.table_cblPage_cblCtrlStaInf = QtWidgets.QTableWidget(self.tab_cellBal)
+        self.table_cblPage_cblCtrlStaInf.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.table_cblPage_cblCtrlStaInf.setStyleSheet("QTableWidget {\n"
+"    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
+"    gridline-color: white; /* 网格线颜色 */\n"
+"    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
+"    font-family: \"Calibri\"; /* 单元格字体 */\n"
+"    font-size: 10pt; /* 单元格字体大小 */\n"
+"}\n"
+"\n"
+"QTableWidget::item {\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"    background-color: #f0f0f0; /* 表头背景颜色 */\n"
+"    padding: 2px; /* 表头内边距 */\n"
+"    border-style: none; /* 表头边框样式 */\n"
+"    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */\n"
+"    border-right: 2px solid white; /* 表头右边框宽度调整为2px */\n"
+"    font-family: \"Calibri\"; /* 表头字体 */\n"
+"    font-size: 10pt; /* 表头字体大小 */\n"
+"    font-weight: 600; /* 表头字体粗细 */\n"
+"}\n"
+"\n"
+"QTableCornerButton::section {\n"
+"    background-color: #f0f0f0; /* 角落按钮背景颜色 */\n"
+"    /* 添加其他您需要的样式 */\n"
+"}\n"
+"")
+        self.table_cblPage_cblCtrlStaInf.setObjectName("table_cblPage_cblCtrlStaInf")
+        self.table_cblPage_cblCtrlStaInf.setColumnCount(16)
+        self.table_cblPage_cblCtrlStaInf.setRowCount(5)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlStaInf.setVerticalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlStaInf.setVerticalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlStaInf.setVerticalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlStaInf.setVerticalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlStaInf.setVerticalHeaderItem(4, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlStaInf.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlStaInf.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlStaInf.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlStaInf.setHorizontalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlStaInf.setHorizontalHeaderItem(4, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlStaInf.setHorizontalHeaderItem(5, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlStaInf.setHorizontalHeaderItem(6, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlStaInf.setHorizontalHeaderItem(7, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlStaInf.setHorizontalHeaderItem(8, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlStaInf.setHorizontalHeaderItem(9, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlStaInf.setHorizontalHeaderItem(10, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlStaInf.setHorizontalHeaderItem(11, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlStaInf.setHorizontalHeaderItem(12, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlStaInf.setHorizontalHeaderItem(13, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlStaInf.setHorizontalHeaderItem(14, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlStaInf.setHorizontalHeaderItem(15, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_cblPage_cblCtrlStaInf.setItem(0, 0, item)
+        self.table_cblPage_cblCtrlStaInf.verticalHeader().setVisible(False)
+        self.verticalLayout_19.addWidget(self.table_cblPage_cblCtrlStaInf)
         self.tabWidget.addTab(self.tab_cellBal, "")
         self.horizontalLayout_9.addWidget(self.tabWidget)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -4066,7 +4667,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuAbout.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(4)
+        self.tabWidget.setCurrentIndex(7)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -4802,7 +5403,7 @@ class Ui_MainWindow(object):
         item = self.table_meaAcqSumPage_status.item(0, 0)
         item.setText(_translate("MainWindow", "ALERTCFG"))
         self.table_meaAcqSumPage_status.setSortingEnabled(__sortingEnabled)
-        self.label_62.setText(_translate("MainWindow", "DIAGNOSTIC ALERT Register Block (Device 1)"))
+        self.label_62.setText(_translate("MainWindow", "SUMMARY DATA Register Block (Device 0)"))
         item = self.table_meaAcqSumPage_sumDataDev0.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
         item = self.table_meaAcqSumPage_sumDataDev0.verticalHeaderItem(1)
@@ -4850,7 +5451,7 @@ class Ui_MainWindow(object):
         item = self.table_meaAcqSumPage_sumDataDev0.item(0, 0)
         item.setText(_translate("MainWindow", "0x80"))
         self.table_meaAcqSumPage_sumDataDev0.setSortingEnabled(__sortingEnabled)
-        self.label_63.setText(_translate("MainWindow", "DIAGNOSTIC ALERT Register Block (Device 1)"))
+        self.label_63.setText(_translate("MainWindow", "SUMMARY DATA Register Block (Device 1)"))
         item = self.table_meaAcqSumPage_sumDataDev1.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
         item = self.table_meaAcqSumPage_sumDataDev1.verticalHeaderItem(1)
@@ -5353,6 +5954,135 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "0x80"))
         self.table_diagAcqPage_dataReg_dev1.setSortingEnabled(__sortingEnabled)
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_diagAcqData), _translate("MainWindow", "Diagnostic ACQ Data"))
+        self.label_29.setText(_translate("MainWindow", "Cell Balancing Mode Selection (CBMODE, Simplified Demonstration)"))
+        self.radioButton_singleAfe_2.setText(_translate("MainWindow", "Disabled/Inactive (0x0)"))
+        self.radioButton_singleAfe_22.setText(_translate("MainWindow", "Manual Even (0x1)"))
+        self.radioButton_singleAfe_23.setText(_translate("MainWindow", "Manual Odd (0x2)"))
+        self.radioButton_singleAfe_24.setText(_translate("MainWindow", "Semi-Automatic (0x3)"))
+        self.radioButton_singleAfe_25.setText(_translate("MainWindow", "Automatic (0x4)"))
+        self.radioButton_singleAfe_26.setText(_translate("MainWindow", "Discharge/End-of-Life (0x5)"))
+        self.radioButton_singleAfe_27.setText(_translate("MainWindow", "Disabled/Inactive (0x0)"))
+        self.radioButton_singleAfe_28.setText(_translate("MainWindow", "Manual Even (0x1)"))
+        self.label_2.setText(_translate("MainWindow", "For Demonstration purposes, any selection made will determine the content of the Configuration registers below.\n"
+"Demonstration of the BALSW Short/Open Diagnostics requires configuration of the CBALSEL Register (WRITE+READ is sufficient, START is not required)."))
+        self.label_30.setText(_translate("MainWindow", "Cell Balancing Expiration Time (CBEXP) Selection"))
+        item = self.table_cblPage_cblExpTime.verticalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_cblPage_cblExpTime.verticalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_cblPage_cblExpTime.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_cblPage_cblExpTime.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        __sortingEnabled = self.table_cblPage_cblExpTime.isSortingEnabled()
+        self.table_cblPage_cblExpTime.setSortingEnabled(False)
+        item = self.table_cblPage_cblExpTime.item(0, 0)
+        item.setText(_translate("MainWindow", "ALERTCFG"))
+        self.table_cblPage_cblExpTime.setSortingEnabled(__sortingEnabled)
+        self.label_5.setText(_translate("MainWindow", "Cell Balancing Operation Duration (in Minutes for ACQMODE 0x1 through 0x4, in Hours for ACQMODE 0x5 through 0x7)"))
+        self.label_37.setText(_translate("MainWindow", "CELL BALANCING CONFIGURATION Register Block (Simplified Demonstration)"))
+        self.pushButton_68.setText(_translate("MainWindow", "WRITE+READ"))
+        self.pushButton_69.setText(_translate("MainWindow", "READ BACK"))
+        item = self.table_cblPage_cblCfgReg.verticalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_cblPage_cblCfgReg.verticalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_cblPage_cblCfgReg.verticalHeaderItem(2)
+        item.setText(_translate("MainWindow", "2"))
+        item = self.table_cblPage_cblCfgReg.verticalHeaderItem(3)
+        item.setText(_translate("MainWindow", "3"))
+        item = self.table_cblPage_cblCfgReg.verticalHeaderItem(4)
+        item.setText(_translate("MainWindow", "4"))
+        item = self.table_cblPage_cblCfgReg.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_cblPage_cblCfgReg.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_cblPage_cblCfgReg.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "2"))
+        item = self.table_cblPage_cblCfgReg.horizontalHeaderItem(3)
+        item.setText(_translate("MainWindow", "3"))
+        item = self.table_cblPage_cblCfgReg.horizontalHeaderItem(4)
+        item.setText(_translate("MainWindow", "4"))
+        item = self.table_cblPage_cblCfgReg.horizontalHeaderItem(5)
+        item.setText(_translate("MainWindow", "5"))
+        __sortingEnabled = self.table_cblPage_cblCfgReg.isSortingEnabled()
+        self.table_cblPage_cblCfgReg.setSortingEnabled(False)
+        item = self.table_cblPage_cblCfgReg.item(0, 0)
+        item.setText(_translate("MainWindow", "0x45"))
+        self.table_cblPage_cblCfgReg.setSortingEnabled(__sortingEnabled)
+        self.label_38.setText(_translate("MainWindow", "CELL BALANCING CONTROL Register Block (Simplified Demonstration)"))
+        self.pushButton_statusRegReInit_6.setText(_translate("MainWindow", "STOP REQ"))
+        self.pushButton_statusRegClear_7.setText(_translate("MainWindow", "START REQ"))
+        self.pushButton_71.setText(_translate("MainWindow", "READ BACK"))
+        item = self.table_cblPage_cblCtrlSimDemo.verticalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_cblPage_cblCtrlSimDemo.verticalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_cblPage_cblCtrlSimDemo.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_cblPage_cblCtrlSimDemo.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_cblPage_cblCtrlSimDemo.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "2"))
+        item = self.table_cblPage_cblCtrlSimDemo.horizontalHeaderItem(3)
+        item.setText(_translate("MainWindow", "3"))
+        item = self.table_cblPage_cblCtrlSimDemo.horizontalHeaderItem(4)
+        item.setText(_translate("MainWindow", "4"))
+        item = self.table_cblPage_cblCtrlSimDemo.horizontalHeaderItem(5)
+        item.setText(_translate("MainWindow", "5"))
+        __sortingEnabled = self.table_cblPage_cblCtrlSimDemo.isSortingEnabled()
+        self.table_cblPage_cblCtrlSimDemo.setSortingEnabled(False)
+        item = self.table_cblPage_cblCtrlSimDemo.item(0, 0)
+        item.setText(_translate("MainWindow", "0x45"))
+        self.table_cblPage_cblCtrlSimDemo.setSortingEnabled(__sortingEnabled)
+        self.label_39.setText(_translate("MainWindow", "CELL BALANCING CONTROL Register Block (Status Information)"))
+        item = self.table_cblPage_cblCtrlStaInf.verticalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_cblPage_cblCtrlStaInf.verticalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_cblPage_cblCtrlStaInf.verticalHeaderItem(2)
+        item.setText(_translate("MainWindow", "新建行"))
+        item = self.table_cblPage_cblCtrlStaInf.verticalHeaderItem(3)
+        item.setText(_translate("MainWindow", "2"))
+        item = self.table_cblPage_cblCtrlStaInf.verticalHeaderItem(4)
+        item.setText(_translate("MainWindow", "4"))
+        item = self.table_cblPage_cblCtrlStaInf.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_cblPage_cblCtrlStaInf.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_cblPage_cblCtrlStaInf.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "2"))
+        item = self.table_cblPage_cblCtrlStaInf.horizontalHeaderItem(3)
+        item.setText(_translate("MainWindow", "3"))
+        item = self.table_cblPage_cblCtrlStaInf.horizontalHeaderItem(4)
+        item.setText(_translate("MainWindow", "4"))
+        item = self.table_cblPage_cblCtrlStaInf.horizontalHeaderItem(5)
+        item.setText(_translate("MainWindow", "5"))
+        item = self.table_cblPage_cblCtrlStaInf.horizontalHeaderItem(6)
+        item.setText(_translate("MainWindow", "新建列"))
+        item = self.table_cblPage_cblCtrlStaInf.horizontalHeaderItem(7)
+        item.setText(_translate("MainWindow", "6"))
+        item = self.table_cblPage_cblCtrlStaInf.horizontalHeaderItem(8)
+        item.setText(_translate("MainWindow", "7"))
+        item = self.table_cblPage_cblCtrlStaInf.horizontalHeaderItem(9)
+        item.setText(_translate("MainWindow", "8"))
+        item = self.table_cblPage_cblCtrlStaInf.horizontalHeaderItem(10)
+        item.setText(_translate("MainWindow", "9"))
+        item = self.table_cblPage_cblCtrlStaInf.horizontalHeaderItem(11)
+        item.setText(_translate("MainWindow", "10"))
+        item = self.table_cblPage_cblCtrlStaInf.horizontalHeaderItem(12)
+        item.setText(_translate("MainWindow", "11"))
+        item = self.table_cblPage_cblCtrlStaInf.horizontalHeaderItem(13)
+        item.setText(_translate("MainWindow", "12"))
+        item = self.table_cblPage_cblCtrlStaInf.horizontalHeaderItem(14)
+        item.setText(_translate("MainWindow", "13"))
+        item = self.table_cblPage_cblCtrlStaInf.horizontalHeaderItem(15)
+        item.setText(_translate("MainWindow", "15"))
+        __sortingEnabled = self.table_cblPage_cblCtrlStaInf.isSortingEnabled()
+        self.table_cblPage_cblCtrlStaInf.setSortingEnabled(False)
+        item = self.table_cblPage_cblCtrlStaInf.item(0, 0)
+        item.setText(_translate("MainWindow", "0x45"))
+        self.table_cblPage_cblCtrlStaInf.setSortingEnabled(__sortingEnabled)
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_cellBal), _translate("MainWindow", "Cell Balance"))
         self.menuPython.setTitle(_translate("MainWindow", "Python"))
         self.menuAbout.setTitle(_translate("MainWindow", "About"))

@@ -83,7 +83,7 @@ def add_led_txt(pLedNum, pTableWidget, pRow, pCol, pLabelList):
 
 
 """ CHAIN CONFIGURATION page tablewidget initial content """
-CHAIN_CFG_TABLE_HEHG = 30       # table header row height
+CHAIN_CFG_TABLE_HEHG = 28       # table header row height
 CHAIN_CFG_TABLE_ROWHG = 18      # table row height
 CHAIN_CFG_TABLE_STAHG = 120     # status block 不显示 header 的 4 个 table 的高度
 CHAIN_CFG_TABLE_RSTHG = 60      # reset block table 的高度
@@ -132,12 +132,17 @@ table_chainCfg_uartAddrItem = [
     ["0x11", "ADDRESSCFG (Device 1)", "0021", "8000", "0", "0000", "01", "01"]
 ]
 
-table_chainCfg_staHead_dev0 = ["Address", "Register", "Expect (hex)", "Device 0 (hex)", ""]
-table_chainCfg_staItem_dev0 = [
-    ["0x04", "STATUS1", "4000", "4000", ""],
-    ["0x05", "STATUS2", "0000", "0000", ""],
-    ["0x06", "FMEA1", "0000", "0000", ""],
-    ["0x07", "FMEA2", "0000", "0000", ""]
+table_chainCfg_pwHeaders = ["Address", "Register", "FORCEPOR (hex)", "Device 0 (hex)", "", "Device 1 (hex)", ""]
+table_chainCfg_pwItems = [
+["0x04", "STATUS1", "5000", "5000", "", "5000", ""],
+    ["0x05", "STATUS2", "0080", "0080", "", "0080", ""],
+    ["0x06", "FMEA1",   "0000", "0000", "", "0000", ""],
+    ["0x07", "FMEA2",   "0000", "0000", "", "0000", ""]
+]
+
+table_chainCfg_rstHeaders = ["Address", "Register", "Expect (hex)", "Device 0 (hex)", "", "Device 1 (hex)", ""]
+table_chainCfg_rstItems = [
+["0x0F", "RESTCTRL", "0001", "0000", "", "0000", ""]
 ]
 
 table_chainCfg_staHead_dev1 = ["Device 1 (hex)", ""]
@@ -566,7 +571,6 @@ def init_status_led_table_dev1(pTableWidget, pTableHeight):
     # 返回各 led 对象
     return ledList0, ledList1, ledList2, ledList3
 
-
 def adjust_chainPage_ifid_tables(pDevIdTable, puifCfgTable, paddCfgTable):
     """
     调整 chain configuration page device id, uart interface, address register tables 的尺寸，列宽
@@ -636,6 +640,45 @@ def set_chainPage_ifid_color(pRowNum, pDevIdTable, puifCfgTable, paddCfgTable):
             else:  # 4 到 7 列
                 color = QColor("#FFF2CC")
             paddCfgTable.item(r, c).setBackground(color)
+
+
+def adjust_chainPage_pw_rst_tables(pPwTable, pRstTable):
+    for c in range(7):
+        if c == 2:
+            pPwTable.setColumnWidth(c, 150)
+            pRstTable.setColumnWidth(c, 150)
+        elif c == 4 or c == 6:
+            pPwTable.setColumnWidth(c, 550)
+            pRstTable.setColumnWidth(c, 550)
+        else:
+            pPwTable.setColumnWidth(c, 130)
+            pRstTable.setColumnWidth(c, 130)
+
+    for r in range(4):
+        if r < 1:
+            pRstTable.item(r, 3).setBackground(QColor("#E2F0D9"))  # 绿色
+            pRstTable.item(r, 5).setBackground(QColor("#E2F0D9"))  # 绿色
+            pRstTable.item(r, 4).setBackground(QColor("#FFF2CC"))  # 黄色
+            pRstTable.item(r, 6).setBackground(QColor("#FFF2CC"))  # 黄色
+        pPwTable.item(r, 3).setBackground(QColor("#E2F0D9"))  # 绿色
+        pPwTable.item(r, 5).setBackground(QColor("#E2F0D9"))  # 绿色
+        pPwTable.item(r, 4).setBackground(QColor("#FFF2CC"))  # 黄色
+        pPwTable.item(r, 6).setBackground(QColor("#FFF2CC"))  # 黄色
+
+    ledSta1Dev0 = add_led_txt(16, pPwTable, 0, 4, LED_STA1_LAB)
+    ledSta1Dev1 = add_led_txt(16, pPwTable, 0, 6, LED_STA1_LAB)
+    ledSta2Dev0 = add_led_txt(16, pPwTable, 1, 4, LED_STA2_LAB)
+    ledSta2Dev1 = add_led_txt(16, pPwTable, 1, 6, LED_STA2_LAB)
+    ledFem1Dev0 = add_led_txt(16, pPwTable, 2, 4, LED_FME1_LAB)
+    ledFem1Dev1 = add_led_txt(16, pPwTable, 2, 6, LED_FME1_LAB)
+    ledFem2Dev0 = add_led_txt(16, pPwTable, 3, 4, LED_FME2_LAB)
+    ledFem2Dev1 = add_led_txt(16, pPwTable, 3, 6, LED_FME2_LAB)
+
+    ledDev0 = [ledSta1Dev0, ledSta2Dev0, ledFem1Dev0, ledFem2Dev0]
+    ledDev1 = [ledSta1Dev1, ledSta2Dev1, ledFem1Dev1, ledFem2Dev1]
+
+    return  ledDev0, ledDev1
+
 
 def adjust_appCfgPage_tables(pAppCfgTable, pAlertTable, pThreTable, pAcqTable):
     pAppCfgTable.setColumnWidth(0, 100)

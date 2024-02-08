@@ -30,76 +30,44 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.radioButton_dualAfe.setChecked(True)
         # self.radioButton_singleAfe.setChecked(True)
 
-        # device id tables initial
         set_table_head(self.table_chainCfg_devIdBlk, table_chainCfg_devidHead,
                        CHAIN_CFG_TABLE_HEHG, 0)
         set_table_item(self.table_chainCfg_devIdBlk, CHAIN_CFG_TABLE_ROWHG,
                        table_chainCfg_devidItem)
 
-        # uifcfg register tables initial
         set_table_head(self.table_chainCfg_uifcfgReg, table_chainCfg_uartIfHead,
                        CHAIN_CFG_TABLE_HEHG, 0)
         set_table_item(self.table_chainCfg_uifcfgReg, CHAIN_CFG_TABLE_ROWHG,
                        table_chainCfg_uartIfItem)
-        set_table_item(self.table_chainCfg_addcfgReg, CHAIN_CFG_TABLE_ROWHG,
-                       table_chainCfg_uartAddrItem)
 
-
-        # address register tables initial
         set_table_head(self.table_chainCfg_addcfgReg, table_chainCfg_uartAddrHead,
                        CHAIN_CFG_TABLE_HEHG, 0)
-        set_table_item(self.table_chainCfg_uifcfgReg,CHAIN_CFG_TABLE_ROWHG,
-                       table_chainCfg_uartIfItem)
         set_table_item(self.table_chainCfg_addcfgReg, CHAIN_CFG_TABLE_ROWHG,
                        table_chainCfg_uartAddrItem)
 
-        # status power up dev0 table initial
-        ledList_pageChain_st1pu_dev0, ledList_pageChain_st2pu_dev0, ledList_pageChain_fm1pu_dev0, \
-        ledList_pageChain_fm2pu_dev0 = init_status_led_table_dev0(self.table_chainCfg_statusBlk_pwrUpDev0, 150)
+        set_table_head(self.table_chainCfg_pw, table_chainCfg_pwHeaders,
+                       CHAIN_CFG_TABLE_HEHG, 0)
+        set_table_item(self.table_chainCfg_pw, 30,
+                       table_chainCfg_pwItems)
 
-        # status power up dev1 table initial
-        ledList_pageChain_st1pu_dev1, ledList_pageChain_st2pu_dev1, ledList_pageChain_fm1pu_dev1, \
-        ledList_pageChain_fm2pu_dev1 = init_status_led_table_dev1(self.table_chainCfg_statusBlk_pwrUpDev1, 150)
+        set_table_head(self.table_chainCfg_rstReg, table_chainCfg_rstHeaders,
+                       CHAIN_CFG_TABLE_HEHG, 0)
+        set_table_item(self.table_chainCfg_rstReg, CHAIN_CFG_TABLE_ROWHG,
+                       table_chainCfg_rstItems)
 
-        # status initial dev0 table initial
-        ledList_pageChain_st1in_dev0, ledList_pageChain_st2in_dev0, ledList_pageChain_fm1in_dev0, \
-        ledList_pageChain_fm2in_dev0 = init_status_led_table_dev0(self.table_chainCfg_statusBlk_initDev0, 110)
-
-        # status initial dev1 table initial
-        ledList_pageChain_st1in_dev1, ledList_pageChain_st2in_dev1, ledList_pageChain_fm1in_dev1, \
-        ledList_pageChain_fm2in_dev1 = init_status_led_table_dev1(self.table_chainCfg_statusBlk_initDev1, 110)
-
-        # status current dev0 table initial
-        ledList_pageChain_st1cu_dev0, ledList_pageChain_st2cu_dev0, ledList_pageChain_fm1cu_dev0, \
-        ledList_pageChain_fm2cu_dev0 = init_status_led_table_dev0(self.table_chainCfg_statusBlk_curDev0, 110)
-
-        # status current dev1 table initial
-        ledList_pageChain_st1cu_dev1, ledList_pageChain_st2cu_dev1, ledList_pageChain_fm1cu_dev1, \
-        ledList_pageChain_fm2cu_dev1 = init_status_led_table_dev1(self.table_chainCfg_statusBlk_curDev1, 110)
-
-        # reset dev0 table initial
-        set_table_head(self.table_chainCfg_rstBlk_Dev0, table_chainCfg_rstHead_dev0,
-                       CHAIN_CFG_TABLE_HEHG, CHAIN_CFG_TABLE_RSTHG)
-        set_table_item(self.table_chainCfg_rstBlk_Dev0,CHAIN_CFG_TABLE_ROWHG,
-                       table_chainCfg_rstItem_dev0)
-        self.table_chainCfg_rstBlk_Dev0.item(0, 3).setBackground(QColor("#E2F0D9"))
-        # reset dev1 table initial
-        set_table_head(self.table_chainCfg_rstBlk_Dev1, table_chainCfg_rstHead_dev1,
-                       CHAIN_CFG_TABLE_HEHG, CHAIN_CFG_TABLE_RSTHG)
-        set_table_item(self.table_chainCfg_rstBlk_Dev1, CHAIN_CFG_TABLE_ROWHG,
-                       table_chainCfg_rstItem_dev1)
-        self.table_chainCfg_rstBlk_Dev1.item(0, 0).setBackground(QColor("#E2F0D9"))
-
-        # adjust chain configuration page interface & ID register table size and background color
-        time.sleep(0.5)
+        # adjust chain configuration page table
         adjust_chainPage_ifid_tables(self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
                             self.table_chainCfg_addcfgReg)
         set_chainPage_ifid_color(2, self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
                             self.table_chainCfg_addcfgReg)
 
-        self.table_chainCfg_statusBlk_pwrUpDev0.setColumnWidth(2, self.table_chainCfg_rstBlk_Dev0.columnWidth(2))
-        self.table_chainCfg_statusBlk_initDev0.setColumnWidth(2, self.table_chainCfg_rstBlk_Dev0.columnWidth(2))
-        self.table_chainCfg_statusBlk_curDev0.setColumnWidth(2, self.table_chainCfg_rstBlk_Dev0.columnWidth(2))
+        adjust_chainPage_pw_rst_tables(self.table_chainCfg_pw, self.table_chainCfg_rstReg)
+
+        # status power up dev0 table initial
+        # ledList_pageChain_st1pu_dev0, ledList_pageChain_st2pu_dev0, ledList_pageChain_fm1pu_dev0, \
+        # ledList_pageChain_fm2pu_dev0 = init_status_led_table_dev0(self.table_chainCfg_statusBlk_pwrUpDev0, 150)
+
+
 
         ''' initial application configuration page '''
         set_table_head(self.table_appCfgPage_appCfg, table_appCfgPage_headers,
@@ -220,7 +188,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         # single afe initial ui as default
         self.slot_radio_single_dual_afe()
 
-        update_led_color(ledList_pageChain_st1pu_dev0[3], "#aa0000")
+        # update_led_color(ledList_pageChain_st1pu_dev0[3], "#aa0000")
         # update_led_color(self.label_186, "#aa0000")
 
         ''' 配置信号和槽 '''
@@ -239,10 +207,6 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             self.table_chainCfg_devIdBlk.hideRow(1)
             self.table_chainCfg_uifcfgReg.hideRow(1)
             self.table_chainCfg_addcfgReg.hideRow(1)
-            self.table_chainCfg_statusBlk_pwrUpDev1.hide()
-            self.table_chainCfg_statusBlk_initDev1.hide()
-            self.table_chainCfg_statusBlk_curDev1.hide()
-            self.table_chainCfg_rstBlk_Dev1.hide()
             # application configuration page
             self.table_appCfgPage_appCfg.hideColumn(8)
             self.table_appCfgPage_alertCfg.hideColumn(8)
@@ -262,10 +226,6 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             self.table_chainCfg_devIdBlk.showRow(1)
             self.table_chainCfg_uifcfgReg.showRow(1)
             self.table_chainCfg_addcfgReg.showRow(1)
-            self.table_chainCfg_statusBlk_pwrUpDev1.show()
-            self.table_chainCfg_statusBlk_initDev1.show()
-            self.table_chainCfg_statusBlk_curDev1.show()
-            self.table_chainCfg_rstBlk_Dev1.show()
             # application configuration page
             self.table_appCfgPage_appCfg.showColumn(8)
             self.table_appCfgPage_alertCfg.showColumn(8)

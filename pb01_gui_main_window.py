@@ -39,7 +39,7 @@ class Ui_MainWindow(object):
 "    min-width: 8ex; /* 最小宽度 */\n"
 "    min-height: 20px; /* 最小高度 */\n"
 "    margin-right: 0px; /* 选项卡之间的间隔 */\n"
-"    width: 180;    /* 选项卡宽度 */\n"
+"    width: 130;    /* 选项卡宽度 */\n"
 "}\n"
 "\n"
 "QTabBar::tab:selected { /* 被选中的Tab标题的样式 */\n"
@@ -55,9 +55,10 @@ class Ui_MainWindow(object):
         self.tabWidget.setObjectName("tabWidget")
         self.tab_chainCfg = QtWidgets.QWidget()
         self.tab_chainCfg.setObjectName("tab_chainCfg")
-        self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.tab_chainCfg)
-        self.verticalLayout_9.setSpacing(3)
-        self.verticalLayout_9.setObjectName("verticalLayout_9")
+        self.verticalLayout_20 = QtWidgets.QVBoxLayout(self.tab_chainCfg)
+        self.verticalLayout_20.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_20.setSpacing(0)
+        self.verticalLayout_20.setObjectName("verticalLayout_20")
         self.frame_3 = QtWidgets.QFrame(self.tab_chainCfg)
         self.frame_3.setMaximumSize(QtCore.QSize(16777215, 23))
         self.frame_3.setStyleSheet("QFrame {\n"
@@ -86,7 +87,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_17.addWidget(self.label_34)
         spacerItem = QtWidgets.QSpacerItem(447, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_17.addItem(spacerItem)
-        self.verticalLayout_9.addWidget(self.frame_3)
+        self.verticalLayout_20.addWidget(self.frame_3)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.verticalLayout = QtWidgets.QVBoxLayout()
@@ -127,7 +128,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addLayout(self.verticalLayout_4)
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem2)
-        self.verticalLayout_9.addLayout(self.horizontalLayout)
+        self.verticalLayout_20.addLayout(self.horizontalLayout)
         self.frame = QtWidgets.QFrame(self.tab_chainCfg)
         self.frame.setMaximumSize(QtCore.QSize(16777215, 23))
         self.frame.setStyleSheet("QFrame {\n"
@@ -181,8 +182,17 @@ class Ui_MainWindow(object):
 "")
         self.pushButton_uartIfConf_2.setObjectName("pushButton_uartIfConf_2")
         self.horizontalLayout_19.addWidget(self.pushButton_uartIfConf_2)
-        self.verticalLayout_9.addWidget(self.frame)
-        self.table_chainCfg_devIdBlk = QtWidgets.QTableWidget(self.tab_chainCfg)
+        self.verticalLayout_20.addWidget(self.frame)
+        self.frame_19 = QtWidgets.QFrame(self.tab_chainCfg)
+        self.frame_19.setMaximumSize(QtCore.QSize(16777215, 400))
+        self.frame_19.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.frame_19.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_19.setObjectName("frame_19")
+        self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.frame_19)
+        self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_9.setSpacing(0)
+        self.verticalLayout_9.setObjectName("verticalLayout_9")
+        self.table_chainCfg_devIdBlk = QtWidgets.QTableWidget(self.frame_19)
         self.table_chainCfg_devIdBlk.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
@@ -247,8 +257,9 @@ class Ui_MainWindow(object):
         item.setBackground(brush)
         self.table_chainCfg_devIdBlk.setItem(0, 3, item)
         self.table_chainCfg_devIdBlk.verticalHeader().setVisible(False)
+        self.table_chainCfg_devIdBlk.verticalHeader().setMinimumSectionSize(0)
         self.verticalLayout_9.addWidget(self.table_chainCfg_devIdBlk)
-        self.table_chainCfg_uifcfgReg = QtWidgets.QTableWidget(self.tab_chainCfg)
+        self.table_chainCfg_uifcfgReg = QtWidgets.QTableWidget(self.frame_19)
         self.table_chainCfg_uifcfgReg.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
@@ -314,8 +325,9 @@ class Ui_MainWindow(object):
         item = QtWidgets.QTableWidgetItem()
         self.table_chainCfg_uifcfgReg.setItem(0, 0, item)
         self.table_chainCfg_uifcfgReg.verticalHeader().setVisible(False)
+        self.table_chainCfg_uifcfgReg.verticalHeader().setMinimumSectionSize(0)
         self.verticalLayout_9.addWidget(self.table_chainCfg_uifcfgReg)
-        self.table_chainCfg_addcfgReg = QtWidgets.QTableWidget(self.tab_chainCfg)
+        self.table_chainCfg_addcfgReg = QtWidgets.QTableWidget(self.frame_19)
         self.table_chainCfg_addcfgReg.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
@@ -369,7 +381,9 @@ class Ui_MainWindow(object):
         item = QtWidgets.QTableWidgetItem()
         self.table_chainCfg_addcfgReg.setItem(0, 0, item)
         self.table_chainCfg_addcfgReg.verticalHeader().setVisible(False)
+        self.table_chainCfg_addcfgReg.verticalHeader().setMinimumSectionSize(0)
         self.verticalLayout_9.addWidget(self.table_chainCfg_addcfgReg)
+        self.verticalLayout_20.addWidget(self.frame_19)
         self.frame_2 = QtWidgets.QFrame(self.tab_chainCfg)
         self.frame_2.setMaximumSize(QtCore.QSize(16777215, 23))
         self.frame_2.setStyleSheet("QFrame {\n"
@@ -424,7 +438,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_26.addWidget(self.lineEdit_warnStatusPwrUp_2)
         spacerItem5 = QtWidgets.QSpacerItem(447, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_26.addItem(spacerItem5)
-        self.verticalLayout_9.addWidget(self.frame_2)
+        self.verticalLayout_20.addWidget(self.frame_2)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.table_chainCfg_statusBlk_pwrUpDev0 = QtWidgets.QTableWidget(self.tab_chainCfg)
@@ -556,8 +570,166 @@ class Ui_MainWindow(object):
         self.table_chainCfg_statusBlk_pwrUpDev1.setHorizontalHeaderItem(1, item)
         self.table_chainCfg_statusBlk_pwrUpDev1.verticalHeader().setVisible(False)
         self.horizontalLayout_2.addWidget(self.table_chainCfg_statusBlk_pwrUpDev1)
-        self.verticalLayout_9.addLayout(self.horizontalLayout_2)
-        self.frame_6 = QtWidgets.QFrame(self.tab_chainCfg)
+        self.verticalLayout_20.addLayout(self.horizontalLayout_2)
+        self.frame_9 = QtWidgets.QFrame(self.tab_chainCfg)
+        self.frame_9.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.frame_9.setStyleSheet("QFrame {\n"
+"    background-color: #FFBFBF; /* 设置背景颜色 */\n"
+"    border-radius: 10px; /* 设置边框圆角的半径为10px */\n"
+"}\n"
+"")
+        self.frame_9.setFrameShape(QtWidgets.QFrame.Box)
+        self.frame_9.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_9.setObjectName("frame_9")
+        self.horizontalLayout_23 = QtWidgets.QHBoxLayout(self.frame_9)
+        self.horizontalLayout_23.setContentsMargins(-1, 0, -1, 0)
+        self.horizontalLayout_23.setObjectName("horizontalLayout_23")
+        self.label_31 = QtWidgets.QLabel(self.frame_9)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_31.sizePolicy().hasHeightForWidth())
+        self.label_31.setSizePolicy(sizePolicy)
+        self.label_31.setMinimumSize(QtCore.QSize(0, 20))
+        self.label_31.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.label_31.setStyleSheet("font: 11pt \"Calibri\";\n"
+"font-weight: 600; /* 设置字体粗细为600 */")
+        self.label_31.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
+        self.label_31.setObjectName("label_31")
+        self.horizontalLayout_23.addWidget(self.label_31)
+        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_23.addItem(spacerItem6)
+        self.pushButton_statusRegReInit_4 = QtWidgets.QPushButton(self.frame_9)
+        self.pushButton_statusRegReInit_4.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_statusRegReInit_4.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_statusRegReInit_4.setStyleSheet("QPushButton {\n"
+"    background-color: #e84d00; /* 按钮背景颜色 1*/\n"
+"    color: white; /* 文字颜色 */\n"
+"    border-style: solid; /* 边框样式 */\n"
+"    border-width: 2px; /* 边框宽度 */\n"
+"    border-radius: 10px; /* 边框圆角半径 */\n"
+"    border-color: #ce4500; /* 边框颜色 3*/\n"
+"    padding: 5px; /* 内边距 */\n"
+"    font: 10pt \"Calibri\"; /* 字体 */\n"
+"    font-weight: 600; /* 字体粗细 */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #ff5500; /* 悬停时的背景颜色 0*/\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #df4a00; /* 按下时的背景颜色 2*/\n"
+"}\n"
+"")
+        self.pushButton_statusRegReInit_4.setObjectName("pushButton_statusRegReInit_4")
+        self.horizontalLayout_23.addWidget(self.pushButton_statusRegReInit_4)
+        self.verticalLayout_20.addWidget(self.frame_9)
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.table_chainCfg_rstBlk_Dev0 = QtWidgets.QTableWidget(self.tab_chainCfg)
+        self.table_chainCfg_rstBlk_Dev0.setMaximumSize(QtCore.QSize(450, 16777215))
+        self.table_chainCfg_rstBlk_Dev0.setStyleSheet("QTableWidget {\n"
+"    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
+"    gridline-color: white; /* 网格线颜色 */\n"
+"    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
+"    font-family: \"Calibri\"; /* 单元格字体 */\n"
+"    font-size: 10pt; /* 单元格字体大小 */\n"
+"}\n"
+"\n"
+"QTableWidget::item {\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"    background-color: #f0f0f0; /* 表头背景颜色 */\n"
+"    padding: 5px; /* 表头内边距 */\n"
+"    border-style: none; /* 表头边框样式 */\n"
+"    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */\n"
+"    border-right: 2px solid white; /* 表头右边框宽度调整为2px */\n"
+"    font-family: \"Calibri\"; /* 表头字体 */\n"
+"    font-size: 10pt; /* 表头字体大小 */\n"
+"    font-weight: 600; /* 表头字体粗细 */\n"
+"}\n"
+"\n"
+"QTableCornerButton::section {\n"
+"    background-color: #f0f0f0; /* 角落按钮背景颜色 */\n"
+"    /* 添加其他您需要的样式 */\n"
+"}\n"
+"")
+        self.table_chainCfg_rstBlk_Dev0.setObjectName("table_chainCfg_rstBlk_Dev0")
+        self.table_chainCfg_rstBlk_Dev0.setColumnCount(4)
+        self.table_chainCfg_rstBlk_Dev0.setRowCount(1)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_rstBlk_Dev0.setVerticalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        item.setTextAlignment(QtCore.Qt.AlignCenter)
+        self.table_chainCfg_rstBlk_Dev0.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_rstBlk_Dev0.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_rstBlk_Dev0.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_rstBlk_Dev0.setHorizontalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_rstBlk_Dev0.setItem(0, 0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_rstBlk_Dev0.setItem(0, 1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_rstBlk_Dev0.setItem(0, 2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_rstBlk_Dev0.setItem(0, 3, item)
+        self.table_chainCfg_rstBlk_Dev0.verticalHeader().setVisible(False)
+        self.horizontalLayout_3.addWidget(self.table_chainCfg_rstBlk_Dev0)
+        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem7)
+        self.table_chainCfg_rstBlk_Dev1 = QtWidgets.QTableWidget(self.tab_chainCfg)
+        self.table_chainCfg_rstBlk_Dev1.setMaximumSize(QtCore.QSize(130, 16777215))
+        self.table_chainCfg_rstBlk_Dev1.setStyleSheet("QTableWidget {\n"
+"    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
+"    gridline-color: white; /* 网格线颜色 */\n"
+"    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
+"    font-family: \"Calibri\"; /* 单元格字体 */\n"
+"    font-size: 10pt; /* 单元格字体大小 */\n"
+"}\n"
+"\n"
+"QTableWidget::item {\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"    background-color: #f0f0f0; /* 表头背景颜色 */\n"
+"    padding: 5px; /* 表头内边距 */\n"
+"    border-style: none; /* 表头边框样式 */\n"
+"    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */\n"
+"    border-right: 2px solid white; /* 表头右边框宽度调整为2px */\n"
+"    font-family: \"Calibri\"; /* 表头字体 */\n"
+"    font-size: 10pt; /* 表头字体大小 */\n"
+"    font-weight: 600; /* 表头字体粗细 */\n"
+"}\n"
+"\n"
+"QTableCornerButton::section {\n"
+"    background-color: #f0f0f0; /* 角落按钮背景颜色 */\n"
+"    /* 添加其他您需要的样式 */\n"
+"}\n"
+"")
+        self.table_chainCfg_rstBlk_Dev1.setObjectName("table_chainCfg_rstBlk_Dev1")
+        self.table_chainCfg_rstBlk_Dev1.setColumnCount(1)
+        self.table_chainCfg_rstBlk_Dev1.setRowCount(1)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_rstBlk_Dev1.setVerticalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_rstBlk_Dev1.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_chainCfg_rstBlk_Dev1.setItem(0, 0, item)
+        self.table_chainCfg_rstBlk_Dev1.verticalHeader().setVisible(False)
+        self.horizontalLayout_3.addWidget(self.table_chainCfg_rstBlk_Dev1)
+        spacerItem8 = QtWidgets.QSpacerItem(800, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem8)
+        self.verticalLayout_20.addLayout(self.horizontalLayout_3)
+        self.tabWidget.addTab(self.tab_chainCfg, "")
+        self.tab_devMg = QtWidgets.QWidget()
+        self.tab_devMg.setObjectName("tab_devMg")
+        self.frame_6 = QtWidgets.QFrame(self.tab_devMg)
+        self.frame_6.setGeometry(QtCore.QRect(20, 40, 1407, 23))
         self.frame_6.setMaximumSize(QtCore.QSize(16777215, 23))
         self.frame_6.setStyleSheet("QFrame {\n"
 "    background-color: #a0a0a0; /* 设置背景颜色为灰色 */\n"
@@ -583,8 +755,8 @@ class Ui_MainWindow(object):
         self.label_32.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
         self.label_32.setObjectName("label_32")
         self.horizontalLayout_15.addWidget(self.label_32)
-        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_15.addItem(spacerItem6)
+        spacerItem9 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_15.addItem(spacerItem9)
         self.lineEdit_warnStatusInit_2 = QtWidgets.QLineEdit(self.frame_6)
         self.lineEdit_warnStatusInit_2.setMinimumSize(QtCore.QSize(400, 0))
         self.lineEdit_warnStatusInit_2.setMaximumSize(QtCore.QSize(16777215, 16777215))
@@ -609,8 +781,8 @@ class Ui_MainWindow(object):
         self.lineEdit_warnStatusInit_2.setAlignment(QtCore.Qt.AlignCenter)
         self.lineEdit_warnStatusInit_2.setObjectName("lineEdit_warnStatusInit_2")
         self.horizontalLayout_15.addWidget(self.lineEdit_warnStatusInit_2)
-        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_15.addItem(spacerItem7)
+        spacerItem10 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_15.addItem(spacerItem10)
         self.pushButton_statusRegReInit_5 = QtWidgets.QPushButton(self.frame_6)
         self.pushButton_statusRegReInit_5.setMinimumSize(QtCore.QSize(110, 0))
         self.pushButton_statusRegReInit_5.setMaximumSize(QtCore.QSize(16777215, 16777215))
@@ -661,10 +833,13 @@ class Ui_MainWindow(object):
 "")
         self.pushButton_statusRegInit_5.setObjectName("pushButton_statusRegInit_5")
         self.horizontalLayout_15.addWidget(self.pushButton_statusRegInit_5)
-        self.verticalLayout_9.addWidget(self.frame_6)
-        self.horizontalLayout_10 = QtWidgets.QHBoxLayout()
+        self.layoutWidget = QtWidgets.QWidget(self.tab_devMg)
+        self.layoutWidget.setGeometry(QtCore.QRect(30, 100, 521, 194))
+        self.layoutWidget.setObjectName("layoutWidget")
+        self.horizontalLayout_10 = QtWidgets.QHBoxLayout(self.layoutWidget)
+        self.horizontalLayout_10.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_10.setObjectName("horizontalLayout_10")
-        self.table_chainCfg_statusBlk_initDev0 = QtWidgets.QTableWidget(self.tab_chainCfg)
+        self.table_chainCfg_statusBlk_initDev0 = QtWidgets.QTableWidget(self.layoutWidget)
         self.table_chainCfg_statusBlk_initDev0.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.table_chainCfg_statusBlk_initDev0.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
@@ -743,7 +918,7 @@ class Ui_MainWindow(object):
         self.table_chainCfg_statusBlk_initDev0.horizontalHeader().setVisible(False)
         self.table_chainCfg_statusBlk_initDev0.verticalHeader().setVisible(False)
         self.horizontalLayout_10.addWidget(self.table_chainCfg_statusBlk_initDev0)
-        self.table_chainCfg_statusBlk_initDev1 = QtWidgets.QTableWidget(self.tab_chainCfg)
+        self.table_chainCfg_statusBlk_initDev1 = QtWidgets.QTableWidget(self.layoutWidget)
         self.table_chainCfg_statusBlk_initDev1.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.table_chainCfg_statusBlk_initDev1.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
@@ -790,8 +965,8 @@ class Ui_MainWindow(object):
         self.table_chainCfg_statusBlk_initDev1.horizontalHeader().setVisible(False)
         self.table_chainCfg_statusBlk_initDev1.verticalHeader().setVisible(False)
         self.horizontalLayout_10.addWidget(self.table_chainCfg_statusBlk_initDev1)
-        self.verticalLayout_9.addLayout(self.horizontalLayout_10)
-        self.frame_10 = QtWidgets.QFrame(self.tab_chainCfg)
+        self.frame_10 = QtWidgets.QFrame(self.tab_devMg)
+        self.frame_10.setGeometry(QtCore.QRect(30, 340, 1407, 23))
         self.frame_10.setMaximumSize(QtCore.QSize(16777215, 23))
         self.frame_10.setStyleSheet("QFrame {\n"
 "    background-color: #a0a0a0; /* 设置背景颜色为灰色 */\n"
@@ -817,8 +992,8 @@ class Ui_MainWindow(object):
         self.label_33.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
         self.label_33.setObjectName("label_33")
         self.horizontalLayout_25.addWidget(self.label_33)
-        spacerItem8 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_25.addItem(spacerItem8)
+        spacerItem11 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_25.addItem(spacerItem11)
         self.pushButton_statusRegClear_6 = QtWidgets.QPushButton(self.frame_10)
         self.pushButton_statusRegClear_6.setMinimumSize(QtCore.QSize(110, 0))
         self.pushButton_statusRegClear_6.setMaximumSize(QtCore.QSize(16777215, 16777215))
@@ -869,10 +1044,13 @@ class Ui_MainWindow(object):
 "")
         self.pushButton_statusRegReadBack_6.setObjectName("pushButton_statusRegReadBack_6")
         self.horizontalLayout_25.addWidget(self.pushButton_statusRegReadBack_6)
-        self.verticalLayout_9.addWidget(self.frame_10)
-        self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
+        self.layoutWidget_2 = QtWidgets.QWidget(self.tab_devMg)
+        self.layoutWidget_2.setGeometry(QtCore.QRect(40, 390, 521, 194))
+        self.layoutWidget_2.setObjectName("layoutWidget_2")
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.layoutWidget_2)
+        self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
-        self.table_chainCfg_statusBlk_curDev0 = QtWidgets.QTableWidget(self.tab_chainCfg)
+        self.table_chainCfg_statusBlk_curDev0 = QtWidgets.QTableWidget(self.layoutWidget_2)
         self.table_chainCfg_statusBlk_curDev0.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.table_chainCfg_statusBlk_curDev0.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
@@ -951,7 +1129,7 @@ class Ui_MainWindow(object):
         self.table_chainCfg_statusBlk_curDev0.horizontalHeader().setVisible(False)
         self.table_chainCfg_statusBlk_curDev0.verticalHeader().setVisible(False)
         self.horizontalLayout_4.addWidget(self.table_chainCfg_statusBlk_curDev0)
-        self.table_chainCfg_statusBlk_curDev1 = QtWidgets.QTableWidget(self.tab_chainCfg)
+        self.table_chainCfg_statusBlk_curDev1 = QtWidgets.QTableWidget(self.layoutWidget_2)
         self.table_chainCfg_statusBlk_curDev1.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.table_chainCfg_statusBlk_curDev1.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
@@ -998,162 +1176,7 @@ class Ui_MainWindow(object):
         self.table_chainCfg_statusBlk_curDev1.horizontalHeader().setVisible(False)
         self.table_chainCfg_statusBlk_curDev1.verticalHeader().setVisible(False)
         self.horizontalLayout_4.addWidget(self.table_chainCfg_statusBlk_curDev1)
-        self.verticalLayout_9.addLayout(self.horizontalLayout_4)
-        self.frame_9 = QtWidgets.QFrame(self.tab_chainCfg)
-        self.frame_9.setMaximumSize(QtCore.QSize(16777215, 23))
-        self.frame_9.setStyleSheet("QFrame {\n"
-"    background-color: #FFBFBF; /* 设置背景颜色 */\n"
-"    border-radius: 10px; /* 设置边框圆角的半径为10px */\n"
-"}\n"
-"")
-        self.frame_9.setFrameShape(QtWidgets.QFrame.Box)
-        self.frame_9.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_9.setObjectName("frame_9")
-        self.horizontalLayout_23 = QtWidgets.QHBoxLayout(self.frame_9)
-        self.horizontalLayout_23.setContentsMargins(-1, 0, -1, 0)
-        self.horizontalLayout_23.setObjectName("horizontalLayout_23")
-        self.label_31 = QtWidgets.QLabel(self.frame_9)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_31.sizePolicy().hasHeightForWidth())
-        self.label_31.setSizePolicy(sizePolicy)
-        self.label_31.setMinimumSize(QtCore.QSize(0, 20))
-        self.label_31.setMaximumSize(QtCore.QSize(16777215, 23))
-        self.label_31.setStyleSheet("font: 11pt \"Calibri\";\n"
-"font-weight: 600; /* 设置字体粗细为600 */")
-        self.label_31.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
-        self.label_31.setObjectName("label_31")
-        self.horizontalLayout_23.addWidget(self.label_31)
-        spacerItem9 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_23.addItem(spacerItem9)
-        self.pushButton_statusRegReInit_4 = QtWidgets.QPushButton(self.frame_9)
-        self.pushButton_statusRegReInit_4.setMinimumSize(QtCore.QSize(110, 0))
-        self.pushButton_statusRegReInit_4.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.pushButton_statusRegReInit_4.setStyleSheet("QPushButton {\n"
-"    background-color: #e84d00; /* 按钮背景颜色 1*/\n"
-"    color: white; /* 文字颜色 */\n"
-"    border-style: solid; /* 边框样式 */\n"
-"    border-width: 2px; /* 边框宽度 */\n"
-"    border-radius: 10px; /* 边框圆角半径 */\n"
-"    border-color: #ce4500; /* 边框颜色 3*/\n"
-"    padding: 5px; /* 内边距 */\n"
-"    font: 10pt \"Calibri\"; /* 字体 */\n"
-"    font-weight: 600; /* 字体粗细 */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #ff5500; /* 悬停时的背景颜色 0*/\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #df4a00; /* 按下时的背景颜色 2*/\n"
-"}\n"
-"")
-        self.pushButton_statusRegReInit_4.setObjectName("pushButton_statusRegReInit_4")
-        self.horizontalLayout_23.addWidget(self.pushButton_statusRegReInit_4)
-        self.verticalLayout_9.addWidget(self.frame_9)
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.table_chainCfg_rstBlk_Dev0 = QtWidgets.QTableWidget(self.tab_chainCfg)
-        self.table_chainCfg_rstBlk_Dev0.setMaximumSize(QtCore.QSize(450, 16777215))
-        self.table_chainCfg_rstBlk_Dev0.setStyleSheet("QTableWidget {\n"
-"    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
-"    gridline-color: white; /* 网格线颜色 */\n"
-"    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
-"    font-family: \"Calibri\"; /* 单元格字体 */\n"
-"    font-size: 10pt; /* 单元格字体大小 */\n"
-"}\n"
-"\n"
-"QTableWidget::item {\n"
-"}\n"
-"\n"
-"QHeaderView::section {\n"
-"    background-color: #f0f0f0; /* 表头背景颜色 */\n"
-"    padding: 5px; /* 表头内边距 */\n"
-"    border-style: none; /* 表头边框样式 */\n"
-"    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */\n"
-"    border-right: 2px solid white; /* 表头右边框宽度调整为2px */\n"
-"    font-family: \"Calibri\"; /* 表头字体 */\n"
-"    font-size: 10pt; /* 表头字体大小 */\n"
-"    font-weight: 600; /* 表头字体粗细 */\n"
-"}\n"
-"\n"
-"QTableCornerButton::section {\n"
-"    background-color: #f0f0f0; /* 角落按钮背景颜色 */\n"
-"    /* 添加其他您需要的样式 */\n"
-"}\n"
-"")
-        self.table_chainCfg_rstBlk_Dev0.setObjectName("table_chainCfg_rstBlk_Dev0")
-        self.table_chainCfg_rstBlk_Dev0.setColumnCount(4)
-        self.table_chainCfg_rstBlk_Dev0.setRowCount(1)
-        item = QtWidgets.QTableWidgetItem()
-        self.table_chainCfg_rstBlk_Dev0.setVerticalHeaderItem(0, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignCenter)
-        self.table_chainCfg_rstBlk_Dev0.setHorizontalHeaderItem(0, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.table_chainCfg_rstBlk_Dev0.setHorizontalHeaderItem(1, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.table_chainCfg_rstBlk_Dev0.setHorizontalHeaderItem(2, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.table_chainCfg_rstBlk_Dev0.setHorizontalHeaderItem(3, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.table_chainCfg_rstBlk_Dev0.setItem(0, 0, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.table_chainCfg_rstBlk_Dev0.setItem(0, 1, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.table_chainCfg_rstBlk_Dev0.setItem(0, 2, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.table_chainCfg_rstBlk_Dev0.setItem(0, 3, item)
-        self.table_chainCfg_rstBlk_Dev0.verticalHeader().setVisible(False)
-        self.horizontalLayout_3.addWidget(self.table_chainCfg_rstBlk_Dev0)
-        spacerItem10 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem10)
-        self.table_chainCfg_rstBlk_Dev1 = QtWidgets.QTableWidget(self.tab_chainCfg)
-        self.table_chainCfg_rstBlk_Dev1.setMaximumSize(QtCore.QSize(130, 16777215))
-        self.table_chainCfg_rstBlk_Dev1.setStyleSheet("QTableWidget {\n"
-"    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
-"    gridline-color: white; /* 网格线颜色 */\n"
-"    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
-"    font-family: \"Calibri\"; /* 单元格字体 */\n"
-"    font-size: 10pt; /* 单元格字体大小 */\n"
-"}\n"
-"\n"
-"QTableWidget::item {\n"
-"}\n"
-"\n"
-"QHeaderView::section {\n"
-"    background-color: #f0f0f0; /* 表头背景颜色 */\n"
-"    padding: 5px; /* 表头内边距 */\n"
-"    border-style: none; /* 表头边框样式 */\n"
-"    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */\n"
-"    border-right: 2px solid white; /* 表头右边框宽度调整为2px */\n"
-"    font-family: \"Calibri\"; /* 表头字体 */\n"
-"    font-size: 10pt; /* 表头字体大小 */\n"
-"    font-weight: 600; /* 表头字体粗细 */\n"
-"}\n"
-"\n"
-"QTableCornerButton::section {\n"
-"    background-color: #f0f0f0; /* 角落按钮背景颜色 */\n"
-"    /* 添加其他您需要的样式 */\n"
-"}\n"
-"")
-        self.table_chainCfg_rstBlk_Dev1.setObjectName("table_chainCfg_rstBlk_Dev1")
-        self.table_chainCfg_rstBlk_Dev1.setColumnCount(1)
-        self.table_chainCfg_rstBlk_Dev1.setRowCount(1)
-        item = QtWidgets.QTableWidgetItem()
-        self.table_chainCfg_rstBlk_Dev1.setVerticalHeaderItem(0, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.table_chainCfg_rstBlk_Dev1.setHorizontalHeaderItem(0, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.table_chainCfg_rstBlk_Dev1.setItem(0, 0, item)
-        self.table_chainCfg_rstBlk_Dev1.verticalHeader().setVisible(False)
-        self.horizontalLayout_3.addWidget(self.table_chainCfg_rstBlk_Dev1)
-        spacerItem11 = QtWidgets.QSpacerItem(800, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem11)
-        self.verticalLayout_9.addLayout(self.horizontalLayout_3)
-        self.tabWidget.addTab(self.tab_chainCfg, "")
+        self.tabWidget.addTab(self.tab_devMg, "")
         self.tab_appCfg = QtWidgets.QWidget()
         self.tab_appCfg.setObjectName("tab_appCfg")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.tab_appCfg)
@@ -4659,7 +4682,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_9.addWidget(self.tabWidget)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1453, 23))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1453, 26))
         self.menubar.setObjectName("menubar")
         self.menuPython = QtWidgets.QMenu(self.menubar)
         self.menuPython.setObjectName("menuPython")
@@ -4679,7 +4702,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuAbout.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -4841,6 +4864,39 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "Device1"))
         item = self.table_chainCfg_statusBlk_pwrUpDev1.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "LED Array"))
+        self.label_31.setText(_translate("MainWindow", "RESET Register Block (Resets the entire AFE Chain and all Configuration Settings, use only if necessory)"))
+        self.pushButton_statusRegReInit_4.setText(_translate("MainWindow", "RESET"))
+        item = self.table_chainCfg_rstBlk_Dev0.verticalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_chainCfg_rstBlk_Dev0.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "Address"))
+        item = self.table_chainCfg_rstBlk_Dev0.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "Register"))
+        item = self.table_chainCfg_rstBlk_Dev0.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "Expected {hex}"))
+        item = self.table_chainCfg_rstBlk_Dev0.horizontalHeaderItem(3)
+        item.setText(_translate("MainWindow", "Actual {hex}"))
+        __sortingEnabled = self.table_chainCfg_rstBlk_Dev0.isSortingEnabled()
+        self.table_chainCfg_rstBlk_Dev0.setSortingEnabled(False)
+        item = self.table_chainCfg_rstBlk_Dev0.item(0, 0)
+        item.setText(_translate("MainWindow", "0x10"))
+        item = self.table_chainCfg_rstBlk_Dev0.item(0, 1)
+        item.setText(_translate("MainWindow", "UIFCFG (Signle AFE)"))
+        item = self.table_chainCfg_rstBlk_Dev0.item(0, 2)
+        item.setText(_translate("MainWindow", "2600"))
+        item = self.table_chainCfg_rstBlk_Dev0.item(0, 3)
+        item.setText(_translate("MainWindow", "A410"))
+        self.table_chainCfg_rstBlk_Dev0.setSortingEnabled(__sortingEnabled)
+        item = self.table_chainCfg_rstBlk_Dev1.verticalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_chainCfg_rstBlk_Dev1.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "Device1"))
+        __sortingEnabled = self.table_chainCfg_rstBlk_Dev1.isSortingEnabled()
+        self.table_chainCfg_rstBlk_Dev1.setSortingEnabled(False)
+        item = self.table_chainCfg_rstBlk_Dev1.item(0, 0)
+        item.setText(_translate("MainWindow", "0000"))
+        self.table_chainCfg_rstBlk_Dev1.setSortingEnabled(__sortingEnabled)
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_chainCfg), _translate("MainWindow", "CHAIN CFG"))
         self.label_32.setText(_translate("MainWindow", "General Summary Information (Initialization)"))
         self.lineEdit_warnStatusInit_2.setText(_translate("MainWindow", "WARNING: Uexpected Post-Initialization Status - Confirm Setup"))
         self.pushButton_statusRegReInit_5.setText(_translate("MainWindow", "RE-INITIALIZE"))
@@ -4954,39 +5010,7 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "3"))
         item = self.table_chainCfg_statusBlk_curDev1.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Device1"))
-        self.label_31.setText(_translate("MainWindow", "RESET Register Block (Resets the entire AFE Chain and all Configuration Settings, use only if necessory)"))
-        self.pushButton_statusRegReInit_4.setText(_translate("MainWindow", "RESET"))
-        item = self.table_chainCfg_rstBlk_Dev0.verticalHeaderItem(0)
-        item.setText(_translate("MainWindow", "0"))
-        item = self.table_chainCfg_rstBlk_Dev0.horizontalHeaderItem(0)
-        item.setText(_translate("MainWindow", "Address"))
-        item = self.table_chainCfg_rstBlk_Dev0.horizontalHeaderItem(1)
-        item.setText(_translate("MainWindow", "Register"))
-        item = self.table_chainCfg_rstBlk_Dev0.horizontalHeaderItem(2)
-        item.setText(_translate("MainWindow", "Expected {hex}"))
-        item = self.table_chainCfg_rstBlk_Dev0.horizontalHeaderItem(3)
-        item.setText(_translate("MainWindow", "Actual {hex}"))
-        __sortingEnabled = self.table_chainCfg_rstBlk_Dev0.isSortingEnabled()
-        self.table_chainCfg_rstBlk_Dev0.setSortingEnabled(False)
-        item = self.table_chainCfg_rstBlk_Dev0.item(0, 0)
-        item.setText(_translate("MainWindow", "0x10"))
-        item = self.table_chainCfg_rstBlk_Dev0.item(0, 1)
-        item.setText(_translate("MainWindow", "UIFCFG (Signle AFE)"))
-        item = self.table_chainCfg_rstBlk_Dev0.item(0, 2)
-        item.setText(_translate("MainWindow", "2600"))
-        item = self.table_chainCfg_rstBlk_Dev0.item(0, 3)
-        item.setText(_translate("MainWindow", "A410"))
-        self.table_chainCfg_rstBlk_Dev0.setSortingEnabled(__sortingEnabled)
-        item = self.table_chainCfg_rstBlk_Dev1.verticalHeaderItem(0)
-        item.setText(_translate("MainWindow", "0"))
-        item = self.table_chainCfg_rstBlk_Dev1.horizontalHeaderItem(0)
-        item.setText(_translate("MainWindow", "Device1"))
-        __sortingEnabled = self.table_chainCfg_rstBlk_Dev1.isSortingEnabled()
-        self.table_chainCfg_rstBlk_Dev1.setSortingEnabled(False)
-        item = self.table_chainCfg_rstBlk_Dev1.item(0, 0)
-        item.setText(_translate("MainWindow", "0000"))
-        self.table_chainCfg_rstBlk_Dev1.setSortingEnabled(__sortingEnabled)
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_chainCfg), _translate("MainWindow", "Chain Configuration"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_devMg), _translate("MainWindow", "DEV MG"))
         self.label_26.setText(_translate("MainWindow", "APPLICATION CONFIGURATION Register Block"))
         self.pushButton_58.setText(_translate("MainWindow", "WRITE+READ"))
         self.pushButton_59.setText(_translate("MainWindow", "READ BACK"))
@@ -5145,7 +5169,7 @@ class Ui_MainWindow(object):
         item = self.table_appCfgPage_acqReg.item(0, 0)
         item.setText(_translate("MainWindow", "ACQBLK"))
         self.table_appCfgPage_acqReg.setSortingEnabled(__sortingEnabled)
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_appCfg), _translate("MainWindow", "Application Configuration"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_appCfg), _translate("MainWindow", "APP CFG"))
         self.label_45.setText(_translate("MainWindow", "TEST CURRENT CONFIGURATION Register Block"))
         self.pushButton_72.setText(_translate("MainWindow", "WRITE+READ"))
         self.pushButton_73.setText(_translate("MainWindow", "READ BACK"))
@@ -5270,7 +5294,7 @@ class Ui_MainWindow(object):
         item = self.table_diagCfgPage_aluTestDiagReg.item(0, 0)
         item.setText(_translate("MainWindow", "ALERTCFG"))
         self.table_diagCfgPage_aluTestDiagReg.setSortingEnabled(__sortingEnabled)
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_diagCfg), _translate("MainWindow", "Diagnostic Configuration"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_diagCfg), _translate("MainWindow", "DIAG CFG"))
         self.label_48.setText(_translate("MainWindow", "TEST CURRENT CONFIGURATION Register Block"))
         self.radioButton_singleAfe_3.setText(_translate("MainWindow", "ACQCBALINT - Interrupt CELL Balancing Activity (recommended for general use in Measurements, ignored in Diagnostics)"))
         self.radioButton_singleAfe_4.setText(_translate("MainWindow", "ACQIIRBYP - Bypass CELLIIR Filters (used in custom diagnostics, not supported in this revision, 0b0 default)"))
@@ -5354,7 +5378,7 @@ class Ui_MainWindow(object):
         item = self.table_diagCfgPage_aluTestDiagReg_2.item(0, 0)
         item.setText(_translate("MainWindow", "ALERTCFG"))
         self.table_diagCfgPage_aluTestDiagReg_2.setSortingEnabled(__sortingEnabled)
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_acquisition), _translate("MainWindow", "Acquisition Request"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_acquisition), _translate("MainWindow", "ACQ RQST"))
         self.label_61.setText(_translate("MainWindow", "STATUS and LOG Register Blocks (Measurement Acquisition)"))
         item = self.table_meaAcqSumPage_status.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
@@ -5511,7 +5535,7 @@ class Ui_MainWindow(object):
         item = self.table_meaAcqSumPage_sumDataDev1.item(0, 0)
         item.setText(_translate("MainWindow", "0x80"))
         self.table_meaAcqSumPage_sumDataDev1.setSortingEnabled(__sortingEnabled)
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_meaAcqSum), _translate("MainWindow", "MEA ACQ Summary Data"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_meaAcqSum), _translate("MainWindow", "MEA ACQ SUM"))
         self.label_52.setText(_translate("MainWindow", "ALERT Register Block (Device 0)"))
         item = self.table_meaAcqDetailData_alertRegDev0.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
@@ -5700,7 +5724,7 @@ class Ui_MainWindow(object):
         item = self.table_meaAcqDetailData_dataRegDev1.item(0, 0)
         item.setText(_translate("MainWindow", "ALERTCFG"))
         self.table_meaAcqDetailData_dataRegDev1.setSortingEnabled(__sortingEnabled)
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_meaAcqDetail), _translate("MainWindow", "MEA ACQ Detail Data"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_meaAcqDetail), _translate("MainWindow", "MEA ACQ DTL"))
         self.label_55.setText(_translate("MainWindow", "STATUS, LOG, and ADC ZS/FS DIAGNOSTIC DATA Register Blocks (Diagnostic Acquisition)"))
         item = self.table_diagAcqPage_status.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
@@ -5965,7 +5989,7 @@ class Ui_MainWindow(object):
         item = self.table_diagAcqPage_dataReg_dev1.item(0, 0)
         item.setText(_translate("MainWindow", "0x80"))
         self.table_diagAcqPage_dataReg_dev1.setSortingEnabled(__sortingEnabled)
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_diagAcqData), _translate("MainWindow", "Diagnostic ACQ Data"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_diagAcqData), _translate("MainWindow", "DIAG ACQ DATA"))
         self.label_29.setText(_translate("MainWindow", "Cell Balancing Mode Selection (CBMODE, Simplified Demonstration)"))
         self.radioButton_singleAfe_2.setText(_translate("MainWindow", "Disabled/Inactive (0x0)"))
         self.radioButton_singleAfe_22.setText(_translate("MainWindow", "Manual Even (0x1)"))
@@ -6095,7 +6119,7 @@ class Ui_MainWindow(object):
         item = self.table_cblPage_cblCtrlStaInf.item(0, 0)
         item.setText(_translate("MainWindow", "0x45"))
         self.table_cblPage_cblCtrlStaInf.setSortingEnabled(__sortingEnabled)
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_cellBal), _translate("MainWindow", "Cell Balance"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_cellBal), _translate("MainWindow", "CELL BAL"))
         self.menuPython.setTitle(_translate("MainWindow", "Python"))
         self.menuAbout.setTitle(_translate("MainWindow", "About"))
         self.actionLoad.setText(_translate("MainWindow", "Load"))

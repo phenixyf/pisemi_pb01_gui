@@ -37,7 +37,7 @@ QTabBar::tab { /* Tab标题的样式 */
     min-width: 8ex; /* 最小宽度 */
     min-height: 20px; /* 最小高度 */
     margin-right: 0px; /* 选项卡之间的间隔 */
-    width: 180;	/* 选项卡宽度 */
+    width: 130;	/* 选项卡宽度 */
 }
 
 QTabBar::tab:selected { /* 被选中的Tab标题的样式 */
@@ -51,18 +51,30 @@ QTabBar::tab:!selected { /* 未被选中的Tab标题的样式 */
 }</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="tabBarAutoHide">
        <bool>false</bool>
       </property>
       <widget class="QWidget" name="tab_chainCfg">
        <attribute name="title">
-        <string>Chain Configuration</string>
+        <string>CHAIN CFG</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_9">
+       <layout class="QVBoxLayout" name="verticalLayout_20">
         <property name="spacing">
-         <number>3</number>
+         <number>0</number>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
         </property>
         <item>
          <widget class="QFrame" name="frame_3">
@@ -384,9 +396,39 @@ QPushButton:pressed {
          </widget>
         </item>
         <item>
-         <widget class="QTableWidget" name="table_chainCfg_devIdBlk">
-          <property name="styleSheet">
-           <string notr="true">QTableWidget {
+         <widget class="QFrame" name="frame_19">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>400</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_9">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QTableWidget" name="table_chainCfg_devIdBlk">
+             <property name="styleSheet">
+              <string notr="true">QTableWidget {
     border: 2px solid white; /* 边框颜色与粗细调整为2px */
     gridline-color: white; /* 网格线颜色 */
     background-color: #f0f0f0; /* 单元格背景颜色 */
@@ -413,97 +455,100 @@ QTableCornerButton::section {
     /* 添加其他您需要的样式 */
 }
 </string>
-          </property>
-          <attribute name="verticalHeaderVisible">
-           <bool>false</bool>
-          </attribute>
-          <row>
-           <property name="text">
-            <string>0</string>
-           </property>
-          </row>
-          <row>
-           <property name="text">
-            <string>1</string>
-           </property>
-          </row>
-          <column>
-           <property name="text">
-            <string>0</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>1</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>2</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>3</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>4</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>5</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>6</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>7</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>8</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>9</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>10</string>
-           </property>
-          </column>
-          <item row="0" column="0">
-           <property name="text">
-            <string>DEVID</string>
-           </property>
-          </item>
-          <item row="0" column="3">
-           <property name="background">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>242</green>
-              <blue>204</blue>
-             </color>
-            </brush>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QTableWidget" name="table_chainCfg_uifcfgReg">
-          <property name="styleSheet">
-           <string notr="true">QTableWidget {
+             </property>
+             <attribute name="verticalHeaderVisible">
+              <bool>false</bool>
+             </attribute>
+             <attribute name="verticalHeaderMinimumSectionSize">
+              <number>0</number>
+             </attribute>
+             <row>
+              <property name="text">
+               <string>0</string>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string>1</string>
+              </property>
+             </row>
+             <column>
+              <property name="text">
+               <string>0</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>1</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>2</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>3</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>4</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>5</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>6</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>7</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>8</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>9</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>10</string>
+              </property>
+             </column>
+             <item row="0" column="0">
+              <property name="text">
+               <string>DEVID</string>
+              </property>
+             </item>
+             <item row="0" column="3">
+              <property name="background">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>255</red>
+                 <green>242</green>
+                 <blue>204</blue>
+                </color>
+               </brush>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTableWidget" name="table_chainCfg_uifcfgReg">
+             <property name="styleSheet">
+              <string notr="true">QTableWidget {
     border: 2px solid white; /* 边框颜色与粗细调整为2px */
     gridline-color: white; /* 网格线颜色 */
     background-color: #f0f0f0; /* 单元格背景颜色 */
@@ -530,101 +575,104 @@ QTableCornerButton::section {
     /* 添加其他您需要的样式 */
 }
 </string>
-          </property>
-          <attribute name="verticalHeaderVisible">
-           <bool>false</bool>
-          </attribute>
-          <row>
-           <property name="text">
-            <string>0</string>
-           </property>
-          </row>
-          <row>
-           <property name="text">
-            <string>1</string>
-           </property>
-          </row>
-          <column>
-           <property name="text">
-            <string>0</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>1</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>2</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>3</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>4</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>5</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>6</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>7</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>8</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>9</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>10</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>11</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>12</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>13</string>
-           </property>
-          </column>
-          <item row="0" column="0">
-           <property name="text">
-            <string>UIFCFG</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QTableWidget" name="table_chainCfg_addcfgReg">
-          <property name="styleSheet">
-           <string notr="true">QTableWidget {
+             </property>
+             <attribute name="verticalHeaderVisible">
+              <bool>false</bool>
+             </attribute>
+             <attribute name="verticalHeaderMinimumSectionSize">
+              <number>0</number>
+             </attribute>
+             <row>
+              <property name="text">
+               <string>0</string>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string>1</string>
+              </property>
+             </row>
+             <column>
+              <property name="text">
+               <string>0</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>1</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>2</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>3</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>4</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>5</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>6</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>7</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>8</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>9</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>10</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>11</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>12</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>13</string>
+              </property>
+             </column>
+             <item row="0" column="0">
+              <property name="text">
+               <string>UIFCFG</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTableWidget" name="table_chainCfg_addcfgReg">
+             <property name="styleSheet">
+              <string notr="true">QTableWidget {
     border: 2px solid white; /* 边框颜色与粗细调整为2px */
     gridline-color: white; /* 网格线颜色 */
     background-color: #f0f0f0; /* 单元格背景颜色 */
@@ -651,65 +699,71 @@ QTableCornerButton::section {
     /* 添加其他您需要的样式 */
 }
 </string>
-          </property>
-          <attribute name="verticalHeaderVisible">
-           <bool>false</bool>
-          </attribute>
-          <row>
-           <property name="text">
-            <string>0</string>
-           </property>
-          </row>
-          <row>
-           <property name="text">
-            <string>1</string>
-           </property>
-          </row>
-          <column>
-           <property name="text">
-            <string>0</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>1</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>2</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>3</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>4</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>5</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>6</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>7</string>
-           </property>
-          </column>
-          <item row="0" column="0">
-           <property name="text">
-            <string>ADDRCFG</string>
-           </property>
-          </item>
+             </property>
+             <attribute name="verticalHeaderVisible">
+              <bool>false</bool>
+             </attribute>
+             <attribute name="verticalHeaderMinimumSectionSize">
+              <number>0</number>
+             </attribute>
+             <row>
+              <property name="text">
+               <string>0</string>
+              </property>
+             </row>
+             <row>
+              <property name="text">
+               <string>1</string>
+              </property>
+             </row>
+             <column>
+              <property name="text">
+               <string>0</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>1</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>2</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>3</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>4</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>5</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>6</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>7</string>
+              </property>
+             </column>
+             <item row="0" column="0">
+              <property name="text">
+               <string>ADDRCFG</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </item>
         <item>
@@ -1091,851 +1145,6 @@ QTableCornerButton::section {
          </layout>
         </item>
         <item>
-         <widget class="QFrame" name="frame_6">
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>23</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QFrame {
-    background-color: #a0a0a0; /* 设置背景颜色为灰色 */
-    border-radius: 10px; /* 设置边框圆角的半径为10px */
-}
-</string>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_15">
-           <property name="topMargin">
-            <number>0</number>
-           </property>
-           <property name="bottomMargin">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_32">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>20</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>23</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">font: 11pt &quot;Calibri&quot;;
-font-weight: 600; /* 设置字体粗细为600 */</string>
-             </property>
-             <property name="text">
-              <string>General Summary Information (Initialization)</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer name="horizontalSpacer_18">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEdit_warnStatusInit_2">
-             <property name="minimumSize">
-              <size>
-               <width>400</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <pointsize>11</pointsize>
-               <weight>87</weight>
-               <italic>false</italic>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLineEdit {
-  font: 11pt &quot;Calibri&quot;; /* 字体 */
-  font-weight: 700; /* 字体粗细 */
-  color: white; /* 文字颜色 */
-  background-color: #ff0000; /* 按钮背景颜色 1*/
-border-color: #ce4500; /* 边框颜色 3*/
-border-width: 2px; /* 边框宽度 */
-    border-radius: 10px; /* 边框圆角半径 */
-padding: 5px; /* 内边距 */
-}</string>
-             </property>
-             <property name="text">
-              <string>WARNING: Uexpected Post-Initialization Status - Confirm Setup</string>
-             </property>
-             <property name="frame">
-              <bool>false</bool>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer name="horizontalSpacer_19">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QPushButton" name="pushButton_statusRegReInit_5">
-             <property name="minimumSize">
-              <size>
-               <width>110</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QPushButton {
-    background-color: #ED7D31; /* 按钮背景颜色 1*/
-    color: white; /* 文字颜色 */
-    border-style: solid; /* 边框样式 */
-    border-width: 2px; /* 边框宽度 */
-    border-radius: 10px; /* 边框圆角半径 */
-    border-color: #BC5610; /* 边框颜色 3*/
-    padding: 5px; /* 内边距 */
-	font: 10pt &quot;Calibri&quot;; /* 字体 */
-    font-weight: 600; /* 字体粗细 */
-}
-
-QPushButton:hover {
-    background-color: #F5B487; /* 悬停时的背景颜色 0*/
-}
-
-QPushButton:pressed {
-    background-color: #CC5D12; /* 按下时的背景颜色 2*/
-}
-</string>
-             </property>
-             <property name="text">
-              <string>RE-INITIALIZE</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="pushButton_statusRegInit_5">
-             <property name="minimumSize">
-              <size>
-               <width>110</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QPushButton {
-    background-color: #3072B3; /* 按钮背景颜色 */
-    color: white; /* 文字颜色 */
-    border-style: solid; /* 边框样式 */
-    border-width: 2px; /* 边框宽度 */
-    border-radius: 10px; /* 边框圆角半径 */
-    border-color: #145289; /* 边框颜色 */
-    padding: 5px; /* 内边距 */
-	font: 10pt &quot;Calibri&quot;; /* 字体 */
-    font-weight: 600; /* 字体粗细 */
-}
-
-QPushButton:hover {
-    background-color: #5591D2; /* 悬停时的背景颜色 */
-}
-
-QPushButton:pressed {
-    background-color: #1E5A97; /* 按下时的背景颜色 */
-}
-</string>
-             </property>
-             <property name="text">
-              <string>INITIALIZE</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_10">
-          <item>
-           <widget class="QTableWidget" name="table_chainCfg_statusBlk_initDev0">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QTableWidget {
-    border: 2px solid white; /* 边框颜色与粗细调整为2px */
-    gridline-color: white; /* 网格线颜色 */
-    background-color: #f0f0f0; /* 单元格背景颜色 */
-    font-family: &quot;Calibri&quot;; /* 单元格字体 */
-    font-size: 10pt; /* 单元格字体大小 */
-}
-
-QTableWidget::item {
-}
-
-QHeaderView::section {
-    background-color: #f0f0f0; /* 表头背景颜色 */
-    padding: 5px; /* 表头内边距 */
-    border-style: none; /* 表头边框样式 */
-    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */
-    border-right: 2px solid white; /* 表头右边框宽度调整为2px */
-    font-family: &quot;Calibri&quot;; /* 表头字体 */
-    font-size: 10pt; /* 表头字体大小 */
-    font-weight: 600; /* 表头字体粗细 */
-}
-
-QTableCornerButton::section {
-    background-color: #f0f0f0; /* 角落按钮背景颜色 */
-    /* 添加其他您需要的样式 */
-}
-</string>
-            </property>
-            <attribute name="horizontalHeaderVisible">
-             <bool>false</bool>
-            </attribute>
-            <attribute name="verticalHeaderVisible">
-             <bool>false</bool>
-            </attribute>
-            <row>
-             <property name="text">
-              <string>0</string>
-             </property>
-            </row>
-            <row>
-             <property name="text">
-              <string>1</string>
-             </property>
-            </row>
-            <row>
-             <property name="text">
-              <string>2</string>
-             </property>
-            </row>
-            <row>
-             <property name="text">
-              <string>3</string>
-             </property>
-            </row>
-            <column>
-             <property name="text">
-              <string>Address</string>
-             </property>
-             <property name="textAlignment">
-              <set>AlignCenter</set>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Register</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Expected {hex}</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Actual {hex}</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string/>
-             </property>
-            </column>
-            <item row="0" column="0">
-             <property name="text">
-              <string>0x10</string>
-             </property>
-            </item>
-            <item row="0" column="1">
-             <property name="text">
-              <string>UIFCFG (Signle AFE)</string>
-             </property>
-            </item>
-            <item row="0" column="2">
-             <property name="text">
-              <string>2600</string>
-             </property>
-            </item>
-            <item row="0" column="3">
-             <property name="text">
-              <string>A410</string>
-             </property>
-            </item>
-            <item row="1" column="0">
-             <property name="text">
-              <string>0x10</string>
-             </property>
-            </item>
-            <item row="1" column="1">
-             <property name="text">
-              <string>UIFCFG (Dual, Device 0)</string>
-             </property>
-             <property name="textAlignment">
-              <set>AlignCenter</set>
-             </property>
-            </item>
-            <item row="1" column="2">
-             <property name="text">
-              <string>2600</string>
-             </property>
-            </item>
-            <item row="1" column="3">
-             <property name="text">
-              <string>A410</string>
-             </property>
-            </item>
-            <item row="2" column="0">
-             <property name="text">
-              <string>0x10</string>
-             </property>
-            </item>
-            <item row="2" column="1">
-             <property name="text">
-              <string>UIFCFG (Dual, Device 1)</string>
-             </property>
-            </item>
-            <item row="2" column="2">
-             <property name="text">
-              <string>2600</string>
-             </property>
-            </item>
-            <item row="2" column="3">
-             <property name="text">
-              <string>A410</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-          <item>
-           <widget class="QTableWidget" name="table_chainCfg_statusBlk_initDev1">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QTableWidget {
-    border: 2px solid white; /* 边框颜色与粗细调整为2px */
-    gridline-color: white; /* 网格线颜色 */
-    background-color: #f0f0f0; /* 单元格背景颜色 */
-    font-family: &quot;Calibri&quot;; /* 单元格字体 */
-    font-size: 10pt; /* 单元格字体大小 */
-}
-
-QTableWidget::item {
-}
-
-QHeaderView::section {
-    background-color: #f0f0f0; /* 表头背景颜色 */
-    padding: 5px; /* 表头内边距 */
-    border-style: none; /* 表头边框样式 */
-    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */
-    border-right: 2px solid white; /* 表头右边框宽度调整为2px */
-    font-family: &quot;Calibri&quot;; /* 表头字体 */
-    font-size: 10pt; /* 表头字体大小 */
-    font-weight: 600; /* 表头字体粗细 */
-}
-
-QTableCornerButton::section {
-    background-color: #f0f0f0; /* 角落按钮背景颜色 */
-    /* 添加其他您需要的样式 */
-}
-</string>
-            </property>
-            <attribute name="horizontalHeaderVisible">
-             <bool>false</bool>
-            </attribute>
-            <attribute name="verticalHeaderVisible">
-             <bool>false</bool>
-            </attribute>
-            <row>
-             <property name="text">
-              <string>0</string>
-             </property>
-            </row>
-            <row>
-             <property name="text">
-              <string>1</string>
-             </property>
-            </row>
-            <row>
-             <property name="text">
-              <string>2</string>
-             </property>
-            </row>
-            <row>
-             <property name="text">
-              <string>3</string>
-             </property>
-            </row>
-            <column>
-             <property name="text">
-              <string>Device1</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string/>
-             </property>
-            </column>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <widget class="QFrame" name="frame_10">
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>23</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QFrame {
-    background-color: #a0a0a0; /* 设置背景颜色为灰色 */
-    border-radius: 10px; /* 设置边框圆角的半径为10px */
-}
-</string>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_25">
-           <property name="topMargin">
-            <number>0</number>
-           </property>
-           <property name="bottomMargin">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_33">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>20</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>23</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">font: 11pt &quot;Calibri&quot;;
-font-weight: 600; /* 设置字体粗细为600 */</string>
-             </property>
-             <property name="text">
-              <string>General Summary Information (Current Status)</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer name="horizontalSpacer_20">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QPushButton" name="pushButton_statusRegClear_6">
-             <property name="minimumSize">
-              <size>
-               <width>110</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QPushButton {
-    background-color: #FFC000; /* 按钮背景颜色 1*/
-    color: white; /* 文字颜色 */
-    border-style: solid; /* 边框样式 */
-    border-width: 2px; /* 边框宽度 */
-    border-radius: 10px; /* 边框圆角半径 */
-    border-color: #BC8F00; /* 边框颜色 3*/
-    padding: 5px; /* 内边距 */
-	font: 10pt &quot;Calibri&quot;; /* 字体 */
-    font-weight: 600; /* 字体粗细 */
-}
-
-QPushButton:hover {
-    background-color: #FFDB69; /* 悬停时的背景颜色 0*/
-}
-
-QPushButton:pressed {
-    background-color: #DEA900; /* 按下时的背景颜色 2*/
-}
-</string>
-             </property>
-             <property name="text">
-              <string>CLERA COMM</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="pushButton_statusRegReadBack_6">
-             <property name="minimumSize">
-              <size>
-               <width>110</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QPushButton {
-    background-color: #00B050; /* 按钮背景颜色 */
-    color: white; /* 文字颜色 */
-    border-style: solid; /* 边框样式 */
-    border-width: 2px; /* 边框宽度 */
-    border-radius: 10px; /* 边框圆角半径 */
-    border-color: #00823B; /* 边框颜色 */
-    padding: 5px; /* 内边距 */
-	font: 10pt &quot;Calibri&quot;; /* 字体 */
-    font-weight: 600; /* 字体粗细 */
-}
-
-QPushButton:hover {
-    background-color: #00EA6A; /* 悬停时的背景颜色 */
-}
-
-QPushButton:pressed {
-    background-color: #009644; /* 按下时的背景颜色 */
-}
-</string>
-             </property>
-             <property name="text">
-              <string>READ BACK</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_4">
-          <item>
-           <widget class="QTableWidget" name="table_chainCfg_statusBlk_curDev0">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QTableWidget {
-    border: 2px solid white; /* 边框颜色与粗细调整为2px */
-    gridline-color: white; /* 网格线颜色 */
-    background-color: #f0f0f0; /* 单元格背景颜色 */
-    font-family: &quot;Calibri&quot;; /* 单元格字体 */
-    font-size: 10pt; /* 单元格字体大小 */
-}
-
-QTableWidget::item {
-}
-
-QHeaderView::section {
-    background-color: #f0f0f0; /* 表头背景颜色 */
-    padding: 5px; /* 表头内边距 */
-    border-style: none; /* 表头边框样式 */
-    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */
-    border-right: 2px solid white; /* 表头右边框宽度调整为2px */
-    font-family: &quot;Calibri&quot;; /* 表头字体 */
-    font-size: 10pt; /* 表头字体大小 */
-    font-weight: 600; /* 表头字体粗细 */
-}
-
-QTableCornerButton::section {
-    background-color: #f0f0f0; /* 角落按钮背景颜色 */
-    /* 添加其他您需要的样式 */
-}
-</string>
-            </property>
-            <attribute name="horizontalHeaderVisible">
-             <bool>false</bool>
-            </attribute>
-            <attribute name="verticalHeaderVisible">
-             <bool>false</bool>
-            </attribute>
-            <row>
-             <property name="text">
-              <string>0</string>
-             </property>
-            </row>
-            <row>
-             <property name="text">
-              <string>1</string>
-             </property>
-            </row>
-            <row>
-             <property name="text">
-              <string>2</string>
-             </property>
-            </row>
-            <row>
-             <property name="text">
-              <string>3</string>
-             </property>
-            </row>
-            <column>
-             <property name="text">
-              <string>Address</string>
-             </property>
-             <property name="textAlignment">
-              <set>AlignCenter</set>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Register</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Expected {hex}</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Actual {hex}</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string/>
-             </property>
-            </column>
-            <item row="0" column="0">
-             <property name="text">
-              <string>0x10</string>
-             </property>
-            </item>
-            <item row="0" column="1">
-             <property name="text">
-              <string>UIFCFG (Signle AFE)</string>
-             </property>
-            </item>
-            <item row="0" column="2">
-             <property name="text">
-              <string>2600</string>
-             </property>
-            </item>
-            <item row="0" column="3">
-             <property name="text">
-              <string>A410</string>
-             </property>
-            </item>
-            <item row="1" column="0">
-             <property name="text">
-              <string>0x10</string>
-             </property>
-            </item>
-            <item row="1" column="1">
-             <property name="text">
-              <string>UIFCFG (Dual, Device 0)</string>
-             </property>
-             <property name="textAlignment">
-              <set>AlignCenter</set>
-             </property>
-            </item>
-            <item row="1" column="2">
-             <property name="text">
-              <string>2600</string>
-             </property>
-            </item>
-            <item row="1" column="3">
-             <property name="text">
-              <string>A410</string>
-             </property>
-            </item>
-            <item row="2" column="0">
-             <property name="text">
-              <string>0x10</string>
-             </property>
-            </item>
-            <item row="2" column="1">
-             <property name="text">
-              <string>UIFCFG (Dual, Device 1)</string>
-             </property>
-            </item>
-            <item row="2" column="2">
-             <property name="text">
-              <string>2600</string>
-             </property>
-            </item>
-            <item row="2" column="3">
-             <property name="text">
-              <string>A410</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-          <item>
-           <widget class="QTableWidget" name="table_chainCfg_statusBlk_curDev1">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QTableWidget {
-    border: 2px solid white; /* 边框颜色与粗细调整为2px */
-    gridline-color: white; /* 网格线颜色 */
-    background-color: #f0f0f0; /* 单元格背景颜色 */
-    font-family: &quot;Calibri&quot;; /* 单元格字体 */
-    font-size: 10pt; /* 单元格字体大小 */
-}
-
-QTableWidget::item {
-}
-
-QHeaderView::section {
-    background-color: #f0f0f0; /* 表头背景颜色 */
-    padding: 5px; /* 表头内边距 */
-    border-style: none; /* 表头边框样式 */
-    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */
-    border-right: 2px solid white; /* 表头右边框宽度调整为2px */
-    font-family: &quot;Calibri&quot;; /* 表头字体 */
-    font-size: 10pt; /* 表头字体大小 */
-    font-weight: 600; /* 表头字体粗细 */
-}
-
-QTableCornerButton::section {
-    background-color: #f0f0f0; /* 角落按钮背景颜色 */
-    /* 添加其他您需要的样式 */
-}
-</string>
-            </property>
-            <attribute name="horizontalHeaderVisible">
-             <bool>false</bool>
-            </attribute>
-            <attribute name="verticalHeaderVisible">
-             <bool>false</bool>
-            </attribute>
-            <row>
-             <property name="text">
-              <string>0</string>
-             </property>
-            </row>
-            <row>
-             <property name="text">
-              <string>1</string>
-             </property>
-            </row>
-            <row>
-             <property name="text">
-              <string>2</string>
-             </property>
-            </row>
-            <row>
-             <property name="text">
-              <string>3</string>
-             </property>
-            </row>
-            <column>
-             <property name="text">
-              <string>Device1</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string/>
-             </property>
-            </column>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
          <widget class="QFrame" name="frame_9">
           <property name="maximumSize">
            <size>
@@ -2231,9 +1440,887 @@ QTableCornerButton::section {
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="tab_devMg">
+       <attribute name="title">
+        <string>DEV MG</string>
+       </attribute>
+       <widget class="QFrame" name="frame_6">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>40</y>
+          <width>1407</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>23</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QFrame {
+    background-color: #a0a0a0; /* 设置背景颜色为灰色 */
+    border-radius: 10px; /* 设置边框圆角的半径为10px */
+}
+</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Box</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_15">
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="label_32">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>23</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font: 11pt &quot;Calibri&quot;;
+font-weight: 600; /* 设置字体粗细为600 */</string>
+           </property>
+           <property name="text">
+            <string>General Summary Information (Initialization)</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_18">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_warnStatusInit_2">
+           <property name="minimumSize">
+            <size>
+             <width>400</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Calibri</family>
+             <pointsize>11</pointsize>
+             <weight>87</weight>
+             <italic>false</italic>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+  font: 11pt &quot;Calibri&quot;; /* 字体 */
+  font-weight: 700; /* 字体粗细 */
+  color: white; /* 文字颜色 */
+  background-color: #ff0000; /* 按钮背景颜色 1*/
+border-color: #ce4500; /* 边框颜色 3*/
+border-width: 2px; /* 边框宽度 */
+    border-radius: 10px; /* 边框圆角半径 */
+padding: 5px; /* 内边距 */
+}</string>
+           </property>
+           <property name="text">
+            <string>WARNING: Uexpected Post-Initialization Status - Confirm Setup</string>
+           </property>
+           <property name="frame">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_19">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_statusRegReInit_5">
+           <property name="minimumSize">
+            <size>
+             <width>110</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: #ED7D31; /* 按钮背景颜色 1*/
+    color: white; /* 文字颜色 */
+    border-style: solid; /* 边框样式 */
+    border-width: 2px; /* 边框宽度 */
+    border-radius: 10px; /* 边框圆角半径 */
+    border-color: #BC5610; /* 边框颜色 3*/
+    padding: 5px; /* 内边距 */
+	font: 10pt &quot;Calibri&quot;; /* 字体 */
+    font-weight: 600; /* 字体粗细 */
+}
+
+QPushButton:hover {
+    background-color: #F5B487; /* 悬停时的背景颜色 0*/
+}
+
+QPushButton:pressed {
+    background-color: #CC5D12; /* 按下时的背景颜色 2*/
+}
+</string>
+           </property>
+           <property name="text">
+            <string>RE-INITIALIZE</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_statusRegInit_5">
+           <property name="minimumSize">
+            <size>
+             <width>110</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: #3072B3; /* 按钮背景颜色 */
+    color: white; /* 文字颜色 */
+    border-style: solid; /* 边框样式 */
+    border-width: 2px; /* 边框宽度 */
+    border-radius: 10px; /* 边框圆角半径 */
+    border-color: #145289; /* 边框颜色 */
+    padding: 5px; /* 内边距 */
+	font: 10pt &quot;Calibri&quot;; /* 字体 */
+    font-weight: 600; /* 字体粗细 */
+}
+
+QPushButton:hover {
+    background-color: #5591D2; /* 悬停时的背景颜色 */
+}
+
+QPushButton:pressed {
+    background-color: #1E5A97; /* 按下时的背景颜色 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>INITIALIZE</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>100</y>
+          <width>521</width>
+          <height>194</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_10">
+         <item>
+          <widget class="QTableWidget" name="table_chainCfg_statusBlk_initDev0">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QTableWidget {
+    border: 2px solid white; /* 边框颜色与粗细调整为2px */
+    gridline-color: white; /* 网格线颜色 */
+    background-color: #f0f0f0; /* 单元格背景颜色 */
+    font-family: &quot;Calibri&quot;; /* 单元格字体 */
+    font-size: 10pt; /* 单元格字体大小 */
+}
+
+QTableWidget::item {
+}
+
+QHeaderView::section {
+    background-color: #f0f0f0; /* 表头背景颜色 */
+    padding: 5px; /* 表头内边距 */
+    border-style: none; /* 表头边框样式 */
+    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */
+    border-right: 2px solid white; /* 表头右边框宽度调整为2px */
+    font-family: &quot;Calibri&quot;; /* 表头字体 */
+    font-size: 10pt; /* 表头字体大小 */
+    font-weight: 600; /* 表头字体粗细 */
+}
+
+QTableCornerButton::section {
+    background-color: #f0f0f0; /* 角落按钮背景颜色 */
+    /* 添加其他您需要的样式 */
+}
+</string>
+           </property>
+           <attribute name="horizontalHeaderVisible">
+            <bool>false</bool>
+           </attribute>
+           <attribute name="verticalHeaderVisible">
+            <bool>false</bool>
+           </attribute>
+           <row>
+            <property name="text">
+             <string>0</string>
+            </property>
+           </row>
+           <row>
+            <property name="text">
+             <string>1</string>
+            </property>
+           </row>
+           <row>
+            <property name="text">
+             <string>2</string>
+            </property>
+           </row>
+           <row>
+            <property name="text">
+             <string>3</string>
+            </property>
+           </row>
+           <column>
+            <property name="text">
+             <string>Address</string>
+            </property>
+            <property name="textAlignment">
+             <set>AlignCenter</set>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Register</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Expected {hex}</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Actual {hex}</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string/>
+            </property>
+           </column>
+           <item row="0" column="0">
+            <property name="text">
+             <string>0x10</string>
+            </property>
+           </item>
+           <item row="0" column="1">
+            <property name="text">
+             <string>UIFCFG (Signle AFE)</string>
+            </property>
+           </item>
+           <item row="0" column="2">
+            <property name="text">
+             <string>2600</string>
+            </property>
+           </item>
+           <item row="0" column="3">
+            <property name="text">
+             <string>A410</string>
+            </property>
+           </item>
+           <item row="1" column="0">
+            <property name="text">
+             <string>0x10</string>
+            </property>
+           </item>
+           <item row="1" column="1">
+            <property name="text">
+             <string>UIFCFG (Dual, Device 0)</string>
+            </property>
+            <property name="textAlignment">
+             <set>AlignCenter</set>
+            </property>
+           </item>
+           <item row="1" column="2">
+            <property name="text">
+             <string>2600</string>
+            </property>
+           </item>
+           <item row="1" column="3">
+            <property name="text">
+             <string>A410</string>
+            </property>
+           </item>
+           <item row="2" column="0">
+            <property name="text">
+             <string>0x10</string>
+            </property>
+           </item>
+           <item row="2" column="1">
+            <property name="text">
+             <string>UIFCFG (Dual, Device 1)</string>
+            </property>
+           </item>
+           <item row="2" column="2">
+            <property name="text">
+             <string>2600</string>
+            </property>
+           </item>
+           <item row="2" column="3">
+            <property name="text">
+             <string>A410</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTableWidget" name="table_chainCfg_statusBlk_initDev1">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QTableWidget {
+    border: 2px solid white; /* 边框颜色与粗细调整为2px */
+    gridline-color: white; /* 网格线颜色 */
+    background-color: #f0f0f0; /* 单元格背景颜色 */
+    font-family: &quot;Calibri&quot;; /* 单元格字体 */
+    font-size: 10pt; /* 单元格字体大小 */
+}
+
+QTableWidget::item {
+}
+
+QHeaderView::section {
+    background-color: #f0f0f0; /* 表头背景颜色 */
+    padding: 5px; /* 表头内边距 */
+    border-style: none; /* 表头边框样式 */
+    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */
+    border-right: 2px solid white; /* 表头右边框宽度调整为2px */
+    font-family: &quot;Calibri&quot;; /* 表头字体 */
+    font-size: 10pt; /* 表头字体大小 */
+    font-weight: 600; /* 表头字体粗细 */
+}
+
+QTableCornerButton::section {
+    background-color: #f0f0f0; /* 角落按钮背景颜色 */
+    /* 添加其他您需要的样式 */
+}
+</string>
+           </property>
+           <attribute name="horizontalHeaderVisible">
+            <bool>false</bool>
+           </attribute>
+           <attribute name="verticalHeaderVisible">
+            <bool>false</bool>
+           </attribute>
+           <row>
+            <property name="text">
+             <string>0</string>
+            </property>
+           </row>
+           <row>
+            <property name="text">
+             <string>1</string>
+            </property>
+           </row>
+           <row>
+            <property name="text">
+             <string>2</string>
+            </property>
+           </row>
+           <row>
+            <property name="text">
+             <string>3</string>
+            </property>
+           </row>
+           <column>
+            <property name="text">
+             <string>Device1</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string/>
+            </property>
+           </column>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QFrame" name="frame_10">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>340</y>
+          <width>1407</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>23</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QFrame {
+    background-color: #a0a0a0; /* 设置背景颜色为灰色 */
+    border-radius: 10px; /* 设置边框圆角的半径为10px */
+}
+</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Box</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_25">
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="label_33">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>23</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font: 11pt &quot;Calibri&quot;;
+font-weight: 600; /* 设置字体粗细为600 */</string>
+           </property>
+           <property name="text">
+            <string>General Summary Information (Current Status)</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_20">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_statusRegClear_6">
+           <property name="minimumSize">
+            <size>
+             <width>110</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: #FFC000; /* 按钮背景颜色 1*/
+    color: white; /* 文字颜色 */
+    border-style: solid; /* 边框样式 */
+    border-width: 2px; /* 边框宽度 */
+    border-radius: 10px; /* 边框圆角半径 */
+    border-color: #BC8F00; /* 边框颜色 3*/
+    padding: 5px; /* 内边距 */
+	font: 10pt &quot;Calibri&quot;; /* 字体 */
+    font-weight: 600; /* 字体粗细 */
+}
+
+QPushButton:hover {
+    background-color: #FFDB69; /* 悬停时的背景颜色 0*/
+}
+
+QPushButton:pressed {
+    background-color: #DEA900; /* 按下时的背景颜色 2*/
+}
+</string>
+           </property>
+           <property name="text">
+            <string>CLERA COMM</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_statusRegReadBack_6">
+           <property name="minimumSize">
+            <size>
+             <width>110</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: #00B050; /* 按钮背景颜色 */
+    color: white; /* 文字颜色 */
+    border-style: solid; /* 边框样式 */
+    border-width: 2px; /* 边框宽度 */
+    border-radius: 10px; /* 边框圆角半径 */
+    border-color: #00823B; /* 边框颜色 */
+    padding: 5px; /* 内边距 */
+	font: 10pt &quot;Calibri&quot;; /* 字体 */
+    font-weight: 600; /* 字体粗细 */
+}
+
+QPushButton:hover {
+    background-color: #00EA6A; /* 悬停时的背景颜色 */
+}
+
+QPushButton:pressed {
+    background-color: #009644; /* 按下时的背景颜色 */
+}
+</string>
+           </property>
+           <property name="text">
+            <string>READ BACK</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="layoutWidget_2">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>390</y>
+          <width>521</width>
+          <height>194</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QTableWidget" name="table_chainCfg_statusBlk_curDev0">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QTableWidget {
+    border: 2px solid white; /* 边框颜色与粗细调整为2px */
+    gridline-color: white; /* 网格线颜色 */
+    background-color: #f0f0f0; /* 单元格背景颜色 */
+    font-family: &quot;Calibri&quot;; /* 单元格字体 */
+    font-size: 10pt; /* 单元格字体大小 */
+}
+
+QTableWidget::item {
+}
+
+QHeaderView::section {
+    background-color: #f0f0f0; /* 表头背景颜色 */
+    padding: 5px; /* 表头内边距 */
+    border-style: none; /* 表头边框样式 */
+    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */
+    border-right: 2px solid white; /* 表头右边框宽度调整为2px */
+    font-family: &quot;Calibri&quot;; /* 表头字体 */
+    font-size: 10pt; /* 表头字体大小 */
+    font-weight: 600; /* 表头字体粗细 */
+}
+
+QTableCornerButton::section {
+    background-color: #f0f0f0; /* 角落按钮背景颜色 */
+    /* 添加其他您需要的样式 */
+}
+</string>
+           </property>
+           <attribute name="horizontalHeaderVisible">
+            <bool>false</bool>
+           </attribute>
+           <attribute name="verticalHeaderVisible">
+            <bool>false</bool>
+           </attribute>
+           <row>
+            <property name="text">
+             <string>0</string>
+            </property>
+           </row>
+           <row>
+            <property name="text">
+             <string>1</string>
+            </property>
+           </row>
+           <row>
+            <property name="text">
+             <string>2</string>
+            </property>
+           </row>
+           <row>
+            <property name="text">
+             <string>3</string>
+            </property>
+           </row>
+           <column>
+            <property name="text">
+             <string>Address</string>
+            </property>
+            <property name="textAlignment">
+             <set>AlignCenter</set>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Register</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Expected {hex}</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Actual {hex}</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string/>
+            </property>
+           </column>
+           <item row="0" column="0">
+            <property name="text">
+             <string>0x10</string>
+            </property>
+           </item>
+           <item row="0" column="1">
+            <property name="text">
+             <string>UIFCFG (Signle AFE)</string>
+            </property>
+           </item>
+           <item row="0" column="2">
+            <property name="text">
+             <string>2600</string>
+            </property>
+           </item>
+           <item row="0" column="3">
+            <property name="text">
+             <string>A410</string>
+            </property>
+           </item>
+           <item row="1" column="0">
+            <property name="text">
+             <string>0x10</string>
+            </property>
+           </item>
+           <item row="1" column="1">
+            <property name="text">
+             <string>UIFCFG (Dual, Device 0)</string>
+            </property>
+            <property name="textAlignment">
+             <set>AlignCenter</set>
+            </property>
+           </item>
+           <item row="1" column="2">
+            <property name="text">
+             <string>2600</string>
+            </property>
+           </item>
+           <item row="1" column="3">
+            <property name="text">
+             <string>A410</string>
+            </property>
+           </item>
+           <item row="2" column="0">
+            <property name="text">
+             <string>0x10</string>
+            </property>
+           </item>
+           <item row="2" column="1">
+            <property name="text">
+             <string>UIFCFG (Dual, Device 1)</string>
+            </property>
+           </item>
+           <item row="2" column="2">
+            <property name="text">
+             <string>2600</string>
+            </property>
+           </item>
+           <item row="2" column="3">
+            <property name="text">
+             <string>A410</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTableWidget" name="table_chainCfg_statusBlk_curDev1">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QTableWidget {
+    border: 2px solid white; /* 边框颜色与粗细调整为2px */
+    gridline-color: white; /* 网格线颜色 */
+    background-color: #f0f0f0; /* 单元格背景颜色 */
+    font-family: &quot;Calibri&quot;; /* 单元格字体 */
+    font-size: 10pt; /* 单元格字体大小 */
+}
+
+QTableWidget::item {
+}
+
+QHeaderView::section {
+    background-color: #f0f0f0; /* 表头背景颜色 */
+    padding: 5px; /* 表头内边距 */
+    border-style: none; /* 表头边框样式 */
+    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */
+    border-right: 2px solid white; /* 表头右边框宽度调整为2px */
+    font-family: &quot;Calibri&quot;; /* 表头字体 */
+    font-size: 10pt; /* 表头字体大小 */
+    font-weight: 600; /* 表头字体粗细 */
+}
+
+QTableCornerButton::section {
+    background-color: #f0f0f0; /* 角落按钮背景颜色 */
+    /* 添加其他您需要的样式 */
+}
+</string>
+           </property>
+           <attribute name="horizontalHeaderVisible">
+            <bool>false</bool>
+           </attribute>
+           <attribute name="verticalHeaderVisible">
+            <bool>false</bool>
+           </attribute>
+           <row>
+            <property name="text">
+             <string>0</string>
+            </property>
+           </row>
+           <row>
+            <property name="text">
+             <string>1</string>
+            </property>
+           </row>
+           <row>
+            <property name="text">
+             <string>2</string>
+            </property>
+           </row>
+           <row>
+            <property name="text">
+             <string>3</string>
+            </property>
+           </row>
+           <column>
+            <property name="text">
+             <string>Device1</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string/>
+            </property>
+           </column>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
       <widget class="QWidget" name="tab_appCfg">
        <attribute name="title">
-        <string>Application Configuration</string>
+        <string>APP CFG</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,2,0,2,0,5,0,2">
         <item>
@@ -3399,7 +3486,7 @@ QTableCornerButton::section {
       </widget>
       <widget class="QWidget" name="tab_diagCfg">
        <attribute name="title">
-        <string>Diagnostic Configuration</string>
+        <string>DIAG CFG</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_7">
         <property name="spacing">
@@ -4296,7 +4383,7 @@ QTableCornerButton::section {
       </widget>
       <widget class="QWidget" name="tab_acquisition">
        <attribute name="title">
-        <string>Acquisition Request</string>
+        <string>ACQ RQST</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_16">
         <item>
@@ -5424,7 +5511,7 @@ QTableCornerButton::section {
       </widget>
       <widget class="QWidget" name="tab_meaAcqSum">
        <attribute name="title">
-        <string>MEA ACQ Summary Data</string>
+        <string>MEA ACQ SUM</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_6" stretch="0,6,0,4,0,4">
         <property name="spacing">
@@ -6184,7 +6271,7 @@ QTableCornerButton::section {
       </widget>
       <widget class="QWidget" name="tab_meaAcqDetail">
        <attribute name="title">
-        <string>MEA ACQ Detail Data</string>
+        <string>MEA ACQ DTL</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,4,0,7,0,4,0,7">
         <property name="spacing">
@@ -7144,7 +7231,7 @@ QTableCornerButton::section {
       </widget>
       <widget class="QWidget" name="tab_diagAcqData">
        <attribute name="title">
-        <string>Diagnostic ACQ Data</string>
+        <string>DIAG ACQ DATA</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,5,0,1,1,0,0,1,0,1">
         <property name="spacing">
@@ -8420,7 +8507,7 @@ QTableCornerButton::section {
       </widget>
       <widget class="QWidget" name="tab_cellBal">
        <attribute name="title">
-        <string>Cell Balance</string>
+        <string>CELL BAL</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_19" stretch="0,1,1,0,1,0,3,0,2,0,3">
         <item>
@@ -9737,7 +9824,7 @@ QTableCornerButton::section {
      <x>0</x>
      <y>0</y>
      <width>1453</width>
-     <height>23</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuPython">

@@ -32,13 +32,13 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
         # device id tables initial
         set_table_head(self.table_chainCfg_devIdBlk, table_chainCfg_devidHead,
-                       CHAIN_CFG_TABLE_HEHG, 85)
+                       CHAIN_CFG_TABLE_HEHG, 0)
         set_table_item(self.table_chainCfg_devIdBlk, CHAIN_CFG_TABLE_ROWHG,
                        table_chainCfg_devidItem)
 
         # uifcfg register tables initial
         set_table_head(self.table_chainCfg_uifcfgReg, table_chainCfg_uartIfHead,
-                       CHAIN_CFG_TABLE_HEHG, 85)
+                       CHAIN_CFG_TABLE_HEHG, 0)
         set_table_item(self.table_chainCfg_uifcfgReg, CHAIN_CFG_TABLE_ROWHG,
                        table_chainCfg_uartIfItem)
         set_table_item(self.table_chainCfg_addcfgReg, CHAIN_CFG_TABLE_ROWHG,
@@ -47,7 +47,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
         # address register tables initial
         set_table_head(self.table_chainCfg_addcfgReg, table_chainCfg_uartAddrHead,
-                       CHAIN_CFG_TABLE_HEHG, 85)
+                       CHAIN_CFG_TABLE_HEHG, 0)
         set_table_item(self.table_chainCfg_uifcfgReg,CHAIN_CFG_TABLE_ROWHG,
                        table_chainCfg_uartIfItem)
         set_table_item(self.table_chainCfg_addcfgReg, CHAIN_CFG_TABLE_ROWHG,

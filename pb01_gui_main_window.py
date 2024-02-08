@@ -1300,6 +1300,7 @@ class Ui_MainWindow(object):
         item = QtWidgets.QTableWidgetItem()
         self.table_appCfgPage_appCfg.setItem(0, 0, item)
         self.table_appCfgPage_appCfg.verticalHeader().setVisible(False)
+        self.table_appCfgPage_appCfg.verticalHeader().setMinimumSectionSize(0)
         self.verticalLayout_2.addWidget(self.table_appCfgPage_appCfg)
         self.frame_7 = QtWidgets.QFrame(self.tab_appCfg)
         self.frame_7.setMaximumSize(QtCore.QSize(16777215, 23))
@@ -1441,6 +1442,7 @@ class Ui_MainWindow(object):
         item = QtWidgets.QTableWidgetItem()
         self.table_appCfgPage_alertCfg.setItem(0, 0, item)
         self.table_appCfgPage_alertCfg.verticalHeader().setVisible(False)
+        self.table_appCfgPage_alertCfg.verticalHeader().setMinimumSectionSize(0)
         self.verticalLayout_2.addWidget(self.table_appCfgPage_alertCfg)
         self.frame_8 = QtWidgets.QFrame(self.tab_appCfg)
         self.frame_8.setMaximumSize(QtCore.QSize(16777215, 23))
@@ -1602,6 +1604,7 @@ class Ui_MainWindow(object):
         item = QtWidgets.QTableWidgetItem()
         self.table_appCfgPage_thresholdReg.setItem(0, 0, item)
         self.table_appCfgPage_thresholdReg.verticalHeader().setVisible(False)
+        self.table_appCfgPage_thresholdReg.verticalHeader().setMinimumSectionSize(0)
         self.verticalLayout_2.addWidget(self.table_appCfgPage_thresholdReg)
         self.frame_4 = QtWidgets.QFrame(self.tab_appCfg)
         self.frame_4.setMaximumSize(QtCore.QSize(16777215, 23))
@@ -1743,6 +1746,7 @@ class Ui_MainWindow(object):
         item = QtWidgets.QTableWidgetItem()
         self.table_appCfgPage_acqReg.setItem(0, 0, item)
         self.table_appCfgPage_acqReg.verticalHeader().setVisible(False)
+        self.table_appCfgPage_acqReg.verticalHeader().setMinimumSectionSize(0)
         self.verticalLayout_2.addWidget(self.table_appCfgPage_acqReg)
         self.verticalLayout_2.setStretch(1, 2)
         self.verticalLayout_2.setStretch(3, 2)
@@ -4675,7 +4679,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuAbout.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

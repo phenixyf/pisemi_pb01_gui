@@ -84,7 +84,7 @@ def add_led_txt(pLedNum, pTableWidget, pRow, pCol, pLabelList):
 
 """ CHAIN CONFIGURATION page tablewidget initial content """
 CHAIN_CFG_TABLE_HEHG = 30       # table header row height
-CHAIN_CFG_TABLE_ROWHG = 15      # table row height
+CHAIN_CFG_TABLE_ROWHG = 18      # table row height
 CHAIN_CFG_TABLE_STAHG = 120     # status block 不显示 header 的 4 个 table 的高度
 CHAIN_CFG_TABLE_RSTHG = 60      # reset block table 的高度
 

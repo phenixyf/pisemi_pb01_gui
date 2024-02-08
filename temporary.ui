@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1398</width>
+    <height>654</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>90</y>
+      <width>256</width>
+      <height>192</height>
+     </rect>
+    </property>
+    <attribute name="verticalHeaderMinimumSectionSize">
+     <number>10</number>
+    </attribute>
+    <row>
+     <property name="text">
+      <string>新建行</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>2</string>
+     </property>
+    </row>
+    <column>
+     <property name="text">
+      <string>新建列</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>1</string>
+     </property>
+    </column>
+    <item row="0" column="0">
+     <property name="text">
+      <string>11</string>
+     </property>
+     <property name="font">
+      <font>
+       <kerning>false</kerning>
+      </font>
+     </property>
+    </item>
+    <item row="0" column="1">
+     <property name="text">
+      <string>12</string>
+     </property>
+    </item>
+    <item row="1" column="0">
+     <property name="text">
+      <string>21</string>
+     </property>
+    </item>
+    <item row="1" column="1">
+     <property name="text">
+      <string>22</string>
+     </property>
+    </item>
+    <item row="2" column="0">
+     <property name="text">
+      <string>31</string>
+     </property>
+    </item>
+    <item row="2" column="1">
+     <property name="text">
+      <string>32</string>
+     </property>
+    </item>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1398</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

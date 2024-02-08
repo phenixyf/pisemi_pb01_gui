@@ -51,7 +51,7 @@ QTabBar::tab:!selected { /* 未被选中的Tab标题的样式 */
 }</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="tabBarAutoHide">
        <bool>false</bool>
@@ -2437,6 +2437,9 @@ QTableCornerButton::section {
           <attribute name="verticalHeaderVisible">
            <bool>false</bool>
           </attribute>
+          <attribute name="verticalHeaderMinimumSectionSize">
+           <number>0</number>
+          </attribute>
           <row>
            <property name="text">
             <string>0</string>
@@ -2715,6 +2718,9 @@ QTableCornerButton::section {
           <attribute name="verticalHeaderVisible">
            <bool>false</bool>
           </attribute>
+          <attribute name="verticalHeaderMinimumSectionSize">
+           <number>0</number>
+          </attribute>
           <row>
            <property name="text">
             <string>0</string>
@@ -2987,6 +2993,9 @@ QTableCornerButton::section {
           </property>
           <attribute name="verticalHeaderVisible">
            <bool>false</bool>
+          </attribute>
+          <attribute name="verticalHeaderMinimumSectionSize">
+           <number>0</number>
           </attribute>
           <row>
            <property name="text">
@@ -3310,6 +3319,9 @@ QTableCornerButton::section {
           </property>
           <attribute name="verticalHeaderVisible">
            <bool>false</bool>
+          </attribute>
+          <attribute name="verticalHeaderMinimumSectionSize">
+           <number>0</number>
           </attribute>
           <row>
            <property name="text">

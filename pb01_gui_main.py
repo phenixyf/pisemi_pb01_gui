@@ -45,13 +45,9 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         set_table_item(self.table_chainCfg_addcfgReg, CHAIN_CFG_TABLE_ROWHG,
                        table_chainCfg_uartAddrItem)
 
-        set_table_head(self.table_chainCfg_pw, table_chainCfg_pwHeaders,
-                       CHAIN_CFG_TABLE_HEHG, 0)
         set_table_item(self.table_chainCfg_pw, 30,
                        table_chainCfg_pwItems)
 
-        set_table_head(self.table_chainCfg_rstReg, table_chainCfg_rstHeaders,
-                       CHAIN_CFG_TABLE_HEHG, 0)
         set_table_item(self.table_chainCfg_rstReg, CHAIN_CFG_TABLE_ROWHG,
                        table_chainCfg_rstItems)
 
@@ -78,8 +74,6 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         ledDevMgPageDcByte, ledDevMgPageAlertPk = adjust_devMgPage_tables(self.table_devMgPage_init,
                                                                           self.table_devMgPage_dc,
                                                                           self.table_devMgPage_cur)
-
-
 
         ''' initial application configuration page '''
         set_table_head(self.table_appCfgPage_appCfg, table_appCfgPage_headers,

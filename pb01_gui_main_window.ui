@@ -51,7 +51,7 @@ QTabBar::tab:!selected { /* 未被选中的Tab标题的样式 */
 }</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="tabBarAutoHide">
        <bool>false</bool>
@@ -444,9 +444,6 @@ QTableCornerButton::section {
              <attribute name="verticalHeaderVisible">
               <bool>false</bool>
              </attribute>
-             <attribute name="verticalHeaderMinimumSectionSize">
-              <number>0</number>
-             </attribute>
              <row>
               <property name="text">
                <string>0</string>
@@ -563,9 +560,6 @@ QTableCornerButton::section {
              </property>
              <attribute name="verticalHeaderVisible">
               <bool>false</bool>
-             </attribute>
-             <attribute name="verticalHeaderMinimumSectionSize">
-              <number>0</number>
              </attribute>
              <row>
               <property name="text">
@@ -687,9 +681,6 @@ QTableCornerButton::section {
              </property>
              <attribute name="verticalHeaderVisible">
               <bool>false</bool>
-             </attribute>
-             <attribute name="verticalHeaderMinimumSectionSize">
-              <number>0</number>
              </attribute>
              <row>
               <property name="text">
@@ -929,9 +920,6 @@ QTableCornerButton::section {
           <attribute name="verticalHeaderVisible">
            <bool>false</bool>
           </attribute>
-          <attribute name="verticalHeaderMinimumSectionSize">
-           <number>0</number>
-          </attribute>
           <row>
            <property name="text">
             <string>0</string>
@@ -950,6 +938,11 @@ QTableCornerButton::section {
           <row>
            <property name="text">
             <string>3</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>4</string>
            </property>
           </row>
           <column>
@@ -1125,7 +1118,7 @@ QPushButton:pressed {
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>16777215</height>
+            <height>100</height>
            </size>
           </property>
           <property name="styleSheet">
@@ -1163,12 +1156,14 @@ QTableCornerButton::section {
           <attribute name="verticalHeaderVisible">
            <bool>false</bool>
           </attribute>
-          <attribute name="verticalHeaderMinimumSectionSize">
-           <number>0</number>
-          </attribute>
           <row>
            <property name="text">
             <string>0</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>1</string>
            </property>
           </row>
           <column>
@@ -1221,19 +1216,6 @@ QTableCornerButton::section {
            </property>
           </item>
          </widget>
-        </item>
-        <item>
-         <spacer name="verticalSpacer_3">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
         </item>
        </layout>
       </widget>

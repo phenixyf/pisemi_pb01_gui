@@ -100,15 +100,15 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
         ''' initial diagnostic configuration page '''
         set_table_head(self.table_diagCfgPage_testCurCfgReg, table_diagCfgPage_testCfg_headers,
-                       CHAIN_CFG_TABLE_HEHG, 120)
+                       CHAIN_CFG_TABLE_HEHG, 0)
         set_table_item(self.table_diagCfgPage_testCurCfgReg, CHAIN_CFG_TABLE_ROWHG,
                        table_diagCfgPage_testCfg_items)
         set_table_head(self.table_diagCfgPage_diagThresReg, table_diagCfgPage_diagThre_headers,
-                       CHAIN_CFG_TABLE_HEHG, 360)
+                       CHAIN_CFG_TABLE_HEHG, 0)
         set_table_item(self.table_diagCfgPage_diagThresReg, CHAIN_CFG_TABLE_ROWHG,
                        table_diagCfgPage_diagThre_items)
         set_table_head(self.table_diagCfgPage_aluTestDiagReg, table_diagCfgPage_aluTeDiag_headers,
-                       CHAIN_CFG_TABLE_HEHG, 150)
+                       CHAIN_CFG_TABLE_HEHG, 0)
         set_table_item(self.table_diagCfgPage_aluTestDiagReg, CHAIN_CFG_TABLE_ROWHG,
                        table_diagCfgPage_aluTeDiag_items)
 

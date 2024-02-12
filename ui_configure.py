@@ -188,25 +188,18 @@ table_devMg_curItems = [
 table_appCfgPage_headers = ["Address", "Register", "Pending (hex)", "Pending Value (bin)", "Pending Field",
                            "Pending Value (bin)", "Pending Field", "Device 0 (hex)", "Device 1 (hex)"]
 table_appCfgPage_appCfgReg_items = [
-    ["0x12", "STATUSCFG", "3FF", "0111111", "STATUSCFG[15:8]", "1111111", "STATUSCFG[7:0]", "3FFF", "3FFF"],
-    ["0x13", "DEVCFG", "2000", "010", "IIRFC[2:0]", "000", "DEVCFG[10:8]", "2000", "2000"],
-    ["0x14", "DEVCFG", "2000", "010", "IIRFC[2:0]", "000", "DEVCFG[10:8]", "2000", "2000"],
-    ["0x15", "DEVCFG", "2000", "010", "IIRFC[2:0]", "000", "DEVCFG[10:8]", "2000", "2000"],
-    ["0x16", "DEVCFG", "2000", "010", "IIRFC[2:0]", "000", "DEVCFG[10:8]", "2000", "2000"]
+    ["0x12", "STATUSCFG",   "3FF",  "01111111", "STATUSCFG[15:8]", "1111111",  "STATUSCFG[7:0]", "3FFF", "3FFF"],
+    ["0x13", "DEVCFG",      "2000", "010",      "IIRFC[2:0]",      "000",      "DEVCFG[10:8]",   "2000", "2000"],
+    ["0x14", "POLARITYCFG", "0000", "00000000", "POLARITY[15:8]",  "00000000", "POLARITY[7:0]",  "0000", "0000"],
+    ["0x15", "AUXGPIOCFG",  "0000", "010",      "GPIOEN[7:0]",     "00000000", "GPIOMODE[7:0]",  "FF00", "FF00"],
+    ["0x16", "AUXREFCFG",   "0000", "00000000", "THERMMODE[1:0]",  "00000000", "AUXREFSEL[7:0]", "0000", "0000"]
 ]
 
 table_appCfgPage_alertCfgReg_items = [
-    ["0x18", "ALRTOVCFG", "FFFF", "1111111", "ALRTAUXUVEN[7:0]", "1111111", "ALRTAUXUVEN[7:0]", "0000", "0000"],
-    ["0x19", "ALRTUVCFG", "FFFF", "1111111", "ALRTAUXUVEN[7:0]", "1111111", "ALRTAUXUVEN[7:0]", "0000", "0000"],
-    ["0x1A", "ALRTAUXOVCFG", "FFFF", "1111111", "ALRTAUXUVEN[7:0]", "1111111", "ALRTAUXUVEN[7:0]", "0000", "0000"],
-    ["0x1G", "ALRTAUXUVCFG", "FFFF", "1111111", "ALRTAUXUVEN[7:0]", "1111111", "ALRTAUXUVEN[7:0]", "0000", "0000"]
-]
-
-table_appCfgPage_acqReg_items = [
-    ["0x40", "ACQDLY1", "1501", "2.106", "CELLDLY(ms)", "0.096", "SWDLY(ms)", "0000", "0000"],
-    ["0x41", "ACQDLY2", "3220", "2.106", "CELLDLY(ms)", "0.096", "SWDLY(ms)", "0000", "0000"],
-    ["0x42", "ACQCHSEL", "FFFF", "2.106", "CELLDLY(ms)", "0.096", "SWDLY(ms)", "0000", "0000"],
-    ["0x43", "ACQAUXSEL", "FFFF", "2.106", "CELLDLY(ms)", "0.096", "SWDLY(ms)", "0000", "0000"]
+    ["0x18", "ALRTOVCFG",    "FFFF", "1111111", "ALRTOVEN[15:8]",    "1111111", "ALRTOVEN[7:0]",    "0000", "0000"],
+    ["0x19", "ALRTUVCFG",    "FFFF", "1111111", "ALRTUVEN[15:8]",    "1111111", "ALRTUVEN[7:0]",    "0000", "0000"],
+    ["0x1A", "ALRTAUXOVCFG", "FFFF", "1111111", "ALRTAUXOVEN[15:8]", "1111111", "ALRTAUXOVEN[7:0]", "0000", "0000"],
+    ["0x1G", "ALRTAUXUVCFG", "FFFF", "1111111", "ALRTAUXUVEN[15:8]", "1111111", "ALRTAUXUVEN[7:0]", "0000", "0000"]
 ]
 
 table_appCfgPage_theresholdReg_items = [
@@ -226,45 +219,49 @@ table_appCfgPage_theresholdReg_items = [
     ["0x2D", "TEMPTHREG",       "0C48",     "120",      "C",           " ", " ", "0C48",   "0C48"]
 ]
 
+table_appCfgPage_acqReg_items = [
+    ["0x40", "ACQDLY1",   "1501", "2.106",    "CELLDLY(ms)",        "0.096",    "SWDLY(ms)",         "0000", "0000"],
+    ["0x41", "ACQDLY2",   "3220", "1.200",    "AUXDLY (ms)",        "12.768",   "CELLOPNDLY (ms)",   "0000", "0000"],
+    ["0x42", "ACQCHSEL",  "FFFF", "11111111", "CELLEN[15:8] (bin)", "11111111", "CELLEN[7:0] (bin)", "0000", "0000"],
+    ["0x43", "ACQAUXSEL", "FFFF", " ",        " ",                  "11111111", "AUXEN[7:0] (bin)",  "0000", "0000"]
+]
+
 """  diagnostic configuration page tablewidget initial content """
 table_diagCfgPage_testCfg_headers = ["Address", "Register", "Pending (hex)", "Pending Value (bin)", "Pending Field",
                            "Pending Value (bin)", "Pending Field", "Pending Value (bin)", "Pending Field",
                             "Pending Value (bin)", "Pending Field", "Device 0 (hex)", "Device 1 (hex)"]
 
 table_diagCfgPage_testCfg_items = [
-    ["0x1C", "CTSTCFG1", "0001", "00", "HVMUXTSTEN[1:0]", "0", "CTSTPOL1", "0", "CTSTMAN", "1",
-                                                "CTSTEN[16]", "0000", "0000","0000"],
-    ["0x1D", "CTSTCFG1", "0001", "00", "HVMUXTSTEN[1:0]", "0", "CTSTPOL1", "0", "CTSTMAN", "1",
-                                                "CTSTEN[16]", "0000", "0000","0000"],
-    ["0x1E", "CTSTCFG1", "0001", "00", "HVMUXTSTEN[1:0]", "0", "CTSTPOL1", "0", "CTSTMAN", "1",
-                                                "CTSTEN[16]", "0000", "0000","0000"]
+    ["0x1C", "CTSTCFG1",  "0001", "00",   "HVMUXTSTEN[1:0]", "0",    "CTSTPOL1",     "0",    "CTSTMAN",       "1",    "CTSTEN[16]",    "0000", "0000"],
+    ["0x1D", "CTSTCFG2",  "FFFF", "1111", "CTSTEN[15:12]",   "1111", "CTSTEN[11:8]", "1111", "CTSTEN[7:5]",   "1111", "CTSTEN[3:0]",   "0000", "0000"],
+    ["0x1E", "AUXTSTCFG", "00FF", "00",   "AUXTSTPOL",       "0",    "AUXTSTMAN",    "1111", "AUXTSTEN[7:4]", "1111", "AUXTSTEN[3:0]", "0000", "0000"]
 ]
 
 table_diagCfgPage_diagThre_headers = ["Address", "Register", "Pending (hex)", "Pending Value", "Pending Unit",
                                       "Pending Value", "Pending Unit", "Device 0 (hex)", "Device 1 (hex)"]
 table_diagCfgPage_diagThre_items = [
-    ["0x2F", "BALSHTUVTHREG", "0000", "0.000", "V", " ", " ", "0000", "0000"],
-    ["0x30", "BALSHTUVTHREG", "0000", "0.000", "V", " ", " ", "0000", "0000"],
-    ["0x31", "BALSHTUVTHREG", "0000", "0.000", "V", " ", " ", "0000", "0000"],
-    ["0x32", "BALSHTUVTHREG", "0000", "0.000", "V", " ", " ", "0000", "0000"],
-    ["0x33", "BALSHTUVTHREG", "0000", "0.000", "V", " ", " ", "0000", "0000"],
-    ["0x34", "BALSHTUVTHREG", "0000", "0.000", "V", " ", " ", "0000", "0000"],
-    ["0x35", "BALSHTUVTHREG", "0000", "0.000", "V", " ", " ", "0000", "0000"],
-    ["0x36", "BALSHTUVTHREG", "0000", "0.000", "V", " ", " ", "0000", "0000"],
-    ["0x37", "BALSHTUVTHREG", "0000", "0.000", "V", " ", " ", "0000", "0000"],
-    ["0x38", "BALSHTUVTHREG", "0000", "0.000", "V", " ", " ", "0000", "0000"],
-    ["0x39", "BALSHTUVTHREG", "0000", "0.000", "V", " ", " ", "0000", "0000"],
-    ["0x3A", "BALSHTUVTHREG", "0000", "0.000", "V", " ", " ", "0000", "0000"],
-    ["0x3B", "BALSHTUVTHREG", "0000", "0.000", "V", " ", " ", "0000", "0000"]
+    ["0x2F", "BALSHTUVTHREG",   "0000", "0.000",   "V",           " ", " ", "0000", "0000"],
+    ["0x30", "BALOVTHREG",      "7FFF", "+2.500",  "V(Bipolar)",  " ", " ", "7FFF", "7FFF"],
+    ["0x31", "BALUVTHREG",      "8000", "-2.500",  "V(Bipolar)",  " ", " ", "8000", "8000"],
+    ["0x32", "CELLOPNOVTHREG",  "FFFF", "5.000",   "V",           " ", " ", "FFFF", "FFFF"],
+    ["0x33", "CELLOPNUVTHREG",  "0000", "0.000",   "V",           " ", " ", "0000", "0000"],
+    ["0x34", "BUSOPNOVTHREG",   "7FFF", "+2.500",  "V(Bipolar)",  " ", " ", "7FFF", "7FFF"],
+    ["0x35", "BUSOPNUVTHREG",   "8000", "-2.500",  "V(Bipolar)",  " ", " ", "8000", "8000"],
+    ["0x36", "CELLHVMOVTHREG",  "FFFF", "5.000",   "V",           " ", " ", "FFFF", "FFFF"],
+    ["0x37", "CELLHVMUVTHREG",  "0000", "0.000",   "V",           " ", " ", "0000", "0000"],
+    ["0x38", "BUSHVMOVTHREG",   "7FFF", "+2.500",  "V(Bipolar)",  " ", " ", "7FFF", "7FFF"],
+    ["0x39", "BUSHVMUVTHREG",   "8000", "-2.500",  "V(Bipolar)",  " ", " ", "8000", "8000"],
+    ["0x3A", "AUXRDIAGOVTHREG", "FFFF", "2.500",   "V(Absolute)", " ", " ", "FFFF", "FFFF"],
+    ["0x3B", "AUXRDIAGUVTHREG", "0000", "0.000",   "V(Absolute)", " ", " ", "0000", "0000"]
 ]
 
 table_diagCfgPage_aluTeDiag_headers = ["Address", "Register", "Pending (hex)", "Pending Value", "Pending Unit",
                                       "Pending Value", "Pending Unit", "Device 0 (hex)", "Device 1 (hex)"]
 table_diagCfgPage_aluTeDiag_items = [
-    ["0x3C", "BALSHTUVTHREG", "0000", " ", " ", " ", " ", "0000", "0000"],
-    ["0x3D", "BALSHTUVTHREG", "0000", " ", " ", " ", " ", "0000", "0000"],
-    ["0x3E", "BALSHTUVTHREG", "0000", " ", " ", " ", " ", "0000", "0000"],
-    ["0x3F", "BALSHTUVTHREG", "0000", " ", " ", " ", " ", "0000", "0000"]
+    ["0x3C", "ALUTESTAREG", "0000", " ", " ", " ", " ", "0000", "0000"],
+    ["0x3D", "ALUTESTAREG", "0000", " ", " ", " ", " ", "0000", "0000"],
+    ["0x3E", "ALUTESTAREG", "0000", " ", " ", " ", " ", "0000", "0000"],
+    ["0x3F", "ALUTESTAREG", "0000", " ", " ", " ", " ", "0000", "0000"]
 ]
 
 """ measurement acquisition detailed data page tablewidget initial content """
@@ -728,15 +725,15 @@ def adjust_devMgPage_tables(pInit, pDC, pCur):
 
 
 def adjust_appCfgPage_tables(pAppCfgTable, pAlertTable, pThreTable, pAcqTable):
-    pAppCfgTable.setColumnWidth(0, 100)
+    pAppCfgTable.setColumnWidth(0, 120)
     pAppCfgTable.setColumnWidth(1, 150)
-    pAppCfgTable.setColumnWidth(2, 100)
+    pAppCfgTable.setColumnWidth(2, 120)
     pAppCfgTable.setColumnWidth(3, 300)
     pAppCfgTable.setColumnWidth(4, 300)
     pAppCfgTable.setColumnWidth(5, 300)
     pAppCfgTable.setColumnWidth(6, 300)
-    pAppCfgTable.setColumnWidth(7, 100)
-    pAppCfgTable.setColumnWidth(8, 100)
+    pAppCfgTable.setColumnWidth(7, 120)
+    pAppCfgTable.setColumnWidth(8, 120)
 
     for c in range(10):
         pAlertTable.setColumnWidth(c, pAppCfgTable.columnWidth(c))

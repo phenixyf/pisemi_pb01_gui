@@ -1615,7 +1615,7 @@ class Ui_MainWindow(object):
         self.tab_diagCfg = QtWidgets.QWidget()
         self.tab_diagCfg.setObjectName("tab_diagCfg")
         self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.tab_diagCfg)
-        self.verticalLayout_7.setSpacing(2)
+        self.verticalLayout_7.setSpacing(0)
         self.verticalLayout_7.setObjectName("verticalLayout_7")
         self.frame_21 = QtWidgets.QFrame(self.tab_diagCfg)
         self.frame_21.setMaximumSize(QtCore.QSize(16777215, 23))
@@ -1697,7 +1697,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_32.addWidget(self.pushButton_73)
         self.verticalLayout_7.addWidget(self.frame_21)
         self.table_diagCfgPage_testCurCfgReg = QtWidgets.QTableWidget(self.tab_diagCfg)
-        self.table_diagCfgPage_testCurCfgReg.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.table_diagCfgPage_testCurCfgReg.setMinimumSize(QtCore.QSize(0, 0))
+        self.table_diagCfgPage_testCurCfgReg.setMaximumSize(QtCore.QSize(16777215, 150))
         self.table_diagCfgPage_testCurCfgReg.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
@@ -1844,6 +1845,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_33.addWidget(self.pushButton_75)
         self.verticalLayout_7.addWidget(self.frame_22)
         self.table_diagCfgPage_diagThresReg = QtWidgets.QTableWidget(self.tab_diagCfg)
+        self.table_diagCfgPage_diagThresReg.setMinimumSize(QtCore.QSize(0, 430))
         self.table_diagCfgPage_diagThresReg.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.table_diagCfgPage_diagThresReg.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
@@ -2001,7 +2003,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_34.addWidget(self.pushButton_77)
         self.verticalLayout_7.addWidget(self.frame_23)
         self.table_diagCfgPage_aluTestDiagReg = QtWidgets.QTableWidget(self.tab_diagCfg)
-        self.table_diagCfgPage_aluTestDiagReg.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.table_diagCfgPage_aluTestDiagReg.setMinimumSize(QtCore.QSize(0, 0))
+        self.table_diagCfgPage_aluTestDiagReg.setMaximumSize(QtCore.QSize(16777215, 180))
         self.table_diagCfgPage_aluTestDiagReg.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
@@ -4538,7 +4541,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuAbout.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(3)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

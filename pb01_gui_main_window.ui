@@ -51,7 +51,7 @@ QTabBar::tab:!selected { /* 未被选中的Tab标题的样式 */
 }</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <property name="tabBarAutoHide">
        <bool>false</bool>
@@ -3177,7 +3177,7 @@ QTableCornerButton::section {
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_7">
         <property name="spacing">
-         <number>2</number>
+         <number>0</number>
         </property>
         <item>
          <widget class="QFrame" name="frame_21">
@@ -3342,10 +3342,16 @@ QPushButton:pressed {
         </item>
         <item>
          <widget class="QTableWidget" name="table_diagCfgPage_testCurCfgReg">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>16777215</height>
+            <height>150</height>
            </size>
           </property>
           <property name="styleSheet">
@@ -3630,6 +3636,12 @@ QPushButton:pressed {
         </item>
         <item>
          <widget class="QTableWidget" name="table_diagCfgPage_diagThresReg">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>430</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
@@ -3943,10 +3955,16 @@ QPushButton:pressed {
         </item>
         <item>
          <widget class="QTableWidget" name="table_diagCfgPage_aluTestDiagReg">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>16777215</height>
+            <height>180</height>
            </size>
           </property>
           <property name="styleSheet">

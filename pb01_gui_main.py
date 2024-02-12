@@ -61,11 +61,23 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         set_chainPage_ifid_color(2, self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
                             self.table_chainCfg_addcfgReg)
 
-        adjust_chainPage_pw_rst_tables(self.table_chainCfg_pw, self.table_chainCfg_rstReg)
+        ledChainPageDev0, ledChainPageDev1 = adjust_chainPage_pw_rst_tables(self.table_chainCfg_pw,
+                                                                            self.table_chainCfg_rstReg)
 
-        # status power up dev0 table initial
-        # ledList_pageChain_st1pu_dev0, ledList_pageChain_st2pu_dev0, ledList_pageChain_fm1pu_dev0, \
-        # ledList_pageChain_fm2pu_dev0 = init_status_led_table_dev0(self.table_chainCfg_statusBlk_pwrUpDev0, 150)
+        ''' initial device manage page '''
+        set_table_item(self.table_devMgPage_init, CHAIN_CFG_TABLE_ROWHG,
+                       table_devMg_iniItems)
+
+        set_table_item(self.table_devMgPage_dc, CHAIN_CFG_TABLE_ROWHG,
+                       table_devMg_dcItems)
+
+        set_table_item(self.table_devMgPage_cur, CHAIN_CFG_TABLE_ROWHG,
+                       table_devMg_curItems)
+
+        ledDevMgPageInitDev0, ledDevMgPageInitDev1, ledDevMgPageCurDev0, ledDevMgPageCurDev1, \
+        ledDevMgPageDcByte, ledDevMgPageAlertPk = adjust_devMgPage_tables(self.table_devMgPage_init,
+                                                                          self.table_devMgPage_dc,
+                                                                          self.table_devMgPage_cur)
 
 
 

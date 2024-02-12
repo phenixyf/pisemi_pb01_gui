@@ -97,6 +97,13 @@ LED_FME1_LAB = ["OSC", "----", "----", "----", "----", "VAA", "VDD", "VIO",
                 "AGND2", "AGND", "DGND", "IOGND", "HVOV", "HVUV", "TEMP2", "TEMP1"]
 LED_FME2_LAB = ["HVHDRM", "ACQTO", "----", "----", "ADC1ZS", "ADC1FS", "ADC2ZS", "ADC2FS",
                 "USER", "MODE", "AINIT", "DINIT", "OTPERR", "REGECC", "MBIST", "CBIST"]
+LED_LAB_DC = ["INTFC", "FMEA", "PROC", "DIAG", "OV", "UV", "AUXOV", "AUXUV"]
+LED_LAB_ALERT0 = ["ACQ", "RESET", "RJCT", "UIF", "OV", "UV", "ALTOV", "ALTUV",
+                "AUXOV", "AUXUV", "DIAGOV", "DIAGUV", "MM", "CBAL", "FMEA2", "FMEA1"]
+LED_LAB_ALERT1 = ["LOC31", "LOC30", "LOC29", "LOC28", "LOC27", "LOC26", "LOC25", "LOC24",
+                "LOC23", "LOC22", "LOC21", "LOC20", "LOC19", "LOC18", "LOC17", "LOC16"]
+LED_LAB_ALERT2 = ["LOC15", "LOC14", "LOC13", "LOC12", "LOC11", "LOC10", "LOC9", "LOC8",
+                "LOC7", "LOC6", "LOC5", "LOC4", "LOC3", "LOC2", "LOC1", "LOC0"]
 LED_LAB_16 = ["LED15", "LED14", "LED13", "LED12", "LED11", "LED10", "LED9", "LED8",
                 "LED7", "LED6", "LED5", "LED4", "LED3", "LED2", "LED1", "LED0"]
 LED_LAB_8 = ["LED7", "LED6", "LED5", "LED4", "LED3", "LED2", "LED1", "LED0"]
@@ -134,7 +141,7 @@ table_chainCfg_uartAddrItem = [
 
 table_chainCfg_pwHeaders = ["Address", "Register", "FORCEPOR (hex)", "Device 0 (hex)", "", "Device 1 (hex)", ""]
 table_chainCfg_pwItems = [
-["0x04", "STATUS1", "5000", "5000", "", "5000", ""],
+    ["0x04", "STATUS1", "5000", "5000", "", "5000", ""],
     ["0x05", "STATUS2", "0080", "0080", "", "0080", ""],
     ["0x06", "FMEA1",   "0000", "0000", "", "0000", ""],
     ["0x07", "FMEA2",   "0000", "0000", "", "0000", ""]
@@ -142,25 +149,37 @@ table_chainCfg_pwItems = [
 
 table_chainCfg_rstHeaders = ["Address", "Register", "Expect (hex)", "Device 0 (hex)", "", "Device 1 (hex)", ""]
 table_chainCfg_rstItems = [
-["0x0F", "RESTCTRL", "0001", "0000", "", "0000", ""]
+["0x0F", "RESTCTRL", "0001", "0000", " ", "0000", " "]
 ]
 
-table_chainCfg_staHead_dev1 = ["Device 1 (hex)", ""]
-table_chainCfg_staItem_dev1 = [
-    ["4000", ""],
-    ["0000", ""],
-    ["0000", ""],
-    ["0000", ""]
+""" device manage page tablewidget initial content """
+table_devMg_iniItems = [
+    ["Address", "Register", "Device 0 (hex)", " ", " ", " ", " ",
+                            "Device 1 (hex)", " ", " ", " ", " "],
+    ["0x04", "STATUS1", "5000", " ", " ", " ", "", "5000", " ", " ", "", ""],
+    ["0x05", "STATUS2", "0080", " ", " ", " ", "", "0080", " ", " ", "", ""],
+    ["0x06", "FMEA1",   "0000", " ", " ", " ", "", "0000", " ", " ", "", ""],
+    ["0x07", "FMEA2",   "0000", " ", " ", " ", "", "0000", " ", " ", "", ""]
 ]
 
-table_chainCfg_rstHead_dev0 = ["Address", "Register", "FORCEPOR (hex)", "Device 0 (hex)", ""]
-table_chainCfg_rstItem_dev0 = [
-    ["0x0F", "RESETCTRL", "0001", "0000"]
+table_devMg_dcItems = [
+    ["DCBYTE", "80", " "],
+    ["ALERTPACKET", "5000_0000_0000_0001/3", " "],
+    ["ALERTPACKET", "5000_0000_0000_0001/3", " "],
+    ["ALERTPACKET", "5000_0000_0000_0001/3", " "]
 ]
 
-table_chainCfg_rstHead_dev1 = ["Device 1 (hex)"]
-table_chainCfg_rstItem_dev1 = [
-    ["0000"]
+table_devMg_curItems = [
+    ["Address", "Register", "Device 0 (hex)", " ", " ", " ", " ",
+                                "Device 1 (hex)", " ", " ", " ", " "],
+    ["0x04", "STATUS1",     "5000", " ", " ", " ", "", "5000", " ", " ", " ", ""],
+    ["0x05", "STATUS2",     "0080", " ", " ", " ", "", "0080", " ", " ", " ", ""],
+    ["0x06", "FMEA1",       "0000", " ", " ", " ", "", "0000", " ", " ", " ", ""],
+    ["0x07", "FMEA2",       "0000", " ", " ", " ", "", "0000", " ", " ", " ", ""],
+    ["0x08", "TEMPREG1",    "0960", "26.9", "C", "80.3", "F", "0960", "26.9", "C", "80.3", "F"],
+    ["0x09", "TEMPREG2",    "0960", "26.9", "C", "80.3", "F", "0960", "26.9", "C", "80.3", "F"],
+    ["0x0A", "GPIODATA",    "0000", "00", "GPIODOUT[7:0]", "00", "GPIODIN[7:0]",
+                            "0000", "00", "GPIODOUT[7:0]", "00", "GPIODIN[7:0]", "0000"]
 ]
 
 """ application configuration page tablewidget initial content """
@@ -477,100 +496,6 @@ def set_table_item(pTableWidget, pRowHeight, pItemData=[]):
     pTableWidget.resizeColumnsToContents()
 
 
-
-def init_status_led_table_dev0(pTableWidget, pTableHeight):
-    """
-    初始化 chain configuration page，status dev0 的 3 个 table
-    这三个 table 会在最后一列插入 led 串
-    :param pTableWidget: 要初始化的 table
-                         有 powerup, initial, current 3 个 table，每个 tabale 初始化时分别调用该函数
-    :param pTableHeight: 设置 table 的总高度
-                         powerup 会显示标题栏，另外两个不用，所以总高度不一样
-    :return: 该函数会返回 4 行 led 串的 4 个列表，每个列表对应一行 led 串。
-             返回各列表中的每个元素，分别对应各 led 对象，进而可以用来更新 led 的颜色
-             ledList0 - STATUS1 led 串
-             ledList1 - STATUS2 led 串
-             ledList2 - FMEA1 led 串
-             ledList3 - FMEA2 led 串
-    """
-    pTableWidget.setHorizontalHeaderLabels(table_chainCfg_staHead_dev0)  # 设置标题内容
-    pTableWidget.horizontalHeader().setDefaultAlignment(Qt.AlignCenter)  # 设置标题内容水平居中对齐
-    pTableWidget.horizontalHeader().setFixedHeight(CHAIN_CFG_TABLE_HEHG)  # 设置标题行高度
-    pTableWidget.setFixedHeight(pTableHeight)  # 设置 table 高度
-
-    pTableWidget.setRowCount(4)
-    for row in range(4):
-        for column in range(pTableWidget.columnCount()):
-            # 设置单元格的初始值
-            pTableWidget.setItem(row, column, QTableWidgetItem(table_chainCfg_staItem_dev0[row][column]))
-            pTableWidget.item(row, column).setTextAlignment(Qt.AlignCenter)  # 设置单元格内容水平垂直居中对齐
-        # 设置行高度
-        pTableWidget.setRowHeight(row, CHAIN_CFG_TABLE_ROWHG)
-        # 设置背景
-        pTableWidget.item(row, 3).setBackground(QColor("#E2F0D9"))  # 设置绿色背景色
-        pTableWidget.item(row, 4).setBackground(QColor("#FFF2CC"))  # 设置黄色背景色
-
-    # 设置列宽自适应
-    pTableWidget.resizeColumnsToContents()
-
-    # 插入 LED 图标对象
-    ledList0 = add_led_txt(16, pTableWidget, 0, 4, LED_STA1_LAB)  # 第一行插入
-    ledList1 = add_led_txt(16, pTableWidget, 1, 4, LED_STA2_LAB)  # 第二行插入
-    ledList2 = add_led_txt(16, pTableWidget, 2, 4, LED_FME1_LAB)  # 第三行插入
-    ledList3 = add_led_txt(16, pTableWidget, 3, 4, LED_FME2_LAB)  # 第四行插入
-    # 设置 LED 列宽度
-    pTableWidget.setColumnWidth(4, 450)
-
-    # 返回各 led 对象
-    return ledList0, ledList1, ledList2, ledList3
-
-
-def init_status_led_table_dev1(pTableWidget, pTableHeight):
-    """
-    初始化 chain configuration page，status dev1 的 3 个 table
-    这三个 table 会在最后一列插入 led 串
-    :param pTableWidget: 要初始化的 table
-                         有 powerup, initial, current 3 个 table，每个 tabale 初始化时分别调用该函数
-    :param pTableHeight: 设置 table 的总高度
-                         powerup 会显示标题栏，另外两个不用，所以总高度不一样
-    :return: 该函数会返回 4 行 led 串的 4 个列表，每个列表对应一行 led 串。
-             返回各列表中的每个元素，分别对应各 led 对象，进而可以用来更新 led 的颜色
-             ledList0 - STATUS1 led 串
-             ledList1 - STATUS2 led 串
-             ledList2 - FMEA1 led 串
-             ledList3 - FMEA2 led 串
-    """
-    pTableWidget.setHorizontalHeaderLabels(table_chainCfg_staHead_dev1)  # 设置标题内容
-    pTableWidget.horizontalHeader().setDefaultAlignment(Qt.AlignCenter)  # 设置标题内容水平居中对齐
-    pTableWidget.horizontalHeader().setFixedHeight(CHAIN_CFG_TABLE_HEHG)  # 设置标题行高度
-    pTableWidget.setFixedHeight(pTableHeight)  # 设置 table 高度
-
-    pTableWidget.setRowCount(4)
-    for row in range(4):
-        for column in range(pTableWidget.columnCount()):
-            # 设置单元格的初始值
-            pTableWidget.setItem(row, column, QTableWidgetItem(table_chainCfg_staItem_dev1[row][column]))
-            pTableWidget.item(row, column).setTextAlignment(Qt.AlignCenter)  # 设置单元格内容水平垂直居中对齐
-        # 设置行高度
-        pTableWidget.setRowHeight(row, CHAIN_CFG_TABLE_ROWHG)
-        # 设置背景
-        pTableWidget.item(row, 0).setBackground(QColor("#E2F0D9"))  # 设置绿色背景色
-        pTableWidget.item(row, 1).setBackground(QColor("#FFF2CC"))  # 设置黄色背景色
-
-    # 设置列宽自适应
-    pTableWidget.resizeColumnsToContents()
-
-    # 插入 LED 图标对象
-    ledList0 = add_led_txt(16, pTableWidget, 0, 1, LED_STA1_LAB)  # 第一行插入
-    ledList1 = add_led_txt(16, pTableWidget, 1, 1, LED_STA2_LAB)  # 第二行插入
-    ledList2 = add_led_txt(16, pTableWidget, 2, 1, LED_FME1_LAB)  # 第三行插入
-    ledList3 = add_led_txt(16, pTableWidget, 3, 1, LED_FME2_LAB)  # 第四行插入
-    # 设置 LED 列宽度
-    pTableWidget.setColumnWidth(1, 450)
-
-    # 返回各 led 对象
-    return ledList0, ledList1, ledList2, ledList3
-
 def adjust_chainPage_ifid_tables(pDevIdTable, puifCfgTable, paddCfgTable):
     """
     调整 chain configuration page device id, uart interface, address register tables 的尺寸，列宽
@@ -643,6 +568,7 @@ def set_chainPage_ifid_color(pRowNum, pDevIdTable, puifCfgTable, paddCfgTable):
 
 
 def adjust_chainPage_pw_rst_tables(pPwTable, pRstTable):
+    ''' adjust table column size '''
     for c in range(7):
         if c == 2:
             pPwTable.setColumnWidth(c, 150)
@@ -654,6 +580,7 @@ def adjust_chainPage_pw_rst_tables(pPwTable, pRstTable):
             pPwTable.setColumnWidth(c, 130)
             pRstTable.setColumnWidth(c, 130)
 
+    ''' fill background color'''
     for r in range(4):
         if r < 1:
             pRstTable.item(r, 3).setBackground(QColor("#E2F0D9"))  # 绿色
@@ -665,6 +592,7 @@ def adjust_chainPage_pw_rst_tables(pPwTable, pRstTable):
         pPwTable.item(r, 4).setBackground(QColor("#FFF2CC"))  # 黄色
         pPwTable.item(r, 6).setBackground(QColor("#FFF2CC"))  # 黄色
 
+    ''' insert leds '''
     ledSta1Dev0 = add_led_txt(16, pPwTable, 0, 4, LED_STA1_LAB)
     ledSta1Dev1 = add_led_txt(16, pPwTable, 0, 6, LED_STA1_LAB)
     ledSta2Dev0 = add_led_txt(16, pPwTable, 1, 4, LED_STA2_LAB)
@@ -677,7 +605,116 @@ def adjust_chainPage_pw_rst_tables(pPwTable, pRstTable):
     ledDev0 = [ledSta1Dev0, ledSta2Dev0, ledFem1Dev0, ledFem2Dev0]
     ledDev1 = [ledSta1Dev1, ledSta2Dev1, ledFem1Dev1, ledFem2Dev1]
 
-    return  ledDev0, ledDev1
+    return ledDev0, ledDev1
+
+
+def adjust_devMgPage_tables(pInit, pDC, pCur):
+    ''' adjust size '''
+    for c in range(12):
+        if c == 1:
+            pInit.setColumnWidth(c, 200)
+            pCur.setColumnWidth(c, 200)
+        elif c == 4 or c == 6 or c == 9 or c == 11:
+            pInit.setColumnWidth(c, 150)
+            pCur.setColumnWidth(c, 150)
+        else:
+            pInit.setColumnWidth(c, 120)
+            pCur.setColumnWidth(c, 120)
+
+    for c in range(3):
+        if c == 1:
+            pDC.setColumnWidth(c, 200)
+        elif c == 2:
+            pDC.setColumnWidth(c, 1320)
+        else:
+            pDC.setColumnWidth(c, 120)
+
+    ''' fill background color and font'''
+    boldFont = QFont()
+    boldFont.setBold(True)
+    # status initial table
+    for r in range(5):
+        for c in range(12):
+            if r == 0:
+                pInit.setSpan(0, 3, 1, 4)
+                pInit.item(0, 3).setText(" ")
+                pInit.setSpan(0, 8, 1, 4)
+                pInit.item(0, 8).setText(" ")
+                pInit.item(0, c).setFont(boldFont)  # 字体加粗
+            elif c == 3 or c == 8:
+                pInit.setSpan(r, c, 1, 4)
+                pInit.item(r, 3).setText(" ")
+                pInit.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
+                pInit.item(r, 8).setText(" ")
+                pInit.item(r, 8).setBackground(QColor("#FFF2CC"))  # 黄色
+                pInit.item(r, 2).setBackground(QColor("#E2F0D9"))  # 绿色
+                pInit.item(r, 7).setBackground(QColor("#E2F0D9"))  # 绿色
+    # status current table
+    for r in range(8):
+        for c in range(12):
+            if r == 0:
+                pCur.setSpan(0, 3, 1, 4)
+                pCur.item(0, 3).setText(" ")
+                pCur.setSpan(0, 8, 1, 4)
+                pCur.item(0, 8).setText(" ")
+                pCur.item(0, c).setFont(boldFont)  # 字体加粗
+            elif r > 4:
+                pCur.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
+                pCur.item(r, 5).setBackground(QColor("#FFF2CC"))  # 黄色
+                pCur.item(r, 8).setBackground(QColor("#FFF2CC"))  # 黄色
+                pCur.item(r, 10).setBackground(QColor("#FFF2CC"))  # 黄色
+            elif c == 3 or c == 8:
+                pCur.setSpan(r, c, 1, 4)
+                pCur.item(r, 3).setText(" ")
+                pCur.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
+                pCur.item(r, 8).setText(" ")
+                pCur.item(r, 8).setBackground(QColor("#FFF2CC"))  # 黄色
+            if r != 0:
+                pCur.item(r, 2).setBackground(QColor("#E2F0D9"))  # 绿色
+                pCur.item(r, 7).setBackground(QColor("#E2F0D9"))  # 绿色
+
+    # DC table
+    pDC.setSpan(1, 0, 3, 1)
+    pDC.setSpan(1, 1, 3, 1)
+    for r in range (4):
+        if r < 2:
+            pDC.item(r, 1).setBackground(QColor("#E2F0D9"))  # 绿色
+            pDC.item(r, 0).setFont(boldFont)  # 字体加粗
+        pDC.item(r, 2).setBackground(QColor("#FFF2CC"))  # 黄色
+
+    ''' insert leds '''
+    ledInitSta1Dev0 = add_led_txt(16, pInit, 1, 3, LED_STA1_LAB)
+    ledInitSta1Dev1 = add_led_txt(16, pInit, 1, 8, LED_STA1_LAB)
+    ledInitSta2Dev0 = add_led_txt(16, pInit, 2, 3, LED_STA2_LAB)
+    ledInitSta2Dev1 = add_led_txt(16, pInit, 2, 8, LED_STA2_LAB)
+    ledInitFem1Dev0 = add_led_txt(16, pInit, 3, 3, LED_FME1_LAB)
+    ledInitFem1Dev1 = add_led_txt(16, pInit, 3, 8, LED_FME1_LAB)
+    ledInitFem2Dev0 = add_led_txt(16, pInit, 4, 3, LED_FME2_LAB)
+    ledInitFem2Dev1 = add_led_txt(16, pInit, 4, 8, LED_FME2_LAB)
+
+    ledCurSta1Dev0 = add_led_txt(16, pCur, 1, 3, LED_STA1_LAB)
+    ledCurSta1Dev1 = add_led_txt(16, pCur, 1, 8, LED_STA1_LAB)
+    ledCurSta2Dev0 = add_led_txt(16, pCur, 2, 3, LED_STA2_LAB)
+    ledCurSta2Dev1 = add_led_txt(16, pCur, 2, 8, LED_STA2_LAB)
+    ledCurFem1Dev0 = add_led_txt(16, pCur, 3, 3, LED_FME1_LAB)
+    ledCurFem1Dev1 = add_led_txt(16, pCur, 3, 8, LED_FME1_LAB)
+    ledCurFem2Dev0 = add_led_txt(16, pCur, 4, 3, LED_FME2_LAB)
+    ledCurFem2Dev1 = add_led_txt(16, pCur, 4, 8, LED_FME2_LAB)
+
+    ledDcByte = add_led_txt(8, pDC, 0, 2, LED_LAB_DC)
+    ledAlert0 = add_led_txt(16, pDC, 1, 2, LED_LAB_ALERT0)
+    ledAlert1 = add_led_txt(16, pDC, 2, 2, LED_LAB_ALERT1)
+    ledAlert2 = add_led_txt(16, pDC, 3, 2, LED_LAB_ALERT2)
+    ledAlert = ledAlert0 + ledAlert1 + ledAlert2
+
+    ledInitDev0 = [ledInitSta1Dev0, ledInitSta2Dev0, ledInitFem1Dev0, ledInitFem2Dev0]
+    ledInitDev1 = [ledInitSta1Dev1, ledInitSta2Dev1, ledInitFem1Dev1, ledInitFem2Dev1]
+    ledCurDev0 = [ledCurSta1Dev0, ledCurSta2Dev0, ledCurFem1Dev0, ledCurFem2Dev0]
+    ledCurDev1 = [ledCurSta1Dev1, ledCurSta2Dev1, ledCurFem1Dev1, ledCurFem2Dev1]
+
+    return ledInitDev0, ledInitDev1, ledCurDev0, ledCurDev1, ledDcByte, ledAlert
+
+
 
 
 def adjust_appCfgPage_tables(pAppCfgTable, pAlertTable, pThreTable, pAcqTable):

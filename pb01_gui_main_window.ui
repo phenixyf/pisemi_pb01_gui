@@ -51,7 +51,7 @@ QTabBar::tab:!selected { /* 未被选中的Tab标题的样式 */
 }</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="tabBarAutoHide">
        <bool>false</bool>
@@ -3744,6 +3744,11 @@ QTableCornerButton::section {
           <row>
            <property name="text">
             <string>11</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>12</string>
            </property>
           </row>
           <column>

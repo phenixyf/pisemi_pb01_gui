@@ -199,7 +199,7 @@ table_appCfgPage_alertCfgReg_items = [
     ["0x18", "ALRTOVCFG",    "FFFF", "1111111", "ALRTOVEN[15:8]",    "1111111", "ALRTOVEN[7:0]",    "0000", "0000"],
     ["0x19", "ALRTUVCFG",    "FFFF", "1111111", "ALRTUVEN[15:8]",    "1111111", "ALRTUVEN[7:0]",    "0000", "0000"],
     ["0x1A", "ALRTAUXOVCFG", "FFFF", "1111111", "ALRTAUXOVEN[15:8]", "1111111", "ALRTAUXOVEN[7:0]", "0000", "0000"],
-    ["0x1G", "ALRTAUXUVCFG", "FFFF", "1111111", "ALRTAUXUVEN[15:8]", "1111111", "ALRTAUXUVEN[7:0]", "0000", "0000"]
+    ["0x1B", "ALRTAUXUVCFG", "FFFF", "1111111", "ALRTAUXUVEN[15:8]", "1111111", "ALRTAUXUVEN[7:0]", "0000", "0000"]
 ]
 
 table_appCfgPage_theresholdReg_items = [
@@ -793,6 +793,7 @@ def adjust_diagCfgPage_tables(pTeCurTable, pDiagThrTable, pAluTable):
 
 
 def set_diagCfgPage_table_color(pTeCurTable, pDiagThrTable, pAluTable):
+    # test current table
     for r in range(3):
         for c in range(2, 13):
             if c == 2:
@@ -802,7 +803,8 @@ def set_diagCfgPage_table_color(pTeCurTable, pDiagThrTable, pAluTable):
             elif c == 11 or c == 12:
                 pTeCurTable.item(r, c).setBackground(QColor("#E2F0D9"))     # 绿色
 
-    for r in range(12):
+    # threshold and alu register table
+    for r in range(13):
         if r < 4:
             pAluTable.item(r, 2).setBackground(QColor("#DAE3F3"))  # 紫色
             pAluTable.item(r, 7).setBackground(QColor("#E2F0D9"))  # 绿色

@@ -1877,7 +1877,7 @@ class Ui_MainWindow(object):
 "")
         self.table_diagCfgPage_diagThresReg.setObjectName("table_diagCfgPage_diagThresReg")
         self.table_diagCfgPage_diagThresReg.setColumnCount(9)
-        self.table_diagCfgPage_diagThresReg.setRowCount(12)
+        self.table_diagCfgPage_diagThresReg.setRowCount(13)
         item = QtWidgets.QTableWidgetItem()
         self.table_diagCfgPage_diagThresReg.setVerticalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -1902,6 +1902,8 @@ class Ui_MainWindow(object):
         self.table_diagCfgPage_diagThresReg.setVerticalHeaderItem(10, item)
         item = QtWidgets.QTableWidgetItem()
         self.table_diagCfgPage_diagThresReg.setVerticalHeaderItem(11, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagCfgPage_diagThresReg.setVerticalHeaderItem(12, item)
         item = QtWidgets.QTableWidgetItem()
         self.table_diagCfgPage_diagThresReg.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -4682,7 +4684,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuAbout.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -5181,6 +5183,8 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "10"))
         item = self.table_diagCfgPage_diagThresReg.verticalHeaderItem(11)
         item.setText(_translate("MainWindow", "11"))
+        item = self.table_diagCfgPage_diagThresReg.verticalHeaderItem(12)
+        item.setText(_translate("MainWindow", "12"))
         item = self.table_diagCfgPage_diagThresReg.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
         item = self.table_diagCfgPage_diagThresReg.horizontalHeaderItem(1)

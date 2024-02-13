@@ -877,7 +877,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_25.addWidget(self.pushButton_statusRegReadBack_6)
         self.verticalLayout_21.addWidget(self.frame_10)
         self.table_devMgPage_dc = QtWidgets.QTableWidget(self.tab_devMg)
-        self.table_devMgPage_dc.setMaximumSize(QtCore.QSize(16777215, 130))
+        self.table_devMgPage_dc.setMaximumSize(QtCore.QSize(16777215, 150))
         self.table_devMgPage_dc.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
@@ -1098,6 +1098,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6.addWidget(self.pushButton_59)
         self.verticalLayout_2.addWidget(self.frame_5)
         self.table_appCfgPage_appCfg = QtWidgets.QTableWidget(self.tab_appCfg)
+        self.table_appCfgPage_appCfg.setMinimumSize(QtCore.QSize(0, 145))
         self.table_appCfgPage_appCfg.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.table_appCfgPage_appCfg.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
@@ -3432,7 +3433,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_48.addItem(spacerItem31)
         self.verticalLayout_22.addWidget(self.frame_33)
         self.table_diagAcqPage_dc = QtWidgets.QTableWidget(self.tab_diagAcqData)
-        self.table_diagAcqPage_dc.setMaximumSize(QtCore.QSize(16777215, 130))
+        self.table_diagAcqPage_dc.setMaximumSize(QtCore.QSize(16777215, 140))
         self.table_diagAcqPage_dc.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
@@ -4323,6 +4324,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_14.addWidget(self.pushButton_69)
         self.verticalLayout_19.addWidget(self.frame_16)
         self.table_cblPage_cblCfgReg = QtWidgets.QTableWidget(self.tab_cellBal)
+        self.table_cblPage_cblCfgReg.setMinimumSize(QtCore.QSize(0, 150))
         self.table_cblPage_cblCfgReg.setMaximumSize(QtCore.QSize(16777215, 130))
         self.table_cblPage_cblCfgReg.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
@@ -4658,7 +4660,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.addWidget(self.tabWidget)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1655, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1655, 23))
         self.menubar.setObjectName("menubar")
         self.menuPython = QtWidgets.QMenu(self.menubar)
         self.menuPython.setObjectName("menuPython")

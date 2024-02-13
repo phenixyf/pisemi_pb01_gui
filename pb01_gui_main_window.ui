@@ -1756,7 +1756,7 @@ QPushButton:pressed {
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>130</height>
+            <height>150</height>
            </size>
           </property>
           <property name="styleSheet">
@@ -2179,6 +2179,12 @@ QPushButton:pressed {
         </item>
         <item>
          <widget class="QTableWidget" name="table_appCfgPage_appCfg">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>145</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
@@ -7219,7 +7225,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>130</height>
+            <height>140</height>
            </size>
           </property>
           <property name="styleSheet">
@@ -9206,6 +9212,12 @@ QPushButton:pressed {
         </item>
         <item>
          <widget class="QTableWidget" name="table_cblPage_cblCfgReg">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>150</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
@@ -9852,7 +9864,7 @@ QTableCornerButton::section {
      <x>0</x>
      <y>0</y>
      <width>1655</width>
-     <height>26</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuPython">

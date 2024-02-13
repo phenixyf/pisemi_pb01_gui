@@ -17,8 +17,8 @@ class Ui_MainWindow(object):
         MainWindow.resize(1655, 1010)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.centralwidget)
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
         self.tabWidget.setStyleSheet("QTabWidget::pane { /* Tab页面的容器样式 */\n"
 "    border: 1px solid #C2C7CB; /* 边框颜色和宽度 */\n"
@@ -2837,20 +2837,20 @@ class Ui_MainWindow(object):
         self.table_meaAcqSumPage_sumDataDev0.verticalHeader().setVisible(False)
         self.table_meaAcqSumPage_sumDataDev0.verticalHeader().setMinimumSectionSize(0)
         self.verticalLayout_6.addWidget(self.table_meaAcqSumPage_sumDataDev0)
-        self.frame_diagAcqDataPage_alertDev1_3 = QtWidgets.QFrame(self.tab_meaAcqSum)
-        self.frame_diagAcqDataPage_alertDev1_3.setMaximumSize(QtCore.QSize(16777215, 23))
-        self.frame_diagAcqDataPage_alertDev1_3.setStyleSheet("QFrame {\n"
+        self.frame_meaAcqSumPage_sumDataDev1 = QtWidgets.QFrame(self.tab_meaAcqSum)
+        self.frame_meaAcqSumPage_sumDataDev1.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.frame_meaAcqSumPage_sumDataDev1.setStyleSheet("QFrame {\n"
 "    background-color: #a0a0a0; /* 设置背景颜色为灰色 */\n"
 "    border-radius: 10px; /* 设置边框圆角的半径为10px */\n"
 "}\n"
 "")
-        self.frame_diagAcqDataPage_alertDev1_3.setFrameShape(QtWidgets.QFrame.Box)
-        self.frame_diagAcqDataPage_alertDev1_3.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_diagAcqDataPage_alertDev1_3.setObjectName("frame_diagAcqDataPage_alertDev1_3")
-        self.horizontalLayout_55 = QtWidgets.QHBoxLayout(self.frame_diagAcqDataPage_alertDev1_3)
+        self.frame_meaAcqSumPage_sumDataDev1.setFrameShape(QtWidgets.QFrame.Box)
+        self.frame_meaAcqSumPage_sumDataDev1.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_meaAcqSumPage_sumDataDev1.setObjectName("frame_meaAcqSumPage_sumDataDev1")
+        self.horizontalLayout_55 = QtWidgets.QHBoxLayout(self.frame_meaAcqSumPage_sumDataDev1)
         self.horizontalLayout_55.setContentsMargins(11, 0, -1, 0)
         self.horizontalLayout_55.setObjectName("horizontalLayout_55")
-        self.label_63 = QtWidgets.QLabel(self.frame_diagAcqDataPage_alertDev1_3)
+        self.label_63 = QtWidgets.QLabel(self.frame_meaAcqSumPage_sumDataDev1)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -2865,7 +2865,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_55.addWidget(self.label_63)
         spacerItem26 = QtWidgets.QSpacerItem(1194, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_55.addItem(spacerItem26)
-        self.verticalLayout_6.addWidget(self.frame_diagAcqDataPage_alertDev1_3)
+        self.verticalLayout_6.addWidget(self.frame_meaAcqSumPage_sumDataDev1)
         self.table_meaAcqSumPage_sumDataDev1 = QtWidgets.QTableWidget(self.tab_meaAcqSum)
         self.table_meaAcqSumPage_sumDataDev1.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.table_meaAcqSumPage_sumDataDev1.setStyleSheet("QTableWidget {\n"
@@ -2953,8 +2953,6 @@ class Ui_MainWindow(object):
         self.tab_meaAcqDetail = QtWidgets.QWidget()
         self.tab_meaAcqDetail.setObjectName("tab_meaAcqDetail")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.tab_meaAcqDetail)
-        self.verticalLayout_5.setContentsMargins(-1, 0, -1, 0)
-        self.verticalLayout_5.setSpacing(3)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.frame_31 = QtWidgets.QFrame(self.tab_meaAcqDetail)
         self.frame_31.setMaximumSize(QtCore.QSize(16777215, 23))
@@ -2986,8 +2984,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_44.addItem(spacerItem27)
         self.verticalLayout_5.addWidget(self.frame_31)
         self.table_meaAcqDetailData_alertRegDev0 = QtWidgets.QTableWidget(self.tab_meaAcqDetail)
-        self.table_meaAcqDetailData_alertRegDev0.setMinimumSize(QtCore.QSize(150, 0))
-        self.table_meaAcqDetailData_alertRegDev0.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.table_meaAcqDetailData_alertRegDev0.setMinimumSize(QtCore.QSize(0, 0))
+        self.table_meaAcqDetailData_alertRegDev0.setMaximumSize(QtCore.QSize(16777215, 140))
         self.table_meaAcqDetailData_alertRegDev0.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
@@ -3208,7 +3206,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_47.addItem(spacerItem29)
         self.verticalLayout_5.addWidget(self.frame_meaAcqDetailPage_alertDev1)
         self.table_meaAcqDetailData_alertRegDev1 = QtWidgets.QTableWidget(self.tab_meaAcqDetail)
-        self.table_meaAcqDetailData_alertRegDev1.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.table_meaAcqDetailData_alertRegDev1.setMaximumSize(QtCore.QSize(16777215, 140))
         self.table_meaAcqDetailData_alertRegDev1.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
@@ -3399,15 +3397,11 @@ class Ui_MainWindow(object):
         self.table_meaAcqDetailData_dataRegDev1.verticalHeader().setVisible(False)
         self.table_meaAcqDetailData_dataRegDev1.verticalHeader().setMinimumSectionSize(0)
         self.verticalLayout_5.addWidget(self.table_meaAcqDetailData_dataRegDev1)
-        self.verticalLayout_5.setStretch(1, 4)
-        self.verticalLayout_5.setStretch(3, 7)
-        self.verticalLayout_5.setStretch(5, 4)
-        self.verticalLayout_5.setStretch(7, 7)
         self.tabWidget.addTab(self.tab_meaAcqDetail, "")
         self.tab_diagAcqData = QtWidgets.QWidget()
         self.tab_diagAcqData.setObjectName("tab_diagAcqData")
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.tab_diagAcqData)
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.verticalLayout_22 = QtWidgets.QVBoxLayout(self.tab_diagAcqData)
+        self.verticalLayout_22.setObjectName("verticalLayout_22")
         self.frame_33 = QtWidgets.QFrame(self.tab_diagAcqData)
         self.frame_33.setMaximumSize(QtCore.QSize(16777215, 23))
         self.frame_33.setStyleSheet("QFrame {\n"
@@ -3436,7 +3430,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_48.addWidget(self.label_55)
         spacerItem31 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_48.addItem(spacerItem31)
-        self.verticalLayout_3.addWidget(self.frame_33)
+        self.verticalLayout_22.addWidget(self.frame_33)
         self.table_diagAcqPage_dc = QtWidgets.QTableWidget(self.tab_diagAcqData)
         self.table_diagAcqPage_dc.setMaximumSize(QtCore.QSize(16777215, 130))
         self.table_diagAcqPage_dc.setStyleSheet("QTableWidget {\n"
@@ -3491,7 +3485,7 @@ class Ui_MainWindow(object):
         self.table_diagAcqPage_dc.horizontalHeader().setVisible(False)
         self.table_diagAcqPage_dc.verticalHeader().setVisible(False)
         self.table_diagAcqPage_dc.verticalHeader().setMinimumSectionSize(30)
-        self.verticalLayout_3.addWidget(self.table_diagAcqPage_dc)
+        self.verticalLayout_22.addWidget(self.table_diagAcqPage_dc)
         self.table_diagAcqPage_status = QtWidgets.QTableWidget(self.tab_diagAcqData)
         self.table_diagAcqPage_status.setMinimumSize(QtCore.QSize(800, 0))
         self.table_diagAcqPage_status.setMaximumSize(QtCore.QSize(16777215, 16777215))
@@ -3580,7 +3574,7 @@ class Ui_MainWindow(object):
         self.table_diagAcqPage_status.horizontalHeader().setVisible(False)
         self.table_diagAcqPage_status.verticalHeader().setVisible(False)
         self.table_diagAcqPage_status.verticalHeader().setMinimumSectionSize(0)
-        self.verticalLayout_3.addWidget(self.table_diagAcqPage_status)
+        self.verticalLayout_22.addWidget(self.table_diagAcqPage_status)
         self.frame_diagAcqDataPage_alertDev0 = QtWidgets.QFrame(self.tab_diagAcqData)
         self.frame_diagAcqDataPage_alertDev0.setMaximumSize(QtCore.QSize(16777215, 23))
         self.frame_diagAcqDataPage_alertDev0.setStyleSheet("QFrame {\n"
@@ -3609,7 +3603,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_49.addWidget(self.label_57)
         spacerItem32 = QtWidgets.QSpacerItem(1194, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_49.addItem(spacerItem32)
-        self.verticalLayout_3.addWidget(self.frame_diagAcqDataPage_alertDev0)
+        self.verticalLayout_22.addWidget(self.frame_diagAcqDataPage_alertDev0)
         self.table_diagAcqPage_alertReg_dev0 = QtWidgets.QTableWidget(self.tab_diagAcqData)
         self.table_diagAcqPage_alertReg_dev0.setMaximumSize(QtCore.QSize(16777215, 70))
         self.table_diagAcqPage_alertReg_dev0.setStyleSheet("QTableWidget {\n"
@@ -3696,7 +3690,7 @@ class Ui_MainWindow(object):
         self.table_diagAcqPage_alertReg_dev0.horizontalHeader().setVisible(False)
         self.table_diagAcqPage_alertReg_dev0.verticalHeader().setVisible(False)
         self.table_diagAcqPage_alertReg_dev0.verticalHeader().setMinimumSectionSize(0)
-        self.verticalLayout_3.addWidget(self.table_diagAcqPage_alertReg_dev0)
+        self.verticalLayout_22.addWidget(self.table_diagAcqPage_alertReg_dev0)
         self.frame_diagAcqDataPage_dataDev0 = QtWidgets.QFrame(self.tab_diagAcqData)
         self.frame_diagAcqDataPage_dataDev0.setMaximumSize(QtCore.QSize(16777215, 23))
         self.frame_diagAcqDataPage_dataDev0.setStyleSheet("QFrame {\n"
@@ -3725,7 +3719,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_50.addWidget(self.label_58)
         spacerItem33 = QtWidgets.QSpacerItem(1194, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_50.addItem(spacerItem33)
-        self.verticalLayout_3.addWidget(self.frame_diagAcqDataPage_dataDev0)
+        self.verticalLayout_22.addWidget(self.frame_diagAcqDataPage_dataDev0)
         self.table_diagAcqPage_dataReg_dev0 = QtWidgets.QTableWidget(self.tab_diagAcqData)
         self.table_diagAcqPage_dataReg_dev0.setMaximumSize(QtCore.QSize(16777215, 60))
         self.table_diagAcqPage_dataReg_dev0.setStyleSheet("QTableWidget {\n"
@@ -3812,7 +3806,7 @@ class Ui_MainWindow(object):
         self.table_diagAcqPage_dataReg_dev0.horizontalHeader().setVisible(False)
         self.table_diagAcqPage_dataReg_dev0.verticalHeader().setVisible(False)
         self.table_diagAcqPage_dataReg_dev0.verticalHeader().setMinimumSectionSize(0)
-        self.verticalLayout_3.addWidget(self.table_diagAcqPage_dataReg_dev0)
+        self.verticalLayout_22.addWidget(self.table_diagAcqPage_dataReg_dev0)
         self.frame_diagAcqDataPage_alertDev1 = QtWidgets.QFrame(self.tab_diagAcqData)
         self.frame_diagAcqDataPage_alertDev1.setMaximumSize(QtCore.QSize(16777215, 23))
         self.frame_diagAcqDataPage_alertDev1.setStyleSheet("QFrame {\n"
@@ -3841,7 +3835,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_52.addWidget(self.label_60)
         spacerItem34 = QtWidgets.QSpacerItem(1194, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_52.addItem(spacerItem34)
-        self.verticalLayout_3.addWidget(self.frame_diagAcqDataPage_alertDev1)
+        self.verticalLayout_22.addWidget(self.frame_diagAcqDataPage_alertDev1)
         self.table_diagAcqPage_alertReg_dev1 = QtWidgets.QTableWidget(self.tab_diagAcqData)
         self.table_diagAcqPage_alertReg_dev1.setMaximumSize(QtCore.QSize(16777215, 70))
         self.table_diagAcqPage_alertReg_dev1.setStyleSheet("QTableWidget {\n"
@@ -3928,7 +3922,7 @@ class Ui_MainWindow(object):
         self.table_diagAcqPage_alertReg_dev1.horizontalHeader().setVisible(False)
         self.table_diagAcqPage_alertReg_dev1.verticalHeader().setVisible(False)
         self.table_diagAcqPage_alertReg_dev1.verticalHeader().setMinimumSectionSize(0)
-        self.verticalLayout_3.addWidget(self.table_diagAcqPage_alertReg_dev1)
+        self.verticalLayout_22.addWidget(self.table_diagAcqPage_alertReg_dev1)
         self.frame_diagAcqDataPage_dataDev1 = QtWidgets.QFrame(self.tab_diagAcqData)
         self.frame_diagAcqDataPage_dataDev1.setMaximumSize(QtCore.QSize(16777215, 23))
         self.frame_diagAcqDataPage_dataDev1.setStyleSheet("QFrame {\n"
@@ -3957,7 +3951,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_51.addWidget(self.label_59)
         spacerItem35 = QtWidgets.QSpacerItem(1194, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_51.addItem(spacerItem35)
-        self.verticalLayout_3.addWidget(self.frame_diagAcqDataPage_dataDev1)
+        self.verticalLayout_22.addWidget(self.frame_diagAcqDataPage_dataDev1)
         self.table_diagAcqPage_dataReg_dev1 = QtWidgets.QTableWidget(self.tab_diagAcqData)
         self.table_diagAcqPage_dataReg_dev1.setMaximumSize(QtCore.QSize(16777215, 60))
         self.table_diagAcqPage_dataReg_dev1.setStyleSheet("QTableWidget {\n"
@@ -4044,7 +4038,7 @@ class Ui_MainWindow(object):
         self.table_diagAcqPage_dataReg_dev1.horizontalHeader().setVisible(False)
         self.table_diagAcqPage_dataReg_dev1.verticalHeader().setVisible(False)
         self.table_diagAcqPage_dataReg_dev1.verticalHeader().setMinimumSectionSize(0)
-        self.verticalLayout_3.addWidget(self.table_diagAcqPage_dataReg_dev1)
+        self.verticalLayout_22.addWidget(self.table_diagAcqPage_dataReg_dev1)
         self.tabWidget.addTab(self.tab_diagAcqData, "")
         self.tab_cellBal = QtWidgets.QWidget()
         self.tab_cellBal.setObjectName("tab_cellBal")
@@ -4661,7 +4655,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_19.setStretch(8, 2)
         self.verticalLayout_19.setStretch(10, 3)
         self.tabWidget.addTab(self.tab_cellBal, "")
-        self.horizontalLayout_2.addWidget(self.tabWidget)
+        self.verticalLayout_3.addWidget(self.tabWidget)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1655, 26))

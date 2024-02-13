@@ -2556,7 +2556,6 @@ class Ui_MainWindow(object):
         self.tab_meaAcqSum = QtWidgets.QWidget()
         self.tab_meaAcqSum.setObjectName("tab_meaAcqSum")
         self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.tab_meaAcqSum)
-        self.verticalLayout_6.setSpacing(4)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
         self.frame_34 = QtWidgets.QFrame(self.tab_meaAcqSum)
         self.frame_34.setMaximumSize(QtCore.QSize(16777215, 23))
@@ -2587,7 +2586,63 @@ class Ui_MainWindow(object):
         spacerItem24 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_53.addItem(spacerItem24)
         self.verticalLayout_6.addWidget(self.frame_34)
+        self.table_meaAcqSumPage_dc = QtWidgets.QTableWidget(self.tab_meaAcqSum)
+        self.table_meaAcqSumPage_dc.setMaximumSize(QtCore.QSize(16777215, 145))
+        self.table_meaAcqSumPage_dc.setStyleSheet("QTableWidget {\n"
+"    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
+"    gridline-color: white; /* 网格线颜色 */\n"
+"    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
+"    font-family: \"Calibri\"; /* 单元格字体 */\n"
+"    font-size: 10pt; /* 单元格字体大小 */\n"
+"}\n"
+"\n"
+"QTableWidget::item {\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"    background-color: #f0f0f0; /* 表头背景颜色 */\n"
+"    padding: 5px; /* 表头内边距 */\n"
+"    border-style: none; /* 表头边框样式 */\n"
+"    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */\n"
+"    border-right: 2px solid white; /* 表头右边框宽度调整为2px */\n"
+"    font-family: \"Calibri\"; /* 表头字体 */\n"
+"    font-size: 10pt; /* 表头字体大小 */\n"
+"    font-weight: 600; /* 表头字体粗细 */\n"
+"}\n"
+"\n"
+"QTableCornerButton::section {\n"
+"    background-color: #f0f0f0; /* 角落按钮背景颜色 */\n"
+"    /* 添加其他您需要的样式 */\n"
+"}\n"
+"")
+        self.table_meaAcqSumPage_dc.setObjectName("table_meaAcqSumPage_dc")
+        self.table_meaAcqSumPage_dc.setColumnCount(3)
+        self.table_meaAcqSumPage_dc.setRowCount(4)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqSumPage_dc.setVerticalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqSumPage_dc.setVerticalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqSumPage_dc.setVerticalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqSumPage_dc.setVerticalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqSumPage_dc.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqSumPage_dc.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqSumPage_dc.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        brush = QtGui.QBrush(QtGui.QColor(255, 242, 204))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        item.setBackground(brush)
+        self.table_meaAcqSumPage_dc.setItem(0, 0, item)
+        self.table_meaAcqSumPage_dc.horizontalHeader().setVisible(False)
+        self.table_meaAcqSumPage_dc.verticalHeader().setVisible(False)
+        self.table_meaAcqSumPage_dc.verticalHeader().setMinimumSectionSize(30)
+        self.verticalLayout_6.addWidget(self.table_meaAcqSumPage_dc)
         self.table_meaAcqSumPage_status = QtWidgets.QTableWidget(self.tab_meaAcqSum)
+        self.table_meaAcqSumPage_status.setMinimumSize(QtCore.QSize(0, 230))
         self.table_meaAcqSumPage_status.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.table_meaAcqSumPage_status.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
@@ -2618,7 +2673,7 @@ class Ui_MainWindow(object):
 "")
         self.table_meaAcqSumPage_status.setObjectName("table_meaAcqSumPage_status")
         self.table_meaAcqSumPage_status.setColumnCount(12)
-        self.table_meaAcqSumPage_status.setRowCount(15)
+        self.table_meaAcqSumPage_status.setRowCount(9)
         item = QtWidgets.QTableWidgetItem()
         self.table_meaAcqSumPage_status.setVerticalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -2637,18 +2692,6 @@ class Ui_MainWindow(object):
         self.table_meaAcqSumPage_status.setVerticalHeaderItem(7, item)
         item = QtWidgets.QTableWidgetItem()
         self.table_meaAcqSumPage_status.setVerticalHeaderItem(8, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.table_meaAcqSumPage_status.setVerticalHeaderItem(9, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.table_meaAcqSumPage_status.setVerticalHeaderItem(10, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.table_meaAcqSumPage_status.setVerticalHeaderItem(11, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.table_meaAcqSumPage_status.setVerticalHeaderItem(12, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.table_meaAcqSumPage_status.setVerticalHeaderItem(13, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.table_meaAcqSumPage_status.setVerticalHeaderItem(14, item)
         item = QtWidgets.QTableWidgetItem()
         self.table_meaAcqSumPage_status.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -2677,6 +2720,7 @@ class Ui_MainWindow(object):
         self.table_meaAcqSumPage_status.setItem(0, 0, item)
         self.table_meaAcqSumPage_status.horizontalHeader().setVisible(False)
         self.table_meaAcqSumPage_status.verticalHeader().setVisible(False)
+        self.table_meaAcqSumPage_status.verticalHeader().setMinimumSectionSize(0)
         self.verticalLayout_6.addWidget(self.table_meaAcqSumPage_status)
         self.frame_diagAcqDataPage_alertDev1_2 = QtWidgets.QFrame(self.tab_meaAcqSum)
         self.frame_diagAcqDataPage_alertDev1_2.setMaximumSize(QtCore.QSize(16777215, 23))
@@ -2788,6 +2832,7 @@ class Ui_MainWindow(object):
         self.table_meaAcqSumPage_sumDataDev0.setItem(0, 0, item)
         self.table_meaAcqSumPage_sumDataDev0.horizontalHeader().setVisible(False)
         self.table_meaAcqSumPage_sumDataDev0.verticalHeader().setVisible(False)
+        self.table_meaAcqSumPage_sumDataDev0.verticalHeader().setMinimumSectionSize(0)
         self.verticalLayout_6.addWidget(self.table_meaAcqSumPage_sumDataDev0)
         self.frame_diagAcqDataPage_alertDev1_3 = QtWidgets.QFrame(self.tab_meaAcqSum)
         self.frame_diagAcqDataPage_alertDev1_3.setMaximumSize(QtCore.QSize(16777215, 23))
@@ -2899,10 +2944,8 @@ class Ui_MainWindow(object):
         self.table_meaAcqSumPage_sumDataDev1.setItem(0, 0, item)
         self.table_meaAcqSumPage_sumDataDev1.horizontalHeader().setVisible(False)
         self.table_meaAcqSumPage_sumDataDev1.verticalHeader().setVisible(False)
+        self.table_meaAcqSumPage_sumDataDev1.verticalHeader().setMinimumSectionSize(0)
         self.verticalLayout_6.addWidget(self.table_meaAcqSumPage_sumDataDev1)
-        self.verticalLayout_6.setStretch(1, 6)
-        self.verticalLayout_6.setStretch(3, 4)
-        self.verticalLayout_6.setStretch(5, 4)
         self.tabWidget.addTab(self.tab_meaAcqSum, "")
         self.tab_meaAcqDetail = QtWidgets.QWidget()
         self.tab_meaAcqDetail.setObjectName("tab_meaAcqDetail")
@@ -4571,7 +4614,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuAbout.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(5)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -5219,6 +5262,25 @@ class Ui_MainWindow(object):
         self.table_acqReqPage_acqReq.setSortingEnabled(__sortingEnabled)
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_acqReq), _translate("MainWindow", "ACQ RQST"))
         self.label_61.setText(_translate("MainWindow", "STATUS and LOG Register Blocks (Measurement Acquisition)"))
+        item = self.table_meaAcqSumPage_dc.verticalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_meaAcqSumPage_dc.verticalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_meaAcqSumPage_dc.verticalHeaderItem(2)
+        item.setText(_translate("MainWindow", "新建行"))
+        item = self.table_meaAcqSumPage_dc.verticalHeaderItem(3)
+        item.setText(_translate("MainWindow", "3"))
+        item = self.table_meaAcqSumPage_dc.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_meaAcqSumPage_dc.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_meaAcqSumPage_dc.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "2"))
+        __sortingEnabled = self.table_meaAcqSumPage_dc.isSortingEnabled()
+        self.table_meaAcqSumPage_dc.setSortingEnabled(False)
+        item = self.table_meaAcqSumPage_dc.item(0, 0)
+        item.setText(_translate("MainWindow", "0x80"))
+        self.table_meaAcqSumPage_dc.setSortingEnabled(__sortingEnabled)
         item = self.table_meaAcqSumPage_status.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
         item = self.table_meaAcqSumPage_status.verticalHeaderItem(1)
@@ -5237,18 +5299,6 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "7"))
         item = self.table_meaAcqSumPage_status.verticalHeaderItem(8)
         item.setText(_translate("MainWindow", "8"))
-        item = self.table_meaAcqSumPage_status.verticalHeaderItem(9)
-        item.setText(_translate("MainWindow", "9"))
-        item = self.table_meaAcqSumPage_status.verticalHeaderItem(10)
-        item.setText(_translate("MainWindow", "10"))
-        item = self.table_meaAcqSumPage_status.verticalHeaderItem(11)
-        item.setText(_translate("MainWindow", "11"))
-        item = self.table_meaAcqSumPage_status.verticalHeaderItem(12)
-        item.setText(_translate("MainWindow", "12"))
-        item = self.table_meaAcqSumPage_status.verticalHeaderItem(13)
-        item.setText(_translate("MainWindow", "13"))
-        item = self.table_meaAcqSumPage_status.verticalHeaderItem(14)
-        item.setText(_translate("MainWindow", "14"))
         item = self.table_meaAcqSumPage_status.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
         item = self.table_meaAcqSumPage_status.horizontalHeaderItem(1)

@@ -127,8 +127,11 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         adjust_acqReqPage_tables(self.table_acqReqPage_osr, self.table_acqReqPage_acqReq)
 
         ''' initial measurement acquisition summary data page (page6) '''
+        set_table_item(self.table_meaAcqSumPage_dc, CHAIN_CFG_TABLE_ROWHG,
+                       table_devMg_dcItems)
+
         set_table_item(self.table_meaAcqSumPage_status, CHAIN_CFG_TABLE_ROWHG,
-                       table_diagAcqDataPage_statusTableItems)
+                       table_meaAcqSumDataPage_statusTableItems)
 
         set_table_item(self.table_meaAcqSumPage_sumDataDev0, CHAIN_CFG_TABLE_ROWHG,
                        table_meaAcqSumDataPage_sumDataItems)
@@ -136,7 +139,8 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         set_table_item(self.table_meaAcqSumPage_sumDataDev1, CHAIN_CFG_TABLE_ROWHG,
                        table_meaAcqSumDataPage_sumDataItems)
 
-        led8_meaAcqSumPage = adjust_meaAcqSumPage_tables(self.table_meaAcqSumPage_status,
+        led8_meaAcqSumPage = adjust_meaAcqSumPage_tables(self.table_meaAcqSumPage_dc,
+                                                         self.table_meaAcqSumPage_status,
                                                          self.table_meaAcqSumPage_sumDataDev0,
                                                          self.table_meaAcqSumPage_sumDataDev1)
 

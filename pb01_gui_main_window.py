@@ -3435,7 +3435,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_48.addItem(spacerItem31)
         self.verticalLayout_3.addWidget(self.frame_33)
         self.table_diagAcqPage_dc = QtWidgets.QTableWidget(self.tab_diagAcqData)
-        self.table_diagAcqPage_dc.setMaximumSize(QtCore.QSize(16777215, 145))
+        self.table_diagAcqPage_dc.setMaximumSize(QtCore.QSize(16777215, 130))
         self.table_diagAcqPage_dc.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
@@ -3490,6 +3490,7 @@ class Ui_MainWindow(object):
         self.table_diagAcqPage_dc.verticalHeader().setMinimumSectionSize(30)
         self.verticalLayout_3.addWidget(self.table_diagAcqPage_dc)
         self.table_diagAcqPage_status = QtWidgets.QTableWidget(self.tab_diagAcqData)
+        self.table_diagAcqPage_status.setMinimumSize(QtCore.QSize(800, 0))
         self.table_diagAcqPage_status.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.table_diagAcqPage_status.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
@@ -3520,7 +3521,7 @@ class Ui_MainWindow(object):
 "")
         self.table_diagAcqPage_status.setObjectName("table_diagAcqPage_status")
         self.table_diagAcqPage_status.setColumnCount(12)
-        self.table_diagAcqPage_status.setRowCount(15)
+        self.table_diagAcqPage_status.setRowCount(13)
         item = QtWidgets.QTableWidgetItem()
         self.table_diagAcqPage_status.setVerticalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -3547,10 +3548,6 @@ class Ui_MainWindow(object):
         self.table_diagAcqPage_status.setVerticalHeaderItem(11, item)
         item = QtWidgets.QTableWidgetItem()
         self.table_diagAcqPage_status.setVerticalHeaderItem(12, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.table_diagAcqPage_status.setVerticalHeaderItem(13, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.table_diagAcqPage_status.setVerticalHeaderItem(14, item)
         item = QtWidgets.QTableWidgetItem()
         self.table_diagAcqPage_status.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -3579,6 +3576,7 @@ class Ui_MainWindow(object):
         self.table_diagAcqPage_status.setItem(0, 0, item)
         self.table_diagAcqPage_status.horizontalHeader().setVisible(False)
         self.table_diagAcqPage_status.verticalHeader().setVisible(False)
+        self.table_diagAcqPage_status.verticalHeader().setMinimumSectionSize(0)
         self.verticalLayout_3.addWidget(self.table_diagAcqPage_status)
         self.frame_diagAcqDataPage_alertDev0 = QtWidgets.QFrame(self.tab_diagAcqData)
         self.frame_diagAcqDataPage_alertDev0.setMaximumSize(QtCore.QSize(16777215, 23))
@@ -3610,7 +3608,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_49.addItem(spacerItem32)
         self.verticalLayout_3.addWidget(self.frame_diagAcqDataPage_alertDev0)
         self.table_diagAcqPage_alertReg_dev0 = QtWidgets.QTableWidget(self.tab_diagAcqData)
-        self.table_diagAcqPage_alertReg_dev0.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.table_diagAcqPage_alertReg_dev0.setMaximumSize(QtCore.QSize(16777215, 70))
         self.table_diagAcqPage_alertReg_dev0.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
@@ -3640,11 +3638,13 @@ class Ui_MainWindow(object):
 "")
         self.table_diagAcqPage_alertReg_dev0.setObjectName("table_diagAcqPage_alertReg_dev0")
         self.table_diagAcqPage_alertReg_dev0.setColumnCount(20)
-        self.table_diagAcqPage_alertReg_dev0.setRowCount(2)
+        self.table_diagAcqPage_alertReg_dev0.setRowCount(3)
         item = QtWidgets.QTableWidgetItem()
         self.table_diagAcqPage_alertReg_dev0.setVerticalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
         self.table_diagAcqPage_alertReg_dev0.setVerticalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_alertReg_dev0.setVerticalHeaderItem(2, item)
         item = QtWidgets.QTableWidgetItem()
         self.table_diagAcqPage_alertReg_dev0.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -3692,6 +3692,7 @@ class Ui_MainWindow(object):
         self.table_diagAcqPage_alertReg_dev0.setItem(0, 0, item)
         self.table_diagAcqPage_alertReg_dev0.horizontalHeader().setVisible(False)
         self.table_diagAcqPage_alertReg_dev0.verticalHeader().setVisible(False)
+        self.table_diagAcqPage_alertReg_dev0.verticalHeader().setMinimumSectionSize(0)
         self.verticalLayout_3.addWidget(self.table_diagAcqPage_alertReg_dev0)
         self.frame_diagAcqDataPage_dataDev0 = QtWidgets.QFrame(self.tab_diagAcqData)
         self.frame_diagAcqDataPage_dataDev0.setMaximumSize(QtCore.QSize(16777215, 23))
@@ -3723,7 +3724,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_50.addItem(spacerItem33)
         self.verticalLayout_3.addWidget(self.frame_diagAcqDataPage_dataDev0)
         self.table_diagAcqPage_dataReg_dev0 = QtWidgets.QTableWidget(self.tab_diagAcqData)
-        self.table_diagAcqPage_dataReg_dev0.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.table_diagAcqPage_dataReg_dev0.setMaximumSize(QtCore.QSize(16777215, 60))
         self.table_diagAcqPage_dataReg_dev0.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
@@ -3807,6 +3808,7 @@ class Ui_MainWindow(object):
         self.table_diagAcqPage_dataReg_dev0.setItem(0, 0, item)
         self.table_diagAcqPage_dataReg_dev0.horizontalHeader().setVisible(False)
         self.table_diagAcqPage_dataReg_dev0.verticalHeader().setVisible(False)
+        self.table_diagAcqPage_dataReg_dev0.verticalHeader().setMinimumSectionSize(0)
         self.verticalLayout_3.addWidget(self.table_diagAcqPage_dataReg_dev0)
         self.frame_diagAcqDataPage_alertDev1 = QtWidgets.QFrame(self.tab_diagAcqData)
         self.frame_diagAcqDataPage_alertDev1.setMaximumSize(QtCore.QSize(16777215, 23))
@@ -3838,7 +3840,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_52.addItem(spacerItem34)
         self.verticalLayout_3.addWidget(self.frame_diagAcqDataPage_alertDev1)
         self.table_diagAcqPage_alertReg_dev1 = QtWidgets.QTableWidget(self.tab_diagAcqData)
-        self.table_diagAcqPage_alertReg_dev1.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.table_diagAcqPage_alertReg_dev1.setMaximumSize(QtCore.QSize(16777215, 70))
         self.table_diagAcqPage_alertReg_dev1.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
@@ -3868,11 +3870,13 @@ class Ui_MainWindow(object):
 "")
         self.table_diagAcqPage_alertReg_dev1.setObjectName("table_diagAcqPage_alertReg_dev1")
         self.table_diagAcqPage_alertReg_dev1.setColumnCount(20)
-        self.table_diagAcqPage_alertReg_dev1.setRowCount(2)
+        self.table_diagAcqPage_alertReg_dev1.setRowCount(3)
         item = QtWidgets.QTableWidgetItem()
         self.table_diagAcqPage_alertReg_dev1.setVerticalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
         self.table_diagAcqPage_alertReg_dev1.setVerticalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_alertReg_dev1.setVerticalHeaderItem(2, item)
         item = QtWidgets.QTableWidgetItem()
         self.table_diagAcqPage_alertReg_dev1.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -3920,6 +3924,7 @@ class Ui_MainWindow(object):
         self.table_diagAcqPage_alertReg_dev1.setItem(0, 0, item)
         self.table_diagAcqPage_alertReg_dev1.horizontalHeader().setVisible(False)
         self.table_diagAcqPage_alertReg_dev1.verticalHeader().setVisible(False)
+        self.table_diagAcqPage_alertReg_dev1.verticalHeader().setMinimumSectionSize(0)
         self.verticalLayout_3.addWidget(self.table_diagAcqPage_alertReg_dev1)
         self.frame_diagAcqDataPage_dataDev1 = QtWidgets.QFrame(self.tab_diagAcqData)
         self.frame_diagAcqDataPage_dataDev1.setMaximumSize(QtCore.QSize(16777215, 23))
@@ -3951,7 +3956,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_51.addItem(spacerItem35)
         self.verticalLayout_3.addWidget(self.frame_diagAcqDataPage_dataDev1)
         self.table_diagAcqPage_dataReg_dev1 = QtWidgets.QTableWidget(self.tab_diagAcqData)
-        self.table_diagAcqPage_dataReg_dev1.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.table_diagAcqPage_dataReg_dev1.setMaximumSize(QtCore.QSize(16777215, 60))
         self.table_diagAcqPage_dataReg_dev1.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
@@ -4035,6 +4040,7 @@ class Ui_MainWindow(object):
         self.table_diagAcqPage_dataReg_dev1.setItem(0, 0, item)
         self.table_diagAcqPage_dataReg_dev1.horizontalHeader().setVisible(False)
         self.table_diagAcqPage_dataReg_dev1.verticalHeader().setVisible(False)
+        self.table_diagAcqPage_dataReg_dev1.verticalHeader().setMinimumSectionSize(0)
         self.verticalLayout_3.addWidget(self.table_diagAcqPage_dataReg_dev1)
         self.tabWidget.addTab(self.tab_diagAcqData, "")
         self.tab_cellBal = QtWidgets.QWidget()
@@ -5722,10 +5728,6 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "11"))
         item = self.table_diagAcqPage_status.verticalHeaderItem(12)
         item.setText(_translate("MainWindow", "12"))
-        item = self.table_diagAcqPage_status.verticalHeaderItem(13)
-        item.setText(_translate("MainWindow", "13"))
-        item = self.table_diagAcqPage_status.verticalHeaderItem(14)
-        item.setText(_translate("MainWindow", "14"))
         item = self.table_diagAcqPage_status.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
         item = self.table_diagAcqPage_status.horizontalHeaderItem(1)
@@ -5760,6 +5762,8 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "0"))
         item = self.table_diagAcqPage_alertReg_dev0.verticalHeaderItem(1)
         item.setText(_translate("MainWindow", "1"))
+        item = self.table_diagAcqPage_alertReg_dev0.verticalHeaderItem(2)
+        item.setText(_translate("MainWindow", "2"))
         item = self.table_diagAcqPage_alertReg_dev0.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
         item = self.table_diagAcqPage_alertReg_dev0.horizontalHeaderItem(1)
@@ -5862,6 +5866,8 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "0"))
         item = self.table_diagAcqPage_alertReg_dev1.verticalHeaderItem(1)
         item.setText(_translate("MainWindow", "1"))
+        item = self.table_diagAcqPage_alertReg_dev1.verticalHeaderItem(2)
+        item.setText(_translate("MainWindow", "2"))
         item = self.table_diagAcqPage_alertReg_dev1.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
         item = self.table_diagAcqPage_alertReg_dev1.horizontalHeaderItem(1)

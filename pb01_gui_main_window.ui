@@ -7217,7 +7217,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>145</height>
+            <height>130</height>
            </size>
           </property>
           <property name="styleSheet">
@@ -7311,6 +7311,12 @@ QTableCornerButton::section {
         </item>
         <item>
          <widget class="QTableWidget" name="table_diagAcqPage_status">
+          <property name="minimumSize">
+           <size>
+            <width>800</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
@@ -7351,6 +7357,9 @@ QTableCornerButton::section {
           </attribute>
           <attribute name="verticalHeaderVisible">
            <bool>false</bool>
+          </attribute>
+          <attribute name="verticalHeaderMinimumSectionSize">
+           <number>0</number>
           </attribute>
           <row>
            <property name="text">
@@ -7415,16 +7424,6 @@ QTableCornerButton::section {
           <row>
            <property name="text">
             <string>12</string>
-           </property>
-          </row>
-          <row>
-           <property name="text">
-            <string>13</string>
-           </property>
-          </row>
-          <row>
-           <property name="text">
-            <string>14</string>
            </property>
           </row>
           <column>
@@ -7578,7 +7577,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>16777215</height>
+            <height>70</height>
            </size>
           </property>
           <property name="styleSheet">
@@ -7616,6 +7615,9 @@ QTableCornerButton::section {
           <attribute name="verticalHeaderVisible">
            <bool>false</bool>
           </attribute>
+          <attribute name="verticalHeaderMinimumSectionSize">
+           <number>0</number>
+          </attribute>
           <row>
            <property name="text">
             <string>0</string>
@@ -7624,6 +7626,11 @@ QTableCornerButton::section {
           <row>
            <property name="text">
             <string>1</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>2</string>
            </property>
           </row>
           <column>
@@ -7826,7 +7833,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>16777215</height>
+            <height>60</height>
            </size>
           </property>
           <property name="styleSheet">
@@ -7863,6 +7870,9 @@ QTableCornerButton::section {
           </attribute>
           <attribute name="verticalHeaderVisible">
            <bool>false</bool>
+          </attribute>
+          <attribute name="verticalHeaderMinimumSectionSize">
+           <number>0</number>
           </attribute>
           <row>
            <property name="text">
@@ -8079,7 +8089,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>16777215</height>
+            <height>70</height>
            </size>
           </property>
           <property name="styleSheet">
@@ -8117,6 +8127,9 @@ QTableCornerButton::section {
           <attribute name="verticalHeaderVisible">
            <bool>false</bool>
           </attribute>
+          <attribute name="verticalHeaderMinimumSectionSize">
+           <number>0</number>
+          </attribute>
           <row>
            <property name="text">
             <string>0</string>
@@ -8125,6 +8138,11 @@ QTableCornerButton::section {
           <row>
            <property name="text">
             <string>1</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>2</string>
            </property>
           </row>
           <column>
@@ -8327,7 +8345,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>16777215</height>
+            <height>60</height>
            </size>
           </property>
           <property name="styleSheet">
@@ -8364,6 +8382,9 @@ QTableCornerButton::section {
           </attribute>
           <attribute name="verticalHeaderVisible">
            <bool>false</bool>
+          </attribute>
+          <attribute name="verticalHeaderMinimumSectionSize">
+           <number>0</number>
           </attribute>
           <row>
            <property name="text">

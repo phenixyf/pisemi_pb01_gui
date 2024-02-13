@@ -179,13 +179,16 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
         set_table_item(self.table_diagAcqPage_alertReg_dev0, CHAIN_CFG_TABLE_ROWHG, table_diagAcqDataPage_alertItems)
 
-        set_table_item(self.table_diagAcqPage_dataReg_dev0, CHAIN_CFG_TABLE_ROWHG, table_diagAcqDataPage_dataItems)
+        set_table_item(self.table_diagAcqPage_dataReg_dev0, CHAIN_CFG_TABLE_ROWHG, table_diagAcqDataPage_dev0DataItems)
 
         set_table_item(self.table_diagAcqPage_alertReg_dev1, CHAIN_CFG_TABLE_ROWHG, table_diagAcqDataPage_alertItems)
 
-        set_table_item(self.table_diagAcqPage_dataReg_dev1, CHAIN_CFG_TABLE_ROWHG, table_diagAcqDataPage_dataItems)
+        set_table_item(self.table_diagAcqPage_dataReg_dev1, CHAIN_CFG_TABLE_ROWHG, table_diagAcqDataPage_dev1DataItems)
 
-        led8_diaAcqDataPage = adjust_diagAcqDataPage_tables(self.table_diagAcqPage_status,
+        ledDiagAcqDataPageDc, ledDiagAcqDataPageAlert, \
+        ledDiagAcqDataPageStaDev0, ledDiagAcqDataPageStaDev1, \
+        ledDiagAcqDataPageDev0, ledDiagAcqDataPageDev1 = adjust_diagAcqDataPage_tables(self.table_diagAcqPage_dc,
+                                                            self.table_diagAcqPage_status,
                                                             self.table_diagAcqPage_alertReg_dev0,
                                                             self.table_diagAcqPage_dataReg_dev0,
                                                             self.table_diagAcqPage_alertReg_dev1,

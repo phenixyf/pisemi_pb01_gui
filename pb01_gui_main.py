@@ -139,7 +139,8 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         set_table_item(self.table_meaAcqSumPage_sumDataDev1, CHAIN_CFG_TABLE_ROWHG,
                        table_meaAcqSumDataPage_sumDataItems)
 
-        led8_meaAcqSumPage = adjust_meaAcqSumPage_tables(self.table_meaAcqSumPage_dc,
+        ledMeaAcqSumPageDc, ledMeaAcqSumPageAlert,\
+        ledMeaAcqSumPageStaDev0, ledMeaAcqSumPageStaDev1 = adjust_meaAcqSumPage_tables(self.table_meaAcqSumPage_dc,
                                                          self.table_meaAcqSumPage_status,
                                                          self.table_meaAcqSumPage_sumDataDev0,
                                                          self.table_meaAcqSumPage_sumDataDev1)
@@ -147,17 +148,15 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         ''' initial measurement acquisition detailed data page (page7) '''
         set_table_item(self.table_meaAcqDetailData_alertRegDev0, CHAIN_CFG_TABLE_ROWHG,
                        table_meaAcqDetailPage_alertRegItems)
-        # self.table_meaAcqDetailData_alertRegDev0.setFixedHeight(150)  # 设置 table 高度
+
         set_table_item(self.table_meaAcqDetailData_dataRegDev0, CHAIN_CFG_TABLE_ROWHG,
                        table_meaAcqDetailPage_dataRegItems)
-        # self.table_meaAcqDetailData_dataRegDev0.setFixedHeight(300)  # 设置 table 高度
 
         set_table_item(self.table_meaAcqDetailData_alertRegDev1, CHAIN_CFG_TABLE_ROWHG,
                        table_meaAcqDetailPage_alertRegItems)
-        # self.table_meaAcqDetailData_alertRegDev1.setFixedHeight(150)  # 设置 table 高度
+
         set_table_item(self.table_meaAcqDetailData_dataRegDev1, CHAIN_CFG_TABLE_ROWHG,
                        table_meaAcqDetailPage_dataRegItems)
-        # self.table_meaAcqDetailData_dataRegDev1.setFixedHeight(300)  # 设置 table 高度
 
         adjust_meaAcqDetailPage_tables(self.table_meaAcqDetailData_alertRegDev0,
                                        self.table_meaAcqDetailData_dataRegDev0,
@@ -169,9 +168,13 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                          self.table_meaAcqDetailData_alertRegDev1,
                                          self.table_meaAcqDetailData_dataRegDev1)
 
-        meaAcqDetailPage_insert_led(self.table_meaAcqDetailData_alertRegDev0, self.table_meaAcqDetailData_alertRegDev1)
+        ledMeaAcqDetailPageDev0, \
+        ledMeaAcqDetailPageDev1 = meaAcqDetailPage_insert_led(self.table_meaAcqDetailData_alertRegDev0,
+                                                              self.table_meaAcqDetailData_alertRegDev1)
 
         ''' initial diagnostic acquisition data page (page8) '''
+        set_table_item(self.table_diagAcqPage_dc, CHAIN_CFG_TABLE_ROWHG, table_devMg_dcItems)
+
         set_table_item(self.table_diagAcqPage_status, CHAIN_CFG_TABLE_ROWHG, table_diagAcqDataPage_statusTableItems)
 
         set_table_item(self.table_diagAcqPage_alertReg_dev0, CHAIN_CFG_TABLE_ROWHG, table_diagAcqDataPage_alertItems)

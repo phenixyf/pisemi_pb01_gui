@@ -51,7 +51,7 @@ QTabBar::tab:!selected { /* 未被选中的Tab标题的样式 */
 }</string>
       </property>
       <property name="currentIndex">
-       <number>5</number>
+       <number>7</number>
       </property>
       <property name="tabBarAutoHide">
        <bool>false</bool>
@@ -6235,6 +6235,12 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
         </item>
         <item>
          <widget class="QTableWidget" name="table_meaAcqDetailData_alertRegDev0">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
@@ -6276,6 +6282,9 @@ QTableCornerButton::section {
           <attribute name="verticalHeaderVisible">
            <bool>false</bool>
           </attribute>
+          <attribute name="verticalHeaderMinimumSectionSize">
+           <number>0</number>
+          </attribute>
           <row>
            <property name="text">
             <string>0</string>
@@ -6304,6 +6313,11 @@ QTableCornerButton::section {
           <row>
            <property name="text">
             <string>5</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>6</string>
            </property>
           </row>
           <column>
@@ -6463,6 +6477,9 @@ QTableCornerButton::section {
           </attribute>
           <attribute name="verticalHeaderVisible">
            <bool>false</bool>
+          </attribute>
+          <attribute name="verticalHeaderMinimumSectionSize">
+           <number>0</number>
           </attribute>
           <row>
            <property name="text">
@@ -6748,6 +6765,9 @@ QTableCornerButton::section {
           <attribute name="verticalHeaderVisible">
            <bool>false</bool>
           </attribute>
+          <attribute name="verticalHeaderMinimumSectionSize">
+           <number>0</number>
+          </attribute>
           <row>
            <property name="text">
             <string>0</string>
@@ -6776,6 +6796,11 @@ QTableCornerButton::section {
           <row>
            <property name="text">
             <string>5</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>6</string>
            </property>
           </row>
           <column>
@@ -6935,6 +6960,9 @@ QTableCornerButton::section {
           </attribute>
           <attribute name="verticalHeaderVisible">
            <bool>false</bool>
+          </attribute>
+          <attribute name="verticalHeaderMinimumSectionSize">
+           <number>0</number>
           </attribute>
           <row>
            <property name="text">
@@ -7104,10 +7132,7 @@ QTableCornerButton::section {
        <attribute name="title">
         <string>DIAG ACQ DATA</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,5,0,1,1,0,0,1,0,1">
-        <property name="spacing">
-         <number>3</number>
-        </property>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
          <widget class="QFrame" name="frame_33">
           <property name="maximumSize">
@@ -7185,6 +7210,103 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </spacer>
            </item>
           </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="table_diagAcqPage_dc">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>145</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QTableWidget {
+    border: 2px solid white; /* 边框颜色与粗细调整为2px */
+    gridline-color: white; /* 网格线颜色 */
+    background-color: #f0f0f0; /* 单元格背景颜色 */
+    font-family: &quot;Calibri&quot;; /* 单元格字体 */
+    font-size: 10pt; /* 单元格字体大小 */
+}
+
+QTableWidget::item {
+}
+
+QHeaderView::section {
+    background-color: #f0f0f0; /* 表头背景颜色 */
+    padding: 5px; /* 表头内边距 */
+    border-style: none; /* 表头边框样式 */
+    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */
+    border-right: 2px solid white; /* 表头右边框宽度调整为2px */
+    font-family: &quot;Calibri&quot;; /* 表头字体 */
+    font-size: 10pt; /* 表头字体大小 */
+    font-weight: 600; /* 表头字体粗细 */
+}
+
+QTableCornerButton::section {
+    background-color: #f0f0f0; /* 角落按钮背景颜色 */
+    /* 添加其他您需要的样式 */
+}
+</string>
+          </property>
+          <attribute name="horizontalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="verticalHeaderMinimumSectionSize">
+           <number>30</number>
+          </attribute>
+          <row>
+           <property name="text">
+            <string>0</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>1</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>新建行</string>
+           </property>
+          </row>
+          <row>
+           <property name="text">
+            <string>3</string>
+           </property>
+          </row>
+          <column>
+           <property name="text">
+            <string>0</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>1</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>2</string>
+           </property>
+          </column>
+          <item row="0" column="0">
+           <property name="text">
+            <string>0x80</string>
+           </property>
+           <property name="background">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>255</red>
+              <green>242</green>
+              <blue>204</blue>
+             </color>
+            </brush>
+           </property>
+          </item>
          </widget>
         </item>
         <item>

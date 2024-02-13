@@ -2983,6 +2983,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_44.addItem(spacerItem27)
         self.verticalLayout_5.addWidget(self.frame_31)
         self.table_meaAcqDetailData_alertRegDev0 = QtWidgets.QTableWidget(self.tab_meaAcqDetail)
+        self.table_meaAcqDetailData_alertRegDev0.setMinimumSize(QtCore.QSize(150, 0))
         self.table_meaAcqDetailData_alertRegDev0.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.table_meaAcqDetailData_alertRegDev0.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
@@ -3013,7 +3014,7 @@ class Ui_MainWindow(object):
 "")
         self.table_meaAcqDetailData_alertRegDev0.setObjectName("table_meaAcqDetailData_alertRegDev0")
         self.table_meaAcqDetailData_alertRegDev0.setColumnCount(4)
-        self.table_meaAcqDetailData_alertRegDev0.setRowCount(6)
+        self.table_meaAcqDetailData_alertRegDev0.setRowCount(7)
         item = QtWidgets.QTableWidgetItem()
         self.table_meaAcqDetailData_alertRegDev0.setVerticalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -3026,6 +3027,8 @@ class Ui_MainWindow(object):
         self.table_meaAcqDetailData_alertRegDev0.setVerticalHeaderItem(4, item)
         item = QtWidgets.QTableWidgetItem()
         self.table_meaAcqDetailData_alertRegDev0.setVerticalHeaderItem(5, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_alertRegDev0.setVerticalHeaderItem(6, item)
         item = QtWidgets.QTableWidgetItem()
         self.table_meaAcqDetailData_alertRegDev0.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -3041,6 +3044,7 @@ class Ui_MainWindow(object):
         self.table_meaAcqDetailData_alertRegDev0.setItem(0, 0, item)
         self.table_meaAcqDetailData_alertRegDev0.horizontalHeader().setVisible(False)
         self.table_meaAcqDetailData_alertRegDev0.verticalHeader().setVisible(False)
+        self.table_meaAcqDetailData_alertRegDev0.verticalHeader().setMinimumSectionSize(0)
         self.verticalLayout_5.addWidget(self.table_meaAcqDetailData_alertRegDev0)
         self.frame_32 = QtWidgets.QFrame(self.tab_meaAcqDetail)
         self.frame_32.setMaximumSize(QtCore.QSize(16777215, 23))
@@ -3169,6 +3173,7 @@ class Ui_MainWindow(object):
         self.table_meaAcqDetailData_dataRegDev0.setItem(0, 0, item)
         self.table_meaAcqDetailData_dataRegDev0.horizontalHeader().setVisible(False)
         self.table_meaAcqDetailData_dataRegDev0.verticalHeader().setVisible(False)
+        self.table_meaAcqDetailData_dataRegDev0.verticalHeader().setMinimumSectionSize(0)
         self.verticalLayout_5.addWidget(self.table_meaAcqDetailData_dataRegDev0)
         self.frame_meaAcqDetailPage_alertDev1 = QtWidgets.QFrame(self.tab_meaAcqDetail)
         self.frame_meaAcqDetailPage_alertDev1.setMaximumSize(QtCore.QSize(16777215, 23))
@@ -3230,7 +3235,7 @@ class Ui_MainWindow(object):
 "")
         self.table_meaAcqDetailData_alertRegDev1.setObjectName("table_meaAcqDetailData_alertRegDev1")
         self.table_meaAcqDetailData_alertRegDev1.setColumnCount(4)
-        self.table_meaAcqDetailData_alertRegDev1.setRowCount(6)
+        self.table_meaAcqDetailData_alertRegDev1.setRowCount(7)
         item = QtWidgets.QTableWidgetItem()
         self.table_meaAcqDetailData_alertRegDev1.setVerticalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -3243,6 +3248,8 @@ class Ui_MainWindow(object):
         self.table_meaAcqDetailData_alertRegDev1.setVerticalHeaderItem(4, item)
         item = QtWidgets.QTableWidgetItem()
         self.table_meaAcqDetailData_alertRegDev1.setVerticalHeaderItem(5, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_meaAcqDetailData_alertRegDev1.setVerticalHeaderItem(6, item)
         item = QtWidgets.QTableWidgetItem()
         self.table_meaAcqDetailData_alertRegDev1.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -3258,6 +3265,7 @@ class Ui_MainWindow(object):
         self.table_meaAcqDetailData_alertRegDev1.setItem(0, 0, item)
         self.table_meaAcqDetailData_alertRegDev1.horizontalHeader().setVisible(False)
         self.table_meaAcqDetailData_alertRegDev1.verticalHeader().setVisible(False)
+        self.table_meaAcqDetailData_alertRegDev1.verticalHeader().setMinimumSectionSize(0)
         self.verticalLayout_5.addWidget(self.table_meaAcqDetailData_alertRegDev1)
         self.frame_meaAcqDetailPage_dataDev1 = QtWidgets.QFrame(self.tab_meaAcqDetail)
         self.frame_meaAcqDetailPage_dataDev1.setMaximumSize(QtCore.QSize(16777215, 23))
@@ -3386,6 +3394,7 @@ class Ui_MainWindow(object):
         self.table_meaAcqDetailData_dataRegDev1.setItem(0, 0, item)
         self.table_meaAcqDetailData_dataRegDev1.horizontalHeader().setVisible(False)
         self.table_meaAcqDetailData_dataRegDev1.verticalHeader().setVisible(False)
+        self.table_meaAcqDetailData_dataRegDev1.verticalHeader().setMinimumSectionSize(0)
         self.verticalLayout_5.addWidget(self.table_meaAcqDetailData_dataRegDev1)
         self.verticalLayout_5.setStretch(1, 4)
         self.verticalLayout_5.setStretch(3, 7)
@@ -3395,7 +3404,6 @@ class Ui_MainWindow(object):
         self.tab_diagAcqData = QtWidgets.QWidget()
         self.tab_diagAcqData.setObjectName("tab_diagAcqData")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.tab_diagAcqData)
-        self.verticalLayout_3.setSpacing(3)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.frame_33 = QtWidgets.QFrame(self.tab_diagAcqData)
         self.frame_33.setMaximumSize(QtCore.QSize(16777215, 23))
@@ -3426,6 +3434,61 @@ class Ui_MainWindow(object):
         spacerItem31 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_48.addItem(spacerItem31)
         self.verticalLayout_3.addWidget(self.frame_33)
+        self.table_diagAcqPage_dc = QtWidgets.QTableWidget(self.tab_diagAcqData)
+        self.table_diagAcqPage_dc.setMaximumSize(QtCore.QSize(16777215, 145))
+        self.table_diagAcqPage_dc.setStyleSheet("QTableWidget {\n"
+"    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
+"    gridline-color: white; /* 网格线颜色 */\n"
+"    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
+"    font-family: \"Calibri\"; /* 单元格字体 */\n"
+"    font-size: 10pt; /* 单元格字体大小 */\n"
+"}\n"
+"\n"
+"QTableWidget::item {\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"    background-color: #f0f0f0; /* 表头背景颜色 */\n"
+"    padding: 5px; /* 表头内边距 */\n"
+"    border-style: none; /* 表头边框样式 */\n"
+"    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */\n"
+"    border-right: 2px solid white; /* 表头右边框宽度调整为2px */\n"
+"    font-family: \"Calibri\"; /* 表头字体 */\n"
+"    font-size: 10pt; /* 表头字体大小 */\n"
+"    font-weight: 600; /* 表头字体粗细 */\n"
+"}\n"
+"\n"
+"QTableCornerButton::section {\n"
+"    background-color: #f0f0f0; /* 角落按钮背景颜色 */\n"
+"    /* 添加其他您需要的样式 */\n"
+"}\n"
+"")
+        self.table_diagAcqPage_dc.setObjectName("table_diagAcqPage_dc")
+        self.table_diagAcqPage_dc.setColumnCount(3)
+        self.table_diagAcqPage_dc.setRowCount(4)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_dc.setVerticalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_dc.setVerticalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_dc.setVerticalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_dc.setVerticalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_dc.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_dc.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_diagAcqPage_dc.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        brush = QtGui.QBrush(QtGui.QColor(255, 242, 204))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        item.setBackground(brush)
+        self.table_diagAcqPage_dc.setItem(0, 0, item)
+        self.table_diagAcqPage_dc.horizontalHeader().setVisible(False)
+        self.table_diagAcqPage_dc.verticalHeader().setVisible(False)
+        self.table_diagAcqPage_dc.verticalHeader().setMinimumSectionSize(30)
+        self.verticalLayout_3.addWidget(self.table_diagAcqPage_dc)
         self.table_diagAcqPage_status = QtWidgets.QTableWidget(self.tab_diagAcqData)
         self.table_diagAcqPage_status.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.table_diagAcqPage_status.setStyleSheet("QTableWidget {\n"
@@ -3973,11 +4036,6 @@ class Ui_MainWindow(object):
         self.table_diagAcqPage_dataReg_dev1.horizontalHeader().setVisible(False)
         self.table_diagAcqPage_dataReg_dev1.verticalHeader().setVisible(False)
         self.verticalLayout_3.addWidget(self.table_diagAcqPage_dataReg_dev1)
-        self.verticalLayout_3.setStretch(1, 5)
-        self.verticalLayout_3.setStretch(3, 1)
-        self.verticalLayout_3.setStretch(4, 1)
-        self.verticalLayout_3.setStretch(7, 1)
-        self.verticalLayout_3.setStretch(9, 1)
         self.tabWidget.addTab(self.tab_diagAcqData, "")
         self.tab_cellBal = QtWidgets.QWidget()
         self.tab_cellBal.setObjectName("tab_cellBal")
@@ -4614,7 +4672,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuAbout.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(5)
+        self.tabWidget.setCurrentIndex(7)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -5438,6 +5496,8 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "4"))
         item = self.table_meaAcqDetailData_alertRegDev0.verticalHeaderItem(5)
         item.setText(_translate("MainWindow", "5"))
+        item = self.table_meaAcqDetailData_alertRegDev0.verticalHeaderItem(6)
+        item.setText(_translate("MainWindow", "6"))
         item = self.table_meaAcqDetailData_alertRegDev0.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
         item = self.table_meaAcqDetailData_alertRegDev0.horizontalHeaderItem(1)
@@ -5532,6 +5592,8 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "4"))
         item = self.table_meaAcqDetailData_alertRegDev1.verticalHeaderItem(5)
         item.setText(_translate("MainWindow", "5"))
+        item = self.table_meaAcqDetailData_alertRegDev1.verticalHeaderItem(6)
+        item.setText(_translate("MainWindow", "6"))
         item = self.table_meaAcqDetailData_alertRegDev1.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
         item = self.table_meaAcqDetailData_alertRegDev1.horizontalHeaderItem(1)
@@ -5615,6 +5677,25 @@ class Ui_MainWindow(object):
         self.table_meaAcqDetailData_dataRegDev1.setSortingEnabled(__sortingEnabled)
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_meaAcqDetail), _translate("MainWindow", "MEA ACQ DTL"))
         self.label_55.setText(_translate("MainWindow", "STATUS, LOG, and ADC ZS/FS DIAGNOSTIC DATA Register Blocks (Diagnostic Acquisition)"))
+        item = self.table_diagAcqPage_dc.verticalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_diagAcqPage_dc.verticalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_diagAcqPage_dc.verticalHeaderItem(2)
+        item.setText(_translate("MainWindow", "新建行"))
+        item = self.table_diagAcqPage_dc.verticalHeaderItem(3)
+        item.setText(_translate("MainWindow", "3"))
+        item = self.table_diagAcqPage_dc.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_diagAcqPage_dc.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_diagAcqPage_dc.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "2"))
+        __sortingEnabled = self.table_diagAcqPage_dc.isSortingEnabled()
+        self.table_diagAcqPage_dc.setSortingEnabled(False)
+        item = self.table_diagAcqPage_dc.item(0, 0)
+        item.setText(_translate("MainWindow", "0x80"))
+        self.table_diagAcqPage_dc.setSortingEnabled(__sortingEnabled)
         item = self.table_diagAcqPage_status.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
         item = self.table_diagAcqPage_status.verticalHeaderItem(1)

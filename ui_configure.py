@@ -276,51 +276,58 @@ table_acqReqPage_items = [
 
 """ measurement acquisition detailed data page tablewidget initial content """
 table_meaAcqDetailPage_alertRegItems = [
-    ["0x80", "ALRTALTOVREG", "0000", " "],
-    ["0x80", "ALRTALTOVREG", "0000", " "],
-    ["0x80", "ALRTALTOVREG", "0000", " "],
-    ["0x80", "ALRTALTOVREG", "0000", " "],
-    ["0x80", "ALRTALTOVREG", "0000", " "],
-    ["0x80", "ALRTALTOVREG", "0000", " "]
+    ["Address", "Register",  "Pending (hex)", " "],
+    ["0x80", "ALRTOVREG",    "0000",          " "],
+    ["0x81", "ALRTUVREG",    "0000",          " "],
+    ["0x82", "ALRTALTOVREG", "0000",          " "],
+    ["0x83", "ALRTALTUVREG", "0000",          " "],
+    ["0x84", "ALRTAUXOVREG", "0000",          " "],
+    ["0x85", "ALRTAUXUVREG", "0000",          " "]
 ]
 
 table_meaAcqDetailPage_dataRegItems = [
+    ["0x90 ~ - 0x9F", "CELL IIR DATA", " ",
+     "CELLIIR 15", "CELLIIR 14","CELLIIR 13", "CELLIIR 12", "CELLIIR 11", "CELLIIR 10", "CELLIIR 9", "CELLIIR 8",
+     "CELLIIR 7", "CELLIIR 6","CELLIIR 5", "CELLIIR 4", "CELLIIR 3", "CELLIIR 2", "CELLIIR 1", "CELLIIR 0"],
+
+    ["0x90 ~ - 0x9F", "Device 0 (hex)", " ",
+     "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000"],
+
+    ["0xA0 ~ - 0xAF", "Device 0 (V)", " ",
+     "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+
+    ["0x90 ~ - 0x9F", "CELL DATA", " ",
+     "CELL 15", "CELL 14", "CELL 13", "CELL 12", "CELL 11", "CELL10", "CELL 9", "CELL 8",
+     "CELL 7",  "CELL 6",  "CELL 5",  "CELL 4",  "CELL 3",  "CELL2",  "CELL 1", "CELL 0"],
+
+    ["0x90 ~ - 0x9F", "Device 0 (hex)", " ",
+     "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000",
+     "0000", "0000"],
+
+    ["0xA0 ~ - 0xAF", "Device 0 (V)", " ",
+     "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+
     ["0x90 ~ - 0x9F", "AUXILIARY DATA", " ",
-     "CELLIIR 15", "CELLIIR 14","CELLIIR 13", "CELLIIR 12", "CELLIIR 11", "CELLIIR 10", "CELLIIR 9", "CELLIIR 8",
-     "CELLIIR 7", "CELLIIR 6","CELLIIR 5", "CELLIIR 4", "CELLIIR 3", "CELLIIR 2", "CELLIIR 1", "CELLIIR 0"],
-    ["0x90 ~ - 0x9F", "AUXILIARY DATA", " ",
-     "CELLIIR 15", "CELLIIR 14","CELLIIR 13", "CELLIIR 12", "CELLIIR 11", "CELLIIR 10", "CELLIIR 9", "CELLIIR 8",
-     "CELLIIR 7", "CELLIIR 6","CELLIIR 5", "CELLIIR 4", "CELLIIR 3", "CELLIIR 2", "CELLIIR 1", "CELLIIR 0"],
-    ["0x90 ~ - 0x9F", "AUXILIARY DATA", " ",
-     "CELLIIR 15", "CELLIIR 14","CELLIIR 13", "CELLIIR 12", "CELLIIR 11", "CELLIIR 10", "CELLIIR 9", "CELLIIR 8",
-     "CELLIIR 7", "CELLIIR 6","CELLIIR 5", "CELLIIR 4", "CELLIIR 3", "CELLIIR 2", "CELLIIR 1", "CELLIIR 0"],
-    ["0xA0 ~ - 0xAF", "AUXILIARY DATA", " ",
-     "CELLIIR 15", "CELLIIR 14","CELLIIR 13", "CELLIIR 12", "CELLIIR 11", "CELLIIR 10", "CELLIIR 9", "CELLIIR 8",
-     "CELLIIR 7", "CELLIIR 6","CELLIIR 5", "CELLIIR 4", "CELLIIR 3", "CELLIIR 2", "CELLIIR 1", "CELLIIR 0"],
-    ["0xA0 ~ - 0xAF", "AUXILIARY DATA", " ",
-     "CELLIIR 15", "CELLIIR 14","CELLIIR 13", "CELLIIR 12", "CELLIIR 11", "CELLIIR 10", "CELLIIR 9", "CELLIIR 8",
-     "CELLIIR 7", "CELLIIR 6","CELLIIR 5", "CELLIIR 4", "CELLIIR 3", "CELLIIR 2", "CELLIIR 1", "CELLIIR 0"],
-    ["0xA0 ~ - 0xAF", "AUXILIARY DATA", " ",
-     "CELLIIR 15", "CELLIIR 14","CELLIIR 13", "CELLIIR 12", "CELLIIR 11", "CELLIIR 10", "CELLIIR 9", "CELLIIR 8",
-     "CELLIIR 7", "CELLIIR 6","CELLIIR 5", "CELLIIR 4", "CELLIIR 3", "CELLIIR 2", "CELLIIR 1", "CELLIIR 0"],
-    ["0xB0 ~ - 0xBF", "AUXILIARY DATA", " ",
-     "CELLIIR 15", "CELLIIR 14","CELLIIR 13", "CELLIIR 12", "CELLIIR 11", "CELLIIR 10", "CELLIIR 9", "CELLIIR 8",
-     "CELLIIR 7", "CELLIIR 6","CELLIIR 5", "CELLIIR 4", "CELLIIR 3", "CELLIIR 2", "CELLIIR 1", "CELLIIR 0"],
-    ["0xB0 ~ - 0xBF", "AUXILIARY DATA", " ",
-     "CELLIIR 15", "CELLIIR 14","CELLIIR 13", "CELLIIR 12", "CELLIIR 11", "CELLIIR 10", "CELLIIR 9", "CELLIIR 8",
-     "CELLIIR 7", "CELLIIR 6","CELLIIR 5", "CELLIIR 4", "CELLIIR 3", "CELLIIR 2", "CELLIIR 1", "CELLIIR 0"],
-    ["0xB0 ~ - 0xBF", "AUXILIARY DATA", " ",
-     "CELLIIR 15", "CELLIIR 14","CELLIIR 13", "CELLIIR 12", "CELLIIR 11", "CELLIIR 10", "CELLIIR 9", "CELLIIR 8",
-     "CELLIIR 7", "CELLIIR 6","CELLIIR 5", "CELLIIR 4", "CELLIIR 3", "CELLIIR 2", "CELLIIR 1", "CELLIIR 0"],
-    ["0xC0 ~ - 0xCF", "AUXILIARY DATA", " ",
-     "CELLIIR 15", "CELLIIR 14","CELLIIR 13", "CELLIIR 12", "CELLIIR 11", "CELLIIR 10", "CELLIIR 9", "CELLIIR 8",
-     "CELLIIR 7", "CELLIIR 6","CELLIIR 5", "CELLIIR 4", "CELLIIR 3", "CELLIIR 2", "CELLIIR 1", "CELLIIR 0"],
-    ["0xC0 ~ - 0xCF", "AUXILIARY DATA", " ",
-     "CELLIIR 15", "CELLIIR 14","CELLIIR 13", "CELLIIR 12", "CELLIIR 11", "CELLIIR 10", "CELLIIR 9", "CELLIIR 8",
-     "CELLIIR 7", "CELLIIR 6","CELLIIR 5", "CELLIIR 4", "CELLIIR 3", "CELLIIR 2", "CELLIIR 1", "CELLIIR 0"],
-    ["0xC0 ~ - 0xCF", "AUXILIARY DATA", " ",
-     "CELLIIR 15", "CELLIIR 14","CELLIIR 13", "CELLIIR 12", "CELLIIR 11", "CELLIIR 10", "CELLIIR 9", "CELLIIR 8",
-     "CELLIIR 7", "CELLIIR 6","CELLIIR 5", "CELLIIR 4", "CELLIIR 3", "CELLIIR 2", "CELLIIR 1", "CELLIIR 0"]
+     "AUX 15", "AUX 14", "AUX 13", "AUX 12", "AUX 11", "AUX 10", "AUX 9", "AUX 8",
+     "AUX 7",  "AUX 6",  "AUX 5",  "AUX 4",  "AUX 3",  "AUX 2",  "AUX 1", "AUX 0"],
+
+    ["0x90 ~ - 0x9F", "Device 0 (hex)", " ",
+     "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000",
+     "0000", "0000"],
+
+    ["0xA0 ~ - 0xAF", "Device 0 (V)", " ",
+     "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+
+    ["0x90 ~ - 0x9F", "ALTERNATE DATA", " ",
+     "ALT 15", "ALT 14", "ALT 13", "ALT 12", "ALT 11", "ALT 10", "ALT 9", "ALT 8",
+     "ALT 7",  "ALT 6",  "ALT 5",  "ALT 4",  "ALT 3",  "ALT 2",  "ALT 1", "ALT 0"],
+
+    ["0x90 ~ - 0x9F", "Device 0 (hex)", " ",
+     "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000",
+     "0000", "0000"],
+
+    ["0xA0 ~ - 0xAF", "Device 0 (V)", " ",
+     "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
 ]
 
 """ measurement acquisition summary data page tablewidget initial content """
@@ -821,28 +828,28 @@ def adjust_acqReqPage_tables(pOsrTable, pAcqReqTable):
 
 
 def adjust_meaAcqDetailPage_tables(pAlertRegDev0, pDataRegDev0, pAlertRegDev1, pDataRegDev1):
-    pAlertRegDev0.setColumnWidth(0, 100)
-    pAlertRegDev0.setColumnWidth(1, 150)
-    pAlertRegDev0.setColumnWidth(2, 100)
-    pDataRegDev0.setColumnWidth(0, 100)
-    pDataRegDev0.setColumnWidth(1, 150)
-    pDataRegDev0.setColumnWidth(2, 100)
-    pAlertRegDev1.setColumnWidth(0, 100)
-    pAlertRegDev1.setColumnWidth(1, 150)
-    pAlertRegDev1.setColumnWidth(2, 100)
-    pDataRegDev1.setColumnWidth(0, 100)
-    pDataRegDev1.setColumnWidth(1, 150)
-    pDataRegDev1.setColumnWidth(2, 100)
+    pAlertRegDev0.setColumnWidth(0, 140)
+    pAlertRegDev0.setColumnWidth(1, 140)
+    pAlertRegDev0.setColumnWidth(2, 120)
+    pDataRegDev0.setColumnWidth(0,  140)
+    pDataRegDev0.setColumnWidth(1,  140)
+    pDataRegDev0.setColumnWidth(2,  120)
+    pAlertRegDev1.setColumnWidth(0, 140)
+    pAlertRegDev1.setColumnWidth(1, 140)
+    pAlertRegDev1.setColumnWidth(2, 120)
+    pDataRegDev1.setColumnWidth(0,  140)
+    pDataRegDev1.setColumnWidth(1,  140)
+    pDataRegDev1.setColumnWidth(2,  120)
 
-    for i in range(3, 19):
-        pDataRegDev0.setColumnWidth(i, 90)
-        pDataRegDev1.setColumnWidth(i, 90)
+    for c in range(3, 19):
+        pDataRegDev0.setColumnWidth(c, 90)
+        pDataRegDev1.setColumnWidth(c, 90)
 
     pAlertRegDev0.setColumnWidth(3, 90 * 16)
     pAlertRegDev1.setColumnWidth(3, 90 * 16)
 
 def set_meaAcqDetailPage_table_color(pAlertRegDev0, pDataRegDev0, pAlertRegDev1, pDataRegDev1):
-    for r in range(6):
+    for r in range(1,7):
         pAlertRegDev0.item(r, 2).setBackground(QColor("#E2F0D9"))  # 绿色
         pAlertRegDev1.item(r, 2).setBackground(QColor("#E2F0D9"))  # 绿色
         pAlertRegDev0.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
@@ -850,6 +857,10 @@ def set_meaAcqDetailPage_table_color(pAlertRegDev0, pDataRegDev0, pAlertRegDev1,
 
     boldFont = QFont()
     boldFont.setBold(True)
+    for c in range(4):
+        pAlertRegDev0.item(0, c).setFont(boldFont)  # 字体加粗
+        pAlertRegDev1.item(0, c).setFont(boldFont)  # 字体加粗
+
     for r in range(12):
         for c in range(0, 19):
             if r == 0 or r == 3 or r == 6 or r == 9:
@@ -865,27 +876,64 @@ def set_meaAcqDetailPage_table_color(pAlertRegDev0, pDataRegDev0, pAlertRegDev1,
                     pDataRegDev0.item(r, c).setBackground(QColor("#FFF2CC"))  # 黄色
                     pDataRegDev1.item(r, c).setBackground(QColor("#FFF2CC"))  # 黄色
 
+def insert_txt_frame():
+    frameTxt = QtWidgets.QFrame()
+    layoutTxt = QtWidgets.QGridLayout(frameTxt)
+    layoutTxt.setSpacing(0)
+    layoutTxt.setContentsMargins(0, 0, 0, 0)    # 为布局设置外边距：左、上、右、下
+
+    listTxt = []
+    for i in range(0, 16):
+        label_txt = QtWidgets.QLabel(LED_LAB_16[i])
+        label_txt.setFont(QtGui.QFont("Calibri", 9, QtGui.QFont.Bold))
+        listTxt.append(label_txt)
+        # listTxt.append(txt_generator(LED_LAB_16[i]))
+        layoutTxt.addWidget(listTxt[i], 0, i)
+        layoutTxt.setAlignment(listTxt[i], Qt.AlignCenter)
+
+    return frameTxt
+
+def insert_led_frame():
+    frameLed = QtWidgets.QFrame()
+    layoutLed = QtWidgets.QGridLayout(frameLed)
+    layoutLed.setSpacing(0)
+    layoutLed.setContentsMargins(0, 0, 0, 0)  # 为布局设置外边距：左、上、右、下
+
+    listLed = []
+    for i in range(0,16):
+        listLed.append(led_generator())
+        layoutLed.addWidget(listLed[i], 0, i)
+        layoutLed.setAlignment(listLed[i], Qt.AlignCenter)
+
+    return frameLed, listLed
+
 def meaAcqDetailPage_insert_led(pAlertRegDev0, pAlertRegDev1):
-        # 插入 LED 图标对象
-        ledList0 = add_led_txt(16, pAlertRegDev0, 0, 3, LED_LAB_16)  # 第一行插入
-        ledList1 = add_led_txt(16, pAlertRegDev0, 1, 3, LED_LAB_16)  # 第二行插入
-        ledList2 = add_led_txt(16, pAlertRegDev0, 2, 3, LED_LAB_16)  # 第三行插入
-        ledList3 = add_led_txt(16, pAlertRegDev0, 3, 3, LED_LAB_16)  # 第四行插入
-        ledList4 = add_led_txt(16, pAlertRegDev0, 4, 3, LED_LAB_16)  # 第三行插入
-        ledList5 = add_led_txt(16, pAlertRegDev0, 5, 3, LED_LAB_16)  # 第四行插入
+    """
+    Measurement acquisition detailed page insert led
+    :param pAlertRegDev0: alert dev0 table
+    :param pAlertRegDev1: alert dev1 table
+    :return: 返回的是两个二维列表：dev0LedList[6][16], dev1LedList[6][16]
+    """
+    ''' insert led lable '''
+    pAlertRegDev0.setCellWidget(0, 3, insert_txt_frame())
+    pAlertRegDev1.setCellWidget(0, 3, insert_txt_frame())
 
-        ledList6 = add_led_txt(16, pAlertRegDev1, 0, 3, LED_LAB_16)  # 第一行插入
-        ledList7 = add_led_txt(16, pAlertRegDev1, 1, 3, LED_LAB_16)  # 第二行插入
-        ledList8 = add_led_txt(16, pAlertRegDev1, 2, 3, LED_LAB_16)  # 第三行插入
-        ledList9 = add_led_txt(16, pAlertRegDev1, 3, 3, LED_LAB_16)  # 第四行插入
-        ledList10 = add_led_txt(16, pAlertRegDev1, 4, 3, LED_LAB_16)  # 第三行插入
-        ledList11 = add_led_txt(16, pAlertRegDev1, 5, 3, LED_LAB_16)  # 第四行插入
+    ''' insert led '''
+    rows, cols = 6, 16  # 定义行数和列数
+    dev0LedList = [[None for _ in range(cols)] for _ in range(rows)]
+    dev1LedList = [[None for _ in range(cols)] for _ in range(rows)]
 
-        dev0_led_list = [ledList0, ledList1, ledList2, ledList3, ledList4, ledList5]
-        dev1_led_list = [ledList6, ledList7, ledList8, ledList9, ledList10, ledList11]
+    for i in range(1, 7):
+        ledFrame, ledList = insert_led_frame()
+        dev0LedList[i - 1] = ledList
+        pAlertRegDev0.setCellWidget(i, 3, ledFrame)
 
-        return dev0_led_list, dev1_led_list
+    for i in range(1, 7):
+        ledFrame, ledList = insert_led_frame()
+        dev1LedList[i - 1] = ledList
+        pAlertRegDev1.setCellWidget(i, 3, ledFrame)
 
+    return dev0LedList, dev1LedList
 
 def adjust_diagAcqDataPage_tables(pStaTable, pAlerDev0Table, pDataDev0Table, pAlerDev1Table, pDataDev1Table):
     ''' adjust status table '''

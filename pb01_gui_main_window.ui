@@ -51,7 +51,7 @@ QTabBar::tab:!selected { /* 未被选中的Tab标题的样式 */
 }</string>
       </property>
       <property name="currentIndex">
-       <number>8</number>
+       <number>1</number>
       </property>
       <property name="tabBarAutoHide">
        <bool>false</bool>
@@ -1301,7 +1301,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             <widget class="QLineEdit" name="lineEdit_warnStatusInit_2">
              <property name="minimumSize">
               <size>
-               <width>400</width>
+               <width>600</width>
                <height>0</height>
               </size>
              </property>
@@ -1443,6 +1443,12 @@ QPushButton:pressed {
         </item>
         <item>
          <widget class="QTableWidget" name="table_devMgPage_init">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>180</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">QTableWidget {
     border: 2px solid white; /* 边框颜色与粗细调整为2px */
@@ -1750,7 +1756,7 @@ QPushButton:pressed {
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>16777215</height>
+            <height>130</height>
            </size>
           </property>
           <property name="styleSheet">

@@ -615,18 +615,23 @@ def adjust_devMgPage_tables(pInit, pDC, pCur):
     ''' adjust size '''
     # status tables
     for c in range(12):
-        if c == 1:
+        if c == 0 or c == 2 or c == 7:
+            pInit.setColumnWidth(c, 120)
+            pCur.setColumnWidth(c, 120)
+        elif c == 1:
             pInit.setColumnWidth(c, 200)
             pCur.setColumnWidth(c, 200)
         elif c == 4 or c == 6 or c == 9 or c == 11:
             pInit.setColumnWidth(c, 150)
             pCur.setColumnWidth(c, 150)
         else:
-            pInit.setColumnWidth(c, 120)
-            pCur.setColumnWidth(c, 120)
+            pInit.setColumnWidth(c, 170)
+            pCur.setColumnWidth(c, 170)
     # dc tabble
     for c in range(3):
-        if c == 1:
+        if c == 0:
+            pDC.setColumnWidth(c, 120)
+        elif c == 1:
             pDC.setColumnWidth(c, 200)
         elif c == 2:
             pDC.setColumnWidth(c, 1320)
@@ -653,6 +658,16 @@ def adjust_devMgPage_tables(pInit, pDC, pCur):
                 pInit.item(r, 8).setBackground(QColor("#FFF2CC"))  # 黄色
                 pInit.item(r, 2).setBackground(QColor("#E2F0D9"))  # 绿色
                 pInit.item(r, 7).setBackground(QColor("#E2F0D9"))  # 绿色
+
+    # DC table
+    pDC.setSpan(1, 0, 3, 1)
+    pDC.setSpan(1, 1, 3, 1)
+    for r in range(4):
+        if r < 2:
+            pDC.item(r, 1).setBackground(QColor("#E2F0D9"))  # 绿色
+            pDC.item(r, 0).setFont(boldFont)  # 字体加粗
+        pDC.item(r, 2).setBackground(QColor("#FFF2CC"))  # 黄色
+
     # status current table
     for r in range(8):
         for c in range(12):
@@ -677,22 +692,14 @@ def adjust_devMgPage_tables(pInit, pDC, pCur):
                 pCur.item(r, 2).setBackground(QColor("#E2F0D9"))  # 绿色
                 pCur.item(r, 7).setBackground(QColor("#E2F0D9"))  # 绿色
 
-    # DC table
-    pDC.setSpan(1, 0, 3, 1)
-    pDC.setSpan(1, 1, 3, 1)
-    for r in range (4):
-        if r < 2:
-            pDC.item(r, 1).setBackground(QColor("#E2F0D9"))  # 绿色
-            pDC.item(r, 0).setFont(boldFont)  # 字体加粗
-        pDC.item(r, 2).setBackground(QColor("#FFF2CC"))  # 黄色
-
     ''' insert leds '''
+    # dc table
     ledDcByte = add_led_txt(8, pDC, 0, 2, LED_DC_LAB)
     ledAlert0 = add_led_txt(16, pDC, 1, 2, LED_ALERT0_LAB)
     ledAlert1 = add_led_txt(16, pDC, 2, 2, LED_ALERT1_LAB)
     ledAlert2 = add_led_txt(16, pDC, 3, 2, LED_ALERT2_LAB)
     ledAlert = ledAlert0 + ledAlert1 + ledAlert2
-
+    # status initial table
     ledInitSta1Dev0 = add_led_txt(16, pInit, 1, 3, LED_STA1_LAB)
     ledInitSta1Dev1 = add_led_txt(16, pInit, 1, 8, LED_STA1_LAB)
     ledInitSta2Dev0 = add_led_txt(16, pInit, 2, 3, LED_STA2_LAB)
@@ -701,7 +708,7 @@ def adjust_devMgPage_tables(pInit, pDC, pCur):
     ledInitFem1Dev1 = add_led_txt(16, pInit, 3, 8, LED_FME1_LAB)
     ledInitFem2Dev0 = add_led_txt(16, pInit, 4, 3, LED_FME2_LAB)
     ledInitFem2Dev1 = add_led_txt(16, pInit, 4, 8, LED_FME2_LAB)
-
+    # status current table
     ledCurSta1Dev0 = add_led_txt(16, pCur, 1, 3, LED_STA1_LAB)
     ledCurSta1Dev1 = add_led_txt(16, pCur, 1, 8, LED_STA1_LAB)
     ledCurSta2Dev0 = add_led_txt(16, pCur, 2, 3, LED_STA2_LAB)

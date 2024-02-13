@@ -644,7 +644,7 @@ class Ui_MainWindow(object):
         spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_15.addItem(spacerItem7)
         self.lineEdit_warnStatusInit_2 = QtWidgets.QLineEdit(self.frame_6)
-        self.lineEdit_warnStatusInit_2.setMinimumSize(QtCore.QSize(400, 0))
+        self.lineEdit_warnStatusInit_2.setMinimumSize(QtCore.QSize(600, 0))
         self.lineEdit_warnStatusInit_2.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
         font.setFamily("Calibri")
@@ -721,6 +721,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_15.addWidget(self.pushButton_statusRegInit_5)
         self.verticalLayout_21.addWidget(self.frame_6)
         self.table_devMgPage_init = QtWidgets.QTableWidget(self.tab_devMg)
+        self.table_devMgPage_init.setMaximumSize(QtCore.QSize(16777215, 180))
         self.table_devMgPage_init.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
@@ -876,7 +877,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_25.addWidget(self.pushButton_statusRegReadBack_6)
         self.verticalLayout_21.addWidget(self.frame_10)
         self.table_devMgPage_dc = QtWidgets.QTableWidget(self.tab_devMg)
-        self.table_devMgPage_dc.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.table_devMgPage_dc.setMaximumSize(QtCore.QSize(16777215, 130))
         self.table_devMgPage_dc.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
@@ -4681,7 +4682,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuAbout.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(8)
+        self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

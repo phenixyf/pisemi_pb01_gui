@@ -97,22 +97,22 @@ LED_FME1_LAB = ["OSC", "----", "----", "----", "----", "VAA", "VDD", "VIO",
                 "AGND2", "AGND", "DGND", "IOGND", "HVOV", "HVUV", "TEMP2", "TEMP1"]
 LED_FME2_LAB = ["HVHDRM", "ACQTO", "----", "----", "ADC1ZS", "ADC1FS", "ADC2ZS", "ADC2FS",
                 "USER", "MODE", "AINIT", "DINIT", "OTPERR", "REGECC", "MBIST", "CBIST"]
-LED_LAB_DC = ["INTFC", "FMEA", "PROC", "DIAG", "OV", "UV", "AUXOV", "AUXUV"]
-LED_LAB_ALERT0 = ["ACQ", "RESET", "RJCT", "UIF", "OV", "UV", "ALTOV", "ALTUV",
+LED_DC_LAB = ["INTFC", "FMEA", "PROC", "DIAG", "OV", "UV", "AUXOV", "AUXUV"]
+LED_ALERT0_LAB = ["ACQ", "RESET", "RJCT", "UIF", "OV", "UV", "ALTOV", "ALTUV",
                 "AUXOV", "AUXUV", "DIAGOV", "DIAGUV", "MM", "CBAL", "FMEA2", "FMEA1"]
-LED_LAB_ALERT1 = ["LOC31", "LOC30", "LOC29", "LOC28", "LOC27", "LOC26", "LOC25", "LOC24",
+LED_ALERT1_LAB = ["LOC31", "LOC30", "LOC29", "LOC28", "LOC27", "LOC26", "LOC25", "LOC24",
                 "LOC23", "LOC22", "LOC21", "LOC20", "LOC19", "LOC18", "LOC17", "LOC16"]
-LED_LAB_ALERT2 = ["LOC15", "LOC14", "LOC13", "LOC12", "LOC11", "LOC10", "LOC9", "LOC8",
+LED_ALERT2_LAB = ["LOC15", "LOC14", "LOC13", "LOC12", "LOC11", "LOC10", "LOC9", "LOC8",
                 "LOC7", "LOC6", "LOC5", "LOC4", "LOC3", "LOC2", "LOC1", "LOC0"]
-LED_LAB_16 = ["LED15", "LED14", "LED13", "LED12", "LED11", "LED10", "LED9", "LED8",
+LED_16_LAB = ["LED15", "LED14", "LED13", "LED12", "LED11", "LED10", "LED9", "LED8",
                 "LED7", "LED6", "LED5", "LED4", "LED3", "LED2", "LED1", "LED0"]
-LED_LAB_8 = ["LED7", "LED6", "LED5", "LED4", "LED3", "LED2", "LED1", "LED0"]
-LED_LAB_17 = ["LED16", "LED15", "LED14", "LED13", "LED12", "LED11", "LED10", "LED9", "LED8",
+LED_8_LAB = ["LED7", "LED6", "LED5", "LED4", "LED3", "LED2", "LED1", "LED0"]
+LED_17_LAB = ["LED16", "LED15", "LED14", "LED13", "LED12", "LED11", "LED10", "LED9", "LED8",
                 "LED7", "LED6", "LED5", "LED4", "LED3", "LED2", "LED1", "LED0"]
-LED_LAB_32 = ["LED31", "LED30", "LED29", "LED28", "LED27", "LED26", "LED25", "LED24",
-                "LED23", "LED22", "LED21", "LED20", "LED19", "LED18", "LED17", "LED16",
-              "LED15", "LED14", "LED13", "LED12", "LED11", "LED10", "LED9", "LED8",
-                "LED7", "LED6", "LED5", "LED4", "LED3", "LED2", "LED1", "LED0"]
+LED_CBALSTAT_LAB = ["CBON", "CBACT", "CBDEXP", "CBDUV", "CBETMP", "CBEHV", "CBEATO", "CBEAZF",
+                   "CBETO", "CBAOV", "CBAUV", "CBAALTOV", "CBAALTUV", "CBAAUXOV", "CVAAUXUV", "CBAMM"]
+LED_CBALUVSTAT_LAB = ["CBUV15", "CBUV14", "CBUV13", "CBUV12", "CBUV11", "CBUV10", "CBUV9", "CBUV8",
+                      "CBUV7", "CBUV6", "CBUV5", "CBUV4", "CBUV3", "CBUV2", "CBUV1", "CBUV0"]
 
 
 ''' chain configuration page tablewidget initial content '''
@@ -405,39 +405,36 @@ table_cblPage_cblCtrlDemoHeaders =["Address", "Register", "Pending (hex)", "Comm
 
 table_cblPage_cblExpTimItems = ["002", "2"]
 table_cblPage_cblCfgRegItems = [
-    ["0x45", "CBALUVTHREG", "FFFF",
-     "CBMODE[2:0] is determined by selection.  CBTEMPEN=0b1 for safety.  CBDUTY[3:0]=0xF (50%) for Semi-Automatic Mode."
-     "  All other options are not used in this Demo.", "01F0", "01F0"],
-    ["0x46", "CBALUVTHREG", "FFFF",
-     "CBMODE[2:0] is determined by selection.  CBTEMPEN=0b1 for safety.  CBDUTY[3:0]=0xF (50%) for Semi-Automatic Mode."
-     "  All other options are not used in this Demo.", "01F0", "01F0"],
-    ["0x47", "CBALUVTHREG", "FFFF",
-     "CBMODE[2:0] is determined by selection.  CBTEMPEN=0b1 for safety.  CBDUTY[3:0]=0xF (50%) for Semi-Automatic Mode."
-     "  All other options are not used in this Demo.", "01F0", "01F0"],
+    ["0x45", "CBALSEL", "FFFF",
+     "Enable all BALSW for Diagnostics and basic Demonstration.", "0000", "0000"],
+    ["0x46", "CBALTIMECFG", "0002",
+     "Applies selected Real-Time Limit to Manual operations, Effective-Time Limit to Semi-Automatic operations."
+     "  CBEXP is capped at 0x005 for demonstration purposes.", "0000", "0000"],
+    ["0x47", "CBALACQCFG", "2400",
+     "Apply defaults.  This register is not used in Manual or Semi-Automatic modes of operation.", "2400", "2400"],
     ["0x48", "CBALUVTHREG", "FFFF",
-     "CBMODE[2:0] is determined by selection.  CBTEMPEN=0b1 for safety.  CBDUTY[3:0]=0xF (50%) for Semi-Automatic Mode."
-     "  All other options are not used in this Demo.", "01F0", "01F0"],
-    ["0x49", "CBALUVTHREG", "FFFF",
+     "Apply defaults (5V Unipolar).  This register is not used in Manual or Semi-Automatic modes of operation.", "FFFF", "FFFF"],
+    ["0x49", "CBALCFG", "01F0",
      "CBMODE[2:0] is determined by selection.  CBTEMPEN=0b1 for safety.  CBDUTY[3:0]=0xF (50%) for Semi-Automatic Mode."
      "  All other options are not used in this Demo.", "01F0", "01F0"]
 ]
 table_cblPage_cblCtrlDemoItems = [
-    ["0x4A","BALCTRL (START)", "4000", "This is the command issued for a Cell Balancing Start Request.", " ", " "],
-    ["0x4A","BALCTRL (START)", "2000", "This is the command issued for a Cell Balancing Start Request.", " ", " "]
+    ["0x4A", "BALCTRL (START)", "4000", "This is the command issued for a Cell Balancing Start Request.", " ", " "],
+    ["0x4A", "BALCTRL (STOP)",  "2000", "This is the command issued for a Cell Balancing Stop Request.",  " ", " "]
 ]
 table_cblPage_cblCtrlInfItems = [
-    ["Address", "Register", "Device 0 (hex)", " ", " ", " ", " ", " ", " ",
+    ["Address", "Register",     "Device 0 (hex)", " ", " ", " ", " ", " ", " ",
                                 "Device 1 (hex)", " ", " ", " ", " ", " ", " "],
-    ["0x4A", "CBALCTRL (READ)", "0000", "0", "Hours (dec)", "0", "Min (dec)", "0", "Sec (dec)",
-                                "0000", "0", "Hours (dec)", "0", "Min (dec)", "0", "Sec (dec)"],
-    ["0x4A", "CBALCTRL (READ)", "0000", "0", "Hours (dec)", "0", "Min (dec)", "0", "Sec (dec)",
-                                "0000", "0", "Hours (dec)", "0", "Min (dec)", "0", "Sec (dec)"],
-    ["0x4A", "CBALCTRL (READ)", "0000", "0", "Hours (dec)", "0", "Min (dec)", "0", "Sec (dec)",
-                                "0000", "0", "Hours (dec)", "0", "Min (dec)", "0", "Sec (dec)"],
-    ["0x4A", "CBALCTRL (READ)", "0000", "0", "Hours (dec)", "0", "Min (dec)", "0", "Sec (dec)",
-                                "0000", "0", "Hours (dec)", "0", "Min (dec)", "0", "Sec (dec)"],
-    ["0x4A", "CBALCTRL (READ)", "0000", "0", "Hours (dec)", "0", "Min (dec)", "0", "Sec (dec)",
-                                "0000", "0", "Hours (dec)", "0", "Min (dec)", "0", "Sec (dec)"]
+    ["0x4A", "CBALCTRL (READ)", "0007",           "Current CBAL details, updated in response to a Start, Stop, or Read Back request.", " ", " ", " ", " ", " ",
+                                "0007",           "Current CBAL details, updated in response to a Start, Stop, or Read Back request.", " ", " ", " ", " ", " "],
+    ["0x4B", "CBALSTATUS",      "0000",           " ", " ", " ", " ", " ", " ",
+                                "0000",           " ", " ", " ", " ", " ", " "],
+    ["0x4C", "CBALTIMER",       "0000",           "0", " ", " ", "Time per Channel Group (Minutes, decimal)"," ", " ",
+                                "0000",           "0", " ", " ", "Time per Channel Group (Minutes, decimal)"," ", " "],
+    ["0x4D", "CBALCOUNT",       "0000",           "0", "Hours (dec)", "0", "Min (dec)", "0", "Sec (dec)",
+                                "0000",           "0", "Hours (dec)", "0", "Min (dec)", "0", "Sec (dec)"],
+    ["0x4E", "CBALUVSTAT",      "0000",           " ", " ", " ", " ", " ", " ",
+                                "0000",           " ", " ", " ", " ", " ", " "]
 ]
 
 
@@ -690,10 +687,10 @@ def adjust_devMgPage_tables(pInit, pDC, pCur):
         pDC.item(r, 2).setBackground(QColor("#FFF2CC"))  # 黄色
 
     ''' insert leds '''
-    ledDcByte = add_led_txt(8, pDC, 0, 2, LED_LAB_DC)
-    ledAlert0 = add_led_txt(16, pDC, 1, 2, LED_LAB_ALERT0)
-    ledAlert1 = add_led_txt(16, pDC, 2, 2, LED_LAB_ALERT1)
-    ledAlert2 = add_led_txt(16, pDC, 3, 2, LED_LAB_ALERT2)
+    ledDcByte = add_led_txt(8, pDC, 0, 2, LED_DC_LAB)
+    ledAlert0 = add_led_txt(16, pDC, 1, 2, LED_ALERT0_LAB)
+    ledAlert1 = add_led_txt(16, pDC, 2, 2, LED_ALERT1_LAB)
+    ledAlert2 = add_led_txt(16, pDC, 3, 2, LED_ALERT2_LAB)
     ledAlert = ledAlert0 + ledAlert1 + ledAlert2
 
     ledInitSta1Dev0 = add_led_txt(16, pInit, 1, 3, LED_STA1_LAB)
@@ -923,8 +920,8 @@ def meaAcqDetailPage_insert_led(pAlertRegDev0, pAlertRegDev1):
     :return: 返回的是两个二维列表：dev0LedList[6][16], dev1LedList[6][16]
     """
     ''' insert led lable '''
-    pAlertRegDev0.setCellWidget(0, 3, insert_txt_frame(16, LED_LAB_16))
-    pAlertRegDev1.setCellWidget(0, 3, insert_txt_frame(16, LED_LAB_16))
+    pAlertRegDev0.setCellWidget(0, 3, insert_txt_frame(16, LED_16_LAB))
+    pAlertRegDev1.setCellWidget(0, 3, insert_txt_frame(16, LED_16_LAB))
 
     ''' insert led '''
     rows, cols = 6, 16  # 定义行数和列数
@@ -1055,10 +1052,10 @@ def adjust_diagAcqDataPage_tables(pDC, pStaTable, pAlerDev0Table, pDataDev0Table
 
     ''' insert led '''
     # dc table
-    ledDcByte = add_led_txt(8, pDC, 0, 2, LED_LAB_DC)
-    ledAlert0 = add_led_txt(16, pDC, 1, 2, LED_LAB_ALERT0)
-    ledAlert1 = add_led_txt(16, pDC, 2, 2, LED_LAB_ALERT1)
-    ledAlert2 = add_led_txt(16, pDC, 3, 2, LED_LAB_ALERT2)
+    ledDcByte = add_led_txt(8, pDC, 0, 2, LED_DC_LAB)
+    ledAlert0 = add_led_txt(16, pDC, 1, 2, LED_ALERT0_LAB)
+    ledAlert1 = add_led_txt(16, pDC, 2, 2, LED_ALERT1_LAB)
+    ledAlert2 = add_led_txt(16, pDC, 3, 2, LED_ALERT2_LAB)
     ledAlert = ledAlert0 + ledAlert1 + ledAlert2
 
     # status table
@@ -1075,8 +1072,8 @@ def adjust_diagAcqDataPage_tables(pDC, pStaTable, pAlerDev0Table, pDataDev0Table
 
     # alert tables
     # insert led lable
-    pAlerDev0Table.setCellWidget(0, 3, insert_txt_frame(17, LED_LAB_17))
-    pAlerDev1Table.setCellWidget(0, 3, insert_txt_frame(17, LED_LAB_17))
+    pAlerDev0Table.setCellWidget(0, 3, insert_txt_frame(17, LED_17_LAB))
+    pAlerDev1Table.setCellWidget(0, 3, insert_txt_frame(17, LED_17_LAB))
     # insert led
     rows, cols = 2, 17  # 定义行数和列数
     dev0LedList = [[None for _ in range(cols)] for _ in range(rows)]
@@ -1195,10 +1192,10 @@ def adjust_meaAcqSumPage_tables(pDC, pStaTable, pSumDataDev0Table, pSumDataDev1T
 
     ''' insert led '''
     #dc table
-    ledDcByte = add_led_txt(8, pDC, 0, 2, LED_LAB_DC)
-    ledAlert0 = add_led_txt(16, pDC, 1, 2, LED_LAB_ALERT0)
-    ledAlert1 = add_led_txt(16, pDC, 2, 2, LED_LAB_ALERT1)
-    ledAlert2 = add_led_txt(16, pDC, 3, 2, LED_LAB_ALERT2)
+    ledDcByte = add_led_txt(8, pDC, 0, 2, LED_DC_LAB)
+    ledAlert0 = add_led_txt(16, pDC, 1, 2, LED_ALERT0_LAB)
+    ledAlert1 = add_led_txt(16, pDC, 2, 2, LED_ALERT1_LAB)
+    ledAlert2 = add_led_txt(16, pDC, 3, 2, LED_ALERT2_LAB)
     ledAlert = ledAlert0 + ledAlert1 + ledAlert2
     # status table
     ledSta1Dev0 = add_led_txt(16, pStaTable, 1, 3, LED_STA1_LAB)
@@ -1216,21 +1213,52 @@ def adjust_meaAcqSumPage_tables(pDC, pStaTable, pSumDataDev0Table, pSumDataDev1T
 
 
 def adjust_cblPage_tables(pExpTable, pCfgTable, pCtrlDemoTable, pCtrlInfTable):
-    ''' adjust expiration time table '''
+    ''' adjust table size '''
+    # expiration time table
     pExpTable.setColumnWidth(1, 120)
     pExpTable.setColumnWidth(2, 120)
+
+    # configure and control demo tables
+    for c in range(6):
+        if c == 0:
+            pCfgTable.setColumnWidth(c, 90)
+            pCtrlDemoTable.setColumnWidth(c, 90)
+        elif c == 3:
+            pCfgTable.setColumnWidth(c, 1100)
+            pCtrlDemoTable.setColumnWidth(c, 1100)
+        else:
+            pCfgTable.setColumnWidth(c, 150)
+            pCtrlDemoTable.setColumnWidth(c, 150)
+
+    # control information table
+    for c in range(16):
+        if c == 0:
+            pCtrlInfTable.setColumnWidth(c, 90)
+        elif c == 1:
+            pCtrlInfTable.setColumnWidth(c, 150)
+        elif c == 2 or c == 9:
+            pCtrlInfTable.setColumnWidth(c, 120)
+        else:
+            pCtrlInfTable.setColumnWidth(c, 115)
+
+    ''' span table and fill background color '''
+    # expiration time table
     pExpTable.item(0, 0).setBackground(QColor("#DAE3F3"))  # 蓝色
     pExpTable.item(0, 1).setBackground(QColor("#FFF2CC"))  # 黄色
 
-    ''' adjust status information table '''
-    # adjust status information table column size
-    for c in range(16):
-        if c == 1:
-            pCtrlInfTable.setColumnWidth(c, 150)
-        else:
-            pCtrlInfTable.setColumnWidth(c, 100)
+    # configure and control demo tables
+    for r in range(5):
+        if r < 2:
+            pCtrlDemoTable.item(r, 2).setBackground(QColor("#DAE3F3"))  # 蓝色
+        pCfgTable.item(r, 2).setBackground(QColor("#DAE3F3"))  # 蓝色
+        pCfgTable.item(r, 4).setBackground(QColor("#E2F0D9"))  # 绿色
+        pCfgTable.item(r, 5).setBackground(QColor("#E2F0D9"))  # 绿色
 
-    # status information table set span and background color
+    for c in range(3, 6):
+        pCtrlDemoTable.item(0, c).setBackground(QColor("#FFC000"))  # 橙色
+        pCtrlDemoTable.item(1, c).setBackground(QColor("#FF0000"))  # 红色
+
+    # control information table
     for r in range(6):
         if r!=3 and r!=4:
             pCtrlInfTable.setSpan(r, 3, 1, 6)
@@ -1272,38 +1300,15 @@ def adjust_cblPage_tables(pExpTable, pCfgTable, pCtrlDemoTable, pCtrlInfTable):
     for c in [0,1,2,3,9,10]:
         pCtrlInfTable.item(0, c).setFont(boldFont)  # 字体加粗
 
-    # insert led
+    ''' insert led '''
     led16StaDev0 = []
     led16StaDev1 = []
     led16UvDev0 = []
     led16UvDev1 = []
-    led16StaDev0.append(add_led_txt(16, pCtrlInfTable, 2, 3, LED_LAB_16))
-    led16StaDev1.append(add_led_txt(16, pCtrlInfTable, 2, 10, LED_LAB_16))
-    led16UvDev0.append(add_led_txt(16, pCtrlInfTable, 5, 3, LED_LAB_16))
-    led16UvDev1.append(add_led_txt(16, pCtrlInfTable, 5, 10, LED_LAB_16))
-
-    ''' adjust cblCfg & ctrlDemo tables '''
-    for c in range(6):
-        if c == 1:
-            pCfgTable.setColumnWidth(c, 150)
-            pCtrlDemoTable.setColumnWidth(c, 150)
-        elif c == 3:
-            pCfgTable.setColumnWidth(c, 1100)
-            pCtrlDemoTable.setColumnWidth(c, 1100)
-        else:
-            pCfgTable.setColumnWidth(c, 100)
-            pCtrlDemoTable.setColumnWidth(c, 100)
-
-    for r in range(5):
-        if r < 2:
-            pCtrlDemoTable.item(r, 2).setBackground(QColor("#DAE3F3"))  # 蓝色
-        pCfgTable.item(r, 2).setBackground(QColor("#DAE3F3"))  # 蓝色
-        pCfgTable.item(r, 4).setBackground(QColor("#E2F0D9"))  # 绿色
-        pCfgTable.item(r, 5).setBackground(QColor("#E2F0D9"))  # 绿色
-
-    for c in range(3,6):
-        pCtrlDemoTable.item(0, c).setBackground(QColor("#FFC000"))  # 橙色
-        pCtrlDemoTable.item(1, c).setBackground(QColor("#FF0000"))  # 红色
+    led16StaDev0.append(add_led_txt(16, pCtrlInfTable, 2, 3, LED_CBALSTAT_LAB))
+    led16StaDev1.append(add_led_txt(16, pCtrlInfTable, 2, 10, LED_CBALSTAT_LAB))
+    led16UvDev0.append(add_led_txt(16, pCtrlInfTable, 5, 3, LED_CBALUVSTAT_LAB))
+    led16UvDev1.append(add_led_txt(16, pCtrlInfTable, 5, 10, LED_CBALUVSTAT_LAB))
 
     return led16StaDev0, led16StaDev1, led16UvDev0, led16UvDev1
 

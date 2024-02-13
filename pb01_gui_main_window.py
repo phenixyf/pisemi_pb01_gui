@@ -4197,7 +4197,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_20 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_20.setObjectName("horizontalLayout_20")
         self.table_cblPage_cblExpTime = QtWidgets.QTableWidget(self.tab_cellBal)
-        self.table_cblPage_cblExpTime.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.table_cblPage_cblExpTime.setMaximumSize(QtCore.QSize(16777215, 60))
         self.table_cblPage_cblExpTime.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
@@ -4239,6 +4239,7 @@ class Ui_MainWindow(object):
         self.table_cblPage_cblExpTime.verticalHeader().setVisible(False)
         self.horizontalLayout_20.addWidget(self.table_cblPage_cblExpTime)
         self.label_5 = QtWidgets.QLabel(self.tab_cellBal)
+        self.label_5.setMaximumSize(QtCore.QSize(16777215, 60))
         self.label_5.setStyleSheet("font: 12pt \"Calibri\";")
         self.label_5.setObjectName("label_5")
         self.horizontalLayout_20.addWidget(self.label_5)
@@ -4325,7 +4326,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_14.addWidget(self.pushButton_69)
         self.verticalLayout_19.addWidget(self.frame_16)
         self.table_cblPage_cblCfgReg = QtWidgets.QTableWidget(self.tab_cellBal)
-        self.table_cblPage_cblCfgReg.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.table_cblPage_cblCfgReg.setMaximumSize(QtCore.QSize(16777215, 130))
         self.table_cblPage_cblCfgReg.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
@@ -4381,6 +4382,7 @@ class Ui_MainWindow(object):
         item = QtWidgets.QTableWidgetItem()
         self.table_cblPage_cblCfgReg.setItem(0, 0, item)
         self.table_cblPage_cblCfgReg.verticalHeader().setVisible(False)
+        self.table_cblPage_cblCfgReg.verticalHeader().setMinimumSectionSize(0)
         self.verticalLayout_19.addWidget(self.table_cblPage_cblCfgReg)
         self.frame_17 = QtWidgets.QFrame(self.tab_cellBal)
         self.frame_17.setMaximumSize(QtCore.QSize(16777215, 23))
@@ -4487,7 +4489,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_16.addWidget(self.pushButton_71)
         self.verticalLayout_19.addWidget(self.frame_17)
         self.table_cblPage_cblCtrlSimDemo = QtWidgets.QTableWidget(self.tab_cellBal)
-        self.table_cblPage_cblCtrlSimDemo.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.table_cblPage_cblCtrlSimDemo.setMaximumSize(QtCore.QSize(16777215, 100))
         self.table_cblPage_cblCtrlSimDemo.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
@@ -4537,6 +4539,7 @@ class Ui_MainWindow(object):
         item = QtWidgets.QTableWidgetItem()
         self.table_cblPage_cblCtrlSimDemo.setItem(0, 0, item)
         self.table_cblPage_cblCtrlSimDemo.verticalHeader().setVisible(False)
+        self.table_cblPage_cblCtrlSimDemo.verticalHeader().setMinimumSectionSize(0)
         self.verticalLayout_19.addWidget(self.table_cblPage_cblCtrlSimDemo)
         self.frame_18 = QtWidgets.QFrame(self.tab_cellBal)
         self.frame_18.setMaximumSize(QtCore.QSize(16777215, 23))
@@ -4678,7 +4681,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuAbout.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(7)
+        self.tabWidget.setCurrentIndex(8)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -5973,8 +5976,8 @@ class Ui_MainWindow(object):
         self.radioButton_singleAfe_24.setText(_translate("MainWindow", "Semi-Automatic (0x3)"))
         self.radioButton_singleAfe_25.setText(_translate("MainWindow", "Automatic (0x4)"))
         self.radioButton_singleAfe_26.setText(_translate("MainWindow", "Discharge/End-of-Life (0x5)"))
-        self.radioButton_singleAfe_27.setText(_translate("MainWindow", "Disabled/Inactive (0x0)"))
-        self.radioButton_singleAfe_28.setText(_translate("MainWindow", "Manual Even (0x1)"))
+        self.radioButton_singleAfe_27.setText(_translate("MainWindow", "Automatic Measurement by Second (0x6)"))
+        self.radioButton_singleAfe_28.setText(_translate("MainWindow", "Automatic Measurement by Minute (0x7)"))
         self.label_2.setText(_translate("MainWindow", "For Demonstration purposes, any selection made will determine the content of the Configuration registers below.\n"
 "Demonstration of the BALSW Short/Open Diagnostics requires configuration of the CBALSEL Register (WRITE+READ is sufficient, START is not required)."))
         self.label_30.setText(_translate("MainWindow", "Cell Balancing Expiration Time (CBEXP) Selection"))

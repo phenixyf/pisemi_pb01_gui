@@ -51,7 +51,7 @@ QTabBar::tab:!selected { /* 未被选中的Tab标题的样式 */
 }</string>
       </property>
       <property name="currentIndex">
-       <number>7</number>
+       <number>8</number>
       </property>
       <property name="tabBarAutoHide">
        <bool>false</bool>
@@ -8821,7 +8821,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
 font-weight: 600; /* 设置字体粗细为600 */</string>
                </property>
                <property name="text">
-                <string>Disabled/Inactive (0x0)</string>
+                <string>Automatic Measurement by Second (0x6)</string>
                </property>
               </widget>
              </item>
@@ -8844,7 +8844,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
 font-weight: 600; /* 设置字体粗细为600 */</string>
                </property>
                <property name="text">
-                <string>Manual Even (0x1)</string>
+                <string>Automatic Measurement by Minute (0x7)</string>
                </property>
               </widget>
              </item>
@@ -8953,7 +8953,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>16777215</height>
+              <height>60</height>
              </size>
             </property>
             <property name="styleSheet">
@@ -9012,6 +9012,12 @@ QTableCornerButton::section {
           </item>
           <item>
            <widget class="QLabel" name="label_5">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>60</height>
+             </size>
+            </property>
             <property name="styleSheet">
              <string notr="true">font: 12pt &quot;Calibri&quot;;</string>
             </property>
@@ -9201,7 +9207,7 @@ QPushButton:pressed {
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>16777215</height>
+            <height>130</height>
            </size>
           </property>
           <property name="styleSheet">
@@ -9235,6 +9241,9 @@ QTableCornerButton::section {
           </property>
           <attribute name="verticalHeaderVisible">
            <bool>false</bool>
+          </attribute>
+          <attribute name="verticalHeaderMinimumSectionSize">
+           <number>0</number>
           </attribute>
           <row>
            <property name="text">
@@ -9505,7 +9514,7 @@ QPushButton:pressed {
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>16777215</height>
+            <height>100</height>
            </size>
           </property>
           <property name="styleSheet">
@@ -9539,6 +9548,9 @@ QTableCornerButton::section {
           </property>
           <attribute name="verticalHeaderVisible">
            <bool>false</bool>
+          </attribute>
+          <attribute name="verticalHeaderMinimumSectionSize">
+           <number>0</number>
           </attribute>
           <row>
            <property name="text">

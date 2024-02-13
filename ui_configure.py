@@ -264,6 +264,16 @@ table_diagCfgPage_aluTeDiag_items = [
     ["0x3F", "ALUTESTAREG", "0000", " ", " ", " ", " ", "0000", "0000"]
 ]
 
+""" acquisition request page tablewidget initial content """
+table_acqReqPage_headers = ["Address", "Register", "Pending (hex)", "Actual (hex)",
+                            "ACQDONE", "DATARDY", "ACQERR", "(Logic Zero)", "ACQCBALINT",
+                            "ACQIIRBYP", "ACQIIRINIT", "ACQIIRPROC", "ALUTESTEN", "ACQOSR[2:0]", "ACQMODE[3:0]"]
+
+table_acqReqPage_items = [
+    ["0x44", "ACQCTRL (Device 0)", "0B41", "CB41", "1", "1", "0", "0", "1", "0", "1", "1", "0", "100", "0001"],
+    ["0x44", "ACQCTRL (Device 1)", "0B41", "CB41", "1", "1", "0", "0", "1", "0", "1", "1", "0", "100", "0001"]
+]
+
 """ measurement acquisition detailed data page tablewidget initial content """
 table_meaAcqDetailPage_alertRegItems = [
     ["0x80", "ALRTALTOVREG", "0000", " "],
@@ -807,6 +817,18 @@ def set_diagCfgPage_table_color(pTeCurTable, pDiagThrTable, pAluTable):
         pDiagThrTable.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
         pDiagThrTable.item(r, 7).setBackground(QColor("#E2F0D9"))  # 绿色
         pDiagThrTable.item(r, 8).setBackground(QColor("#E2F0D9"))  # 绿色
+
+def adjust_acqReqPage_tables(pOsrTable, pAcqReqTable):
+    pOsrTable.item(0, 0).setBackground(QColor("#DAE3F3"))  # 紫色
+    pOsrTable.item(0, 1).setBackground(QColor("#FFF2CC"))  # 黄色
+
+    for r in range(2):
+        for c in range(3,15):
+            if c == 3:
+                pAcqReqTable.item(r, c).setBackground(QColor("#E2F0D9"))  # 绿色
+            else:
+                pAcqReqTable.item(r, c).setBackground(QColor("#FFF2CC"))  # 黄色
+
 
 
 def adjust_meaAcqDetailPage_tables(pAlertRegDev0, pDataRegDev0, pAlertRegDev1, pDataRegDev1):

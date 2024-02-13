@@ -25,7 +25,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         GUI 初始化函数
         :return:
         """
-        ''' inital CHAIN CONFIGURATION page '''
+        ''' inital chain configuration page (page1) '''
         # initial single AFE radio
         self.radioButton_dualAfe.setChecked(True)
         # self.radioButton_singleAfe.setChecked(True)
@@ -60,7 +60,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         ledChainPageDev0, ledChainPageDev1 = adjust_chainPage_pw_rst_tables(self.table_chainCfg_pw,
                                                                             self.table_chainCfg_rstReg)
 
-        ''' initial device manage page '''
+        ''' initial device manage page (page2) '''
         set_table_item(self.table_devMgPage_init, CHAIN_CFG_TABLE_ROWHG,
                        table_devMg_iniItems)
 
@@ -75,7 +75,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                                                           self.table_devMgPage_dc,
                                                                           self.table_devMgPage_cur)
 
-        ''' initial application configuration page '''
+        ''' initial application configuration page (page3) '''
         set_table_head(self.table_appCfgPage_appCfg, table_appCfgPage_headers,
                        CHAIN_CFG_TABLE_HEHG, 0)
         set_table_item(self.table_appCfgPage_appCfg, CHAIN_CFG_TABLE_ROWHG,
@@ -98,7 +98,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         set_appCfgPage_table_color(self.table_appCfgPage_appCfg, self.table_appCfgPage_alertCfg,
                                  self.table_appCfgPage_thresholdReg, self.table_appCfgPage_acqReg)
 
-        ''' initial diagnostic configuration page '''
+        ''' initial diagnostic configuration page (page4) '''
         set_table_head(self.table_diagCfgPage_testCurCfgReg, table_diagCfgPage_testCfg_headers,
                        CHAIN_CFG_TABLE_HEHG, 0)
         set_table_item(self.table_diagCfgPage_testCurCfgReg, CHAIN_CFG_TABLE_ROWHG,
@@ -118,30 +118,15 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         set_diagCfgPage_table_color(self.table_diagCfgPage_testCurCfgReg, self.table_diagCfgPage_diagThresReg,
                                   self.table_diagCfgPage_aluTestDiagReg)
 
-        ''' initial measurement acquisition detailed data page '''
-        set_table_item(self.table_meaAcqDetailData_alertRegDev0, CHAIN_CFG_TABLE_ROWHG,
-                       table_meaAcqDetailPage_alertRegItems)
-        # self.table_meaAcqDetailData_alertRegDev0.setFixedHeight(150)  # 设置 table 高度
-        set_table_item(self.table_meaAcqDetailData_dataRegDev0, CHAIN_CFG_TABLE_ROWHG,
-                       table_meaAcqDetailPage_dataRegItems)
-        # self.table_meaAcqDetailData_dataRegDev0.setFixedHeight(300)  # 设置 table 高度
+        ''' initial acquisition request page (page5) '''
+        set_table_head(self.table_acqReqPage_acqReq, table_acqReqPage_headers,
+                       CHAIN_CFG_TABLE_HEHG, 0)
+        set_table_item(self.table_acqReqPage_acqReq, CHAIN_CFG_TABLE_ROWHG,
+                       table_acqReqPage_items)
 
-        set_table_item(self.table_meaAcqDetailData_alertRegDev1,CHAIN_CFG_TABLE_ROWHG,
-                       table_meaAcqDetailPage_alertRegItems)
-        # self.table_meaAcqDetailData_alertRegDev1.setFixedHeight(150)  # 设置 table 高度
-        set_table_item(self.table_meaAcqDetailData_dataRegDev1, CHAIN_CFG_TABLE_ROWHG,
-                       table_meaAcqDetailPage_dataRegItems)
-        # self.table_meaAcqDetailData_dataRegDev1.setFixedHeight(300)  # 设置 table 高度
+        adjust_acqReqPage_tables(self.table_acqReqPage_osr, self.table_acqReqPage_acqReq)
 
-        adjust_meaAcqDetailPage_tables(self.table_meaAcqDetailData_alertRegDev0,self.table_meaAcqDetailData_dataRegDev0,
-                                       self.table_meaAcqDetailData_alertRegDev1,self.table_meaAcqDetailData_dataRegDev1)
-
-        set_meaAcqDetailPage_table_color(self.table_meaAcqDetailData_alertRegDev0,self.table_meaAcqDetailData_dataRegDev0,
-                                       self.table_meaAcqDetailData_alertRegDev1,self.table_meaAcqDetailData_dataRegDev1)
-
-        meaAcqDetailPage_insert_led(self.table_meaAcqDetailData_alertRegDev0,self.table_meaAcqDetailData_alertRegDev1)
-
-        ''' initial measurement acquisition summary data page '''
+        ''' initial measurement acquisition summary data page (page6) '''
         set_table_item(self.table_meaAcqSumPage_status, CHAIN_CFG_TABLE_ROWHG,
                        table_diagAcqDataPage_statusTableItems)
 
@@ -155,7 +140,34 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                                          self.table_meaAcqSumPage_sumDataDev0,
                                                          self.table_meaAcqSumPage_sumDataDev1)
 
-        ''' initial diagnostic acquisition data page '''
+        ''' initial measurement acquisition detailed data page (page7) '''
+        set_table_item(self.table_meaAcqDetailData_alertRegDev0, CHAIN_CFG_TABLE_ROWHG,
+                       table_meaAcqDetailPage_alertRegItems)
+        # self.table_meaAcqDetailData_alertRegDev0.setFixedHeight(150)  # 设置 table 高度
+        set_table_item(self.table_meaAcqDetailData_dataRegDev0, CHAIN_CFG_TABLE_ROWHG,
+                       table_meaAcqDetailPage_dataRegItems)
+        # self.table_meaAcqDetailData_dataRegDev0.setFixedHeight(300)  # 设置 table 高度
+
+        set_table_item(self.table_meaAcqDetailData_alertRegDev1, CHAIN_CFG_TABLE_ROWHG,
+                       table_meaAcqDetailPage_alertRegItems)
+        # self.table_meaAcqDetailData_alertRegDev1.setFixedHeight(150)  # 设置 table 高度
+        set_table_item(self.table_meaAcqDetailData_dataRegDev1, CHAIN_CFG_TABLE_ROWHG,
+                       table_meaAcqDetailPage_dataRegItems)
+        # self.table_meaAcqDetailData_dataRegDev1.setFixedHeight(300)  # 设置 table 高度
+
+        adjust_meaAcqDetailPage_tables(self.table_meaAcqDetailData_alertRegDev0,
+                                       self.table_meaAcqDetailData_dataRegDev0,
+                                       self.table_meaAcqDetailData_alertRegDev1,
+                                       self.table_meaAcqDetailData_dataRegDev1)
+
+        set_meaAcqDetailPage_table_color(self.table_meaAcqDetailData_alertRegDev0,
+                                         self.table_meaAcqDetailData_dataRegDev0,
+                                         self.table_meaAcqDetailData_alertRegDev1,
+                                         self.table_meaAcqDetailData_dataRegDev1)
+
+        meaAcqDetailPage_insert_led(self.table_meaAcqDetailData_alertRegDev0, self.table_meaAcqDetailData_alertRegDev1)
+
+        ''' initial diagnostic acquisition data page (page8) '''
         set_table_item(self.table_diagAcqPage_status, CHAIN_CFG_TABLE_ROWHG, table_diagAcqDataPage_statusTableItems)
 
         set_table_item(self.table_diagAcqPage_alertReg_dev0, CHAIN_CFG_TABLE_ROWHG, table_diagAcqDataPage_alertItems)
@@ -172,7 +184,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                                             self.table_diagAcqPage_alertReg_dev1,
                                                             self.table_diagAcqPage_dataReg_dev1)
 
-        ''' initial cell balance page '''
+        ''' initial cell balance page (page9) '''
         set_table_head(self.table_cblPage_cblExpTime, table_cblPage_cblExpTimHeaders,
                        CHAIN_CFG_TABLE_HEHG, 0)
         set_table_item(self.table_cblPage_cblExpTime, CHAIN_CFG_TABLE_ROWHG, table_cblPage_cblExpTimItems)

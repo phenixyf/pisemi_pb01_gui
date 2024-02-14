@@ -151,7 +151,7 @@ table_chainCfg_pwItems = [
 # table_chainCfg_rstHeaders = ["Address", "Register", "Expect (hex)", "Device 0 (hex)", "", "Device 1 (hex)", ""]
 table_chainCfg_rstItems = [
 ["Address", "Register", "Expect (hex)", "Device 0 (hex)", "", "Device 1 (hex)", ""],
-["0x0F", "RESTCTRL", "0001", "0000", " ", "0000", " "]
+["0x0F", "RESETCTRL", "0001", "0000", " ", "0000", " "]
 ]
 
 """ device manage page tablewidget initial content """

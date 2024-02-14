@@ -51,7 +51,7 @@ QTabBar::tab:!selected { /* 未被选中的Tab标题的样式 */
 }</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="tabBarAutoHide">
        <bool>false</bool>
@@ -1221,7 +1221,7 @@ QTableCornerButton::section {
       </widget>
       <widget class="QWidget" name="tab_devMg">
        <attribute name="title">
-        <string>DEV MG</string>
+        <string>DEV MGMT</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_21">
         <item>
@@ -1703,7 +1703,7 @@ QPushButton:pressed {
 </string>
              </property>
              <property name="text">
-              <string>CLERA COMM</string>
+              <string>CLEAR COMM</string>
              </property>
             </widget>
            </item>
@@ -9864,7 +9864,7 @@ QTableCornerButton::section {
      <x>0</x>
      <y>0</y>
      <width>1655</width>
-     <height>23</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuPython">

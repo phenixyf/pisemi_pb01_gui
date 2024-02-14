@@ -4660,7 +4660,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.addWidget(self.tabWidget)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1655, 23))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1655, 26))
         self.menubar.setObjectName("menubar")
         self.menuPython = QtWidgets.QMenu(self.menubar)
         self.menuPython.setObjectName("menuPython")
@@ -4680,7 +4680,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuAbout.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -4886,7 +4886,7 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "DEVID"))
         self.table_devMgPage_init.setSortingEnabled(__sortingEnabled)
         self.label_33.setText(_translate("MainWindow", "General Summary Information (Current Status)"))
-        self.pushButton_statusRegClear_6.setText(_translate("MainWindow", "CLERA COMM"))
+        self.pushButton_statusRegClear_6.setText(_translate("MainWindow", "CLEAR COMM"))
         self.pushButton_statusRegReadBack_6.setText(_translate("MainWindow", "READ BACK"))
         item = self.table_devMgPage_dc.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
@@ -4952,7 +4952,7 @@ class Ui_MainWindow(object):
         item = self.table_devMgPage_cur.item(0, 0)
         item.setText(_translate("MainWindow", "DEVID"))
         self.table_devMgPage_cur.setSortingEnabled(__sortingEnabled)
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_devMg), _translate("MainWindow", "DEV MG"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_devMg), _translate("MainWindow", "DEV MGMT"))
         self.label_26.setText(_translate("MainWindow", "APPLICATION CONFIGURATION Register Block"))
         self.pushButton_58.setText(_translate("MainWindow", "WRITE+READ"))
         self.pushButton_59.setText(_translate("MainWindow", "READ BACK"))

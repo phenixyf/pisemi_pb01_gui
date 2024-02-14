@@ -60,7 +60,7 @@ QTabBar::tab:!selected { /* 未被选中的Tab标题的样式 */
        <attribute name="title">
         <string>CHAIN CFG</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_20">
+       <layout class="QVBoxLayout" name="verticalLayout_4">
         <item>
          <widget class="QFrame" name="frame_3">
           <property name="maximumSize">
@@ -140,57 +140,62 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout">
-            <property name="spacing">
-             <number>0</number>
+           <widget class="QFrame" name="frame_37">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
             </property>
-            <item>
-             <widget class="QRadioButton" name="radioButton_singleAfe">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>20</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>20</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">font: 12pt &quot;Calibri&quot;;
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_20">
+             <item>
+              <widget class="QRadioButton" name="radioButton_singleAfe">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">font: 12pt &quot;Calibri&quot;;
 font-weight: 600; /* 设置字体粗细为600 */</string>
-              </property>
-              <property name="text">
-               <string>Single AFE Device</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QRadioButton" name="radioButton_dualAfe">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>20</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>20</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">font: 12pt &quot;Calibri&quot;;
+               </property>
+               <property name="text">
+                <string>Single AFE Device</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="radioButton_dualAfe">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">font: 12pt &quot;Calibri&quot;;
 font-weight: 600; /* 设置字体粗细为600 */</string>
-              </property>
-              <property name="text">
-               <string>Dual AFE Daisy Chain</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
+               </property>
+               <property name="text">
+                <string>Dual AFE Daisy Chain</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
           </item>
           <item>
            <spacer name="horizontalSpacer_3">
@@ -206,47 +211,52 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
            </spacer>
           </item>
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_4">
-            <property name="spacing">
-             <number>0</number>
+           <widget class="QFrame" name="frame_38">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
             </property>
-            <item>
-             <widget class="QRadioButton" name="radio_chainCfg_swCorEn">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>20</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>20</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">font: 12pt &quot;Calibri&quot;;
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout">
+             <item>
+              <widget class="QRadioButton" name="radio_chainCfg_swCorEn">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">font: 12pt &quot;Calibri&quot;;
 font-weight: 600; /* 设置字体粗细为600 */</string>
-              </property>
-              <property name="text">
-               <string>Enable Software Accuracy Correction</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="label">
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>5</height>
-               </size>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-           </layout>
+               </property>
+               <property name="text">
+                <string>Enable Software Accuracy Correction</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>5</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
           </item>
           <item>
            <spacer name="horizontalSpacer_4">

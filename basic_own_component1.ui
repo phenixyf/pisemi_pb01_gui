@@ -3502,15 +3502,16 @@ font-weight: 400; /* 设置字体粗细为600 */</string>
          </property>
          <property name="styleSheet">
           <string notr="true">QLabel {
-  border-radius: 7px; /* 使得QLabel成为圆形 */
+  border-radius: 7px; /* 为QLabel设置圆角 */
   background: qradialgradient(
     cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,
     stop: 0 #ffffff, /* 渐变的中心是白色 */
-    stop: 0.4 #00aa00, /* 渐变为绿色 */
-    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */
-    stop: 1.0 #006600); /* 边缘是最浅的绿色 */
-  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */
-}</string>
+stop: 0.4 #f0f0f0, 
+    stop: 0.5 #e6e6e6, /* 中间的圆环是较浅的白色 */
+    stop: 1.0 #cccccc); /* 边缘是最浅的灰色 */
+  box-shadow: 0px 0px 8px 0px #aaaaaa; /* 添加灰色阴影以增强3D效果 */
+}
+</string>
          </property>
          <property name="text">
           <string/>
@@ -4669,10 +4670,10 @@ font-weight: 400; /* 设置字体粗细为600 */</string>
   background: qradialgradient(
     cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,
     stop: 0 #ffffff, /* 渐变的中心是白色 */
-    stop: 0.4 #00aa00, /* 渐变为绿色 */
-    stop: 0.5 #009900, /* 中间的圆环更浅的绿色 */
-    stop: 1.0 #006600); /* 边缘是最浅的绿色 */
-  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */
+    stop: 0.4 #aaaaaa, /* 渐变为绿色 */
+    stop: 0.5 #999999, /* 中间的圆环更浅的绿色 */
+    stop: 1.0 #666666); /* 边缘是最浅的绿色 */
+  box-shadow: 0px 0px 8px 0px #666666; /* 添加阴影以增强3D效果 */
 }</string>
          </property>
          <property name="text">
@@ -4970,6 +4971,144 @@ QTableCornerButton::section {
       <string>5</string>
      </property>
     </item>
+   </widget>
+   <widget class="QLabel" name="label_283">
+    <property name="geometry">
+     <rect>
+      <x>890</x>
+      <y>430</y>
+      <width>14</width>
+      <height>14</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>14</width>
+      <height>14</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>14</width>
+      <height>14</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+  border-radius: 7px; /* 为QLabel设置圆角 */
+  background: qradialgradient(
+    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,
+    stop: 0 #f0f0f0, /* 渐变的中心是浅灰色 */
+    stop: 0.5 #d9d9d9, /* 中间的圆环是中灰色 */
+    stop: 1.0 #bfbfbf); /* 边缘是深灰色 */
+  box-shadow: 0px 0px 8px 0px #a6a6a6; /* 添加深灰色阴影以增强3D效果 */
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_284">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>550</y>
+      <width>14</width>
+      <height>14</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>14</width>
+      <height>14</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>14</width>
+      <height>14</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+  border-radius: 7px; /* 使得QLabel成为圆形 */
+  background: qradialgradient(
+    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,
+    stop: 0 #ffffff, /* 渐变的中心是白色 */
+    stop: 0.4 #ee0000, /* 渐变为绿色 */
+    stop: 0.5 #dd0000, /* 中间的圆环更浅的绿色 */
+    stop: 1.0 #cc0000); /* 边缘是最浅的绿色 */
+  box-shadow: 0px 0px 8px 0px #cc0000; /* 添加阴影以增强3D效果 */
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_285">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>550</y>
+      <width>14</width>
+      <height>14</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>14</width>
+      <height>14</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>14</width>
+      <height>14</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+  border-radius: 7px; /* 使得QLabel成为圆形 */
+  background: qradialgradient(
+    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,
+    stop: 0 #ffffff, /* 渐变的中心是白色 */
+    stop: 0.4 #87CEFA, /* 渐变为绿色 */
+    stop: 0.5 #00BFFF, /* 中间的圆环更浅的绿色 */
+    stop: 1.0 #87CEEB); /* 边缘是最浅的绿色 */
+  box-shadow: 0px 0px 8px 0px #87CEEB; /* 添加阴影以增强3D效果 */
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

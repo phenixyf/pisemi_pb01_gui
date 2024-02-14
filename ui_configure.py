@@ -11,7 +11,7 @@ from PyQt5.QtGui import QColor, QFont
 
 """ led string related """
 ''' led qss '''
-led_qss = "QLabel {\n" \
+led_green_style = "QLabel {\n" \
           "  border-radius: 5px; /* 使得QLabel成为圆形 */\n" \
           "  background: qradialgradient(\n" \
           "    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n" \
@@ -21,6 +21,51 @@ led_qss = "QLabel {\n" \
           "    stop: 1.0 #006600); /* 边缘是最浅的绿色 */\n" \
           "  box-shadow: 0px 0px 8px 0px #006600; /* 添加阴影以增强3D效果 */\n" \
           "}"
+
+led_gray_style = "QLabel {\n" \
+          "  border-radius: 5px; /* 使得QLabel成为圆形 */\n" \
+          "  background: qradialgradient(\n" \
+          "    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n" \
+          "    stop: 0 #ffffff, /* 渐变的中心是白色 */\n" \
+          "    stop: 0.4 #aaaaaa, /* 渐变为灰色 */\n" \
+          "    stop: 0.5 #999999, /* 中间的圆环更浅的灰色 */\n" \
+          "    stop: 1.0 #666666); /* 边缘是最浅的灰色 */\n" \
+          "  box-shadow: 0px 0px 8px 0px #666666; /* 添加阴影以增强3D效果 */\n" \
+          "}"
+
+led_red_style = "QLabel {\n" \
+          "  border-radius: 5px; /* 使得QLabel成为圆形 */\n" \
+          "  background: qradialgradient(\n" \
+          "    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n" \
+          "    stop: 0 #ffffff, /* 渐变的中心是白色 */\n" \
+          "    stop: 0.4 #ee0000, /* 渐变为红色 */\n" \
+          "    stop: 0.5 #dd0000, /* 中间的圆环更浅的红色 */\n" \
+          "    stop: 1.0 #cc0000); /* 边缘是最浅的红色 */\n" \
+          "  box-shadow: 0px 0px 8px 0px #cc0000; /* 添加阴影以增强3D效果 */\n" \
+          "}"
+
+led_blue_style = "QLabel {\n" \
+          "  border-radius: 5px; /* 使得QLabel成为圆形 */\n" \
+          "  background: qradialgradient(\n" \
+          "    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n" \
+          "    stop: 0 #ffffff, /* 渐变的中心是白色 */\n" \
+          "    stop: 0.4 #1E90FF, /* 渐变为蓝色 */\n" \
+          "    stop: 0.5 #1E90FF, /* 中间的圆环更浅的蓝色 */\n" \
+          "    stop: 1.0 #4169E1); /* 边缘是最浅的蓝色 */\n" \
+          "  box-shadow: 0px 0px 8px 0px #4169E1; /* 添加阴影以增强3D效果 */\n" \
+          "}"
+
+led_white_style = "QLabel {\n" \
+          "  border-radius: 5px; /* 使得QLabel成为圆形 */\n" \
+          "  background: qradialgradient(\n" \
+          "    cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,\n" \
+          "    stop: 0 #ffffff, /* 渐变的中心是白色 */\n" \
+          "    stop: 0.4 #f0f0f0, /* 渐变为白色 */\n" \
+          "    stop: 0.5 #e6e6e6, /* 中间的圆环更浅的白色 */\n" \
+          "    stop: 1.0 #cccccc); /* 边缘是最浅的白色 */\n" \
+          "  box-shadow: 0px 0px 8px 0px #aaaaaa; /* 添加阴影以增强3D效果 */\n" \
+          "}"
+
 
 font = QtGui.QFont()
 # 设置字体的大小
@@ -35,7 +80,7 @@ def led_generator():
     label_led.setSizePolicy(sizePolicy)
     label_led.setMinimumSize(QtCore.QSize(10, 10))
     label_led.setMaximumSize(QtCore.QSize(10, 10))
-    label_led.setStyleSheet(led_qss)
+    label_led.setStyleSheet(led_gray_style)
     return label_led
 
 def txt_generator(pTxt):
@@ -563,6 +608,14 @@ def set_chainPage_ifid_color(pRowNum, pDevIdTable, puifCfgTable, paddCfgTable):
 
 
 def adjust_chainPage_pw_rst_tables(pPwTable, pRstTable):
+    """
+    设置 chain configuration page power-up status table 和 reset table 的单元格尺寸和背景；
+    在 power-up status table 中插入 led
+    :param pPwTable:
+    :param pRstTable:
+    :return: 返回两个二维列表 ledDev0[4][16], ledDev1[4][16]
+             这两个二位列表中的元素分别是对应的各 led label 对象
+    """
     ''' adjust table column size '''
     for c in range(7):
         if c == 0:
@@ -1321,25 +1374,3 @@ def adjust_cblPage_tables(pExpTable, pCfgTable, pCtrlDemoTable, pCtrlInfTable):
 
     return led16StaDev0, led16StaDev1, led16UvDev0, led16UvDev1
 
-
-
-def update_led_color(label, color):
-    """
-    更新LED颜色的函数。
-
-    :param label: 要更新的QLabel实例。
-    :param color: 一个包含颜色代码的字符串，比如 "#FF0000" 表示红色。
-    """
-    style_sheet = f"""
-          QLabel {{
-              border-radius: 5px; /* 保持圆形 */
-              background: qradialgradient(
-                  cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,
-                  stop: 0 #ffffff, /* 渐变的中心是白色 */
-                  stop: 0.4 {color}, /* 自定义颜色 */
-                  stop: 0.5 {color}, /* 稍微改变颜色以实现渐变效果 */
-                  stop: 1.0 {color}); /* 边缘颜色 */
-              box-shadow: 0px 0px 8px 0px {color}; /* 阴影颜色 */
-          }}
-          """
-    label.setStyleSheet(style_sheet)

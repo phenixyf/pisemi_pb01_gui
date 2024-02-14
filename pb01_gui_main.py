@@ -216,8 +216,8 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         # single afe initial ui as default
         self.slot_radio_single_dual_afe()
 
-        # update_led_color(ledMeaAcqDetailPageDev0[3][5], "#aa0000")
-        # update_led_color(self.label_186, "#aa0000")
+        # update led color
+        ledChainPageDev0[0][2].setStyleSheet(led_blue_style)
 
         ''' 配置信号和槽 '''
         self.radioButton_singleAfe.clicked.connect(self.slot_radio_single_dual_afe)

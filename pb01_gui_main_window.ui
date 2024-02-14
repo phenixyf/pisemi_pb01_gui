@@ -51,7 +51,7 @@ QTabBar::tab:!selected { /* 未被选中的Tab标题的样式 */
 }</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="tabBarAutoHide">
        <bool>false</bool>

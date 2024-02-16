@@ -12,6 +12,7 @@ import time
 
 from pb01_gui_main_window import Ui_MainWindow
 from ui_configure import *
+from pb01_bridge_driver import *
 
 class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 

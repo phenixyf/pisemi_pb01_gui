@@ -37,7 +37,7 @@ QTabBar::tab { /* Tab标题的样式 */
     min-width: 8ex; /* 最小宽度 */
     min-height: 20px; /* 最小高度 */
     margin-right: 0px; /* 选项卡之间的间隔 */
-    width: 130;	/* 选项卡宽度 */
+    width: 140;	/* 选项卡宽度 */
 }
 
 QTabBar::tab:selected { /* 被选中的Tab标题的样式 */
@@ -4212,7 +4212,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             <number>3</number>
            </property>
            <item>
-            <widget class="QRadioButton" name="radioButton_singleAfe_3">
+            <widget class="QRadioButton" name="radioButton_acqReqPage_acqcbalint">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -4235,7 +4235,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </widget>
            </item>
            <item>
-            <widget class="QRadioButton" name="radioButton_singleAfe_4">
+            <widget class="QRadioButton" name="radioButton_acqReqPage_acqiirbyp">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -4279,7 +4279,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             <number>3</number>
            </property>
            <item>
-            <widget class="QRadioButton" name="radioButton_singleAfe_5">
+            <widget class="QRadioButton" name="radioButton_acqReqPage_acqiirinit">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -4302,7 +4302,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </widget>
            </item>
            <item>
-            <widget class="QRadioButton" name="radioButton_singleAfe_6">
+            <widget class="QRadioButton" name="radioButton_acqReqPage_acqiirproc">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -4325,7 +4325,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </widget>
            </item>
            <item>
-            <widget class="QRadioButton" name="radioButton_singleAfe_7">
+            <widget class="QRadioButton" name="radioButton_acqReqPage_alutesten">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -4581,7 +4581,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_12">
              <item>
-              <widget class="QRadioButton" name="radioButton_singleAfe_8">
+              <widget class="QRadioButton" name="radioButton_acqReqPage_dataUpdate">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -4604,7 +4604,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
               </widget>
              </item>
              <item>
-              <widget class="QRadioButton" name="radioButton_singleAfe_29">
+              <widget class="QRadioButton" name="radioButton_acqReqPage_normalMeas">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -4627,7 +4627,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
               </widget>
              </item>
              <item>
-              <widget class="QRadioButton" name="radioButton_singleAfe_30">
+              <widget class="QRadioButton" name="radioButton_acqReqPage_redundantMeas">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -4675,7 +4675,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_13">
              <item>
-              <widget class="QRadioButton" name="radioButton_singleAfe_9">
+              <widget class="QRadioButton" name="radioButton_acqReqPage_pathDiag">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -4698,7 +4698,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
               </widget>
              </item>
              <item>
-              <widget class="QRadioButton" name="radioButton_singleAfe_31">
+              <widget class="QRadioButton" name="radioButton_acqReqPage_balswShortDiag">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -4721,7 +4721,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
               </widget>
              </item>
              <item>
-              <widget class="QRadioButton" name="radioButton_singleAfe_32">
+              <widget class="QRadioButton" name="radioButton_acqReqPage_balswOpenDiag">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -4769,7 +4769,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_14">
              <item>
-              <widget class="QRadioButton" name="radioButton_singleAfe_10">
+              <widget class="QRadioButton" name="radioButton_acqReqPage_cellOpenDiag">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -4792,7 +4792,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
               </widget>
              </item>
              <item>
-              <widget class="QRadioButton" name="radioButton_singleAfe_33">
+              <widget class="QRadioButton" name="radioButton_acqReqPage_busOpenDiag">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -4815,7 +4815,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
               </widget>
              </item>
              <item>
-              <widget class="QRadioButton" name="radioButton_singleAfe_34">
+              <widget class="QRadioButton" name="radioButton_acqReqPage_cellHvmuxDiag">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -4838,7 +4838,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
               </widget>
              </item>
              <item>
-              <widget class="QRadioButton" name="radioButton_singleAfe_35">
+              <widget class="QRadioButton" name="radioButton_acqReqPage_busHvmuxDiag">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -4886,7 +4886,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_15">
              <item>
-              <widget class="QRadioButton" name="radioButton_singleAfe_11">
+              <widget class="QRadioButton" name="radioButton_acqReqPage_auxrDiag">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -4909,7 +4909,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
               </widget>
              </item>
              <item>
-              <widget class="QRadioButton" name="radioButton_singleAfe_36">
+              <widget class="QRadioButton" name="radioButton_acqReqPage_auxaDiagA">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -4932,7 +4932,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
               </widget>
              </item>
              <item>
-              <widget class="QRadioButton" name="radioButton_singleAfe_37">
+              <widget class="QRadioButton" name="radioButton_acqReqPage_auxaDiagB">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -4955,7 +4955,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
               </widget>
              </item>
              <item>
-              <widget class="QRadioButton" name="radioButton_singleAfe_38">
+              <widget class="QRadioButton" name="radioButton_acqReqPage_diagDataClear">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -5330,7 +5330,7 @@ QTableCornerButton::section {
       </widget>
       <widget class="QWidget" name="tab_meaAcqSum">
        <attribute name="title">
-        <string>MEA ACQ SUM</string>
+        <string>MEAS ACQ SUM</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_6">
         <item>
@@ -6169,7 +6169,7 @@ QTableCornerButton::section {
       </widget>
       <widget class="QWidget" name="tab_meaAcqDetail">
        <attribute name="title">
-        <string>MEA ACQ DTL</string>
+        <string>MEAS ACQ DATA</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_5">
         <item>
@@ -8633,7 +8633,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_10">
              <item>
-              <widget class="QRadioButton" name="radioButton_singleAfe_2">
+              <widget class="QRadioButton" name="radioButton_cblPage_disable">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -8656,7 +8656,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
               </widget>
              </item>
              <item>
-              <widget class="QRadioButton" name="radioButton_singleAfe_22">
+              <widget class="QRadioButton" name="radioButton_cblPage_manEven">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -8679,7 +8679,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
               </widget>
              </item>
              <item>
-              <widget class="QRadioButton" name="radioButton_singleAfe_23">
+              <widget class="QRadioButton" name="radioButton_cblPage_manOdd">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -8727,7 +8727,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_17">
              <item>
-              <widget class="QRadioButton" name="radioButton_singleAfe_24">
+              <widget class="QRadioButton" name="radioButton_cblPage_semiAuto">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -8750,7 +8750,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
               </widget>
              </item>
              <item>
-              <widget class="QRadioButton" name="radioButton_singleAfe_25">
+              <widget class="QRadioButton" name="radioButton_cblPage_auto">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -8773,7 +8773,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
               </widget>
              </item>
              <item>
-              <widget class="QRadioButton" name="radioButton_singleAfe_26">
+              <widget class="QRadioButton" name="radioButton_cblPage_discharge">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -8821,7 +8821,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_18">
              <item>
-              <widget class="QRadioButton" name="radioButton_singleAfe_27">
+              <widget class="QRadioButton" name="radioButton_cblPage_autoMeaSnd">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -8844,7 +8844,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
               </widget>
              </item>
              <item>
-              <widget class="QRadioButton" name="radioButton_singleAfe_28">
+              <widget class="QRadioButton" name="radioButton_cblPage_autoMeaMin">
                <property name="minimumSize">
                 <size>
                  <width>0</width>
@@ -9023,7 +9023,7 @@ QTableCornerButton::section {
             </column>
             <item row="0" column="0">
              <property name="text">
-              <string>0x45</string>
+              <string>0</string>
              </property>
             </item>
            </widget>

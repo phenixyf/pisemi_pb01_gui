@@ -195,18 +195,17 @@ LED_ALERT1_LAB = ["LOC31", "LOC30", "LOC29", "LOC28", "LOC27", "LOC26", "LOC25",
                 "LOC23", "LOC22", "LOC21", "LOC20", "LOC19", "LOC18", "LOC17", "LOC16"]
 LED_ALERT2_LAB = ["LOC15", "LOC14", "LOC13", "LOC12", "LOC11", "LOC10", "LOC9", "LOC8",
                 "LOC7", "LOC6", "LOC5", "LOC4", "LOC3", "LOC2", "LOC1", "LOC0"]
-LED_16_LAB = ["LED15", "LED14", "LED13", "LED12", "LED11", "LED10", "LED9", "LED8",
-                "LED7", "LED6", "LED5", "LED4", "LED3", "LED2", "LED1", "LED0"]
+LED_16_LAB = ["15", "14", "13", "12", "11", "10", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0"]
 LED_8_LAB = ["LED7", "LED6", "LED5", "LED4", "LED3", "LED2", "LED1", "LED0"]
 LED_17_LAB = ["LED16", "LED15", "LED14", "LED13", "LED12", "LED11", "LED10", "LED9", "LED8",
                 "LED7", "LED6", "LED5", "LED4", "LED3", "LED2", "LED1", "LED0"]
 LED_CBALSTAT_LAB = ["CBON", "CBACT", "CBDEXP", "CBDUV", "CBETMP", "CBEHV", "CBEATO", "CBEAZF",
-                   "CBETO", "CBAOV", "CBAUV", "CBAALTOV", "CBAALTUV", "CBAAUXOV", "CVAAUXUV", "CBAMM"]
+                   "CBETO", "CBAOV", "CBAUV", "CBAALTOV", "CBAALTUV", "CBAAUXOV", "CBAAUXUV", "CBAMM"]
 LED_CBALUVSTAT_LAB = ["CBUV15", "CBUV14", "CBUV13", "CBUV12", "CBUV11", "CBUV10", "CBUV9", "CBUV8",
                       "CBUV7", "CBUV6", "CBUV5", "CBUV4", "CBUV3", "CBUV2", "CBUV1", "CBUV0"]
 
 
-''' chain configuration page tablewidget initial content '''
+''' chain configuration page tablewidget initial content (page1) '''
 table_chainCfg_devidHead = ["Address", "Register", "Expected (hex)","DEVIDD (hex)", "DEVID1 (hex)", "DEVID2 (hex)",
                             "VERSION (hex)", "GENERATION[2:0] (dec)", "CHANNEL_COUNT[4:0] (dec)", "SWVER[3:0] (hex)",
                             "HWVER[3:0] (hex)"]
@@ -245,7 +244,7 @@ table_chainCfg_rstItems = [
 ["0x0F", "RESETCTRL", "0001", "0000", " ", "0000", " "]
 ]
 
-""" device manage page tablewidget initial content """
+""" device manage page tablewidget initial content  (page2) """
 table_devMg_iniItems = [
     ["Address", "Register", "Device 0 (hex)", " ", " ", " ", " ",
                             "Device 1 (hex)", " ", " ", " ", " "],
@@ -257,9 +256,9 @@ table_devMg_iniItems = [
 
 table_devMg_dcItems = [
     ["DCBYTE", "80", " "],
-    ["ALERTPACKET", "5000_0000_0000_0001/3", " "],
-    ["ALERTPACKET", "5000_0000_0000_0001/3", " "],
-    ["ALERTPACKET", "5000_0000_0000_0001/3", " "]
+    ["ALERTPACKET", "5000_0000_0001/3", " "],
+    ["ALERTPACKET", "5000_0000_0001/3", " "],
+    ["ALERTPACKET", "5000_0000_0001/3", " "]
 ]
 
 table_devMg_curItems = [
@@ -269,13 +268,13 @@ table_devMg_curItems = [
     ["0x05", "STATUS2",     "0080", " ", " ", " ", "", "0080", " ", " ", " ", ""],
     ["0x06", "FMEA1",       "0000", " ", " ", " ", "", "0000", " ", " ", " ", ""],
     ["0x07", "FMEA2",       "0000", " ", " ", " ", "", "0000", " ", " ", " ", ""],
-    ["0x08", "TEMPREG1",    "0960", "26.9", "C", "80.3", "F", "0960", "26.9", "C", "80.3", "F"],
-    ["0x09", "TEMPREG2",    "0960", "26.9", "C", "80.3", "F", "0960", "26.9", "C", "80.3", "F"],
+    ["0x08", "TEMPREG1",    "0960", "26.9", "°C", "80.3", "°F", "0960", "26.9", "°C", "80.3", "°F"],
+    ["0x09", "TEMPREG2",    "0960", "26.9", "°C", "80.3", "°F", "0960", "26.9", "°C", "80.3", "°F"],
     ["0x0A", "GPIODATA",    "0000", "00", "GPIODOUT[7:0]", "00", "GPIODIN[7:0]",
                             "0000", "00", "GPIODOUT[7:0]", "00", "GPIODIN[7:0]", "0000"]
 ]
 
-""" application configuration page tablewidget initial content """
+""" application configuration page tablewidget initial content  (page3) """
 table_appCfgPage_headers = ["Address", "Register", "Pending (hex)", "Pending Value (bin)", "Pending Field",
                            "Pending Value (bin)", "Pending Field", "Device 0 (hex)", "Device 1 (hex)"]
 table_appCfgPage_appCfgReg_items = [
@@ -287,37 +286,37 @@ table_appCfgPage_appCfgReg_items = [
 ]
 
 table_appCfgPage_alertCfgReg_items = [
-    ["0x18", "ALRTOVCFG",    "FFFF", "1111111", "ALRTOVEN[15:8]",    "1111111", "ALRTOVEN[7:0]",    "0000", "0000"],
-    ["0x19", "ALRTUVCFG",    "FFFF", "1111111", "ALRTUVEN[15:8]",    "1111111", "ALRTUVEN[7:0]",    "0000", "0000"],
-    ["0x1A", "ALRTAUXOVCFG", "FFFF", "1111111", "ALRTAUXOVEN[15:8]", "1111111", "ALRTAUXOVEN[7:0]", "0000", "0000"],
-    ["0x1B", "ALRTAUXUVCFG", "FFFF", "1111111", "ALRTAUXUVEN[15:8]", "1111111", "ALRTAUXUVEN[7:0]", "0000", "0000"]
+    ["0x18", "ALRTOVCFG",    "FFFF", "1111111", "ALRTOVEN[15:8]",    "1111111", "ALRTOVEN[7:0]",       "0000", "0000"],
+    ["0x19", "ALRTUVCFG",    "FFFF", "1111111", "ALRTUVEN[15:8]",    "1111111", "ALRTUVEN[7:0]",       "0000", "0000"],
+    ["0x1A", "ALRTAUXOVCFG", "FFFF", "1111111", "ALRTAUXOVEN[7:0]",  "1111111", "ALRTALTAUXOVEN[7:0]", "0000", "0000"],
+    ["0x1B", "ALRTAUXUVCFG", "FFFF", "1111111", "ALRTAUXUVEN[7:0]",  "1111111", "ALRTALTAUXUVEN[7:0]", "0000", "0000"]
 ]
 
 table_appCfgPage_theresholdReg_items = [
-    ["0x20", "OVTHREG",         "E667",     "4.500",    "V",           " ", " ", "FFFF",   "FFFF"],
-    ["0x21", "UVTREG",          "8A3D",     "2.700",    "V",           " ", " ", "0000",   "0000"],
-    ["0x22", "BIPOVTHREG",      "051F",     "+0.100",   "V (Bipolar)", " ", " ", "7FFF",   "7FFF"],
-    ["0x23", "BIPUVTHREG",      "FAE1",     "-0.100",   "V (Bipolar)", " ", " ", "8000",   "8000"],
-    ["0x24", "ALTOVTHREG",      "E667",     "4.500",    "V",           " ", " ", "FFFF",   "FFFF"],
-    ["0x25", "ALTUVTHREG",      "8A3D",     "2.700",    "V",           " ", " ", "0000",   "0000"],
-    ["0x26", "ALTBIPOVTHREG",   "051F",     "+0.100",   "V (Bipolar)", " ", " ", "7FFF",   "7FFF"],
-    ["0x27", "ALTBIPUVTHREG",   "FAE1",     "-0.100",   "V (Bipolar)", " ", " ", "8000",   "8000"],
-    ["0x28", "AUXROVTHREG",     "TBD",      "TBD",      "Ratiometric", " ", " ", "FFFF",   "FFFF"],
-    ["0x29", "AUXRUVTHREG",     "TBD",      "TBD",      "Ratiometric", " ", " ", "0000",   "0000"],
-    ["0x2A", "AUXAOVTHREG",     "FFFF",     "2.500",    "V",           " ", " ", "FFFF",   "FFFF"],
-    ["0x2B", "AUXAUVTHREG",     "0000",     "0.000",    "V",           " ", " ", "0000",   "0000"],
-    ["0x2C", "MMTHREG",         "0CCD",     "0.250",    "V",           " ", " ", "FFFF",   "FFFF"],
-    ["0x2D", "TEMPTHREG",       "0C48",     "120",      "C",           " ", " ", "0C48",   "0C48"]
+    ["0x20", "OVTHREG",         "E667",     "4.500",    "V",           " ",   " ",  "FFFF",   "FFFF"],
+    ["0x21", "UVTREG",          "8A3D",     "2.700",    "V",           " ",   " ",  "0000",   "0000"],
+    ["0x22", "BIPOVTHREG",      "051F",     "+0.100",   "V (Bipolar)", " ",   " ",  "7FFF",   "7FFF"],
+    ["0x23", "BIPUVTHREG",      "FAE1",     "-0.100",   "V (Bipolar)", " ",   " ",  "8000",   "8000"],
+    ["0x24", "ALTOVTHREG",      "E667",     "4.500",    "V",           " ",   " ",  "FFFF",   "FFFF"],
+    ["0x25", "ALTUVTHREG",      "8A3D",     "2.700",    "V",           " ",   " ",  "0000",   "0000"],
+    ["0x26", "ALTBIPOVTHREG",   "051F",     "+0.100",   "V (Bipolar)", " ",   " ",  "7FFF",   "7FFF"],
+    ["0x27", "ALTBIPUVTHREG",   "FAE1",     "-0.100",   "V (Bipolar)", " ",   " ",  "8000",   "8000"],
+    ["0x28", "AUXROVTHREG",     "TBD",      "TBD",      "Ratiometric", " ",   " ",  "FFFF",   "FFFF"],
+    ["0x29", "AUXRUVTHREG",     "TBD",      "TBD",      "Ratiometric", " ",   " ",  "0000",   "0000"],
+    ["0x2A", "AUXAOVTHREG",     "FFFF",     "2.500",    "V",           " ",   " ",  "FFFF",   "FFFF"],
+    ["0x2B", "AUXAUVTHREG",     "0000",     "0.000",    "V",           " ",   " ",  "0000",   "0000"],
+    ["0x2C", "MMTHREG",         "0CCD",     "0.250",    "V",           " ",   " ",  "FFFF",   "FFFF"],
+    ["0x2D", "TEMPTHREG",       "0C48",     "120",      "°C",          "248", "°F", "0C48",   "0C48"]
 ]
 
 table_appCfgPage_acqReg_items = [
     ["0x40", "ACQDLY1",   "1501", "2.106",    "CELLDLY(ms)",        "0.096",    "SWDLY(ms)",         "0000", "0000"],
     ["0x41", "ACQDLY2",   "3220", "1.200",    "AUXDLY (ms)",        "12.768",   "CELLOPNDLY (ms)",   "0000", "0000"],
     ["0x42", "ACQCHSEL",  "FFFF", "11111111", "CELLEN[15:8] (bin)", "11111111", "CELLEN[7:0] (bin)", "0000", "0000"],
-    ["0x43", "ACQAUXSEL", "FFFF", " ",        " ",                  "11111111", "AUXEN[7:0] (bin)",  "0000", "0000"]
+    ["0x43", "ACQAUXSEL", "00FF", " ",        " ",                  "11111111", "AUXEN[7:0] (bin)",  "0000", "0000"]
 ]
 
-"""  diagnostic configuration page tablewidget initial content """
+"""  diagnostic configuration page tablewidget initial content  (page4) """
 table_diagCfgPage_testCfg_headers = ["Address", "Register", "Pending (hex)", "Pending Value (bin)", "Pending Field",
                            "Pending Value (bin)", "Pending Field", "Pending Value (bin)", "Pending Field",
                             "Pending Value (bin)", "Pending Field", "Device 0 (hex)", "Device 1 (hex)"]
@@ -331,7 +330,7 @@ table_diagCfgPage_testCfg_items = [
 table_diagCfgPage_diagThre_headers = ["Address", "Register", "Pending (hex)", "Pending Value", "Pending Unit",
                                       "Pending Value", "Pending Unit", "Device 0 (hex)", "Device 1 (hex)"]
 table_diagCfgPage_diagThre_items = [
-    ["0x2F", "BALSHTUVTHREG",   "0000", "0.000",   "V",           " ", " ", "0000", "0000"],
+    ["0x2F", "BALSHRTUVTHREG",   "0000", "0.000",   "V",           " ", " ", "0000", "0000"],
     ["0x30", "BALOVTHREG",      "7FFF", "+2.500",  "V(Bipolar)",  " ", " ", "7FFF", "7FFF"],
     ["0x31", "BALUVTHREG",      "8000", "-2.500",  "V(Bipolar)",  " ", " ", "8000", "8000"],
     ["0x32", "CELLOPNOVTHREG",  "FFFF", "5.000",   "V",           " ", " ", "FFFF", "FFFF"],
@@ -350,12 +349,12 @@ table_diagCfgPage_aluTeDiag_headers = ["Address", "Register", "Pending (hex)", "
                                       "Pending Value", "Pending Unit", "Device 0 (hex)", "Device 1 (hex)"]
 table_diagCfgPage_aluTeDiag_items = [
     ["0x3C", "ALUTESTAREG", "0000", " ", " ", " ", " ", "0000", "0000"],
-    ["0x3D", "ALUTESTAREG", "0000", " ", " ", " ", " ", "0000", "0000"],
-    ["0x3E", "ALUTESTAREG", "0000", " ", " ", " ", " ", "0000", "0000"],
-    ["0x3F", "ALUTESTAREG", "0000", " ", " ", " ", " ", "0000", "0000"]
+    ["0x3D", "ALUTESTBREG", "0000", " ", " ", " ", " ", "0000", "0000"],
+    ["0x3E", "ALUTESTCREG", "0000", " ", " ", " ", " ", "0000", "0000"],
+    ["0x3F", "ALUTESTDREG", "0000", " ", " ", " ", " ", "0000", "0000"]
 ]
 
-""" acquisition request page tablewidget initial content """
+""" acquisition request page tablewidget initial content (page5) """
 table_acqReqPage_headers = ["Address", "Register", "Pending (hex)", "Actual (hex)",
                             "ACQDONE", "DATARDY", "ACQERR", "(Logic Zero)", "ACQCBALINT",
                             "ACQIIRBYP", "ACQIIRINIT", "ACQIIRPROC", "ALUTESTEN", "ACQOSR[2:0]", "ACQMODE[3:0]"]
@@ -365,9 +364,35 @@ table_acqReqPage_items = [
     ["0x44", "ACQCTRL (Device 1)", "0B41", "CB41", "1", "1", "0", "0", "1", "0", "1", "1", "0", "100", "0001"]
 ]
 
-""" measurement acquisition detailed data page tablewidget initial content """
+""" measurement acquisition summary data page tablewidget initial content (page6) """
+table_meaAcqSumDataPage_statusTableItems = [
+    ["Address", "Register", "Device 0 (hex)", " ",    " ",             " ",    " ",             "Device 1 (hex)", " ",    " ",             " ",    " "],
+    ["0x04",    "STATUS1",  "5000",           " ",    " ",             " ",    " ",             "5000",           " ",    " ",             " ",    " "],
+    ["0x05",    "STATUS2",  "0080",           " ",    " ",             " ",    " ",             "0080",           " ",    " ",             " ",    " "],
+    ["0x06",    "FMEA1",    "0000",           " ",    " ",             " ",    " ",             "0000",           " ",    " ",             " ",    " "],
+    ["0x07",    "FMEA2",    "0000",           " ",    " ",             " ",    " ",             "0000",           " ",    " ",             " ",    " "],
+    ["0x08",    "TEMPREG1", "0960",           "26.9", "°C",            "80.3", "°F",            "0960",           "26.9", "°C",            "80.3", "°F"],
+    ["0x09",    "TEMPREG2", "0960",           "26.9", "°C",            "80.3", "°F",            "0960",           "26.9", "°C",            "80.3", "°F"],
+    ["0x0A",    "GPIODATA", "0000",           "00",   "GPIODOUT[7:0]", "00",   "GPIODIN[7:0]",  "0000",           "00",   "GPIODOUT[7:0]", "00",   "GPIODIN[7:0]"],
+    ["0xD0",    "ACQLOG",   "0000",           "0",    "ACQTYPE[3:0]",  "000",  "ACQCOUNT[9:0]", "0000",           "0",    "ACQTYPE[3:0]",  "000",  "ACQCOUNT[9:0]"]
+]
+
+table_meaAcqSumDataPage_sumDataItems = [
+["0x86", "MINMAXLOC",   "0000", "0",  "MAXCELLLOC[3:0]", "0", "MINCELLLOC[3:0]", "0", "MAXCELLLOC[3:0]", "0", "MINAUXLOC[3:0]"],
+["0x87", "MAXCELLREG",  "0000", "0",  " ",  " ", " ",                             "V (5V Full Scale, 76.3uV LSB)", " ", " ", " "],
+["0x88", "MINCELLREG",  "0000", "0",  " ",  " ", " ",                             "V (5V Full Scale, 76.3uV LSB)", " ", " ", " "],
+["0x89", "MAXAUXREG",   "0000", "0",  " ",  " ", " ",                             "% (Ratiometric 100% Full Scale, 1.526e-3% LSB)", " ", " ", " "],
+["0x8A", "MINAUXREG",   "0000", "0",  " ",  " ", " ",                             "% (Ratiometric 100% Full Scale, 1.526e-3% LSB)", " ", " ", " "],
+["0x8B", "TOTALREG",    "0000", "0",  " ",  " ", " ",                             "V (80V Full Scale 1.221mV LSB)", " ", " ", " "],
+["0x8C", "ALTTOTALREG", "0000", "0",  " ",  " ", " ",                             "V (80V Full Scale 1.221mV LSB)", " ", " ", " "],
+["0x8D", "PMMLOC",      "0000", "--", "--", "0", "PMMCELLLOC[3:0]",               "--", "--", "0", "PMMAUXLOC[3:0]"],
+["0x8E", "PMMCELLREG",  "0000", "0",  " ",  " ", " ",                             "V (5V Full Scale, 76.3uV LSB)", " ", " ", " "],
+["0x8F", "PMMAUXREG",   "0000", "0",  " ",  " ", " ",                             "% (Ratiometric 100% Full Scale, 1.526e-3% LSB)", " ", " ", " "],
+]
+
+""" measurement acquisition detailed data page tablewidget initial content (page7) """
 table_meaAcqDetailPage_alertRegItems = [
-    ["Address", "Register",  "Pending (hex)", " "],
+    ["Address", "Register",  "Value (hex)",   " "],
     ["0x80", "ALRTOVREG",    "0000",          " "],
     ["0x81", "ALRTUVREG",    "0000",          " "],
     ["0x82", "ALRTALTOVREG", "0000",          " "],
@@ -399,8 +424,8 @@ table_meaAcqDetailPage_dataRegItems = [
      "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
 
     ["0x90 ~ - 0x9F", "AUXILIARY DATA", " ",
-     "AUX 15", "AUX 14", "AUX 13", "AUX 12", "AUX 11", "AUX 10", "AUX 9", "AUX 8",
-     "AUX 7",  "AUX 6",  "AUX 5",  "AUX 4",  "AUX 3",  "AUX 2",  "AUX 1", "AUX 0"],
+     "AUX 7",     "AUX 6",     "AUX 5",     "AUX 4",     "AUX 3",     "AUX 2",     "AUX 1",    "AUX 0",
+     "ALTAUX 7",  "ALTAUX 6",  "ALTAUX 5",  "ALTAUX 4",  "ALTAUX 3",  "ALTAUX 2",  "ALTAUX 1", "ALTAUX 0"],
 
     ["0x90 ~ - 0x9F", "Device 0 (hex)", " ",
      "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000",
@@ -421,33 +446,7 @@ table_meaAcqDetailPage_dataRegItems = [
      "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
 ]
 
-""" measurement acquisition summary data page tablewidget initial content """
-table_meaAcqSumDataPage_statusTableItems = [
-    ["Address", "Register", "Device 0 (hex)", " ",    " ",             " ",    " ",             "Device 1 (hex)", " ",    " ",             " ",    " "],
-    ["0x04",    "STATUS1",  "5000",           " ",    " ",             " ",    " ",             "5000",           " ",    " ",             " ",    " "],
-    ["0x05",    "STATUS2",  "0080",           " ",    " ",             " ",    " ",             "0080",           " ",    " ",             " ",    " "],
-    ["0x06",    "FMEA1",    "0000",           " ",    " ",             " ",    " ",             "0000",           " ",    " ",             " ",    " "],
-    ["0x07",    "FMEA2",    "0000",           " ",    " ",             " ",    " ",             "0000",           " ",    " ",             " ",    " "],
-    ["0x08",    "TEMPREG1", "0960",           "26.9", "°C",            "80.3", "°F",            "0960",           "26.9", "°C",            "80.3", "°F"],
-    ["0x09",    "TEMPREG2", "0960",           "26.9", "°C",            "80.3", "°F",            "0960",           "26.9", "°C",            "80.3", "°F"],
-    ["0x0A",    "GPIODATA", "0000",           "00",   "GPIODOUT[7:0]", "00",   "GPIODIN[7:0]",  "0000",           "00",   "GPIODOUT[7:0]", "00",   "GPIODIN[7:0]"],
-    ["0xD0",    "ACQLOG",   "0000",           "0",    "ACQTYPE[3:0]",  "000",  "ACQCOUNT[9:0]", "0000",           "0",    "ACQTYPE[3:0]",  "000",  "ACQCOUNT[9:0]"]
-]
-
-table_meaAcqSumDataPage_sumDataItems = [
-["0x86", "MINMAXLOC",   "0000", "0",  "MAXCELLLOC[3:0]", "0", "MINCELLLOC[3:0]", "0", "MAXCELLLOC[3:0]", "0", "MINAUXLOC[3:0]"],
-["0x87", "MAXCELLREG",  "0000", "0",  " ",  " ", " ",                             "V (5V Full Scale, 76.3uV LSB)", " ", " ", " "],
-["0x88", "MINCELLREG",  "0000", "0",  " ",  " ", " ",                             "V (5V Full Scale, 76.3uV LSB)", " ", " ", " "],
-["0x89", "MAXAUXREG",   "0000", "0",  " ",  " ", " ",                             "% (Ratiometric 100% Full Scale, 1.526e-3% LSB)", " ", " ", " "],
-["0x8A", "MAXAUXREG",   "0000", "0",  " ",  " ", " ",                             "% (Ratiometric 100% Full Scale, 1.526e-3% LSB)", " ", " ", " "],
-["0x8B", "TOTALREG",    "0000", "0",  " ",  " ", " ",                             "V (80V Full Scale 1.221mV LSB)", " ", " ", " "],
-["0x8C", "ALTTOTALREG", "0000", "0",  " ",  " ", " ",                             "V (80V Full Scale 1.221mV LSB)", " ", " ", " "],
-["0x8D", "PMMLOC",      "0000", "--", "--", "0", "PMMCELLLOC[3:0]",               "--", "--", "0", "PMMAUXLOC[3:0]"],
-["0x8E", "PMMCELLREG",  "0000", "0",  " ",  " ", " ",                             "V (5V Full Scale, 76.3uV LSB)", " ", " ", " "],
-["0x8F", "PMMAUXREG",   "0000", "0",  " ",  " ", " ",                             "% (Ratiometric 100% Full Scale, 1.526e-3% LSB)", " ", " ", " "],
-]
-
-""" diagnostic acquisition data page tablewidget initial content """
+""" diagnostic acquisition data page tablewidget initial content (page8) """
 table_diagAcqDataPage_statusTableItems = [
     ["Address", "Register",  "Device 0 (hex)", " ",    " ",             " ",    " ",             "Device 1 (hex)", " ",    " ",             " ",    " "],
     ["0x04",    "STATUS1",   "5000",           " ",    " ",             " ",    " ",             "5000",           " ",    " ",             " ",    " "],
@@ -489,12 +488,12 @@ table_diagAcqDataPage_dev1DataItems = [
                              "0", "0", "0", "0", "0", "0", "0", "0", "0"]
 ]
 
-""" cell balance page tablewidget initial content """
+""" cell balance page tablewidget initial content (page9) """
 table_cblPage_cblExpTimHeaders = ["CBEXP[10:0] (hex)", "CBEXP (dec)"]
 table_cblPage_cblCfgRegHeaders =["Address", "Register", "Pending (hex)", "Comment", "Device 0 (hex)", "Device 1 (hex)"]
 table_cblPage_cblCtrlDemoHeaders =["Address", "Register", "Pending (hex)", "Comment", "Device 0 (hex)", "Device 1 (hex)"]
 
-table_cblPage_cblExpTimItems = ["002", "2"]
+table_cblPage_cblExpTimItems = [["002", "0"]]
 table_cblPage_cblCfgRegItems = [
     ["0x45", "CBALSEL", "FFFF",
      "Enable all BALSW for Diagnostics and basic Demonstration.", "0000", "0000"],
@@ -860,7 +859,8 @@ def set_appCfgPage_table_color(pAppCfgTable, pAlertTable, pThreTable, pAcqTable)
             pAlertTable.item(r, 7).setBackground(QColor("#E2F0D9"))  # 绿色
             pAlertTable.item(r, 8).setBackground(QColor("#E2F0D9"))  # 绿色
             pAcqTable.item(r, 2).setBackground(QColor("#DAE3F3"))  # 紫色
-            pAcqTable.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
+            if r != 3:
+                pAcqTable.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
             pAcqTable.item(r, 5).setBackground(QColor("#FFF2CC"))  # 黄色
             pAcqTable.item(r, 7).setBackground(QColor("#E2F0D9"))  # 绿色
             pAcqTable.item(r, 8).setBackground(QColor("#E2F0D9"))  # 绿色
@@ -871,6 +871,7 @@ def set_appCfgPage_table_color(pAppCfgTable, pAlertTable, pThreTable, pAcqTable)
             pThreTable.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
             pThreTable.item(r, 7).setBackground(QColor("#E2F0D9"))  # 绿色
             pThreTable.item(r, 8).setBackground(QColor("#E2F0D9"))  # 绿色
+    pThreTable.item(13, 5).setBackground(QColor("#FFF2CC"))  # 黄色
 
 
 

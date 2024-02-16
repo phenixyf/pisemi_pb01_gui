@@ -37,6 +37,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         # initial single AFE radio
         self.radioButton_dualAfe.setChecked(True)
         # self.radioButton_singleAfe.setChecked(True)
+        self.radio_chainCfg_swCorEn.hide()
 
         set_table_head(self.table_chainCfg_devIdBlk, table_chainCfg_devidHead,
                        CHAIN_CFG_TABLE_HEHG, 0)
@@ -127,6 +128,12 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                   self.table_diagCfgPage_aluTestDiagReg)
 
         ''' initial acquisition request page (page5) '''
+        self.radioButton_acqReqPage_acqiirbyp.setEnabled(False)
+        self.radioButton_acqReqPage_acqiirproc.setEnabled(False)
+        self.radioButton_acqReqPage_alutesten.setEnabled(False)
+        self.radioButton_acqReqPage_dataUpdate.setEnabled(False)
+        self.radioButton_acqReqPage_auxaDiagA.setEnabled(False)
+        self.radioButton_acqReqPage_auxaDiagB.setEnabled(False)
         set_table_head(self.table_acqReqPage_acqReq, table_acqReqPage_headers,
                        CHAIN_CFG_TABLE_HEHG, 0)
         set_table_item(self.table_acqReqPage_acqReq, CHAIN_CFG_TABLE_ROWHG,
@@ -203,6 +210,10 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                                             self.table_diagAcqPage_dataReg_dev1)
 
         ''' initial cell balance page (page9) '''
+        self.radioButton_cblPage_auto.setEnabled(False)
+        self.radioButton_cblPage_discharge.setEnabled(False)
+        self.radioButton_cblPage_autoMeaSnd.setEnabled(False)
+        self.radioButton_cblPage_autoMeaMin.setEnabled(False)
         set_table_head(self.table_cblPage_cblExpTime, table_cblPage_cblExpTimHeaders,
                        CHAIN_CFG_TABLE_HEHG, 0)
         set_table_item(self.table_cblPage_cblExpTime, CHAIN_CFG_TABLE_ROWHG, table_cblPage_cblExpTimItems)
@@ -221,7 +232,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                     self.table_cblPage_cblCtrlSimDemo, self.table_cblPage_cblCtrlStaInf)
 
 
-        # single afe initial ui as default
+        # dual afe initial ui as default
         self.slot_radio_single_dual_afe()
 
         # update led color

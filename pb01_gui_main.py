@@ -21,6 +21,9 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.hidBdg = hid.device()
         self.hidStatus = False
         self.setupNotification()
+        self.statusMessage = QLabel()
+        self.statusMessage.setFont(QFont('Calibri', 10, QFont.Bold))  # 设置字体和加粗
+        self.statusBar().addPermanentWidget(self.statusMessage)
         self.initUI()  # 定义初始化函数
 
     def initUI(self):
@@ -267,13 +270,15 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 self.hidBdg.open(target_vid, target_pid)  # VendorID/ProductID
                 self.hidBdg.set_nonblocking(1)
                 self.hidStatus = True
-                self.statusBar().showMessage("open hid successfully")
+                self.statusMessage.setStyleSheet("QLabel { color : blue; }")  # 设置字体颜色为蓝色
+                self.statusMessage.setText("bridge board connect successfully")
                 return self.hidStatus
             else:
                 return self.hidStatus
         except:
             self.hidStatus = False
-            self.statusBar().showMessage("can't open hid")
+            self.statusMessage.setStyleSheet("QLabel { color : red; }")  # 设置字体颜色为蓝色
+            self.statusMessage.setText("bridge board connect fail")
             return self.hidStatus
 
     def close_hid(self):
@@ -281,12 +286,14 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             if self.hidStatus == True:
                 self.hidBdg.close()
                 self.hidStatus = False
-                self.statusBar().showMessage("hid is removed")
+                self.statusMessage.setStyleSheet("QLabel { color : red; }")  # 设置字体颜色为红色
+                self.statusMessage.setText("bridge board removed")
                 return self.hidStatus
             else:
                 return self.hidStatus
         except:
-            self.statusBar().showMessage("close hid failed")
+            self.statusMessage.setStyleSheet("QLabel { color : red; }")  # 设置字体颜色为红色
+            self.statusMessage.setText("close hid failed")
             self.hidStatus = True
 
     def slot_radio_single_dual_afe(self):

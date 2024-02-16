@@ -8,6 +8,14 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QColor, QFont
+import sys
+import ctypes
+from ctypes.wintypes import MSG
+import ctypes.wintypes as wintypes
+import hid
+
+target_pid = 0xfe07  # 用你的目标PID替换这里
+target_vid = 0x1a86  # 用你的目标VID替换这里
 
 """ led string related """
 ''' led qss '''
@@ -125,6 +133,44 @@ def add_led_txt(pLedNum, pTableWidget, pRow, pCol, pLabelList):
     pTableWidget.setCellWidget(pRow, pCol, pFrame)
 
     return pList_led
+
+""" HID """
+NULL = 0
+INVALID_HANDLE_VALUE = -1
+DEVICE_NOTIFY_WINDOW_HANDLE = 0x00000000
+WM_DEVICECHANGE = 0x0219            # windows 系统设备变动事件序号
+DBT_DEVTYP_DEVICEINTERFACE = 5
+DBT_DEVICEREMOVECOMPLETE = 0x8004   # windows 系统设备移出信息序号
+DBT_DEVICEARRIVAL = 0x8000          # windows 系统设备插入信息序号
+
+user32 = ctypes.windll.user32
+RegisterDeviceNotification = user32.RegisterDeviceNotificationW
+UnregisterDeviceNotification = user32.UnregisterDeviceNotification
+
+class GUID(ctypes.Structure):
+    _pack_ = 1
+    _fields_ = [("Data1", ctypes.c_ulong),
+                ("Data2", ctypes.c_ushort),
+                ("Data3", ctypes.c_ushort),
+                ("Data4", ctypes.c_ubyte * 8)]
+
+
+class DEV_BROADCAST_DEVICEINTERFACE(ctypes.Structure):
+    _pack_ = 1
+    _fields_ = [("dbcc_size", wintypes.DWORD),
+                ("dbcc_devicetype", wintypes.DWORD),
+                ("dbcc_reserved", wintypes.DWORD),
+                ("dbcc_classguid", GUID),
+                ("dbcc_name", ctypes.c_wchar * 260)]
+
+
+class DEV_BROADCAST_HDR(ctypes.Structure):
+    _fields_ = [("dbch_size", wintypes.DWORD),
+                ("dbch_devicetype", wintypes.DWORD),
+                ("dbch_reserved", wintypes.DWORD)]
+
+GUID_DEVINTERFACE_USB_DEVICE = GUID(0xA5DCBF10, 0x6530, 0x11D2,
+                                    (ctypes.c_ubyte * 8)(0x90, 0x1F, 0x00, 0xC0, 0x4F, 0xB9, 0x51, 0xED))
 
 
 """ CHAIN CONFIGURATION page tablewidget initial content """

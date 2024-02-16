@@ -3,7 +3,6 @@
 # @Author  : yifei.su
 # @File    : pb01_gui_main.py
 
-
 """ step1: 导入必须的库和 layout 文件 """
 import sys
 # from PyQt5.QtWidgets import *
@@ -15,9 +14,13 @@ from pb01_gui_main_window import Ui_MainWindow
 from ui_configure import *
 
 class Pb01MainWindow(QMainWindow, Ui_MainWindow):
+
     def __init__(self, parent=None):
         super(QMainWindow, self).__init__(parent)
         self.setupUi(self)
+        self.hidBdg = hid.device()
+        self.hidStatus = False
+        self.setupNotification()
         self.initUI()  # 定义初始化函数
 
     def initUI(self):
@@ -25,6 +28,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         GUI 初始化函数
         :return:
         """
+        self.open_hid()
         ''' inital chain configuration page (page1) '''
         # initial single AFE radio
         self.radioButton_dualAfe.setChecked(True)
@@ -223,6 +227,67 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.radioButton_singleAfe.clicked.connect(self.slot_radio_single_dual_afe)
         self.radioButton_dualAfe.clicked.connect(self.slot_radio_single_dual_afe)
 
+        
+
+    def setupNotification(self):
+        dbh = DEV_BROADCAST_DEVICEINTERFACE()
+        dbh.dbcc_size = ctypes.sizeof(DEV_BROADCAST_DEVICEINTERFACE)
+        dbh.dbcc_devicetype = DBT_DEVTYP_DEVICEINTERFACE
+        dbh.dbcc_classguid = GUID_DEVINTERFACE_USB_DEVICE
+        self.hNofity = RegisterDeviceNotification(int(self.winId()),
+                                                  ctypes.byref(dbh),
+                                                  DEVICE_NOTIFY_WINDOW_HANDLE)
+
+    def nativeEvent(self, eventType, msg):
+        message = MSG.from_address(msg.__int__())
+        if message.message == WM_DEVICECHANGE:
+            self.onDeviceChanged(message.wParam, message.lParam)
+        return False, 0
+
+    def onDeviceChanged(self, wParam, lParam):
+        if DBT_DEVICEARRIVAL == wParam:
+            dev_info = ctypes.cast(lParam, ctypes.POINTER(DEV_BROADCAST_DEVICEINTERFACE)).contents
+            device_path = ctypes.c_wchar_p(dev_info.dbcc_name).value
+            cycCnt = 0
+            if f"VID_{target_vid:04X}&PID_{target_pid:04X}" in device_path:
+                while (self.open_hid() is not True) and (cycCnt < 5):
+                    self.open_hid()
+                    cycCnt += 1
+
+
+        elif DBT_DEVICEREMOVECOMPLETE == wParam:
+            dev_info = ctypes.cast(lParam, ctypes.POINTER(DEV_BROADCAST_DEVICEINTERFACE)).contents
+            device_path = ctypes.c_wchar_p(dev_info.dbcc_name).value
+            if f"VID_{target_vid:04X}&PID_{target_pid:04X}" in device_path:
+                self.close_hid()
+
+    def open_hid(self):
+        try:
+            if self.hidStatus == False:
+                self.hidBdg.open(target_vid, target_pid)  # VendorID/ProductID
+                self.hidBdg.set_nonblocking(1)
+                self.hidStatus = True
+                self.statusBar().showMessage("open hid successfully")
+                return self.hidStatus
+            else:
+                return self.hidStatus
+        except:
+            self.hidStatus = False
+            self.statusBar().showMessage("can't open hid")
+            return self.hidStatus
+
+    def close_hid(self):
+        try:
+            if self.hidStatus == True:
+                self.hidBdg.close()
+                self.hidStatus = False
+                self.statusBar().showMessage("hid is removed")
+                return self.hidStatus
+            else:
+                return self.hidStatus
+        except:
+            self.statusBar().showMessage("close hid failed")
+            self.hidStatus = True
 
     def slot_radio_single_dual_afe(self):
         """

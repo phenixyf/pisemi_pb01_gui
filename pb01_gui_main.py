@@ -262,6 +262,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         :return:
         """
         pWarnLineEdit.setStyleSheet(lineEdit_default_style)
+        pWarnLineEdit.setText("WARNING:")
 
     def afe_write_read_all(self, pRegAddr, pRegDataLsb, pRegDataMsb):
         """
@@ -332,17 +333,32 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                          "WARNING:")
                 return
 
-        # configure UIFCFG
+        # write and read all UIFCFG register
         rtUifCfg = self.afe_write_read_all(0x10, 0x00, 0x26)  # write all A10=0x2600
         if rtUifCfg != "error":
-            if self.flagSingleAfe:
+            if self.flagSingleAfe:  # single afe
+                rdDataDev0 = (rtUifCfg[1]<<8) | rtUifCfg[0]
+                self.update_table_item_data(self.table_chainCfg_uifcfgReg, 0, 3, hex(rdDataDev0)[2:])
+
+                bitsDev0 = (rdDataDev0>>7) & 0x1FF
+                for i in range(9):
+                    bitValue = (bitsDev0>>i) & 1
+                    self.update_table_item_data(self.table_chainCfg_uifcfgReg, 0, 12-i, str(bitValue))
+            else:   # dual afe
+                rdDataDev0 = (rtUifCfg[3] << 8) | rtUifCfg[2]
+                rdDataDev1 = (rtUifCfg[1] << 8) | rtUifCfg[0]
                 self.update_table_item_data(self.table_chainCfg_uifcfgReg, 0, 3,
-                                            hex((rtUifCfg[1]<<8) | rtUifCfg[0])[2:])
-            else:
-                self.update_table_item_data(self.table_chainCfg_uifcfgReg, 0, 3,
-                                            hex((rtUifCfg[3] << 8) | rtUifCfg[2])[2:])  # device 0
+                                            hex(rdDataDev0)[2:])  # device 0
                 self.update_table_item_data(self.table_chainCfg_uifcfgReg, 1, 3,
-                                            hex((rtUifCfg[1] << 8) | rtUifCfg[0])[2:])  # device 1
+                                            hex(rdDataDev1)[2:])  # device 1
+
+                bitsDev0 = (rdDataDev0 >> 7) & 0x1FF
+                bitsDev1 = (rdDataDev1 >> 7) & 0x1FF
+                for i in range(9):
+                    bitValueDev0 = (bitsDev0 >> i) & 1
+                    self.update_table_item_data(self.table_chainCfg_uifcfgReg, 0, 12-i, str(bitValueDev0)) # device 0
+                    bitValueDev1 = (bitsDev1 >> i) & 1
+                    self.update_table_item_data(self.table_chainCfg_uifcfgReg, 1, 12-i, str(bitValueDev1)) # device 1
         else:
             return
 

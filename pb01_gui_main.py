@@ -25,6 +25,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.statusMessage = QLabel()
         self.statusMessage.setFont(QFont('Calibri', 10, QFont.Bold))  # 设置字体和加粗
         self.statusBar().addPermanentWidget(self.statusMessage)
+        self.flagSingleAfe = False
         self.initUI()  # 定义初始化函数
 
     def initUI(self):
@@ -241,8 +242,75 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         ''' 配置信号和槽 '''
         self.radioButton_singleAfe.clicked.connect(self.slot_radio_single_dual_afe)
         self.radioButton_dualAfe.clicked.connect(self.slot_radio_single_dual_afe)
+        self.pushButton_chainCfg_cfg.clicked.connect(self.slot_pushBtn_chainCfg_cfg)
 
-        
+    def set_warning_message(self, pWarnLineEdit, pMes, pPrefix="WARNING:"):
+        """
+        在报错 lineEdit 中显示报错信息
+        :param pWarnLineEdit: 报错 lineEdit 对象
+        :param pMes: 报错信息
+        :param pPrefix: 报错信息前缀，例如 "WARING: Write UIFCFG "
+        :return:
+        """
+        pWarnLineEdit.setStyleSheet(lineEdit_warn_style)
+        pWarnLineEdit.setText(pPrefix + pMes)
+
+    def set_default_warn_bar(self, pWarnLineEdit):
+        pWarnLineEdit.setStyleSheet(lineEdit_default_style)
+
+    def slot_pushBtn_chainCfg_cfg(self):
+        # reset max17841
+        max17841_init(self.hidBdg)
+        time.sleep(0.01)
+        # initial daisy chain
+        daisyChainReturn = pb01_daisy_chain_initial(self.hidBdg, 0x00)
+        if (daisyChainReturn == ("transaction5 time out" or
+                                 "transaction5 time out" or
+                                 "transaction5 time out" or
+                                 "clear bridge rx buffer time out")):
+            self.set_warning_message(self.lineEdit_chainCfg_cfgWarn, daisyChainReturn, "WARNING: Daisy chain initial error ")
+            return
+        else:
+            if (daisyChainReturn[2] == '0x2') and self.flagSingleAfe:
+                self.set_warning_message(self.lineEdit_chainCfg_cfgWarn,
+                                         f"Daisy chain has 2 devices, please change AFE radio selection",
+                                         "WARNING:")
+                return
+            elif (daisyChainReturn[2] == '0x1') and (self.flagSingleAfe == False):
+                self.set_warning_message(self.lineEdit_chainCfg_cfgWarn,
+                                         f"Daisy chain has 1 device, please change AFE radio selection",
+                                         "WARNING:")
+                return
+
+        # configure UIFCFG
+        rtWrUifCfg = pb01_write_all(self.hidBdg, 0x10, 0x00, 0x26, 0x00)  # write all A10=0x2600, alseed=0x00
+        if (rtWrUifCfg == ("message return RX error" or "pec check error")):
+            self.set_warning_message(self.lineEdit_chainCfg_cfgWarn, rtWrUifCfg, "WARNING: Write UIFCFG ")
+            return
+        # read UIFCFG
+        if self.flagSingleAfe:
+            rtRdUifCfg = pb01_read_all(self.hidBdg, 0x10, 1, 0x00)  # read all A10, alseed=0x00
+            if (rtRdUifCfg == ("message return RX error" or "pec check error")):
+                self.set_warning_message(self.lineEdit_chainCfg_cfgWarn, rtWrUifCfg, "WARNING: Read UIFCFG ")
+                return
+        else:
+            rtRdUifCfg = pb01_read_all(self.hidBdg, 0x10, 2, 0x00)  # read all A10, alseed=0x00
+            if (rtRdUifCfg == ("message return RX error" or "pec check error")):
+                self.set_warning_message(self.lineEdit_chainCfg_cfgWarn, rtWrUifCfg, "WARNING: Read UIFCFG ")
+                return
+
+        # configure ADDRESSCFG
+        rtWrAddCfg = pb01_write_all(self.hidBdg, 0x11, 0x20, 0x00, 0x00)  # write all A11=0x0020
+                                                                          # (topDevAddr = 1, botDevAddr = 0)
+                                                                          # alseed=0x00
+        if (rtWrAddCfg == ("message return RX error" or "pec check error")):
+            self.set_warning_message(self.lineEdit_chainCfg_cfgWarn, rtWrUifCfg, "WARING: Write ADDRESSCFG ")
+
+        #wait 10ms to complete FEMA2 BIST
+        time.sleep(0.01)
+        # re-setup chainCfgPage cfgWarn bar
+        self.set_default_warn_bar(self.lineEdit_chainCfg_cfgWarn)
+
 
     def setupNotification(self):
         dbh = DEV_BROADCAST_DEVICEINTERFACE()
@@ -315,6 +383,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         :return:
         """
         if self.radioButton_singleAfe.isChecked():
+            self.flagSingleAfe = True
             # chain configuration page (page1)
             self.table_chainCfg_devIdBlk.hideRow(1)
             self.table_chainCfg_uifcfgReg.hideRow(1)
@@ -379,6 +448,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             self.table_cblPage_cblCtrlStaInf.hideColumn(14)
             self.table_cblPage_cblCtrlStaInf.hideColumn(15)
         elif self.radioButton_dualAfe.isChecked():
+            self.flagSingleAfe = False
             # chain configuration page (page1)
             self.table_chainCfg_devIdBlk.showRow(1)
             self.table_chainCfg_uifcfgReg.showRow(1)

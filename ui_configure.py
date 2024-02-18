@@ -17,6 +17,29 @@ import hid
 target_pid = 0xfe07  # 用你的目标PID替换这里
 target_vid = 0x1a86  # 用你的目标VID替换这里
 
+""" warning lineEdit style """
+lineEdit_warn_style = "QLineEdit {" \
+                      "font: 11pt 'Calibri'; /* 字体 */" \
+                      "font-weight: 700; /* 字体粗细 */" \
+                      "color: white; /* 文字颜色 */" \
+                      "background-color: #ff0000; /* 按钮背景颜色 1*/" \
+                      "border-color: #ce4500; /* 边框颜色 3*/" \
+                      "border-width: 2px; /* 边框宽度 */" \
+                      "border-radius: 10px; /* 边框圆角半径 */" \
+                      "padding: 5px; /* 内边距 */" \
+                      "}"
+
+lineEdit_default_style = "QLineEdit {" \
+                      "font: 11pt 'Calibri'; /* 字体 */" \
+                      "font-weight: 700; /* 字体粗细 */" \
+                      "color: white; /* 文字颜色 */" \
+                      "background-color: lightblue; /* 按钮背景颜色 1*/" \
+                      "border-color: #ce4500; /* 边框颜色 3*/" \
+                      "border-width: 2px; /* 边框宽度 */" \
+                      "border-radius: 10px; /* 边框圆角半径 */" \
+                      "padding: 5px; /* 内边距 */" \
+                      "}"
+
 """ led string related """
 ''' led qss '''
 led_green_style = "QLabel {\n" \

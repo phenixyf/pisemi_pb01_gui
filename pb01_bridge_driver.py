@@ -338,7 +338,8 @@ def pb01_daisy_chain_initial(pHidDev, pDevAddSeed):
     4. read returned HELLOALL command message
     :param pHidDev: hid bridge object
     :param pDevAddSeed: device seed address (should make top device address less than 32)
-    :return:
+    :return: initial faile: error message
+             initial success: HELLOALL message returned back data
     """
     ''' TRANSACTION1: Enable keep-alive mode '''
     max17841_reg_write(pHidDev, 0x10, 0x05)  # write configuration 3,set keep-alive period to 160μs
@@ -351,21 +352,27 @@ def pb01_daisy_chain_initial(pHidDev, pDevAddSeed):
                                                     # Enable Transmit Preambles mode
 
     ''' TRANSACTION5: Wait for all UART slave devices to wake up (poll RX_Busy_Status bit bit[5]) '''
+    start_time = time.time()
     while max17841_reg_read(pHidDev,
                             0x01) != 0x21:  #Read RX_Status register (RX_Busy_Status and RX_Empty_Status should be true)
         print("TRANSACTION5 fail, preamble doesn't transmit back to bridge RX")
         print(f"current Reg0x01 is: {hex(max17841_reg_read(pHidDev, 0x01))}")
+        if time.time() - start_time > UART_MSG_RETURN_TIMEOUT:  # Check if wait has timeout
+            return "transaction5 time out"                      # return timeout message
 
     ''' TRANSACTION6: End of UART slave device wake-up period '''
     max17841_reg_write(pHidDev, 0x0E, 0x10)     # Write Configuration 2 register
                                                 # Disable Transmit Preambles mode
 
     ''' TRANSACTION7: Wait for null message to be received (poll RX_Empty_Status bit bit[0]) '''
+    start_time = time.time()
     while max17841_reg_read(pHidDev,
                             0x01) != 0x11:  # Read RX_Status register (RX_Empty_Status bit should be true)
         print("TRANSACTION7 fail, after disable preamble RX is not empty, clear RX")
         max17841_reg_command(pHidDev, 0xE0)  # Clear receive buffer
         print(f"current Reg0x01 is: {hex(max17841_reg_read(pHidDev, 0x01))}")
+        if time.time() - start_time > UART_MSG_RETURN_TIMEOUT:  # Check if wait has timeout
+            return "transaction7 time out"                      # return timeout message
 
     ''' TRANSACTION8: Clear transmit buffer '''
     max17841_reg_command(pHidDev, 0x20)  # Clear transmit buffer
@@ -385,6 +392,7 @@ def pb01_daisy_chain_initial(pHidDev, pDevAddSeed):
     max17841_reg_command(pHidDev, 0xB0)  # WR_NXT_LD_Q SPI command byte (write the next load queue)
 
     ''' TRANSACTION13: Wait for HELLOALL message return to bridge (poll RX_Stop_Status bit bit[1]) '''
+    start_time = time.time()
     while max17841_reg_read(pHidDev, 0x01) != 0x12:  # If RX_Stop_Status bit is true, continue
         print("TRANSACTION13 fail, HELLOALL doesn't return back to bridge RX")
         print(f" current reg0x01 value is: {hex(max17841_reg_read(pHidDev, 0x01))}")
@@ -393,12 +401,15 @@ def pb01_daisy_chain_initial(pHidDev, pDevAddSeed):
         return_data = [hex(n) for n in max17841_buf_read(pHidDev, 0xC1, 4)]
         print(f"current transmit buffer queue value is:{return_data}")
         max17841_reg_command(pHidDev, 0xB0)
+        if time.time() - start_time > UART_MSG_RETURN_TIMEOUT:      # Check if wait has timeout
+            return "transaction13 time out"                         # return timeout message
 
     ''' TRANSACTION14: Read the returned HELLOALL message from bridge receive buffer '''
     return_data = max17841_buf_read(pHidDev, 0x93, 3)   # read returned message
 
     ''' check bridge RX is empty '''
     rx_data_space = 0x3E - max17841_reg_read(pHidDev, 0x1B)     # read current rx data space
+    start_time = time.time()
     while rx_data_space != 0:
         if SCRIPT_DEBUG:
             print(f"current RX is not empty, rx data space is: {rx_data_space}")
@@ -409,6 +420,8 @@ def pb01_daisy_chain_initial(pHidDev, pDevAddSeed):
         time.sleep(0.01)
         rx_data_space = 0x3E - max17841_reg_read(pHidDev, 0x1B) # read current rx data space again
 
+        if time.time() - start_time > UART_MSG_RETURN_TIMEOUT:      # Check if wait has timeout
+            return "clear bridge rx buffer time out"                # return timeout message
 
     return [hex(n) for n in return_data]
 

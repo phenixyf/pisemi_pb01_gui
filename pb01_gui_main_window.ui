@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1655</width>
+    <width>1838</width>
     <height>1010</height>
    </rect>
   </property>
@@ -334,6 +334,65 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </widget>
            </item>
            <item>
+            <spacer name="horizontalSpacer_26">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_chainCfg_cfgWarn">
+             <property name="minimumSize">
+              <size>
+               <width>600</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Calibri</family>
+               <pointsize>11</pointsize>
+               <weight>87</weight>
+               <italic>false</italic>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLineEdit {
+  font: 11pt &quot;Calibri&quot;; /* 字体 */
+  font-weight: 700; /* 字体粗细 */
+  color: white; /* 文字颜色 */
+  background-color: lightblue; /* 按钮背景颜色 1*/
+border-color: #ce4500; /* 边框颜色 3*/
+border-width: 2px; /* 边框宽度 */
+    border-radius: 10px; /* 边框圆角半径 */
+padding: 5px; /* 内边距 */
+}</string>
+             </property>
+             <property name="text">
+              <string>WARNING:</string>
+             </property>
+             <property name="frame">
+              <bool>false</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
             <spacer name="horizontalSpacer_22">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
@@ -347,7 +406,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </spacer>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_uartIfConf_2">
+            <widget class="QPushButton" name="pushButton_chainCfg_cfg">
              <property name="minimumSize">
               <size>
                <width>110</width>
@@ -1080,7 +1139,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </spacer>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_statusRegReInit_4">
+            <widget class="QPushButton" name="pushButton_chainCfg">
              <property name="minimumSize">
               <size>
                <width>110</width>
@@ -9873,7 +9932,7 @@ QTableCornerButton::section {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1655</width>
+     <width>1838</width>
      <height>26</height>
     </rect>
    </property>

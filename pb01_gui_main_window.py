@@ -439,30 +439,30 @@ class Ui_MainWindow(object):
         self.horizontalLayout_26.addWidget(self.label_36)
         spacerItem5 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_26.addItem(spacerItem5)
-        self.lineEdit_warnStatusPwrUp_2 = QtWidgets.QLineEdit(self.frame_2)
-        self.lineEdit_warnStatusPwrUp_2.setMinimumSize(QtCore.QSize(600, 0))
-        self.lineEdit_warnStatusPwrUp_2.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.lineEdit_chainCfg_pwrUpWarn = QtWidgets.QLineEdit(self.frame_2)
+        self.lineEdit_chainCfg_pwrUpWarn.setMinimumSize(QtCore.QSize(600, 0))
+        self.lineEdit_chainCfg_pwrUpWarn.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
         font.setFamily("Calibri")
         font.setPointSize(11)
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(87)
-        self.lineEdit_warnStatusPwrUp_2.setFont(font)
-        self.lineEdit_warnStatusPwrUp_2.setStyleSheet("QLineEdit {\n"
+        self.lineEdit_chainCfg_pwrUpWarn.setFont(font)
+        self.lineEdit_chainCfg_pwrUpWarn.setStyleSheet("QLineEdit {\n"
 "  font: 11pt \"Calibri\"; /* 字体 */\n"
 "  font-weight: 700; /* 字体粗细 */\n"
 "  color: white; /* 文字颜色 */\n"
-"  background-color: #ff0000; /* 按钮背景颜色 1*/\n"
+"  background-color: lightblue; /* 按钮背景颜色 1*/\n"
 "border-color: #ce4500; /* 边框颜色 3*/\n"
 "border-width: 2px; /* 边框宽度 */\n"
 "    border-radius: 10px; /* 边框圆角半径 */\n"
 "padding: 5px; /* 内边距 */\n"
 "}")
-        self.lineEdit_warnStatusPwrUp_2.setFrame(False)
-        self.lineEdit_warnStatusPwrUp_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.lineEdit_warnStatusPwrUp_2.setObjectName("lineEdit_warnStatusPwrUp_2")
-        self.horizontalLayout_26.addWidget(self.lineEdit_warnStatusPwrUp_2)
+        self.lineEdit_chainCfg_pwrUpWarn.setFrame(False)
+        self.lineEdit_chainCfg_pwrUpWarn.setAlignment(QtCore.Qt.AlignCenter)
+        self.lineEdit_chainCfg_pwrUpWarn.setObjectName("lineEdit_chainCfg_pwrUpWarn")
+        self.horizontalLayout_26.addWidget(self.lineEdit_chainCfg_pwrUpWarn)
         spacerItem6 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_26.addItem(spacerItem6)
         self.verticalLayout_4.addWidget(self.frame_2)
@@ -4819,7 +4819,7 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "ADDRCFG"))
         self.table_chainCfg_addcfgReg.setSortingEnabled(__sortingEnabled)
         self.label_36.setText(_translate("MainWindow", "General Summary Information (Power-Up)"))
-        self.lineEdit_warnStatusPwrUp_2.setText(_translate("MainWindow", "WARNING: Uexpected Power-Up Status - Confirm Setup"))
+        self.lineEdit_chainCfg_pwrUpWarn.setText(_translate("MainWindow", "WARNING:"))
         item = self.table_chainCfg_pw.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
         item = self.table_chainCfg_pw.verticalHeaderItem(1)

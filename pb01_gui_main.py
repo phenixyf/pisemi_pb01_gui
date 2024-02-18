@@ -267,7 +267,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
     def afe_write_read_all(self, pRegAddr, pRegDataLsb, pRegDataMsb):
         """
         向 daisy-chain 所有 AFE 某个寄存器写入数据，并再读取所有 AFE 该寄存器
-        本工程目前只支持 2 个 AFE，通过 AFE radio 选择，所以读取多少个 AFE 在函数实现中用 AFE radio 当前状态来判断
+        注意：本工程目前只支持 2 个 AFE，通过 AFE radio 选择，所以读取多少个 AFE 在函数实现中用 AFE radio 当前状态来判断
         :param pRegAddr: 要读写的寄存器地址
         :param pRegDataLsb: data lsb
         :param pRegDataMsb: data msb
@@ -362,9 +362,89 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         else:
             return
 
+        # write and read all ADDRCFG register
+        rtAddrCfg = self.afe_write_read_all(0x11, 0x20, 0x00)   # write all A11=0x0020
+                                                                # (topDevAddr = 1, botDevAddr = 0)
+                                                                # alseed=0x00
+        if rtAddrCfg != "error":
+            if self.flagSingleAfe:  # single afe
+                rdDataDev0 = (rtAddrCfg[1] << 8) | rtAddrCfg[0]
+                unlockBitDev0 = rdDataDev0 >> 15
+                botAddrDev0 = (rdDataDev0 & 0x7C00) >> 10
+                topAddrDev0 = (rdDataDev0 & 0x03E0) >> 5
+                devAddrDev0 = rdDataDev0 & 0x001F
+                listDataDev0 = [hex(rdDataDev0)[2:].zfill(4), hex(unlockBitDev0)[2:],
+                                hex(botAddrDev0)[2:].zfill(2),
+                                hex(topAddrDev0)[2:].zfill(2), hex(devAddrDev0)[2:].zfill(2)]
+                for i in range(3, 8):
+                    self.update_table_item_data(self.table_chainCfg_addcfgReg, 0, i,
+                                                listDataDev0[i - 3])  # device 0
+            else:  # dual afe
+                rdDataDev0 = (rtAddrCfg[3] << 8) | rtAddrCfg[2]
+                rdDataDev1 = (rtAddrCfg[1] << 8) | rtAddrCfg[0]
+                unlockBitDev0 = rdDataDev0 >> 15
+                unlockBitDev1 = rdDataDev1 >> 15
+                botAddrDev0 = (rdDataDev0 & 0x7C00) >> 10
+                botAddrDev1 = (rdDataDev1 & 0x7C00) >> 10
+                topAddrDev0 = (rdDataDev0 & 0x03E0) >> 5
+                topAddrDev1 = (rdDataDev1 & 0x03E0) >> 5
+                devAddrDev0 = rdDataDev0 & 0x001F
+                devAddrDev1 = rdDataDev1 & 0x001F
+                listDataDev0 = [hex(rdDataDev0)[2:].zfill(4), hex(unlockBitDev0)[2:],
+                                hex(botAddrDev0)[2:].zfill(2),
+                                hex(topAddrDev0)[2:].zfill(2), hex(devAddrDev0)[2:].zfill(2)]
+                listDataDev1 = [hex(rdDataDev1)[2:].zfill(4), hex(unlockBitDev1)[2:],
+                                hex(botAddrDev1)[2:].zfill(2),
+                                hex(topAddrDev1)[2:].zfill(2), hex(devAddrDev1)[2:].zfill(2)]
+                for i in range(3, 8):
+                    self.update_table_item_data(self.table_chainCfg_addcfgReg, 0, i,
+                                                listDataDev0[i - 3])  # device 0
+                    self.update_table_item_data(self.table_chainCfg_addcfgReg, 1, i,
+                                                listDataDev1[i - 3])  # device 1
+        else:
+            return
 
         #wait 10ms to complete FEMA2 BIST
         time.sleep(0.01)
+
+        # read device 0 id
+        rtIdBlkDev0 = pb01_read_block(self.hidBdg, 4, 0, 0x00, 0x00)  # read dev0 id block, alseed=0x00
+        devid0 =  (rtIdBlkDev0[4] << 8) | rtIdBlkDev0[3]
+        devid1 =  (rtIdBlkDev0[6] << 8) | rtIdBlkDev0[5]
+        devid2 =  (rtIdBlkDev0[8] << 8) | rtIdBlkDev0[7]
+        version = (rtIdBlkDev0[10] << 8) | rtIdBlkDev0[9]
+        generation = (version & 0xE000) >> 13
+        chCnt = (version & 0x1F00) >> 8
+        swVer = (version & 0x00F0) >> 4
+        hwVer = version & 0x000F
+        listIdDev0 = [hex(devid0)[2:].zfill(4), hex(devid1)[2:].zfill(4),
+                      hex(devid2)[2:].zfill(4), hex(version)[2:].zfill(4),
+                      str(generation), str(chCnt),
+                      hex(swVer)[2:], hex(hwVer)[2:]]
+        for i in range(3, 11):
+            self.update_table_item_data(self.table_chainCfg_devIdBlk, 0, i,
+                                        listIdDev0[i - 3])  # device 0
+
+        # read device 1 id
+        if self.flagSingleAfe == False:
+            rtIdBlkDev1 = pb01_read_block(self.hidBdg, 4, 1, 0x00, 0x00)  # read dev1 id block, alseed=0x00
+            devid0 = (rtIdBlkDev1[4] << 8) | rtIdBlkDev1[3]
+            devid1 = (rtIdBlkDev1[6] << 8) | rtIdBlkDev1[5]
+            devid2 = (rtIdBlkDev1[8] << 8) | rtIdBlkDev1[7]
+            version = (rtIdBlkDev1[10] << 8) | rtIdBlkDev1[9]
+            generation = (version & 0xE000) >> 13
+            chCnt = (version & 0x1F00) >> 8
+            swVer = (version & 0x00F0) >> 4
+            hwVer = version & 0x000F
+            listIdDev1 = [hex(devid0)[2:].zfill(4), hex(devid1)[2:].zfill(4),
+                          hex(devid2)[2:].zfill(4), hex(version)[2:].zfill(4),
+                          str(generation), str(chCnt),
+                          hex(swVer)[2:], hex(hwVer)[2:]]
+            for i in range(3, 11):
+                self.update_table_item_data(self.table_chainCfg_devIdBlk, 1, i,
+                                            listIdDev1[i - 3])  # device 0
+
+
 
         # re-setup chainCfgPage cfgWarn bar
         self.set_default_warn_bar(self.lineEdit_chainCfg_cfgWarn)

@@ -256,7 +256,57 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         pWarnLineEdit.setText(pPrefix + pMes)
 
     def set_default_warn_bar(self, pWarnLineEdit):
+        """
+        将 warning bar 设置成默认无警告信息水蓝色背景
+        :param pWarnLineEdit: 要设置的 warnning lineEdit 对象
+        :return:
+        """
         pWarnLineEdit.setStyleSheet(lineEdit_default_style)
+
+    def afe_write_read_all(self, pRegAddr, pRegDataLsb, pRegDataMsb):
+        """
+        向 daisy-chain 所有 AFE 某个寄存器写入数据，并再读取所有 AFE 该寄存器
+        本工程目前只支持 2 个 AFE，通过 AFE radio 选择，所以读取多少个 AFE 在函数实现中用 AFE radio 当前状态来判断
+        :param pRegAddr: 要读写的寄存器地址
+        :param pRegDataLsb: data lsb
+        :param pRegDataMsb: data msb
+        :return: 返回一个列表，
+                 列表中包含从 daisy-chain 读取的所有 AFE 该寄存器的数据，如 [afe0DataLsb, afe0DataMsb, afe1DataLsb, afe1DataMsb]
+        """
+        # write register
+        rtWr = pb01_write_all(self.hidBdg, pRegAddr, pRegDataLsb, pRegDataMsb, 0x00)  # write all, alseed=0x00
+        if (rtWr == ("message return RX error" or "pec check error")):
+            self.set_warning_message(self.lineEdit_chainCfg_cfgWarn, rtWr, f"WARNING: Write reg{hex(pRegAddr)} ")
+            return "error"
+
+        # read register
+        if self.flagSingleAfe:
+            rtRd = pb01_read_all(self.hidBdg, pRegAddr, 1, 0x00)  # read all, alseed=0x00
+            if (rtRd == ("message return RX error" or "pec check error")):
+                self.set_warning_message(self.lineEdit_chainCfg_cfgWarn, rtRd, f"WARNING: Read reg{hex(pRegAddr)} ")
+                return "error"
+            else:
+                return rtRd[2:4]
+        else:
+            rtRd = pb01_read_all(self.hidBdg, pRegAddr, 2, 0x00)  # read all, alseed=0x00
+            if (rtRd == ("message return RX error" or "pec check error")):
+                self.set_warning_message(self.lineEdit_chainCfg_cfgWarn, rtRd, f"WARNING: Read reg{hex(pRegAddr)} ")
+                return "error"
+            else:
+                return rtRd[2:6]
+
+    def update_table_item_data(self, pTable, pRow, pCol, pText):
+        # 获取当前单元格的背景颜色和对齐格式
+        current_bg_color = pTable.item(pRow, pCol).background()
+        current_alignment = pTable.item(pRow, pCol).textAlignment()
+
+        # 更新单元格数据
+        pTable.setItem(pRow, pCol, QTableWidgetItem(pText))
+
+        # 重新设置背景颜色和对齐格式
+        pTable.item(pRow, pCol).setBackground(current_bg_color)
+        pTable.item(pRow, pCol).setTextAlignment(current_alignment)
+
 
     def slot_pushBtn_chainCfg_cfg(self):
         # reset max17841
@@ -283,31 +333,23 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 return
 
         # configure UIFCFG
-        rtWrUifCfg = pb01_write_all(self.hidBdg, 0x10, 0x00, 0x26, 0x00)  # write all A10=0x2600, alseed=0x00
-        if (rtWrUifCfg == ("message return RX error" or "pec check error")):
-            self.set_warning_message(self.lineEdit_chainCfg_cfgWarn, rtWrUifCfg, "WARNING: Write UIFCFG ")
-            return
-        # read UIFCFG
-        if self.flagSingleAfe:
-            rtRdUifCfg = pb01_read_all(self.hidBdg, 0x10, 1, 0x00)  # read all A10, alseed=0x00
-            if (rtRdUifCfg == ("message return RX error" or "pec check error")):
-                self.set_warning_message(self.lineEdit_chainCfg_cfgWarn, rtWrUifCfg, "WARNING: Read UIFCFG ")
-                return
+        rtUifCfg = self.afe_write_read_all(0x10, 0x00, 0x26)  # write all A10=0x2600
+        if rtUifCfg != "error":
+            if self.flagSingleAfe:
+                self.update_table_item_data(self.table_chainCfg_uifcfgReg, 0, 3,
+                                            hex((rtUifCfg[1]<<8) | rtUifCfg[0])[2:])
+            else:
+                self.update_table_item_data(self.table_chainCfg_uifcfgReg, 0, 3,
+                                            hex((rtUifCfg[3] << 8) | rtUifCfg[2])[2:])  # device 0
+                self.update_table_item_data(self.table_chainCfg_uifcfgReg, 1, 3,
+                                            hex((rtUifCfg[1] << 8) | rtUifCfg[0])[2:])  # device 1
         else:
-            rtRdUifCfg = pb01_read_all(self.hidBdg, 0x10, 2, 0x00)  # read all A10, alseed=0x00
-            if (rtRdUifCfg == ("message return RX error" or "pec check error")):
-                self.set_warning_message(self.lineEdit_chainCfg_cfgWarn, rtWrUifCfg, "WARNING: Read UIFCFG ")
-                return
+            return
 
-        # configure ADDRESSCFG
-        rtWrAddCfg = pb01_write_all(self.hidBdg, 0x11, 0x20, 0x00, 0x00)  # write all A11=0x0020
-                                                                          # (topDevAddr = 1, botDevAddr = 0)
-                                                                          # alseed=0x00
-        if (rtWrAddCfg == ("message return RX error" or "pec check error")):
-            self.set_warning_message(self.lineEdit_chainCfg_cfgWarn, rtWrUifCfg, "WARING: Write ADDRESSCFG ")
 
         #wait 10ms to complete FEMA2 BIST
         time.sleep(0.01)
+
         # re-setup chainCfgPage cfgWarn bar
         self.set_default_warn_bar(self.lineEdit_chainCfg_cfgWarn)
 

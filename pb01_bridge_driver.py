@@ -368,9 +368,9 @@ def pb01_daisy_chain_initial(pHidDev, pDevAddSeed):
     start_time = time.time()
     while max17841_reg_read(pHidDev,
                             0x01) != 0x11:  # Read RX_Status register (RX_Empty_Status bit should be true)
-        print("TRANSACTION7 fail, after disable preamble RX is not empty, clear RX")
+        # print("TRANSACTION7 fail, after disable preamble RX is not empty, clear RX")
         max17841_reg_command(pHidDev, 0xE0)  # Clear receive buffer
-        print(f"current Reg0x01 is: {hex(max17841_reg_read(pHidDev, 0x01))}")
+        # print(f"current Reg0x01 is: {hex(max17841_reg_read(pHidDev, 0x01))}")
         if time.time() - start_time > UART_MSG_RETURN_TIMEOUT:  # Check if wait has timeout
             return "transaction7 time out"                      # return timeout message
 

@@ -26,6 +26,8 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.statusMessage.setFont(QFont('Calibri', 10, QFont.Bold))  # 设置字体和加粗
         self.statusBar().addPermanentWidget(self.statusMessage)
         self.flagSingleAfe = False
+        self.ledChainPageDev0 = []
+        self.ledChainPageDev1 = []
         self.initUI()  # 定义初始化函数
 
     def initUI(self):
@@ -67,7 +69,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         set_chainPage_ifid_color(2, self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
                             self.table_chainCfg_addcfgReg)
 
-        ledChainPageDev0, ledChainPageDev1 = adjust_chainPage_pw_rst_tables(self.table_chainCfg_pw,
+        self.ledChainPageDev0, self.ledChainPageDev1 = adjust_chainPage_pw_rst_tables(self.table_chainCfg_pw,
                                                                             self.table_chainCfg_rstReg)
 
         ''' initial device manage page (page2) '''
@@ -237,7 +239,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.slot_radio_single_dual_afe()
 
         # update led color
-        ledChainPageDev0[0][2].setStyleSheet(led_blue_style)
+        self.ledChainPageDev0[0][13].setStyleSheet(led_blue_style)
 
         ''' 配置信号和槽 '''
         self.radioButton_singleAfe.clicked.connect(self.slot_radio_single_dual_afe)
@@ -297,6 +299,14 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 return rtRd[2:6]
 
     def update_table_item_data(self, pTable, pRow, pCol, pText):
+        """
+        保持单元格背景、对齐等原格式不变的前提下，更新单元格内容
+        :param pTable: table object
+        :param pRow: 单元格所在行
+        :param pCol: 单元格所在列
+        :param pText: 要更新的内容
+        :return:
+        """
         # 获取当前单元格的背景颜色和对齐格式
         current_bg_color = pTable.item(pRow, pCol).background()
         current_alignment = pTable.item(pRow, pCol).textAlignment()
@@ -307,6 +317,60 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         # 重新设置背景颜色和对齐格式
         pTable.item(pRow, pCol).setBackground(current_bg_color)
         pTable.item(pRow, pCol).setTextAlignment(current_alignment)
+
+
+    def update_status_register_led(self, pSt1, pSt2, pFm1, pFm2, pLedList):
+        """
+        根据 status block 各寄存器的值，更新其对应的 led 颜色
+        :param pSt1: status1 当前值
+        :param pSt2: status2 当前值
+        :param pFm1: fmea1 当前值
+        :param pFm2: fmea2 当前值
+        :param pLedList: 要更新的 led 串列表
+                         在初始化时，包含 status block 的各 tab 页会生成不同的 led 列表
+                         dev0, dev1 也会生成不同的 led 列表
+                         所以该函数只有一个 pLedList 参数，更新 dev0 或 dev1 时要分别调用此函数
+        :return:
+        """
+        for i in range(16):
+            # status1
+            if pSt1 & (0x8000 >> i):  # biti = 1
+                if i == 13:
+                    if pSt2 & 0x0060:
+                        pLedList[0][i].setStyleSheet(led_green_style)
+                    else:
+                        pLedList[0][i].setStyleSheet(led_red_style)
+                else:
+                    pLedList[0][i].setStyleSheet(led_red_style)
+            else:  # biti = 0
+                pLedList[0][i].setStyleSheet(led_white_style)
+
+            # status2
+            if pSt2 & (0x8000 >> i):  # biti = 1
+                if i == 9 or i == 10:
+                    pLedList[1][i].setStyleSheet(led_green_style)
+                else:
+                    pLedList[1][i].setStyleSheet(led_red_style)
+            else:  # biti = 0
+                pLedList[1][i].setStyleSheet(led_white_style)
+
+            # fmea1
+            if 0 < i < 5:
+                pLedList[2][i].setStyleSheet(led_gray_style)
+            else:
+                if pFm1 & (0x8000 >> i):  # biti = 1
+                    pLedList[2][i].setStyleSheet(led_red_style)
+                else:   # biti = 0
+                    pLedList[2][i].setStyleSheet(led_white_style)
+
+            # fmea2
+            if 1 < i < 4:
+                pLedList[3][i].setStyleSheet(led_gray_style)
+            else:
+                if pFm1 & (0x8000 >> i):  # biti = 1
+                    pLedList[3][i].setStyleSheet(led_red_style)
+                else:  # biti = 0
+                    pLedList[3][i].setStyleSheet(led_white_style)
 
 
     def slot_pushBtn_chainCfg_cfg(self):
@@ -407,7 +471,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         #wait 10ms to complete FEMA2 BIST
         time.sleep(0.01)
 
-        # read device 0 id
+        # read device 0 id block
         rtIdBlkDev0 = pb01_read_block(self.hidBdg, 4, 0, 0x00, 0x00)  # read dev0 id block, alseed=0x00
         devid0 =  (rtIdBlkDev0[4] << 8) | rtIdBlkDev0[3]
         devid1 =  (rtIdBlkDev0[6] << 8) | rtIdBlkDev0[5]
@@ -425,7 +489,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             self.update_table_item_data(self.table_chainCfg_devIdBlk, 0, i,
                                         listIdDev0[i - 3])  # device 0
 
-        # read device 1 id
+        # read device 1 id block
         if self.flagSingleAfe == False:
             rtIdBlkDev1 = pb01_read_block(self.hidBdg, 4, 1, 0x00, 0x00)  # read dev1 id block, alseed=0x00
             devid0 = (rtIdBlkDev1[4] << 8) | rtIdBlkDev1[3]
@@ -444,7 +508,35 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 self.update_table_item_data(self.table_chainCfg_devIdBlk, 1, i,
                                             listIdDev1[i - 3])  # device 0
 
+        # read device 0 status block
+        rtStaBlkDev0 = pb01_read_block(self.hidBdg, 4, 0, 0x04, 0x00)  # read dev0 id block, alseed=0x00
+        status1Dev0 = (rtStaBlkDev0[4] << 8) | rtStaBlkDev0[3]
+        status2Dev0 = (rtStaBlkDev0[6] << 8) | rtStaBlkDev0[5]
+        fmea1Dev0 = (rtStaBlkDev0[8] << 8) | rtStaBlkDev0[7]
+        fmea2Dev0 = (rtStaBlkDev0[10] << 8) | rtStaBlkDev0[9]
+        listStaDev0 = [hex(status1Dev0)[2:].zfill(4), hex(status2Dev0)[2:].zfill(4),
+                       hex(fmea1Dev0)[2:].zfill(4), hex(fmea2Dev0)[2:].zfill(4)]
+        for r in range(4):  # fill table
+            self.update_table_item_data(self.table_chainCfg_pw, r+1, 3,
+                                        listStaDev0[r])  # device 0
+        # update led
+        self.update_status_register_led(status1Dev0, status2Dev0, fmea1Dev0, fmea2Dev0, self.ledChainPageDev0)
 
+
+
+
+        # read device 1 status block
+        if self.flagSingleAfe == False:
+            rtStaBlkDev1 = pb01_read_block(self.hidBdg, 4, 1, 0x04, 0x00)  # read dev0 id block, alseed=0x00
+            status1Dev1 = (rtStaBlkDev1[4] << 8) | rtStaBlkDev1[3]
+            status2Dev1 = (rtStaBlkDev1[6] << 8) | rtStaBlkDev1[5]
+            fmea1Dev1 = (rtStaBlkDev1[8] << 8) | rtStaBlkDev1[7]
+            fmea2Dev1 = (rtStaBlkDev1[10] << 8) | rtStaBlkDev1[9]
+            listStaDev1 = [hex(status1Dev1)[2:].zfill(4), hex(status2Dev1)[2:].zfill(4),
+                           hex(fmea1Dev1)[2:].zfill(4), hex(fmea2Dev1)[2:].zfill(4)]
+            for r in range(4):
+                self.update_table_item_data(self.table_chainCfg_pw, r + 1, 5,
+                                            listStaDev1[r])  # device 1
 
         # re-setup chainCfgPage cfgWarn bar
         self.set_default_warn_bar(self.lineEdit_chainCfg_cfgWarn)

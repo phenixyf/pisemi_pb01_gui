@@ -42,6 +42,14 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         :return:
         """
         self.open_hid()
+        self.init_tab_pages()
+        ''' 配置信号和槽 '''
+        self.radioButton_singleAfe.clicked.connect(self.slot_radio_single_dual_afe)
+        self.radioButton_dualAfe.clicked.connect(self.slot_radio_single_dual_afe)
+        self.pushButton_chainCfg_cfg.clicked.connect(self.slot_pushBtn_chainCfg_cfg)
+        self.pushButton_chainCfg_reset.clicked.connect(self.slot_pushBtn_chainCfg_reset)
+
+    def init_tab_pages(self):
         ''' inital chain configuration page (page1) '''
         # initial single AFE radio
         self.radioButton_dualAfe.setChecked(True)
@@ -69,20 +77,20 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         set_table_item(self.table_chainCfg_rstReg, CHAIN_CFG_TABLE_ROWHG,
                        table_chainCfg_rstItems)
 
+        # adjust chain configuration page table
+        adjust_chainPage_ifid_tables(self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
+                                     self.table_chainCfg_addcfgReg)
+        set_chainPage_ifid_color(2, self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
+                                 self.table_chainCfg_addcfgReg)
+
+        self.ledChainPageDev0, self.ledChainPageDev1 = adjust_chainPage_pw_rst_tables(self.table_chainCfg_pw,
+                                                                                      self.table_chainCfg_rstReg)
+
         # disable reset button
         current_style = self.pushButton_chainCfg_reset.styleSheet()
         new_style = current_style + " QPushButton {background-color: #d0d0d0;}"  # 原来颜色 #e84d00
         self.pushButton_chainCfg_reset.setStyleSheet(new_style)
         self.pushButton_chainCfg_reset.setDisabled(True)
-
-        # adjust chain configuration page table
-        adjust_chainPage_ifid_tables(self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
-                            self.table_chainCfg_addcfgReg)
-        set_chainPage_ifid_color(2, self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
-                            self.table_chainCfg_addcfgReg)
-
-        self.ledChainPageDev0, self.ledChainPageDev1 = adjust_chainPage_pw_rst_tables(self.table_chainCfg_pw,
-                                                                            self.table_chainCfg_rstReg)
 
         ''' initial device manage page (page2) '''
         set_table_item(self.table_devMgPage_init, CHAIN_CFG_TABLE_ROWHG,
@@ -94,11 +102,11 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         set_table_item(self.table_devMgPage_cur, CHAIN_CFG_TABLE_ROWHG,
                        table_devMg_curItems)
 
-        self.ledDevMgPageInitDev0, self.ledDevMgPageInitDev1,\
+        self.ledDevMgPageInitDev0, self.ledDevMgPageInitDev1, \
         self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, \
         self.ledDevMgPageDcByte, self.ledDevMgPageAlertPk = adjust_devMgPage_tables(self.table_devMgPage_init,
-                                                                          self.table_devMgPage_dc,
-                                                                          self.table_devMgPage_cur)
+                                                                                    self.table_devMgPage_dc,
+                                                                                    self.table_devMgPage_cur)
 
         ''' initial application configuration page (page3) '''
         set_table_head(self.table_appCfgPage_appCfg, table_appCfgPage_headers,
@@ -121,7 +129,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         adjust_appCfgPage_tables(self.table_appCfgPage_appCfg, self.table_appCfgPage_alertCfg,
                                  self.table_appCfgPage_thresholdReg, self.table_appCfgPage_acqReg)
         set_appCfgPage_table_color(self.table_appCfgPage_appCfg, self.table_appCfgPage_alertCfg,
-                                 self.table_appCfgPage_thresholdReg, self.table_appCfgPage_acqReg)
+                                   self.table_appCfgPage_thresholdReg, self.table_appCfgPage_acqReg)
 
         ''' initial diagnostic configuration page (page4) '''
         set_table_head(self.table_diagCfgPage_testCurCfgReg, table_diagCfgPage_testCfg_headers,
@@ -141,7 +149,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                   self.table_diagCfgPage_aluTestDiagReg)
 
         set_diagCfgPage_table_color(self.table_diagCfgPage_testCurCfgReg, self.table_diagCfgPage_diagThresReg,
-                                  self.table_diagCfgPage_aluTestDiagReg)
+                                    self.table_diagCfgPage_aluTestDiagReg)
 
         ''' initial acquisition request page (page5) '''
         self.radioButton_acqReqPage_acqiirbyp.setEnabled(False)
@@ -170,11 +178,11 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         set_table_item(self.table_meaAcqSumPage_sumDataDev1, CHAIN_CFG_TABLE_ROWHG,
                        table_meaAcqSumDataPage_sumDataItems)
 
-        ledMeaAcqSumPageDc, ledMeaAcqSumPageAlert,\
+        ledMeaAcqSumPageDc, ledMeaAcqSumPageAlert, \
         ledMeaAcqSumPageStaDev0, ledMeaAcqSumPageStaDev1 = adjust_meaAcqSumPage_tables(self.table_meaAcqSumPage_dc,
-                                                         self.table_meaAcqSumPage_status,
-                                                         self.table_meaAcqSumPage_sumDataDev0,
-                                                         self.table_meaAcqSumPage_sumDataDev1)
+                                                                                       self.table_meaAcqSumPage_status,
+                                                                                       self.table_meaAcqSumPage_sumDataDev0,
+                                                                                       self.table_meaAcqSumPage_sumDataDev1)
 
         ''' initial measurement acquisition detailed data page (page7) '''
         set_table_item(self.table_meaAcqDetailData_alertRegDev0, CHAIN_CFG_TABLE_ROWHG,
@@ -219,11 +227,11 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         ledDiagAcqDataPageDc, ledDiagAcqDataPageAlert, \
         ledDiagAcqDataPageStaDev0, ledDiagAcqDataPageStaDev1, \
         ledDiagAcqDataPageDev0, ledDiagAcqDataPageDev1 = adjust_diagAcqDataPage_tables(self.table_diagAcqPage_dc,
-                                                            self.table_diagAcqPage_status,
-                                                            self.table_diagAcqPage_alertReg_dev0,
-                                                            self.table_diagAcqPage_dataReg_dev0,
-                                                            self.table_diagAcqPage_alertReg_dev1,
-                                                            self.table_diagAcqPage_dataReg_dev1)
+                                                                                       self.table_diagAcqPage_status,
+                                                                                       self.table_diagAcqPage_alertReg_dev0,
+                                                                                       self.table_diagAcqPage_dataReg_dev0,
+                                                                                       self.table_diagAcqPage_alertReg_dev1,
+                                                                                       self.table_diagAcqPage_dataReg_dev1)
 
         ''' initial cell balance page (page9) '''
         self.radioButton_cblPage_auto.setEnabled(False)
@@ -245,8 +253,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         set_table_item(self.table_cblPage_cblCtrlStaInf, CHAIN_CFG_TABLE_ROWHG, table_cblPage_cblCtrlInfItems)
 
         adjust_cblPage_tables(self.table_cblPage_cblExpTime, self.table_cblPage_cblCfgReg,
-                                    self.table_cblPage_cblCtrlSimDemo, self.table_cblPage_cblCtrlStaInf)
-
+                              self.table_cblPage_cblCtrlSimDemo, self.table_cblPage_cblCtrlStaInf)
 
         # dual afe initial ui as default
         self.slot_radio_single_dual_afe()
@@ -258,11 +265,6 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.ledDevMgPageInitDev1[0][13].setStyleSheet(led_blue_style)
         self.ledDevMgPageCurDev0[0][13].setStyleSheet(led_blue_style)
         self.ledDevMgPageCurDev1[0][13].setStyleSheet(led_blue_style)
-
-        ''' 配置信号和槽 '''
-        self.radioButton_singleAfe.clicked.connect(self.slot_radio_single_dual_afe)
-        self.radioButton_dualAfe.clicked.connect(self.slot_radio_single_dual_afe)
-        self.pushButton_chainCfg_cfg.clicked.connect(self.slot_pushBtn_chainCfg_cfg)
 
     def set_warning_message(self, pWarnLineEdit, pMes, pPrefix="WARNING:"):
         """
@@ -392,9 +394,6 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def slot_pushBtn_chainCfg_cfg(self):
-        # reset max17841
-        max17841_init(self.hidBdg)
-        time.sleep(0.01)
         # initial daisy chain
         daisyChainReturn = pb01_daisy_chain_initial(self.hidBdg, 0x00)
         if (daisyChainReturn == ("transaction5 time out" or
@@ -598,6 +597,31 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.pushButton_chainCfg_reset.setStyleSheet(new_style)
         self.pushButton_chainCfg_reset.setDisabled(False)
 
+    def slot_pushBtn_chainCfg_reset(self):
+        # force por
+        pb01_por(self.hidBdg)
+
+        # re-initial ui
+        self.init_tab_pages()
+
+        # reset max17841
+        max17841_init(self.hidBdg)
+
+        # delay 1s before enable configure button
+        time.sleep(1)
+
+        # enable configure button
+        current_style = self.pushButton_chainCfg_cfg.styleSheet()
+        new_style = current_style + " QPushButton {background-color: #3072B3;}"
+        self.pushButton_chainCfg_cfg.setStyleSheet(new_style)
+        self.pushButton_chainCfg_cfg.setDisabled(False)
+        # disable reset button
+        current_style = self.pushButton_chainCfg_reset.styleSheet()
+        new_style = current_style + " QPushButton {background-color: #d0d0d0;}"
+        self.pushButton_chainCfg_reset.setStyleSheet(new_style)
+        self.pushButton_chainCfg_reset.setDisabled(True)
+
+
 
     def setupNotification(self):
         dbh = DEV_BROADCAST_DEVICEINTERFACE()
@@ -639,6 +663,9 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 self.hidStatus = True
                 self.statusMessage.setStyleSheet("QLabel { color : blue; }")  # 设置字体颜色为蓝色
                 self.statusMessage.setText("bridge board connect successfully")
+
+                # reset max17841
+                max17841_init(self.hidBdg)
                 return self.hidStatus
             else:
                 return self.hidStatus

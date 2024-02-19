@@ -328,6 +328,51 @@ def pb01_read(pHidDev, pLdLoc, pMsgLen, pUartMsg, pAliveSeed):
             print(hex_return_data)
         return "pec check error"    # pec check fail
 
+def pb01_write_por(pHidDev, pLdLoc, pMsgLen, pUartMsg, pAliveSeed = 0):
+    """
+    pb01_write 的简化版，pb01_por 需要调用的底层 API
+    因 AFE POR 后无法再透传 uart 数据，所以要把 pb01_write 后面的确认 daisy-chain 返回的步骤去掉，否则会报 timeout
+    :param pHidDev: hid bridge object
+    :param pLdLoc: 17841 transmit buffer LD_Q location
+    :param pMsgLen: message length （ 除 pLdLoc, pMsgLen 外的数据个数）
+    :param pUartMsg: uart message 列表里面内容如下
+                     [ uart_command(如 WRITEALL), register_address, register_data_lsb, register_data_msb]
+                     注意，上面列表中各数据的位置，不能更改，要符合 PB01 uart 协议要求
+    :param pAliveSeed: alive count seed
+    :return:
+    """
+    """ check bridge RX is empty  """
+    rx_data_space = 0x3E - max17841_reg_read(pHidDev, 0x1B)  # read current rx data space
+    while rx_data_space != 0:
+        if SCRIPT_DEBUG:
+            print(f"current RX is not empty, rx data space is: {rx_data_space}")
+            print(f"bridge A01 = {hex(max17841_reg_read(pHidDev, 0x01))}")
+            print(f"bridge A09 = {hex(max17841_reg_read(pHidDev, 0x09))}")
+
+        max17841_buf_read(pHidDev, 0x93, rx_data_space)  # read RX
+        time.sleep(0.01)
+        rx_data_space = 0x3E - max17841_reg_read(pHidDev, 0x1B)  # read current rx data space again
+
+    """ uart operation """
+    ''' calculate pec '''
+    pec = cal_pec(pUartMsg)
+
+    ''' send message queue into transmit buffer '''
+    max17841_buf_write(pHidDev, pLdLoc, pMsgLen, pUartMsg + [pec] + [pAliveSeed])
+
+    ''' start transmit from uart '''
+    max17841_reg_command(pHidDev, 0xB0)
+
+
+def pb01_por(pHidDev):
+    """
+    专门用来发送 POR （Reg0F = 0x0001).
+    :param pHidDev: hid bridge object
+    :return:
+    """
+    return pb01_write_por(pHidDev, 0xC0, 0x06, [0x02, 0x0F, 0x01, 0x00], 0x00)
+
+
 
 def pb01_daisy_chain_initial(pHidDev, pDevAddSeed):
     """

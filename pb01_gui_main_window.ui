@@ -1139,7 +1139,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </spacer>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_chainCfg">
+            <widget class="QPushButton" name="pushButton_chainCfg_reset">
              <property name="minimumSize">
               <size>
                <width>110</width>
@@ -1367,7 +1367,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </spacer>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_warnStatusInit_2">
+            <widget class="QLineEdit" name="lineEdit_devMgPage_initWarn">
              <property name="minimumSize">
               <size>
                <width>600</width>

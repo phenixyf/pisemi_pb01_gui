@@ -558,10 +558,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_23.addWidget(self.label_31)
         spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_23.addItem(spacerItem7)
-        self.pushButton_chainCfg = QtWidgets.QPushButton(self.frame_9)
-        self.pushButton_chainCfg.setMinimumSize(QtCore.QSize(110, 0))
-        self.pushButton_chainCfg.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.pushButton_chainCfg.setStyleSheet("QPushButton {\n"
+        self.pushButton_chainCfg_reset = QtWidgets.QPushButton(self.frame_9)
+        self.pushButton_chainCfg_reset.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_chainCfg_reset.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_chainCfg_reset.setStyleSheet("QPushButton {\n"
 "    background-color: #e84d00; /* 按钮背景颜色 1*/\n"
 "    color: white; /* 文字颜色 */\n"
 "    border-style: solid; /* 边框样式 */\n"
@@ -581,8 +581,8 @@ class Ui_MainWindow(object):
 "    background-color: #df4a00; /* 按下时的背景颜色 2*/\n"
 "}\n"
 "")
-        self.pushButton_chainCfg.setObjectName("pushButton_chainCfg")
-        self.horizontalLayout_23.addWidget(self.pushButton_chainCfg)
+        self.pushButton_chainCfg_reset.setObjectName("pushButton_chainCfg_reset")
+        self.horizontalLayout_23.addWidget(self.pushButton_chainCfg_reset)
         self.verticalLayout_4.addWidget(self.frame_9)
         self.table_chainCfg_rstReg = QtWidgets.QTableWidget(self.tab_chainCfg)
         self.table_chainCfg_rstReg.setMaximumSize(QtCore.QSize(16777215, 100))
@@ -675,17 +675,17 @@ class Ui_MainWindow(object):
         self.horizontalLayout_15.addWidget(self.label_32)
         spacerItem8 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_15.addItem(spacerItem8)
-        self.lineEdit_warnStatusInit_2 = QtWidgets.QLineEdit(self.frame_6)
-        self.lineEdit_warnStatusInit_2.setMinimumSize(QtCore.QSize(600, 0))
-        self.lineEdit_warnStatusInit_2.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.lineEdit_devMgPage_initWarn = QtWidgets.QLineEdit(self.frame_6)
+        self.lineEdit_devMgPage_initWarn.setMinimumSize(QtCore.QSize(600, 0))
+        self.lineEdit_devMgPage_initWarn.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
         font.setFamily("Calibri")
         font.setPointSize(11)
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(87)
-        self.lineEdit_warnStatusInit_2.setFont(font)
-        self.lineEdit_warnStatusInit_2.setStyleSheet("QLineEdit {\n"
+        self.lineEdit_devMgPage_initWarn.setFont(font)
+        self.lineEdit_devMgPage_initWarn.setStyleSheet("QLineEdit {\n"
 "  font: 11pt \"Calibri\"; /* 字体 */\n"
 "  font-weight: 700; /* 字体粗细 */\n"
 "  color: white; /* 文字颜色 */\n"
@@ -695,10 +695,10 @@ class Ui_MainWindow(object):
 "    border-radius: 10px; /* 边框圆角半径 */\n"
 "padding: 5px; /* 内边距 */\n"
 "}")
-        self.lineEdit_warnStatusInit_2.setFrame(False)
-        self.lineEdit_warnStatusInit_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.lineEdit_warnStatusInit_2.setObjectName("lineEdit_warnStatusInit_2")
-        self.horizontalLayout_15.addWidget(self.lineEdit_warnStatusInit_2)
+        self.lineEdit_devMgPage_initWarn.setFrame(False)
+        self.lineEdit_devMgPage_initWarn.setAlignment(QtCore.Qt.AlignCenter)
+        self.lineEdit_devMgPage_initWarn.setObjectName("lineEdit_devMgPage_initWarn")
+        self.horizontalLayout_15.addWidget(self.lineEdit_devMgPage_initWarn)
         spacerItem9 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_15.addItem(spacerItem9)
         self.pushButton_statusRegReInit_5 = QtWidgets.QPushButton(self.frame_6)
@@ -4850,7 +4850,7 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "0x80"))
         self.table_chainCfg_pw.setSortingEnabled(__sortingEnabled)
         self.label_31.setText(_translate("MainWindow", "RESET Register Block (Resets the entire AFE Chain and all Configuration Settings, use only if necessory)"))
-        self.pushButton_chainCfg.setText(_translate("MainWindow", "RESET"))
+        self.pushButton_chainCfg_reset.setText(_translate("MainWindow", "RESET"))
         item = self.table_chainCfg_rstReg.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
         item = self.table_chainCfg_rstReg.verticalHeaderItem(1)
@@ -4876,7 +4876,7 @@ class Ui_MainWindow(object):
         self.table_chainCfg_rstReg.setSortingEnabled(__sortingEnabled)
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_chainCfg), _translate("MainWindow", "CHAIN CFG"))
         self.label_32.setText(_translate("MainWindow", "General Summary Information (Initialization)"))
-        self.lineEdit_warnStatusInit_2.setText(_translate("MainWindow", "WARNING: Uexpected Post-Initialization Status - Confirm Setup"))
+        self.lineEdit_devMgPage_initWarn.setText(_translate("MainWindow", "WARNING: Uexpected Post-Initialization Status - Confirm Setup"))
         self.pushButton_statusRegReInit_5.setText(_translate("MainWindow", "RE-INITIALIZE"))
         self.pushButton_statusRegInit_5.setText(_translate("MainWindow", "INITIALIZE"))
         item = self.table_devMgPage_init.verticalHeaderItem(0)

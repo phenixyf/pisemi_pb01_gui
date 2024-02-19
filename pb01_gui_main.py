@@ -28,6 +28,12 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.flagSingleAfe = False
         self.ledChainPageDev0 = []
         self.ledChainPageDev1 = []
+        self.ledDevMgPageInitDev0 = []
+        self.ledDevMgPageInitDev1 = []
+        self.ledDevMgPageCurDev0 = []
+        self.ledDevMgPageCurDev1 = []
+        self.ledDevMgPageDcByte = []
+        self.ledDevMgPageAlertPk = []
         self.initUI()  # 定义初始化函数
 
     def initUI(self):
@@ -63,6 +69,12 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         set_table_item(self.table_chainCfg_rstReg, CHAIN_CFG_TABLE_ROWHG,
                        table_chainCfg_rstItems)
 
+        # disable reset button
+        current_style = self.pushButton_chainCfg_reset.styleSheet()
+        new_style = current_style + " QPushButton {background-color: #d0d0d0;}"  # 原来颜色 #e84d00
+        self.pushButton_chainCfg_reset.setStyleSheet(new_style)
+        self.pushButton_chainCfg_reset.setDisabled(True)
+
         # adjust chain configuration page table
         adjust_chainPage_ifid_tables(self.table_chainCfg_devIdBlk, self.table_chainCfg_uifcfgReg,
                             self.table_chainCfg_addcfgReg)
@@ -82,8 +94,9 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         set_table_item(self.table_devMgPage_cur, CHAIN_CFG_TABLE_ROWHG,
                        table_devMg_curItems)
 
-        ledDevMgPageInitDev0, ledDevMgPageInitDev1, ledDevMgPageCurDev0, ledDevMgPageCurDev1, \
-        ledDevMgPageDcByte, ledDevMgPageAlertPk = adjust_devMgPage_tables(self.table_devMgPage_init,
+        self.ledDevMgPageInitDev0, self.ledDevMgPageInitDev1,\
+        self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, \
+        self.ledDevMgPageDcByte, self.ledDevMgPageAlertPk = adjust_devMgPage_tables(self.table_devMgPage_init,
                                                                           self.table_devMgPage_dc,
                                                                           self.table_devMgPage_cur)
 
@@ -240,6 +253,11 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
         # update led color
         self.ledChainPageDev0[0][13].setStyleSheet(led_blue_style)
+        self.ledChainPageDev1[0][13].setStyleSheet(led_blue_style)
+        self.ledDevMgPageInitDev0[0][13].setStyleSheet(led_blue_style)
+        self.ledDevMgPageInitDev1[0][13].setStyleSheet(led_blue_style)
+        self.ledDevMgPageCurDev0[0][13].setStyleSheet(led_blue_style)
+        self.ledDevMgPageCurDev1[0][13].setStyleSheet(led_blue_style)
 
         ''' 配置信号和槽 '''
         self.radioButton_singleAfe.clicked.connect(self.slot_radio_single_dual_afe)
@@ -516,13 +534,25 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         fmea2Dev0 = (rtStaBlkDev0[10] << 8) | rtStaBlkDev0[9]
         listStaDev0 = [hex(status1Dev0)[2:].zfill(4), hex(status2Dev0)[2:].zfill(4),
                        hex(fmea1Dev0)[2:].zfill(4), hex(fmea2Dev0)[2:].zfill(4)]
+        # fill chainCfgPage table
         for r in range(4):  # fill table
             self.update_table_item_data(self.table_chainCfg_pw, r+1, 3,
                                         listStaDev0[r])  # device 0
         # update led
         self.update_status_register_led(status1Dev0, status2Dev0, fmea1Dev0, fmea2Dev0, self.ledChainPageDev0)
 
-
+        if (status1Dev0 != 0x5000) or (status2Dev0 != 0x0080) or (fmea1Dev0 != 0x0000) or (fmea2Dev0 != 0x0000):
+            self.set_warning_message(self.lineEdit_chainCfg_pwrUpWarn, "Dev0 STATUS block abnormal", "WARNING:")
+            return
+        # fill devMgPage table
+        for r in range(4):  # fill table
+            self.update_table_item_data(self.table_devMgPage_init, r+1, 2,
+                                        listStaDev0[r])  # device 0
+            self.update_table_item_data(self.table_devMgPage_cur, r + 1, 2,
+                                        listStaDev0[r])  # device 0
+        # update led
+        self.update_status_register_led(status1Dev0, status2Dev0, fmea1Dev0, fmea2Dev0, self.ledDevMgPageInitDev0)
+        self.update_status_register_led(status1Dev0, status2Dev0, fmea1Dev0, fmea2Dev0, self.ledDevMgPageCurDev0)
 
 
         # read device 1 status block
@@ -537,9 +567,36 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             for r in range(4):
                 self.update_table_item_data(self.table_chainCfg_pw, r + 1, 5,
                                             listStaDev1[r])  # device 1
+        # update led
+        self.update_status_register_led(status1Dev1, status2Dev1, fmea1Dev1, fmea2Dev1, self.ledChainPageDev1)
+
+        if (status1Dev1 != 0x5000) or (status2Dev1 != 0x0080) or (fmea1Dev1 != 0x0000) or (fmea2Dev1 != 0x0000):
+            self.set_warning_message(self.lineEdit_chainCfg_pwrUpWarn, "Dev1 STATUS block abnormal", "WARNING:")
+            return
+        # fill devMgPage table
+        for r in range(4):  # fill table
+            self.update_table_item_data(self.table_devMgPage_init, r + 1, 4,
+                                        listStaDev0[r])  # device 1
+            self.update_table_item_data(self.table_devMgPage_cur, r + 1, 4,
+                                        listStaDev0[r])  # device 1
+        # update led
+        self.update_status_register_led(status1Dev1, status2Dev1, fmea1Dev1, fmea2Dev1, self.ledDevMgPageInitDev1)
+        self.update_status_register_led(status1Dev1, status2Dev1, fmea1Dev1, fmea2Dev1, self.ledDevMgPageCurDev1)
 
         # re-setup chainCfgPage cfgWarn bar
         self.set_default_warn_bar(self.lineEdit_chainCfg_cfgWarn)
+        self.set_default_warn_bar(self.lineEdit_chainCfg_pwrUpWarn)
+
+        # disable configure button
+        current_style = self.pushButton_chainCfg_cfg.styleSheet()
+        new_style = current_style + " QPushButton {background-color: #d0d0d0;}"    # 原来颜色是 #3072B3
+        self.pushButton_chainCfg_cfg.setStyleSheet(new_style)
+        self.pushButton_chainCfg_cfg.setDisabled(True)
+        # enable reset button
+        current_style = self.pushButton_chainCfg_reset.styleSheet()
+        new_style = current_style + " QPushButton {background-color: #e84d00;}"
+        self.pushButton_chainCfg_reset.setStyleSheet(new_style)
+        self.pushButton_chainCfg_reset.setDisabled(False)
 
 
     def setupNotification(self):

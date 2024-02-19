@@ -1394,7 +1394,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
   font: 11pt &quot;Calibri&quot;; /* 字体 */
   font-weight: 700; /* 字体粗细 */
   color: white; /* 文字颜色 */
-  background-color: #ff0000; /* 按钮背景颜色 1*/
+  background-color: lightblue; /* 按钮背景颜色 1*/
 border-color: #ce4500; /* 边框颜色 3*/
 border-width: 2px; /* 边框宽度 */
     border-radius: 10px; /* 边框圆角半径 */
@@ -1402,7 +1402,7 @@ padding: 5px; /* 内边距 */
 }</string>
              </property>
              <property name="text">
-              <string>WARNING: Uexpected Post-Initialization Status - Confirm Setup</string>
+              <string>WARNING: </string>
              </property>
              <property name="frame">
               <bool>false</bool>
@@ -1426,7 +1426,7 @@ padding: 5px; /* 内边距 */
             </spacer>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_statusRegReInit_5">
+            <widget class="QPushButton" name="pushButton_devMgPage_reInit">
              <property name="minimumSize">
               <size>
                <width>110</width>
@@ -1467,7 +1467,7 @@ QPushButton:pressed {
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_statusRegInit_5">
+            <widget class="QPushButton" name="pushButton_devMgPage_init">
              <property name="minimumSize">
               <size>
                <width>110</width>
@@ -1736,7 +1736,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </spacer>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_statusRegClear_6">
+            <widget class="QPushButton" name="pushButton_devMgPage_clear">
              <property name="minimumSize">
               <size>
                <width>110</width>
@@ -1777,7 +1777,7 @@ QPushButton:pressed {
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_statusRegReadBack_6">
+            <widget class="QPushButton" name="pushButton_devMgPage_readBack">
              <property name="minimumSize">
               <size>
                <width>110</width>

@@ -689,7 +689,7 @@ class Ui_MainWindow(object):
 "  font: 11pt \"Calibri\"; /* 字体 */\n"
 "  font-weight: 700; /* 字体粗细 */\n"
 "  color: white; /* 文字颜色 */\n"
-"  background-color: #ff0000; /* 按钮背景颜色 1*/\n"
+"  background-color: lightblue; /* 按钮背景颜色 1*/\n"
 "border-color: #ce4500; /* 边框颜色 3*/\n"
 "border-width: 2px; /* 边框宽度 */\n"
 "    border-radius: 10px; /* 边框圆角半径 */\n"
@@ -701,10 +701,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_15.addWidget(self.lineEdit_devMgPage_initWarn)
         spacerItem9 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_15.addItem(spacerItem9)
-        self.pushButton_statusRegReInit_5 = QtWidgets.QPushButton(self.frame_6)
-        self.pushButton_statusRegReInit_5.setMinimumSize(QtCore.QSize(110, 0))
-        self.pushButton_statusRegReInit_5.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.pushButton_statusRegReInit_5.setStyleSheet("QPushButton {\n"
+        self.pushButton_devMgPage_reInit = QtWidgets.QPushButton(self.frame_6)
+        self.pushButton_devMgPage_reInit.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_devMgPage_reInit.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_devMgPage_reInit.setStyleSheet("QPushButton {\n"
 "    background-color: #ED7D31; /* 按钮背景颜色 1*/\n"
 "    color: white; /* 文字颜色 */\n"
 "    border-style: solid; /* 边框样式 */\n"
@@ -724,12 +724,12 @@ class Ui_MainWindow(object):
 "    background-color: #CC5D12; /* 按下时的背景颜色 2*/\n"
 "}\n"
 "")
-        self.pushButton_statusRegReInit_5.setObjectName("pushButton_statusRegReInit_5")
-        self.horizontalLayout_15.addWidget(self.pushButton_statusRegReInit_5)
-        self.pushButton_statusRegInit_5 = QtWidgets.QPushButton(self.frame_6)
-        self.pushButton_statusRegInit_5.setMinimumSize(QtCore.QSize(110, 0))
-        self.pushButton_statusRegInit_5.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.pushButton_statusRegInit_5.setStyleSheet("QPushButton {\n"
+        self.pushButton_devMgPage_reInit.setObjectName("pushButton_devMgPage_reInit")
+        self.horizontalLayout_15.addWidget(self.pushButton_devMgPage_reInit)
+        self.pushButton_devMgPage_init = QtWidgets.QPushButton(self.frame_6)
+        self.pushButton_devMgPage_init.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_devMgPage_init.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_devMgPage_init.setStyleSheet("QPushButton {\n"
 "    background-color: #3072B3; /* 按钮背景颜色 */\n"
 "    color: white; /* 文字颜色 */\n"
 "    border-style: solid; /* 边框样式 */\n"
@@ -749,8 +749,8 @@ class Ui_MainWindow(object):
 "    background-color: #1E5A97; /* 按下时的背景颜色 */\n"
 "}\n"
 "")
-        self.pushButton_statusRegInit_5.setObjectName("pushButton_statusRegInit_5")
-        self.horizontalLayout_15.addWidget(self.pushButton_statusRegInit_5)
+        self.pushButton_devMgPage_init.setObjectName("pushButton_devMgPage_init")
+        self.horizontalLayout_15.addWidget(self.pushButton_devMgPage_init)
         self.verticalLayout_21.addWidget(self.frame_6)
         self.table_devMgPage_init = QtWidgets.QTableWidget(self.tab_devMg)
         self.table_devMgPage_init.setMaximumSize(QtCore.QSize(16777215, 180))
@@ -857,10 +857,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_25.addWidget(self.label_33)
         spacerItem10 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_25.addItem(spacerItem10)
-        self.pushButton_statusRegClear_6 = QtWidgets.QPushButton(self.frame_10)
-        self.pushButton_statusRegClear_6.setMinimumSize(QtCore.QSize(110, 0))
-        self.pushButton_statusRegClear_6.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.pushButton_statusRegClear_6.setStyleSheet("QPushButton {\n"
+        self.pushButton_devMgPage_clear = QtWidgets.QPushButton(self.frame_10)
+        self.pushButton_devMgPage_clear.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_devMgPage_clear.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_devMgPage_clear.setStyleSheet("QPushButton {\n"
 "    background-color: #FFC000; /* 按钮背景颜色 1*/\n"
 "    color: white; /* 文字颜色 */\n"
 "    border-style: solid; /* 边框样式 */\n"
@@ -880,12 +880,12 @@ class Ui_MainWindow(object):
 "    background-color: #DEA900; /* 按下时的背景颜色 2*/\n"
 "}\n"
 "")
-        self.pushButton_statusRegClear_6.setObjectName("pushButton_statusRegClear_6")
-        self.horizontalLayout_25.addWidget(self.pushButton_statusRegClear_6)
-        self.pushButton_statusRegReadBack_6 = QtWidgets.QPushButton(self.frame_10)
-        self.pushButton_statusRegReadBack_6.setMinimumSize(QtCore.QSize(110, 0))
-        self.pushButton_statusRegReadBack_6.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.pushButton_statusRegReadBack_6.setStyleSheet("QPushButton {\n"
+        self.pushButton_devMgPage_clear.setObjectName("pushButton_devMgPage_clear")
+        self.horizontalLayout_25.addWidget(self.pushButton_devMgPage_clear)
+        self.pushButton_devMgPage_readBack = QtWidgets.QPushButton(self.frame_10)
+        self.pushButton_devMgPage_readBack.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_devMgPage_readBack.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_devMgPage_readBack.setStyleSheet("QPushButton {\n"
 "    background-color: #00B050; /* 按钮背景颜色 */\n"
 "    color: white; /* 文字颜色 */\n"
 "    border-style: solid; /* 边框样式 */\n"
@@ -905,8 +905,8 @@ class Ui_MainWindow(object):
 "    background-color: #009644; /* 按下时的背景颜色 */\n"
 "}\n"
 "")
-        self.pushButton_statusRegReadBack_6.setObjectName("pushButton_statusRegReadBack_6")
-        self.horizontalLayout_25.addWidget(self.pushButton_statusRegReadBack_6)
+        self.pushButton_devMgPage_readBack.setObjectName("pushButton_devMgPage_readBack")
+        self.horizontalLayout_25.addWidget(self.pushButton_devMgPage_readBack)
         self.verticalLayout_21.addWidget(self.frame_10)
         self.table_devMgPage_dc = QtWidgets.QTableWidget(self.tab_devMg)
         self.table_devMgPage_dc.setMaximumSize(QtCore.QSize(16777215, 150))
@@ -4876,9 +4876,9 @@ class Ui_MainWindow(object):
         self.table_chainCfg_rstReg.setSortingEnabled(__sortingEnabled)
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_chainCfg), _translate("MainWindow", "CHAIN CFG"))
         self.label_32.setText(_translate("MainWindow", "General Summary Information (Initialization)"))
-        self.lineEdit_devMgPage_initWarn.setText(_translate("MainWindow", "WARNING: Uexpected Post-Initialization Status - Confirm Setup"))
-        self.pushButton_statusRegReInit_5.setText(_translate("MainWindow", "RE-INITIALIZE"))
-        self.pushButton_statusRegInit_5.setText(_translate("MainWindow", "INITIALIZE"))
+        self.lineEdit_devMgPage_initWarn.setText(_translate("MainWindow", "WARNING: "))
+        self.pushButton_devMgPage_reInit.setText(_translate("MainWindow", "RE-INITIALIZE"))
+        self.pushButton_devMgPage_init.setText(_translate("MainWindow", "INITIALIZE"))
         item = self.table_devMgPage_init.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
         item = self.table_devMgPage_init.verticalHeaderItem(1)
@@ -4919,8 +4919,8 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "DEVID"))
         self.table_devMgPage_init.setSortingEnabled(__sortingEnabled)
         self.label_33.setText(_translate("MainWindow", "General Summary Information (Current Status)"))
-        self.pushButton_statusRegClear_6.setText(_translate("MainWindow", "CLEAR COMM"))
-        self.pushButton_statusRegReadBack_6.setText(_translate("MainWindow", "READ BACK"))
+        self.pushButton_devMgPage_clear.setText(_translate("MainWindow", "CLEAR COMM"))
+        self.pushButton_devMgPage_readBack.setText(_translate("MainWindow", "READ BACK"))
         item = self.table_devMgPage_dc.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
         item = self.table_devMgPage_dc.verticalHeaderItem(1)

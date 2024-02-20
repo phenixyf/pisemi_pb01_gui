@@ -386,7 +386,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         flag = True
         for i in range(48):
             # status1
-            if pAlertPk & (0x800000 >> i):  # biti = 1
+            if pAlertPk & (0x800000000000 >> i):  # biti = 1
                 pLedList[i].setStyleSheet(led_red_style)
                 flag = False
             else:  # biti = 0
@@ -510,17 +510,17 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             listTemGpDev1 = [hex(temp1Dev1)[2:].zfill(4), hex(temp2Dev1)[2:].zfill(4),
                              hex(gpioDataDev1)[2:].zfill(4)]
 
-        ''' fill data into dev1 status table '''
-        for r in range(4):  # fill table
-            self.update_table_item_data(pTable, r + 1, pDev1Col,
-                                        listStaDev1[r])  # device 1
-        if pFlagTem:
-            for r in range(5, 8):
-                self.update_table_item_data(pTable, r, pDev1Col,
-                                            listTemGpDev1[r - 5])  # device 1
+            ''' fill data into dev1 status table '''
+            for r in range(4):  # fill table
+                self.update_table_item_data(pTable, r + 1, pDev1Col,
+                                            listStaDev1[r])  # device 1
+            if pFlagTem:
+                for r in range(5, 8):
+                    self.update_table_item_data(pTable, r, pDev1Col,
+                                                listTemGpDev1[r - 5])  # device 1
 
-        ''' update dev1 status table led '''
-        self.update_status_register_led(status1Dev1, status2Dev1, fmea1Dev1, fmea2Dev1, pDev1LedList)
+            ''' update dev1 status table led '''
+            self.update_status_register_led(status1Dev1, status2Dev1, fmea1Dev1, fmea2Dev1, pDev1LedList)
 
         if dcDev0 != 0x00:
             return dcDev0
@@ -676,7 +676,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.update_status_block_table(self.table_devMgPage_init, 2, 7,
                                        self.ledDevMgPageInitDev0, self.ledDevMgPageInitDev1, False)
         self.update_status_block_table(self.table_devMgPage_cur, 2, 7,
-                                       self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, False)
+                                       self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, True)
 
         ''' update buttons status '''
         # disable configure button
@@ -716,91 +716,35 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def slot_pushBtn_devMgPage_init(self):
-        # clear status2 expected alerts
+        """ re-setup chainCfgPage cfgWarn bar """
+        self.set_default_warn_bar(self.lineEdit_devMgPage_initWarn)
+
+        """ clear status2 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x05, 0x80, 0x00, 0x00)   # write all Reg05 = 0x0080, alseed=0x00
         if (wrAllReturn == ("message return RX error" or "pec check error" )):
             self.set_warning_message(self.lineEdit_devMgPage_initWarn, wrAllReturn,
                                      "WARNING: clear status register ")
             return
 
-        # clear status1 expected alerts
+        """ clear status1 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x04, 0x00, 0x40, 0x00)  # write all Reg05 = 0x4000, alseed=0x00
         if (wrAllReturn == ("message return RX error" or "pec check error")):
             self.set_warning_message(self.lineEdit_devMgPage_initWarn, wrAllReturn,
                                      "WARNING: clear status register ")
             return
 
-        # delay before read status block back
+        """ delay before read status block back """
         time.sleep(0.01)
 
-        # read device 0 status block
-        rtStaBlkDev0 = pb01_read_block(self.hidBdg, 7, 0, 0x04, 0x00)  # read dev0 id block, alseed=0x00
-        status1Dev0 = (rtStaBlkDev0[4] << 8) | rtStaBlkDev0[3]
-        status2Dev0 = (rtStaBlkDev0[6] << 8) | rtStaBlkDev0[5]
-        fmea1Dev0 = (rtStaBlkDev0[8] << 8) | rtStaBlkDev0[7]
-        fmea2Dev0 = (rtStaBlkDev0[10] << 8) | rtStaBlkDev0[9]
-        temp1Dev0 = (rtStaBlkDev0[12] << 8) | rtStaBlkDev0[11]
-        temp2Dev0 = (rtStaBlkDev0[14] << 8) | rtStaBlkDev0[13]
-        gpioDataDev0 = (rtStaBlkDev0[16] << 8) | rtStaBlkDev0[15]
-        listStaDev0 = [hex(status1Dev0)[2:].zfill(4), hex(status2Dev0)[2:].zfill(4),
-                       hex(fmea1Dev0)[2:].zfill(4), hex(fmea2Dev0)[2:].zfill(4)]
-        listTemGpDev0 = [hex(temp1Dev0)[2:].zfill(4), hex(temp2Dev0)[2:].zfill(4),
-                       hex(gpioDataDev0)[2:].zfill(4)]
+        """ update status block table """
+        # update devMgPage status block tables
+        self.update_status_block_table(self.table_devMgPage_init, 2, 7,
+                                       self.ledDevMgPageInitDev0, self.ledDevMgPageInitDev1, False)
+        self.update_status_block_table(self.table_devMgPage_cur, 2, 7,
+                                       self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, True)
 
-        # fill devMgPage table
-        for r in range(4):  # fill table
-            self.update_table_item_data(self.table_devMgPage_init, r + 1, 2,
-                                        listStaDev0[r])  # device 0
-            self.update_table_item_data(self.table_devMgPage_cur, r + 1, 2,
-                                        listStaDev0[r])  # device 0
-        for r in range(5, 8):
-            self.update_table_item_data(self.table_devMgPage_cur, r, 2,
-                                        listTemGpDev0[r-5])  # device 0
 
-        # update led
-        self.update_status_register_led(status1Dev0, status2Dev0, fmea1Dev0, fmea2Dev0, self.ledDevMgPageInitDev0)
-        self.update_status_register_led(status1Dev0, status2Dev0, fmea1Dev0, fmea2Dev0, self.ledDevMgPageCurDev0)
-
-        if (status1Dev0 != 0x0000) or (status2Dev0 != 0x0000) or (fmea1Dev0 != 0x0000) or (fmea2Dev0 != 0x0000):
-            self.set_warning_message(self.lineEdit_devMgPage_initWarn, "Dev0 STATUS block abnormal", "WARNING:")
-            return
-
-        # read device 1 status block
-        if self.flagSingleAfe == False:
-            rtStaBlkDev1 = pb01_read_block(self.hidBdg, 7, 1, 0x04, 0x00)  # read dev0 id block, alseed=0x00
-            status1Dev1 = (rtStaBlkDev1[4] << 8) | rtStaBlkDev1[3]
-            status2Dev1 = (rtStaBlkDev1[6] << 8) | rtStaBlkDev1[5]
-            fmea1Dev1 = (rtStaBlkDev1[8] << 8) | rtStaBlkDev1[7]
-            fmea2Dev1 = (rtStaBlkDev1[10] << 8) | rtStaBlkDev1[9]
-            temp1Dev1 = (rtStaBlkDev0[12] << 8) | rtStaBlkDev0[11]
-            temp2Dev1 = (rtStaBlkDev0[14] << 8) | rtStaBlkDev0[13]
-            gpioDataDev1 = (rtStaBlkDev0[16] << 8) | rtStaBlkDev0[15]
-            listStaDev1 = [hex(status1Dev1)[2:].zfill(4), hex(status2Dev1)[2:].zfill(4),
-                           hex(fmea1Dev1)[2:].zfill(4), hex(fmea2Dev1)[2:].zfill(4)]
-            listTemGpDev1 = [hex(temp1Dev1)[2:].zfill(4), hex(temp2Dev1)[2:].zfill(4),
-                             hex(gpioDataDev1)[2:].zfill(4)]
-
-            # fill devMgPage table
-            for r in range(4):  # fill table
-                self.update_table_item_data(self.table_devMgPage_init, r + 1, 7,
-                                            listStaDev1[r])  # device 1
-                self.update_table_item_data(self.table_devMgPage_cur, r + 1, 7,
-                                            listStaDev1[r])  # device 1
-            for r in range(5, 8):
-                self.update_table_item_data(self.table_devMgPage_cur, r, 7,
-                                            listTemGpDev1[r - 5])  # device 1
-
-            # update led
-            self.update_status_register_led(status1Dev1, status2Dev1, fmea1Dev1, fmea2Dev1, self.ledDevMgPageInitDev1)
-            self.update_status_register_led(status1Dev1, status2Dev1, fmea1Dev1, fmea2Dev1, self.ledDevMgPageCurDev1)
-
-            if (status1Dev1 != 0x0000) or (status2Dev1 != 0x0000) or (fmea1Dev1 != 0x0000) or (fmea2Dev1 != 0x0000):
-                self.set_warning_message(self.lineEdit_devMgPage_initWarn, "Dev1 STATUS block abnormal", "WARNING:")
-                return
-
-        # re-setup chainCfgPage cfgWarn bar
-        self.set_default_warn_bar(self.lineEdit_devMgPage_initWarn)
-
+        """ update buttons status """
         # disable initial button
         current_style = self.pushButton_devMgPage_init.styleSheet()
         new_style = current_style + " QPushButton {background-color: #d0d0d0;}"  # 原来颜色是 #3072B3
@@ -819,218 +763,103 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def slot_pushBtn_devMgPage_reinit(self):
-        # clear fmea2 expected alerts
+        """ re-setup chainCfgPage cfgWarn bar """
+        self.set_default_warn_bar(self.lineEdit_devMgPage_initWarn)
+
+        """ clear fmea2 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x07, 0x04, 0x00, 0x00)  # write all Reg07 = 0x0004, alseed=0x00
         if (wrAllReturn == ("message return RX error" or "pec check error")):
             self.set_warning_message(self.lineEdit_devMgPage_initWarn, wrAllReturn,
                                      "WARNING: clear fmea2 ")
             return
 
-        # clear fmea1 expected alerts
+        """ clear fmea1 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x06, 0xFF, 0x87, 0x00)  # write all Reg06 = 0x87FF, alseed=0x00
         if (wrAllReturn == ("message return RX error" or "pec check error")):
             self.set_warning_message(self.lineEdit_devMgPage_initWarn, wrAllReturn,
                                      "WARNING: clear fmea1 ")
             return
 
-        # clear status2 expected alerts
+        """ clear status2 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x05, 0x8F, 0xFF, 0x00)  # write all Reg05 = 0xFF8F, alseed=0x00
         if (wrAllReturn == ("message return RX error" or "pec check error")):
             self.set_warning_message(self.lineEdit_devMgPage_initWarn, wrAllReturn,
                                      "WARNING: clear status2 ")
             return
 
-        # clear status1 expected alerts
+        """ clear status1 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x04, 0x00, 0x20, 0x00)  # write all Reg04 = 0x2000, alseed=0x00
         if (wrAllReturn == ("message return RX error" or "pec check error")):
             self.set_warning_message(self.lineEdit_devMgPage_initWarn, wrAllReturn,
                                      "WARNING: clear status1 ")
             return
 
-        # clear status1 expected alerts
+        """ clear status1 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x04, 0x00, 0x40, 0x00)  # write all Reg04 = 0x4000, alseed=0x00
         if (wrAllReturn == ("message return RX error" or "pec check error")):
             self.set_warning_message(self.lineEdit_devMgPage_initWarn, wrAllReturn,
                                      "WARNING: clear status1 ")
             return
 
-        # delay before read status block back
+        """ delay before read status block back """
         time.sleep(0.01)
 
-        # read device 0 status block
-        rtStaBlkDev0 = pb01_read_block(self.hidBdg, 7, 0, 0x04, 0x00)  # read dev0 id block, alseed=0x00
-        status1Dev0 = (rtStaBlkDev0[4] << 8) | rtStaBlkDev0[3]
-        status2Dev0 = (rtStaBlkDev0[6] << 8) | rtStaBlkDev0[5]
-        fmea1Dev0 = (rtStaBlkDev0[8] << 8) | rtStaBlkDev0[7]
-        fmea2Dev0 = (rtStaBlkDev0[10] << 8) | rtStaBlkDev0[9]
-        temp1Dev0 = (rtStaBlkDev0[12] << 8) | rtStaBlkDev0[11]
-        temp2Dev0 = (rtStaBlkDev0[14] << 8) | rtStaBlkDev0[13]
-        gpioDataDev0 = (rtStaBlkDev0[16] << 8) | rtStaBlkDev0[15]
-        listStaDev0 = [hex(status1Dev0)[2:].zfill(4), hex(status2Dev0)[2:].zfill(4),
-                       hex(fmea1Dev0)[2:].zfill(4), hex(fmea2Dev0)[2:].zfill(4)]
-        listTemGpDev0 = [hex(temp1Dev0)[2:].zfill(4), hex(temp2Dev0)[2:].zfill(4),
-                         hex(gpioDataDev0)[2:].zfill(4)]
+        """ update status block table """
+        # update devMgPage status block tables
+        self.update_status_block_table(self.table_devMgPage_init, 2, 7,
+                                       self.ledDevMgPageInitDev0, self.ledDevMgPageInitDev1, False)
+        self.update_status_block_table(self.table_devMgPage_cur, 2, 7,
+                                       self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, True)
 
-        # fill devMgPage table
-        for r in range(4):  # fill table
-            self.update_table_item_data(self.table_devMgPage_init, r + 1, 2,
-                                        listStaDev0[r])  # device 0
-            self.update_table_item_data(self.table_devMgPage_cur, r + 1, 2,
-                                        listStaDev0[r])  # device 0
-        for r in range(5, 8):
-            self.update_table_item_data(self.table_devMgPage_cur, r, 2,
-                                        listTemGpDev0[r - 5])  # device 0
 
-        # update led
-        self.update_status_register_led(status1Dev0, status2Dev0, fmea1Dev0, fmea2Dev0, self.ledDevMgPageInitDev0)
-        self.update_status_register_led(status1Dev0, status2Dev0, fmea1Dev0, fmea2Dev0, self.ledDevMgPageCurDev0)
-
-        if (status1Dev0 != 0x0000) or (status2Dev0 != 0x0000) or (fmea1Dev0 != 0x0000) or (fmea2Dev0 != 0x0000):
-            self.set_warning_message(self.lineEdit_devMgPage_initWarn, "Dev0 STATUS block abnormal", "WARNING:")
-            return
-
-        # read device 1 status block
-        if self.flagSingleAfe == False:
-            rtStaBlkDev1 = pb01_read_block(self.hidBdg, 7, 1, 0x04, 0x00)  # read dev0 id block, alseed=0x00
-            status1Dev1 = (rtStaBlkDev1[4] << 8) | rtStaBlkDev1[3]
-            status2Dev1 = (rtStaBlkDev1[6] << 8) | rtStaBlkDev1[5]
-            fmea1Dev1 = (rtStaBlkDev1[8] << 8) | rtStaBlkDev1[7]
-            fmea2Dev1 = (rtStaBlkDev1[10] << 8) | rtStaBlkDev1[9]
-            temp1Dev1 = (rtStaBlkDev0[12] << 8) | rtStaBlkDev0[11]
-            temp2Dev1 = (rtStaBlkDev0[14] << 8) | rtStaBlkDev0[13]
-            gpioDataDev1 = (rtStaBlkDev0[16] << 8) | rtStaBlkDev0[15]
-            listStaDev1 = [hex(status1Dev1)[2:].zfill(4), hex(status2Dev1)[2:].zfill(4),
-                           hex(fmea1Dev1)[2:].zfill(4), hex(fmea2Dev1)[2:].zfill(4)]
-            listTemGpDev1 = [hex(temp1Dev1)[2:].zfill(4), hex(temp2Dev1)[2:].zfill(4),
-                             hex(gpioDataDev1)[2:].zfill(4)]
-
-            # fill devMgPage table
-            for r in range(4):  # fill table
-                self.update_table_item_data(self.table_devMgPage_init, r + 1, 7,
-                                            listStaDev1[r])  # device 1
-                self.update_table_item_data(self.table_devMgPage_cur, r + 1, 7,
-                                            listStaDev1[r])  # device 1
-            for r in range(5, 8):
-                self.update_table_item_data(self.table_devMgPage_cur, r, 7,
-                                            listTemGpDev1[r - 5])  # device 1
-
-            # update led
-            self.update_status_register_led(status1Dev1, status2Dev1, fmea1Dev1, fmea2Dev1,
-                                            self.ledDevMgPageInitDev1)
-            self.update_status_register_led(status1Dev1, status2Dev1, fmea1Dev1, fmea2Dev1,
-                                            self.ledDevMgPageCurDev1)
-
-            if (status1Dev1 != 0x0000) or (status2Dev1 != 0x0000) or (fmea1Dev1 != 0x0000) or (fmea2Dev1 != 0x0000):
-                self.set_warning_message(self.lineEdit_devMgPage_initWarn, "Dev1 STATUS block abnormal", "WARNING:")
-                return
-
-        # re-setup chainCfgPage cfgWarn bar
-        self.set_default_warn_bar(self.lineEdit_devMgPage_initWarn)
 
 
     def slot_pushBtn_devMgPage_clear(self):
-        # clear status2 expected alerts
+        """ re-setup chainCfgPage cfgWarn bar """
+        self.set_default_warn_bar(self.lineEdit_devMgPage_initWarn)
+
+        """ clear status2 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x05, 0x8F, 0xFF, 0x00)  # write all Reg05 = 0xFF8F, alseed=0x00
         if (wrAllReturn == ("message return RX error" or "pec check error")):
             self.set_warning_message(self.lineEdit_devMgPage_initWarn, wrAllReturn,
                                      "WARNING: clear status2 ")
             return
 
-        # clear status1 expected alerts
+        """ clear status1 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x04, 0x00, 0x20, 0x00)  # write all Reg04 = 0x2000, alseed=0x00
         if (wrAllReturn == ("message return RX error" or "pec check error")):
             self.set_warning_message(self.lineEdit_devMgPage_initWarn, wrAllReturn,
                                      "WARNING: clear status1 ")
             return
 
-        # delay before read status block back
+        """ delay before read status block back """
         time.sleep(0.01)
 
-        # read device 0 status block
-        rtStaBlkDev0 = pb01_read_block(self.hidBdg, 7, 0, 0x04, 0x00)  # read dev0 id block, alseed=0x00
-        status1Dev0 = (rtStaBlkDev0[4] << 8) | rtStaBlkDev0[3]
-        status2Dev0 = (rtStaBlkDev0[6] << 8) | rtStaBlkDev0[5]
-        fmea1Dev0 = (rtStaBlkDev0[8] << 8) | rtStaBlkDev0[7]
-        fmea2Dev0 = (rtStaBlkDev0[10] << 8) | rtStaBlkDev0[9]
-        temp1Dev0 = (rtStaBlkDev0[12] << 8) | rtStaBlkDev0[11]
-        temp2Dev0 = (rtStaBlkDev0[14] << 8) | rtStaBlkDev0[13]
-        gpioDataDev0 = (rtStaBlkDev0[16] << 8) | rtStaBlkDev0[15]
-        listStaDev0 = [hex(status1Dev0)[2:].zfill(4), hex(status2Dev0)[2:].zfill(4),
-                       hex(fmea1Dev0)[2:].zfill(4), hex(fmea2Dev0)[2:].zfill(4)]
-        listTemGpDev0 = [hex(temp1Dev0)[2:].zfill(4), hex(temp2Dev0)[2:].zfill(4),
-                         hex(gpioDataDev0)[2:].zfill(4)]
-
-        # fill devMgPage table
-        for r in range(4):  # fill table
-            self.update_table_item_data(self.table_devMgPage_cur, r + 1, 2,
-                                        listStaDev0[r])  # device 0
-        for r in range(5, 8):
-            self.update_table_item_data(self.table_devMgPage_cur, r, 2,
-                                        listTemGpDev0[r - 5])  # device 0
-
-        # update led
-        self.update_status_register_led(status1Dev0, status2Dev0, fmea1Dev0, fmea2Dev0, self.ledDevMgPageCurDev0)
-
-        if (status1Dev0 != 0x0000) or (status2Dev0 != 0x0000) or (fmea1Dev0 != 0x0000) or (fmea2Dev0 != 0x0000):
-            self.set_warning_message(self.lineEdit_devMgPage_initWarn, "Dev0 STATUS block abnormal", "WARNING:")
-            return
-
-        # read device 1 status block
-        if self.flagSingleAfe == False:
-            rtStaBlkDev1 = pb01_read_block(self.hidBdg, 7, 1, 0x04, 0x00)  # read dev0 id block, alseed=0x00
-            status1Dev1 = (rtStaBlkDev1[4] << 8) | rtStaBlkDev1[3]
-            status2Dev1 = (rtStaBlkDev1[6] << 8) | rtStaBlkDev1[5]
-            fmea1Dev1 = (rtStaBlkDev1[8] << 8) | rtStaBlkDev1[7]
-            fmea2Dev1 = (rtStaBlkDev1[10] << 8) | rtStaBlkDev1[9]
-            temp1Dev1 = (rtStaBlkDev0[12] << 8) | rtStaBlkDev0[11]
-            temp2Dev1 = (rtStaBlkDev0[14] << 8) | rtStaBlkDev0[13]
-            gpioDataDev1 = (rtStaBlkDev0[16] << 8) | rtStaBlkDev0[15]
-            listStaDev1 = [hex(status1Dev1)[2:].zfill(4), hex(status2Dev1)[2:].zfill(4),
-                           hex(fmea1Dev1)[2:].zfill(4), hex(fmea2Dev1)[2:].zfill(4)]
-            listTemGpDev1 = [hex(temp1Dev1)[2:].zfill(4), hex(temp2Dev1)[2:].zfill(4),
-                             hex(gpioDataDev1)[2:].zfill(4)]
-
-            # fill devMgPage table
-            for r in range(4):  # fill table
-                self.update_table_item_data(self.table_devMgPage_cur, r + 1, 7,
-                                            listStaDev1[r])  # device 1
-            for r in range(5, 8):
-                self.update_table_item_data(self.table_devMgPage_cur, r, 7,
-                                            listTemGpDev1[r - 5])  # device 1
-
-            # update led
-            self.update_status_register_led(status1Dev1, status2Dev1, fmea1Dev1, fmea2Dev1,
-                                            self.ledDevMgPageCurDev1)
-
-            if (status1Dev1 != 0x0000) or (status2Dev1 != 0x0000) or (fmea1Dev1 != 0x0000) or (fmea2Dev1 != 0x0000):
-                self.set_warning_message(self.lineEdit_devMgPage_initWarn, "Dev1 STATUS block abnormal", "WARNING:")
-                return
-
-        # re-setup chainCfgPage cfgWarn bar
-        self.set_default_warn_bar(self.lineEdit_devMgPage_initWarn)
+        """ update status block table """
+        # update devMgPage status block tables
+        self.update_status_block_table(self.table_devMgPage_init, 2, 7,
+                                       self.ledDevMgPageInitDev0, self.ledDevMgPageInitDev1, False)
+        self.update_status_block_table(self.table_devMgPage_cur, 2, 7,
+                                       self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, True)
 
 
     def slot_pushBtn_devMgPage_readBack(self):
-        # read device 0 status block
-        rtStaBlkDev0 = pb01_read_block(self.hidBdg, 7, 0, 0x04, 0x00)  # read dev0 id block, alseed=0x00
-        status1Dev0 = (rtStaBlkDev0[4] << 8) | rtStaBlkDev0[3]
-        status2Dev0 = (rtStaBlkDev0[6] << 8) | rtStaBlkDev0[5]
-        fmea1Dev0 = (rtStaBlkDev0[8] << 8) | rtStaBlkDev0[7]
-        fmea2Dev0 = (rtStaBlkDev0[10] << 8) | rtStaBlkDev0[9]
-        temp1Dev0 = (rtStaBlkDev0[12] << 8) | rtStaBlkDev0[11]
-        temp2Dev0 = (rtStaBlkDev0[14] << 8) | rtStaBlkDev0[13]
-        gpioDataDev0 = (rtStaBlkDev0[16] << 8) | rtStaBlkDev0[15]
-        dcDev0 = rtStaBlkDev0[17]
-        listStaDev0 = [hex(status1Dev0)[2:].zfill(4), hex(status2Dev0)[2:].zfill(4),
-                       hex(fmea1Dev0)[2:].zfill(4), hex(fmea2Dev0)[2:].zfill(4)]
-        listTemGpDev0 = [hex(temp1Dev0)[2:].zfill(4), hex(temp2Dev0)[2:].zfill(4),
-                         hex(gpioDataDev0)[2:].zfill(4)]
+        """ re-setup chainCfgPage cfgWarn bar """
+        self.set_default_warn_bar(self.lineEdit_devMgPage_initWarn)
 
-        # fill dc table
+        """ update status block table """
+        # update devMgPage status block tables
+        self.update_status_block_table(self.table_devMgPage_init, 2, 7,
+                                       self.ledDevMgPageInitDev0, self.ledDevMgPageInitDev1, False)
+        dcByte = self.update_status_block_table(self.table_devMgPage_cur, 2, 7,
+                                       self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, True)
+
+        """ update DC byte table """
+        # fill dc byte table
         self.update_table_item_data(self.table_devMgPage_dc, 0, 1,
-                                    hex(dcDev0)[2:].zfill(2))  # dc byte
-        # update dc byte led
-        if self.update_dc_led(dcDev0, self.ledDevMgPageDcByte):
+                                    hex(dcByte)[2:].zfill(2))  # dc byte
+        # update dc byte table led
+        if self.update_dc_led(dcByte, self.ledDevMgPageDcByte):
             pass
         else:
             self.set_warning_message(self.lineEdit_devMgPage_initWarn, "DC byte has alert",
@@ -1043,89 +872,12 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 return
             else:
                 alertPkData = (alertPkReturn[6] << 40) | (alertPkReturn[5] << 32) | (alertPkReturn[4] << 24) \
-                            | (alertPkReturn[3] << 16) | (alertPkReturn[2] << 8) | alertPkReturn[1]
+                              | (alertPkReturn[3] << 16) | (alertPkReturn[2] << 8) | alertPkReturn[1]
                 # fill alert packet data in dc table
                 self.update_table_item_data(self.table_devMgPage_dc, 1, 1,
-                                            hex(alertPkData)[2:].zfill(48))    # alert packet data
+                                            hex(alertPkData)[2:].zfill(12))  # alert packet data
                 # update alert packet led
                 self.update_alertPk_led(alertPkData, self.ledDevMgPageAlertPk)
-
-        # fill devMgPage current table
-        for r in range(4):  # fill table
-            self.update_table_item_data(self.table_devMgPage_cur, r + 1, 2,
-                                        listStaDev0[r])  # device 0
-        for r in range(5, 8):
-            self.update_table_item_data(self.table_devMgPage_cur, r, 2,
-                                        listTemGpDev0[r - 5])  # device 0
-
-        # update led
-        self.update_status_register_led(status1Dev0, status2Dev0, fmea1Dev0, fmea2Dev0, self.ledDevMgPageCurDev0)
-
-        if (status1Dev0 != 0x0000) or (status2Dev0 != 0x0000) or (fmea1Dev0 != 0x0000) or (fmea2Dev0 != 0x0000):
-            self.set_warning_message(self.lineEdit_devMgPage_initWarn, "Dev0 STATUS block abnormal", "WARNING:")
-            return
-
-        # read device 1 status block
-        if self.flagSingleAfe == False:
-            rtStaBlkDev1 = pb01_read_block(self.hidBdg, 7, 1, 0x04, 0x00)  # read dev0 id block, alseed=0x00
-            status1Dev1 = (rtStaBlkDev1[4] << 8) | rtStaBlkDev1[3]
-            status2Dev1 = (rtStaBlkDev1[6] << 8) | rtStaBlkDev1[5]
-            fmea1Dev1 = (rtStaBlkDev1[8] << 8) | rtStaBlkDev1[7]
-            fmea2Dev1 = (rtStaBlkDev1[10] << 8) | rtStaBlkDev1[9]
-            temp1Dev1 = (rtStaBlkDev0[12] << 8) | rtStaBlkDev0[11]
-            temp2Dev1 = (rtStaBlkDev0[14] << 8) | rtStaBlkDev0[13]
-            gpioDataDev1 = (rtStaBlkDev0[16] << 8) | rtStaBlkDev0[15]
-            dcDev1 = rtStaBlkDev1[17]
-            listStaDev1 = [hex(status1Dev1)[2:].zfill(4), hex(status2Dev1)[2:].zfill(4),
-                           hex(fmea1Dev1)[2:].zfill(4), hex(fmea2Dev1)[2:].zfill(4)]
-            listTemGpDev1 = [hex(temp1Dev1)[2:].zfill(4), hex(temp2Dev1)[2:].zfill(4),
-                             hex(gpioDataDev1)[2:].zfill(4)]
-
-            # fill dc table
-            self.update_table_item_data(self.table_devMgPage_dc, 0, 1,
-                                        hex(dcDev1)[2:].zfill(2))  # dc byte
-            # update dc byte led
-            if self.update_dc_led(dcDev1, self.ledDevMgPageDcByte):
-                pass
-            else:
-                self.set_warning_message(self.lineEdit_devMgPage_initWarn, "DC byte has alert",
-                                         "WARNING: ")
-                # send alertpacket command
-                alertPkReturn = pb01_alert_packet(self.hidBdg)
-                if (alertPkReturn == ("message return RX error" or "pec check error")):
-                    self.set_warning_message(self.lineEdit_devMgPage_initWarn, alertPkReturn,
-                                             "WARNING: ALERTPACKET ")
-                    return
-                else:
-                    alertPkData = (alertPkReturn[6] << 40) | (alertPkReturn[5] << 32) | (alertPkReturn[4] << 24) \
-                                  | (alertPkReturn[3] << 16) | (alertPkReturn[2] << 8) | alertPkReturn[1]
-                    # fill alert packet data in dc table
-                    self.update_table_item_data(self.table_devMgPage_dc, 1, 1,
-                                                hex(alertPkData)[2:].zfill(48))  # alert packet data
-                    # update alert packet led
-                    self.update_alertPk_led(alertPkData, self.ledDevMgPageAlertPk)
-
-            # fill devMgPage current table
-            for r in range(4):  # fill table
-                self.update_table_item_data(self.table_devMgPage_cur, r + 1, 7,
-                                            listStaDev1[r])  # device 1
-            for r in range(5, 8):
-                self.update_table_item_data(self.table_devMgPage_cur, r, 7,
-                                            listTemGpDev1[r - 5])  # device 1
-
-            # update led
-            self.update_status_register_led(status1Dev1, status2Dev1, fmea1Dev1, fmea2Dev1,
-                                            self.ledDevMgPageCurDev1)
-
-            if (status1Dev1 != 0x0000) or (status2Dev1 != 0x0000) or (fmea1Dev1 != 0x0000) or (fmea2Dev1 != 0x0000):
-                self.set_warning_message(self.lineEdit_devMgPage_initWarn, "Dev1 STATUS block abnormal", "WARNING:")
-                return
-
-
-
-        # re-setup chainCfgPage cfgWarn bar
-        self.set_default_warn_bar(self.lineEdit_devMgPage_initWarn)
-
 
 
     def setupNotification(self):

@@ -481,6 +481,14 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         listTemGpDev0 = [hex(temp1Dev0)[2:].zfill(4), hex(temp2Dev0)[2:].zfill(4),
                          hex(gpioDataDev0)[2:].zfill(4)]
 
+        temp1CelDev0 = str(round(temp1Dev0 / 8 - 273.15, 2)) + "°C"
+        temp2CelDev0 = str(round(temp2Dev0 / 8 - 273.15, 2)) + "°C"
+        temp1FhDev0 = str(round((temp1Dev0 /8 - 273.15) * 9 / 5 + 32, 2)) + "°F"
+        temp2FhDev0 = str(round((temp2Dev0 /8 - 273.15) * 9 / 5 + 32, 2)) + "°F"
+
+        listTemValDev0 = [[temp1CelDev0, temp1FhDev0], [temp2CelDev0, temp2FhDev0],
+                          [hex(rtStaBlkDev0[16])[2:].zfill(2), hex(rtStaBlkDev0[15])[2:].zfill(2)]]
+
         ''' fill data into dev0 status table '''
         for r in range(4):  # fill table
             self.update_table_item_data(pTable, r + 1, pDev0Col,
@@ -489,6 +497,10 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             for r in range(5, 8):
                 self.update_table_item_data(pTable, r, pDev0Col,
                                             listTemGpDev0[r - 5])  # device 0
+                self.update_table_item_data(pTable, r, 3,
+                                            listTemValDev0[r - 5][0])  # device 0
+                self.update_table_item_data(pTable, r, 5,
+                                            listTemValDev0[r - 5][1])  # device 0
 
         ''' update dev0 status table led '''
         self.update_status_register_led(status1Dev0, status2Dev0, fmea1Dev0, fmea2Dev0, pDev0LedList)
@@ -510,6 +522,14 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             listTemGpDev1 = [hex(temp1Dev1)[2:].zfill(4), hex(temp2Dev1)[2:].zfill(4),
                              hex(gpioDataDev1)[2:].zfill(4)]
 
+            temp1CelDev1 = str(round(temp1Dev1 / 8 - 273.15, 2)) + "°C"
+            temp2CelDev1 = str(round(temp2Dev1 / 8 - 273.15, 2)) + "°C"
+            temp1FhDev1 = str(round((temp1Dev1 / 8 - 273.15) * 9 / 5 + 32, 2)) + "°F"
+            temp2FhDev1 = str(round((temp2Dev1 / 8 - 273.15) * 9 / 5 + 32, 2)) + "°F"
+
+            listTemValDev1 = [[temp1CelDev1, temp1FhDev1], [temp2CelDev1, temp2FhDev1],
+                              [hex(rtStaBlkDev1[16])[2:].zfill(2), hex(rtStaBlkDev1[15])[2:].zfill(2)]]
+
             ''' fill data into dev1 status table '''
             for r in range(4):  # fill table
                 self.update_table_item_data(pTable, r + 1, pDev1Col,
@@ -518,6 +538,10 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 for r in range(5, 8):
                     self.update_table_item_data(pTable, r, pDev1Col,
                                                 listTemGpDev1[r - 5])  # device 1
+                    self.update_table_item_data(pTable, r, 8,
+                                                listTemValDev1[r - 5][0])  # device 1
+                    self.update_table_item_data(pTable, r, 10,
+                                                listTemValDev1[r - 5][1])  # device 1
 
             ''' update dev1 status table led '''
             self.update_status_register_led(status1Dev1, status2Dev1, fmea1Dev1, fmea2Dev1, pDev1LedList)

@@ -114,6 +114,11 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                                                                     self.table_devMgPage_dc,
                                                                                     self.table_devMgPage_cur)
 
+        # disable initial button
+        current_style = self.pushButton_devMgPage_init.styleSheet()
+        new_style = current_style + " QPushButton {background-color: #d0d0d0;}"  # 原来颜色 ##3072B3
+        self.pushButton_devMgPage_init.setStyleSheet(new_style)
+        self.pushButton_devMgPage_init.setDisabled(True)
         # disable re-initial button
         current_style = self.pushButton_devMgPage_reInit.styleSheet()
         new_style = current_style + " QPushButton {background-color: #d0d0d0;}"  # 原来颜色 #ED7D31
@@ -713,6 +718,12 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         new_style = current_style + " QPushButton {background-color: #e84d00;}"
         self.pushButton_chainCfg_reset.setStyleSheet(new_style)
         self.pushButton_chainCfg_reset.setDisabled(False)
+        # enable devMgPage initial button
+        current_style = self.pushButton_devMgPage_init.styleSheet()
+        new_style = current_style + " QPushButton {background-color: #3072B3;}"
+        self.pushButton_devMgPage_init.setStyleSheet(new_style)
+        self.pushButton_devMgPage_init.setDisabled(False)
+
 
     def slot_pushBtn_chainCfg_reset(self):
         # force por
@@ -947,6 +958,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
                 # reset max17841
                 max17841_init(self.hidBdg)
+                time.sleep(0.05)
                 return self.hidStatus
             else:
                 return self.hidStatus

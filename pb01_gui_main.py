@@ -448,8 +448,94 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                     pLedList[3][i].setStyleSheet(led_white_style)
 
 
+    def update_status_block_table(self, pTable, pDev0Col, pDev1Col, pDev0LedList, pDev1LedList, pFlagTem):
+        """
+        这个函数执行 read block command 去读取 PB01 STATUS Block 中 7 个寄存器的值
+        因多个 tab 页面有 status table 要去更新，所以用此函数方便代码维护
+        是否读取 dev1 的 status block, 在函数内根据 self.flagSingleAfe 自动判读，不需要额外输入参数
+        :param pTable: 指定具体哪个页面下的哪个 status table 要被更新
+        :param pDev0Col: dev0 读取到的值填入到哪一列
+        :param pDev1Col: dev1 读取到的值填入到哪一列
+        :param pDev0LedList: 该 table 对应的 dev0 led 列表
+        :param pDev1LedList: 该 table 对应的 dev1 led 列表
+        :param pFlagTem: 有的 table 没有 temp1, temp2 和 GPIO，通过此值判断是否要填写这 3 行
+                         True - 要填写这三行
+                         False - 不要填写这三行
+        :return: DC byte
+        """
+        dcDev0 = 0
+        dcDev1 = 0
+        """ device 0 process """
+        ''' read device 0 status block '''
+        rtStaBlkDev0 = pb01_read_block(self.hidBdg, 7, 0, 0x04, 0x00)  # read dev0 id block, alseed=0x00
+        status1Dev0 = (rtStaBlkDev0[4] << 8) | rtStaBlkDev0[3]
+        status2Dev0 = (rtStaBlkDev0[6] << 8) | rtStaBlkDev0[5]
+        fmea1Dev0 = (rtStaBlkDev0[8] << 8) | rtStaBlkDev0[7]
+        fmea2Dev0 = (rtStaBlkDev0[10] << 8) | rtStaBlkDev0[9]
+        temp1Dev0 = (rtStaBlkDev0[12] << 8) | rtStaBlkDev0[11]
+        temp2Dev0 = (rtStaBlkDev0[14] << 8) | rtStaBlkDev0[13]
+        gpioDataDev0 = (rtStaBlkDev0[16] << 8) | rtStaBlkDev0[15]
+        dcDev0 = rtStaBlkDev0[17]
+        listStaDev0 = [hex(status1Dev0)[2:].zfill(4), hex(status2Dev0)[2:].zfill(4),
+                       hex(fmea1Dev0)[2:].zfill(4), hex(fmea2Dev0)[2:].zfill(4)]
+        listTemGpDev0 = [hex(temp1Dev0)[2:].zfill(4), hex(temp2Dev0)[2:].zfill(4),
+                         hex(gpioDataDev0)[2:].zfill(4)]
+
+        ''' fill data into dev0 status table '''
+        for r in range(4):  # fill table
+            self.update_table_item_data(pTable, r + 1, pDev0Col,
+                                        listStaDev0[r])  # device 0
+        if pFlagTem:
+            for r in range(5, 8):
+                self.update_table_item_data(pTable, r, pDev0Col,
+                                            listTemGpDev0[r - 5])  # device 0
+
+        ''' update dev0 status table led '''
+        self.update_status_register_led(status1Dev0, status2Dev0, fmea1Dev0, fmea2Dev0, pDev0LedList)
+
+        """ device 1 process """
+        ''' read device 1 status block '''
+        if self.flagSingleAfe == False:
+            rtStaBlkDev1 = pb01_read_block(self.hidBdg, 7, 1, 0x04, 0x00)  # read dev1 id block, alseed=0x00
+            status1Dev1 = (rtStaBlkDev1[4] << 8) | rtStaBlkDev1[3]
+            status2Dev1 = (rtStaBlkDev1[6] << 8) | rtStaBlkDev1[5]
+            fmea1Dev1 = (rtStaBlkDev1[8] << 8) | rtStaBlkDev1[7]
+            fmea2Dev1 = (rtStaBlkDev1[10] << 8) | rtStaBlkDev1[9]
+            temp1Dev1 = (rtStaBlkDev0[12] << 8) | rtStaBlkDev0[11]
+            temp2Dev1 = (rtStaBlkDev0[14] << 8) | rtStaBlkDev0[13]
+            gpioDataDev1 = (rtStaBlkDev0[16] << 8) | rtStaBlkDev0[15]
+            dcDev1 = rtStaBlkDev1[17]
+            listStaDev1 = [hex(status1Dev1)[2:].zfill(4), hex(status2Dev1)[2:].zfill(4),
+                           hex(fmea1Dev1)[2:].zfill(4), hex(fmea2Dev1)[2:].zfill(4)]
+            listTemGpDev1 = [hex(temp1Dev1)[2:].zfill(4), hex(temp2Dev1)[2:].zfill(4),
+                             hex(gpioDataDev1)[2:].zfill(4)]
+
+        ''' fill data into dev1 status table '''
+        for r in range(4):  # fill table
+            self.update_table_item_data(pTable, r + 1, pDev1Col,
+                                        listStaDev1[r])  # device 1
+        if pFlagTem:
+            for r in range(5, 8):
+                self.update_table_item_data(pTable, r, pDev1Col,
+                                            listTemGpDev1[r - 5])  # device 1
+
+        ''' update dev1 status table led '''
+        self.update_status_register_led(status1Dev1, status2Dev1, fmea1Dev1, fmea2Dev1, pDev1LedList)
+
+        if dcDev0 != 0x00:
+            return dcDev0
+        elif dcDev1 != 0x00:
+            return dcDev1
+        else:
+            return 0x00
+
+
     def slot_pushBtn_chainCfg_cfg(self):
-        # initial daisy chain
+        """ re-setup chainCfgPage cfgWarn bar """
+        self.set_default_warn_bar(self.lineEdit_chainCfg_cfgWarn)
+        self.set_default_warn_bar(self.lineEdit_chainCfg_pwrUpWarn)
+
+        """ initial daisy chain """
         daisyChainReturn = pb01_daisy_chain_initial(self.hidBdg, 0x00)
         if (daisyChainReturn == ("transaction5 time out" or
                                  "transaction5 time out" or
@@ -469,7 +555,8 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                          "WARNING:")
                 return
 
-        # write and read all UIFCFG register
+        """ write and read all UIFCFG register """
+        ''' set uppath, enable dc byte & alive count '''
         rtUifCfg = self.afe_write_read_all(0x10, 0x00, 0x26)  # write all A10=0x2600
         if rtUifCfg != "error":
             if self.flagSingleAfe:  # single afe
@@ -498,7 +585,8 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         else:
             return
 
-        # write and read all ADDRCFG register
+        """ write and read all ADDRCFG register """
+        ''' set top & bottom address '''
         rtAddrCfg = self.afe_write_read_all(0x11, 0x20, 0x00)   # write all A11=0x0020
                                                                 # (topDevAddr = 1, botDevAddr = 0)
                                                                 # alseed=0x00
@@ -540,10 +628,10 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         else:
             return
 
-        #wait 10ms to complete FEMA2 BIST
+        """ wait 10ms to complete FEMA2 BIST """
         time.sleep(0.01)
 
-        # read device 0 id block
+        """ read device 0 id block """
         rtIdBlkDev0 = pb01_read_block(self.hidBdg, 4, 0, 0x00, 0x00)  # read dev0 id block, alseed=0x00
         devid0 =  (rtIdBlkDev0[4] << 8) | rtIdBlkDev0[3]
         devid1 =  (rtIdBlkDev0[6] << 8) | rtIdBlkDev0[5]
@@ -561,7 +649,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             self.update_table_item_data(self.table_chainCfg_devIdBlk, 0, i,
                                         listIdDev0[i - 3])  # device 0
 
-        # read device 1 id block
+        """ read device 1 id block """
         if self.flagSingleAfe == False:
             rtIdBlkDev1 = pb01_read_block(self.hidBdg, 4, 1, 0x00, 0x00)  # read dev1 id block, alseed=0x00
             devid0 = (rtIdBlkDev1[4] << 8) | rtIdBlkDev1[3]
@@ -580,68 +668,17 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 self.update_table_item_data(self.table_chainCfg_devIdBlk, 1, i,
                                             listIdDev1[i - 3])  # device 0
 
-        # read device 0 status block
-        rtStaBlkDev0 = pb01_read_block(self.hidBdg, 4, 0, 0x04, 0x00)  # read dev0 id block, alseed=0x00
-        status1Dev0 = (rtStaBlkDev0[4] << 8) | rtStaBlkDev0[3]
-        status2Dev0 = (rtStaBlkDev0[6] << 8) | rtStaBlkDev0[5]
-        fmea1Dev0 = (rtStaBlkDev0[8] << 8) | rtStaBlkDev0[7]
-        fmea2Dev0 = (rtStaBlkDev0[10] << 8) | rtStaBlkDev0[9]
-        listStaDev0 = [hex(status1Dev0)[2:].zfill(4), hex(status2Dev0)[2:].zfill(4),
-                       hex(fmea1Dev0)[2:].zfill(4), hex(fmea2Dev0)[2:].zfill(4)]
-        # fill chainCfgPage table
-        for r in range(4):  # fill table
-            self.update_table_item_data(self.table_chainCfg_pw, r+1, 3,
-                                        listStaDev0[r])  # device 0
-        # update led
-        self.update_status_register_led(status1Dev0, status2Dev0, fmea1Dev0, fmea2Dev0, self.ledChainPageDev0)
+        ''' update status block table '''
+        # update chainCfgPage status block table
+        self.update_status_block_table(self.table_chainCfg_pw, 3, 5,
+                                       self.ledChainPageDev0, self.ledChainPageDev1, False)
+        # update devMgPage status block tables
+        self.update_status_block_table(self.table_devMgPage_init, 2, 7,
+                                       self.ledDevMgPageInitDev0, self.ledDevMgPageInitDev1, False)
+        self.update_status_block_table(self.table_devMgPage_cur, 2, 7,
+                                       self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, False)
 
-        if (status1Dev0 != 0x5000) or (status2Dev0 != 0x0080) or (fmea1Dev0 != 0x0000) or (fmea2Dev0 != 0x0000):
-            self.set_warning_message(self.lineEdit_chainCfg_pwrUpWarn, "Dev0 STATUS block abnormal", "WARNING:")
-            return
-        # fill devMgPage table
-        for r in range(4):  # fill table
-            self.update_table_item_data(self.table_devMgPage_init, r+1, 2,
-                                        listStaDev0[r])  # device 0
-            self.update_table_item_data(self.table_devMgPage_cur, r + 1, 2,
-                                        listStaDev0[r])  # device 0
-        # update led
-        self.update_status_register_led(status1Dev0, status2Dev0, fmea1Dev0, fmea2Dev0, self.ledDevMgPageInitDev0)
-        self.update_status_register_led(status1Dev0, status2Dev0, fmea1Dev0, fmea2Dev0, self.ledDevMgPageCurDev0)
-
-
-        # read device 1 status block
-        if self.flagSingleAfe == False:
-            rtStaBlkDev1 = pb01_read_block(self.hidBdg, 4, 1, 0x04, 0x00)  # read dev0 id block, alseed=0x00
-            status1Dev1 = (rtStaBlkDev1[4] << 8) | rtStaBlkDev1[3]
-            status2Dev1 = (rtStaBlkDev1[6] << 8) | rtStaBlkDev1[5]
-            fmea1Dev1 = (rtStaBlkDev1[8] << 8) | rtStaBlkDev1[7]
-            fmea2Dev1 = (rtStaBlkDev1[10] << 8) | rtStaBlkDev1[9]
-            listStaDev1 = [hex(status1Dev1)[2:].zfill(4), hex(status2Dev1)[2:].zfill(4),
-                           hex(fmea1Dev1)[2:].zfill(4), hex(fmea2Dev1)[2:].zfill(4)]
-            # fill chainCfgPage table
-            for r in range(4):
-                self.update_table_item_data(self.table_chainCfg_pw, r + 1, 5,
-                                            listStaDev1[r])  # device 1
-            # update led
-            self.update_status_register_led(status1Dev1, status2Dev1, fmea1Dev1, fmea2Dev1, self.ledChainPageDev1)
-
-            if (status1Dev1 != 0x5000) or (status2Dev1 != 0x0080) or (fmea1Dev1 != 0x0000) or (fmea2Dev1 != 0x0000):
-                self.set_warning_message(self.lineEdit_chainCfg_pwrUpWarn, "Dev1 STATUS block abnormal", "WARNING:")
-                return
-            # fill devMgPage table
-            for r in range(4):  # fill table
-                self.update_table_item_data(self.table_devMgPage_init, r + 1, 7,
-                                            listStaDev1[r])  # device 1
-                self.update_table_item_data(self.table_devMgPage_cur, r + 1, 7,
-                                            listStaDev1[r])  # device 1
-            # update led
-            self.update_status_register_led(status1Dev1, status2Dev1, fmea1Dev1, fmea2Dev1, self.ledDevMgPageInitDev1)
-            self.update_status_register_led(status1Dev1, status2Dev1, fmea1Dev1, fmea2Dev1, self.ledDevMgPageCurDev1)
-
-        # re-setup chainCfgPage cfgWarn bar
-        self.set_default_warn_bar(self.lineEdit_chainCfg_cfgWarn)
-        self.set_default_warn_bar(self.lineEdit_chainCfg_pwrUpWarn)
-
+        ''' update buttons status '''
         # disable configure button
         current_style = self.pushButton_chainCfg_cfg.styleSheet()
         new_style = current_style + " QPushButton {background-color: #d0d0d0;}"    # 原来颜色是 #3072B3

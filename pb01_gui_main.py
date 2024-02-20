@@ -442,7 +442,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             if 1 < i < 4:
                 pLedList[3][i].setStyleSheet(led_gray_style)
             else:
-                if pFm1 & (0x8000 >> i):  # biti = 1
+                if pFm2 & (0x8000 >> i):  # biti = 1
                     pLedList[3][i].setStyleSheet(led_red_style)
                 else:  # biti = 0
                     pLedList[3][i].setStyleSheet(led_white_style)

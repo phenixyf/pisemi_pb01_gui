@@ -372,12 +372,11 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         """
         flag = True
         for i in range(8):
-            # status1
             if pDc & (0x80 >> i):  # biti = 1
                 pLedList[i].setStyleSheet(led_red_style)
                 flag = False
             else:  # biti = 0
-                pLedList[i].setStyleSheet(led_green_style)
+                pLedList[i].setStyleSheet(led_white_style)
         return flag
 
 
@@ -390,12 +389,14 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         """
         flag = True
         for i in range(48):
-            # status1
             if pAlertPk & (0x800000000000 >> i):  # biti = 1
-                pLedList[i].setStyleSheet(led_red_style)
+                if i == 0:
+                    pLedList[i].setStyleSheet(led_green_style)
+                else:
+                    pLedList[i].setStyleSheet(led_red_style)
                 flag = False
             else:  # biti = 0
-                pLedList[i].setStyleSheet(led_green_style)
+                pLedList[i].setStyleSheet(led_white_style)
         return flag
 
 

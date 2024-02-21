@@ -247,7 +247,7 @@ CHAIN_CFG_TABLE_RSTHG = 60      # reset block table 的高度
 
 ''' 16 led label '''
 LED_STA1_LAB = ["ACQ", "RESET", "RJCT", "UIF", "OV", "UV", "ALTOV", "ALTUV",
-                "AUXOV", "AUXUV", "DIAGOV", "DIAGUV", "MM", "CBAL", "FMEA1", "FMEA2"]
+                "AUXOV", "AUXUV", "DIAGOV", "DIAGUV", "MM", "CBAL", "FMEA2", "FMEA1"]
 LED_STA2_LAB = ["PECUP", "PECDN", "MANUP", "MANDN", "PARUP", "PARDN", "REGUP", "REGDN",
                 "DUAL", "CBNTFY", "CBDONE", "CBERR", "SPIRW", "SPICLK", "SPICRC", "SPIREG"]
 LED_FME1_LAB = ["OSC", "----", "----", "----", "----", "VAA", "VDD", "VIO",

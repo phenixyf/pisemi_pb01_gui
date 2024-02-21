@@ -872,8 +872,6 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
         """ update status block table """
         # update devMgPage status block tables
-        self.update_status_block_table(self.table_devMgPage_init, 2, 7,
-                                       self.ledDevMgPageInitDev0, self.ledDevMgPageInitDev1, False)
         self.update_status_block_table(self.table_devMgPage_cur, 2, 7,
                                        self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, True)
 
@@ -884,8 +882,6 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
         """ update status block table """
         # update devMgPage status block tables
-        self.update_status_block_table(self.table_devMgPage_init, 2, 7,
-                                       self.ledDevMgPageInitDev0, self.ledDevMgPageInitDev1, False)
         dcByte = self.update_status_block_table(self.table_devMgPage_cur, 2, 7,
                                        self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, True)
 

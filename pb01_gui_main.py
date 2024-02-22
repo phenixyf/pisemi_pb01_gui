@@ -381,6 +381,42 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         return flag
 
 
+    def update_dc_aleter_table(self, pDcTable, pDcByte, pDcLed, pAlertLed, pWarnLine):
+        """
+        完成更新 DC byte table 的动作:
+            1. 填写 DC byte 并更新对应的 led
+            2. 如果 DC byte 不为 0 则自动发送 ALERTPACKET command
+            3. 如果发送 ALERTPACKET command 填写返回的 alert data 并更新对应的 led
+        :param pDcTable: 各 tab 页对应的 dc table object
+        :param pDcByte: 调用此函数前获得的 DC byte 值
+        :param pDcLed: 此 dc table 对应的 dc led (init_tab_pages 函数中有各 tab 页对应的 dc led)
+        :param pAlertLed: 此 dc table 对应的 alert led (init_tab_pages 函数中有各 tab 页对应的 alert led)
+        :param pWarnLine: 报警信息要显示的 warn lineEdit 对象
+        :return:
+        """
+        # fill dc byte into table
+        self.update_table_item_data(pDcTable, 0, 1, hex(pDcByte)[2:].zfill(2))
+
+        # fill dc byte led into table
+        if self.update_dc_led(pDcByte, pDcLed):
+            pass
+        else:
+            self.set_warning_message(pWarnLine, "DC byte has alert", "WARNING: ")
+            # send alertpacket command
+            alertPkReturn = pb01_17841_alert_packet(self.hidBdg)
+            if (alertPkReturn == ("message return RX error" or "pec check error")):
+                self.set_warning_message(pWarnLine, alertPkReturn, "WARNING: ALERTPACKET ")
+                return
+            else:
+                alertPkData = (alertPkReturn[6] << 40) | (alertPkReturn[5] << 32) | (alertPkReturn[4] << 24) \
+                              | (alertPkReturn[3] << 16) | (alertPkReturn[2] << 8) | alertPkReturn[1]
+                # fill alert packet data in table
+                self.update_table_item_data(pDcTable, 1, 1,
+                                            hex(alertPkData)[2:].zfill(12))  # alert packet data
+                # update alert packet led
+                self.update_alertPk_led(alertPkData, pAlertLed)
+
+
     def update_status_register_led(self, pSt1, pSt2, pFm1, pFm2, pLedList):
         """
         根据 status block 各寄存器的值，更新其对应的 led 颜色
@@ -873,30 +909,8 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         dcByte = self.update_status_block_table(self.table_devMgPage_cur, 2, 7,
                                        self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, True)
 
-        """ update DC byte table """
-        # fill dc byte table
-        self.update_table_item_data(self.table_devMgPage_dc, 0, 1,
-                                    hex(dcByte)[2:].zfill(2))  # dc byte
-        # update dc byte table led
-        if self.update_dc_led(dcByte, self.ledDevMgPageDcByte):
-            pass
-        else:
-            self.set_warning_message(self.lineEdit_devMgPage_initWarn, "DC byte has alert",
-                                     "WARNING: ")
-            # send alertpacket command
-            alertPkReturn = pb01_17841_alert_packet(self.hidBdg)
-            if (alertPkReturn == ("message return RX error" or "pec check error")):
-                self.set_warning_message(self.lineEdit_devMgPage_initWarn, alertPkReturn,
-                                         "WARNING: ALERTPACKET ")
-                return
-            else:
-                alertPkData = (alertPkReturn[6] << 40) | (alertPkReturn[5] << 32) | (alertPkReturn[4] << 24) \
-                              | (alertPkReturn[3] << 16) | (alertPkReturn[2] << 8) | alertPkReturn[1]
-                # fill alert packet data in dc table
-                self.update_table_item_data(self.table_devMgPage_dc, 1, 1,
-                                            hex(alertPkData)[2:].zfill(12))  # alert packet data
-                # update alert packet led
-                self.update_alertPk_led(alertPkData, self.ledDevMgPageAlertPk)
+        self.update_dc_aleter_table(self.table_devMgPage_dc, dcByte, self.ledDevMgPageDcByte,
+                                    self.ledDevMgPageAlertPk, self.lineEdit_devMgPage_initWarn)
 
 
     def setupNotification(self):

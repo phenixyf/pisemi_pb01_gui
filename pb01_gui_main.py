@@ -92,12 +92,6 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.ledChainPageDev0, self.ledChainPageDev1 = adjust_chainPage_pw_rst_tables(self.table_chainCfg_pw,
                                                                                       self.table_chainCfg_rstReg)
 
-        # disable reset button
-        current_style = self.pushButton_chainCfg_reset.styleSheet()
-        new_style = current_style + " QPushButton {background-color: #d0d0d0;}"  # 原来颜色 #e84d00
-        self.pushButton_chainCfg_reset.setStyleSheet(new_style)
-        self.pushButton_chainCfg_reset.setDisabled(True)
-
         ''' initial device manage page (page2) '''
         set_table_item(self.table_devMgPage_init, CHAIN_CFG_TABLE_ROWHG,
                        table_devMg_iniItems)
@@ -113,22 +107,6 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.ledDevMgPageDcByte, self.ledDevMgPageAlertPk = adjust_devMgPage_tables(self.table_devMgPage_init,
                                                                                     self.table_devMgPage_dc,
                                                                                     self.table_devMgPage_cur)
-
-        # disable initial button
-        current_style = self.pushButton_devMgPage_init.styleSheet()
-        new_style = current_style + " QPushButton {background-color: #d0d0d0;}"  # 原来颜色 ##3072B3
-        self.pushButton_devMgPage_init.setStyleSheet(new_style)
-        self.pushButton_devMgPage_init.setDisabled(True)
-        # disable re-initial button
-        current_style = self.pushButton_devMgPage_reInit.styleSheet()
-        new_style = current_style + " QPushButton {background-color: #d0d0d0;}"  # 原来颜色 #ED7D31
-        self.pushButton_devMgPage_reInit.setStyleSheet(new_style)
-        self.pushButton_devMgPage_reInit.setDisabled(True)
-        # disable clear comm button
-        current_style = self.pushButton_devMgPage_clear.styleSheet()
-        new_style = current_style + " QPushButton {background-color: #d0d0d0;}"  # 原来颜色 #FFC000
-        self.pushButton_devMgPage_clear.setStyleSheet(new_style)
-        self.pushButton_devMgPage_clear.setDisabled(True)
 
         ''' initial application configuration page (page3) '''
         set_table_head(self.table_appCfgPage_appCfg, table_appCfgPage_headers,
@@ -277,16 +255,19 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         adjust_cblPage_tables(self.table_cblPage_cblExpTime, self.table_cblPage_cblCfgReg,
                               self.table_cblPage_cblCtrlSimDemo, self.table_cblPage_cblCtrlStaInf)
 
-        # dual afe initial ui as default
+        ''' dual afe initial ui as default '''
         self.slot_radio_single_dual_afe()
 
-        # update led color
-        self.ledChainPageDev0[0][13].setStyleSheet(led_blue_style)
-        self.ledChainPageDev1[0][13].setStyleSheet(led_blue_style)
-        self.ledDevMgPageInitDev0[0][13].setStyleSheet(led_blue_style)
-        self.ledDevMgPageInitDev1[0][13].setStyleSheet(led_blue_style)
-        self.ledDevMgPageCurDev0[0][13].setStyleSheet(led_blue_style)
-        self.ledDevMgPageCurDev1[0][13].setStyleSheet(led_blue_style)
+        ''' disable push button '''
+        # chainCfg page
+        self.pushBtn_disable(self.pushButton_chainCfg_reset)    # reset
+        # devMg page
+        self.pushBtn_disable(self.pushButton_devMgPage_init)        # initialize
+        self.pushBtn_disable(self.pushButton_devMgPage_reInit)      # reinitialize
+        self.pushBtn_disable(self.pushButton_devMgPage_clear)       # clear comm
+        self.pushBtn_disable(self.pushButton_devMgPage_readBack)    # read back
+
+
 
     def set_warning_message(self, pWarnLineEdit, pMes, pPrefix="WARNING:"):
         """
@@ -593,8 +574,8 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         """ initial daisy chain """
         daisyChainReturn = pb01_daisy_chain_initial(self.hidBdg, 0x00)
         if (daisyChainReturn == ("transaction5 time out" or
-                                 "transaction5 time out" or
-                                 "transaction5 time out" or
+                                 "transaction7 time out" or
+                                 "transaction13 time out" or
                                  "clear bridge rx buffer time out")):
             self.set_warning_message(self.lineEdit_chainCfg_cfgWarn, daisyChainReturn, "WARNING: Daisy chain initial error ")
             return
@@ -740,23 +721,11 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                        self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, True)
 
         ''' update buttons status '''
-        self.pushBtn_disable(self.pushButton_chainCfg_cfg)
-        self.pushBtn_enable(self.pushButton_chainCfg_reset, "#e84d00")
-        # # disable configure button
-        # current_style = self.pushButton_chainCfg_cfg.styleSheet()
-        # new_style = current_style + " QPushButton {background-color: #d0d0d0;}"    # 原来颜色是 #3072B3
-        # self.pushButton_chainCfg_cfg.setStyleSheet(new_style)
-        # self.pushButton_chainCfg_cfg.setDisabled(True)
-        # # enable reset button
-        # current_style = self.pushButton_chainCfg_reset.styleSheet()
-        # new_style = current_style + " QPushButton {background-color: #e84d00;}"
-        # self.pushButton_chainCfg_reset.setStyleSheet(new_style)
-        # self.pushButton_chainCfg_reset.setDisabled(False)
-        # enable devMgPage initial button
-        current_style = self.pushButton_devMgPage_init.styleSheet()
-        new_style = current_style + " QPushButton {background-color: #3072B3;}"
-        self.pushButton_devMgPage_init.setStyleSheet(new_style)
-        self.pushButton_devMgPage_init.setDisabled(False)
+        # chainCfg page (page 1)
+        self.pushBtn_disable(self.pushButton_chainCfg_cfg)                  # configure
+        self.pushBtn_enable(self.pushButton_chainCfg_reset, "#e84d00")      # reset
+        # devMg page (page 2)
+        self.pushBtn_enable(self.pushButton_devMgPage_init, "#3072B3")      # initialize
 
 
     def slot_pushBtn_chainCfg_reset(self):
@@ -770,18 +739,12 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         max17841_init(self.hidBdg)
 
         # delay 1s before enable configure button
-        time.sleep(1)
+        time.sleep(0.05)
 
         # enable configure button
-        current_style = self.pushButton_chainCfg_cfg.styleSheet()
-        new_style = current_style + " QPushButton {background-color: #3072B3;}"
-        self.pushButton_chainCfg_cfg.setStyleSheet(new_style)
-        self.pushButton_chainCfg_cfg.setDisabled(False)
+        self.pushBtn_enable(self.pushButton_chainCfg_cfg, "#3072B3")
         # disable reset button
-        current_style = self.pushButton_chainCfg_reset.styleSheet()
-        new_style = current_style + " QPushButton {background-color: #d0d0d0;}"
-        self.pushButton_chainCfg_reset.setStyleSheet(new_style)
-        self.pushButton_chainCfg_reset.setDisabled(True)
+        self.pushBtn_disable(self.pushButton_chainCfg_reset)
 
 
     def slot_pushBtn_devMgPage_init(self):
@@ -814,21 +777,12 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
 
         """ update buttons status """
-        # disable initial button
-        current_style = self.pushButton_devMgPage_init.styleSheet()
-        new_style = current_style + " QPushButton {background-color: #d0d0d0;}"  # 原来颜色是 #3072B3
-        self.pushButton_devMgPage_init.setStyleSheet(new_style)
-        self.pushButton_devMgPage_init.setDisabled(True)
-        # enable re-initial button
-        current_style = self.pushButton_devMgPage_reInit.styleSheet()
-        new_style = current_style + " QPushButton {background-color: #ED7D31;}"
-        self.pushButton_devMgPage_reInit.setStyleSheet(new_style)
-        self.pushButton_devMgPage_reInit.setDisabled(False)
-        # enable clear comm button
-        current_style = self.pushButton_devMgPage_clear.styleSheet()
-        new_style = current_style + " QPushButton {background-color: #FFC000;}"
-        self.pushButton_devMgPage_clear.setStyleSheet(new_style)
-        self.pushButton_devMgPage_clear.setDisabled(False)
+        # disable
+        self.pushBtn_disable(self.pushButton_devMgPage_init)                # initialize
+        # enable
+        self.pushBtn_enable(self.pushButton_devMgPage_reInit, "#ED7D31")    # reinitialize
+        self.pushBtn_enable(self.pushButton_devMgPage_clear, "#FFC000")     # clear comm
+        self.pushBtn_enable(self.pushButton_devMgPage_readBack, "#00B050")  # read back
 
 
     def slot_pushBtn_devMgPage_reinit(self):
@@ -984,7 +938,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 self.hidBdg.set_nonblocking(1)
                 self.hidStatus = True
                 self.statusMessage.setStyleSheet("QLabel { color : blue; }")  # 设置字体颜色为蓝色
-                self.statusMessage.setText("bridge board connect successfully")
+                self.statusMessage.setText("bridge board connect successfully ")
 
                 # reset max17841
                 max17841_init(self.hidBdg)
@@ -995,7 +949,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         except:
             self.hidStatus = False
             self.statusMessage.setStyleSheet("QLabel { color : red; }")  # 设置字体颜色为蓝色
-            self.statusMessage.setText("bridge board connect fail")
+            self.statusMessage.setText("bridge board connect fail ")
             return self.hidStatus
 
     def close_hid(self):
@@ -1004,13 +958,13 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 self.hidBdg.close()
                 self.hidStatus = False
                 self.statusMessage.setStyleSheet("QLabel { color : red; }")  # 设置字体颜色为红色
-                self.statusMessage.setText("bridge board removed")
+                self.statusMessage.setText("bridge board removed ")
                 return self.hidStatus
             else:
                 return self.hidStatus
         except:
             self.statusMessage.setStyleSheet("QLabel { color : red; }")  # 设置字体颜色为红色
-            self.statusMessage.setText("close hid failed")
+            self.statusMessage.setText("close hid failed ")
             self.hidStatus = True
 
     def slot_radio_single_dual_afe(self):

@@ -406,7 +406,6 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             alertPkReturn = pb01_17841_alert_packet(self.hidBdg)
             if (alertPkReturn == ("message return RX error" or "pec check error")):
                 self.set_warning_message(pWarnLine, alertPkReturn, "WARNING: ALERTPACKET ")
-                return
             else:
                 alertPkData = (alertPkReturn[6] << 40) | (alertPkReturn[5] << 32) | (alertPkReturn[4] << 24) \
                               | (alertPkReturn[3] << 16) | (alertPkReturn[2] << 8) | alertPkReturn[1]
@@ -904,13 +903,54 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         """ re-setup chainCfgPage cfgWarn bar """
         self.set_default_warn_bar(self.lineEdit_devMgPage_initWarn)
 
-        """ update status block table """
-        # update devMgPage status block tables
-        dcByte = self.update_status_block_table(self.table_devMgPage_cur, 2, 7,
-                                       self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, True)
-
+        """ use READ ALL read 4 status registers """
+        # read status1
+        if self.flagSingleAfe:
+            rtData = pb01_read_all(self.hidBdg, 0x04, 1, 0x00)
+            dcByte = rtData[4]
+        else:
+            rtData = pb01_read_all(self.hidBdg, 0x04, 2, 0x00)
+            dcByte = rtData[6]
+        # update dc table
         self.update_dc_aleter_table(self.table_devMgPage_dc, dcByte, self.ledDevMgPageDcByte,
                                     self.ledDevMgPageAlertPk, self.lineEdit_devMgPage_initWarn)
+
+        # read status2
+        if self.flagSingleAfe:
+            rtData = pb01_read_all(self.hidBdg, 0x05, 1, 0x00)
+            dcByte = rtData[4]
+        else:
+            rtData = pb01_read_all(self.hidBdg, 0x05, 2, 0x00)
+            dcByte = rtData[6]
+        # update dc table
+        self.update_dc_aleter_table(self.table_devMgPage_dc, dcByte, self.ledDevMgPageDcByte,
+                                    self.ledDevMgPageAlertPk, self.lineEdit_devMgPage_initWarn)
+
+        # read fmea1
+        if self.flagSingleAfe:
+            rtData = pb01_read_all(self.hidBdg, 0x06, 1, 0x00)
+            dcByte = rtData[4]
+        else:
+            rtData = pb01_read_all(self.hidBdg, 0x06, 2, 0x00)
+            dcByte = rtData[6]
+        # update dc table
+        self.update_dc_aleter_table(self.table_devMgPage_dc, dcByte, self.ledDevMgPageDcByte,
+                                    self.ledDevMgPageAlertPk, self.lineEdit_devMgPage_initWarn)
+
+        # read fmea2
+        if self.flagSingleAfe:
+            rtData = pb01_read_all(self.hidBdg, 0x07, 1, 0x00)
+            dcByte = rtData[4]
+        else:
+            rtData = pb01_read_all(self.hidBdg, 0x07, 2, 0x00)
+            dcByte = rtData[6]
+        # update dc table
+        self.update_dc_aleter_table(self.table_devMgPage_dc, dcByte, self.ledDevMgPageDcByte,
+                                    self.ledDevMgPageAlertPk, self.lineEdit_devMgPage_initWarn)
+
+        """ update status block table """
+        self.update_status_block_table(self.table_devMgPage_cur, 2, 7,
+                                       self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, True)
 
 
     def setupNotification(self):

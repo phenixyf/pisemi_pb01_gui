@@ -617,9 +617,15 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
         """ write and read all ADDRCFG register """
         ''' set top & bottom address '''
-        rtAddrCfg = self.afe_write_read_all(0x11, 0x20, 0x00)   # write all A11=0x0020
-                                                                # (topDevAddr = 1, botDevAddr = 0)
-                                                                # alseed=0x00
+        if self.flagSingleAfe:
+            rtAddrCfg = self.afe_write_read_all(0x11, 0x00, 0x00)   # write all A11=0x0020
+                                                                    # (topDevAddr = 0, botDevAddr = 0)
+                                                                    # alseed=0x00
+        else:
+            rtAddrCfg = self.afe_write_read_all(0x11, 0x20, 0x00)   # write all A11=0x0020
+                                                                    # (topDevAddr = 1, botDevAddr = 0)
+                                                                    # alseed=0x00
+
         if rtAddrCfg != "error":
             if self.flagSingleAfe:  # single afe
                 rdDataDev0 = (rtAddrCfg[1] << 8) | rtAddrCfg[0]

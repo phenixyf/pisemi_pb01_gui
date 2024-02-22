@@ -559,6 +559,31 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         else:
             return 0x00
 
+    def pushBtn_disable(self, pBtn):
+        """
+        disable push button and set its background color is gray
+        :param pBtn: push button object
+        :return:
+        """
+        current_style = pBtn.styleSheet()
+        new_style = current_style + " QPushButton {background-color: #d0d0d0;}"
+        pBtn.setStyleSheet(new_style)
+        pBtn.setDisabled(True)
+
+    def pushBtn_enable(self, pBtn, pBkgdColor):
+        """
+        enable push button and restore its background color
+        :param pBtn: push button object
+        :param pBkgdColor: restore color
+        :return:
+        """
+        current_style = pBtn.styleSheet()
+        # temStr = " QPushButton {background-color: " + pBkgdColor + ";}"
+        # new_style = current_style + temStr
+        new_style = current_style + " QPushButton {background-color: " + pBkgdColor + ";}"
+        pBtn.setStyleSheet(new_style)
+        pBtn.setDisabled(False)
+
 
     def slot_pushBtn_chainCfg_cfg(self):
         """ re-setup chainCfgPage cfgWarn bar """
@@ -715,16 +740,18 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                        self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, True)
 
         ''' update buttons status '''
-        # disable configure button
-        current_style = self.pushButton_chainCfg_cfg.styleSheet()
-        new_style = current_style + " QPushButton {background-color: #d0d0d0;}"    # 原来颜色是 #3072B3
-        self.pushButton_chainCfg_cfg.setStyleSheet(new_style)
-        self.pushButton_chainCfg_cfg.setDisabled(True)
-        # enable reset button
-        current_style = self.pushButton_chainCfg_reset.styleSheet()
-        new_style = current_style + " QPushButton {background-color: #e84d00;}"
-        self.pushButton_chainCfg_reset.setStyleSheet(new_style)
-        self.pushButton_chainCfg_reset.setDisabled(False)
+        self.pushBtn_disable(self.pushButton_chainCfg_cfg)
+        self.pushBtn_enable(self.pushButton_chainCfg_reset, "#e84d00")
+        # # disable configure button
+        # current_style = self.pushButton_chainCfg_cfg.styleSheet()
+        # new_style = current_style + " QPushButton {background-color: #d0d0d0;}"    # 原来颜色是 #3072B3
+        # self.pushButton_chainCfg_cfg.setStyleSheet(new_style)
+        # self.pushButton_chainCfg_cfg.setDisabled(True)
+        # # enable reset button
+        # current_style = self.pushButton_chainCfg_reset.styleSheet()
+        # new_style = current_style + " QPushButton {background-color: #e84d00;}"
+        # self.pushButton_chainCfg_reset.setStyleSheet(new_style)
+        # self.pushButton_chainCfg_reset.setDisabled(False)
         # enable devMgPage initial button
         current_style = self.pushButton_devMgPage_init.styleSheet()
         new_style = current_style + " QPushButton {background-color: #3072B3;}"
@@ -903,7 +930,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             self.set_warning_message(self.lineEdit_devMgPage_initWarn, "DC byte has alert",
                                      "WARNING: ")
             # send alertpacket command
-            alertPkReturn = pb01_alert_packet(self.hidBdg)
+            alertPkReturn = pb01_17841_alert_packet(self.hidBdg)
             if (alertPkReturn == ("message return RX error" or "pec check error")):
                 self.set_warning_message(self.lineEdit_devMgPage_initWarn, alertPkReturn,
                                          "WARNING: ALERTPACKET ")

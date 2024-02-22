@@ -554,15 +554,19 @@ def pb01_read_block(pHidDev, pBlockSize, pDevAddr, pRegAddr, pAliveSeed):
     return pb01_read(pHidDev, 0xC0, 6+pBlockSize*2, [cmd, pDevAddr, pRegAddr, 0x00], pAliveSeed)
 
 
-def pb01_alert_packet(pHidDev):
+def pb01_17841_alert_packet(pHidDev):
     """
-    execute UART ALERTPACKET
-    :param pHidDev: hid bridge object
-    :return: 返回值分三种情况
-             "message return RX error": 发出的数据没有正常返回 bridge receive buffer
-             "pec check error"： pec check fail
-             数据列表：发出的数据返回 bridger receive buffer，并被读出，返回的就是从 receive buffer 读出的 Loopback 数据
-    """
+        execute UART ALERTPACKET
+        因 ALERTPACKET command message 的长度为 8， 超出了 max17841 tx buffer 最大的 message 长度 6
+        所以，要用两个 tx queue 拼接 ALERTPACKET command.
+        拼接的过程需要 disable keep-alive，容易引起 PB01 shut down，为缩短时间，在 shut down 前完成拼接，
+        将拼接的流程放在 firmware 中完成。本函数会调用对应的命令启动该流程。
+        :param pHidDev: hid bridge object
+        :return: 返回值分三种情况
+                 "message return RX error": 发出的数据没有正常返回 bridge receive buffer
+                 "pec check error"： pec check fail
+                 数据列表：发出的数据返回 bridger receive buffer，并被读出，返回的就是从 receive buffer 读出的 Loopback 数据
+        """
     """ check bridge RX is empty """
     rx_data_space = 0x3E - max17841_reg_read(pHidDev, 0x1B)  # read current rx data space
     while rx_data_space != 0:
@@ -575,15 +579,9 @@ def pb01_alert_packet(pHidDev):
         time.sleep(0.01)
         rx_data_space = 0x3E - max17841_reg_read(pHidDev, 0x1B)  # read current rx data space again
 
-    """ calculate pec """
-    msg_queue = [0x21, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
-    pec = cal_pec(msg_queue)
-
-    ''' send message queue into transmit buffer '''
-    max17841_buf_write(pHidDev, 0xC0, 8, msg_queue + [pec])
-
-    ''' start transmit from uart '''
-    max17841_reg_command(pHidDev, 0xB0)
+    """ 调用 firmware 中拼接 ALERTPACKET command 的流程 """
+    data = [0x1, 5, 0x04, 0x0, 0x0, 0x0, 0x0]
+    pHidDev.write(data)
 
     ''' check message return back to bridge '''
     start_time = time.time()

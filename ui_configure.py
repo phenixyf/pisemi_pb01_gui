@@ -17,6 +17,8 @@ import hid
 target_pid = 0xfe07  # 用你的目标PID替换这里
 target_vid = 0x1a86  # 用你的目标VID替换这里
 
+BTN_OP_DELAY = 0.05     # 防止 button 被连续点击 delay 时间
+
 """ chainCfgPage configure push button style """
 btn_blue_style = "QPushButton {\n"
 "    background-color: #3072B3; /* 按钮背景颜色 */\n"

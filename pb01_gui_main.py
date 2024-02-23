@@ -602,6 +602,8 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def slot_pushBtn_chainCfg_cfg(self):
+        time.sleep(BTN_OP_DELAY)
+
         """ re-setup chainCfgPage cfgWarn bar """
         self.set_default_warn_bar(self.lineEdit_chainCfg_cfgWarn)
         self.set_default_warn_bar(self.lineEdit_chainCfg_pwrUpWarn)
@@ -764,6 +766,8 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def slot_pushBtn_chainCfg_reset(self):
+        time.sleep(BTN_OP_DELAY)
+
         # force por
         pb01_por(self.hidBdg)
 
@@ -783,6 +787,8 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def slot_pushBtn_devMgPage_init(self):
+        time.sleep(BTN_OP_DELAY)
+
         """ re-setup chainCfgPage cfgWarn bar """
         self.set_default_warn_bar(self.lineEdit_devMgPage_initWarn)
 
@@ -821,6 +827,8 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def slot_pushBtn_devMgPage_reinit(self):
+        time.sleep(BTN_OP_DELAY)
+
         """ re-setup chainCfgPage cfgWarn bar """
         self.set_default_warn_bar(self.lineEdit_devMgPage_initWarn)
 
@@ -873,6 +881,8 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def slot_pushBtn_devMgPage_clear(self):
+        time.sleep(BTN_OP_DELAY)
+
         """ re-setup chainCfgPage cfgWarn bar """
         self.set_default_warn_bar(self.lineEdit_devMgPage_initWarn)
 
@@ -900,6 +910,8 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def slot_pushBtn_devMgPage_readBack(self):
+        time.sleep(BTN_OP_DELAY)
+
         """ re-setup chainCfgPage cfgWarn bar """
         self.set_default_warn_bar(self.lineEdit_devMgPage_initWarn)
 

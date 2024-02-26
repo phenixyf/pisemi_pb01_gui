@@ -396,11 +396,12 @@ def pb01_write_por(pHidDev, pLdLoc, pMsgLen, pUartMsg, pAliveSeed = 0):
                      [ uart_command(如 WRITEALL), register_address, register_data_lsb, register_data_msb]
                      注意，上面列表中各数据的位置，不能更改，要符合 PB01 uart 协议要求
     :param pAliveSeed: alive count seed
-    :return:
+    :return: True - success
+             False - fail
     """
     """ check bridge RX is empty """
     if max17841_clear_rx_buf(pHidDev) == False:
-        return "clear rx error"
+        return False
 
     """ uart operation """
     ''' calculate pec '''
@@ -411,6 +412,8 @@ def pb01_write_por(pHidDev, pLdLoc, pMsgLen, pUartMsg, pAliveSeed = 0):
 
     ''' start transmit from uart '''
     max17841_reg_command(pHidDev, 0xB0)
+
+    return True
 
 
 def pb01_por(pHidDev):

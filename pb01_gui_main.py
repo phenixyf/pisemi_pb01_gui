@@ -803,7 +803,9 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         time.sleep(BTN_OP_DELAY)
 
         # force por
-        pb01_por(self.hidBdg)
+        if not pb01_por(self.hidBdg):
+            self.message_box("set pb01 POR fail")
+            return
 
         # re-initial ui
         self.init_tab_pages()
@@ -828,16 +830,14 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
         """ clear status2 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x05, 0x80, 0x00, 0x00)   # write all Reg05 = 0x0080, alseed=0x00
-        if (wrAllReturn == ("message return RX error" or "pec check error" )):
-            self.set_warning_message(self.lineEdit_devMgPage_initWarn, wrAllReturn,
-                                     "WARNING: clear status register ")
+        if (wrAllReturn == ("message return RX error" or "pec check error")):
+            self.message_box(wrAllReturn)
             return
 
         """ clear status1 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x04, 0x00, 0x40, 0x00)  # write all Reg05 = 0x4000, alseed=0x00
         if (wrAllReturn == ("message return RX error" or "pec check error")):
-            self.set_warning_message(self.lineEdit_devMgPage_initWarn, wrAllReturn,
-                                     "WARNING: clear status register ")
+            self.message_box(wrAllReturn)
             return
 
         """ delay before read status block back """
@@ -845,10 +845,13 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
         """ update status block table """
         # update devMgPage status block tables
-        self.update_status_block_table(self.table_devMgPage_init, 2, 7,
-                                       self.ledDevMgPageInitDev0, self.ledDevMgPageInitDev1, False)
-        self.update_status_block_table(self.table_devMgPage_cur, 2, 7,
-                                       self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, True)
+        if not self.update_status_block_table(self.table_devMgPage_init, 2, 7,
+                                       self.ledDevMgPageInitDev0, self.ledDevMgPageInitDev1, False):
+            return
+
+        if not self.update_status_block_table(self.table_devMgPage_cur, 2, 7,
+                                       self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, True):
+            return
 
 
         """ update buttons status """
@@ -869,36 +872,31 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         """ clear fmea2 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x07, 0x04, 0x00, 0x00)  # write all Reg07 = 0x0004, alseed=0x00
         if (wrAllReturn == ("message return RX error" or "pec check error")):
-            self.set_warning_message(self.lineEdit_devMgPage_initWarn, wrAllReturn,
-                                     "WARNING: clear fmea2 ")
+            self.message_box(wrAllReturn)
             return
 
         """ clear fmea1 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x06, 0xFF, 0x87, 0x00)  # write all Reg06 = 0x87FF, alseed=0x00
         if (wrAllReturn == ("message return RX error" or "pec check error")):
-            self.set_warning_message(self.lineEdit_devMgPage_initWarn, wrAllReturn,
-                                     "WARNING: clear fmea1 ")
+            self.message_box(wrAllReturn)
             return
 
         """ clear status2 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x05, 0x8F, 0xFF, 0x00)  # write all Reg05 = 0xFF8F, alseed=0x00
         if (wrAllReturn == ("message return RX error" or "pec check error")):
-            self.set_warning_message(self.lineEdit_devMgPage_initWarn, wrAllReturn,
-                                     "WARNING: clear status2 ")
+            self.message_box(wrAllReturn)
             return
 
         """ clear status1 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x04, 0x00, 0x20, 0x00)  # write all Reg04 = 0x2000, alseed=0x00
         if (wrAllReturn == ("message return RX error" or "pec check error")):
-            self.set_warning_message(self.lineEdit_devMgPage_initWarn, wrAllReturn,
-                                     "WARNING: clear status1 ")
+            self.message_box(wrAllReturn)
             return
 
         """ clear status1 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x04, 0x00, 0x40, 0x00)  # write all Reg04 = 0x4000, alseed=0x00
         if (wrAllReturn == ("message return RX error" or "pec check error")):
-            self.set_warning_message(self.lineEdit_devMgPage_initWarn, wrAllReturn,
-                                     "WARNING: clear status1 ")
+            self.message_box(wrAllReturn)
             return
 
         """ delay before read status block back """
@@ -906,10 +904,13 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
         """ update status block table """
         # update devMgPage status block tables
-        self.update_status_block_table(self.table_devMgPage_init, 2, 7,
-                                       self.ledDevMgPageInitDev0, self.ledDevMgPageInitDev1, False)
-        self.update_status_block_table(self.table_devMgPage_cur, 2, 7,
-                                       self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, True)
+        if not self.update_status_block_table(self.table_devMgPage_init, 2, 7,
+                                       self.ledDevMgPageInitDev0, self.ledDevMgPageInitDev1, False):
+            return
+
+        if not self.update_status_block_table(self.table_devMgPage_cur, 2, 7,
+                                       self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, True):
+            return
 
 
     def slot_pushBtn_devMgPage_clear(self):
@@ -927,8 +928,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         """ clear status1 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x04, 0x00, 0x20, 0x00)  # write all Reg04 = 0x2000, alseed=0x00
         if (wrAllReturn == ("message return RX error" or "pec check error")):
-            self.set_warning_message(self.lineEdit_devMgPage_initWarn, wrAllReturn,
-                                     "WARNING: clear status1 ")
+            self.message_box(wrAllReturn)
             return
 
         """ delay before read status block back """
@@ -936,8 +936,9 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
         """ update status block table """
         # update devMgPage status block tables
-        self.update_status_block_table(self.table_devMgPage_cur, 2, 7,
-                                       self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, True)
+        if not self.update_status_block_table(self.table_devMgPage_cur, 2, 7,
+                                       self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, True):
+            return
 
 
     def slot_pushBtn_devMgPage_readBack(self):
@@ -950,10 +951,18 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         # read status1
         if self.flagSingleAfe:
             rtData = pb01_read_all(self.hidBdg, 0x04, 1, 0x00)
-            dcByte = rtData[4]
+            if (rtData == ("message return RX error" or "pec check error")):
+                self.message_box(rtData)
+                return
+            else:
+                dcByte = rtData[4]
         else:
             rtData = pb01_read_all(self.hidBdg, 0x04, 2, 0x00)
-            dcByte = rtData[6]
+            if (rtData == ("message return RX error" or "pec check error")):
+                self.message_box(rtData)
+                return
+            else:
+                dcByte = rtData[6]
         # update dc table
         self.update_dc_aleter_table(self.table_devMgPage_dc, dcByte, self.ledDevMgPageDcByte,
                                     self.ledDevMgPageAlertPk, self.lineEdit_devMgPage_initWarn)
@@ -961,10 +970,18 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         # read status2
         if self.flagSingleAfe:
             rtData = pb01_read_all(self.hidBdg, 0x05, 1, 0x00)
-            dcByte = rtData[4]
+            if (rtData == ("message return RX error" or "pec check error")):
+                self.message_box(rtData)
+                return
+            else:
+                dcByte = rtData[4]
         else:
             rtData = pb01_read_all(self.hidBdg, 0x05, 2, 0x00)
-            dcByte = rtData[6]
+            if (rtData == ("message return RX error" or "pec check error")):
+                self.message_box(rtData)
+                return
+            else:
+                dcByte = rtData[6]
         # update dc table
         self.update_dc_aleter_table(self.table_devMgPage_dc, dcByte, self.ledDevMgPageDcByte,
                                     self.ledDevMgPageAlertPk, self.lineEdit_devMgPage_initWarn)
@@ -972,10 +989,18 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         # read fmea1
         if self.flagSingleAfe:
             rtData = pb01_read_all(self.hidBdg, 0x06, 1, 0x00)
-            dcByte = rtData[4]
+            if (rtData == ("message return RX error" or "pec check error")):
+                self.message_box(rtData)
+                return
+            else:
+                dcByte = rtData[4]
         else:
             rtData = pb01_read_all(self.hidBdg, 0x06, 2, 0x00)
-            dcByte = rtData[6]
+            if (rtData == ("message return RX error" or "pec check error")):
+                self.message_box(rtData)
+                return
+            else:
+                dcByte = rtData[6]
         # update dc table
         self.update_dc_aleter_table(self.table_devMgPage_dc, dcByte, self.ledDevMgPageDcByte,
                                     self.ledDevMgPageAlertPk, self.lineEdit_devMgPage_initWarn)
@@ -983,17 +1008,27 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         # read fmea2
         if self.flagSingleAfe:
             rtData = pb01_read_all(self.hidBdg, 0x07, 1, 0x00)
-            dcByte = rtData[4]
+            if (rtData == ("message return RX error" or "pec check error")):
+                self.message_box(rtData)
+                return
+            else:
+                dcByte = rtData[4]
         else:
             rtData = pb01_read_all(self.hidBdg, 0x07, 2, 0x00)
-            dcByte = rtData[6]
+            if (rtData == ("message return RX error" or "pec check error")):
+                self.message_box(rtData)
+                return
+            else:
+                dcByte = rtData[6]
         # update dc table
         self.update_dc_aleter_table(self.table_devMgPage_dc, dcByte, self.ledDevMgPageDcByte,
                                     self.ledDevMgPageAlertPk, self.lineEdit_devMgPage_initWarn)
 
+
         """ update status block table """
-        self.update_status_block_table(self.table_devMgPage_cur, 2, 7,
-                                       self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, True)
+        if not self.update_status_block_table(self.table_devMgPage_cur, 2, 7,
+                                       self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, True):
+            return
 
 
     def setupNotification(self):

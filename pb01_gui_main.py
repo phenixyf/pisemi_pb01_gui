@@ -315,22 +315,22 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         # write register
         rtWr = pb01_write_all(self.hidBdg, pRegAddr, pRegDataLsb, pRegDataMsb, 0x00)  # write all, alseed=0x00
         if (rtWr == ("message return RX error" or "pec check error")):
-            self.set_warning_message(self.lineEdit_chainCfg_cfgWarn, rtWr, f"WARNING: Write reg{hex(pRegAddr)} ")
-            return "error"
+            self.message_box(rtWr)
+            return False
 
         # read register
         if self.flagSingleAfe:
             rtRd = pb01_read_all(self.hidBdg, pRegAddr, 1, 0x00)  # read all, alseed=0x00
             if (rtRd == ("message return RX error" or "pec check error")):
-                self.set_warning_message(self.lineEdit_chainCfg_cfgWarn, rtRd, f"WARNING: Read reg{hex(pRegAddr)} ")
-                return "error"
+                self.message_box(rtRd)
+                return False
             else:
                 return rtRd[2:4]
         else:
             rtRd = pb01_read_all(self.hidBdg, pRegAddr, 2, 0x00)  # read all, alseed=0x00
             if (rtRd == ("message return RX error" or "pec check error")):
-                self.set_warning_message(self.lineEdit_chainCfg_cfgWarn, rtRd, f"WARNING: Read reg{hex(pRegAddr)} ")
-                return "error"
+                self.message_box(rtRd)
+                return False
             else:
                 return rtRd[2:6]
 
@@ -654,7 +654,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         """ write and read all UIFCFG register """
         ''' set uppath, enable dc byte & alive count '''
         rtUifCfg = self.afe_write_read_all(0x10, 0x00, 0x26)  # write all A10=0x2600
-        if rtUifCfg != "error":
+        if rtUifCfg != False:
             if self.flagSingleAfe:  # single afe
                 rdDataDev0 = (rtUifCfg[1]<<8) | rtUifCfg[0]
                 self.update_table_item_data(self.table_chainCfg_uifcfgReg, 0, 3, hex(rdDataDev0)[2:])
@@ -692,7 +692,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                                                     # (topDevAddr = 1, botDevAddr = 0)
                                                                     # alseed=0x00
 
-        if rtAddrCfg != "error":
+        if rtAddrCfg != False:
             if self.flagSingleAfe:  # single afe
                 rdDataDev0 = (rtAddrCfg[1] << 8) | rtAddrCfg[0]
                 unlockBitDev0 = rdDataDev0 >> 15
@@ -735,50 +735,61 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
         """ read device 0 id block """
         rtIdBlkDev0 = pb01_read_block(self.hidBdg, 4, 0, 0x00, 0x00)  # read dev0 id block, alseed=0x00
-        devid0 =  (rtIdBlkDev0[4] << 8) | rtIdBlkDev0[3]
-        devid1 =  (rtIdBlkDev0[6] << 8) | rtIdBlkDev0[5]
-        devid2 =  (rtIdBlkDev0[8] << 8) | rtIdBlkDev0[7]
-        version = (rtIdBlkDev0[10] << 8) | rtIdBlkDev0[9]
-        generation = (version & 0xE000) >> 13
-        chCnt = (version & 0x1F00) >> 8
-        swVer = (version & 0x00F0) >> 4
-        hwVer = version & 0x000F
-        listIdDev0 = [hex(devid0)[2:].zfill(4), hex(devid1)[2:].zfill(4),
-                      hex(devid2)[2:].zfill(4), hex(version)[2:].zfill(4),
-                      str(generation), str(chCnt),
-                      hex(swVer)[2:], hex(hwVer)[2:]]
-        for i in range(3, 11):
-            self.update_table_item_data(self.table_chainCfg_devIdBlk, 0, i,
-                                        listIdDev0[i - 3])  # device 0
-
-        """ read device 1 id block """
-        if self.flagSingleAfe == False:
-            rtIdBlkDev1 = pb01_read_block(self.hidBdg, 4, 1, 0x00, 0x00)  # read dev1 id block, alseed=0x00
-            devid0 = (rtIdBlkDev1[4] << 8) | rtIdBlkDev1[3]
-            devid1 = (rtIdBlkDev1[6] << 8) | rtIdBlkDev1[5]
-            devid2 = (rtIdBlkDev1[8] << 8) | rtIdBlkDev1[7]
-            version = (rtIdBlkDev1[10] << 8) | rtIdBlkDev1[9]
+        if (rtIdBlkDev0 == ("message return RX error" or "pec check error")):
+            self.message_box(rtIdBlkDev0)
+            return
+        else:
+            devid0 =  (rtIdBlkDev0[4] << 8) | rtIdBlkDev0[3]
+            devid1 =  (rtIdBlkDev0[6] << 8) | rtIdBlkDev0[5]
+            devid2 =  (rtIdBlkDev0[8] << 8) | rtIdBlkDev0[7]
+            version = (rtIdBlkDev0[10] << 8) | rtIdBlkDev0[9]
             generation = (version & 0xE000) >> 13
             chCnt = (version & 0x1F00) >> 8
             swVer = (version & 0x00F0) >> 4
             hwVer = version & 0x000F
-            listIdDev1 = [hex(devid0)[2:].zfill(4), hex(devid1)[2:].zfill(4),
+            listIdDev0 = [hex(devid0)[2:].zfill(4), hex(devid1)[2:].zfill(4),
                           hex(devid2)[2:].zfill(4), hex(version)[2:].zfill(4),
                           str(generation), str(chCnt),
                           hex(swVer)[2:], hex(hwVer)[2:]]
             for i in range(3, 11):
-                self.update_table_item_data(self.table_chainCfg_devIdBlk, 1, i,
-                                            listIdDev1[i - 3])  # device 0
+                self.update_table_item_data(self.table_chainCfg_devIdBlk, 0, i,
+                                            listIdDev0[i - 3])  # device 0
+
+        """ read device 1 id block """
+        if self.flagSingleAfe == False:
+            rtIdBlkDev1 = pb01_read_block(self.hidBdg, 4, 1, 0x00, 0x00)  # read dev1 id block, alseed=0x00
+            if (rtIdBlkDev1 == ("message return RX error" or "pec check error")):
+                self.message_box(rtIdBlkDev1)
+                return
+            else:
+                devid0 = (rtIdBlkDev1[4] << 8) | rtIdBlkDev1[3]
+                devid1 = (rtIdBlkDev1[6] << 8) | rtIdBlkDev1[5]
+                devid2 = (rtIdBlkDev1[8] << 8) | rtIdBlkDev1[7]
+                version = (rtIdBlkDev1[10] << 8) | rtIdBlkDev1[9]
+                generation = (version & 0xE000) >> 13
+                chCnt = (version & 0x1F00) >> 8
+                swVer = (version & 0x00F0) >> 4
+                hwVer = version & 0x000F
+                listIdDev1 = [hex(devid0)[2:].zfill(4), hex(devid1)[2:].zfill(4),
+                              hex(devid2)[2:].zfill(4), hex(version)[2:].zfill(4),
+                              str(generation), str(chCnt),
+                              hex(swVer)[2:], hex(hwVer)[2:]]
+                for i in range(3, 11):
+                    self.update_table_item_data(self.table_chainCfg_devIdBlk, 1, i,
+                                                listIdDev1[i - 3])  # device 0
 
         ''' update status block table '''
         # update chainCfgPage status block table
-        self.update_status_block_table(self.table_chainCfg_pw, 3, 5,
-                                       self.ledChainPageDev0, self.ledChainPageDev1, False)
+        if not self.update_status_block_table(self.table_chainCfg_pw, 3, 5,
+                                              self.ledChainPageDev0, self.ledChainPageDev1, False):
+            return
         # update devMgPage status block tables
-        self.update_status_block_table(self.table_devMgPage_init, 2, 7,
-                                       self.ledDevMgPageInitDev0, self.ledDevMgPageInitDev1, False)
-        self.update_status_block_table(self.table_devMgPage_cur, 2, 7,
-                                       self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, True)
+        if not self.update_status_block_table(self.table_devMgPage_init, 2, 7,
+                                              self.ledDevMgPageInitDev0, self.ledDevMgPageInitDev1, False):
+            return
+        if not self.update_status_block_table(self.table_devMgPage_cur, 2, 7,
+                                              self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, True):
+            return
 
         ''' update buttons status '''
         # chainCfg page (page 1)
@@ -912,7 +923,6 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         if (wrAllReturn == ("message return RX error" or "pec check error")):
             self.message_box(wrAllReturn)
             return
-
 
         """ clear status1 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x04, 0x00, 0x20, 0x00)  # write all Reg04 = 0x2000, alseed=0x00

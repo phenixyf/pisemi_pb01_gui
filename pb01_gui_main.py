@@ -268,6 +268,19 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.pushBtn_disable(self.pushButton_devMgPage_readBack)    # read back
 
 
+    def message_box(self, pMessage):
+        """
+        弹出消息框
+        :param pWarning: 消息框要显示的信息
+        :return:
+        """
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Warning)  # 设置消息框图标
+        msg.setWindowTitle('Message')  # 设置消息框标题
+        msg.setText(pMessage)  # 设置消息框显示信息
+        msg.setStandardButtons(QMessageBox.Ok)  # 设置一个标准按钮OK
+        msg.exec_()  # 显示消息框
+
 
     def set_warning_message(self, pWarnLineEdit, pMes, pPrefix="WARNING:"):
         """
@@ -483,90 +496,99 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         :param pFlagTem: 有的 table 没有 temp1, temp2 和 GPIO，通过此值判断是否要填写这 3 行
                          True - 要填写这三行
                          False - 不要填写这三行
-        :return: DC byte
+        :return: DC byte - DC byte has alert
+                 False - read block fail
         """
         dcDev0 = 0
         dcDev1 = 0
         """ device 0 process """
         ''' read device 0 status block '''
         rtStaBlkDev0 = pb01_read_block(self.hidBdg, 7, 0, 0x04, 0x00)  # read dev0 id block, alseed=0x00
-        status1Dev0 = (rtStaBlkDev0[4] << 8) | rtStaBlkDev0[3]
-        status2Dev0 = (rtStaBlkDev0[6] << 8) | rtStaBlkDev0[5]
-        fmea1Dev0 = (rtStaBlkDev0[8] << 8) | rtStaBlkDev0[7]
-        fmea2Dev0 = (rtStaBlkDev0[10] << 8) | rtStaBlkDev0[9]
-        temp1Dev0 = (rtStaBlkDev0[12] << 8) | rtStaBlkDev0[11]
-        temp2Dev0 = (rtStaBlkDev0[14] << 8) | rtStaBlkDev0[13]
-        gpioDataDev0 = (rtStaBlkDev0[16] << 8) | rtStaBlkDev0[15]
-        dcDev0 = rtStaBlkDev0[17]
-        listStaDev0 = [hex(status1Dev0)[2:].zfill(4), hex(status2Dev0)[2:].zfill(4),
-                       hex(fmea1Dev0)[2:].zfill(4), hex(fmea2Dev0)[2:].zfill(4)]
-        listTemGpDev0 = [hex(temp1Dev0)[2:].zfill(4), hex(temp2Dev0)[2:].zfill(4),
-                         hex(gpioDataDev0)[2:].zfill(4)]
+        if (rtStaBlkDev0 == ("message return RX error" or "pec check error")):
+            self.message_box(rtStaBlkDev0)
+            return False
+        else:
+            status1Dev0 = (rtStaBlkDev0[4] << 8) | rtStaBlkDev0[3]
+            status2Dev0 = (rtStaBlkDev0[6] << 8) | rtStaBlkDev0[5]
+            fmea1Dev0 = (rtStaBlkDev0[8] << 8) | rtStaBlkDev0[7]
+            fmea2Dev0 = (rtStaBlkDev0[10] << 8) | rtStaBlkDev0[9]
+            temp1Dev0 = (rtStaBlkDev0[12] << 8) | rtStaBlkDev0[11]
+            temp2Dev0 = (rtStaBlkDev0[14] << 8) | rtStaBlkDev0[13]
+            gpioDataDev0 = (rtStaBlkDev0[16] << 8) | rtStaBlkDev0[15]
+            dcDev0 = rtStaBlkDev0[17]
+            listStaDev0 = [hex(status1Dev0)[2:].zfill(4), hex(status2Dev0)[2:].zfill(4),
+                           hex(fmea1Dev0)[2:].zfill(4), hex(fmea2Dev0)[2:].zfill(4)]
+            listTemGpDev0 = [hex(temp1Dev0)[2:].zfill(4), hex(temp2Dev0)[2:].zfill(4),
+                             hex(gpioDataDev0)[2:].zfill(4)]
 
-        temp1CelDev0 = str(round(temp1Dev0 / 8 - 273.15, 2)) + "°C"
-        temp2CelDev0 = str(round(temp2Dev0 / 8 - 273.15, 2)) + "°C"
-        temp1FhDev0 = str(round((temp1Dev0 /8 - 273.15) * 9 / 5 + 32, 2)) + "°F"
-        temp2FhDev0 = str(round((temp2Dev0 /8 - 273.15) * 9 / 5 + 32, 2)) + "°F"
+            temp1CelDev0 = str(round(temp1Dev0 / 8 - 273.15, 2)) + "°C"
+            temp2CelDev0 = str(round(temp2Dev0 / 8 - 273.15, 2)) + "°C"
+            temp1FhDev0 = str(round((temp1Dev0 /8 - 273.15) * 9 / 5 + 32, 2)) + "°F"
+            temp2FhDev0 = str(round((temp2Dev0 /8 - 273.15) * 9 / 5 + 32, 2)) + "°F"
 
-        listTemValDev0 = [[temp1CelDev0, temp1FhDev0], [temp2CelDev0, temp2FhDev0],
-                          [hex(rtStaBlkDev0[16])[2:].zfill(2), hex(rtStaBlkDev0[15])[2:].zfill(2)]]
+            listTemValDev0 = [[temp1CelDev0, temp1FhDev0], [temp2CelDev0, temp2FhDev0],
+                              [hex(rtStaBlkDev0[16])[2:].zfill(2), hex(rtStaBlkDev0[15])[2:].zfill(2)]]
 
-        ''' fill data into dev0 status table '''
-        for r in range(4):  # fill table
-            self.update_table_item_data(pTable, r + 1, pDev0Col,
-                                        listStaDev0[r])  # device 0
-        if pFlagTem:
-            for r in range(5, 8):
-                self.update_table_item_data(pTable, r, pDev0Col,
-                                            listTemGpDev0[r - 5])  # device 0
-                self.update_table_item_data(pTable, r, 3,
-                                            listTemValDev0[r - 5][0])  # device 0
-                self.update_table_item_data(pTable, r, 5,
-                                            listTemValDev0[r - 5][1])  # device 0
+            ''' fill data into dev0 status table '''
+            for r in range(4):  # fill table
+                self.update_table_item_data(pTable, r + 1, pDev0Col,
+                                            listStaDev0[r])  # device 0
+            if pFlagTem:
+                for r in range(5, 8):
+                    self.update_table_item_data(pTable, r, pDev0Col,
+                                                listTemGpDev0[r - 5])  # device 0
+                    self.update_table_item_data(pTable, r, 3,
+                                                listTemValDev0[r - 5][0])  # device 0
+                    self.update_table_item_data(pTable, r, 5,
+                                                listTemValDev0[r - 5][1])  # device 0
 
-        ''' update dev0 status table led '''
-        self.update_status_register_led(status1Dev0, status2Dev0, fmea1Dev0, fmea2Dev0, pDev0LedList)
+            ''' update dev0 status table led '''
+            self.update_status_register_led(status1Dev0, status2Dev0, fmea1Dev0, fmea2Dev0, pDev0LedList)
 
         """ device 1 process """
         ''' read device 1 status block '''
         if self.flagSingleAfe == False:
             rtStaBlkDev1 = pb01_read_block(self.hidBdg, 7, 1, 0x04, 0x00)  # read dev1 id block, alseed=0x00
-            status1Dev1 = (rtStaBlkDev1[4] << 8) | rtStaBlkDev1[3]
-            status2Dev1 = (rtStaBlkDev1[6] << 8) | rtStaBlkDev1[5]
-            fmea1Dev1 = (rtStaBlkDev1[8] << 8) | rtStaBlkDev1[7]
-            fmea2Dev1 = (rtStaBlkDev1[10] << 8) | rtStaBlkDev1[9]
-            temp1Dev1 = (rtStaBlkDev0[12] << 8) | rtStaBlkDev0[11]
-            temp2Dev1 = (rtStaBlkDev0[14] << 8) | rtStaBlkDev0[13]
-            gpioDataDev1 = (rtStaBlkDev0[16] << 8) | rtStaBlkDev0[15]
-            dcDev1 = rtStaBlkDev1[17]
-            listStaDev1 = [hex(status1Dev1)[2:].zfill(4), hex(status2Dev1)[2:].zfill(4),
-                           hex(fmea1Dev1)[2:].zfill(4), hex(fmea2Dev1)[2:].zfill(4)]
-            listTemGpDev1 = [hex(temp1Dev1)[2:].zfill(4), hex(temp2Dev1)[2:].zfill(4),
-                             hex(gpioDataDev1)[2:].zfill(4)]
+            if (rtStaBlkDev1 == ("message return RX error" or "pec check error")):
+                self.message_box(rtStaBlkDev1)
+                return False
+            else:
+                status1Dev1 = (rtStaBlkDev1[4] << 8) | rtStaBlkDev1[3]
+                status2Dev1 = (rtStaBlkDev1[6] << 8) | rtStaBlkDev1[5]
+                fmea1Dev1 = (rtStaBlkDev1[8] << 8) | rtStaBlkDev1[7]
+                fmea2Dev1 = (rtStaBlkDev1[10] << 8) | rtStaBlkDev1[9]
+                temp1Dev1 = (rtStaBlkDev0[12] << 8) | rtStaBlkDev0[11]
+                temp2Dev1 = (rtStaBlkDev0[14] << 8) | rtStaBlkDev0[13]
+                gpioDataDev1 = (rtStaBlkDev0[16] << 8) | rtStaBlkDev0[15]
+                dcDev1 = rtStaBlkDev1[17]
+                listStaDev1 = [hex(status1Dev1)[2:].zfill(4), hex(status2Dev1)[2:].zfill(4),
+                               hex(fmea1Dev1)[2:].zfill(4), hex(fmea2Dev1)[2:].zfill(4)]
+                listTemGpDev1 = [hex(temp1Dev1)[2:].zfill(4), hex(temp2Dev1)[2:].zfill(4),
+                                 hex(gpioDataDev1)[2:].zfill(4)]
 
-            temp1CelDev1 = str(round(temp1Dev1 / 8 - 273.15, 2)) + "°C"
-            temp2CelDev1 = str(round(temp2Dev1 / 8 - 273.15, 2)) + "°C"
-            temp1FhDev1 = str(round((temp1Dev1 / 8 - 273.15) * 9 / 5 + 32, 2)) + "°F"
-            temp2FhDev1 = str(round((temp2Dev1 / 8 - 273.15) * 9 / 5 + 32, 2)) + "°F"
+                temp1CelDev1 = str(round(temp1Dev1 / 8 - 273.15, 2)) + "°C"
+                temp2CelDev1 = str(round(temp2Dev1 / 8 - 273.15, 2)) + "°C"
+                temp1FhDev1 = str(round((temp1Dev1 / 8 - 273.15) * 9 / 5 + 32, 2)) + "°F"
+                temp2FhDev1 = str(round((temp2Dev1 / 8 - 273.15) * 9 / 5 + 32, 2)) + "°F"
 
-            listTemValDev1 = [[temp1CelDev1, temp1FhDev1], [temp2CelDev1, temp2FhDev1],
-                              [hex(rtStaBlkDev1[16])[2:].zfill(2), hex(rtStaBlkDev1[15])[2:].zfill(2)]]
+                listTemValDev1 = [[temp1CelDev1, temp1FhDev1], [temp2CelDev1, temp2FhDev1],
+                                  [hex(rtStaBlkDev1[16])[2:].zfill(2), hex(rtStaBlkDev1[15])[2:].zfill(2)]]
 
-            ''' fill data into dev1 status table '''
-            for r in range(4):  # fill table
-                self.update_table_item_data(pTable, r + 1, pDev1Col,
-                                            listStaDev1[r])  # device 1
-            if pFlagTem:
-                for r in range(5, 8):
-                    self.update_table_item_data(pTable, r, pDev1Col,
-                                                listTemGpDev1[r - 5])  # device 1
-                    self.update_table_item_data(pTable, r, 8,
-                                                listTemValDev1[r - 5][0])  # device 1
-                    self.update_table_item_data(pTable, r, 10,
-                                                listTemValDev1[r - 5][1])  # device 1
+                ''' fill data into dev1 status table '''
+                for r in range(4):  # fill table
+                    self.update_table_item_data(pTable, r + 1, pDev1Col,
+                                                listStaDev1[r])  # device 1
+                if pFlagTem:
+                    for r in range(5, 8):
+                        self.update_table_item_data(pTable, r, pDev1Col,
+                                                    listTemGpDev1[r - 5])  # device 1
+                        self.update_table_item_data(pTable, r, 8,
+                                                    listTemValDev1[r - 5][0])  # device 1
+                        self.update_table_item_data(pTable, r, 10,
+                                                    listTemValDev1[r - 5][1])  # device 1
 
-            ''' update dev1 status table led '''
-            self.update_status_register_led(status1Dev1, status2Dev1, fmea1Dev1, fmea2Dev1, pDev1LedList)
+                ''' update dev1 status table led '''
+                self.update_status_register_led(status1Dev1, status2Dev1, fmea1Dev1, fmea2Dev1, pDev1LedList)
 
         if dcDev0 != 0x00:
             return dcDev0
@@ -574,6 +596,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             return dcDev1
         else:
             return 0x00
+
 
     def pushBtn_disable(self, pBtn):
         """
@@ -878,8 +901,6 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                        self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, True)
 
 
-
-
     def slot_pushBtn_devMgPage_clear(self):
         time.sleep(BTN_OP_DELAY)
 
@@ -889,9 +910,9 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         """ clear status2 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x05, 0x8F, 0xFF, 0x00)  # write all Reg05 = 0xFF8F, alseed=0x00
         if (wrAllReturn == ("message return RX error" or "pec check error")):
-            self.set_warning_message(self.lineEdit_devMgPage_initWarn, wrAllReturn,
-                                     "WARNING: clear status2 ")
+            self.message_box(wrAllReturn)
             return
+
 
         """ clear status1 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x04, 0x00, 0x20, 0x00)  # write all Reg04 = 0x2000, alseed=0x00

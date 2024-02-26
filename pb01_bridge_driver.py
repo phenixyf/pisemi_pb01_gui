@@ -34,7 +34,10 @@ def max17841_reg_read(pHidDev, pAddr):
     sdoData = ch32_spi_full_duplex(pHidDev, [pAddr, 0], 2)  # max17841 寄存器位宽为 1 个 byte
                                                             # 所以在发送完地址后，只要再发送一个 dummy byte
                                                             # 用于 MISO 上读取数据即可
-    return sdoData[1]   # 只返回 1 个 byte
+    if len(sdoData) == 0:
+        return "max17841 register read error"
+    else:
+        return sdoData[1]   # 只返回 1 个 byte
 
 
 def max17841_reg_write(pHidDev, pAddr, pData):
@@ -88,6 +91,40 @@ def max17841_buf_read(pHidDev, pLdLoc, pReadNum):
 
     read_data = ch32_spi_full_duplex(pHidDev, send_data, pReadNum+1)
     return read_data[1:]
+
+
+def max17841_clear_rx_buf(pHidDev):
+    """
+    pb01 api 在执行操作前，都先调用此函数，清空一下 17841 rx buffer
+    清空的方法是通过判断当前 rx 中数据量，然后全部读出的方法
+    :param pHidDev:
+    :return: Ture - clear successfully
+             False - time out
+    """
+    rtData =0x00
+    rx_data_space = 0x3E - rtData  # calculate current rx data space
+    start_time = time.time()
+    while rx_data_space != 0:
+        max17841_buf_read(pHidDev, 0x93, rx_data_space)  # through read RX to clear this buffer
+        time.sleep(0.01)
+
+        rtData = max17841_reg_read(pHidDev, 0x1B)  # read current rx space register
+        if rtData != "max17841 register read error":
+            # calculate current rx data space
+            rx_data_space = 0x3E - rtData
+            # check if timeout
+            if time.time() - start_time > UART_MSG_RETURN_TIMEOUT:
+                return False    # clear rx buffer time out
+
+            if SCRIPT_DEBUG:
+                print(f"current rx data space is: {rx_data_space}")
+        else:
+            if SCRIPT_DEBUG:
+                print("read max17841 register get none")
+            if time.time() - start_time > UART_MSG_RETURN_TIMEOUT:  # Check if wait has timeout
+                return False    # read max17841 register time out
+
+    return True     # clear 17841 rx successfully
 
 
 def max17841_set_shdn(pHidDev, pValue):
@@ -229,17 +266,9 @@ def pb01_write(pHidDev, pLdLoc, pMsgLen, pUartMsg, pAliveSeed = 0):
              "pec check error"： pec check fail
              数据列表：发出的数据返回 bridger receive buffer，并被读出，返回的就是从 receive buffer 读出的 Loopback 数据
     """
-    """ check bridge RX is empty  """
-    rx_data_space = 0x3E - max17841_reg_read(pHidDev, 0x1B)  # read current rx data space
-    while rx_data_space != 0:
-        if SCRIPT_DEBUG:
-            print(f"current RX is not empty, rx data space is: {rx_data_space}")
-            print(f"bridge A01 = {hex(max17841_reg_read(pHidDev, 0x01))}")
-            print(f"bridge A09 = {hex(max17841_reg_read(pHidDev, 0x09))}")
-
-        max17841_buf_read(pHidDev, 0x93, rx_data_space)  # read RX
-        time.sleep(0.01)
-        rx_data_space = 0x3E - max17841_reg_read(pHidDev, 0x1B)  # read current rx data space again
+    """ check bridge RX is empty """
+    if max17841_clear_rx_buf(pHidDev) == False:
+        return "clear rx error"
 
     """ uart operation """
     ''' calculate pec '''
@@ -289,16 +318,8 @@ def pb01_read(pHidDev, pLdLoc, pMsgLen, pUartMsg, pAliveSeed):
              数据列表：要读取的数据返回 bridger receive buffer，并被读出，返回的就是从 receive buffer 读出的数据
     """
     """ check bridge RX is empty """
-    rx_data_space = 0x3E - max17841_reg_read(pHidDev, 0x1B)     # read current rx data space
-    while rx_data_space != 0:
-        if SCRIPT_DEBUG:
-            print(f"current RX is not empty, rx data space is: {rx_data_space}")
-            print(f"bridge A01 = {hex(max17841_reg_read(pHidDev, 0x01))}")
-            print(f"bridge A09 = {hex(max17841_reg_read(pHidDev, 0x09))}")
-
-        max17841_buf_read(pHidDev, 0x93, rx_data_space)     # read RX
-        time.sleep(0.01)
-        rx_data_space = 0x3E - max17841_reg_read(pHidDev, 0x1B) # read current rx data space again
+    if max17841_clear_rx_buf(pHidDev) == False:
+        return "clear rx error"
 
     """ uart operation """
     pec = cal_pec(pUartMsg)
@@ -341,17 +362,9 @@ def pb01_write_por(pHidDev, pLdLoc, pMsgLen, pUartMsg, pAliveSeed = 0):
     :param pAliveSeed: alive count seed
     :return:
     """
-    """ check bridge RX is empty  """
-    rx_data_space = 0x3E - max17841_reg_read(pHidDev, 0x1B)  # read current rx data space
-    while rx_data_space != 0:
-        if SCRIPT_DEBUG:
-            print(f"current RX is not empty, rx data space is: {rx_data_space}")
-            print(f"bridge A01 = {hex(max17841_reg_read(pHidDev, 0x01))}")
-            print(f"bridge A09 = {hex(max17841_reg_read(pHidDev, 0x09))}")
-
-        max17841_buf_read(pHidDev, 0x93, rx_data_space)  # read RX
-        time.sleep(0.01)
-        rx_data_space = 0x3E - max17841_reg_read(pHidDev, 0x1B)  # read current rx data space again
+    """ check bridge RX is empty """
+    if max17841_clear_rx_buf(pHidDev) == False:
+        return "clear rx error"
 
     """ uart operation """
     ''' calculate pec '''
@@ -568,16 +581,8 @@ def pb01_17841_alert_packet(pHidDev):
                  数据列表：发出的数据返回 bridger receive buffer，并被读出，返回的就是从 receive buffer 读出的 Loopback 数据
         """
     """ check bridge RX is empty """
-    rx_data_space = 0x3E - max17841_reg_read(pHidDev, 0x1B)  # read current rx data space
-    while rx_data_space != 0:
-        if SCRIPT_DEBUG:
-            print(f"current RX is not empty, rx data space is: {rx_data_space}")
-            print(f"bridge A01 = {hex(max17841_reg_read(pHidDev, 0x01))}")
-            print(f"bridge A09 = {hex(max17841_reg_read(pHidDev, 0x09))}")
-
-        max17841_buf_read(pHidDev, 0x93, rx_data_space)  # read RX
-        time.sleep(0.01)
-        rx_data_space = 0x3E - max17841_reg_read(pHidDev, 0x1B)  # read current rx data space again
+    if max17841_clear_rx_buf(pHidDev) == False:
+        return "clear rx error"
 
     """ 调用 firmware 中拼接 ALERTPACKET command 的流程 """
     data = [0x1, 5, 0x04, 0x0, 0x0, 0x0, 0x0]
@@ -607,16 +612,8 @@ def pb01_path_up(pHidDev, pDevCntSeed):
     :return:
     """
     """ check bridge RX is empty """
-    rx_data_space = 0x3E - max17841_reg_read(pHidDev, 0x1B)  # read current rx data space
-    while rx_data_space != 0:
-        if SCRIPT_DEBUG:
-            print(f"current RX is not empty, rx data space is: {rx_data_space}")
-            print(f"bridge A01 = {hex(max17841_reg_read(pHidDev, 0x01))}")
-            print(f"bridge A09 = {hex(max17841_reg_read(pHidDev, 0x09))}")
-
-        max17841_buf_read(pHidDev, 0x93, rx_data_space)  # read RX
-        time.sleep(0.01)
-        rx_data_space = 0x3E - max17841_reg_read(pHidDev, 0x1B)  # read current rx data space again
+    if max17841_clear_rx_buf(pHidDev) == False:
+        return "clear rx error"
 
     ''' send message queue into transmit buffer '''
     max17841_buf_write(pHidDev, 0xC0, 3, [0x08, 0x00, pDevCntSeed])
@@ -642,16 +639,8 @@ def pb01_path_down(pHidDev, pDevCntSeed):
     :return:
     """
     """ check bridge RX is empty """
-    rx_data_space = 0x3E - max17841_reg_read(pHidDev, 0x1B)  # read current rx data space
-    while rx_data_space != 0:
-        if SCRIPT_DEBUG:
-            print(f"current RX is not empty, rx data space is: {rx_data_space}")
-            print(f"bridge A01 = {hex(max17841_reg_read(pHidDev, 0x01))}")
-            print(f"bridge A09 = {hex(max17841_reg_read(pHidDev, 0x09))}")
-
-        max17841_buf_read(pHidDev, 0x93, rx_data_space)  # read RX
-        time.sleep(0.01)
-        rx_data_space = 0x3E - max17841_reg_read(pHidDev, 0x1B)  # read current rx data space again
+    if max17841_clear_rx_buf(pHidDev) == False:
+        return "clear rx error"
 
     ''' send message queue into transmit buffer '''
     max17841_buf_write(pHidDev, 0xC0, 3, [0x09, 0x00, pDevCntSeed])

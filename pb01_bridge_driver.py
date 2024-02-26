@@ -101,30 +101,70 @@ def max17841_clear_rx_buf(pHidDev):
     :return: Ture - clear successfully
              False - time out
     """
-    rtData =0x00
-    rx_data_space = 0x3E - rtData  # calculate current rx data space
+    rx_data_space = 0x3E
+    # rtData =0x00
+    # rx_data_space = 0x3E - rtData  # calculate current rx data space
     start_time = time.time()
     while rx_data_space != 0:
         max17841_buf_read(pHidDev, 0x93, rx_data_space)  # through read RX to clear this buffer
         time.sleep(0.01)
 
         rtData = max17841_reg_read(pHidDev, 0x1B)  # read current rx space register
+
         if rtData != "max17841 register read error":
             # calculate current rx data space
             rx_data_space = 0x3E - rtData
             # check if timeout
             if time.time() - start_time > UART_MSG_RETURN_TIMEOUT:
+                if SCRIPT_DEBUG:
+                    print(f"clear 17841 rx: time out")
                 return False    # clear rx buffer time out
 
             if SCRIPT_DEBUG:
-                print(f"current rx data space is: {rx_data_space}")
-        else:
+                print(f"clear 17841 rx: current rx space is: {rx_data_space}")
+
+        else:   # read 17841 register fail
             if SCRIPT_DEBUG:
-                print("read max17841 register get none")
+                print("clear 17841 rx: read max17841 R1B get none")
             if time.time() - start_time > UART_MSG_RETURN_TIMEOUT:  # Check if wait has timeout
+                if SCRIPT_DEBUG:
+                    print(f"clear 17841 rx: read R01 fail and time out")
                 return False    # read max17841 register time out
 
     return True     # clear 17841 rx successfully
+
+
+def max17841_check_msg_return_bridge(pHidDev):
+    """
+    判断之前发出的 message 是否从菊花链返回 bridge
+    max17841 可以通过判断读取 R01 是否等于 0x12 来判断是否有 message 返回
+    :param pHidDev:
+    :return: True - return
+             False - timeout
+    """
+    start_time = time.time()
+    curReg = 0x00
+    while curReg != 0x12:
+        curReg = max17841_reg_read(pHidDev, 0x01)
+        if curReg != "max17841 register read error":  # read 17841 register ok
+            # Check if wait has timeout
+            if time.time() - start_time > UART_MSG_RETURN_TIMEOUT:
+                if SCRIPT_DEBUG:
+                    print(f"check message return: wait time out")
+                return False  # return false because wait time out
+
+            if SCRIPT_DEBUG:
+                print(f"check message return: current 17841 R01 = {hex(curReg)}")
+
+        else:   # read 17841 R01 fail
+            if SCRIPT_DEBUG:
+                print("check message return: read max17841 R01 get none")
+            if time.time() - start_time > UART_MSG_RETURN_TIMEOUT:
+                if SCRIPT_DEBUG:
+                    print(f"read R01 fail and time out")
+                return False  # return false because read R01 fail
+
+    return True   # get message back
 
 
 def max17841_set_shdn(pHidDev, pValue):
@@ -268,7 +308,7 @@ def pb01_write(pHidDev, pLdLoc, pMsgLen, pUartMsg, pAliveSeed = 0):
     """
     """ check bridge RX is empty """
     if max17841_clear_rx_buf(pHidDev) == False:
-        return "clear rx error"
+        return "message return RX error"
 
     """ uart operation """
     ''' calculate pec '''
@@ -281,11 +321,8 @@ def pb01_write(pHidDev, pLdLoc, pMsgLen, pUartMsg, pAliveSeed = 0):
     max17841_reg_command(pHidDev, 0xB0)
 
     ''' check message return back to bridge '''
-    start_time = time.time()
-    while max17841_reg_read(pHidDev, 0x01) != 0x12:
-        print(hex(max17841_reg_read(pHidDev, 0x01)))
-        if time.time() - start_time > UART_MSG_RETURN_TIMEOUT:  # Check if wait has timeout
-            return "message return RX error"    # return loopback message fail
+    if max17841_check_msg_return_bridge(pHidDev) == False:
+        return "message return RX error"
 
     ''' read return data '''
     return_data = max17841_buf_read(pHidDev, 0x93, len(pUartMsg + [pec]+ [pAliveSeed]))
@@ -319,7 +356,7 @@ def pb01_read(pHidDev, pLdLoc, pMsgLen, pUartMsg, pAliveSeed):
     """
     """ check bridge RX is empty """
     if max17841_clear_rx_buf(pHidDev) == False:
-        return "clear rx error"
+        return "message return RX error"
 
     """ uart operation """
     pec = cal_pec(pUartMsg)
@@ -331,10 +368,8 @@ def pb01_read(pHidDev, pLdLoc, pMsgLen, pUartMsg, pAliveSeed):
     max17841_reg_command(pHidDev, 0xB0)
 
     ''' check message return back to bridge '''
-    start_time = time.time()
-    while max17841_reg_read(pHidDev, 0x01) != 0x12:
-        if time.time() - start_time > UART_MSG_RETURN_TIMEOUT:  # Check if wait has timeout
-            return "message return RX error"    # return loopback message fail
+    if max17841_check_msg_return_bridge(pHidDev) == False:
+        return "message return RX error"
 
     ''' read return data '''
     return_data = max17841_buf_read(pHidDev, 0x93, pMsgLen)
@@ -348,6 +383,7 @@ def pb01_read(pHidDev, pLdLoc, pMsgLen, pUartMsg, pAliveSeed):
             hex_return_data = [hex(n) for n in return_data]
             print(hex_return_data)
         return "pec check error"    # pec check fail
+
 
 def pb01_write_por(pHidDev, pLdLoc, pMsgLen, pUartMsg, pAliveSeed = 0):
     """
@@ -582,17 +618,15 @@ def pb01_17841_alert_packet(pHidDev):
         """
     """ check bridge RX is empty """
     if max17841_clear_rx_buf(pHidDev) == False:
-        return "clear rx error"
+        return "message return RX error"
 
     """ 调用 firmware 中拼接 ALERTPACKET command 的流程 """
     data = [0x1, 5, 0x04, 0x0, 0x0, 0x0, 0x0]
     pHidDev.write(data)
 
     ''' check message return back to bridge '''
-    start_time = time.time()
-    while max17841_reg_read(pHidDev, 0x01) != 0x12:
-        if time.time() - start_time > UART_MSG_RETURN_TIMEOUT:  # Check if wait has timeout
-            return "message return RX error"  # return loopback message fail
+    if max17841_check_msg_return_bridge(pHidDev) == False:
+        return "message return RX error"
 
     ''' read return data '''
     return_data = max17841_buf_read(pHidDev, 0x93, 8)
@@ -613,7 +647,7 @@ def pb01_path_up(pHidDev, pDevCntSeed):
     """
     """ check bridge RX is empty """
     if max17841_clear_rx_buf(pHidDev) == False:
-        return "clear rx error"
+        return "message return RX error"
 
     ''' send message queue into transmit buffer '''
     max17841_buf_write(pHidDev, 0xC0, 3, [0x08, 0x00, pDevCntSeed])
@@ -622,10 +656,8 @@ def pb01_path_up(pHidDev, pDevCntSeed):
     max17841_reg_command(pHidDev, 0xB0)
 
     ''' check message return back to bridge '''
-    start_time = time.time()
-    while max17841_reg_read(pHidDev, 0x01) != 0x12:
-        if time.time() - start_time > UART_MSG_RETURN_TIMEOUT:  # Check if wait has timeout
-            return "message return RX error"  # return loopback message fail
+    if max17841_check_msg_return_bridge(pHidDev) == False:
+        return "message return RX error"
 
     ''' read return data '''
     return max17841_buf_read(pHidDev, 0x93, 3)
@@ -640,7 +672,7 @@ def pb01_path_down(pHidDev, pDevCntSeed):
     """
     """ check bridge RX is empty """
     if max17841_clear_rx_buf(pHidDev) == False:
-        return "clear rx error"
+        return "message return RX error"
 
     ''' send message queue into transmit buffer '''
     max17841_buf_write(pHidDev, 0xC0, 3, [0x09, 0x00, pDevCntSeed])
@@ -649,10 +681,8 @@ def pb01_path_down(pHidDev, pDevCntSeed):
     max17841_reg_command(pHidDev, 0xB0)
 
     ''' check message return back to bridge '''
-    start_time = time.time()
-    while max17841_reg_read(pHidDev, 0x01) != 0x12:
-        if time.time() - start_time > UART_MSG_RETURN_TIMEOUT:  # Check if wait has timeout
-            return "message return RX error"  # return loopback message fail
+    if max17841_check_msg_return_bridge(pHidDev) == False:
+        return "message return RX error"
 
     ''' read return data '''
     return max17841_buf_read(pHidDev, 0x93, 3)

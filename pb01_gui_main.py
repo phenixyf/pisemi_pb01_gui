@@ -274,6 +274,12 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         :param pWarning: 消息框要显示的信息
         :return:
         """
+        self.hidBdg.close()
+        self.hidBdg = None
+        time.sleep(0.05)
+        self.hidBdg = hid.device()
+        self.hidBdg.open(0x1a86, 0xfe07)
+
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Warning)  # 设置消息框图标
         msg.setWindowTitle('Message')  # 设置消息框标题

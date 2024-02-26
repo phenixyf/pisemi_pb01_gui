@@ -5,7 +5,7 @@
 
 import time
 
-SCRIPT_DEBUG = True                 # Ture: 使能 debug print; False: 关闭 debug print
+SCRIPT_DEBUG = False                 # Ture: 使能 debug print; False: 关闭 debug print
 UART_MSG_RETURN_TIMEOUT  = 2        # 等待菊花链消息传回 bridge RX 的 timeout 时间 （5s)
 
 from hid_driver import *

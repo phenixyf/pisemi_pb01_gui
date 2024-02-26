@@ -6,7 +6,7 @@
 import time
 
 SCRIPT_DEBUG = True                 # Ture: 使能 debug print; False: 关闭 debug print
-UART_MSG_RETURN_TIMEOUT  = 5        # 等待菊花链消息传回 bridge RX 的 timeout 时间 （5s)
+UART_MSG_RETURN_TIMEOUT  = 2        # 等待菊花链消息传回 bridge RX 的 timeout 时间 （5s)
 
 from hid_driver import *
 
@@ -524,30 +524,30 @@ def pb01_daisy_chain_initial(pHidDev, pDevAddSeed):
 
 
 
-def pb01_write_all(pHidDev, pRegAddr, pDataLsb, pDataMsb, pAliveSeed):
+def pb01_write_all(pHidDev, pRegAddr, pData, pAliveSeed):
     """
     execute UART WRITEALL command
     :param pHidDev: hid bridge object
     :param pRegAddr: PB01 register address
-    :param pDataLsb: write data LSB
-    :param pDataMsb: write data MSB
+    :param pData: write data
     :param pAliveSeed: alive count seed
     :return: 返回值分三种情况
              "message return RX error": 发出的数据没有正常返回 bridge receive buffer
              "pec check error"： pec check fail
              数据列表：发出的数据返回 bridger receive buffer，并被读出，返回的就是从 receive buffer 读出的 Loopback 数据
     """
-    return pb01_write(pHidDev, 0xC0, 0x06, [0x02, pRegAddr, pDataLsb, pDataMsb], pAliveSeed)
+    dataLsb = pData & 0x00FF
+    dataMsb = (pData & 0xFF00) >> 8
+    return pb01_write(pHidDev, 0xC0, 0x06, [0x02, pRegAddr, dataLsb, dataMsb], pAliveSeed)
 
 
-def pb01_write_device(pHidDev, pDevAddr, pRegAddr, pDataLsb, pDataMsb, pAliveSeed):
+def pb01_write_device(pHidDev, pDevAddr, pRegAddr, pData, pAliveSeed):
     """
     execute UART WRITEDEVICE command
     :param pHidDev: hid bridge object
     :param pDevAddr: device address (note: should be less than 31)
     :param pRegAddr: PB01 register address
-    :param pDataLsb: write data LSB
-    :param pDataMsb: write data MSB
+    :param pData: write data
     :param pAliveSeed: alive count seed
     :return: 返回值分三种情况
              "message return RX error": 发出的数据没有正常返回 bridge receive buffer
@@ -555,7 +555,9 @@ def pb01_write_device(pHidDev, pDevAddr, pRegAddr, pDataLsb, pDataMsb, pAliveSee
              数据列表：发出的数据返回 bridger receive buffer，并被读出，返回的就是从 receive buffer 读出的 Loopback 数据
     """
     cmd = (pDevAddr << 3) | 0x4
-    return pb01_write(pHidDev, 0xC0, 0x06, [cmd, pRegAddr, pDataLsb, pDataMsb], pAliveSeed)
+    dataLsb = pData & 0x00FF
+    dataMsb = (pData & 0xFF00) >> 8
+    return pb01_write(pHidDev, 0xC0, 0x06, [cmd, pRegAddr, dataLsb, dataMsb], pAliveSeed)
 
 
 def pb01_read_all(pHidDev, pRegAddr, pDevNum, pAliveSeed):

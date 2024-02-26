@@ -302,18 +302,17 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         pWarnLineEdit.setStyleSheet(lineEdit_default_style)
         pWarnLineEdit.setText("WARNING:")
 
-    def afe_write_read_all(self, pRegAddr, pRegDataLsb, pRegDataMsb):
+    def afe_write_read_all(self, pRegAddr, pData):
         """
         向 daisy-chain 所有 AFE 某个寄存器写入数据，并再读取所有 AFE 该寄存器
         注意：本工程目前只支持 2 个 AFE，通过 AFE radio 选择，所以读取多少个 AFE 在函数实现中用 AFE radio 当前状态来判断
         :param pRegAddr: 要读写的寄存器地址
-        :param pRegDataLsb: data lsb
-        :param pRegDataMsb: data msb
+        :param pData: data
         :return: 返回一个列表，
                  列表中包含从 daisy-chain 读取的所有 AFE 该寄存器的数据，如 [afe0DataLsb, afe0DataMsb, afe1DataLsb, afe1DataMsb]
         """
         # write register
-        rtWr = pb01_write_all(self.hidBdg, pRegAddr, pRegDataLsb, pRegDataMsb, 0x00)  # write all, alseed=0x00
+        rtWr = pb01_write_all(self.hidBdg, pRegAddr, pData, 0x00)  # write all, alseed=0x00
         if (rtWr == ("message return RX error" or "pec check error")):
             self.message_box(rtWr)
             return False
@@ -653,7 +652,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
         """ write and read all UIFCFG register """
         ''' set uppath, enable dc byte & alive count '''
-        rtUifCfg = self.afe_write_read_all(0x10, 0x00, 0x26)  # write all A10=0x2600
+        rtUifCfg = self.afe_write_read_all(0x10, 0x2600)  # write all A10=0x2600
         if rtUifCfg != False:
             if self.flagSingleAfe:  # single afe
                 rdDataDev0 = (rtUifCfg[1]<<8) | rtUifCfg[0]
@@ -684,11 +683,11 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         """ write and read all ADDRCFG register """
         ''' set top & bottom address '''
         if self.flagSingleAfe:
-            rtAddrCfg = self.afe_write_read_all(0x11, 0x00, 0x00)   # write all A11=0x0020
+            rtAddrCfg = self.afe_write_read_all(0x11, 0x0000)   # write all A11=0x0020
                                                                     # (topDevAddr = 0, botDevAddr = 0)
                                                                     # alseed=0x00
         else:
-            rtAddrCfg = self.afe_write_read_all(0x11, 0x20, 0x00)   # write all A11=0x0020
+            rtAddrCfg = self.afe_write_read_all(0x11, 0x0020)   # write all A11=0x0020
                                                                     # (topDevAddr = 1, botDevAddr = 0)
                                                                     # alseed=0x00
 
@@ -802,9 +801,14 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
     def slot_pushBtn_chainCfg_reset(self):
         time.sleep(BTN_OP_DELAY)
 
+        # reset max17841
+        max17841_init(self.hidBdg)
+
+        time.sleep(0.05)
+
         # force por
         if not pb01_por(self.hidBdg):
-            self.message_box("set pb01 POR fail")
+            self.message_box("Set PB01 POR fail")
             return
 
         # re-initial ui
@@ -829,13 +833,13 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.set_default_warn_bar(self.lineEdit_devMgPage_initWarn)
 
         """ clear status2 expected alerts """
-        wrAllReturn = pb01_write_all(self.hidBdg, 0x05, 0x80, 0x00, 0x00)   # write all Reg05 = 0x0080, alseed=0x00
+        wrAllReturn = pb01_write_all(self.hidBdg, 0x05, 0x0080, 0x00)   # write all Reg05 = 0x0080, alseed=0x00
         if (wrAllReturn == ("message return RX error" or "pec check error")):
             self.message_box(wrAllReturn)
             return
 
         """ clear status1 expected alerts """
-        wrAllReturn = pb01_write_all(self.hidBdg, 0x04, 0x00, 0x40, 0x00)  # write all Reg05 = 0x4000, alseed=0x00
+        wrAllReturn = pb01_write_all(self.hidBdg, 0x04, 0x4000, 0x00)  # write all Reg05 = 0x4000, alseed=0x00
         if (wrAllReturn == ("message return RX error" or "pec check error")):
             self.message_box(wrAllReturn)
             return
@@ -870,31 +874,31 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.set_default_warn_bar(self.lineEdit_devMgPage_initWarn)
 
         """ clear fmea2 expected alerts """
-        wrAllReturn = pb01_write_all(self.hidBdg, 0x07, 0x04, 0x00, 0x00)  # write all Reg07 = 0x0004, alseed=0x00
+        wrAllReturn = pb01_write_all(self.hidBdg, 0x07, 0x0004, 0x00)  # write all Reg07 = 0x0004, alseed=0x00
         if (wrAllReturn == ("message return RX error" or "pec check error")):
             self.message_box(wrAllReturn)
             return
 
         """ clear fmea1 expected alerts """
-        wrAllReturn = pb01_write_all(self.hidBdg, 0x06, 0xFF, 0x87, 0x00)  # write all Reg06 = 0x87FF, alseed=0x00
+        wrAllReturn = pb01_write_all(self.hidBdg, 0x06, 0x87FF, 0x00)  # write all Reg06 = 0x87FF, alseed=0x00
         if (wrAllReturn == ("message return RX error" or "pec check error")):
             self.message_box(wrAllReturn)
             return
 
         """ clear status2 expected alerts """
-        wrAllReturn = pb01_write_all(self.hidBdg, 0x05, 0x8F, 0xFF, 0x00)  # write all Reg05 = 0xFF8F, alseed=0x00
+        wrAllReturn = pb01_write_all(self.hidBdg, 0x05, 0xFF8F, 0x00)  # write all Reg05 = 0xFF8F, alseed=0x00
         if (wrAllReturn == ("message return RX error" or "pec check error")):
             self.message_box(wrAllReturn)
             return
 
         """ clear status1 expected alerts """
-        wrAllReturn = pb01_write_all(self.hidBdg, 0x04, 0x00, 0x20, 0x00)  # write all Reg04 = 0x2000, alseed=0x00
+        wrAllReturn = pb01_write_all(self.hidBdg, 0x04, 0x2000, 0x00)  # write all Reg04 = 0x2000, alseed=0x00
         if (wrAllReturn == ("message return RX error" or "pec check error")):
             self.message_box(wrAllReturn)
             return
 
         """ clear status1 expected alerts """
-        wrAllReturn = pb01_write_all(self.hidBdg, 0x04, 0x00, 0x40, 0x00)  # write all Reg04 = 0x4000, alseed=0x00
+        wrAllReturn = pb01_write_all(self.hidBdg, 0x04, 0x4000, 0x00)  # write all Reg04 = 0x4000, alseed=0x00
         if (wrAllReturn == ("message return RX error" or "pec check error")):
             self.message_box(wrAllReturn)
             return
@@ -920,13 +924,13 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.set_default_warn_bar(self.lineEdit_devMgPage_initWarn)
 
         """ clear status2 expected alerts """
-        wrAllReturn = pb01_write_all(self.hidBdg, 0x05, 0x8F, 0xFF, 0x00)  # write all Reg05 = 0xFF8F, alseed=0x00
+        wrAllReturn = pb01_write_all(self.hidBdg, 0x05, 0xFF8F, 0x00)  # write all Reg05 = 0xFF8F, alseed=0x00
         if (wrAllReturn == ("message return RX error" or "pec check error")):
             self.message_box(wrAllReturn)
             return
 
         """ clear status1 expected alerts """
-        wrAllReturn = pb01_write_all(self.hidBdg, 0x04, 0x00, 0x20, 0x00)  # write all Reg04 = 0x2000, alseed=0x00
+        wrAllReturn = pb01_write_all(self.hidBdg, 0x04, 0x2000, 0x00)  # write all Reg04 = 0x2000, alseed=0x00
         if (wrAllReturn == ("message return RX error" or "pec check error")):
             self.message_box(wrAllReturn)
             return

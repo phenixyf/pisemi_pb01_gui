@@ -313,21 +313,21 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         """
         # write register
         rtWr = pb01_write_all(self.hidBdg, pRegAddr, pData, 0x00)  # write all, alseed=0x00
-        if (rtWr == ("message return RX error" or "pec check error")):
+        if rtWr == "message return RX error" or rtWr == "pec check error":
             self.message_box(rtWr)
             return False
 
         # read register
         if self.flagSingleAfe:
             rtRd = pb01_read_all(self.hidBdg, pRegAddr, 1, 0x00)  # read all, alseed=0x00
-            if (rtRd == ("message return RX error" or "pec check error")):
+            if rtRd == "message return RX error" or rtRd == "pec check error":
                 self.message_box(rtRd)
                 return False
             else:
                 return rtRd[2:4]
         else:
             rtRd = pb01_read_all(self.hidBdg, pRegAddr, 2, 0x00)  # read all, alseed=0x00
-            if (rtRd == ("message return RX error" or "pec check error")):
+            if rtRd == "message return RX error" or rtRd == "pec check error":
                 self.message_box(rtRd)
                 return False
             else:
@@ -416,7 +416,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             self.set_warning_message(pWarnLine, "DC byte has alert", "WARNING: ")
             # send alertpacket command
             alertPkReturn = pb01_17841_alert_packet(self.hidBdg)
-            if (alertPkReturn == ("message return RX error" or "pec check error")):
+            if alertPkReturn == "message return RX error" or alertPkReturn == "pec check error":
                 self.set_warning_message(pWarnLine, alertPkReturn, "WARNING: ALERTPACKET ")
             else:
                 alertPkData = (alertPkReturn[6] << 40) | (alertPkReturn[5] << 32) | (alertPkReturn[4] << 24) \
@@ -503,7 +503,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         """ device 0 process """
         ''' read device 0 status block '''
         rtStaBlkDev0 = pb01_read_block(self.hidBdg, 7, 0, 0x04, 0x00)  # read dev0 id block, alseed=0x00
-        if (rtStaBlkDev0 == ("message return RX error" or "pec check error")):
+        if (rtStaBlkDev0 == "message return RX error" or rtStaBlkDev0 == "pec check error"):
             self.message_box(rtStaBlkDev0)
             return False
         else:
@@ -548,7 +548,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         ''' read device 1 status block '''
         if self.flagSingleAfe == False:
             rtStaBlkDev1 = pb01_read_block(self.hidBdg, 7, 1, 0x04, 0x00)  # read dev1 id block, alseed=0x00
-            if (rtStaBlkDev1 == ("message return RX error" or "pec check error")):
+            if (rtStaBlkDev1 == "message return RX error" or rtStaBlkDev1 == "pec check error"):
                 self.message_box(rtStaBlkDev1)
                 return False
             else:
@@ -649,6 +649,11 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                          f"Daisy chain has 1 device, please change AFE radio selection",
                                          "WARNING:")
                 return
+            else:
+                if SCRIPT_DEBUG:
+                    print(f"initial daisy-chain successfully")
+                else:
+                    pass
 
         """ write and read all UIFCFG register """
         ''' set uppath, enable dc byte & alive count '''
@@ -734,7 +739,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
         """ read device 0 id block """
         rtIdBlkDev0 = pb01_read_block(self.hidBdg, 4, 0, 0x00, 0x00)  # read dev0 id block, alseed=0x00
-        if (rtIdBlkDev0 == ("message return RX error" or "pec check error")):
+        if rtIdBlkDev0 == "message return RX error" or rtIdBlkDev0 == "pec check error":
             self.message_box(rtIdBlkDev0)
             return
         else:
@@ -757,7 +762,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         """ read device 1 id block """
         if self.flagSingleAfe == False:
             rtIdBlkDev1 = pb01_read_block(self.hidBdg, 4, 1, 0x00, 0x00)  # read dev1 id block, alseed=0x00
-            if (rtIdBlkDev1 == ("message return RX error" or "pec check error")):
+            if rtIdBlkDev1 == "message return RX error" or rtIdBlkDev1 == "pec check error":
                 self.message_box(rtIdBlkDev1)
                 return
             else:
@@ -834,13 +839,13 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
         """ clear status2 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x05, 0x0080, 0x00)   # write all Reg05 = 0x0080, alseed=0x00
-        if (wrAllReturn == ("message return RX error" or "pec check error")):
+        if wrAllReturn == "message return RX error" or wrAllReturn == "pec check error":
             self.message_box(wrAllReturn)
             return
 
         """ clear status1 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x04, 0x4000, 0x00)  # write all Reg05 = 0x4000, alseed=0x00
-        if (wrAllReturn == ("message return RX error" or "pec check error")):
+        if wrAllReturn == "message return RX error" or wrAllReturn == "pec check error":
             self.message_box(wrAllReturn)
             return
 
@@ -875,31 +880,31 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
         """ clear fmea2 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x07, 0x0004, 0x00)  # write all Reg07 = 0x0004, alseed=0x00
-        if (wrAllReturn == ("message return RX error" or "pec check error")):
+        if wrAllReturn == "message return RX error" or wrAllReturn == "pec check error":
             self.message_box(wrAllReturn)
             return
 
         """ clear fmea1 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x06, 0x87FF, 0x00)  # write all Reg06 = 0x87FF, alseed=0x00
-        if (wrAllReturn == ("message return RX error" or "pec check error")):
+        if wrAllReturn == "message return RX error" or wrAllReturn == "pec check error":
             self.message_box(wrAllReturn)
             return
 
         """ clear status2 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x05, 0xFF8F, 0x00)  # write all Reg05 = 0xFF8F, alseed=0x00
-        if (wrAllReturn == ("message return RX error" or "pec check error")):
+        if wrAllReturn == "message return RX error" or wrAllReturn == "pec check error":
             self.message_box(wrAllReturn)
             return
 
         """ clear status1 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x04, 0x2000, 0x00)  # write all Reg04 = 0x2000, alseed=0x00
-        if (wrAllReturn == ("message return RX error" or "pec check error")):
+        if wrAllReturn == "message return RX error" or wrAllReturn == "pec check error":
             self.message_box(wrAllReturn)
             return
 
         """ clear status1 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x04, 0x4000, 0x00)  # write all Reg04 = 0x4000, alseed=0x00
-        if (wrAllReturn == ("message return RX error" or "pec check error")):
+        if wrAllReturn == "message return RX error" or wrAllReturn == "pec check error":
             self.message_box(wrAllReturn)
             return
 
@@ -925,13 +930,13 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
         """ clear status2 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x05, 0xFF8F, 0x00)  # write all Reg05 = 0xFF8F, alseed=0x00
-        if (wrAllReturn == ("message return RX error" or "pec check error")):
+        if wrAllReturn == "message return RX error" or wrAllReturn == "pec check error":
             self.message_box(wrAllReturn)
             return
 
         """ clear status1 expected alerts """
         wrAllReturn = pb01_write_all(self.hidBdg, 0x04, 0x2000, 0x00)  # write all Reg04 = 0x2000, alseed=0x00
-        if (wrAllReturn == ("message return RX error" or "pec check error")):
+        if wrAllReturn == "message return RX error" or wrAllReturn == "pec check error":
             self.message_box(wrAllReturn)
             return
 
@@ -955,14 +960,14 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         # read status1
         if self.flagSingleAfe:
             rtData = pb01_read_all(self.hidBdg, 0x04, 1, 0x00)
-            if (rtData == ("message return RX error" or "pec check error")):
+            if rtData == "message return RX error" or rtData == "pec check error":
                 self.message_box(rtData)
                 return
             else:
                 dcByte = rtData[4]
         else:
             rtData = pb01_read_all(self.hidBdg, 0x04, 2, 0x00)
-            if (rtData == ("message return RX error" or "pec check error")):
+            if rtData == "message return RX error" or rtData == "pec check error":
                 self.message_box(rtData)
                 return
             else:
@@ -974,14 +979,14 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         # read status2
         if self.flagSingleAfe:
             rtData = pb01_read_all(self.hidBdg, 0x05, 1, 0x00)
-            if (rtData == ("message return RX error" or "pec check error")):
+            if rtData == "message return RX error" or rtData == "pec check error":
                 self.message_box(rtData)
                 return
             else:
                 dcByte = rtData[4]
         else:
             rtData = pb01_read_all(self.hidBdg, 0x05, 2, 0x00)
-            if (rtData == ("message return RX error" or "pec check error")):
+            if rtData == "message return RX error" or rtData == "pec check error":
                 self.message_box(rtData)
                 return
             else:
@@ -993,14 +998,14 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         # read fmea1
         if self.flagSingleAfe:
             rtData = pb01_read_all(self.hidBdg, 0x06, 1, 0x00)
-            if (rtData == ("message return RX error" or "pec check error")):
+            if rtData == "message return RX error" or rtData == "pec check error":
                 self.message_box(rtData)
                 return
             else:
                 dcByte = rtData[4]
         else:
             rtData = pb01_read_all(self.hidBdg, 0x06, 2, 0x00)
-            if (rtData == ("message return RX error" or "pec check error")):
+            if rtData == "message return RX error" or rtData == "pec check error":
                 self.message_box(rtData)
                 return
             else:
@@ -1012,14 +1017,14 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         # read fmea2
         if self.flagSingleAfe:
             rtData = pb01_read_all(self.hidBdg, 0x07, 1, 0x00)
-            if (rtData == ("message return RX error" or "pec check error")):
+            if rtData == "message return RX error" or rtData == "pec check error":
                 self.message_box(rtData)
                 return
             else:
                 dcByte = rtData[4]
         else:
             rtData = pb01_read_all(self.hidBdg, 0x07, 2, 0x00)
-            if (rtData == ("message return RX error" or "pec check error")):
+            if rtData == "message return RX error" or rtData == "pec check error":
                 self.message_box(rtData)
                 return
             else:

@@ -102,8 +102,6 @@ def max17841_clear_rx_buf(pHidDev):
              False - time out
     """
     rx_data_space = 0x3E
-    # rtData =0x00
-    # rx_data_space = 0x3E - rtData  # calculate current rx data space
     start_time = time.time()
     while rx_data_space != 0:
         max17841_buf_read(pHidDev, 0x93, rx_data_space)  # through read RX to clear this buffer
@@ -476,10 +474,11 @@ def pb01_daisy_chain_initial(pHidDev, pDevAddSeed):
 
     ''' TRANSACTION9: Clear receive buffer '''
     max17841_reg_command(pHidDev, 0xE0)  # Clear receive buffer
+    time.sleep(0.05)    # wait clear operation done
 
     ''' TRANSACTION10: Load the HELLOALL command sequence into the load queue '''
     max17841_buf_write(pHidDev, 0xC0, 0x03, [0x57, 0x00, pDevAddSeed])  # Load the HELLOALL command sequence into the load queue
-                                                                 # seed address is 0x00
+                                                                        # seed address is 0x00
 
     ''' TRANSACTION11: Verify contents of the load queue '''
     return_data = [hex(n) for n in max17841_buf_read(pHidDev, 0xC1, 4)]
@@ -505,20 +504,8 @@ def pb01_daisy_chain_initial(pHidDev, pDevAddSeed):
     return_data = max17841_buf_read(pHidDev, 0x93, 3)   # read returned message
 
     ''' check bridge RX is empty '''
-    rx_data_space = 0x3E - max17841_reg_read(pHidDev, 0x1B)     # read current rx data space
-    start_time = time.time()
-    while rx_data_space != 0:
-        if SCRIPT_DEBUG:
-            print(f"current RX is not empty, rx data space is: {rx_data_space}")
-            print(f"bridge A01 = {hex(max17841_reg_read(pHidDev, 0x01))}")
-            print(f"bridge A09 = {hex(max17841_reg_read(pHidDev, 0x09))}")
-
-        max17841_buf_read(pHidDev, 0x93, rx_data_space)     # read RX
-        time.sleep(0.01)
-        rx_data_space = 0x3E - max17841_reg_read(pHidDev, 0x1B) # read current rx data space again
-
-        if time.time() - start_time > UART_MSG_RETURN_TIMEOUT:      # Check if wait has timeout
-            return "clear bridge rx buffer time out"                # return timeout message
+    if max17841_check_msg_return_bridge(pHidDev) == False:
+        return "clear bridge rx buffer time out"
 
     return [hex(n) for n in return_data]
 

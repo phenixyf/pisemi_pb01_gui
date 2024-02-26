@@ -101,17 +101,17 @@ def max17841_clear_rx_buf(pHidDev):
     :return: Ture - clear successfully
              False - time out
     """
-    rx_data_space = 0x3E
+    rxEtyNum = 0x00
     start_time = time.time()
-    while rx_data_space != 0:
-        max17841_buf_read(pHidDev, 0x93, rx_data_space)  # through read RX to clear this buffer
+    while rxEtyNum != 0x3E:
+        bufData = max17841_buf_read(pHidDev, 0x93, 0x3E - rxEtyNum)  # through read RX to clear this buffer
         time.sleep(0.01)
+        if SCRIPT_DEBUG:
+            print(f"clear 17841 rx: rx data is", bufData)
 
-        rtData = max17841_reg_read(pHidDev, 0x1B)  # read current rx space register
+        rxEtyNum = max17841_reg_read(pHidDev, 0x1B)  # read current rx space register
 
-        if rtData != "max17841 register read error":
-            # calculate current rx data space
-            rx_data_space = 0x3E - rtData
+        if rxEtyNum != "max17841 register read error":
             # check if timeout
             if time.time() - start_time > UART_MSG_RETURN_TIMEOUT:
                 if SCRIPT_DEBUG:
@@ -119,7 +119,7 @@ def max17841_clear_rx_buf(pHidDev):
                 return False    # clear rx buffer time out
 
             if SCRIPT_DEBUG:
-                print(f"clear 17841 rx: current rx space is: {rx_data_space}")
+                print(f"clear 17841 rx: current rx space is: {rxEtyNum}")
 
         else:   # read 17841 register fail
             if SCRIPT_DEBUG:

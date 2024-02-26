@@ -635,6 +635,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         if (daisyChainReturn == ("transaction5 time out" or
                                  "transaction7 time out" or
                                  "transaction13 time out" or
+                                 "HELLOALL message return error" or
                                  "clear bridge rx buffer time out")):
             self.set_warning_message(self.lineEdit_chainCfg_cfgWarn, daisyChainReturn, "WARNING: Daisy chain initial error ")
             return

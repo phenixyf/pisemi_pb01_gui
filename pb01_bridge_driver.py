@@ -90,7 +90,11 @@ def max17841_buf_read(pHidDev, pLdLoc, pReadNum):
         send_data.append(0)
 
     read_data = ch32_spi_full_duplex(pHidDev, send_data, pReadNum+1)
-    return read_data[1:]
+
+    if len(read_data) == 0:
+        return "max17841 read buf error"
+    else:
+        return read_data[1:]
 
 
 def max17841_clear_rx_buf(pHidDev):
@@ -105,6 +109,11 @@ def max17841_clear_rx_buf(pHidDev):
     start_time = time.time()
     while rxEtyNum != 0x3E:
         bufData = max17841_buf_read(pHidDev, 0x93, 0x3E - rxEtyNum)  # through read RX to clear this buffer
+        if bufData == "max17841 read buf error":
+            if SCRIPT_DEBUG:
+                print(f"clear 17841 rx: read buf error")
+            continue    # rx buf 读取失败重新读取 rx buf
+
         time.sleep(0.01)
         if SCRIPT_DEBUG:
             print(f"clear 17841 rx: rx data is", bufData)
@@ -228,65 +237,65 @@ def check_pec(pByteList, pPecCode):
     return cal_pec(pByteList) == pPecCode
 
 
-def daisy_chain_initial_sequence_example(pHidDev):
-    print("------- TRANSACTION1: Enable keep-alive mode ------")
-    max17841_reg_write(pHidDev, 0x10, 0x05)  # write configuration 3,set keep-alive period to 160μs
-    print("------- TRANSACTION2: Enable Rx Interrupt flags for RX_Error and RX_Overflow ------")
-    max17841_reg_write(pHidDev, 0x04, 0x88)  # Write RX_Interrupt_Enable register
-    print("------- TRANSACTION3: Clear receive buffer ------")
-    max17841_reg_command(pHidDev, 0xE0)  # Clear receive buffer
-    print("------- TRANSACTION4: Wake-up UART slave devices (transmit preambles) ------")
-    max17841_reg_write(pHidDev, 0x0E, 0x30)         # Write Configuration 2 register
-                                                    # Enable Transmit Preambles mode
-
-    print("------- TRANSACTION5: Wait for all UART slave devices to wake up (poll RX_Busy_Status bit bit[5]) ------")
-    while max17841_reg_read(pHidDev,
-                            0x01) != 0x21:  #Read RX_Status register (RX_Busy_Status and RX_Empty_Status should be true)
-        print(f"current Reg0x01 is: {hex(max17841_reg_read(pHidDev, 0x01))}")
-
-    print("------- TRANSACTION6: End of UART slave device wake-up period ------")
-    max17841_reg_write(pHidDev, 0x0E, 0x10)     # Write Configuration 2 register
-                                                # Disable Transmit Preambles mode
-
-    print("------- TRANSACTION7: Wait for null message to be received (poll RX_Empty_Status bit bit[0]) ------")
-    while max17841_reg_read(pHidDev,
-                            0x01) != 0x11:  # Read RX_Status register (RX_Empty_Status bit should be true)
-        print("RX_Empty_Status bit is not 1, clear RX buffer")
-        max17841_reg_command(pHidDev, 0xE0)  # Clear receive buffer
-        print(f"current Reg0x01 is: {hex(max17841_reg_read(pHidDev, 0x01))}")
-
-    print("------- TRANSACTION8: Clear transmit buffer ------")
-    max17841_reg_command(pHidDev, 0x20)  # Clear transmit buffer
-
-    print("------- TRANSACTION9: Clear receive buffer ------")
-    max17841_reg_command(pHidDev, 0xE0)  # Clear receive buffer
-
-    print("------- TRANSACTION10: Load the HELLOALL command sequence into the load queue ------")
-    max17841_buf_write(pHidDev, 0xC0, 0x03, [0x57, 0x00, 0x00])  # Load the HELLOALL command sequence into the load queue
-                                                                 # seed address is 0x00
-
-    print("------- TRANSACTION11: Verify contents of the load queue ------")
-    return_data = [hex(n) for n in max17841_buf_read(pHidDev, 0xC1, 4)]
-    print(f"current transmit buffer queue value is:{return_data}")
-
-    print("------- TRANSACTION12: Transmit HELLOALL sequence ------")
-    max17841_reg_command(pHidDev, 0xB0)  # WR_NXT_LD_Q SPI command byte (write the next load queue)
-
-    print("------- TRANSACTION13: Wait for HELLOALL message return to bridge (poll RX_Stop_Status bit bit[1]) ------")
-    while max17841_reg_read(pHidDev, 0x01) != 0x12:  # If RX_Stop_Status bit is true, continue
-        print(f" current reg0x01 value is: {hex(max17841_reg_read(pHidDev, 0x01))}")
-        print("If RX_Stop_Status bit is false, then re-send HELLOALL message")
-        max17841_buf_write(pHidDev, 0xC0, 0x03, [0x57, 0x00, 0x00])
-        return_data = [hex(n) for n in max17841_buf_read(pHidDev, 0xC1, 4)]
-        print(f"current transmit buffer queue value is:{return_data}")
-        max17841_reg_command(pHidDev, 0xB0)
-
-    print("------- TRANSACTION14: Read the returned HELLOALL message from bridge receive buffer ------")
-    return_data = [hex(n) for n in max17841_buf_read(pHidDev, 0x93, 3)]
-    print(f"from read buffer get returned HELLOALL message is: {return_data}")
-
-    print("------- TRANSACTION15: Check for receive buffer errors ------")
-    print(f"RX_Interrupt_Flags register 0x09 = {hex(max17841_reg_read(pHidDev, 0x09))}")
+# def daisy_chain_initial_sequence_example(pHidDev):
+#     print("------- TRANSACTION1: Enable keep-alive mode ------")
+#     max17841_reg_write(pHidDev, 0x10, 0x05)  # write configuration 3,set keep-alive period to 160μs
+#     print("------- TRANSACTION2: Enable Rx Interrupt flags for RX_Error and RX_Overflow ------")
+#     max17841_reg_write(pHidDev, 0x04, 0x88)  # Write RX_Interrupt_Enable register
+#     print("------- TRANSACTION3: Clear receive buffer ------")
+#     max17841_reg_command(pHidDev, 0xE0)  # Clear receive buffer
+#     print("------- TRANSACTION4: Wake-up UART slave devices (transmit preambles) ------")
+#     max17841_reg_write(pHidDev, 0x0E, 0x30)         # Write Configuration 2 register
+#                                                     # Enable Transmit Preambles mode
+#
+#     print("------- TRANSACTION5: Wait for all UART slave devices to wake up (poll RX_Busy_Status bit bit[5]) ------")
+#     while max17841_reg_read(pHidDev,
+#                             0x01) != 0x21:  #Read RX_Status register (RX_Busy_Status and RX_Empty_Status should be true)
+#         print(f"current Reg0x01 is: {hex(max17841_reg_read(pHidDev, 0x01))}")
+#
+#     print("------- TRANSACTION6: End of UART slave device wake-up period ------")
+#     max17841_reg_write(pHidDev, 0x0E, 0x10)     # Write Configuration 2 register
+#                                                 # Disable Transmit Preambles mode
+#
+#     print("------- TRANSACTION7: Wait for null message to be received (poll RX_Empty_Status bit bit[0]) ------")
+#     while max17841_reg_read(pHidDev,
+#                             0x01) != 0x11:  # Read RX_Status register (RX_Empty_Status bit should be true)
+#         print("RX_Empty_Status bit is not 1, clear RX buffer")
+#         max17841_reg_command(pHidDev, 0xE0)  # Clear receive buffer
+#         print(f"current Reg0x01 is: {hex(max17841_reg_read(pHidDev, 0x01))}")
+#
+#     print("------- TRANSACTION8: Clear transmit buffer ------")
+#     max17841_reg_command(pHidDev, 0x20)  # Clear transmit buffer
+#
+#     print("------- TRANSACTION9: Clear receive buffer ------")
+#     max17841_reg_command(pHidDev, 0xE0)  # Clear receive buffer
+#
+#     print("------- TRANSACTION10: Load the HELLOALL command sequence into the load queue ------")
+#     max17841_buf_write(pHidDev, 0xC0, 0x03, [0x57, 0x00, 0x00])  # Load the HELLOALL command sequence into the load queue
+#                                                                  # seed address is 0x00
+#
+#     print("------- TRANSACTION11: Verify contents of the load queue ------")
+#     return_data = [hex(n) for n in max17841_buf_read(pHidDev, 0xC1, 4)]
+#     print(f"current transmit buffer queue value is:{return_data}")
+#
+#     print("------- TRANSACTION12: Transmit HELLOALL sequence ------")
+#     max17841_reg_command(pHidDev, 0xB0)  # WR_NXT_LD_Q SPI command byte (write the next load queue)
+#
+#     print("------- TRANSACTION13: Wait for HELLOALL message return to bridge (poll RX_Stop_Status bit bit[1]) ------")
+#     while max17841_reg_read(pHidDev, 0x01) != 0x12:  # If RX_Stop_Status bit is true, continue
+#         print(f" current reg0x01 value is: {hex(max17841_reg_read(pHidDev, 0x01))}")
+#         print("If RX_Stop_Status bit is false, then re-send HELLOALL message")
+#         max17841_buf_write(pHidDev, 0xC0, 0x03, [0x57, 0x00, 0x00])
+#         return_data = [hex(n) for n in max17841_buf_read(pHidDev, 0xC1, 4)]
+#         print(f"current transmit buffer queue value is:{return_data}")
+#         max17841_reg_command(pHidDev, 0xB0)
+#
+#     print("------- TRANSACTION14: Read the returned HELLOALL message from bridge receive buffer ------")
+#     return_data = [hex(n) for n in max17841_buf_read(pHidDev, 0x93, 3)]
+#     print(f"from read buffer get returned HELLOALL message is: {return_data}")
+#
+#     print("------- TRANSACTION15: Check for receive buffer errors ------")
+#     print(f"RX_Interrupt_Flags register 0x09 = {hex(max17841_reg_read(pHidDev, 0x09))}")
 
 
 def pb01_write(pHidDev, pLdLoc, pMsgLen, pUartMsg, pAliveSeed = 0):
@@ -320,19 +329,25 @@ def pb01_write(pHidDev, pLdLoc, pMsgLen, pUartMsg, pAliveSeed = 0):
 
     ''' check message return back to bridge '''
     if max17841_check_msg_return_bridge(pHidDev) == False:
+        if SCRIPT_DEBUG:
+            print("pb01_write: check message return read R01 fail")
         return "message return RX error"
 
     ''' read return data '''
     return_data = max17841_buf_read(pHidDev, 0x93, len(pUartMsg + [pec]+ [pAliveSeed]))
+    if return_data == "max17841 read buf error":
+        if SCRIPT_DEBUG:
+            print("pb01_write: check message return read rx buf fail")
+        return "message return RX error"
 
     ''' check pec '''
     if check_pec( return_data[:-2], return_data[-2]):
         return return_data  # operation success
     else:
         if SCRIPT_DEBUG:
-            print("check pec fail")
+            print("pb01_write: check pec fail")
             hex_return_data = [hex(n) for n in return_data]
-            print(hex_return_data)
+            print("pb01_write: return data ", hex_return_data)
         return "pec check error"    # pec check fail
 
 
@@ -367,19 +382,25 @@ def pb01_read(pHidDev, pLdLoc, pMsgLen, pUartMsg, pAliveSeed):
 
     ''' check message return back to bridge '''
     if max17841_check_msg_return_bridge(pHidDev) == False:
+        if SCRIPT_DEBUG:
+            print("pb01_read: check message return read R01 fail")
         return "message return RX error"
 
     ''' read return data '''
     return_data = max17841_buf_read(pHidDev, 0x93, pMsgLen)
+    if return_data == "max17841 read buf error":
+        if SCRIPT_DEBUG:
+            print("pb01_read: check message return read rx buf fail")
+        return "message return RX error"
 
     ''' check pec '''
     if check_pec(return_data[:-2], return_data[-2]):
         return return_data  # operation success
     else:
         if SCRIPT_DEBUG:
-            print("check pec fail")
+            print("pb01_read: check pec fail")
             hex_return_data = [hex(n) for n in return_data]
-            print(hex_return_data)
+            print("pb01_read: return data ", hex_return_data)
         return "pec check error"    # pec check fail
 
 
@@ -502,6 +523,10 @@ def pb01_daisy_chain_initial(pHidDev, pDevAddSeed):
 
     ''' TRANSACTION14: Read the returned HELLOALL message from bridge receive buffer '''
     return_data = max17841_buf_read(pHidDev, 0x93, 3)   # read returned message
+    if return_data == "max17841 read buf error":
+        if SCRIPT_DEBUG:
+            print("daisy-chain initial: check HELLOALL message return read rx buf fail")
+        return "HELLOALL message return error"
 
     ''' check bridge RX is empty '''
     if max17841_check_msg_return_bridge(pHidDev) == False:
@@ -618,24 +643,33 @@ def pb01_17841_alert_packet(pHidDev):
 
     ''' check message return back to bridge '''
     if max17841_check_msg_return_bridge(pHidDev) == False:
+        if SCRIPT_DEBUG:
+            print("pb01_17841_alert_packet: check message return read R01 fail")
         return "message return RX error"
 
     ''' read return data '''
     return_data = max17841_buf_read(pHidDev, 0x93, 8)
+    if return_data == "max17841 read buf error":
+        if SCRIPT_DEBUG:
+            print("pb01_17841_alert_packet: check message return read rx buf fail")
+        return "message return RX error"
 
     ''' check pec '''
     if check_pec(return_data[:-1], return_data[-1]):
         return return_data  # operation success
     else:
+        if SCRIPT_DEBUG:
+            print("pb01_17841_alert_packet: check pec error")
         return "pec check error"  # pec check fail
 
 
 def pb01_path_up(pHidDev, pDevCntSeed):
     """
-
+    send PB01 WRPATHUP command
     :param pHidDev:
-    :param pDevCntSeed:
-    :return:
+    :param pDevCntSeed: 菊花链中 device 数量
+    :return: 1. returned command message
+             2. "message return RX error"
     """
     """ check bridge RX is empty """
     if max17841_clear_rx_buf(pHidDev) == False:
@@ -649,18 +683,27 @@ def pb01_path_up(pHidDev, pDevCntSeed):
 
     ''' check message return back to bridge '''
     if max17841_check_msg_return_bridge(pHidDev) == False:
+        if SCRIPT_DEBUG:
+            print("pb01_path_up: check message return read R01 fail")
         return "message return RX error"
 
     ''' read return data '''
-    return max17841_buf_read(pHidDev, 0x93, 3)
+    return_data = max17841_buf_read(pHidDev, 0x93, 3)
+    if return_data == "max17841 read buf error":
+        if SCRIPT_DEBUG:
+            print("pb01_path_up: check message return read rx buf fail")
+        return "message return RX error"
+    else:
+        return return_data
 
 
 def pb01_path_down(pHidDev, pDevCntSeed):
     """
-
+    send PB01 WRPATHDN command
     :param pHidDev:
-    :param pDevCntSeed:
-    :return:
+    :param pDevCntSeed: 菊花链中 device 数量
+    :return: 1. returned command message
+             2. "message return RX error"
     """
     """ check bridge RX is empty """
     if max17841_clear_rx_buf(pHidDev) == False:
@@ -674,7 +717,15 @@ def pb01_path_down(pHidDev, pDevCntSeed):
 
     ''' check message return back to bridge '''
     if max17841_check_msg_return_bridge(pHidDev) == False:
+        if SCRIPT_DEBUG:
+            print("pb01_path_down: check message return read R01 fail")
         return "message return RX error"
 
     ''' read return data '''
-    return max17841_buf_read(pHidDev, 0x93, 3)
+    return_data = max17841_buf_read(pHidDev, 0x93, 3)
+    if return_data == "max17841 read buf error":
+        if SCRIPT_DEBUG:
+            print("pb01_path_down: check message return read rx buf fail")
+        return "message return RX error"
+    else:
+        return return_data

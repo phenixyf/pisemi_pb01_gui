@@ -325,7 +325,9 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         :param pRegAddr: 要读写的寄存器地址
         :param pData: data
         :return: 返回一个列表，
-                 列表中包含从 daisy-chain 读取的所有 AFE 该寄存器的数据，如 [afe0DataLsb, afe0DataMsb, afe1DataLsb, afe1DataMsb]
+                 列表中包含从 daisy-chain 读取的所有 AFE 该寄存器的数据，
+                 如 [afe0DataLsb, afe0DataMsb, afe1DataLsb, afe1DataMsb]
+                 注意 byte0 就是 data, 不是 daisy-chain uart 协议的 command
         """
         # write register
         rtWr = pb01_write_all(self.hidBdg, pRegAddr, pData, 0x00)  # write all, alseed=0x00
@@ -613,16 +615,17 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             return 0x00
 
 
-    def updata_write_read_op(self, pReg, pData, pTable, pRow, pCol):
+    def update_write_read_op(self, pReg, pData, pTable, pRow, pCol):
         """
         appCfgPage, diagCfgPage write+read button 点击后更新某个寄存信息
         一次只更新一个寄存器
-        :param pReg:
-        :param pData:
-        :param pTable:
-        :param pRow:
-        :param pCol:
-        :return:
+        1个还是 2 个 afe， 函数内部自动判断，不用外部参数
+        :param pReg: register address
+        :param pData: register data
+        :param pTable: table object
+        :param pRow: returned data fill row num
+        :param pCol: returned data fill col num
+        :return: None
         """
         rtData = self.afe_write_read_all(pReg, pData)  # configure A13 = 0x2000
         if rtData != False:
@@ -636,6 +639,39 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 self.update_table_item_data(pTable, pRow, pCol+1, hex(rdDataDev1)[2:].upper().zfill(4)) # dev1
         else:
             return
+
+
+    def update_config_readback_op(self, pReg, pTable, pRow, pCol):
+        """
+        appCfgPage, diagCfgPage read back button 点击后更新某个寄存信息
+        一次只更新一个寄存器
+        1个还是 2 个 afe， 函数内部自动判断，不用外部参数
+        :param pReg: register address
+        :param pTable: table object
+        :param pRow: returned data fill row num
+        :param pCol: returned data fill col num
+        :return: None
+        """
+        # read register
+        if self.flagSingleAfe:  # single afe
+            rtRd = pb01_read_all(self.hidBdg, pReg, 1, 0x00)  # read all, alseed=0x00
+            if rtRd == "message return RX error" or rtRd == "pec check error":
+                self.message_box(rtRd)
+                return False
+            else:
+                rdDataDev0 = (rtRd[3] << 8) | rtRd[2]
+                self.update_table_item_data(pTable, pRow, pCol, hex(rdDataDev0)[2:].upper().zfill(4))  # dev0
+        else:   # dual afe
+            rtRd = pb01_read_all(self.hidBdg, pReg, 2, 0x00)  # read all, alseed=0x00
+            if rtRd == "message return RX error" or rtRd == "pec check error":
+                self.message_box(rtRd)
+                return False
+            else:
+                rdDataDev0 = (rtRd[5] << 8) | rtRd[4]
+                rdDataDev1 = (rtRd[3] << 8) | rtRd[2]
+                self.update_table_item_data(pTable, pRow, pCol, hex(rdDataDev0)[2:].upper().zfill(4))  # dev0
+                self.update_table_item_data(pTable, pRow, pCol + 1, hex(rdDataDev1)[2:].upper().zfill(4))  # dev1
+
 
 
     def pushBtn_disable(self, pBtn):
@@ -1085,13 +1121,24 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
     def slot_pushBtn_appCfgPage_appCfgWR(self):
         time.sleep(BTN_OP_DELAY)
 
-        self.updata_write_read_op(0x12, 0x3FFF, self.table_appCfgPage_appCfg, 0, 7)     # STATUSCFG R12=0x3FFF
-        self.updata_write_read_op(0x13, 0x2000, self.table_appCfgPage_appCfg, 1, 7)     # DEVCFG R13=0x2000
-
+        self.update_write_read_op(0x12, 0x3FFF, self.table_appCfgPage_appCfg, 0, 7)     # STATUSCFG R12=0x3FFF
+        self.update_write_read_op(0x13, 0x2000, self.table_appCfgPage_appCfg, 1, 7)     # DEVCFG R13=0x2000
+        polyCfgData = int(self.table_appCfgPage_appCfg.item(2, 2).text(), 16)
+        self.update_write_read_op(0x14, polyCfgData, self.table_appCfgPage_appCfg, 2, 7)   # customize POLYCFG
+        axGpioData = int(self.table_appCfgPage_appCfg.item(3, 2).text(), 16)
+        self.update_write_read_op(0x15, axGpioData, self.table_appCfgPage_appCfg, 3, 7)    # customize AUXGPIOCFG
+        axRefData = int(self.table_appCfgPage_appCfg.item(4, 2).text(), 16)
+        self.update_write_read_op(0x16, axRefData, self.table_appCfgPage_appCfg, 4, 7)     # customize AUXREFCFG
 
 
     def slot_pushBtn_appCfgPage_appCfgRd(self):
-        pass
+        time.sleep(BTN_OP_DELAY)
+
+        self.update_config_readback_op(0x12, self.table_appCfgPage_appCfg, 0, 7)    # STATUSCFG
+        self.update_config_readback_op(0x13, self.table_appCfgPage_appCfg, 1, 7)    # DEVCFG
+        self.update_config_readback_op(0x14, self.table_appCfgPage_appCfg, 2, 7)    # POLYCFG
+        self.update_config_readback_op(0x15, self.table_appCfgPage_appCfg, 3, 7)    # AUXGPIOCFG
+        self.update_config_readback_op(0x16, self.table_appCfgPage_appCfg, 4, 7)    # AUXREFCFG
 
     def slot_pushBtn_appCfgPage_alertCfgWR(self):
         pass

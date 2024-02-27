@@ -346,18 +346,18 @@ table_devMg_curItems = [
 table_appCfgPage_headers = ["Address", "Register", "Pending (hex)", "Pending Value (bin)", "Pending Field",
                            "Pending Value (bin)", "Pending Field", "Device 0 (hex)", "Device 1 (hex)"]
 table_appCfgPage_appCfgReg_items = [
-    ["0x12", "STATUSCFG",   "3FF",  "01111111", "STATUSCFG[15:8]", "1111111",  "STATUSCFG[7:0]", "3FFF", "3FFF"],
-    ["0x13", "DEVCFG",      "2000", "010",      "IIRFC[2:0]",      "000",      "DEVCFG[10:8]",   "2000", "2000"],
-    ["0x14", "POLARITYCFG", "0000", "00000000", "POLARITY[15:8]",  "00000000", "POLARITY[7:0]",  "0000", "0000"],
-    ["0x15", "AUXGPIOCFG",  "0000", "010",      "GPIOEN[7:0]",     "00000000", "GPIOMODE[7:0]",  "FF00", "FF00"],
-    ["0x16", "AUXREFCFG",   "0000", "00000000", "THERMMODE[1:0]",  "00000000", "AUXREFSEL[7:0]", "0000", "0000"]
+    ["0x12", "STATUSCFG",   "3FFF", "00111111",  "STATUSCFG[15:8]", "11111111", "STATUSCFG[7:0]", "3FFF", "3FFF"],
+    ["0x13", "DEVCFG",      "2000", "010",       "IIRFC[2:0]",      "000",      "DEVCFG[10:8]",   "2000", "2000"],
+    ["0x14", "POLARITYCFG", "0000", "00000000",  "POLARITY[15:8]",  "00000000", "POLARITY[7:0]",  "0000", "0000"],
+    ["0x15", "AUXGPIOCFG",  "0000", "00000000",  "GPIOEN[7:0]",     "00000000", "GPIOMODE[7:0]",  "FF00", "FF00"],
+    ["0x16", "AUXREFCFG",   "0000", "00",        "THERMMODE[1:0]",  "00000000", "AUXREFSEL[7:0]", "0000", "0000"]
 ]
 
 table_appCfgPage_alertCfgReg_items = [
-    ["0x18", "ALRTOVCFG",    "FFFF", "1111111", "ALRTOVEN[15:8]",    "1111111", "ALRTOVEN[7:0]",       "0000", "0000"],
-    ["0x19", "ALRTUVCFG",    "FFFF", "1111111", "ALRTUVEN[15:8]",    "1111111", "ALRTUVEN[7:0]",       "0000", "0000"],
-    ["0x1A", "ALRTAUXOVCFG", "FFFF", "1111111", "ALRTAUXOVEN[7:0]",  "1111111", "ALRTALTAUXOVEN[7:0]", "0000", "0000"],
-    ["0x1B", "ALRTAUXUVCFG", "FFFF", "1111111", "ALRTAUXUVEN[7:0]",  "1111111", "ALRTALTAUXUVEN[7:0]", "0000", "0000"]
+    ["0x18", "ALRTOVCFG",    "FFFF", "11111111", "ALRTOVEN[15:8]",    "11111111", "ALRTOVEN[7:0]",       "0000", "0000"],
+    ["0x19", "ALRTUVCFG",    "FFFF", "11111111", "ALRTUVEN[15:8]",    "11111111", "ALRTUVEN[7:0]",       "0000", "0000"],
+    ["0x1A", "ALRTAUXOVCFG", "FFFF", "11111111", "ALRTAUXOVEN[7:0]",  "11111111", "ALRTALTAUXOVEN[7:0]", "0000", "0000"],
+    ["0x1B", "ALRTAUXUVCFG", "FFFF", "11111111", "ALRTAUXUVEN[7:0]",  "11111111", "ALRTALTAUXUVEN[7:0]", "0000", "0000"]
 ]
 
 table_appCfgPage_theresholdReg_items = [
@@ -914,6 +914,9 @@ def set_appCfgPage_table_color(pAppCfgTable, pAlertTable, pThreTable, pAcqTable)
     for r in range(5):
         for c in range(2, 9):
             pAppCfgTable.item(r, 2).setBackground(QColor("#DAE3F3"))  # 紫色
+            if r < 2:
+                pAppCfgTable.item(r, 2).setFlags(pAppCfgTable.item(r, 2).flags()
+                                                & ~Qt.ItemIsEditable & ~Qt.ItemIsSelectable)  # disable cell
             pAppCfgTable.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
             pAppCfgTable.item(r, 5).setBackground(QColor("#FFF2CC"))  # 黄色
             pAppCfgTable.item(r, 7).setBackground(QColor("#E2F0D9"))  # 绿色
@@ -922,11 +925,15 @@ def set_appCfgPage_table_color(pAppCfgTable, pAlertTable, pThreTable, pAcqTable)
     for r in range(4):
         for c in range(2, 9):
             pAlertTable.item(r, 2).setBackground(QColor("#DAE3F3"))  # 紫色
+            pAlertTable.item(r, 2).setFlags(pAlertTable.item(r, 2).flags()
+                                             & ~Qt.ItemIsEditable & ~Qt.ItemIsSelectable)  # disable cell
             pAlertTable.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
             pAlertTable.item(r, 5).setBackground(QColor("#FFF2CC"))  # 黄色
             pAlertTable.item(r, 7).setBackground(QColor("#E2F0D9"))  # 绿色
             pAlertTable.item(r, 8).setBackground(QColor("#E2F0D9"))  # 绿色
             pAcqTable.item(r, 2).setBackground(QColor("#DAE3F3"))  # 紫色
+            pAcqTable.item(r, 2).setFlags(pAcqTable.item(r, 2).flags()
+                                            & ~Qt.ItemIsEditable & ~Qt.ItemIsSelectable)  # disable cell
             if r != 3:
                 pAcqTable.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
             pAcqTable.item(r, 5).setBackground(QColor("#FFF2CC"))  # 黄色
@@ -936,6 +943,9 @@ def set_appCfgPage_table_color(pAppCfgTable, pAlertTable, pThreTable, pAcqTable)
     for r in range(14):
         for c in range(2, 9):
             pThreTable.item(r, 2).setBackground(QColor("#DAE3F3"))  # 紫色
+            if r != 13:
+                pThreTable.item(r, 2).setFlags(pThreTable.item(r, 2).flags()
+                                              & ~Qt.ItemIsEditable & ~Qt.ItemIsSelectable)  # disable cell
             pThreTable.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
             pThreTable.item(r, 7).setBackground(QColor("#E2F0D9"))  # 绿色
             pThreTable.item(r, 8).setBackground(QColor("#E2F0D9"))  # 绿色

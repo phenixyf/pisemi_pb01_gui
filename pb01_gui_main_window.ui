@@ -2162,7 +2162,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </spacer>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_58">
+            <widget class="QPushButton" name="pushButton_appCfgPage_appCfgWR">
              <property name="minimumSize">
               <size>
                <width>110</width>
@@ -2203,7 +2203,7 @@ QPushButton:pressed {
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_59">
+            <widget class="QPushButton" name="pushButton_appCfgPage_appCfgRd">
              <property name="minimumSize">
               <size>
                <width>110</width>
@@ -2449,7 +2449,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </spacer>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_62">
+            <widget class="QPushButton" name="pushButton_appCfgPage_alertCfgWR">
              <property name="minimumSize">
               <size>
                <width>110</width>
@@ -2490,7 +2490,7 @@ QPushButton:pressed {
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_63">
+            <widget class="QPushButton" name="pushButton_appCfgPage_alertCfgRd">
              <property name="minimumSize">
               <size>
                <width>110</width>
@@ -2725,7 +2725,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </spacer>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_56">
+            <widget class="QPushButton" name="pushButton_appCfgPage_thresholdRegWR">
              <property name="minimumSize">
               <size>
                <width>110</width>
@@ -2766,7 +2766,7 @@ QPushButton:pressed {
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_57">
+            <widget class="QPushButton" name="pushButton_appCfgPage_thresholdRegRd">
              <property name="minimumSize">
               <size>
                <width>110</width>
@@ -3051,7 +3051,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </spacer>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_60">
+            <widget class="QPushButton" name="pushButton_appCfgPage_acqRegWr">
              <property name="minimumSize">
               <size>
                <width>110</width>
@@ -3092,7 +3092,7 @@ QPushButton:pressed {
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_61">
+            <widget class="QPushButton" name="pushButton_appCfgPage_acqRegRd">
              <property name="minimumSize">
               <size>
                <width>110</width>

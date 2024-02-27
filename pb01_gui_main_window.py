@@ -1078,10 +1078,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6.addWidget(self.label_26)
         spacerItem11 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_6.addItem(spacerItem11)
-        self.pushButton_58 = QtWidgets.QPushButton(self.frame_5)
-        self.pushButton_58.setMinimumSize(QtCore.QSize(110, 0))
-        self.pushButton_58.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.pushButton_58.setStyleSheet("QPushButton {\n"
+        self.pushButton_appCfgPage_appCfgWR = QtWidgets.QPushButton(self.frame_5)
+        self.pushButton_appCfgPage_appCfgWR.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_appCfgPage_appCfgWR.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_appCfgPage_appCfgWR.setStyleSheet("QPushButton {\n"
 "    background-color: #3072B3; /* 按钮背景颜色 */\n"
 "    color: white; /* 文字颜色 */\n"
 "    border-style: solid; /* 边框样式 */\n"
@@ -1101,12 +1101,12 @@ class Ui_MainWindow(object):
 "    background-color: #1E5A97; /* 按下时的背景颜色 */\n"
 "}\n"
 "")
-        self.pushButton_58.setObjectName("pushButton_58")
-        self.horizontalLayout_6.addWidget(self.pushButton_58)
-        self.pushButton_59 = QtWidgets.QPushButton(self.frame_5)
-        self.pushButton_59.setMinimumSize(QtCore.QSize(110, 0))
-        self.pushButton_59.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.pushButton_59.setStyleSheet("QPushButton {\n"
+        self.pushButton_appCfgPage_appCfgWR.setObjectName("pushButton_appCfgPage_appCfgWR")
+        self.horizontalLayout_6.addWidget(self.pushButton_appCfgPage_appCfgWR)
+        self.pushButton_appCfgPage_appCfgRd = QtWidgets.QPushButton(self.frame_5)
+        self.pushButton_appCfgPage_appCfgRd.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_appCfgPage_appCfgRd.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_appCfgPage_appCfgRd.setStyleSheet("QPushButton {\n"
 "    background-color: #3b8303; /* 按钮背景颜色 */\n"
 "    color: white; /* 文字颜色 */\n"
 "    border-style: solid; /* 边框样式 */\n"
@@ -1126,8 +1126,8 @@ class Ui_MainWindow(object):
 "    background-color: #397303; /* 按下时的背景颜色 */\n"
 "}\n"
 "")
-        self.pushButton_59.setObjectName("pushButton_59")
-        self.horizontalLayout_6.addWidget(self.pushButton_59)
+        self.pushButton_appCfgPage_appCfgRd.setObjectName("pushButton_appCfgPage_appCfgRd")
+        self.horizontalLayout_6.addWidget(self.pushButton_appCfgPage_appCfgRd)
         self.verticalLayout_2.addWidget(self.frame_5)
         self.table_appCfgPage_appCfg = QtWidgets.QTableWidget(self.tab_appCfg)
         self.table_appCfgPage_appCfg.setMinimumSize(QtCore.QSize(0, 145))
@@ -1223,10 +1223,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_8.addWidget(self.label_28)
         spacerItem12 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_8.addItem(spacerItem12)
-        self.pushButton_62 = QtWidgets.QPushButton(self.frame_7)
-        self.pushButton_62.setMinimumSize(QtCore.QSize(110, 0))
-        self.pushButton_62.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.pushButton_62.setStyleSheet("QPushButton {\n"
+        self.pushButton_appCfgPage_alertCfgWR = QtWidgets.QPushButton(self.frame_7)
+        self.pushButton_appCfgPage_alertCfgWR.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_appCfgPage_alertCfgWR.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_appCfgPage_alertCfgWR.setStyleSheet("QPushButton {\n"
 "    background-color: #3072B3; /* 按钮背景颜色 */\n"
 "    color: white; /* 文字颜色 */\n"
 "    border-style: solid; /* 边框样式 */\n"
@@ -1246,12 +1246,12 @@ class Ui_MainWindow(object):
 "    background-color: #1E5A97; /* 按下时的背景颜色 */\n"
 "}\n"
 "")
-        self.pushButton_62.setObjectName("pushButton_62")
-        self.horizontalLayout_8.addWidget(self.pushButton_62)
-        self.pushButton_63 = QtWidgets.QPushButton(self.frame_7)
-        self.pushButton_63.setMinimumSize(QtCore.QSize(110, 0))
-        self.pushButton_63.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.pushButton_63.setStyleSheet("QPushButton {\n"
+        self.pushButton_appCfgPage_alertCfgWR.setObjectName("pushButton_appCfgPage_alertCfgWR")
+        self.horizontalLayout_8.addWidget(self.pushButton_appCfgPage_alertCfgWR)
+        self.pushButton_appCfgPage_alertCfgRd = QtWidgets.QPushButton(self.frame_7)
+        self.pushButton_appCfgPage_alertCfgRd.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_appCfgPage_alertCfgRd.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_appCfgPage_alertCfgRd.setStyleSheet("QPushButton {\n"
 "    background-color: #3b8303; /* 按钮背景颜色 */\n"
 "    color: white; /* 文字颜色 */\n"
 "    border-style: solid; /* 边框样式 */\n"
@@ -1271,8 +1271,8 @@ class Ui_MainWindow(object):
 "    background-color: #397303; /* 按下时的背景颜色 */\n"
 "}\n"
 "")
-        self.pushButton_63.setObjectName("pushButton_63")
-        self.horizontalLayout_8.addWidget(self.pushButton_63)
+        self.pushButton_appCfgPage_alertCfgRd.setObjectName("pushButton_appCfgPage_alertCfgRd")
+        self.horizontalLayout_8.addWidget(self.pushButton_appCfgPage_alertCfgRd)
         self.verticalLayout_2.addWidget(self.frame_7)
         self.table_appCfgPage_alertCfg = QtWidgets.QTableWidget(self.tab_appCfg)
         self.table_appCfgPage_alertCfg.setMaximumSize(QtCore.QSize(16777215, 16777215))
@@ -1365,10 +1365,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.addWidget(self.label_25)
         spacerItem13 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_5.addItem(spacerItem13)
-        self.pushButton_56 = QtWidgets.QPushButton(self.frame_8)
-        self.pushButton_56.setMinimumSize(QtCore.QSize(110, 0))
-        self.pushButton_56.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.pushButton_56.setStyleSheet("QPushButton {\n"
+        self.pushButton_appCfgPage_thresholdRegWR = QtWidgets.QPushButton(self.frame_8)
+        self.pushButton_appCfgPage_thresholdRegWR.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_appCfgPage_thresholdRegWR.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_appCfgPage_thresholdRegWR.setStyleSheet("QPushButton {\n"
 "    background-color: #3072B3; /* 按钮背景颜色 */\n"
 "    color: white; /* 文字颜色 */\n"
 "    border-style: solid; /* 边框样式 */\n"
@@ -1388,12 +1388,12 @@ class Ui_MainWindow(object):
 "    background-color: #1E5A97; /* 按下时的背景颜色 */\n"
 "}\n"
 "")
-        self.pushButton_56.setObjectName("pushButton_56")
-        self.horizontalLayout_5.addWidget(self.pushButton_56)
-        self.pushButton_57 = QtWidgets.QPushButton(self.frame_8)
-        self.pushButton_57.setMinimumSize(QtCore.QSize(110, 0))
-        self.pushButton_57.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.pushButton_57.setStyleSheet("QPushButton {\n"
+        self.pushButton_appCfgPage_thresholdRegWR.setObjectName("pushButton_appCfgPage_thresholdRegWR")
+        self.horizontalLayout_5.addWidget(self.pushButton_appCfgPage_thresholdRegWR)
+        self.pushButton_appCfgPage_thresholdRegRd = QtWidgets.QPushButton(self.frame_8)
+        self.pushButton_appCfgPage_thresholdRegRd.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_appCfgPage_thresholdRegRd.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_appCfgPage_thresholdRegRd.setStyleSheet("QPushButton {\n"
 "    background-color: #3b8303; /* 按钮背景颜色 */\n"
 "    color: white; /* 文字颜色 */\n"
 "    border-style: solid; /* 边框样式 */\n"
@@ -1413,8 +1413,8 @@ class Ui_MainWindow(object):
 "    background-color: #397303; /* 按下时的背景颜色 */\n"
 "}\n"
 "")
-        self.pushButton_57.setObjectName("pushButton_57")
-        self.horizontalLayout_5.addWidget(self.pushButton_57)
+        self.pushButton_appCfgPage_thresholdRegRd.setObjectName("pushButton_appCfgPage_thresholdRegRd")
+        self.horizontalLayout_5.addWidget(self.pushButton_appCfgPage_thresholdRegRd)
         self.verticalLayout_2.addWidget(self.frame_8)
         self.table_appCfgPage_thresholdReg = QtWidgets.QTableWidget(self.tab_appCfg)
         self.table_appCfgPage_thresholdReg.setMaximumSize(QtCore.QSize(16777215, 16777215))
@@ -1527,10 +1527,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7.addWidget(self.label_27)
         spacerItem14 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_7.addItem(spacerItem14)
-        self.pushButton_60 = QtWidgets.QPushButton(self.frame_4)
-        self.pushButton_60.setMinimumSize(QtCore.QSize(110, 0))
-        self.pushButton_60.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.pushButton_60.setStyleSheet("QPushButton {\n"
+        self.pushButton_appCfgPage_acqRegWr = QtWidgets.QPushButton(self.frame_4)
+        self.pushButton_appCfgPage_acqRegWr.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_appCfgPage_acqRegWr.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_appCfgPage_acqRegWr.setStyleSheet("QPushButton {\n"
 "    background-color: #3072B3; /* 按钮背景颜色 */\n"
 "    color: white; /* 文字颜色 */\n"
 "    border-style: solid; /* 边框样式 */\n"
@@ -1550,12 +1550,12 @@ class Ui_MainWindow(object):
 "    background-color: #1E5A97; /* 按下时的背景颜色 */\n"
 "}\n"
 "")
-        self.pushButton_60.setObjectName("pushButton_60")
-        self.horizontalLayout_7.addWidget(self.pushButton_60)
-        self.pushButton_61 = QtWidgets.QPushButton(self.frame_4)
-        self.pushButton_61.setMinimumSize(QtCore.QSize(110, 0))
-        self.pushButton_61.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.pushButton_61.setStyleSheet("QPushButton {\n"
+        self.pushButton_appCfgPage_acqRegWr.setObjectName("pushButton_appCfgPage_acqRegWr")
+        self.horizontalLayout_7.addWidget(self.pushButton_appCfgPage_acqRegWr)
+        self.pushButton_appCfgPage_acqRegRd = QtWidgets.QPushButton(self.frame_4)
+        self.pushButton_appCfgPage_acqRegRd.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_appCfgPage_acqRegRd.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_appCfgPage_acqRegRd.setStyleSheet("QPushButton {\n"
 "    background-color: #3b8303; /* 按钮背景颜色 */\n"
 "    color: white; /* 文字颜色 */\n"
 "    border-style: solid; /* 边框样式 */\n"
@@ -1575,8 +1575,8 @@ class Ui_MainWindow(object):
 "    background-color: #397303; /* 按下时的背景颜色 */\n"
 "}\n"
 "")
-        self.pushButton_61.setObjectName("pushButton_61")
-        self.horizontalLayout_7.addWidget(self.pushButton_61)
+        self.pushButton_appCfgPage_acqRegRd.setObjectName("pushButton_appCfgPage_acqRegRd")
+        self.horizontalLayout_7.addWidget(self.pushButton_appCfgPage_acqRegRd)
         self.verticalLayout_2.addWidget(self.frame_4)
         self.table_appCfgPage_acqReg = QtWidgets.QTableWidget(self.tab_appCfg)
         self.table_appCfgPage_acqReg.setMaximumSize(QtCore.QSize(16777215, 16777215))
@@ -4987,8 +4987,8 @@ class Ui_MainWindow(object):
         self.table_devMgPage_cur.setSortingEnabled(__sortingEnabled)
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_devMg), _translate("MainWindow", "DEV MGMT"))
         self.label_26.setText(_translate("MainWindow", "APPLICATION CONFIGURATION Register Block"))
-        self.pushButton_58.setText(_translate("MainWindow", "WRITE+READ"))
-        self.pushButton_59.setText(_translate("MainWindow", "READ BACK"))
+        self.pushButton_appCfgPage_appCfgWR.setText(_translate("MainWindow", "WRITE+READ"))
+        self.pushButton_appCfgPage_appCfgRd.setText(_translate("MainWindow", "READ BACK"))
         item = self.table_appCfgPage_appCfg.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
         item = self.table_appCfgPage_appCfg.verticalHeaderItem(1)
@@ -5023,8 +5023,8 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "APPCFG"))
         self.table_appCfgPage_appCfg.setSortingEnabled(__sortingEnabled)
         self.label_28.setText(_translate("MainWindow", "ALERT CONFIGURATION Register Block"))
-        self.pushButton_62.setText(_translate("MainWindow", "WRITE+READ"))
-        self.pushButton_63.setText(_translate("MainWindow", "READ BACK"))
+        self.pushButton_appCfgPage_alertCfgWR.setText(_translate("MainWindow", "WRITE+READ"))
+        self.pushButton_appCfgPage_alertCfgRd.setText(_translate("MainWindow", "READ BACK"))
         item = self.table_appCfgPage_alertCfg.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
         item = self.table_appCfgPage_alertCfg.verticalHeaderItem(1)
@@ -5057,8 +5057,8 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "ALERTCFG"))
         self.table_appCfgPage_alertCfg.setSortingEnabled(__sortingEnabled)
         self.label_25.setText(_translate("MainWindow", "THRESHOLD Register Block"))
-        self.pushButton_56.setText(_translate("MainWindow", "WRITE+READ"))
-        self.pushButton_57.setText(_translate("MainWindow", "READ BACK"))
+        self.pushButton_appCfgPage_thresholdRegWR.setText(_translate("MainWindow", "WRITE+READ"))
+        self.pushButton_appCfgPage_thresholdRegRd.setText(_translate("MainWindow", "READ BACK"))
         item = self.table_appCfgPage_thresholdReg.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
         item = self.table_appCfgPage_thresholdReg.verticalHeaderItem(1)
@@ -5111,8 +5111,8 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "THRESHOLD"))
         self.table_appCfgPage_thresholdReg.setSortingEnabled(__sortingEnabled)
         self.label_27.setText(_translate("MainWindow", "ACQUISITION Register Block"))
-        self.pushButton_60.setText(_translate("MainWindow", "WRITE+READ"))
-        self.pushButton_61.setText(_translate("MainWindow", "READ BACK"))
+        self.pushButton_appCfgPage_acqRegWr.setText(_translate("MainWindow", "WRITE+READ"))
+        self.pushButton_appCfgPage_acqRegRd.setText(_translate("MainWindow", "READ BACK"))
         item = self.table_appCfgPage_acqReg.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
         item = self.table_appCfgPage_acqReg.verticalHeaderItem(1)

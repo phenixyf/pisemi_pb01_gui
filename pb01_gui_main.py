@@ -54,6 +54,16 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.pushButton_devMgPage_reInit.clicked.connect(self.slot_pushBtn_devMgPage_reinit)
         self.pushButton_devMgPage_clear.clicked.connect(self.slot_pushBtn_devMgPage_clear)
         self.pushButton_devMgPage_readBack.clicked.connect(self.slot_pushBtn_devMgPage_readBack)
+        ''' application configuration page (page3) '''
+        self.pushButton_appCfgPage_appCfgWR.clicked.connect(self.slot_pushBtn_appCfgPage_appCfgWR)
+        self.pushButton_appCfgPage_appCfgRd.clicked.connect(self.slot_pushBtn_appCfgPage_appCfgRd)
+        self.pushButton_appCfgPage_alertCfgWR.clicked.connect(self.slot_pushBtn_appCfgPage_alertCfgWR)
+        self.pushButton_appCfgPage_alertCfgRd.clicked.connect(self.slot_pushBtn_appCfgPage_alertCfgRd)
+        self.pushButton_appCfgPage_thresholdRegWR.clicked.connect(self.slot_pushBtn_appCfgPage_thresholdRegWR)
+        self.pushButton_appCfgPage_thresholdRegRd.clicked.connect(self.slot_pushBtn_appCfgPage_thresholdRegRd)
+        self.pushButton_appCfgPage_acqRegWr.clicked.connect(self.slot_pushBtn_appCfgPage_acqRegWr)
+        self.pushButton_appCfgPage_acqRegRd.clicked.connect(self.slot_pushBtn_appCfgPage_acqRegRd)
+
 
     def init_tab_pages(self):
         ''' inital chain configuration page (page1) '''
@@ -413,7 +423,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         :return:
         """
         # fill dc byte into table
-        self.update_table_item_data(pDcTable, 0, 1, hex(pDcByte)[2:].zfill(2))
+        self.update_table_item_data(pDcTable, 0, 1, hex(pDcByte)[2:].upper().zfill(2))
 
         # fill dc byte led into table
         if self.update_dc_led(pDcByte, pDcLed):
@@ -429,7 +439,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                               | (alertPkReturn[3] << 16) | (alertPkReturn[2] << 8) | alertPkReturn[1]
                 # fill alert packet data in table
                 self.update_table_item_data(pDcTable, 1, 1,
-                                            hex(alertPkData)[2:].zfill(12))  # alert packet data
+                                            hex(alertPkData)[2:].upper().zfill(12))  # alert packet data
                 # update alert packet led
                 self.update_alertPk_led(alertPkData, pAlertLed)
 
@@ -521,10 +531,10 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             temp2Dev0 = (rtStaBlkDev0[14] << 8) | rtStaBlkDev0[13]
             gpioDataDev0 = (rtStaBlkDev0[16] << 8) | rtStaBlkDev0[15]
             dcDev0 = rtStaBlkDev0[17]
-            listStaDev0 = [hex(status1Dev0)[2:].zfill(4), hex(status2Dev0)[2:].zfill(4),
-                           hex(fmea1Dev0)[2:].zfill(4), hex(fmea2Dev0)[2:].zfill(4)]
-            listTemGpDev0 = [hex(temp1Dev0)[2:].zfill(4), hex(temp2Dev0)[2:].zfill(4),
-                             hex(gpioDataDev0)[2:].zfill(4)]
+            listStaDev0 = [hex(status1Dev0)[2:].upper().zfill(4), hex(status2Dev0)[2:].upper().zfill(4),
+                           hex(fmea1Dev0)[2:].upper().zfill(4), hex(fmea2Dev0)[2:].upper().zfill(4)]
+            listTemGpDev0 = [hex(temp1Dev0)[2:].upper().zfill(4), hex(temp2Dev0)[2:].upper().zfill(4),
+                             hex(gpioDataDev0)[2:].upper().zfill(4)]
 
             temp1CelDev0 = str(round(temp1Dev0 / 8 - 273.15, 2)) + "°C"
             temp2CelDev0 = str(round(temp2Dev0 / 8 - 273.15, 2)) + "°C"
@@ -532,7 +542,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             temp2FhDev0 = str(round((temp2Dev0 /8 - 273.15) * 9 / 5 + 32, 2)) + "°F"
 
             listTemValDev0 = [[temp1CelDev0, temp1FhDev0], [temp2CelDev0, temp2FhDev0],
-                              [hex(rtStaBlkDev0[16])[2:].zfill(2), hex(rtStaBlkDev0[15])[2:].zfill(2)]]
+                              [hex(rtStaBlkDev0[16])[2:].upper().zfill(2), hex(rtStaBlkDev0[15])[2:].upper().zfill(2)]]
 
             ''' fill data into dev0 status table '''
             for r in range(4):  # fill table
@@ -566,10 +576,10 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 temp2Dev1 = (rtStaBlkDev0[14] << 8) | rtStaBlkDev0[13]
                 gpioDataDev1 = (rtStaBlkDev0[16] << 8) | rtStaBlkDev0[15]
                 dcDev1 = rtStaBlkDev1[17]
-                listStaDev1 = [hex(status1Dev1)[2:].zfill(4), hex(status2Dev1)[2:].zfill(4),
-                               hex(fmea1Dev1)[2:].zfill(4), hex(fmea2Dev1)[2:].zfill(4)]
-                listTemGpDev1 = [hex(temp1Dev1)[2:].zfill(4), hex(temp2Dev1)[2:].zfill(4),
-                                 hex(gpioDataDev1)[2:].zfill(4)]
+                listStaDev1 = [hex(status1Dev1)[2:].upper().zfill(4), hex(status2Dev1)[2:].upper().zfill(4),
+                               hex(fmea1Dev1)[2:].upper().zfill(4), hex(fmea2Dev1)[2:].upper().zfill(4)]
+                listTemGpDev1 = [hex(temp1Dev1)[2:].upper().zfill(4), hex(temp2Dev1)[2:].upper().zfill(4),
+                                 hex(gpioDataDev1)[2:].upper().zfill(4)]
 
                 temp1CelDev1 = str(round(temp1Dev1 / 8 - 273.15, 2)) + "°C"
                 temp2CelDev1 = str(round(temp2Dev1 / 8 - 273.15, 2)) + "°C"
@@ -577,7 +587,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 temp2FhDev1 = str(round((temp2Dev1 / 8 - 273.15) * 9 / 5 + 32, 2)) + "°F"
 
                 listTemValDev1 = [[temp1CelDev1, temp1FhDev1], [temp2CelDev1, temp2FhDev1],
-                                  [hex(rtStaBlkDev1[16])[2:].zfill(2), hex(rtStaBlkDev1[15])[2:].zfill(2)]]
+                                  [hex(rtStaBlkDev1[16])[2:].upper().zfill(2), hex(rtStaBlkDev1[15])[2:].upper().zfill(2)]]
 
                 ''' fill data into dev1 status table '''
                 for r in range(4):  # fill table
@@ -601,6 +611,31 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             return dcDev1
         else:
             return 0x00
+
+
+    def updata_write_read_op(self, pReg, pData, pTable, pRow, pCol):
+        """
+        appCfgPage, diagCfgPage write+read button 点击后更新某个寄存信息
+        一次只更新一个寄存器
+        :param pReg:
+        :param pData:
+        :param pTable:
+        :param pRow:
+        :param pCol:
+        :return:
+        """
+        rtData = self.afe_write_read_all(pReg, pData)  # configure A13 = 0x2000
+        if rtData != False:
+            if self.flagSingleAfe:  # single afe
+                rdDataDev0 = (rtData[1] << 8) | rtData[0]
+                self.update_table_item_data(pTable, pRow, pCol, hex(rdDataDev0)[2:].upper().zfill(4))   # dev0
+            else:  # dual afe
+                rdDataDev0 = (rtData[3] << 8) | rtData[2]
+                rdDataDev1 = (rtData[1] << 8) | rtData[0]
+                self.update_table_item_data(pTable, pRow, pCol, hex(rdDataDev0)[2:].upper().zfill(4))   # dev0
+                self.update_table_item_data(pTable, pRow, pCol+1, hex(rdDataDev1)[2:].upper().zfill(4)) # dev1
+        else:
+            return
 
 
     def pushBtn_disable(self, pBtn):
@@ -668,7 +703,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         if rtUifCfg != False:
             if self.flagSingleAfe:  # single afe
                 rdDataDev0 = (rtUifCfg[1]<<8) | rtUifCfg[0]
-                self.update_table_item_data(self.table_chainCfg_uifcfgReg, 0, 3, hex(rdDataDev0)[2:])
+                self.update_table_item_data(self.table_chainCfg_uifcfgReg, 0, 3, hex(rdDataDev0)[2:].upper())
 
                 bitsDev0 = (rdDataDev0>>7) & 0x1FF
                 for i in range(9):
@@ -678,9 +713,9 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 rdDataDev0 = (rtUifCfg[3] << 8) | rtUifCfg[2]
                 rdDataDev1 = (rtUifCfg[1] << 8) | rtUifCfg[0]
                 self.update_table_item_data(self.table_chainCfg_uifcfgReg, 0, 3,
-                                            hex(rdDataDev0)[2:])  # device 0
+                                            hex(rdDataDev0)[2:].upper())  # device 0
                 self.update_table_item_data(self.table_chainCfg_uifcfgReg, 1, 3,
-                                            hex(rdDataDev1)[2:])  # device 1
+                                            hex(rdDataDev1)[2:].upper())  # device 1
 
                 bitsDev0 = (rdDataDev0 >> 7) & 0x1FF
                 bitsDev1 = (rdDataDev1 >> 7) & 0x1FF
@@ -710,9 +745,9 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 botAddrDev0 = (rdDataDev0 & 0x7C00) >> 10
                 topAddrDev0 = (rdDataDev0 & 0x03E0) >> 5
                 devAddrDev0 = rdDataDev0 & 0x001F
-                listDataDev0 = [hex(rdDataDev0)[2:].zfill(4), hex(unlockBitDev0)[2:],
-                                hex(botAddrDev0)[2:].zfill(2),
-                                hex(topAddrDev0)[2:].zfill(2), hex(devAddrDev0)[2:].zfill(2)]
+                listDataDev0 = [hex(rdDataDev0)[2:].upper().zfill(4), hex(unlockBitDev0)[2:].upper(),
+                                hex(botAddrDev0)[2:].upper().zfill(2),
+                                hex(topAddrDev0)[2:].upper().zfill(2), hex(devAddrDev0)[2:].upper().zfill(2)]
                 for i in range(3, 8):
                     self.update_table_item_data(self.table_chainCfg_addcfgReg, 0, i,
                                                 listDataDev0[i - 3])  # device 0
@@ -727,12 +762,12 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 topAddrDev1 = (rdDataDev1 & 0x03E0) >> 5
                 devAddrDev0 = rdDataDev0 & 0x001F
                 devAddrDev1 = rdDataDev1 & 0x001F
-                listDataDev0 = [hex(rdDataDev0)[2:].zfill(4), hex(unlockBitDev0)[2:],
-                                hex(botAddrDev0)[2:].zfill(2),
-                                hex(topAddrDev0)[2:].zfill(2), hex(devAddrDev0)[2:].zfill(2)]
-                listDataDev1 = [hex(rdDataDev1)[2:].zfill(4), hex(unlockBitDev1)[2:],
-                                hex(botAddrDev1)[2:].zfill(2),
-                                hex(topAddrDev1)[2:].zfill(2), hex(devAddrDev1)[2:].zfill(2)]
+                listDataDev0 = [hex(rdDataDev0)[2:].upper().zfill(4), hex(unlockBitDev0)[2:].upper(),
+                                hex(botAddrDev0)[2:].upper().zfill(2),
+                                hex(topAddrDev0)[2:].upper().zfill(2), hex(devAddrDev0)[2:].upper().zfill(2)]
+                listDataDev1 = [hex(rdDataDev1)[2:].upper().zfill(4), hex(unlockBitDev1)[2:].upper(),
+                                hex(botAddrDev1)[2:].upper().zfill(2),
+                                hex(topAddrDev1)[2:].upper().zfill(2), hex(devAddrDev1)[2:].upper().zfill(2)]
                 for i in range(3, 8):
                     self.update_table_item_data(self.table_chainCfg_addcfgReg, 0, i,
                                                 listDataDev0[i - 3])  # device 0
@@ -758,10 +793,10 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             chCnt = (version & 0x1F00) >> 8
             swVer = (version & 0x00F0) >> 4
             hwVer = version & 0x000F
-            listIdDev0 = [hex(devid0)[2:].zfill(4), hex(devid1)[2:].zfill(4),
-                          hex(devid2)[2:].zfill(4), hex(version)[2:].zfill(4),
+            listIdDev0 = [hex(devid0)[2:].upper().zfill(4), hex(devid1)[2:].upper().zfill(4),
+                          hex(devid2)[2:].upper().zfill(4), hex(version)[2:].upper().zfill(4),
                           str(generation), str(chCnt),
-                          hex(swVer)[2:], hex(hwVer)[2:]]
+                          hex(swVer)[2:].upper(), hex(hwVer)[2:].upper()]
             for i in range(3, 11):
                 self.update_table_item_data(self.table_chainCfg_devIdBlk, 0, i,
                                             listIdDev0[i - 3])  # device 0
@@ -781,10 +816,10 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 chCnt = (version & 0x1F00) >> 8
                 swVer = (version & 0x00F0) >> 4
                 hwVer = version & 0x000F
-                listIdDev1 = [hex(devid0)[2:].zfill(4), hex(devid1)[2:].zfill(4),
-                              hex(devid2)[2:].zfill(4), hex(version)[2:].zfill(4),
+                listIdDev1 = [hex(devid0)[2:].upper().zfill(4), hex(devid1)[2:].upper().zfill(4),
+                              hex(devid2)[2:].upper().zfill(4), hex(version)[2:].upper().zfill(4),
                               str(generation), str(chCnt),
-                              hex(swVer)[2:], hex(hwVer)[2:]]
+                              hex(swVer)[2:].upper(), hex(hwVer)[2:].upper()]
                 for i in range(3, 11):
                     self.update_table_item_data(self.table_chainCfg_devIdBlk, 1, i,
                                                 listIdDev1[i - 3])  # device 0
@@ -1045,6 +1080,36 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         if not self.update_status_block_table(self.table_devMgPage_cur, 2, 7,
                                        self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, True):
             return
+
+
+    def slot_pushBtn_appCfgPage_appCfgWR(self):
+        time.sleep(BTN_OP_DELAY)
+
+        self.updata_write_read_op(0x12, 0x3FFF, self.table_appCfgPage_appCfg, 0, 7)     # STATUSCFG R12=0x3FFF
+        self.updata_write_read_op(0x13, 0x2000, self.table_appCfgPage_appCfg, 1, 7)     # DEVCFG R13=0x2000
+
+
+
+    def slot_pushBtn_appCfgPage_appCfgRd(self):
+        pass
+
+    def slot_pushBtn_appCfgPage_alertCfgWR(self):
+        pass
+
+    def slot_pushBtn_appCfgPage_alertCfgRd(self):
+        pass
+
+    def slot_pushBtn_appCfgPage_thresholdRegWR(self):
+        pass
+
+    def slot_pushBtn_appCfgPage_thresholdRegRd(self):
+        pass
+
+    def slot_pushBtn_appCfgPage_acqRegWr(self):
+        pass
+
+    def slot_pushBtn_appCfgPage_acqRegRd(self):
+        pass
 
 
     def setupNotification(self):

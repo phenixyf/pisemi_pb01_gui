@@ -11,8 +11,10 @@ import sys
 import time
 
 from pb01_gui_main_window import Ui_MainWindow
-from ui_configure import *
 from pb01_bridge_driver import *
+from ui_configure import *
+from assist import *
+
 
 class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
@@ -63,6 +65,8 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.pushButton_appCfgPage_thresholdRegRd.clicked.connect(self.slot_pushBtn_appCfgPage_thresholdRegRd)
         self.pushButton_appCfgPage_acqRegWr.clicked.connect(self.slot_pushBtn_appCfgPage_acqRegWr)
         self.pushButton_appCfgPage_acqRegRd.clicked.connect(self.slot_pushBtn_appCfgPage_acqRegRd)
+        self.table_appCfgPage_appCfg.cellChanged.connect(self.slot_table_appCfgPage_appCfg_cellChange)
+        self.table_appCfgPage_thresholdReg.cellChanged.connect(self.slot_table_appCfgPage_thReg_cellChange)
 
 
     def init_tab_pages(self):
@@ -1140,6 +1144,24 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.update_config_readback_op(0x15, self.table_appCfgPage_appCfg, 3, 7)    # AUXGPIOCFG
         self.update_config_readback_op(0x16, self.table_appCfgPage_appCfg, 4, 7)    # AUXREFCFG
 
+    def slot_table_appCfgPage_appCfg_cellChange(self):
+        """ POLARITYCFG content """
+        polCfgText = self.table_appCfgPage_appCfg.item(2, 2).text()
+        self.table_appCfgPage_appCfg.item(2, 3).setText(hex_to_bin(polCfgText[0:2]))     # msb
+        self.table_appCfgPage_appCfg.item(2, 5).setText(hex_to_bin(polCfgText[2:]))     # lsb
+
+        """ AUXGPIOCFG """
+        auxGpioText = self.table_appCfgPage_appCfg.item(3, 2).text()
+        self.table_appCfgPage_appCfg.item(3, 3).setText(hex_to_bin(auxGpioText[0:2]))  # msb
+        self.table_appCfgPage_appCfg.item(3, 5).setText(hex_to_bin(auxGpioText[2:]))   # lsb
+
+        """ AUXREFCFG """
+        auxRefText = self.table_appCfgPage_appCfg.item(4, 2).text()
+        self.table_appCfgPage_appCfg.item(4, 3).setText(hex_to_bin(auxRefText[0])[0:2])  # msb
+        self.table_appCfgPage_appCfg.item(4, 5).setText(hex_to_bin(auxRefText[2:]))   # lsb
+
+
+
     def slot_pushBtn_appCfgPage_alertCfgWR(self):
         pass
 
@@ -1151,6 +1173,16 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
     def slot_pushBtn_appCfgPage_thresholdRegRd(self):
         pass
+
+    def slot_table_appCfgPage_thReg_cellChange(self):
+        """ TEMPTHREG """
+        temThText = self.table_appCfgPage_thresholdReg.item(13, 2).text()
+        temC = str(round(int(temThText,16) / 8 - 273.15, 2))
+        temF = str(round((int(temThText,16) / 8 - 273.15) * 9 / 5 + 32, 2))
+
+        self.table_appCfgPage_thresholdReg.item(13, 3).setText(temC)
+        self.table_appCfgPage_thresholdReg.item(13, 5).setText(temF)
+
 
     def slot_pushBtn_appCfgPage_acqRegWr(self):
         pass

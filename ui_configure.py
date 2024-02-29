@@ -398,7 +398,7 @@ table_diagCfgPage_testCfg_items = [
 table_diagCfgPage_diagThre_headers = ["Address", "Register", "Pending (hex)", "Pending Value", "Pending Unit",
                                       "Pending Value", "Pending Unit", "Device 0 (hex)", "Device 1 (hex)"]
 table_diagCfgPage_diagThre_items = [
-    ["0x2F", "BALSHRTUVTHREG",   "0000", "0.000",   "V",           " ", " ", "0000", "0000"],
+    ["0x2F", "BALSHRTUVTHREG",  "0000", "0.000",   "V",           " ", " ", "0000", "0000"],
     ["0x30", "BALOVTHREG",      "7FFF", "+2.500",  "V(Bipolar)",  " ", " ", "7FFF", "7FFF"],
     ["0x31", "BALUVTHREG",      "8000", "-2.500",  "V(Bipolar)",  " ", " ", "8000", "8000"],
     ["0x32", "CELLOPNOVTHREG",  "FFFF", "5.000",   "V",           " ", " ", "FFFF", "FFFF"],

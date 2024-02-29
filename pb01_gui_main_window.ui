@@ -51,7 +51,7 @@ QTabBar::tab:!selected { /* 未被选中的Tab标题的样式 */
 }</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <property name="tabBarAutoHide">
        <bool>false</bool>
@@ -3337,7 +3337,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </spacer>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_72">
+            <widget class="QPushButton" name="pushButton_diagCfgPage_curCfgWR">
              <property name="minimumSize">
               <size>
                <width>110</width>
@@ -3378,7 +3378,7 @@ QPushButton:pressed {
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_73">
+            <widget class="QPushButton" name="pushButton_diagCfgPage_curCfgRd">
              <property name="minimumSize">
               <size>
                <width>110</width>
@@ -3631,7 +3631,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </spacer>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_74">
+            <widget class="QPushButton" name="pushButton_diagCfgPage_diagThWR">
              <property name="minimumSize">
               <size>
                <width>110</width>
@@ -3672,7 +3672,7 @@ QPushButton:pressed {
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_75">
+            <widget class="QPushButton" name="pushButton_diagCfgPage_diagThRd">
              <property name="minimumSize">
               <size>
                <width>110</width>
@@ -3955,7 +3955,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </spacer>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_76">
+            <widget class="QPushButton" name="pushButton_diagCfgPage_aluTeWR">
              <property name="minimumSize">
               <size>
                <width>110</width>
@@ -3996,7 +3996,7 @@ QPushButton:pressed {
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_77">
+            <widget class="QPushButton" name="pushButton_diagCfgPage_aluTeRd">
              <property name="minimumSize">
               <size>
                <width>110</width>

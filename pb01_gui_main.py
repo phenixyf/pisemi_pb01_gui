@@ -67,6 +67,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.pushButton_appCfgPage_acqRegRd.clicked.connect(self.slot_pushBtn_appCfgPage_acqRegRd)
         self.table_appCfgPage_appCfg.cellChanged.connect(self.slot_table_appCfgPage_appCfg_cellChange)
         self.table_appCfgPage_thresholdReg.cellChanged.connect(self.slot_table_appCfgPage_thReg_cellChange)
+        ''' diagnostic configuration page (page4) '''
 
 
     def init_tab_pages(self):
@@ -1283,7 +1284,6 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         try:
             if self.hidStatus == False:
                 self.hidBdg.open(target_vid, target_pid)  # VendorID/ProductID
-                # self.hidBdg.set_nonblocking(1)
                 self.hidStatus = True
                 self.statusMessage.setStyleSheet("QLabel { color : blue; }")  # 设置字体颜色为蓝色
                 self.statusMessage.setText("bridge board connect successfully ")

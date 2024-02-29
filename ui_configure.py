@@ -976,6 +976,8 @@ def set_diagCfgPage_table_color(pTeCurTable, pDiagThrTable, pAluTable):
         for c in range(2, 13):
             if c == 2:
                 pTeCurTable.item(r, c).setBackground(QColor("#DAE3F3"))     # 紫色
+                pTeCurTable.item(r, 2).setFlags(pTeCurTable.item(r, 2).flags()
+                                                 & ~Qt.ItemIsEditable & ~Qt.ItemIsSelectable)  # disable cell
             elif c == 3 or c == 5 or c == 7 or c == 9:
                 pTeCurTable.item(r, c).setBackground(QColor("#FFF2CC"))     # 黄色
             elif c == 11 or c == 12:
@@ -985,12 +987,17 @@ def set_diagCfgPage_table_color(pTeCurTable, pDiagThrTable, pAluTable):
     for r in range(13):
         if r < 4:
             pAluTable.item(r, 2).setBackground(QColor("#DAE3F3"))  # 紫色
+            pAluTable.item(r, 2).setFlags(pAluTable.item(r, 2).flags()
+                                              & ~Qt.ItemIsEditable & ~Qt.ItemIsSelectable)  # disable cell
             pAluTable.item(r, 7).setBackground(QColor("#E2F0D9"))  # 绿色
             pAluTable.item(r, 8).setBackground(QColor("#E2F0D9"))  # 绿色
         pDiagThrTable.item(r, 2).setBackground(QColor("#DAE3F3"))  # 紫色
         pDiagThrTable.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
         pDiagThrTable.item(r, 7).setBackground(QColor("#E2F0D9"))  # 绿色
         pDiagThrTable.item(r, 8).setBackground(QColor("#E2F0D9"))  # 绿色
+        pDiagThrTable.item(r, 2).setFlags(pDiagThrTable.item(r, 2).flags()
+                                        & ~Qt.ItemIsEditable & ~Qt.ItemIsSelectable)  # disable cell
+
 
 def adjust_acqReqPage_tables(pOsrTable, pAcqReqTable):
     pOsrTable.item(0, 0).setBackground(QColor("#DAE3F3"))  # 紫色

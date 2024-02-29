@@ -1163,16 +1163,61 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def slot_pushBtn_appCfgPage_alertCfgWR(self):
-        pass
+        time.sleep(BTN_OP_DELAY)
+
+        self.update_write_read_op(0x18, 0xFFFF, self.table_appCfgPage_alertCfg, 0, 7)  # ALRTOVCFG R18=0xFFFF
+        self.update_write_read_op(0x19, 0xFFFF, self.table_appCfgPage_alertCfg, 1, 7)  # ALRTUVCFG R19=0xFFFF
+        self.update_write_read_op(0x1A, 0xFFFF, self.table_appCfgPage_alertCfg, 2, 7)  # ALRTAUXOVCFG R1A=0xFFFF
+        self.update_write_read_op(0x1B, 0xFFFF, self.table_appCfgPage_alertCfg, 3, 7)  # ALRTAUXUVCFG R1B=0xFFFF
+
 
     def slot_pushBtn_appCfgPage_alertCfgRd(self):
-        pass
+        time.sleep(BTN_OP_DELAY)
+
+        self.update_config_readback_op(0x18, self.table_appCfgPage_alertCfg, 0, 7)  # ALRTOVCFG
+        self.update_config_readback_op(0x19, self.table_appCfgPage_alertCfg, 1, 7)  # ALRTUVCFG
+        self.update_config_readback_op(0x1A, self.table_appCfgPage_alertCfg, 2, 7)  # ALRTAUXOVCFG
+        self.update_config_readback_op(0x1B, self.table_appCfgPage_alertCfg, 3, 7)  # ALRTAUXUVCFG
+
 
     def slot_pushBtn_appCfgPage_thresholdRegWR(self):
-        pass
+        time.sleep(BTN_OP_DELAY)
+
+        self.update_write_read_op(0x20, 0xE667, self.table_appCfgPage_thresholdReg, 0, 7)  # OVTHREG       R20=0xE667
+        self.update_write_read_op(0x21, 0x8A3D, self.table_appCfgPage_thresholdReg, 1, 7)  # UVTREG        R21=0x8A3D
+        self.update_write_read_op(0x22, 0x051F, self.table_appCfgPage_thresholdReg, 2, 7)  # BIPOVTHREG    R22=0x051F
+        self.update_write_read_op(0x23, 0xFAE1, self.table_appCfgPage_thresholdReg, 3, 7)  # BIPUVTHREG    R23=0xFAE1
+        self.update_write_read_op(0x24, 0xE667, self.table_appCfgPage_thresholdReg, 4, 7)  # ALTOVTHREG    R24=0xE667
+        self.update_write_read_op(0x25, 0x8A3D, self.table_appCfgPage_thresholdReg, 5, 7)  # ALTUVTHREG    R25=0x8A3D
+        self.update_write_read_op(0x26, 0x051F, self.table_appCfgPage_thresholdReg, 6, 7)  # ALTBIPOVTHREG R26=0x051F
+        self.update_write_read_op(0x27, 0xFAE1, self.table_appCfgPage_thresholdReg, 7, 7)  # ALTBIPUVTHREG R27=0xFAE1
+        self.update_write_read_op(0x28, 0xFFFF, self.table_appCfgPage_thresholdReg, 8, 7)  # AUXROVTHREG   R28=0xFFFF
+        self.update_write_read_op(0x29, 0x0000, self.table_appCfgPage_thresholdReg, 9, 7)  # AUXRUVTHREG   R29=0x0000
+        self.update_write_read_op(0x2A, 0xFFFF, self.table_appCfgPage_thresholdReg, 10, 7) # AUXAOVTHREG   R2A=0xFFFF
+        self.update_write_read_op(0x2B, 0x0000, self.table_appCfgPage_thresholdReg, 11, 7) # AUXAUVTHREG   R2B=0x0000
+        self.update_write_read_op(0x2C, 0x0CCD, self.table_appCfgPage_thresholdReg, 12, 7) # MMTHREG       R2C=0x0CCD
+        tempThData = int(self.table_appCfgPage_thresholdReg.item(13, 2).text(), 16)
+        self.update_write_read_op(0x2D, tempThData, self.table_appCfgPage_thresholdReg, 13, 7)  # TEMPTHREG customized
+
 
     def slot_pushBtn_appCfgPage_thresholdRegRd(self):
-        pass
+        time.sleep(BTN_OP_DELAY)
+
+        self.update_config_readback_op(0x20, self.table_appCfgPage_thresholdReg, 0,  7)  # OVTHREG
+        self.update_config_readback_op(0x21, self.table_appCfgPage_thresholdReg, 1,  7)  # UVTREG
+        self.update_config_readback_op(0x22, self.table_appCfgPage_thresholdReg, 2,  7)  # BIPOVTHREG
+        self.update_config_readback_op(0x23, self.table_appCfgPage_thresholdReg, 3,  7)  # BIPUVTHREG
+        self.update_config_readback_op(0x24, self.table_appCfgPage_thresholdReg, 4,  7)  # ALTOVTHREG
+        self.update_config_readback_op(0x25, self.table_appCfgPage_thresholdReg, 5,  7)  # ALTUVTHREG
+        self.update_config_readback_op(0x26, self.table_appCfgPage_thresholdReg, 6,  7)  # ALTBIPOVTHREG
+        self.update_config_readback_op(0x27, self.table_appCfgPage_thresholdReg, 7,  7)  # ALTBIPUVTHREG
+        self.update_config_readback_op(0x28, self.table_appCfgPage_thresholdReg, 8,  7)  # AUXROVTHREG
+        self.update_config_readback_op(0x29, self.table_appCfgPage_thresholdReg, 9,  7)  # AUXRUVTHREG
+        self.update_config_readback_op(0x2A, self.table_appCfgPage_thresholdReg, 10, 7)  # AUXAOVTHREG
+        self.update_config_readback_op(0x2B, self.table_appCfgPage_thresholdReg, 11, 7)  # AUXAUVTHREG
+        self.update_config_readback_op(0x2C, self.table_appCfgPage_thresholdReg, 12, 7)  # MMTHREG
+        self.update_config_readback_op(0x2D, self.table_appCfgPage_thresholdReg, 13, 7)  # TEMPTHREG
+
 
     def slot_table_appCfgPage_thReg_cellChange(self):
         """ TEMPTHREG """
@@ -1185,10 +1230,21 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def slot_pushBtn_appCfgPage_acqRegWr(self):
-        pass
+        time.sleep(BTN_OP_DELAY)
+
+        self.update_write_read_op(0x40, 0x1501, self.table_appCfgPage_acqReg, 0, 7)  # ACQDLY1    R40=0x1501
+        self.update_write_read_op(0x41, 0x3220, self.table_appCfgPage_acqReg, 1, 7)  # ACQDLY2    R41=0x3220
+        self.update_write_read_op(0x42, 0xFFFF, self.table_appCfgPage_acqReg, 2, 7)  # ACQCHSEL   R42=0xFFFF
+        self.update_write_read_op(0x43, 0x00FF, self.table_appCfgPage_acqReg, 3, 7)  # ACQAUXSEL  R43=0x00FF
+
 
     def slot_pushBtn_appCfgPage_acqRegRd(self):
-        pass
+        time.sleep(BTN_OP_DELAY)
+
+        self.update_config_readback_op(0x40, self.table_appCfgPage_acqReg, 0, 7)  # ACQDLY1
+        self.update_config_readback_op(0x41, self.table_appCfgPage_acqReg, 1, 7)  # ACQDLY2
+        self.update_config_readback_op(0x42, self.table_appCfgPage_acqReg, 2, 7)  # ACQCHSEL
+        self.update_config_readback_op(0x43, self.table_appCfgPage_acqReg, 3, 7)  # ACQAUXSEL
 
 
     def setupNotification(self):

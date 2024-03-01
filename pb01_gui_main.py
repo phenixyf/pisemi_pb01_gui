@@ -685,59 +685,59 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         # update dc table
         self.update_dc_aleter_table(pDcTable, dcByte, pLedDcByt, pLedAlertPk)
 
-        # read status2
-        if self.flagSingleAfe:
-            rtData = pb01_read_all(self.hidBdg, 0x05, 1, 0x00)
-            if rtData == "message return RX error" or rtData == "pec check error":
-                self.message_box(rtData)
-                return
-            else:
-                dcByte = rtData[4]
-        else:
-            rtData = pb01_read_all(self.hidBdg, 0x05, 2, 0x00)
-            if rtData == "message return RX error" or rtData == "pec check error":
-                self.message_box(rtData)
-                return
-            else:
-                dcByte = rtData[6]
-        # update dc table
-        self.update_dc_aleter_table(pDcTable, dcByte, pLedDcByt, pLedAlertPk)
-
-        # read fmea1
-        if self.flagSingleAfe:
-            rtData = pb01_read_all(self.hidBdg, 0x06, 1, 0x00)
-            if rtData == "message return RX error" or rtData == "pec check error":
-                self.message_box(rtData)
-                return
-            else:
-                dcByte = rtData[4]
-        else:
-            rtData = pb01_read_all(self.hidBdg, 0x06, 2, 0x00)
-            if rtData == "message return RX error" or rtData == "pec check error":
-                self.message_box(rtData)
-                return
-            else:
-                dcByte = rtData[6]
-        # update dc table
-        self.update_dc_aleter_table(pDcTable, dcByte, pLedDcByt, pLedAlertPk)
-
-        # read fmea2
-        if self.flagSingleAfe:
-            rtData = pb01_read_all(self.hidBdg, 0x07, 1, 0x00)
-            if rtData == "message return RX error" or rtData == "pec check error":
-                self.message_box(rtData)
-                return
-            else:
-                dcByte = rtData[4]
-        else:
-            rtData = pb01_read_all(self.hidBdg, 0x07, 2, 0x00)
-            if rtData == "message return RX error" or rtData == "pec check error":
-                self.message_box(rtData)
-                return
-            else:
-                dcByte = rtData[6]
-        # update dc table
-        self.update_dc_aleter_table(pDcTable, dcByte, pLedDcByt, pLedAlertPk)
+        # # read status2
+        # if self.flagSingleAfe:
+        #     rtData = pb01_read_all(self.hidBdg, 0x05, 1, 0x00)
+        #     if rtData == "message return RX error" or rtData == "pec check error":
+        #         self.message_box(rtData)
+        #         return
+        #     else:
+        #         dcByte = rtData[4]
+        # else:
+        #     rtData = pb01_read_all(self.hidBdg, 0x05, 2, 0x00)
+        #     if rtData == "message return RX error" or rtData == "pec check error":
+        #         self.message_box(rtData)
+        #         return
+        #     else:
+        #         dcByte = rtData[6]
+        # # update dc table
+        # self.update_dc_aleter_table(pDcTable, dcByte, pLedDcByt, pLedAlertPk)
+        #
+        # # read fmea1
+        # if self.flagSingleAfe:
+        #     rtData = pb01_read_all(self.hidBdg, 0x06, 1, 0x00)
+        #     if rtData == "message return RX error" or rtData == "pec check error":
+        #         self.message_box(rtData)
+        #         return
+        #     else:
+        #         dcByte = rtData[4]
+        # else:
+        #     rtData = pb01_read_all(self.hidBdg, 0x06, 2, 0x00)
+        #     if rtData == "message return RX error" or rtData == "pec check error":
+        #         self.message_box(rtData)
+        #         return
+        #     else:
+        #         dcByte = rtData[6]
+        # # update dc table
+        # self.update_dc_aleter_table(pDcTable, dcByte, pLedDcByt, pLedAlertPk)
+        #
+        # # read fmea2
+        # if self.flagSingleAfe:
+        #     rtData = pb01_read_all(self.hidBdg, 0x07, 1, 0x00)
+        #     if rtData == "message return RX error" or rtData == "pec check error":
+        #         self.message_box(rtData)
+        #         return
+        #     else:
+        #         dcByte = rtData[4]
+        # else:
+        #     rtData = pb01_read_all(self.hidBdg, 0x07, 2, 0x00)
+        #     if rtData == "message return RX error" or rtData == "pec check error":
+        #         self.message_box(rtData)
+        #         return
+        #     else:
+        #         dcByte = rtData[6]
+        # # update dc table
+        # self.update_dc_aleter_table(pDcTable, dcByte, pLedDcByt, pLedAlertPk)
 
         """ update status block table """
         if not self.update_status_block_table(pStatusTable, 2, 7,

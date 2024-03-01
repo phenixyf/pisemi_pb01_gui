@@ -2490,10 +2490,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_39.addWidget(self.lineEdit_warnStatusInit_4)
         spacerItem23 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_39.addItem(spacerItem23)
-        self.pushButton_statusRegInit_7 = QtWidgets.QPushButton(self.frame_27)
-        self.pushButton_statusRegInit_7.setMinimumSize(QtCore.QSize(110, 0))
-        self.pushButton_statusRegInit_7.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.pushButton_statusRegInit_7.setStyleSheet("QPushButton {\n"
+        self.pushButton_acqReqPage_request = QtWidgets.QPushButton(self.frame_27)
+        self.pushButton_acqReqPage_request.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_acqReqPage_request.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_acqReqPage_request.setStyleSheet("QPushButton {\n"
 "    background-color: #3072B3; /* 按钮背景颜色 */\n"
 "    color: white; /* 文字颜色 */\n"
 "    border-style: solid; /* 边框样式 */\n"
@@ -2513,8 +2513,8 @@ class Ui_MainWindow(object):
 "    background-color: #1E5A97; /* 按下时的背景颜色 */\n"
 "}\n"
 "")
-        self.pushButton_statusRegInit_7.setObjectName("pushButton_statusRegInit_7")
-        self.horizontalLayout_39.addWidget(self.pushButton_statusRegInit_7)
+        self.pushButton_acqReqPage_request.setObjectName("pushButton_acqReqPage_request")
+        self.horizontalLayout_39.addWidget(self.pushButton_acqReqPage_request)
         self.verticalLayout_11.addWidget(self.frame_27)
         self.table_acqReqPage_acqReq = QtWidgets.QTableWidget(self.tab_acqReq)
         self.table_acqReqPage_acqReq.setMaximumSize(QtCore.QSize(16777215, 16777215))
@@ -5321,7 +5321,7 @@ class Ui_MainWindow(object):
 "For all Diagnostics, any selections above which are ignored will be automatically overridden/re-configured in the Request(s) below."))
         self.label_51.setText(_translate("MainWindow", "Acquisition Mode (ACQMODE) Selection"))
         self.lineEdit_warnStatusInit_4.setText(_translate("MainWindow", "WARNING:  Unexpected Acquisition Status – Confirm Setup"))
-        self.pushButton_statusRegInit_7.setText(_translate("MainWindow", "REQUEST"))
+        self.pushButton_acqReqPage_request.setText(_translate("MainWindow", "REQUEST"))
         item = self.table_acqReqPage_acqReq.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
         item = self.table_acqReqPage_acqReq.verticalHeaderItem(1)

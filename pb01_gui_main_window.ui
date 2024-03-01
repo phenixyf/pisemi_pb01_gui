@@ -5197,7 +5197,7 @@ padding: 5px; /* 内边距 */
             </spacer>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_statusRegInit_7">
+            <widget class="QPushButton" name="pushButton_acqReqPage_request">
              <property name="minimumSize">
               <size>
                <width>110</width>

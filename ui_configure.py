@@ -1001,6 +1001,8 @@ def set_diagCfgPage_table_color(pTeCurTable, pDiagThrTable, pAluTable):
 
 def adjust_acqReqPage_tables(pOsrTable, pAcqReqTable):
     pOsrTable.item(0, 0).setBackground(QColor("#DAE3F3"))  # 紫色
+    pOsrTable.item(0, 0).setFlags(pOsrTable.item(0, 0).flags()
+                                  & ~Qt.ItemIsEditable & ~Qt.ItemIsSelectable)  # disable cell
     pOsrTable.item(0, 1).setBackground(QColor("#FFF2CC"))  # 黄色
 
     for r in range(2):

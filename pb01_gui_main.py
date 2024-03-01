@@ -21,13 +21,24 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super(QMainWindow, self).__init__(parent)
         self.setupUi(self)
+        self.initUI()  # 定义初始化函数
+
+
+    def initUI(self):
+        """
+        GUI 初始化函数
+        :return:
+        """
+        """ self variables """
         self.hidBdg = hid.device()
         self.hidStatus = False
         self.setupNotification()
         self.statusMessage = QLabel()
         self.statusMessage.setFont(QFont('Calibri', 10, QFont.Bold))  # 设置字体和加粗
         self.statusBar().addPermanentWidget(self.statusMessage)
-        self.flagSingleAfe = False
+        self.flagSingleAfe = False  # chainCfgPage single afe radio button flag
+        self.flag_radio_acqReqPage_acqcbalint = True  # acqReqPage acqcbalint radio button flag
+        self.flag_radio_acqReqPage_acqiirinit = True  # acqReqPage acqiirinit radio button flag
         self.ledChainPageDev0 = []
         self.ledChainPageDev1 = []
         self.ledDevMgPageInitDev0 = []
@@ -36,13 +47,22 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.ledDevMgPageCurDev1 = []
         self.ledDevMgPageDcByte = []
         self.ledDevMgPageAlertPk = []
-        self.initUI()  # 定义初始化函数
-
-    def initUI(self):
-        """
-        GUI 初始化函数
-        :return:
-        """
+        self.radioGroup_acqReqPage_acqMode = QButtonGroup(self)    # 将 acqReqPage radio 归为一组
+        self.acqRea_radio_list = [self.radioButton_acqReqPage_dataUpdate,
+                             self.radioButton_acqReqPage_normalMeas, self.radioButton_acqReqPage_redundantMeas,
+                             self.radioButton_acqReqPage_pathDiag, self.radioButton_acqReqPage_balswShortDiag,
+                             self.radioButton_acqReqPage_balswOpenDiag, self.radioButton_acqReqPage_cellOpenDiag,
+                             self.radioButton_acqReqPage_busOpenDiag, self.radioButton_acqReqPage_cellHvmuxDiag,
+                             self.radioButton_acqReqPage_busHvmuxDiag, self.radioButton_acqReqPage_auxrDiag,
+                             self.radioButton_acqReqPage_auxaDiagA, self.radioButton_acqReqPage_auxaDiagB,
+                             self.radioButton_acqReqPage_diagDataClear]
+        for i in range(0, 14):
+            if i==13:
+                self.radioGroup_acqReqPage_acqMode.addButton(self.acqRea_radio_list[i], id = i+1)
+            else:
+                self.radioGroup_acqReqPage_acqMode.addButton(self.acqRea_radio_list[i], id = i)
+        self.acqCtrlVal = 0x0140      # acqReqPage ACQCTRL register value
+        """ self functions """
         self.open_hid()
         self.init_tab_pages()
         """  配置信号和槽 """
@@ -74,6 +94,11 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.pushButton_diagCfgPage_diagThRd.clicked.connect(self.solt_pushBtn_diagCfgPage_diagThRd)
         self.pushButton_diagCfgPage_aluTeWR.clicked.connect(self.solt_pushBtn_diagCfgPage_aluTeWR)
         self.pushButton_diagCfgPage_aluTeRd.clicked.connect(self.solt_pushBtn_diagCfgPage_aluTeRd)
+        ''' acquisition request page (page5) '''
+        self.radioButton_acqReqPage_acqcbalint.clicked.connect(self.solt_radioBtn_acqReqPage_acqcbalint)
+        self.radioButton_acqReqPage_acqiirinit.clicked.connect(self.solt_radioBtn_acqReqPage_acqiirinit)
+        self.radioGroup_acqReqPage_acqMode.buttonClicked.connect(self.solt_radioGroup_acqReqPage_acqMode)
+        self.pushButton_acqReqPage_request.clicked.connect(self.solt_pushBtn_acqReqPage_request)
 
 
     def init_tab_pages(self):
@@ -682,7 +707,6 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 rdDataDev1 = (rtRd[3] << 8) | rtRd[2]
                 self.update_table_item_data(pTable, pRow, pCol, hex(rdDataDev0)[2:].upper().zfill(4))  # dev0
                 self.update_table_item_data(pTable, pRow, pCol + 1, hex(rdDataDev1)[2:].upper().zfill(4))  # dev1
-
 
 
     def pushBtn_disable(self, pBtn):
@@ -1308,6 +1332,74 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.update_config_readback_op(0x3D, self.table_diagCfgPage_aluTestDiagReg, 0, 7)  # ALUTESTBREG
         self.update_config_readback_op(0x3E, self.table_diagCfgPage_aluTestDiagReg, 0, 7)  # ALUTESTCREG
         self.update_config_readback_op(0x3F, self.table_diagCfgPage_aluTestDiagReg, 0, 7)  # ALUTESTDREG
+
+
+    def pb01_read_reg(self, pRegAddr):
+        """
+        读取 pb01 dev0 某个寄存器的值
+        该函数由 acqReqPage 和 cblPage 页面中各 radio 槽函数使用
+        用于通过点击 radio 配置对应的寄存器前先读取该寄存器的值
+        :param pRegAddr: 寄存器地址
+        :return: 按 int 格式返回寄存器中数据，即寄存器数据的 int 值
+        """
+        rdData = pb01_read_device(self.hidBdg, 0x00, pRegAddr, 0x00)
+        if rdData == "message return RX error" or rdData == "pec check error":
+            self.message_box(rdData)
+            return False
+        else:
+            intData = (rdData[3] << 8) | rdData[2]
+            return intData
+
+
+    def solt_radioBtn_acqReqPage_acqcbalint(self):
+        if self.radioButton_acqReqPage_acqcbalint.isChecked():
+            if not self.flag_radio_acqReqPage_acqcbalint:  # radio status is unchecked
+                self.radioButton_acqReqPage_acqcbalint.setAutoExclusive(False)
+                self.radioButton_acqReqPage_acqcbalint.setChecked(False)
+                self.radioButton_acqReqPage_acqcbalint.setAutoExclusive(True)
+                self.flag_radio_acqReqPage_acqcbalint = True
+                self.acqCtrlVal &= 0xF7FF
+                self.table_acqReqPage_acqReq.item(0,2).setText(hex(self.acqCtrlVal)[2:].upper().zfill(4))
+                if not self.flagSingleAfe:
+                    self.table_acqReqPage_acqReq.item(1, 2).setText(hex(self.acqCtrlVal)[2:].upper().zfill(4))
+            else:   # radio status is checked.
+                self.flag_radio_acqReqPage_acqcbalint = False
+                self.radioButton_acqReqPage_acqcbalint.setChecked(True)
+                self.acqCtrlVal |= 0x0800
+                self.table_acqReqPage_acqReq.item(0, 2).setText(hex(self.acqCtrlVal)[2:].upper().zfill(4))
+                if not self.flagSingleAfe:
+                    self.table_acqReqPage_acqReq.item(1, 2).setText(hex(self.acqCtrlVal)[2:].upper().zfill(4))
+
+
+    def solt_radioBtn_acqReqPage_acqiirinit(self):
+        if self.radioButton_acqReqPage_acqiirinit.isChecked():
+            if not self.flag_radio_acqReqPage_acqiirinit:  # radio status is unchecked
+                self.radioButton_acqReqPage_acqiirinit.setAutoExclusive(False)
+                self.radioButton_acqReqPage_acqiirinit.setChecked(False)
+                self.radioButton_acqReqPage_acqiirinit.setAutoExclusive(True)
+                self.flag_radio_acqReqPage_acqiirinit = True
+                self.acqCtrlVal &= 0xFDFF
+                self.table_acqReqPage_acqReq.item(0, 2).setText(hex(self.acqCtrlVal)[2:].upper().zfill(4))
+                if not self.flagSingleAfe:
+                    self.table_acqReqPage_acqReq.item(1, 2).setText(hex(self.acqCtrlVal)[2:].upper().zfill(4))
+            else:  # radio status is checked.
+                self.flag_radio_acqReqPage_acqiirinit = False
+                self.radioButton_acqReqPage_acqiirinit.setChecked(True)
+                self.acqCtrlVal |= 0x0200
+                self.table_acqReqPage_acqReq.item(0, 2).setText(hex(self.acqCtrlVal)[2:].upper().zfill(4))
+                if not self.flagSingleAfe:
+                    self.table_acqReqPage_acqReq.item(1, 2).setText(hex(self.acqCtrlVal)[2:].upper().zfill(4))
+
+
+    def solt_radioGroup_acqReqPage_acqMode(self, button):
+        self.acqCtrlVal = (self.acqCtrlVal & 0xFFF0) | self.radioGroup_acqReqPage_acqMode.id(button)
+        self.table_acqReqPage_acqReq.item(0, 2).setText(hex(self.acqCtrlVal)[2:].upper().zfill(4))
+        if not self.flagSingleAfe:
+            self.table_acqReqPage_acqReq.item(1, 2).setText(hex(self.acqCtrlVal)[2:].upper().zfill(4))
+
+    def solt_pushBtn_acqReqPage_request(self):
+        print(hex(self.acqCtrlVal))
+
 
 
     def setupNotification(self):

@@ -1398,8 +1398,66 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             self.table_acqReqPage_acqReq.item(1, 2).setText(hex(self.acqCtrlVal)[2:].upper().zfill(4))
 
     def solt_pushBtn_acqReqPage_request(self):
-        print(hex(self.acqCtrlVal))
+        """
+        启动采样：ACQCTRL(0x44) 中写入对应的值
+        读取各采样或诊断数据，并将数据更新到对应页面
+        :return:
+        """
+        """ re-setup acqReqPage acquisition mode warning bar """
+        self.set_default_warn_bar(self.lineEdit_acqReqPage_acqctrlWarn)
 
+        """ kick off the acquisition (write data to R44) """
+        rtData = self.afe_write_read_all(0x44, self.acqCtrlVal)  # configure A13 = 0x2000
+
+        """ update acqReaPage acquisition mode table """
+        if rtData != False:
+            if self.flagSingleAfe:  # single afe
+                rdDataDev0 = (rtData[1] << 8) | rtData[0]
+                self.update_table_item_data(self.table_acqReqPage_acqReq, 0, 3, hex(rdDataDev0)[2:].upper().zfill(4))  # dev0
+                ''' fill each bit '''
+                bitsDev0 = rdDataDev0 >> 7      # other bits
+                for i in range(9):
+                    bitValueDev0 = (bitsDev0 >> i) & 1
+                    self.table_acqReqPage_acqReq.item(0, 12-i).setText(str(bitValueDev0))
+
+                osrBitsDev0 = (rdDataDev0 & 0x0070) >> 4    # ACQOSR bits
+                self.table_acqReqPage_acqReq.item(0, 13).setText(hex_to_bin(hex(osrBitsDev0))[-3:])
+                acqModeBitsDev0 = rdDataDev0 & 0x000F       # ACQMODE bits
+                self.table_acqReqPage_acqReq.item(0, 14).setText(hex_to_bin(hex(acqModeBitsDev0))[-4:])
+
+                ''' set warn bar '''
+                if rdDataDev0 != (self.acqCtrlVal | 0xC000):
+                    self.set_warning_message(self.lineEdit_acqReqPage_acqctrlWarn,
+                                             "Unexpected Acquisition Status – Confirm Setup")
+            else:  # dual afe
+                rdDataDev0 = (rtData[3] << 8) | rtData[2]
+                rdDataDev1 = (rtData[1] << 8) | rtData[0]
+                self.update_table_item_data(self.table_acqReqPage_acqReq, 0, 3, hex(rdDataDev0)[2:].upper().zfill(4))  # dev0
+                self.update_table_item_data(self.table_acqReqPage_acqReq, 1, 3, hex(rdDataDev1)[2:].upper().zfill(4))  # dev1
+                ''' fill each bit '''
+                bitsDev0 = rdDataDev0 >> 7      # other bits
+                bitsDev1 = rdDataDev1 >> 7      # other bits
+                for i in range(9):
+                    bitValueDev0 = (bitsDev0 >> i) & 1
+                    self.table_acqReqPage_acqReq.item(0, 12 - i).setText(str(bitValueDev0))  # dev0
+                    bitValueDev1 = (bitsDev1 >> i) & 1
+                    self.table_acqReqPage_acqReq.item(1, 12 - i).setText(str(bitValueDev1))  # dev1
+
+                osrBitsDev0 = (rdDataDev0 & 0x0070) >> 4  # ACQOSR bits
+                osrBitsDev1 = (rdDataDev1 & 0x0070) >> 4  # ACQOSR bits
+                self.table_acqReqPage_acqReq.item(0, 13).setText(hex_to_bin(hex(osrBitsDev0))[-3:])
+                self.table_acqReqPage_acqReq.item(1, 13).setText(hex_to_bin(hex(osrBitsDev1))[-3:])
+                acqModeBitsDev0 = rdDataDev0 & 0x000F  # ACQMODE bits
+                acqModeBitsDev1 = rdDataDev1 & 0x000F  # ACQMODE bits
+                self.table_acqReqPage_acqReq.item(0, 14).setText(hex_to_bin(hex(acqModeBitsDev0))[-4:])
+                self.table_acqReqPage_acqReq.item(1, 14).setText(hex_to_bin(hex(acqModeBitsDev1))[-4:])
+
+                ''' set warn bar '''
+                if (rdDataDev0 != (self.acqCtrlVal | 0xC000)) or rdDataDev1 != (self.acqCtrlVal | 0xC000):
+                    self.set_warning_message(self.lineEdit_acqReqPage_acqctrlWarn,
+                                             " Unexpected Acquisition Status – Confirm Setup")
+        else:
+            return
 
 
     def setupNotification(self):

@@ -5138,7 +5138,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </spacer>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_warnStatusInit_4">
+            <widget class="QLineEdit" name="lineEdit_acqReqPage_acqctrlWarn">
              <property name="minimumSize">
               <size>
                <width>600</width>
@@ -5165,15 +5165,17 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
   font: 11pt &quot;Calibri&quot;; /* 字体 */
   font-weight: 700; /* 字体粗细 */
   color: white; /* 文字颜色 */
-  background-color: #ff0000; /* 按钮背景颜色 1*/
+  background-color: lightblue; /* 按钮背景颜色 1*/
 border-color: #ce4500; /* 边框颜色 3*/
 border-width: 2px; /* 边框宽度 */
     border-radius: 10px; /* 边框圆角半径 */
 padding: 5px; /* 内边距 */
-}</string>
+}
+
+</string>
              </property>
              <property name="text">
-              <string>WARNING:  Unexpected Acquisition Status – Confirm Setup</string>
+              <string>WARNING:</string>
              </property>
              <property name="frame">
               <bool>false</bool>

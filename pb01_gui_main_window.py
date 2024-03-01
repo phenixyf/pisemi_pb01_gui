@@ -2464,30 +2464,32 @@ class Ui_MainWindow(object):
         self.horizontalLayout_39.addWidget(self.label_51)
         spacerItem22 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_39.addItem(spacerItem22)
-        self.lineEdit_warnStatusInit_4 = QtWidgets.QLineEdit(self.frame_27)
-        self.lineEdit_warnStatusInit_4.setMinimumSize(QtCore.QSize(600, 0))
-        self.lineEdit_warnStatusInit_4.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.lineEdit_acqReqPage_acqctrlWarn = QtWidgets.QLineEdit(self.frame_27)
+        self.lineEdit_acqReqPage_acqctrlWarn.setMinimumSize(QtCore.QSize(600, 0))
+        self.lineEdit_acqReqPage_acqctrlWarn.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
         font.setFamily("Calibri")
         font.setPointSize(11)
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(87)
-        self.lineEdit_warnStatusInit_4.setFont(font)
-        self.lineEdit_warnStatusInit_4.setStyleSheet("QLineEdit {\n"
+        self.lineEdit_acqReqPage_acqctrlWarn.setFont(font)
+        self.lineEdit_acqReqPage_acqctrlWarn.setStyleSheet("QLineEdit {\n"
 "  font: 11pt \"Calibri\"; /* 字体 */\n"
 "  font-weight: 700; /* 字体粗细 */\n"
 "  color: white; /* 文字颜色 */\n"
-"  background-color: #ff0000; /* 按钮背景颜色 1*/\n"
+"  background-color: lightblue; /* 按钮背景颜色 1*/\n"
 "border-color: #ce4500; /* 边框颜色 3*/\n"
 "border-width: 2px; /* 边框宽度 */\n"
 "    border-radius: 10px; /* 边框圆角半径 */\n"
 "padding: 5px; /* 内边距 */\n"
-"}")
-        self.lineEdit_warnStatusInit_4.setFrame(False)
-        self.lineEdit_warnStatusInit_4.setAlignment(QtCore.Qt.AlignCenter)
-        self.lineEdit_warnStatusInit_4.setObjectName("lineEdit_warnStatusInit_4")
-        self.horizontalLayout_39.addWidget(self.lineEdit_warnStatusInit_4)
+"}\n"
+"\n"
+"")
+        self.lineEdit_acqReqPage_acqctrlWarn.setFrame(False)
+        self.lineEdit_acqReqPage_acqctrlWarn.setAlignment(QtCore.Qt.AlignCenter)
+        self.lineEdit_acqReqPage_acqctrlWarn.setObjectName("lineEdit_acqReqPage_acqctrlWarn")
+        self.horizontalLayout_39.addWidget(self.lineEdit_acqReqPage_acqctrlWarn)
         spacerItem23 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_39.addItem(spacerItem23)
         self.pushButton_acqReqPage_request = QtWidgets.QPushButton(self.frame_27)
@@ -5320,7 +5322,7 @@ class Ui_MainWindow(object):
 "Simplified Demonstration:\n"
 "For all Diagnostics, any selections above which are ignored will be automatically overridden/re-configured in the Request(s) below."))
         self.label_51.setText(_translate("MainWindow", "Acquisition Mode (ACQMODE) Selection"))
-        self.lineEdit_warnStatusInit_4.setText(_translate("MainWindow", "WARNING:  Unexpected Acquisition Status – Confirm Setup"))
+        self.lineEdit_acqReqPage_acqctrlWarn.setText(_translate("MainWindow", "WARNING:"))
         self.pushButton_acqReqPage_request.setText(_translate("MainWindow", "REQUEST"))
         item = self.table_acqReqPage_acqReq.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))

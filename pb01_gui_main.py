@@ -224,11 +224,12 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         set_table_item(self.table_meaAcqSumPage_sumDataDev1, CHAIN_CFG_TABLE_ROWHG,
                        table_meaAcqSumDataPage_sumDataItems)
 
-        ledMeaAcqSumPageDc, ledMeaAcqSumPageAlert, \
-        ledMeaAcqSumPageStaDev0, ledMeaAcqSumPageStaDev1 = adjust_meaAcqSumPage_tables(self.table_meaAcqSumPage_dc,
-                                                                                       self.table_meaAcqSumPage_status,
-                                                                                       self.table_meaAcqSumPage_sumDataDev0,
-                                                                                       self.table_meaAcqSumPage_sumDataDev1)
+        self.ledMeaAcqSumPageDc, self.ledMeaAcqSumPageAlert, \
+        self.ledMeaAcqSumPageStaDev0, self.ledMeaAcqSumPageStaDev1 = adjust_meaAcqSumPage_tables(
+                                                                        self.table_meaAcqSumPage_dc,
+                                                                        self.table_meaAcqSumPage_status,
+                                                                        self.table_meaAcqSumPage_sumDataDev0,
+                                                                        self.table_meaAcqSumPage_sumDataDev1)
 
         ''' initial measurement acquisition detailed data page (page7) '''
         set_table_item(self.table_meaAcqDetailData_alertRegDev0, CHAIN_CFG_TABLE_ROWHG,
@@ -253,8 +254,8 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                          self.table_meaAcqDetailData_alertRegDev1,
                                          self.table_meaAcqDetailData_dataRegDev1)
 
-        ledMeaAcqDetailPageDev0, \
-        ledMeaAcqDetailPageDev1 = meaAcqDetailPage_insert_led(self.table_meaAcqDetailData_alertRegDev0,
+        self.ledMeaAcqDetailPageDev0, \
+        self.ledMeaAcqDetailPageDev1 = meaAcqDetailPage_insert_led(self.table_meaAcqDetailData_alertRegDev0,
                                                               self.table_meaAcqDetailData_alertRegDev1)
 
         ''' initial diagnostic acquisition data page (page8) '''
@@ -270,14 +271,15 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
         set_table_item(self.table_diagAcqPage_dataReg_dev1, CHAIN_CFG_TABLE_ROWHG, table_diagAcqDataPage_dev1DataItems)
 
-        ledDiagAcqDataPageDc, ledDiagAcqDataPageAlert, \
-        ledDiagAcqDataPageStaDev0, ledDiagAcqDataPageStaDev1, \
-        ledDiagAcqDataPageDev0, ledDiagAcqDataPageDev1 = adjust_diagAcqDataPage_tables(self.table_diagAcqPage_dc,
-                                                                                       self.table_diagAcqPage_status,
-                                                                                       self.table_diagAcqPage_alertReg_dev0,
-                                                                                       self.table_diagAcqPage_dataReg_dev0,
-                                                                                       self.table_diagAcqPage_alertReg_dev1,
-                                                                                       self.table_diagAcqPage_dataReg_dev1)
+        self.ledDiagAcqDataPageDc, self.ledDiagAcqDataPageAlert, \
+        self.ledDiagAcqDataPageStaDev0, self.ledDiagAcqDataPageStaDev1, \
+        self.ledDiagAcqDataPageDev0, self.ledDiagAcqDataPageDev1 = adjust_diagAcqDataPage_tables(
+                                                                    self.table_diagAcqPage_dc,
+                                                                    self.table_diagAcqPage_status,
+                                                                    self.table_diagAcqPage_alertReg_dev0,
+                                                                    self.table_diagAcqPage_dataReg_dev0,
+                                                                    self.table_diagAcqPage_alertReg_dev1,
+                                                                    self.table_diagAcqPage_dataReg_dev1)
 
         ''' initial cell balance page (page9) '''
         self.radioButton_cblPage_auto.setEnabled(False)
@@ -495,7 +497,9 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         for i in range(16):
             # status1
             if pSt1 & (0x8000 >> i):  # biti = 1
-                if i == 13:
+                if i == 0:
+                    pLedList[0][i].setStyleSheet(led_green_style)
+                elif i == 13: # CBAL bit
                     if pSt2 & 0x0060:
                         pLedList[0][i].setStyleSheet(led_green_style)
                     else:
@@ -1155,92 +1159,9 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
     def slot_pushBtn_devMgPage_readBack(self):
         time.sleep(BTN_OP_DELAY)
-
-        """ re-setup chainCfgPage cfgWarn bar """
-        self.set_default_warn_bar(self.lineEdit_devMgPage_initWarn)
-
-        """ use READ ALL read 4 status registers """
-        # read status1
-        if self.flagSingleAfe:
-            rtData = pb01_read_all(self.hidBdg, 0x04, 1, 0x00)
-            if rtData == "message return RX error" or rtData == "pec check error":
-                self.message_box(rtData)
-                return
-            else:
-                dcByte = rtData[4]
-        else:
-            rtData = pb01_read_all(self.hidBdg, 0x04, 2, 0x00)
-            if rtData == "message return RX error" or rtData == "pec check error":
-                self.message_box(rtData)
-                return
-            else:
-                dcByte = rtData[6]
-        # update dc table
-        self.update_dc_aleter_table(self.table_devMgPage_dc, dcByte, self.ledDevMgPageDcByte,
-                                    self.ledDevMgPageAlertPk)
-
-        # read status2
-        if self.flagSingleAfe:
-            rtData = pb01_read_all(self.hidBdg, 0x05, 1, 0x00)
-            if rtData == "message return RX error" or rtData == "pec check error":
-                self.message_box(rtData)
-                return
-            else:
-                dcByte = rtData[4]
-        else:
-            rtData = pb01_read_all(self.hidBdg, 0x05, 2, 0x00)
-            if rtData == "message return RX error" or rtData == "pec check error":
-                self.message_box(rtData)
-                return
-            else:
-                dcByte = rtData[6]
-        # update dc table
-        self.update_dc_aleter_table(self.table_devMgPage_dc, dcByte, self.ledDevMgPageDcByte,
-                                    self.ledDevMgPageAlertPk)
-
-        # read fmea1
-        if self.flagSingleAfe:
-            rtData = pb01_read_all(self.hidBdg, 0x06, 1, 0x00)
-            if rtData == "message return RX error" or rtData == "pec check error":
-                self.message_box(rtData)
-                return
-            else:
-                dcByte = rtData[4]
-        else:
-            rtData = pb01_read_all(self.hidBdg, 0x06, 2, 0x00)
-            if rtData == "message return RX error" or rtData == "pec check error":
-                self.message_box(rtData)
-                return
-            else:
-                dcByte = rtData[6]
-        # update dc table
-        self.update_dc_aleter_table(self.table_devMgPage_dc, dcByte, self.ledDevMgPageDcByte,
-                                    self.ledDevMgPageAlertPk)
-
-        # read fmea2
-        if self.flagSingleAfe:
-            rtData = pb01_read_all(self.hidBdg, 0x07, 1, 0x00)
-            if rtData == "message return RX error" or rtData == "pec check error":
-                self.message_box(rtData)
-                return
-            else:
-                dcByte = rtData[4]
-        else:
-            rtData = pb01_read_all(self.hidBdg, 0x07, 2, 0x00)
-            if rtData == "message return RX error" or rtData == "pec check error":
-                self.message_box(rtData)
-                return
-            else:
-                dcByte = rtData[6]
-        # update dc table
-        self.update_dc_aleter_table(self.table_devMgPage_dc, dcByte, self.ledDevMgPageDcByte,
-                                    self.ledDevMgPageAlertPk)
-
-
-        """ update status block table """
-        if not self.update_status_block_table(self.table_devMgPage_cur, 2, 7,
-                                       self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, True):
-            return
+        """ read each status register and update DC byte """
+        self.read_dc_and_status(self.table_devMgPage_dc, self.ledDevMgPageDcByte, self.ledDevMgPageAlertPk,
+                                self.table_devMgPage_cur, self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1)
 
 
     def slot_pushBtn_appCfgPage_appCfgWR(self):
@@ -1548,6 +1469,11 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                              " Unexpected Acquisition Status – Confirm Setup")
         else:
             return
+
+        """ read each status register and update DC byte """
+        self.read_dc_and_status(
+                self.table_meaAcqSumPage_dc, self.ledMeaAcqSumPageDc, self.ledMeaAcqSumPageAlert,
+                self.table_meaAcqSumPage_status, self.ledMeaAcqSumPageStaDev0, self.ledMeaAcqSumPageStaDev1)
 
 
     def setupNotification(self):

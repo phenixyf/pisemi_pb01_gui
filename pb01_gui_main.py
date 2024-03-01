@@ -447,7 +447,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         return flag
 
 
-    def update_dc_aleter_table(self, pDcTable, pDcByte, pDcLed, pAlertLed, pWarnLine):
+    def update_dc_aleter_table(self, pDcTable, pDcByte, pDcLed, pAlertLed):
         """
         完成更新 DC byte table 的动作:
             1. 填写 DC byte 并更新对应的 led
@@ -457,21 +457,18 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         :param pDcByte: 调用此函数前获得的 DC byte 值
         :param pDcLed: 此 dc table 对应的 dc led (init_tab_pages 函数中有各 tab 页对应的 dc led)
         :param pAlertLed: 此 dc table 对应的 alert led (init_tab_pages 函数中有各 tab 页对应的 alert led)
-        :param pWarnLine: 报警信息要显示的 warn lineEdit 对象
         :return:
         """
         # fill dc byte into table
         self.update_table_item_data(pDcTable, 0, 1, hex(pDcByte)[2:].upper().zfill(2))
 
         # fill dc byte led into table
-        if self.update_dc_led(pDcByte, pDcLed):
-            pass
-        else:
-            self.set_warning_message(pWarnLine, "DC byte has alert", "WARNING: ")
+        if not self.update_dc_led(pDcByte, pDcLed):
             # send alertpacket command
             alertPkReturn = pb01_17841_alert_packet(self.hidBdg)
             if alertPkReturn == "message return RX error" or alertPkReturn == "pec check error":
-                self.set_warning_message(pWarnLine, alertPkReturn, "WARNING: ALERTPACKET ")
+                self.message_box(alertPkReturn)
+                return
             else:
                 alertPkData = (alertPkReturn[6] << 40) | (alertPkReturn[5] << 32) | (alertPkReturn[4] << 24) \
                               | (alertPkReturn[3] << 16) | (alertPkReturn[2] << 8) | alertPkReturn[1]
@@ -649,6 +646,99 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             return dcDev1
         else:
             return 0x00
+
+
+    def read_dc_and_status(self, pDcTable, pLedDcByt, pLedAlertPk,
+                                 pStatusTable, pLedStatusDev0, pLedStatusDev1):
+        """
+        用 readall command 读取 status block 各寄存器
+        用返回的 DC byte 更新指定页面的 DC table
+        用返回的 status block 各寄存器数据更新指定页面的 status table
+        :param pDcTable: 指定页面的 dc table
+        :param pLedDcByt: 指定页面 dc table 对应的 dc led 串列表
+        :param pLedAlertPk: 指定页面 dc table 对应的 alertpacket led 串列表
+        :param pStatusTable: 指定页面的 status table
+        :param pLedStatusDev0: 指定页面 status table 对应的 dev0 led 串列表
+        :param pLedStatusDev1: 指定页面 status table 对应的 dev1 led 串列表
+        :return:
+        """
+        """ use READ ALL read 4 status registers """
+        # read status1
+        if self.flagSingleAfe:
+            rtData = pb01_read_all(self.hidBdg, 0x04, 1, 0x00)
+            if rtData == "message return RX error" or rtData == "pec check error":
+                self.message_box(rtData)
+                return
+            else:
+                dcByte = rtData[4]
+        else:
+            rtData = pb01_read_all(self.hidBdg, 0x04, 2, 0x00)
+            if rtData == "message return RX error" or rtData == "pec check error":
+                self.message_box(rtData)
+                return
+            else:
+                dcByte = rtData[6]
+        # update dc table
+        self.update_dc_aleter_table(pDcTable, dcByte, pLedDcByt, pLedAlertPk)
+
+        # read status2
+        if self.flagSingleAfe:
+            rtData = pb01_read_all(self.hidBdg, 0x05, 1, 0x00)
+            if rtData == "message return RX error" or rtData == "pec check error":
+                self.message_box(rtData)
+                return
+            else:
+                dcByte = rtData[4]
+        else:
+            rtData = pb01_read_all(self.hidBdg, 0x05, 2, 0x00)
+            if rtData == "message return RX error" or rtData == "pec check error":
+                self.message_box(rtData)
+                return
+            else:
+                dcByte = rtData[6]
+        # update dc table
+        self.update_dc_aleter_table(pDcTable, dcByte, pLedDcByt, pLedAlertPk)
+
+        # read fmea1
+        if self.flagSingleAfe:
+            rtData = pb01_read_all(self.hidBdg, 0x06, 1, 0x00)
+            if rtData == "message return RX error" or rtData == "pec check error":
+                self.message_box(rtData)
+                return
+            else:
+                dcByte = rtData[4]
+        else:
+            rtData = pb01_read_all(self.hidBdg, 0x06, 2, 0x00)
+            if rtData == "message return RX error" or rtData == "pec check error":
+                self.message_box(rtData)
+                return
+            else:
+                dcByte = rtData[6]
+        # update dc table
+        self.update_dc_aleter_table(pDcTable, dcByte, pLedDcByt, pLedAlertPk)
+
+        # read fmea2
+        if self.flagSingleAfe:
+            rtData = pb01_read_all(self.hidBdg, 0x07, 1, 0x00)
+            if rtData == "message return RX error" or rtData == "pec check error":
+                self.message_box(rtData)
+                return
+            else:
+                dcByte = rtData[4]
+        else:
+            rtData = pb01_read_all(self.hidBdg, 0x07, 2, 0x00)
+            if rtData == "message return RX error" or rtData == "pec check error":
+                self.message_box(rtData)
+                return
+            else:
+                dcByte = rtData[6]
+        # update dc table
+        self.update_dc_aleter_table(pDcTable, dcByte, pLedDcByt, pLedAlertPk)
+
+        """ update status block table """
+        if not self.update_status_block_table(pStatusTable, 2, 7,
+                                              pLedStatusDev0, pLedStatusDev1, True):
+            return
 
 
     def update_write_read_op(self, pReg, pData, pTable, pRow, pCol):
@@ -1087,7 +1177,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 dcByte = rtData[6]
         # update dc table
         self.update_dc_aleter_table(self.table_devMgPage_dc, dcByte, self.ledDevMgPageDcByte,
-                                    self.ledDevMgPageAlertPk, self.lineEdit_devMgPage_initWarn)
+                                    self.ledDevMgPageAlertPk)
 
         # read status2
         if self.flagSingleAfe:
@@ -1106,7 +1196,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 dcByte = rtData[6]
         # update dc table
         self.update_dc_aleter_table(self.table_devMgPage_dc, dcByte, self.ledDevMgPageDcByte,
-                                    self.ledDevMgPageAlertPk, self.lineEdit_devMgPage_initWarn)
+                                    self.ledDevMgPageAlertPk)
 
         # read fmea1
         if self.flagSingleAfe:
@@ -1125,7 +1215,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 dcByte = rtData[6]
         # update dc table
         self.update_dc_aleter_table(self.table_devMgPage_dc, dcByte, self.ledDevMgPageDcByte,
-                                    self.ledDevMgPageAlertPk, self.lineEdit_devMgPage_initWarn)
+                                    self.ledDevMgPageAlertPk)
 
         # read fmea2
         if self.flagSingleAfe:
@@ -1144,7 +1234,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 dcByte = rtData[6]
         # update dc table
         self.update_dc_aleter_table(self.table_devMgPage_dc, dcByte, self.ledDevMgPageDcByte,
-                                    self.ledDevMgPageAlertPk, self.lineEdit_devMgPage_initWarn)
+                                    self.ledDevMgPageAlertPk)
 
 
         """ update status block table """

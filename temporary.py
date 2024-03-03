@@ -9,4 +9,4 @@
 
 from assist import *
 
-print(hex_to_bin(hex(4))[-3:])
+print(hex(123))

@@ -343,7 +343,7 @@ table_devMg_curItems = [
 ]
 
 """ application configuration page tablewidget initial content  (page3) """
-table_appCfgPage_headers = ["Address", "Register", "Pending (hex)", "Pending Value (bin)", "Pending Field",
+table_appCfgPage_appAndAlert_headers = ["Address", "Register", "Pending (hex)", "Pending Value (bin)", "Pending Field",
                            "Pending Value (bin)", "Pending Field", "Device 0 (hex)", "Device 1 (hex)"]
 table_appCfgPage_appCfgReg_items = [
     ["0x12", "STATUSCFG",   "3FFF", "00111111",  "STATUSCFG[15:8]", "11111111", "STATUSCFG[7:0]", "3FFF", "3FFF"],
@@ -359,6 +359,9 @@ table_appCfgPage_alertCfgReg_items = [
     ["0x1A", "ALRTAUXOVCFG", "FFFF", "11111111", "ALRTAUXOVEN[7:0]",  "11111111", "ALRTALTAUXOVEN[7:0]", "0000", "0000"],
     ["0x1B", "ALRTAUXUVCFG", "FFFF", "11111111", "ALRTAUXUVEN[7:0]",  "11111111", "ALRTALTAUXUVEN[7:0]", "0000", "0000"]
 ]
+
+table_appCfgPage_thAndAcq_headers = ["Address", "Register", "Pending (hex)", "Pending Value", "Pending Field",
+                           "Pending Value", "Pending Field", "Device 0 (hex)", "Device 1 (hex)"]
 
 table_appCfgPage_theresholdReg_items = [
     ["0x20", "OVTHREG",         "E667",     "4.500",    "V",           " ",   " ",  "FFFF",   "FFFF"],
@@ -446,7 +449,7 @@ table_meaAcqSumDataPage_statusTableItems = [
 ]
 
 table_meaAcqSumDataPage_sumDataItems = [
-["0x86", "MINMAXLOC",   "0000", "0",  "MAXCELLLOC[3:0]", "0", "MINCELLLOC[3:0]", "0", "MAXCELLLOC[3:0]", "0", "MINAUXLOC[3:0]"],
+["0x86", "MINMAXLOC",   "0000", "0",  "MAXCELLLOC[3:0]", "0", "MINCELLLOC[3:0]", "0", "MAXAUXLOC[3:0]", "0", "MINAUXLOC[3:0]"],
 ["0x87", "MAXCELLREG",  "0000", "0",  " ",  " ", " ",                             "V (5V Full Scale, 76.3uV LSB)", " ", " ", " "],
 ["0x88", "MINCELLREG",  "0000", "0",  " ",  " ", " ",                             "V (5V Full Scale, 76.3uV LSB)", " ", " ", " "],
 ["0x89", "MAXAUXREG",   "0000", "0",  " ",  " ", " ",                             "% (Ratiometric 100% Full Scale, 1.526e-3% LSB)", " ", " ", " "],

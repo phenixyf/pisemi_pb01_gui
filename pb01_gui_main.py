@@ -37,8 +37,8 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.statusMessage.setFont(QFont('Calibri', 10, QFont.Bold))  # 设置字体和加粗
         self.statusBar().addPermanentWidget(self.statusMessage)
         self.flagSingleAfe = False  # chainCfgPage single afe radio button flag
-        self.flag_radio_acqReqPage_acqcbalint = True  # acqReqPage acqcbalint radio button flag
-        self.flag_radio_acqReqPage_acqiirinit = True  # acqReqPage acqiirinit radio button flag
+        self.flag_radio_acqReqPage_acqcbalint = False  # acqReqPage acqcbalint radio button flag
+        self.flag_radio_acqReqPage_acqiirinit = False  # acqReqPage acqiirinit radio button flag
         self.ledChainPageDev0 = []
         self.ledChainPageDev1 = []
         self.ledDevMgPageInitDev0 = []
@@ -61,7 +61,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 self.radioGroup_acqReqPage_acqMode.addButton(self.acqRea_radio_list[i], id = i+1)
             else:
                 self.radioGroup_acqReqPage_acqMode.addButton(self.acqRea_radio_list[i], id = i)
-        self.acqCtrlVal = 0x0140      # acqReqPage ACQCTRL register value
+        self.acqCtrlVal = 0x0B41      # acqReqPage ACQCTRL register value
         """ self functions """
         self.open_hid()
         self.init_tab_pages()
@@ -155,19 +155,19 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                                                                     self.table_devMgPage_cur)
 
         ''' initial application configuration page (page3) '''
-        set_table_head(self.table_appCfgPage_appCfg, table_appCfgPage_headers,
+        set_table_head(self.table_appCfgPage_appCfg, table_appCfgPage_appAndAlert_headers,
                        CHAIN_CFG_TABLE_HEHG, 0)
         set_table_item(self.table_appCfgPage_appCfg, CHAIN_CFG_TABLE_ROWHG,
                        table_appCfgPage_appCfgReg_items)
-        set_table_head(self.table_appCfgPage_alertCfg, table_appCfgPage_headers,
+        set_table_head(self.table_appCfgPage_alertCfg, table_appCfgPage_appAndAlert_headers,
                        CHAIN_CFG_TABLE_HEHG, 0)
         set_table_item(self.table_appCfgPage_alertCfg, CHAIN_CFG_TABLE_ROWHG,
                        table_appCfgPage_alertCfgReg_items)
-        set_table_head(self.table_appCfgPage_thresholdReg, table_appCfgPage_headers,
+        set_table_head(self.table_appCfgPage_thresholdReg, table_appCfgPage_thAndAcq_headers,
                        CHAIN_CFG_TABLE_HEHG, 0)
         set_table_item(self.table_appCfgPage_thresholdReg, CHAIN_CFG_TABLE_ROWHG,
                        table_appCfgPage_theresholdReg_items)
-        set_table_head(self.table_appCfgPage_acqReg, table_appCfgPage_headers,
+        set_table_head(self.table_appCfgPage_acqReg, table_appCfgPage_thAndAcq_headers,
                        CHAIN_CFG_TABLE_HEHG, 0)
         set_table_item(self.table_appCfgPage_acqReg, CHAIN_CFG_TABLE_ROWHG,
                        table_appCfgPage_acqReg_items)
@@ -198,6 +198,11 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                     self.table_diagCfgPage_aluTestDiagReg)
 
         ''' initial acquisition request page (page5) '''
+        # set default checked status
+        self.radioButton_acqReqPage_acqcbalint.setChecked(True)
+        self.radioButton_acqReqPage_acqiirinit.setChecked(True)
+        self.radioButton_acqReqPage_normalMeas.setChecked(True) 
+        # disable some radio buttons
         self.radioButton_acqReqPage_acqiirbyp.setEnabled(False)
         self.radioButton_acqReqPage_acqiirproc.setEnabled(False)
         self.radioButton_acqReqPage_alutesten.setEnabled(False)
@@ -1471,9 +1476,145 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             return
 
         """ read each status register and update DC byte """
+        # read status block and update dc table
         self.read_dc_and_status(
                 self.table_meaAcqSumPage_dc, self.ledMeaAcqSumPageDc, self.ledMeaAcqSumPageAlert,
                 self.table_meaAcqSumPage_status, self.ledMeaAcqSumPageStaDev0, self.ledMeaAcqSumPageStaDev1)
+
+        # read ACQLOG
+        if self.flagSingleAfe:  # dev0
+            rtData = pb01_read_all(self.hidBdg, 0xD0, 1, 0x00)
+            if rtData == "message return RX error" or rtData == "pec check error":
+                self.message_box(rtData)
+                return
+            else:
+                acqlogDev0 = (rtData[3] << 8) | rtData[2]
+                self.table_meaAcqSumPage_status.item(8, 2).setText(hex(acqlogDev0)[2:].upper().zfill(4))    # dev0
+        else:       # dev1
+            rtData = pb01_read_all(self.hidBdg, 0xD0, 2, 0x00)
+            if rtData == "message return RX error" or rtData == "pec check error":
+                self.message_box(rtData)
+                return
+            else:
+                acqlogDev0 = (rtData[5] << 8) | rtData[4]
+                self.table_meaAcqSumPage_status.item(8, 2).setText(hex(acqlogDev0)[2:].upper().zfill(4))   # dev0
+                acqlogDev1 = (rtData[3] << 8) | rtData[2]
+                self.table_meaAcqSumPage_status.item(8, 7).setText(hex(acqlogDev1)[2:].upper().zfill(4))   # dev1
+
+        """ read summary data block """
+        ''' read device 0 summary data block '''
+        rtSumBlkDev0 = pb01_read_block(self.hidBdg, 10, 0, 0x86, 0x00)
+        if rtSumBlkDev0 == "message return RX error" or rtSumBlkDev0 == "pec check error":
+            self.message_box(rtSumBlkDev0)
+            return
+        else:
+            minMaxLocDev0  = (rtSumBlkDev0[4]  << 8) | rtSumBlkDev0[3]
+            maxCellRegDev0 = (rtSumBlkDev0[6]  << 8) | rtSumBlkDev0[5]
+            minCellRegDev0 = (rtSumBlkDev0[8]  << 8) | rtSumBlkDev0[7]
+            maxAuxRegDev0  = (rtSumBlkDev0[10] << 8) | rtSumBlkDev0[9]
+            minAuxRegDev0  = (rtSumBlkDev0[12] << 8) | rtSumBlkDev0[11]
+            totalRegDev0   = (rtSumBlkDev0[14] << 8) | rtSumBlkDev0[13]
+            altTotRegDev0  = (rtSumBlkDev0[16] << 8) | rtSumBlkDev0[15]
+            pmmLocDev0     = (rtSumBlkDev0[18] << 8) | rtSumBlkDev0[17]
+            pmmCellRegDev0 = (rtSumBlkDev0[20] << 8) | rtSumBlkDev0[19]
+            pmmAuxRegDev0  = (rtSumBlkDev0[22] << 8) | rtSumBlkDev0[21]
+
+            # fill value column
+            listSumDataDev0 = [hex(minMaxLocDev0)[2:].upper().zfill(4),  hex(maxCellRegDev0)[2:].upper().zfill(4),
+                               hex(minCellRegDev0)[2:].upper().zfill(4), hex(maxAuxRegDev0)[2:].upper().zfill(4),
+                               hex(minAuxRegDev0)[2:].upper().zfill(4),  hex(totalRegDev0)[2:].upper().zfill(4),
+                               hex(altTotRegDev0)[2:].upper().zfill(4),  hex(pmmLocDev0)[2:].upper().zfill(4),
+                               hex(pmmCellRegDev0)[2:].upper().zfill(4), hex(pmmAuxRegDev0)[2:].upper().zfill(4)]
+
+            for i in range(10):
+                self.table_meaAcqSumPage_sumDataDev0.item(i, 2).setText(listSumDataDev0[i])
+
+            # fill MINMAXLOC row
+            listMinMaxLocBitsDev0 = [hex_to_bin(hex((minMaxLocDev0 & 0xF000) >> 12))[-4:],
+                                     hex_to_bin(hex((minMaxLocDev0 & 0x0F00) >> 8))[-4:],
+                                     hex_to_bin(hex((minMaxLocDev0 & 0x00F0) >> 4))[-4:],
+                                     hex_to_bin(hex(minMaxLocDev0 & 0x000F))[-4:]]
+            for i in range(4):
+                self.table_meaAcqSumPage_sumDataDev0.item(0, 3 + 2 * i).setText(listMinMaxLocBitsDev0[i])
+
+            # fill PMMLOC row
+            listPmmLocBitsDev0 = [hex_to_bin(hex((pmmLocDev0 & 0x0F00) >> 8))[-4:],
+                                 hex_to_bin(hex(pmmLocDev0 & 0x000F))[-4:]]
+            self.table_meaAcqSumPage_sumDataDev0.item(7, 5).setText(listPmmLocBitsDev0[0])
+            self.table_meaAcqSumPage_sumDataDev0.item(7, 9).setText(listPmmLocBitsDev0[1])
+
+            # fill other rows
+            listOtherSumBitsDev0 = [hex_to_bin(hex(maxCellRegDev0))[-16:],
+                                    hex_to_bin(hex(minCellRegDev0))[-16:],
+                                    hex_to_bin(hex(maxAuxRegDev0 ))[-16:],
+                                    hex_to_bin(hex(minAuxRegDev0 ))[-16:],
+                                    hex_to_bin(hex(totalRegDev0  ))[-16:],
+                                    hex_to_bin(hex(altTotRegDev0  ))[-16:],
+                                    hex_to_bin(hex(pmmCellRegDev0))[-16:],
+                                    hex_to_bin(hex(pmmAuxRegDev0 ))[-16:]]
+            for i in range(6):
+                self.table_meaAcqSumPage_sumDataDev0.item(i+1, 3).setText(listOtherSumBitsDev0[i])
+
+            self.table_meaAcqSumPage_sumDataDev0.item(8, 3).setText(listOtherSumBitsDev0[5])
+            self.table_meaAcqSumPage_sumDataDev0.item(9, 3).setText(listOtherSumBitsDev0[6])
+
+        ''' read device 1 summary data block '''
+        if not self.flagSingleAfe:
+            rtSumBlkDev1 = pb01_read_block(self.hidBdg, 10, 1, 0x86, 0x00)
+            if rtSumBlkDev1 == "message return RX error" or rtSumBlkDev0 == "pec check error":
+                self.message_box(rtSumBlkDev0)
+                return
+            else:
+                minMaxLocDev1  = (rtSumBlkDev1[4] << 8)  | rtSumBlkDev1[3]
+                maxCellRegDev1 = (rtSumBlkDev1[6] << 8)  | rtSumBlkDev1[5]
+                minCellRegDev1 = (rtSumBlkDev1[8] << 8)  | rtSumBlkDev1[7]
+                maxAuxRegDev1  = (rtSumBlkDev1[10] << 8) | rtSumBlkDev1[9]
+                minAuxRegDev1  = (rtSumBlkDev1[12] << 8) | rtSumBlkDev1[11]
+                totalRegDev1   = (rtSumBlkDev1[14] << 8) | rtSumBlkDev1[13]
+                altTotRegDev1  = (rtSumBlkDev1[16] << 8) | rtSumBlkDev1[15]
+                pmmLocDev1     = (rtSumBlkDev1[18] << 8) | rtSumBlkDev1[17]
+                pmmCellRegDev1 = (rtSumBlkDev1[20] << 8) | rtSumBlkDev1[19]
+                pmmAuxRegDev1  = (rtSumBlkDev1[22] << 8) | rtSumBlkDev1[21]
+
+                # fill value column
+                listSumDataDev1 = [hex(minMaxLocDev1)[2:].upper().zfill(4), hex(maxCellRegDev1)[2:].upper().zfill(4),
+                                   hex(minCellRegDev1)[2:].upper().zfill(4), hex(maxAuxRegDev1)[2:].upper().zfill(4),
+                                   hex(minAuxRegDev1)[2:].upper().zfill(4), hex(totalRegDev1)[2:].upper().zfill(4),
+                                   hex(altTotRegDev1)[2:].upper().zfill(4), hex(pmmLocDev1)[2:].upper().zfill(4),
+                                   hex(pmmCellRegDev1)[2:].upper().zfill(4), hex(pmmAuxRegDev1)[2:].upper().zfill(4)]
+
+                for i in range(10):
+                    self.table_meaAcqSumPage_sumDataDev1.item(i, 2).setText(listSumDataDev1[i])
+
+                # fill MINMAXLOC row
+                listMinMaxLocBitsDev1 = [hex_to_bin(hex((minMaxLocDev1 & 0xF000) >> 12))[-4:],
+                                         hex_to_bin(hex((minMaxLocDev1 & 0x0F00) >> 8))[-4:],
+                                         hex_to_bin(hex((minMaxLocDev1 & 0x00F0) >> 4))[-4:],
+                                         hex_to_bin(hex(minMaxLocDev1 & 0x000F))[-4:]]
+                for i in range(4):
+                    self.table_meaAcqSumPage_sumDataDev1.item(0, 3 + 2 * i).setText(listMinMaxLocBitsDev1[i])
+
+                # fill PMMLOC row
+                listPmmLocBitsDev1 = [hex_to_bin(hex((pmmLocDev1 & 0x0F00) >> 8))[-4:],
+                                      hex_to_bin(hex(pmmLocDev1 & 0x000F))[-4:]]
+                self.table_meaAcqSumPage_sumDataDev1.item(7, 5).setText(listPmmLocBitsDev1[0])
+                self.table_meaAcqSumPage_sumDataDev1.item(7, 9).setText(listPmmLocBitsDev1[1])
+
+                # fill other rows
+                listOtherSumBitsDev1 = [hex_to_bin(hex(maxCellRegDev1))[-16:],
+                                        hex_to_bin(hex(minCellRegDev1))[-16:],
+                                        hex_to_bin(hex(maxAuxRegDev1))[-16:],
+                                        hex_to_bin(hex(minAuxRegDev1))[-16:],
+                                        hex_to_bin(hex(totalRegDev1))[-16:],
+                                        hex_to_bin(hex(altTotRegDev1  ))[-16:],
+                                        hex_to_bin(hex(pmmCellRegDev1))[-16:],
+                                        hex_to_bin(hex(pmmAuxRegDev1))[-16:]]
+                for i in range(6):
+                    self.table_meaAcqSumPage_sumDataDev1.item(i + 1, 3).setText(listOtherSumBitsDev1[i])
+
+                self.table_meaAcqSumPage_sumDataDev1.item(8, 3).setText(listOtherSumBitsDev1[5])
+                self.table_meaAcqSumPage_sumDataDev1.item(9, 3).setText(listOtherSumBitsDev1[6])
+
 
 
     def setupNotification(self):

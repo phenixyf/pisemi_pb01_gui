@@ -1530,28 +1530,29 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 self.table_meaAcqSumPage_sumDataDev0.item(i, 2).setText(listSumDataDev0[i])
 
             # fill MINMAXLOC row
-            listMinMaxLocBitsDev0 = [hex_to_bin(hex((minMaxLocDev0 & 0xF000) >> 12))[-4:],
-                                     hex_to_bin(hex((minMaxLocDev0 & 0x0F00) >> 8))[-4:],
-                                     hex_to_bin(hex((minMaxLocDev0 & 0x00F0) >> 4))[-4:],
-                                     hex_to_bin(hex(minMaxLocDev0 & 0x000F))[-4:]]
+            listMinMaxLocBitsDev0 = [str((minMaxLocDev0 & 0xF000) >> 12),
+                                     str((minMaxLocDev0 & 0x0F00) >> 8),
+                                     str((minMaxLocDev0 & 0x00F0) >> 4),
+                                     str(minMaxLocDev0 & 0x000F)]
             for i in range(4):
                 self.table_meaAcqSumPage_sumDataDev0.item(0, 3 + 2 * i).setText(listMinMaxLocBitsDev0[i])
 
             # fill PMMLOC row
-            listPmmLocBitsDev0 = [hex_to_bin(hex((pmmLocDev0 & 0x0F00) >> 8))[-4:],
-                                 hex_to_bin(hex(pmmLocDev0 & 0x000F))[-4:]]
+            listPmmLocBitsDev0 = [str((pmmLocDev0 & 0x0F00) >> 8),
+                                  str(pmmLocDev0 & 0x000F)]
             self.table_meaAcqSumPage_sumDataDev0.item(7, 5).setText(listPmmLocBitsDev0[0])
             self.table_meaAcqSumPage_sumDataDev0.item(7, 9).setText(listPmmLocBitsDev0[1])
 
             # fill other rows
-            listOtherSumBitsDev0 = [hex_to_bin(hex(maxCellRegDev0))[-16:],
-                                    hex_to_bin(hex(minCellRegDev0))[-16:],
-                                    hex_to_bin(hex(maxAuxRegDev0 ))[-16:],
-                                    hex_to_bin(hex(minAuxRegDev0 ))[-16:],
-                                    hex_to_bin(hex(totalRegDev0  ))[-16:],
-                                    hex_to_bin(hex(altTotRegDev0  ))[-16:],
-                                    hex_to_bin(hex(pmmCellRegDev0))[-16:],
-                                    hex_to_bin(hex(pmmAuxRegDev0 ))[-16:]]
+            listOtherSumBitsDev0 = [str(round((maxCellRegDev0 / 65536 * 5),   5)),
+                                    str(round((minCellRegDev0 / 65536 * 5),   5)),
+                                    str(round((maxAuxRegDev0  / 65536 * 100), 2)),
+                                    str(round((minAuxRegDev0  / 65536 * 100), 2)),
+                                    str(round((totalRegDev0   / 65536 * 80),  5)),
+                                    str(round((altTotRegDev0  / 65536 * 80),  5)),
+                                    str(round((pmmCellRegDev0 / 65536 * 5),   5)),
+                                    str(round((pmmAuxRegDev0  / 65536 * 100), 2))
+                                    ]
             for i in range(6):
                 self.table_meaAcqSumPage_sumDataDev0.item(i+1, 3).setText(listOtherSumBitsDev0[i])
 
@@ -1587,33 +1588,36 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                     self.table_meaAcqSumPage_sumDataDev1.item(i, 2).setText(listSumDataDev1[i])
 
                 # fill MINMAXLOC row
-                listMinMaxLocBitsDev1 = [hex_to_bin(hex((minMaxLocDev1 & 0xF000) >> 12))[-4:],
-                                         hex_to_bin(hex((minMaxLocDev1 & 0x0F00) >> 8))[-4:],
-                                         hex_to_bin(hex((minMaxLocDev1 & 0x00F0) >> 4))[-4:],
-                                         hex_to_bin(hex(minMaxLocDev1 & 0x000F))[-4:]]
+                listMinMaxLocBitsDev1 = [str((minMaxLocDev1 & 0xF000) >> 12),
+                                         str((minMaxLocDev1 & 0x0F00) >> 8),
+                                         str((minMaxLocDev1 & 0x00F0) >> 4),
+                                         str(minMaxLocDev1 & 0x000F)]
                 for i in range(4):
                     self.table_meaAcqSumPage_sumDataDev1.item(0, 3 + 2 * i).setText(listMinMaxLocBitsDev1[i])
 
                 # fill PMMLOC row
-                listPmmLocBitsDev1 = [hex_to_bin(hex((pmmLocDev1 & 0x0F00) >> 8))[-4:],
-                                      hex_to_bin(hex(pmmLocDev1 & 0x000F))[-4:]]
+                listPmmLocBitsDev1 = [str((pmmLocDev1 & 0x0F00) >> 8),
+                                      str(pmmLocDev1 & 0x000F)]
                 self.table_meaAcqSumPage_sumDataDev1.item(7, 5).setText(listPmmLocBitsDev1[0])
                 self.table_meaAcqSumPage_sumDataDev1.item(7, 9).setText(listPmmLocBitsDev1[1])
 
                 # fill other rows
-                listOtherSumBitsDev1 = [hex_to_bin(hex(maxCellRegDev1))[-16:],
-                                        hex_to_bin(hex(minCellRegDev1))[-16:],
-                                        hex_to_bin(hex(maxAuxRegDev1))[-16:],
-                                        hex_to_bin(hex(minAuxRegDev1))[-16:],
-                                        hex_to_bin(hex(totalRegDev1))[-16:],
-                                        hex_to_bin(hex(altTotRegDev1  ))[-16:],
-                                        hex_to_bin(hex(pmmCellRegDev1))[-16:],
-                                        hex_to_bin(hex(pmmAuxRegDev1))[-16:]]
+                listOtherSumBitsDev1 = [str(round((maxCellRegDev1 / 65536 * 5),   5)),
+                                        str(round((minCellRegDev1 / 65536 * 5),   5)),
+                                        str(round((maxAuxRegDev1  / 65536 * 100), 2)),
+                                        str(round((minAuxRegDev1  / 65536 * 100), 2)),
+                                        str(round((totalRegDev1   / 65536 * 80),  5)),
+                                        str(round((altTotRegDev1  / 65536 * 80),  5)),
+                                        str(round((pmmCellRegDev1 / 65536 * 5),   5)),
+                                        str(round((pmmAuxRegDev1  / 65536 * 100), 2))
+                                        ]
                 for i in range(6):
                     self.table_meaAcqSumPage_sumDataDev1.item(i + 1, 3).setText(listOtherSumBitsDev1[i])
 
                 self.table_meaAcqSumPage_sumDataDev1.item(8, 3).setText(listOtherSumBitsDev1[5])
                 self.table_meaAcqSumPage_sumDataDev1.item(9, 3).setText(listOtherSumBitsDev1[6])
+
+        """ read alert register block """
 
 
 

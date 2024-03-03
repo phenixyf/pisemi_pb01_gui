@@ -583,6 +583,7 @@ def pb01_read_all(pHidDev, pRegAddr, pDevNum, pAliveSeed):
              "message return RX error": 发出的数据没有正常返回 bridge receive buffer
              "pec check error"： pec check fail
              数据列表：要读取的数据返回 bridger receive buffer，并被读出，返回的就是从 receive buffer 读出的数据
+                     列表中每个成员都是 int 类型
     """
     return pb01_read(pHidDev, 0xC0, 5+pDevNum*2, [0x03, pRegAddr, 0x00], pAliveSeed)
 
@@ -598,6 +599,7 @@ def pb01_read_device(pHidDev, pDevAddr, pRegAddr, pAliveSeed):
              "message return RX error": 发出的数据没有正常返回 bridge receive buffer
              "pec check error"： pec check fail
              数据列表：要读取的数据返回 bridger receive buffer，并被读出，返回的就是从 receive buffer 读出的数据
+                     列表中每个成员都是 int 类型
     """
     cmd = (pDevAddr << 3) | 0x5
     return pb01_read(pHidDev, 0xC0, 7, [cmd, pRegAddr, 0x00], pAliveSeed)
@@ -615,6 +617,7 @@ def pb01_read_block(pHidDev, pBlockSize, pDevAddr, pRegAddr, pAliveSeed):
              "message return RX error": 发出的数据没有正常返回 bridge receive buffer
              "pec check error"： pec check fail
              数据列表：要读取的数据返回 bridger receive buffer，并被读出，返回的就是从 receive buffer 读出的数据
+                     列表中每个成员都是 int 类型
     """
     cmd = (pBlockSize << 3) | 0x6
     return pb01_read(pHidDev, 0xC0, 6+pBlockSize*2, [cmd, pDevAddr, pRegAddr, 0x00], pAliveSeed)

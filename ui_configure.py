@@ -1364,7 +1364,26 @@ def adjust_meaAcqSumPage_tables(pDC, pStaTable, pSumDataDev0Table, pSumDataDev1T
         pStaTable.item(0, c).setFont(boldFont)  # 字体加粗
 
     # summary data tables
+    # row0 dev0
+    pSumDataDev0Table.item(0, 2).setBackground(QColor("#E2F0D9"))  # 绿色
+    pSumDataDev0Table.item(0, 3).setBackground(QColor("#FFF2CC"))  # 黄色
+    pSumDataDev0Table.item(0, 5).setBackground(QColor("#FFF2CC"))  # 黄色
+    pSumDataDev0Table.item(0, 7).setBackground(QColor("#FFF2CC"))  # 黄色
+    pSumDataDev0Table.item(0, 9).setBackground(QColor("#FFF2CC"))  # 黄色
+    pSumDataDev0Table.item(7, 5).setBackground(QColor("#FFF2CC"))  # 黄色
+    pSumDataDev0Table.item(7, 9).setBackground(QColor("#FFF2CC"))  # 黄色
+    # row0 dev1
+    pSumDataDev1Table.item(0, 2).setBackground(QColor("#E2F0D9"))  # 绿色
+    pSumDataDev1Table.item(0, 3).setBackground(QColor("#FFF2CC"))  # 黄色
+    pSumDataDev1Table.item(0, 5).setBackground(QColor("#FFF2CC"))  # 黄色
+    pSumDataDev1Table.item(0, 7).setBackground(QColor("#FFF2CC"))  # 黄色
+    pSumDataDev1Table.item(0, 9).setBackground(QColor("#FFF2CC"))  # 黄色
+    pSumDataDev1Table.item(7, 5).setBackground(QColor("#FFF2CC"))  # 黄色
+    pSumDataDev1Table.item(7, 9).setBackground(QColor("#FFF2CC"))  # 黄色
+    # row1 ~ row9 dev0 & dev1
     for r in range(1, 10):
+        pSumDataDev0Table.item(r, 2).setBackground(QColor("#E2F0D9"))  # 绿色
+        pSumDataDev1Table.item(r, 2).setBackground(QColor("#E2F0D9"))  # 绿色
         if r != 7:
             # dev0
             pSumDataDev0Table.setSpan(r, 3, 1, 4)
@@ -1375,19 +1394,7 @@ def adjust_meaAcqSumPage_tables(pDC, pStaTable, pSumDataDev0Table, pSumDataDev1T
             pSumDataDev1Table.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
             pSumDataDev1Table.setSpan(r, 7, 1, 4)
 
-    pSumDataDev0Table.item(0, 3).setBackground(QColor("#FFF2CC"))  # 黄色
-    pSumDataDev0Table.item(0, 5).setBackground(QColor("#FFF2CC"))  # 黄色
-    pSumDataDev0Table.item(0, 7).setBackground(QColor("#FFF2CC"))  # 黄色
-    pSumDataDev0Table.item(0, 9).setBackground(QColor("#FFF2CC"))  # 黄色
-    pSumDataDev0Table.item(7, 5).setBackground(QColor("#FFF2CC"))  # 黄色
-    pSumDataDev0Table.item(7, 9).setBackground(QColor("#FFF2CC"))  # 黄色
 
-    pSumDataDev1Table.item(0, 3).setBackground(QColor("#FFF2CC"))  # 黄色
-    pSumDataDev1Table.item(0, 5).setBackground(QColor("#FFF2CC"))  # 黄色
-    pSumDataDev1Table.item(0, 7).setBackground(QColor("#FFF2CC"))  # 黄色
-    pSumDataDev1Table.item(0, 9).setBackground(QColor("#FFF2CC"))  # 黄色
-    pSumDataDev1Table.item(7, 5).setBackground(QColor("#FFF2CC"))  # 黄色
-    pSumDataDev1Table.item(7, 9).setBackground(QColor("#FFF2CC"))  # 黄色
 
     ''' insert led '''
     #dc table

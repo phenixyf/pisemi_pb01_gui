@@ -542,6 +542,24 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                     pLedList[3][i].setStyleSheet(led_white_style)
 
 
+    def update_alert_regiser_led(self, pListAlertBlkData, pListAlertLed):
+        """
+        更新 meaAcqDetailDataPage alert register table 中 led 状态
+        :param pListAlertBlkData: alert register block 各寄存器数据组成的列表
+        :param pListAlertLed: alert register block 各寄存器对应的 led 串组成的列表
+        :return:
+        """
+        for regCnt in range(6):
+            for bitCnt in range(16):
+                if pListAlertBlkData[regCnt] & (0x8000 >> bitCnt):
+                    pListAlertLed[regCnt][bitCnt].setStyleSheet(led_red_style)
+                else:
+                    pListAlertLed[regCnt][bitCnt].setStyleSheet(led_green_style)
+
+
+
+
+
     def update_status_block_table(self, pTable, pDev0Col, pDev1Col, pDev0LedList, pDev1LedList, pFlagTem):
         """
         这个函数执行 read block command 去读取 PB01 STATUS Block 中 7 个寄存器的值
@@ -1503,21 +1521,21 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
         """ read summary data block """
         ''' read device 0 summary data block '''
-        rtSumBlkDev0 = pb01_read_block(self.hidBdg, 10, 0, 0x86, 0x00)
-        if rtSumBlkDev0 == "message return RX error" or rtSumBlkDev0 == "pec check error":
-            self.message_box(rtSumBlkDev0)
+        rtData = pb01_read_block(self.hidBdg, 10, 0, 0x86, 0x00)
+        if rtData == "message return RX error" or rtData == "pec check error":
+            self.message_box(rtData)
             return
         else:
-            minMaxLocDev0  = (rtSumBlkDev0[4]  << 8) | rtSumBlkDev0[3]
-            maxCellRegDev0 = (rtSumBlkDev0[6]  << 8) | rtSumBlkDev0[5]
-            minCellRegDev0 = (rtSumBlkDev0[8]  << 8) | rtSumBlkDev0[7]
-            maxAuxRegDev0  = (rtSumBlkDev0[10] << 8) | rtSumBlkDev0[9]
-            minAuxRegDev0  = (rtSumBlkDev0[12] << 8) | rtSumBlkDev0[11]
-            totalRegDev0   = (rtSumBlkDev0[14] << 8) | rtSumBlkDev0[13]
-            altTotRegDev0  = (rtSumBlkDev0[16] << 8) | rtSumBlkDev0[15]
-            pmmLocDev0     = (rtSumBlkDev0[18] << 8) | rtSumBlkDev0[17]
-            pmmCellRegDev0 = (rtSumBlkDev0[20] << 8) | rtSumBlkDev0[19]
-            pmmAuxRegDev0  = (rtSumBlkDev0[22] << 8) | rtSumBlkDev0[21]
+            minMaxLocDev0  = (rtData[4]  << 8) | rtData[3]
+            maxCellRegDev0 = (rtData[6]  << 8) | rtData[5]
+            minCellRegDev0 = (rtData[8]  << 8) | rtData[7]
+            maxAuxRegDev0  = (rtData[10] << 8) | rtData[9]
+            minAuxRegDev0  = (rtData[12] << 8) | rtData[11]
+            totalRegDev0   = (rtData[14] << 8) | rtData[13]
+            altTotRegDev0  = (rtData[16] << 8) | rtData[15]
+            pmmLocDev0     = (rtData[18] << 8) | rtData[17]
+            pmmCellRegDev0 = (rtData[20] << 8) | rtData[19]
+            pmmAuxRegDev0  = (rtData[22] << 8) | rtData[21]
 
             # fill value column
             listSumDataDev0 = [hex(minMaxLocDev0)[2:].upper().zfill(4),  hex(maxCellRegDev0)[2:].upper().zfill(4),
@@ -1561,21 +1579,21 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
         ''' read device 1 summary data block '''
         if not self.flagSingleAfe:
-            rtSumBlkDev1 = pb01_read_block(self.hidBdg, 10, 1, 0x86, 0x00)
-            if rtSumBlkDev1 == "message return RX error" or rtSumBlkDev0 == "pec check error":
-                self.message_box(rtSumBlkDev0)
+            rtData = pb01_read_block(self.hidBdg, 10, 1, 0x86, 0x00)
+            if rtData == "message return RX error" or rtData == "pec check error":
+                self.message_box(rtData)
                 return
             else:
-                minMaxLocDev1  = (rtSumBlkDev1[4] << 8)  | rtSumBlkDev1[3]
-                maxCellRegDev1 = (rtSumBlkDev1[6] << 8)  | rtSumBlkDev1[5]
-                minCellRegDev1 = (rtSumBlkDev1[8] << 8)  | rtSumBlkDev1[7]
-                maxAuxRegDev1  = (rtSumBlkDev1[10] << 8) | rtSumBlkDev1[9]
-                minAuxRegDev1  = (rtSumBlkDev1[12] << 8) | rtSumBlkDev1[11]
-                totalRegDev1   = (rtSumBlkDev1[14] << 8) | rtSumBlkDev1[13]
-                altTotRegDev1  = (rtSumBlkDev1[16] << 8) | rtSumBlkDev1[15]
-                pmmLocDev1     = (rtSumBlkDev1[18] << 8) | rtSumBlkDev1[17]
-                pmmCellRegDev1 = (rtSumBlkDev1[20] << 8) | rtSumBlkDev1[19]
-                pmmAuxRegDev1  = (rtSumBlkDev1[22] << 8) | rtSumBlkDev1[21]
+                minMaxLocDev1  = (rtData[4] << 8)  | rtData[3]
+                maxCellRegDev1 = (rtData[6] << 8)  | rtData[5]
+                minCellRegDev1 = (rtData[8] << 8)  | rtData[7]
+                maxAuxRegDev1  = (rtData[10] << 8) | rtData[9]
+                minAuxRegDev1  = (rtData[12] << 8) | rtData[11]
+                totalRegDev1   = (rtData[14] << 8) | rtData[13]
+                altTotRegDev1  = (rtData[16] << 8) | rtData[15]
+                pmmLocDev1     = (rtData[18] << 8) | rtData[17]
+                pmmCellRegDev1 = (rtData[20] << 8) | rtData[19]
+                pmmAuxRegDev1  = (rtData[22] << 8) | rtData[21]
 
                 # fill value column
                 listSumDataDev1 = [hex(minMaxLocDev1)[2:].upper().zfill(4), hex(maxCellRegDev1)[2:].upper().zfill(4),
@@ -1618,6 +1636,69 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 self.table_meaAcqSumPage_sumDataDev1.item(9, 3).setText(listOtherSumBitsDev1[6])
 
         """ read alert register block """
+        ''' read device 0 alert register block '''
+        rtData = pb01_read_block(self.hidBdg, 6, 0, 0x80, 0x00)
+        if rtData == "message return RX error" or rtData == "pec check error":
+            self.message_box(rtData)
+            return
+        else:
+            alertOvDev0    = (rtData[4] << 8)  | rtData[3]
+            alertUvDev0    = (rtData[6] << 8)  | rtData[5]
+            alertAltOvDev0 = (rtData[8] << 8)  | rtData[7]
+            alertAltUvDev0 = (rtData[10] << 8) | rtData[9]
+            alertAuxOvDev0 = (rtData[12] << 8) | rtData[11]
+            alertAuxUvDev0 = (rtData[14] << 8) | rtData[13]
+
+            # fill value column
+            listAlertRegDev0 = [hex(alertOvDev0)[2:].upper().zfill(4),
+                                hex(alertUvDev0)[2:].upper().zfill(4),
+                                hex(alertAltOvDev0)[2:].upper().zfill(4),
+                                hex(alertAltUvDev0)[2:].upper().zfill(4),
+                                hex(alertAuxOvDev0)[2:].upper().zfill(4),
+                                hex(alertAuxUvDev0)[2:].upper().zfill(4)]
+            for r in range(1, 7):
+                self.table_meaAcqDetailData_alertRegDev0.item(r, 2).setText(listAlertRegDev0[r-1])
+
+            # update led
+            self.update_alert_regiser_led([alertOvDev0   ,
+                                           alertUvDev0   ,
+                                           alertAltOvDev0,
+                                           alertAltUvDev0,
+                                           alertAuxOvDev0,
+                                           alertAuxUvDev0], self.ledMeaAcqDetailPageDev0)
+
+            ''' read device 1 alert register block  '''
+            if not self.flagSingleAfe:
+                rtData = pb01_read_block(self.hidBdg, 6, 1, 0x80, 0x00)
+                if rtData == "message return RX error" or rtData == "pec check error":
+                    self.message_box(rtData)
+                    return
+                else:
+                    alertOvDev1 =    (rtData[4] << 8)  | rtData[3]
+                    alertUvDev1 =    (rtData[6] << 8)  | rtData[5]
+                    alertAltOvDev1 = (rtData[8] << 8)  | rtData[7]
+                    alertAltUvDev1 = (rtData[10] << 8) | rtData[9]
+                    alertAuxOvDev1 = (rtData[12] << 8) | rtData[11]
+                    alertAuxUvDev1 = (rtData[14] << 8) | rtData[13]
+
+                    # fill value column
+                    listAlertRegDev1 = [hex(alertOvDev1)[2:].upper().zfill(4),
+                                        hex(alertUvDev1)[2:].upper().zfill(4),
+                                        hex(alertAltOvDev1)[2:].upper().zfill(4),
+                                        hex(alertAltUvDev1)[2:].upper().zfill(4),
+                                        hex(alertAuxOvDev1)[2:].upper().zfill(4),
+                                        hex(alertAuxUvDev1)[2:].upper().zfill(4)]
+                    for r in range(1, 7):
+                        self.table_meaAcqDetailData_alertRegDev1.item(r, 2).setText(listAlertRegDev1[r-1])
+
+                    # update led
+                    self.update_alert_regiser_led([alertOvDev1,
+                                                   alertUvDev1,
+                                                   alertAltOvDev1,
+                                                   alertAltUvDev1,
+                                                   alertAuxOvDev1,
+                                                   alertAuxUvDev1], self.ledMeaAcqDetailPageDev1)
+                    
 
 
 

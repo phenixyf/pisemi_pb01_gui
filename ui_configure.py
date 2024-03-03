@@ -1394,8 +1394,6 @@ def adjust_meaAcqSumPage_tables(pDC, pStaTable, pSumDataDev0Table, pSumDataDev1T
             pSumDataDev1Table.item(r, 3).setBackground(QColor("#FFF2CC"))  # 黄色
             pSumDataDev1Table.setSpan(r, 7, 1, 4)
 
-
-
     ''' insert led '''
     #dc table
     ledDcByte = add_led_txt(8, pDC, 0, 2, LED_DC_LAB)

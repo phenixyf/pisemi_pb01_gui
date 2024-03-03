@@ -241,13 +241,13 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                        table_meaAcqDetailPage_alertRegItems)
 
         set_table_item(self.table_meaAcqDetailData_dataRegDev0, CHAIN_CFG_TABLE_ROWHG,
-                       table_meaAcqDetailPage_dataRegItems)
+                       table_meaAcqDetailPage_dev0_dataRegItems)
 
         set_table_item(self.table_meaAcqDetailData_alertRegDev1, CHAIN_CFG_TABLE_ROWHG,
                        table_meaAcqDetailPage_alertRegItems)
 
         set_table_item(self.table_meaAcqDetailData_dataRegDev1, CHAIN_CFG_TABLE_ROWHG,
-                       table_meaAcqDetailPage_dataRegItems)
+                       table_meaAcqDetailPage_dev1_dataRegItems)
 
         adjust_meaAcqDetailPage_tables(self.table_meaAcqDetailData_alertRegDev0,
                                        self.table_meaAcqDetailData_dataRegDev0,
@@ -824,6 +824,180 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 rdDataDev1 = (rtRd[3] << 8) | rtRd[2]
                 self.update_table_item_data(pTable, pRow, pCol, hex(rdDataDev0)[2:].upper().zfill(4))  # dev0
                 self.update_table_item_data(pTable, pRow, pCol + 1, hex(rdDataDev1)[2:].upper().zfill(4))  # dev1
+
+
+    def update_acquistion_detail_data_table(self, pHexRow, pValRow, pRegAddr, pAuxFlag):
+        """
+        更新 acquistion detail data table
+        一次调用只更新 table 中的一个 block
+        acquistion detail data table 中有 4 个 block，需调用该函数 4 次才能完整更新整个 table
+        :param pHexRow: 当前调用要更新的 hex data 所在行的行号
+        :param pValRow: 当前调用要更新的 value data 所在行的行号
+        :param pRegAddr: 当前调用要读取的 block 首寄存器地址
+        :param pAuxFlag: 因 aux block 计算公式和其它 block 不同，所以用此 flag 来区分
+                         True - 当前处理 aux block
+                         False - 当前处理非 aux block
+        :return:
+        """
+        ''' read device 0 CELL IIR DATA block '''
+        rtData = pb01_read_block(self.hidBdg, 16, 0, pRegAddr, 0x00)
+        if rtData == "message return RX error" or rtData == "pec check error":
+            self.message_box(rtData)
+            return
+        else:
+            regData0Dev0  =  (rtData[4] << 8)  | rtData[3]
+            regData1Dev0  =  (rtData[6] << 8)  | rtData[5]
+            regData2Dev0  =  (rtData[8] << 8)  | rtData[7]
+            regData3Dev0  =  (rtData[10] << 8) | rtData[9]
+            regData4Dev0  =  (rtData[12] << 8) | rtData[11]
+            regData5Dev0  =  (rtData[14] << 8) | rtData[13]
+            regData6Dev0  =  (rtData[16] << 8) | rtData[15]
+            regData7Dev0  =  (rtData[18] << 8) | rtData[17]
+            regData8Dev0  =  (rtData[20] << 8) | rtData[19]
+            regData9Dev0  =  (rtData[22] << 8) | rtData[21]
+            regData10Dev0 = (rtData[24] << 8) | rtData[23]
+            regData11Dev0 = (rtData[26] << 8) | rtData[25]
+            regData12Dev0 = (rtData[28] << 8) | rtData[27]
+            regData13Dev0 = (rtData[30] << 8) | rtData[29]
+            regData14Dev0 = (rtData[32] << 8) | rtData[31]
+            regData15Dev0 = (rtData[34] << 8) | rtData[33]
+
+            listRegDataHexDev0 = [hex(regData0Dev0 )[2:].upper().zfill(4) ,
+                                  hex(regData1Dev0 )[2:].upper().zfill(4) ,
+                                  hex(regData2Dev0 )[2:].upper().zfill(4) ,
+                                  hex(regData3Dev0 )[2:].upper().zfill(4) ,
+                                  hex(regData4Dev0 )[2:].upper().zfill(4) ,
+                                  hex(regData5Dev0 )[2:].upper().zfill(4) ,
+                                  hex(regData6Dev0 )[2:].upper().zfill(4) ,
+                                  hex(regData7Dev0 )[2:].upper().zfill(4) ,
+                                  hex(regData8Dev0 )[2:].upper().zfill(4) ,
+                                  hex(regData9Dev0 )[2:].upper().zfill(4) ,
+                                  hex(regData10Dev0)[2:].upper().zfill(4) ,
+                                  hex(regData11Dev0)[2:].upper().zfill(4) ,
+                                  hex(regData12Dev0)[2:].upper().zfill(4) ,
+                                  hex(regData13Dev0)[2:].upper().zfill(4) ,
+                                  hex(regData14Dev0)[2:].upper().zfill(4) ,
+                                  hex(regData15Dev0)[2:].upper().zfill(4) ]
+            if not pAuxFlag:
+                listRegDataValDev0 =  [str(round(regData0Dev0  / 65536 * 5, 5)),
+                                       str(round(regData1Dev0  / 65536 * 5, 5)),
+                                       str(round(regData2Dev0  / 65536 * 5, 5)),
+                                       str(round(regData3Dev0  / 65536 * 5, 5)),
+                                       str(round(regData4Dev0  / 65536 * 5, 5)),
+                                       str(round(regData5Dev0  / 65536 * 5, 5)),
+                                       str(round(regData6Dev0  / 65536 * 5, 5)),
+                                       str(round(regData7Dev0  / 65536 * 5, 5)),
+                                       str(round(regData8Dev0  / 65536 * 5, 5)),
+                                       str(round(regData9Dev0  / 65536 * 5, 5)),
+                                       str(round(regData10Dev0 / 65536 * 5, 5)),
+                                       str(round(regData11Dev0 / 65536 * 5, 5)),
+                                       str(round(regData12Dev0 / 65536 * 5, 5)),
+                                       str(round(regData13Dev0 / 65536 * 5, 5)),
+                                       str(round(regData14Dev0 / 65536 * 5, 5)),
+                                       str(round(regData15Dev0 / 65536 * 5, 5))]
+            else:
+                listRegDataValDev0 = [str(round(regData0Dev0  / 65536 * 10, 2)),
+                                      str(round(regData1Dev0  / 65536 * 10, 2)),
+                                      str(round(regData2Dev0  / 65536 * 10, 2)),
+                                      str(round(regData3Dev0  / 65536 * 10, 2)),
+                                      str(round(regData4Dev0  / 65536 * 10, 2)),
+                                      str(round(regData5Dev0  / 65536 * 10, 2)),
+                                      str(round(regData6Dev0  / 65536 * 10, 2)),
+                                      str(round(regData7Dev0  / 65536 * 10, 2)),
+                                      str(round(regData8Dev0  / 65536 * 10, 2)),
+                                      str(round(regData9Dev0  / 65536 * 10, 2)),
+                                      str(round(regData10Dev0 / 65536 * 10, 2)),
+                                      str(round(regData11Dev0 / 65536 * 10, 2)),
+                                      str(round(regData12Dev0 / 65536 * 10, 2)),
+                                      str(round(regData13Dev0 / 65536 * 10, 2)),
+                                      str(round(regData14Dev0 / 65536 * 10, 2)),
+                                      str(round(regData15Dev0 / 65536 * 10, 2))]
+
+        # fill table
+        for c in range(18, 2, -1):
+            self.table_meaAcqDetailData_dataRegDev0.item(pHexRow, c).setText(listRegDataHexDev0[18 - c])
+            self.table_meaAcqDetailData_dataRegDev0.item(pValRow, c).setText(listRegDataValDev0[18 - c])
+
+        ''' read device 1 alert register block  '''
+        if not self.flagSingleAfe:
+            rtData = pb01_read_block(self.hidBdg, 16, 1, pRegAddr, 0x00)
+            if rtData == "message return RX error" or rtData == "pec check error":
+                self.message_box(rtData)
+                return
+            else:
+                regData0Dev1  = (rtData[4] << 8)  | rtData[3]
+                regData1Dev1  = (rtData[6] << 8)  | rtData[5]
+                regData2Dev1  = (rtData[8] << 8)  | rtData[7]
+                regData3Dev1  = (rtData[10] << 8) | rtData[9]
+                regData4Dev1  = (rtData[12] << 8) | rtData[11]
+                regData5Dev1  = (rtData[14] << 8) | rtData[13]
+                regData6Dev1  = (rtData[16] << 8) | rtData[15]
+                regData7Dev1  = (rtData[18] << 8) | rtData[17]
+                regData8Dev1  = (rtData[20] << 8) | rtData[19]
+                regData9Dev1  = (rtData[22] << 8) | rtData[21]
+                regData10Dev1 = (rtData[24] << 8) | rtData[23]
+                regData11Dev1 = (rtData[26] << 8) | rtData[25]
+                regData12Dev1 = (rtData[28] << 8) | rtData[27]
+                regData13Dev1 = (rtData[30] << 8) | rtData[29]
+                regData14Dev1 = (rtData[32] << 8) | rtData[31]
+                regData15Dev1 = (rtData[34] << 8) | rtData[33]
+
+                listRegDataHexDev1 = [hex(regData0Dev1)[2:].upper().zfill(4),
+                                      hex(regData1Dev1)[2:].upper().zfill(4),
+                                      hex(regData2Dev1)[2:].upper().zfill(4),
+                                      hex(regData3Dev1)[2:].upper().zfill(4),
+                                      hex(regData4Dev1)[2:].upper().zfill(4),
+                                      hex(regData5Dev1)[2:].upper().zfill(4),
+                                      hex(regData6Dev1)[2:].upper().zfill(4),
+                                      hex(regData7Dev1)[2:].upper().zfill(4),
+                                      hex(regData8Dev1)[2:].upper().zfill(4),
+                                      hex(regData9Dev1)[2:].upper().zfill(4),
+                                      hex(regData10Dev1)[2:].upper().zfill(4),
+                                      hex(regData11Dev1)[2:].upper().zfill(4),
+                                      hex(regData12Dev1)[2:].upper().zfill(4),
+                                      hex(regData13Dev1)[2:].upper().zfill(4),
+                                      hex(regData14Dev1)[2:].upper().zfill(4),
+                                      hex(regData15Dev1)[2:].upper().zfill(4)]
+                if not pAuxFlag:
+                    listRegDataValDev1 = [str(round(regData0Dev1 / 65536 * 5, 5)),
+                                          str(round(regData1Dev1 / 65536 * 5, 5)),
+                                          str(round(regData2Dev1 / 65536 * 5, 5)),
+                                          str(round(regData3Dev1 / 65536 * 5, 5)),
+                                          str(round(regData4Dev1 / 65536 * 5, 5)),
+                                          str(round(regData5Dev1 / 65536 * 5, 5)),
+                                          str(round(regData6Dev1 / 65536 * 5, 5)),
+                                          str(round(regData7Dev1 / 65536 * 5, 5)),
+                                          str(round(regData8Dev1 / 65536 * 5, 5)),
+                                          str(round(regData9Dev1 / 65536 * 5, 5)),
+                                          str(round(regData10Dev1 / 65536 * 5, 5)),
+                                          str(round(regData11Dev1 / 65536 * 5, 5)),
+                                          str(round(regData12Dev1 / 65536 * 5, 5)),
+                                          str(round(regData13Dev1 / 65536 * 5, 5)),
+                                          str(round(regData14Dev1 / 65536 * 5, 5)),
+                                          str(round(regData15Dev1 / 65536 * 5, 5))]
+                else:
+                    listRegDataValDev1 = [str(round(regData0Dev1 / 65536 * 10, 2)),
+                                          str(round(regData1Dev1 / 65536 * 10, 2)),
+                                          str(round(regData2Dev1 / 65536 * 10, 2)),
+                                          str(round(regData3Dev1 / 65536 * 10, 2)),
+                                          str(round(regData4Dev1 / 65536 * 10, 2)),
+                                          str(round(regData5Dev1 / 65536 * 10, 2)),
+                                          str(round(regData6Dev1 / 65536 * 10, 2)),
+                                          str(round(regData7Dev1 / 65536 * 10, 2)),
+                                          str(round(regData8Dev1 / 65536 * 10, 2)),
+                                          str(round(regData9Dev1 / 65536 * 10, 2)),
+                                          str(round(regData10Dev1 / 65536 * 10, 2)),
+                                          str(round(regData11Dev1 / 65536 * 10, 2)),
+                                          str(round(regData12Dev1 / 65536 * 10, 2)),
+                                          str(round(regData13Dev1 / 65536 * 10, 2)),
+                                          str(round(regData14Dev1 / 65536 * 10, 2)),
+                                          str(round(regData15Dev1 / 65536 * 10, 2))]
+
+                # fill table
+            for c in range(18, 2, -1):
+                self.table_meaAcqDetailData_dataRegDev1.item(pHexRow, c).setText(listRegDataHexDev1[18 - c])
+                self.table_meaAcqDetailData_dataRegDev1.item(pValRow, c).setText(listRegDataValDev1[18 - c])
+
 
 
     def pushBtn_disable(self, pBtn):
@@ -1443,6 +1617,9 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         """ kick off the acquisition (write data to R44) """
         rtData = self.afe_write_read_all(0x44, self.acqCtrlVal)  # configure A13 = 0x2000
 
+        """ wait 250ms for acquisition to complete """
+        time.sleep(0.25)
+
         """ update acqReaPage acquisition mode table """
         if rtData != False:
             if self.flagSingleAfe:  # single afe
@@ -1698,7 +1875,16 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                                    alertAltUvDev1,
                                                    alertAuxOvDev1,
                                                    alertAuxUvDev1], self.ledMeaAcqDetailPageDev1)
-                    
+
+        """ read CELL IIR DATA block """
+        self.update_acquistion_detail_data_table(1, 2, 0x90, False)
+        """ read CELL DATA block """
+        self.update_acquistion_detail_data_table(4, 5, 0xA0, False)
+        """ read AUXILIARY DATA block """
+        self.update_acquistion_detail_data_table(7, 8, 0xB0, True)
+        """ read ALTERNATE DATA block """
+        self.update_acquistion_detail_data_table(10, 11, 0xC0, False)
+
 
 
 

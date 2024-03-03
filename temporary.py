@@ -9,4 +9,5 @@
 
 from assist import *
 
-print(hex(123))
+for r in range(19, 2, -1):
+    print(r)

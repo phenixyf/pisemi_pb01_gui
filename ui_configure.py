@@ -472,7 +472,7 @@ table_meaAcqDetailPage_alertRegItems = [
     ["0x85", "ALRTAUXUVREG", "0000",          " "]
 ]
 
-table_meaAcqDetailPage_dataRegItems = [
+table_meaAcqDetailPage_dev0_dataRegItems = [
     ["0x90 ~ - 0x9F", "CELL IIR DATA", " ",
      "CELLIIR 15", "CELLIIR 14","CELLIIR 13", "CELLIIR 12", "CELLIIR 11", "CELLIIR 10", "CELLIIR 9", "CELLIIR 8",
      "CELLIIR 7", "CELLIIR 6","CELLIIR 5", "CELLIIR 4", "CELLIIR 3", "CELLIIR 2", "CELLIIR 1", "CELLIIR 0"],
@@ -480,40 +480,85 @@ table_meaAcqDetailPage_dataRegItems = [
     ["0x90 ~ - 0x9F", "Device 0 (hex)", " ",
      "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000"],
 
-    ["0xA0 ~ - 0xAF", "Device 0 (V)", " ",
+    ["0x90 ~ - 0x9F", "Device 0 (V)", " ",
      "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
 
-    ["0x90 ~ - 0x9F", "CELL DATA", " ",
+    ["0xA0 ~ - 0xAF", "CELL DATA", " ",
      "CELL 15", "CELL 14", "CELL 13", "CELL 12", "CELL 11", "CELL10", "CELL 9", "CELL 8",
      "CELL 7",  "CELL 6",  "CELL 5",  "CELL 4",  "CELL 3",  "CELL2",  "CELL 1", "CELL 0"],
 
-    ["0x90 ~ - 0x9F", "Device 0 (hex)", " ",
+    ["0xA0 ~ - 0xAF", "Device 0 (hex)", " ",
      "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000",
      "0000", "0000"],
 
     ["0xA0 ~ - 0xAF", "Device 0 (V)", " ",
      "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
 
-    ["0x90 ~ - 0x9F", "AUXILIARY DATA", " ",
+    ["0xB0 ~ - 0xBF", "AUXILIARY DATA", " ",
      "AUX 7",     "AUX 6",     "AUX 5",     "AUX 4",     "AUX 3",     "AUX 2",     "AUX 1",    "AUX 0",
      "ALTAUX 7",  "ALTAUX 6",  "ALTAUX 5",  "ALTAUX 4",  "ALTAUX 3",  "ALTAUX 2",  "ALTAUX 1", "ALTAUX 0"],
 
-    ["0x90 ~ - 0x9F", "Device 0 (hex)", " ",
+    ["0xB0 ~ - 0xBF", "Device 0 (hex)", " ",
      "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000",
      "0000", "0000"],
 
-    ["0xA0 ~ - 0xAF", "Device 0 (V)", " ",
+    ["0xB0 ~ - 0xBF", "Device 0 (% or V)", " ",
      "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
 
-    ["0x90 ~ - 0x9F", "ALTERNATE DATA", " ",
+    ["0xC0 ~ - 0xCF", "ALTERNATE DATA", " ",
      "ALT 15", "ALT 14", "ALT 13", "ALT 12", "ALT 11", "ALT 10", "ALT 9", "ALT 8",
      "ALT 7",  "ALT 6",  "ALT 5",  "ALT 4",  "ALT 3",  "ALT 2",  "ALT 1", "ALT 0"],
 
-    ["0x90 ~ - 0x9F", "Device 0 (hex)", " ",
+    ["0xC0 ~ - 0xCF", "Device 0 (hex)", " ",
      "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000",
      "0000", "0000"],
 
-    ["0xA0 ~ - 0xAF", "Device 0 (V)", " ",
+    ["0xC0 ~ - 0xCF", "Device 0 (V)", " ",
+     "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+]
+
+table_meaAcqDetailPage_dev1_dataRegItems = [
+    ["0x90 ~ - 0x9F", "CELL IIR DATA", " ",
+     "CELLIIR 15", "CELLIIR 14","CELLIIR 13", "CELLIIR 12", "CELLIIR 11", "CELLIIR 10", "CELLIIR 9", "CELLIIR 8",
+     "CELLIIR 7", "CELLIIR 6","CELLIIR 5", "CELLIIR 4", "CELLIIR 3", "CELLIIR 2", "CELLIIR 1", "CELLIIR 0"],
+
+    ["0x90 ~ - 0x9F", "Device 1 (hex)", " ",
+     "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000"],
+
+    ["0x90 ~ - 0x9F", "Device 1 (V)", " ",
+     "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+
+    ["0xA0 ~ - 0xAF", "CELL DATA", " ",
+     "CELL 15", "CELL 14", "CELL 13", "CELL 12", "CELL 11", "CELL10", "CELL 9", "CELL 8",
+     "CELL 7",  "CELL 6",  "CELL 5",  "CELL 4",  "CELL 3",  "CELL2",  "CELL 1", "CELL 0"],
+
+    ["0xA0 ~ - 0xAF", "Device 1 (hex)", " ",
+     "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000",
+     "0000", "0000"],
+
+    ["0xA0 ~ - 0xAF", "Device 1 (V)", " ",
+     "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+
+    ["0xB0 ~ - 0xBF", "AUXILIARY DATA", " ",
+     "AUX 7",     "AUX 6",     "AUX 5",     "AUX 4",     "AUX 3",     "AUX 2",     "AUX 1",    "AUX 0",
+     "ALTAUX 7",  "ALTAUX 6",  "ALTAUX 5",  "ALTAUX 4",  "ALTAUX 3",  "ALTAUX 2",  "ALTAUX 1", "ALTAUX 0"],
+
+    ["0xB0 ~ - 0xBF", "Device 1 (hex)", " ",
+     "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000",
+     "0000", "0000"],
+
+    ["0xB0 ~ - 0xBF", "Device 1 (% or V)", " ",
+     "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+
+    ["0xC0 ~ - 0xCF", "ALTERNATE DATA", " ",
+     "ALT 15", "ALT 14", "ALT 13", "ALT 12", "ALT 11", "ALT 10", "ALT 9", "ALT 8",
+     "ALT 7",  "ALT 6",  "ALT 5",  "ALT 4",  "ALT 3",  "ALT 2",  "ALT 1", "ALT 0"],
+
+    ["0xC0 ~ - 0xCF", "Device 1 (hex)", " ",
+     "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000",
+     "0000", "0000"],
+
+    ["0xC0 ~ - 0xCF", "Device 1 (V)", " ",
      "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
 ]
 

@@ -62,7 +62,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             else:
                 self.radioGroup_acqReqPage_acqMode.addButton(self.acqRea_radio_list[i], id = i)
         self.acqCtrlVal = 0x0B41      # acqReqPage ACQCTRL register value
-        self.acqMode = 0x00           # acqReqPage acquisition mode value
+        self.acqMode = 0x01           # acqReqPage acquisition mode value
         """ self functions """
         self.open_hid()
         self.init_tab_pages()
@@ -999,6 +999,40 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 self.table_meaAcqDetailData_dataRegDev1.item(pHexRow, c).setText(listRegDataHexDev1[18 - c])
                 self.table_meaAcqDetailData_dataRegDev1.item(pValRow, c).setText(listRegDataValDev1[18 - c])
 
+    def update_status_table_extend_register(self, pTable, pRegAddr, pRow):
+        """
+        更新 meaAcqSumPage, diagAcqPage status table 中除 status block 之外的寄存器，
+        如，ACQLOG, DIAGLOG ... DAC2FSREG
+        一次只读取一个寄存器，并更新
+        所以有几个寄存器，就要调用该函数几次
+        因为 status table，寄存器数据更新位置的列号是固定的（2 和 7），所以参数中不用传入
+        :param pTable: 要更新的 status table name
+        :param pRegAddr: 当前读取的寄存器地址，如 0xD1
+        :param pRow: 读回的数据要填写位置的行号
+        :return: 从指定寄存器读回的数据，int 格式 - 一个 AFE 返回一个数据；两个 AFE 返回两个数据。
+                 none - 读取操作有错
+        """
+        if self.flagSingleAfe:  # dev0
+            rtData = pb01_read_all(self.hidBdg, pRegAddr, 1, 0x00)
+            if rtData == "message return RX error" or rtData == "pec check error":
+                self.message_box(rtData)
+                return
+            else:
+                regDataDev0 = (rtData[3] << 8) | rtData[2]
+                pTable.item(pRow, 2).setText(hex(regDataDev0)[2:].upper().zfill(4))  # dev0
+                return regDataDev0
+        else:  # dev1
+            rtData = pb01_read_all(self.hidBdg, pRegAddr, 2, 0x00)
+            if rtData == "message return RX error" or rtData == "pec check error":
+                self.message_box(rtData)
+                return
+            else:
+                regDataDev0 = (rtData[5] << 8) | rtData[4]
+                pTable.item(pRow, 2).setText(hex(regDataDev0)[2:].upper().zfill(4))  # dev0
+                regDataDev1 = (rtData[3] << 8) | rtData[2]
+                pTable.item(pRow, 7).setText(hex(regDataDev1)[2:].upper().zfill(4))  # dev1
+                return regDataDev0, regDataDev1
+
 
 
     def pushBtn_disable(self, pBtn):
@@ -1703,219 +1737,267 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             return
 
         """ read each status register and update DC byte """
-        # read status block and update dc table
-        self.read_dc_and_status(
-                self.table_meaAcqSumPage_dc, self.ledMeaAcqSumPageDc, self.ledMeaAcqSumPageAlert,
-                self.table_meaAcqSumPage_status, self.ledMeaAcqSumPageStaDev0, self.ledMeaAcqSumPageStaDev1)
+        ''' cell acquisition mode '''
+        if self.acqMode == 1 or self.acqMode == 2:
+            # read status block and update dc table
+            self.read_dc_and_status(
+                    self.table_meaAcqSumPage_dc, self.ledMeaAcqSumPageDc, self.ledMeaAcqSumPageAlert,
+                    self.table_meaAcqSumPage_status, self.ledMeaAcqSumPageStaDev0, self.ledMeaAcqSumPageStaDev1)
 
-        # read ACQLOG
-        if self.flagSingleAfe:  # dev0
-            rtData = pb01_read_all(self.hidBdg, 0xD0, 1, 0x00)
+            # read ACQLOG
+            if self.flagSingleAfe:  # dev0
+                acqDataDev0 = self.update_status_table_extend_register(self.table_meaAcqSumPage_status, 0xD0, 8)
+
+                acqTypeDev0 = hex((acqDataDev0 & 0xF000) >> 12)
+                acqCountDev0 = str(acqDataDev0 & 0x03FF)
+                self.table_meaAcqSumPage_status.item(8, 3).setText(acqTypeDev0)
+                self.table_meaAcqSumPage_status.item(8, 5).setText(acqCountDev0)
+
+            else:   # dev0 & dev1
+                acqDataDev0, acqDataDev1 = self.update_status_table_extend_register(
+                                                                        self.table_meaAcqSumPage_status, 0xD0, 8)
+
+                acqTypeDev0 = hex((acqDataDev0 & 0xF000) >> 12)
+                acqCountDev0 = str(acqDataDev0 & 0x03FF)
+                self.table_meaAcqSumPage_status.item(8, 3).setText(acqTypeDev0)
+                self.table_meaAcqSumPage_status.item(8, 5).setText(acqCountDev0)
+
+                acqTypeDev1 = hex((acqDataDev1 & 0xF000) >> 12)
+                acqCountDev1 = str(acqDataDev1 & 0x03FF)
+                self.table_meaAcqSumPage_status.item(8, 8).setText(acqTypeDev1)
+                self.table_meaAcqSumPage_status.item(8, 10).setText(acqCountDev1)
+
+
+            """ read summary data block """
+            ''' read device 0 summary data block '''
+            rtData = pb01_read_block(self.hidBdg, 10, 0, 0x86, 0x00)
             if rtData == "message return RX error" or rtData == "pec check error":
                 self.message_box(rtData)
                 return
             else:
-                acqlogDev0 = (rtData[3] << 8) | rtData[2]
-                self.table_meaAcqSumPage_status.item(8, 2).setText(hex(acqlogDev0)[2:].upper().zfill(4))    # dev0
-        else:       # dev1
-            rtData = pb01_read_all(self.hidBdg, 0xD0, 2, 0x00)
-            if rtData == "message return RX error" or rtData == "pec check error":
-                self.message_box(rtData)
-                return
-            else:
-                acqlogDev0 = (rtData[5] << 8) | rtData[4]
-                self.table_meaAcqSumPage_status.item(8, 2).setText(hex(acqlogDev0)[2:].upper().zfill(4))   # dev0
-                acqlogDev1 = (rtData[3] << 8) | rtData[2]
-                self.table_meaAcqSumPage_status.item(8, 7).setText(hex(acqlogDev1)[2:].upper().zfill(4))   # dev1
-
-        """ read summary data block """
-        ''' read device 0 summary data block '''
-        rtData = pb01_read_block(self.hidBdg, 10, 0, 0x86, 0x00)
-        if rtData == "message return RX error" or rtData == "pec check error":
-            self.message_box(rtData)
-            return
-        else:
-            minMaxLocDev0  = (rtData[4]  << 8) | rtData[3]
-            maxCellRegDev0 = (rtData[6]  << 8) | rtData[5]
-            minCellRegDev0 = (rtData[8]  << 8) | rtData[7]
-            maxAuxRegDev0  = (rtData[10] << 8) | rtData[9]
-            minAuxRegDev0  = (rtData[12] << 8) | rtData[11]
-            totalRegDev0   = (rtData[14] << 8) | rtData[13]
-            altTotRegDev0  = (rtData[16] << 8) | rtData[15]
-            pmmLocDev0     = (rtData[18] << 8) | rtData[17]
-            pmmCellRegDev0 = (rtData[20] << 8) | rtData[19]
-            pmmAuxRegDev0  = (rtData[22] << 8) | rtData[21]
-
-            # fill value column
-            listSumDataDev0 = [hex(minMaxLocDev0)[2:].upper().zfill(4),  hex(maxCellRegDev0)[2:].upper().zfill(4),
-                               hex(minCellRegDev0)[2:].upper().zfill(4), hex(maxAuxRegDev0)[2:].upper().zfill(4),
-                               hex(minAuxRegDev0)[2:].upper().zfill(4),  hex(totalRegDev0)[2:].upper().zfill(4),
-                               hex(altTotRegDev0)[2:].upper().zfill(4),  hex(pmmLocDev0)[2:].upper().zfill(4),
-                               hex(pmmCellRegDev0)[2:].upper().zfill(4), hex(pmmAuxRegDev0)[2:].upper().zfill(4)]
-
-            for i in range(10):
-                self.table_meaAcqSumPage_sumDataDev0.item(i, 2).setText(listSumDataDev0[i])
-
-            # fill MINMAXLOC row
-            listMinMaxLocBitsDev0 = [str((minMaxLocDev0 & 0xF000) >> 12),
-                                     str((minMaxLocDev0 & 0x0F00) >> 8),
-                                     str((minMaxLocDev0 & 0x00F0) >> 4),
-                                     str(minMaxLocDev0 & 0x000F)]
-            for i in range(4):
-                self.table_meaAcqSumPage_sumDataDev0.item(0, 3 + 2 * i).setText(listMinMaxLocBitsDev0[i])
-
-            # fill PMMLOC row
-            listPmmLocBitsDev0 = [str((pmmLocDev0 & 0x0F00) >> 8),
-                                  str(pmmLocDev0 & 0x000F)]
-            self.table_meaAcqSumPage_sumDataDev0.item(7, 5).setText(listPmmLocBitsDev0[0])
-            self.table_meaAcqSumPage_sumDataDev0.item(7, 9).setText(listPmmLocBitsDev0[1])
-
-            # fill other rows
-            listOtherSumBitsDev0 = [str(round((maxCellRegDev0 / 65536 * 5),   5)),
-                                    str(round((minCellRegDev0 / 65536 * 5),   5)),
-                                    str(round((maxAuxRegDev0  / 65536 * 100), 2)),
-                                    str(round((minAuxRegDev0  / 65536 * 100), 2)),
-                                    str(round((totalRegDev0   / 65536 * 80),  5)),
-                                    str(round((altTotRegDev0  / 65536 * 80),  5)),
-                                    str(round((pmmCellRegDev0 / 65536 * 5),   5)),
-                                    str(round((pmmAuxRegDev0  / 65536 * 100), 2))
-                                    ]
-            for i in range(6):
-                self.table_meaAcqSumPage_sumDataDev0.item(i+1, 3).setText(listOtherSumBitsDev0[i])
-
-            self.table_meaAcqSumPage_sumDataDev0.item(8, 3).setText(listOtherSumBitsDev0[5])
-            self.table_meaAcqSumPage_sumDataDev0.item(9, 3).setText(listOtherSumBitsDev0[6])
-
-        ''' read device 1 summary data block '''
-        if not self.flagSingleAfe:
-            rtData = pb01_read_block(self.hidBdg, 10, 1, 0x86, 0x00)
-            if rtData == "message return RX error" or rtData == "pec check error":
-                self.message_box(rtData)
-                return
-            else:
-                minMaxLocDev1  = (rtData[4] << 8)  | rtData[3]
-                maxCellRegDev1 = (rtData[6] << 8)  | rtData[5]
-                minCellRegDev1 = (rtData[8] << 8)  | rtData[7]
-                maxAuxRegDev1  = (rtData[10] << 8) | rtData[9]
-                minAuxRegDev1  = (rtData[12] << 8) | rtData[11]
-                totalRegDev1   = (rtData[14] << 8) | rtData[13]
-                altTotRegDev1  = (rtData[16] << 8) | rtData[15]
-                pmmLocDev1     = (rtData[18] << 8) | rtData[17]
-                pmmCellRegDev1 = (rtData[20] << 8) | rtData[19]
-                pmmAuxRegDev1  = (rtData[22] << 8) | rtData[21]
+                minMaxLocDev0 = (rtData[4] << 8) | rtData[3]
+                maxCellRegDev0 = (rtData[6] << 8) | rtData[5]
+                minCellRegDev0 = (rtData[8] << 8) | rtData[7]
+                maxAuxRegDev0 = (rtData[10] << 8) | rtData[9]
+                minAuxRegDev0 = (rtData[12] << 8) | rtData[11]
+                totalRegDev0 = (rtData[14] << 8) | rtData[13]
+                altTotRegDev0 = (rtData[16] << 8) | rtData[15]
+                pmmLocDev0 = (rtData[18] << 8) | rtData[17]
+                pmmCellRegDev0 = (rtData[20] << 8) | rtData[19]
+                pmmAuxRegDev0 = (rtData[22] << 8) | rtData[21]
 
                 # fill value column
-                listSumDataDev1 = [hex(minMaxLocDev1)[2:].upper().zfill(4), hex(maxCellRegDev1)[2:].upper().zfill(4),
-                                   hex(minCellRegDev1)[2:].upper().zfill(4), hex(maxAuxRegDev1)[2:].upper().zfill(4),
-                                   hex(minAuxRegDev1)[2:].upper().zfill(4), hex(totalRegDev1)[2:].upper().zfill(4),
-                                   hex(altTotRegDev1)[2:].upper().zfill(4), hex(pmmLocDev1)[2:].upper().zfill(4),
-                                   hex(pmmCellRegDev1)[2:].upper().zfill(4), hex(pmmAuxRegDev1)[2:].upper().zfill(4)]
+                listSumDataDev0 = [hex(minMaxLocDev0)[2:].upper().zfill(4), hex(maxCellRegDev0)[2:].upper().zfill(4),
+                                   hex(minCellRegDev0)[2:].upper().zfill(4), hex(maxAuxRegDev0)[2:].upper().zfill(4),
+                                   hex(minAuxRegDev0)[2:].upper().zfill(4), hex(totalRegDev0)[2:].upper().zfill(4),
+                                   hex(altTotRegDev0)[2:].upper().zfill(4), hex(pmmLocDev0)[2:].upper().zfill(4),
+                                   hex(pmmCellRegDev0)[2:].upper().zfill(4), hex(pmmAuxRegDev0)[2:].upper().zfill(4)]
 
                 for i in range(10):
-                    self.table_meaAcqSumPage_sumDataDev1.item(i, 2).setText(listSumDataDev1[i])
+                    self.table_meaAcqSumPage_sumDataDev0.item(i, 2).setText(listSumDataDev0[i])
 
                 # fill MINMAXLOC row
-                listMinMaxLocBitsDev1 = [str((minMaxLocDev1 & 0xF000) >> 12),
-                                         str((minMaxLocDev1 & 0x0F00) >> 8),
-                                         str((minMaxLocDev1 & 0x00F0) >> 4),
-                                         str(minMaxLocDev1 & 0x000F)]
+                listMinMaxLocBitsDev0 = [str((minMaxLocDev0 & 0xF000) >> 12),
+                                         str((minMaxLocDev0 & 0x0F00) >> 8),
+                                         str((minMaxLocDev0 & 0x00F0) >> 4),
+                                         str(minMaxLocDev0 & 0x000F)]
                 for i in range(4):
-                    self.table_meaAcqSumPage_sumDataDev1.item(0, 3 + 2 * i).setText(listMinMaxLocBitsDev1[i])
+                    self.table_meaAcqSumPage_sumDataDev0.item(0, 3 + 2 * i).setText(listMinMaxLocBitsDev0[i])
 
                 # fill PMMLOC row
-                listPmmLocBitsDev1 = [str((pmmLocDev1 & 0x0F00) >> 8),
-                                      str(pmmLocDev1 & 0x000F)]
-                self.table_meaAcqSumPage_sumDataDev1.item(7, 5).setText(listPmmLocBitsDev1[0])
-                self.table_meaAcqSumPage_sumDataDev1.item(7, 9).setText(listPmmLocBitsDev1[1])
+                listPmmLocBitsDev0 = [str((pmmLocDev0 & 0x0F00) >> 8),
+                                      str(pmmLocDev0 & 0x000F)]
+                self.table_meaAcqSumPage_sumDataDev0.item(7, 5).setText(listPmmLocBitsDev0[0])
+                self.table_meaAcqSumPage_sumDataDev0.item(7, 9).setText(listPmmLocBitsDev0[1])
 
                 # fill other rows
-                listOtherSumBitsDev1 = [str(round((maxCellRegDev1 / 65536 * 5),   5)),
-                                        str(round((minCellRegDev1 / 65536 * 5),   5)),
-                                        str(round((maxAuxRegDev1  / 65536 * 100), 2)),
-                                        str(round((minAuxRegDev1  / 65536 * 100), 2)),
-                                        str(round((totalRegDev1   / 65536 * 80),  5)),
-                                        str(round((altTotRegDev1  / 65536 * 80),  5)),
-                                        str(round((pmmCellRegDev1 / 65536 * 5),   5)),
-                                        str(round((pmmAuxRegDev1  / 65536 * 100), 2))
+                listOtherSumBitsDev0 = [str(round((maxCellRegDev0 / 65536 * 5), 5)),
+                                        str(round((minCellRegDev0 / 65536 * 5), 5)),
+                                        str(round((maxAuxRegDev0 / 65536 * 100), 2)),
+                                        str(round((minAuxRegDev0 / 65536 * 100), 2)),
+                                        str(round((totalRegDev0 / 65536 * 80), 5)),
+                                        str(round((altTotRegDev0 / 65536 * 80), 5)),
+                                        str(round((pmmCellRegDev0 / 65536 * 5), 5)),
+                                        str(round((pmmAuxRegDev0 / 65536 * 100), 2))
                                         ]
                 for i in range(6):
-                    self.table_meaAcqSumPage_sumDataDev1.item(i + 1, 3).setText(listOtherSumBitsDev1[i])
+                    self.table_meaAcqSumPage_sumDataDev0.item(i + 1, 3).setText(listOtherSumBitsDev0[i])
 
-                self.table_meaAcqSumPage_sumDataDev1.item(8, 3).setText(listOtherSumBitsDev1[5])
-                self.table_meaAcqSumPage_sumDataDev1.item(9, 3).setText(listOtherSumBitsDev1[6])
+                self.table_meaAcqSumPage_sumDataDev0.item(8, 3).setText(listOtherSumBitsDev0[5])
+                self.table_meaAcqSumPage_sumDataDev0.item(9, 3).setText(listOtherSumBitsDev0[6])
 
-        """ read alert register block """
-        ''' read device 0 alert register block '''
-        rtData = pb01_read_block(self.hidBdg, 6, 0, 0x80, 0x00)
-        if rtData == "message return RX error" or rtData == "pec check error":
-            self.message_box(rtData)
-            return
-        else:
-            alertOvDev0    = (rtData[4] << 8)  | rtData[3]
-            alertUvDev0    = (rtData[6] << 8)  | rtData[5]
-            alertAltOvDev0 = (rtData[8] << 8)  | rtData[7]
-            alertAltUvDev0 = (rtData[10] << 8) | rtData[9]
-            alertAuxOvDev0 = (rtData[12] << 8) | rtData[11]
-            alertAuxUvDev0 = (rtData[14] << 8) | rtData[13]
-
-            # fill value column
-            listAlertRegDev0 = [hex(alertOvDev0)[2:].upper().zfill(4),
-                                hex(alertUvDev0)[2:].upper().zfill(4),
-                                hex(alertAltOvDev0)[2:].upper().zfill(4),
-                                hex(alertAltUvDev0)[2:].upper().zfill(4),
-                                hex(alertAuxOvDev0)[2:].upper().zfill(4),
-                                hex(alertAuxUvDev0)[2:].upper().zfill(4)]
-            for r in range(1, 7):
-                self.table_meaAcqDetailData_alertRegDev0.item(r, 2).setText(listAlertRegDev0[r-1])
-
-            # update led
-            self.update_alert_regiser_led([alertOvDev0   ,
-                                           alertUvDev0   ,
-                                           alertAltOvDev0,
-                                           alertAltUvDev0,
-                                           alertAuxOvDev0,
-                                           alertAuxUvDev0], self.ledMeaAcqDetailPageDev0)
-
-            ''' read device 1 alert register block  '''
+            ''' read device 1 summary data block '''
             if not self.flagSingleAfe:
-                rtData = pb01_read_block(self.hidBdg, 6, 1, 0x80, 0x00)
+                rtData = pb01_read_block(self.hidBdg, 10, 1, 0x86, 0x00)
                 if rtData == "message return RX error" or rtData == "pec check error":
                     self.message_box(rtData)
                     return
                 else:
-                    alertOvDev1 =    (rtData[4] << 8)  | rtData[3]
-                    alertUvDev1 =    (rtData[6] << 8)  | rtData[5]
-                    alertAltOvDev1 = (rtData[8] << 8)  | rtData[7]
-                    alertAltUvDev1 = (rtData[10] << 8) | rtData[9]
-                    alertAuxOvDev1 = (rtData[12] << 8) | rtData[11]
-                    alertAuxUvDev1 = (rtData[14] << 8) | rtData[13]
+                    minMaxLocDev1 = (rtData[4] << 8) | rtData[3]
+                    maxCellRegDev1 = (rtData[6] << 8) | rtData[5]
+                    minCellRegDev1 = (rtData[8] << 8) | rtData[7]
+                    maxAuxRegDev1 = (rtData[10] << 8) | rtData[9]
+                    minAuxRegDev1 = (rtData[12] << 8) | rtData[11]
+                    totalRegDev1 = (rtData[14] << 8) | rtData[13]
+                    altTotRegDev1 = (rtData[16] << 8) | rtData[15]
+                    pmmLocDev1 = (rtData[18] << 8) | rtData[17]
+                    pmmCellRegDev1 = (rtData[20] << 8) | rtData[19]
+                    pmmAuxRegDev1 = (rtData[22] << 8) | rtData[21]
 
                     # fill value column
-                    listAlertRegDev1 = [hex(alertOvDev1)[2:].upper().zfill(4),
-                                        hex(alertUvDev1)[2:].upper().zfill(4),
-                                        hex(alertAltOvDev1)[2:].upper().zfill(4),
-                                        hex(alertAltUvDev1)[2:].upper().zfill(4),
-                                        hex(alertAuxOvDev1)[2:].upper().zfill(4),
-                                        hex(alertAuxUvDev1)[2:].upper().zfill(4)]
-                    for r in range(1, 7):
-                        self.table_meaAcqDetailData_alertRegDev1.item(r, 2).setText(listAlertRegDev1[r-1])
+                    listSumDataDev1 = [hex(minMaxLocDev1)[2:].upper().zfill(4),
+                                       hex(maxCellRegDev1)[2:].upper().zfill(4),
+                                       hex(minCellRegDev1)[2:].upper().zfill(4),
+                                       hex(maxAuxRegDev1)[2:].upper().zfill(4),
+                                       hex(minAuxRegDev1)[2:].upper().zfill(4), hex(totalRegDev1)[2:].upper().zfill(4),
+                                       hex(altTotRegDev1)[2:].upper().zfill(4), hex(pmmLocDev1)[2:].upper().zfill(4),
+                                       hex(pmmCellRegDev1)[2:].upper().zfill(4),
+                                       hex(pmmAuxRegDev1)[2:].upper().zfill(4)]
 
-                    # update led
-                    self.update_alert_regiser_led([alertOvDev1,
-                                                   alertUvDev1,
-                                                   alertAltOvDev1,
-                                                   alertAltUvDev1,
-                                                   alertAuxOvDev1,
-                                                   alertAuxUvDev1], self.ledMeaAcqDetailPageDev1)
+                    for i in range(10):
+                        self.table_meaAcqSumPage_sumDataDev1.item(i, 2).setText(listSumDataDev1[i])
 
-        """ read CELL IIR DATA block """
-        self.update_acquistion_detail_data_table(1, 2, 0x90, False)
-        """ read CELL DATA block """
-        self.update_acquistion_detail_data_table(4, 5, 0xA0, False)
-        """ read AUXILIARY DATA block """
-        self.update_acquistion_detail_data_table(7, 8, 0xB0, True)
-        """ read ALTERNATE DATA block """
-        self.update_acquistion_detail_data_table(10, 11, 0xC0, False)
+                    # fill MINMAXLOC row
+                    listMinMaxLocBitsDev1 = [str((minMaxLocDev1 & 0xF000) >> 12),
+                                             str((minMaxLocDev1 & 0x0F00) >> 8),
+                                             str((minMaxLocDev1 & 0x00F0) >> 4),
+                                             str(minMaxLocDev1 & 0x000F)]
+                    for i in range(4):
+                        self.table_meaAcqSumPage_sumDataDev1.item(0, 3 + 2 * i).setText(listMinMaxLocBitsDev1[i])
+
+                    # fill PMMLOC row
+                    listPmmLocBitsDev1 = [str((pmmLocDev1 & 0x0F00) >> 8),
+                                          str(pmmLocDev1 & 0x000F)]
+                    self.table_meaAcqSumPage_sumDataDev1.item(7, 5).setText(listPmmLocBitsDev1[0])
+                    self.table_meaAcqSumPage_sumDataDev1.item(7, 9).setText(listPmmLocBitsDev1[1])
+
+                    # fill other rows
+                    listOtherSumBitsDev1 = [str(round((maxCellRegDev1 / 65536 * 5), 5)),
+                                            str(round((minCellRegDev1 / 65536 * 5), 5)),
+                                            str(round((maxAuxRegDev1 / 65536 * 100), 2)),
+                                            str(round((minAuxRegDev1 / 65536 * 100), 2)),
+                                            str(round((totalRegDev1 / 65536 * 80), 5)),
+                                            str(round((altTotRegDev1 / 65536 * 80), 5)),
+                                            str(round((pmmCellRegDev1 / 65536 * 5), 5)),
+                                            str(round((pmmAuxRegDev1 / 65536 * 100), 2))
+                                            ]
+                    for i in range(6):
+                        self.table_meaAcqSumPage_sumDataDev1.item(i + 1, 3).setText(listOtherSumBitsDev1[i])
+
+                    self.table_meaAcqSumPage_sumDataDev1.item(8, 3).setText(listOtherSumBitsDev1[5])
+                    self.table_meaAcqSumPage_sumDataDev1.item(9, 3).setText(listOtherSumBitsDev1[6])
+
+            """ read alert register block """
+            ''' read device 0 alert register block '''
+            rtData = pb01_read_block(self.hidBdg, 6, 0, 0x80, 0x00)
+            if rtData == "message return RX error" or rtData == "pec check error":
+                self.message_box(rtData)
+                return
+            else:
+                alertOvDev0 = (rtData[4] << 8) | rtData[3]
+                alertUvDev0 = (rtData[6] << 8) | rtData[5]
+                alertAltOvDev0 = (rtData[8] << 8) | rtData[7]
+                alertAltUvDev0 = (rtData[10] << 8) | rtData[9]
+                alertAuxOvDev0 = (rtData[12] << 8) | rtData[11]
+                alertAuxUvDev0 = (rtData[14] << 8) | rtData[13]
+
+                # fill value column
+                listAlertRegDev0 = [hex(alertOvDev0)[2:].upper().zfill(4),
+                                    hex(alertUvDev0)[2:].upper().zfill(4),
+                                    hex(alertAltOvDev0)[2:].upper().zfill(4),
+                                    hex(alertAltUvDev0)[2:].upper().zfill(4),
+                                    hex(alertAuxOvDev0)[2:].upper().zfill(4),
+                                    hex(alertAuxUvDev0)[2:].upper().zfill(4)]
+                for r in range(1, 7):
+                    self.table_meaAcqDetailData_alertRegDev0.item(r, 2).setText(listAlertRegDev0[r - 1])
+
+                # update led
+                self.update_alert_regiser_led([alertOvDev0,
+                                               alertUvDev0,
+                                               alertAltOvDev0,
+                                               alertAltUvDev0,
+                                               alertAuxOvDev0,
+                                               alertAuxUvDev0], self.ledMeaAcqDetailPageDev0)
+
+                ''' read device 1 alert register block  '''
+                if not self.flagSingleAfe:
+                    rtData = pb01_read_block(self.hidBdg, 6, 1, 0x80, 0x00)
+                    if rtData == "message return RX error" or rtData == "pec check error":
+                        self.message_box(rtData)
+                        return
+                    else:
+                        alertOvDev1 = (rtData[4] << 8) | rtData[3]
+                        alertUvDev1 = (rtData[6] << 8) | rtData[5]
+                        alertAltOvDev1 = (rtData[8] << 8) | rtData[7]
+                        alertAltUvDev1 = (rtData[10] << 8) | rtData[9]
+                        alertAuxOvDev1 = (rtData[12] << 8) | rtData[11]
+                        alertAuxUvDev1 = (rtData[14] << 8) | rtData[13]
+
+                        # fill value column
+                        listAlertRegDev1 = [hex(alertOvDev1)[2:].upper().zfill(4),
+                                            hex(alertUvDev1)[2:].upper().zfill(4),
+                                            hex(alertAltOvDev1)[2:].upper().zfill(4),
+                                            hex(alertAltUvDev1)[2:].upper().zfill(4),
+                                            hex(alertAuxOvDev1)[2:].upper().zfill(4),
+                                            hex(alertAuxUvDev1)[2:].upper().zfill(4)]
+                        for r in range(1, 7):
+                            self.table_meaAcqDetailData_alertRegDev1.item(r, 2).setText(listAlertRegDev1[r - 1])
+
+                        # update led
+                        self.update_alert_regiser_led([alertOvDev1,
+                                                       alertUvDev1,
+                                                       alertAltOvDev1,
+                                                       alertAltUvDev1,
+                                                       alertAuxOvDev1,
+                                                       alertAuxUvDev1], self.ledMeaAcqDetailPageDev1)
+
+            """ read CELL IIR DATA block """
+            self.update_acquistion_detail_data_table(1, 2, 0x90, False)
+            """ read CELL DATA block """
+            self.update_acquistion_detail_data_table(4, 5, 0xA0, False)
+            """ read AUXILIARY DATA block """
+            self.update_acquistion_detail_data_table(7, 8, 0xB0, True)
+            """ read ALTERNATE DATA block """
+            self.update_acquistion_detail_data_table(10, 11, 0xC0, False)
+
+            ''' diagnostic mode '''
+        else:
+            # read status block and update dc table
+            self.read_dc_and_status(
+                self.table_diagAcqPage_dc, self.ledDiagAcqDataPageDc, self.ledDiagAcqDataPageAlert,
+                self.table_diagAcqPage_status, self.ledDiagAcqDataPageStaDev0, self.ledDiagAcqDataPageStaDev1)
+
+            # read ACQLOG, ADC1ZSREG, ADC1FSREG, ADC2ZSREG, ADC2FSREG
+            ''' ACQLOG '''
+            if self.flagSingleAfe:  # dev0
+                acqDataDev0 = self.update_status_table_extend_register(self.table_diagAcqPage_status, 0xD1, 8)
+
+                acqTypeDev0 = hex((acqDataDev0 & 0xF000) >> 12)
+                acqCountDev0 = str(acqDataDev0 & 0x03FF)
+                self.table_diagAcqPage_status.item(8, 3).setText(acqTypeDev0)
+                self.table_diagAcqPage_status.item(8, 5).setText(acqCountDev0)
+            else:   # dev0 & dev1
+                acqDataDev0, acqDataDev1 = self.update_status_table_extend_register(
+                                                                        self.table_diagAcqPage_status, 0xD1, 8)
+
+                acqTypeDev0 = hex((acqDataDev0 & 0xF000) >> 12)
+                acqCountDev0 = str(acqDataDev0 & 0x03FF)
+                self.table_diagAcqPage_status.item(8, 3).setText(acqTypeDev0)
+                self.table_diagAcqPage_status.item(8, 5).setText(acqCountDev0)
+
+                acqTypeDev1 = hex((acqDataDev1 & 0xF000) >> 12)
+                acqCountDev1 = str(acqDataDev1 & 0x03FF)
+                self.table_diagAcqPage_status.item(8, 8).setText(acqTypeDev1)
+                self.table_diagAcqPage_status.item(8, 10).setText(acqCountDev1)
+
+            ''' ADC1ZSREG, ADC1FSREG, ADC2ZSREG, ADC2FSREG '''
+            self.update_status_table_extend_register(self.table_diagAcqPage_status, 0xE7, 9)
+            self.update_status_table_extend_register(self.table_diagAcqPage_status, 0xE8, 10)
+            self.update_status_table_extend_register(self.table_diagAcqPage_status, 0xE9, 11)
+            self.update_status_table_extend_register(self.table_diagAcqPage_status, 0xEA, 12)
+
+
+
 
 
 

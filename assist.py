@@ -11,3 +11,13 @@ def hex_to_bin(hex_str):
     """
     bin_str = bin(int(hex_str, 16))[2:].zfill(len(hex_str) * 4)
     return bin_str
+
+def convert_complement_data(pInt):
+    if pInt >= 2**15:
+        convertData = pInt - 2**16
+    else:
+        convertData = pInt
+
+    return convertData
+
+print(convert_complement_data(0xffff))

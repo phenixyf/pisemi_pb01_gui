@@ -543,7 +543,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                     pLedList[3][i].setStyleSheet(led_white_style)
 
 
-    def update_alert_regiser_led(self, pListAlertBlkData, pListAlertLed):
+    def update_acquistion_alert_regiser_led(self, pListAlertBlkData, pListAlertLed):
         """
         更新 meaAcqDetailDataPage alert register table 中 led 状态
         :param pListAlertBlkData: alert register block 各寄存器数据组成的列表
@@ -558,7 +558,19 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                     pListAlertLed[regCnt][bitCnt].setStyleSheet(led_green_style)
 
 
-
+    def update_diagnostic_alert_regiser_led(self, pListAlertBlkData, pListAlertLed):
+        """
+        更新 meaAcqDetailDataPage alert register table 中 led 状态
+        :param pListAlertBlkData: alert register block 各寄存器数据组成的列表
+        :param pListAlertLed: alert register block 各寄存器对应的 led 串组成的列表
+        :return:
+        """
+        for regCnt in range(2):
+            for bitCnt in range(17):
+                if pListAlertBlkData[regCnt] & (0x10000 >> bitCnt):
+                    pListAlertLed[regCnt][bitCnt].setStyleSheet(led_red_style)
+                else:
+                    pListAlertLed[regCnt][bitCnt].setStyleSheet(led_green_style)
 
 
     def update_status_block_table(self, pTable, pDev0Col, pDev1Col, pDev0LedList, pDev1LedList, pFlagTem):
@@ -1912,7 +1924,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                     self.table_meaAcqDetailData_alertRegDev0.item(r, 2).setText(listAlertRegDev0[r - 1])
 
                 # update led
-                self.update_alert_regiser_led([alertOvDev0,
+                self.update_acquistion_alert_regiser_led([alertOvDev0,
                                                alertUvDev0,
                                                alertAltOvDev0,
                                                alertAltUvDev0,
@@ -1944,7 +1956,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                             self.table_meaAcqDetailData_alertRegDev1.item(r, 2).setText(listAlertRegDev1[r - 1])
 
                         # update led
-                        self.update_alert_regiser_led([alertOvDev1,
+                        self.update_acquistion_alert_regiser_led([alertOvDev1,
                                                        alertUvDev1,
                                                        alertAltOvDev1,
                                                        alertAltUvDev1,
@@ -1996,6 +2008,45 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             self.update_status_table_extend_register(self.table_diagAcqPage_status, 0xE9, 11)
             self.update_status_table_extend_register(self.table_diagAcqPage_status, 0xEA, 12)
 
+            # read diagnostic alert block
+            ''' read device 0 diagnostic alert block '''
+            rtData = pb01_read_block(self.hidBdg, 4, 0, 0xD2, 0x00)     # dev0
+            if rtData == "message return RX error" or rtData == "pec check error":
+                self.message_box(rtData)
+                return
+            else:
+                alertOvDev0 = ((rtData[5] & 0x01) << 16) | (rtData[4] << 8) | rtData[3]
+                alertUvDev0 = ((rtData[9] & 0x01) << 16) | (rtData[8] << 8) | rtData[7]
+
+
+                # fill value column
+                listAlertRegDev0 = [hex(alertOvDev0)[2:].upper().zfill(5),
+                                    hex(alertUvDev0)[2:].upper().zfill(5)]
+                for r in range(2):
+                    self.table_diagAcqPage_alertReg_dev0.item(r+1, 2).setText(listAlertRegDev0[r])
+
+                # update led
+                self.update_diagnostic_alert_regiser_led([alertOvDev0, alertUvDev0],
+                                                         self.ledDiagAcqDataPageDev0)
+
+                if not self.flagSingleAfe:  # dev1
+                    rtData = pb01_read_block(self.hidBdg, 4, 1, 0xD2, 0x00)  # dev0
+                    if rtData == "message return RX error" or rtData == "pec check error":
+                        self.message_box(rtData)
+                        return
+                    else:
+                        alertOvDev1 = ((rtData[5] & 0x01) << 16) | (rtData[4] << 8) | rtData[3]
+                        alertUvDev1 = ((rtData[9] & 0x01) << 16) | (rtData[8] << 8) | rtData[7]
+
+                        # fill value column
+                        listAlertRegDev1 = [hex(alertOvDev1)[2:].upper().zfill(5),
+                                            hex(alertUvDev1)[2:].upper().zfill(5)]
+                        for r in range(2):
+                            self.table_diagAcqPage_alertReg_dev1.item(r + 1, 2).setText(listAlertRegDev1[r])
+
+                        # update led
+                        self.update_diagnostic_alert_regiser_led([alertOvDev1, alertUvDev1],
+                                                                 self.ledDiagAcqDataPageDev1)
 
 
 

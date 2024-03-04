@@ -62,6 +62,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             else:
                 self.radioGroup_acqReqPage_acqMode.addButton(self.acqRea_radio_list[i], id = i)
         self.acqCtrlVal = 0x0B41      # acqReqPage ACQCTRL register value
+        self.acqMode = 0x00           # acqReqPage acquisition mode value
         """ self functions """
         self.open_hid()
         self.init_tab_pages()
@@ -1561,7 +1562,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
     def solt_radioBtn_acqReqPage_acqcbalint(self):
         if self.radioButton_acqReqPage_acqcbalint.isChecked():
-            if not self.flag_radio_acqReqPage_acqcbalint:  # radio status is unchecked
+            if not self.flag_radio_acqReqPage_acqcbalint:  # 之前是 check 状态会进到这里，执行后变成 uncheck 状态
                 self.radioButton_acqReqPage_acqcbalint.setAutoExclusive(False)
                 self.radioButton_acqReqPage_acqcbalint.setChecked(False)
                 self.radioButton_acqReqPage_acqcbalint.setAutoExclusive(True)
@@ -1570,7 +1571,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 self.table_acqReqPage_acqReq.item(0,2).setText(hex(self.acqCtrlVal)[2:].upper().zfill(4))
                 if not self.flagSingleAfe:
                     self.table_acqReqPage_acqReq.item(1, 2).setText(hex(self.acqCtrlVal)[2:].upper().zfill(4))
-            else:   # radio status is checked.
+            else:   # 之前是 uncheck 状态会进到这里，执行后变成 check 状态
                 self.flag_radio_acqReqPage_acqcbalint = False
                 self.radioButton_acqReqPage_acqcbalint.setChecked(True)
                 self.acqCtrlVal |= 0x0800
@@ -1581,7 +1582,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
     def solt_radioBtn_acqReqPage_acqiirinit(self):
         if self.radioButton_acqReqPage_acqiirinit.isChecked():
-            if not self.flag_radio_acqReqPage_acqiirinit:  # radio status is unchecked
+            if not self.flag_radio_acqReqPage_acqiirinit:  # 之前是 check 状态会进到这里，执行后变成 uncheck 状态
                 self.radioButton_acqReqPage_acqiirinit.setAutoExclusive(False)
                 self.radioButton_acqReqPage_acqiirinit.setChecked(False)
                 self.radioButton_acqReqPage_acqiirinit.setAutoExclusive(True)
@@ -1590,7 +1591,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 self.table_acqReqPage_acqReq.item(0, 2).setText(hex(self.acqCtrlVal)[2:].upper().zfill(4))
                 if not self.flagSingleAfe:
                     self.table_acqReqPage_acqReq.item(1, 2).setText(hex(self.acqCtrlVal)[2:].upper().zfill(4))
-            else:  # radio status is checked.
+            else:  # 之前是 uncheck 状态会进到这里，执行后变成 check 状态
                 self.flag_radio_acqReqPage_acqiirinit = False
                 self.radioButton_acqReqPage_acqiirinit.setChecked(True)
                 self.acqCtrlVal |= 0x0200
@@ -1600,10 +1601,41 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def solt_radioGroup_acqReqPage_acqMode(self, button):
-        self.acqCtrlVal = (self.acqCtrlVal & 0xFFF0) | self.radioGroup_acqReqPage_acqMode.id(button)
+        """ 判断 Acquisition Mode group 中选择了哪个 radio button """
+        self.acqMode = self.radioGroup_acqReqPage_acqMode.id(button)
+
+        if self.acqMode == 1 or self.acqMode == 2:   # cell acquisition
+            ''' check ACQCBALINT & ACQIIRINT radio buttons and update self.acqCtrlVal '''
+            # check ACQCBALINT
+            self.radioButton_acqReqPage_acqcbalint.setChecked(True)
+            self.flag_radio_acqReqPage_acqcbalint = False
+            # check ACQIIRINT
+            self.radioButton_acqReqPage_acqiirinit.setChecked(True)
+            self.flag_radio_acqReqPage_acqiirinit = False
+            # update self.acqCtrlVal
+            self.acqCtrlVal = 0x0B40  # 工作在 cell acquisition mode 时 ACQCTRL[4:11] =0x14
+            self.acqCtrlVal |= self.acqMode  # 根据当前选择的 radio 设置 acquisition mode value
+        else:   # diagnostic mode
+            ''' uncheck ACQCBALINT & ACQIIRINT radio buttons and update self.acqCtrlVal '''
+            # uncheck ACQCBALINT
+            self.radioButton_acqReqPage_acqcbalint.setAutoExclusive(False)
+            self.radioButton_acqReqPage_acqcbalint.setChecked(False)
+            self.radioButton_acqReqPage_acqcbalint.setAutoExclusive(True)
+            self.flag_radio_acqReqPage_acqcbalint = True
+            # uncheck ACQIIRINT
+            self.radioButton_acqReqPage_acqiirinit.setAutoExclusive(False)
+            self.radioButton_acqReqPage_acqiirinit.setChecked(False)
+            self.radioButton_acqReqPage_acqiirinit.setAutoExclusive(True)
+            self.flag_radio_acqReqPage_acqiirinit = True
+            # update self.acqCtrlVal
+            self.acqCtrlVal = 0x0000    # 工作在 diagnostic mode 时 ACQCTRL[4:11] =0x00
+            self.acqCtrlVal |= self.acqMode  # 根据当前选择的 radio 设置 diagnostic mode value
+
+        """ update acquisition mode table """
         self.table_acqReqPage_acqReq.item(0, 2).setText(hex(self.acqCtrlVal)[2:].upper().zfill(4))
         if not self.flagSingleAfe:
             self.table_acqReqPage_acqReq.item(1, 2).setText(hex(self.acqCtrlVal)[2:].upper().zfill(4))
+
 
     def solt_pushBtn_acqReqPage_request(self):
         """

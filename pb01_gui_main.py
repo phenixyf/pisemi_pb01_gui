@@ -33,12 +33,15 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.hidBdg = hid.device()
         self.hidStatus = False
         self.setupNotification()
+
         self.statusMessage = QLabel()
         self.statusMessage.setFont(QFont('Calibri', 10, QFont.Bold))  # 设置字体和加粗
         self.statusBar().addPermanentWidget(self.statusMessage)
+
         self.flagSingleAfe = False  # chainCfgPage single afe radio button flag
         self.flag_radio_acqReqPage_acqcbalint = False  # acqReqPage acqcbalint radio button flag
         self.flag_radio_acqReqPage_acqiirinit = False  # acqReqPage acqiirinit radio button flag
+
         self.ledChainPageDev0 = []
         self.ledChainPageDev1 = []
         self.ledDevMgPageInitDev0 = []
@@ -47,8 +50,9 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.ledDevMgPageCurDev1 = []
         self.ledDevMgPageDcByte = []
         self.ledDevMgPageAlertPk = []
+
         self.radioGroup_acqReqPage_acqMode = QButtonGroup(self)    # 将 acqReqPage radio 归为一组
-        self.acqRea_radio_list = [self.radioButton_acqReqPage_dataUpdate,
+        self.acqMode_radio_list = [self.radioButton_acqReqPage_dataUpdate,
                              self.radioButton_acqReqPage_normalMeas, self.radioButton_acqReqPage_redundantMeas,
                              self.radioButton_acqReqPage_pathDiag, self.radioButton_acqReqPage_balswShortDiag,
                              self.radioButton_acqReqPage_balswOpenDiag, self.radioButton_acqReqPage_cellOpenDiag,
@@ -58,9 +62,19 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                              self.radioButton_acqReqPage_diagDataClear]
         for i in range(0, 14):
             if i==13:
-                self.radioGroup_acqReqPage_acqMode.addButton(self.acqRea_radio_list[i], id = i+1)
+                self.radioGroup_acqReqPage_acqMode.addButton(self.acqMode_radio_list[i], id = i+1)
             else:
-                self.radioGroup_acqReqPage_acqMode.addButton(self.acqRea_radio_list[i], id = i)
+                self.radioGroup_acqReqPage_acqMode.addButton(self.acqMode_radio_list[i], id = i)
+                
+
+        self.radioGroup_cblPage_cblMode = QButtonGroup(self)        # 将 cblPage radio 归为一组
+        self.cblMode_radio_list = [self.radioButton_cblPage_disable, self.radioButton_cblPage_manEven,
+                                   self.radioButton_cblPage_manOdd, self.radioButton_cblPage_semiAuto,
+                                   self.radioButton_cblPage_auto, self.radioButton_cblPage_discharge,
+                                   self.radioButton_cblPage_autoMeaSnd, self.radioButton_cblPage_autoMeaMin]        
+        for i in range(0, 8):
+                self.radioGroup_cblPage_cblMode.addButton(self.cblMode_radio_list[i], id=i)
+
         self.acqCtrlVal = 0x0B41      # acqReqPage ACQCTRL register value
         self.acqMode = 0x01           # acqReqPage acquisition mode value
         """ self functions """
@@ -100,6 +114,8 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.radioButton_acqReqPage_acqiirinit.clicked.connect(self.solt_radioBtn_acqReqPage_acqiirinit)
         self.radioGroup_acqReqPage_acqMode.buttonClicked.connect(self.solt_radioGroup_acqReqPage_acqMode)
         self.pushButton_acqReqPage_request.clicked.connect(self.solt_pushBtn_acqReqPage_request)
+        ''' cell balance page (page9) '''
+        self.radioGroup_cblPage_cblMode.buttonClicked.connect(self.solt_radioGroup_cblPage_cblMode)
 
 
     def init_tab_pages(self):
@@ -288,6 +304,9 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                                                     self.table_diagAcqPage_dataReg_dev1)
 
         ''' initial cell balance page (page9) '''
+        # set default checked status
+        self.radioButton_cblPage_disable.setChecked(True)
+        # set disable radio buttons
         self.radioButton_cblPage_auto.setEnabled(False)
         self.radioButton_cblPage_discharge.setEnabled(False)
         self.radioButton_cblPage_autoMeaSnd.setEnabled(False)
@@ -2317,6 +2336,12 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
             # read diagnositc register block data
             self.update_diagnostic_data_table(self.acqMode)
+
+
+    def solt_radioGroup_cblPage_cblMode(self, button):
+        """ 判断 Cell Balance Mode group 中选择了哪个 radio button """
+        cellBlanceMode = self.radioGroup_cblPage_cblMode.id(button)
+
 
 
     def setupNotification(self):

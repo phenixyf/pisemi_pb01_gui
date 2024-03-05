@@ -17,7 +17,12 @@ import hid
 target_pid = 0xfe07  # 用你的目标PID替换这里
 target_vid = 0x1a86  # 用你的目标VID替换这里
 
-BTN_OP_DELAY = 0.05     # 防止 button 被连续点击 delay 时间
+BTN_OP_DELAY = 0.05  # 防止 button 被连续点击 delay 时间
+
+ADC_FULL_DATA = 66535       # PB01 ADC 满量程数据
+CELL_SCALE = 5         # PB01 cell full scale (5V)
+AUX_SCALE = 2.5        # PB01 aux full scale (2.5V)
+PWR_SCALE = 10         #PB01 power pin like VAA, VIO full scale (10V)
 
 """ chainCfgPage configure push button style """
 btn_blue_style = "QPushButton {\n"

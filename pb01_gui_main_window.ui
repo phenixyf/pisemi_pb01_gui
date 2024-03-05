@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1838</width>
+    <width>1888</width>
     <height>1010</height>
    </rect>
   </property>
@@ -9197,7 +9197,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </spacer>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_68">
+            <widget class="QPushButton" name="pushButton_cblPage_cblCfgWr">
              <property name="minimumSize">
               <size>
                <width>110</width>
@@ -9238,7 +9238,7 @@ QPushButton:pressed {
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_69">
+            <widget class="QPushButton" name="pushButton_cblPage_cblCfgRd">
              <property name="minimumSize">
               <size>
                <width>110</width>
@@ -9469,7 +9469,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
             </spacer>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_statusRegReInit_6">
+            <widget class="QPushButton" name="pushButton_cblPage_cblCtrlStop">
              <property name="minimumSize">
               <size>
                <width>110</width>
@@ -9510,7 +9510,7 @@ QPushButton:pressed {
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_statusRegClear_7">
+            <widget class="QPushButton" name="pushButton_cblPage_cblCtrlStart">
              <property name="minimumSize">
               <size>
                <width>110</width>
@@ -9551,7 +9551,7 @@ QPushButton:pressed {
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_71">
+            <widget class="QPushButton" name="pushButton_cblPage_cblCtrlRd">
              <property name="minimumSize">
               <size>
                <width>110</width>
@@ -9934,7 +9934,7 @@ QTableCornerButton::section {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1838</width>
+     <width>1888</width>
      <height>26</height>
     </rect>
    </property>

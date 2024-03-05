@@ -1499,13 +1499,19 @@ def adjust_cblPage_tables(pExpTable, pCfgTable, pCtrlDemoTable, pCtrlInfTable):
     ''' span table and fill background color '''
     # expiration time table
     pExpTable.item(0, 0).setBackground(QColor("#DAE3F3"))  # 蓝色
+    pExpTable.item(0, 0).setFlags(pExpTable.item(0, 0).flags()
+                                     & ~Qt.ItemIsEditable & ~Qt.ItemIsSelectable)  # disable cell
     pExpTable.item(0, 1).setBackground(QColor("#FFF2CC"))  # 黄色
 
     # configure and control demo tables
     for r in range(5):
         if r < 2:
             pCtrlDemoTable.item(r, 2).setBackground(QColor("#DAE3F3"))  # 蓝色
+            pCtrlDemoTable.item(r, 2).setFlags(pCtrlDemoTable.item(0, 0).flags()
+                                          & ~Qt.ItemIsEditable & ~Qt.ItemIsSelectable)  # disable cell
         pCfgTable.item(r, 2).setBackground(QColor("#DAE3F3"))  # 蓝色
+        pCfgTable.item(r, 2).setFlags(pCfgTable.item(0, 0).flags()
+                                           & ~Qt.ItemIsEditable & ~Qt.ItemIsSelectable)  # disable cell
         pCfgTable.item(r, 4).setBackground(QColor("#E2F0D9"))  # 绿色
         pCfgTable.item(r, 5).setBackground(QColor("#E2F0D9"))  # 绿色
 

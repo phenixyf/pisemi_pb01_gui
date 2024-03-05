@@ -75,8 +75,12 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         for i in range(0, 8):
                 self.radioGroup_cblPage_cblMode.addButton(self.cblMode_radio_list[i], id=i)
 
-        self.acqCtrlVal = 0x0B41      # acqReqPage ACQCTRL register value
-        self.acqMode = 0x01           # acqReqPage acquisition mode value
+        self.acqCtrlVal = 0x0B41      # acqReqPage ACQCTRL (0x44) register value
+        self.acqMode = 0x01           # acqReqPage acquisition mode value (由 radio button 选择设置）
+
+        self.cblCfgVal = 0x01F0       # cblPage CBALCFG (0x49) register value
+        self.cblMode = 0x0            # cblPage cell balance mode value (由 radio button 选择设置）
+
         """ self functions """
         self.open_hid()
         self.init_tab_pages()
@@ -116,6 +120,11 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.pushButton_acqReqPage_request.clicked.connect(self.solt_pushBtn_acqReqPage_request)
         ''' cell balance page (page9) '''
         self.radioGroup_cblPage_cblMode.buttonClicked.connect(self.solt_radioGroup_cblPage_cblMode)
+        self.pushButton_cblPage_cblCfgWr.clicked.connect(self.solt_pushBtn_cblPage_cblCfgWr)
+        self.pushButton_cblPage_cblCfgRd.clicked.connect(self.solt_pushBtn_cblPage_cblCfgRd)
+        self.pushButton_cblPage_cblCtrlStop.clicked.connect(self.solt_pushBtn_cblPage_cblCtrlStop)
+        self.pushButton_cblPage_cblCtrlStart.clicked.connect(self.solt_pushBtn_cblPage_cblCtrlStart)
+        self.pushButton_cblPage_cblCtrlRd.clicked.connect(self.solt_pushBtn_cblPage_cblCtrlRd)
 
 
     def init_tab_pages(self):
@@ -2397,8 +2406,25 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
     def solt_radioGroup_cblPage_cblMode(self, button):
         """ 判断 Cell Balance Mode group 中选择了哪个 radio button """
-        cellBlanceMode = self.radioGroup_cblPage_cblMode.id(button)
+        self.cblMode = self.radioGroup_cblPage_cblMode.id(button)
+        self.cblCfgVal = (self.cblCfgVal & 0x0FFF) | (self.cblMode << 12)
+        self.table_cblPage_cblCfgReg.item(4, 2).setText(hex(self.cblCfgVal)[2:].zfill(4).upper())
 
+
+    def solt_pushBtn_cblPage_cblCfgWr(self):
+        pass
+
+    def solt_pushBtn_cblPage_cblCfgRd(self):
+        pass
+
+    def solt_pushBtn_cblPage_cblCtrlStop(self):
+        pass
+
+    def solt_pushBtn_cblPage_cblCtrlStart(self):
+        pass
+
+    def solt_pushBtn_cblPage_cblCtrlRd(self):
+        pass
 
 
     def setupNotification(self):

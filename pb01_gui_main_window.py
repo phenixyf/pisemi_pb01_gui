@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1838, 1010)
+        MainWindow.resize(1888, 1010)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -4306,10 +4306,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_14.addWidget(self.label_37)
         spacerItem42 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_14.addItem(spacerItem42)
-        self.pushButton_68 = QtWidgets.QPushButton(self.frame_16)
-        self.pushButton_68.setMinimumSize(QtCore.QSize(110, 0))
-        self.pushButton_68.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.pushButton_68.setStyleSheet("QPushButton {\n"
+        self.pushButton_cblPage_cblCfgWr = QtWidgets.QPushButton(self.frame_16)
+        self.pushButton_cblPage_cblCfgWr.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_cblPage_cblCfgWr.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_cblPage_cblCfgWr.setStyleSheet("QPushButton {\n"
 "    background-color: #3072B3; /* 按钮背景颜色 */\n"
 "    color: white; /* 文字颜色 */\n"
 "    border-style: solid; /* 边框样式 */\n"
@@ -4329,12 +4329,12 @@ class Ui_MainWindow(object):
 "    background-color: #1E5A97; /* 按下时的背景颜色 */\n"
 "}\n"
 "")
-        self.pushButton_68.setObjectName("pushButton_68")
-        self.horizontalLayout_14.addWidget(self.pushButton_68)
-        self.pushButton_69 = QtWidgets.QPushButton(self.frame_16)
-        self.pushButton_69.setMinimumSize(QtCore.QSize(110, 0))
-        self.pushButton_69.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.pushButton_69.setStyleSheet("QPushButton {\n"
+        self.pushButton_cblPage_cblCfgWr.setObjectName("pushButton_cblPage_cblCfgWr")
+        self.horizontalLayout_14.addWidget(self.pushButton_cblPage_cblCfgWr)
+        self.pushButton_cblPage_cblCfgRd = QtWidgets.QPushButton(self.frame_16)
+        self.pushButton_cblPage_cblCfgRd.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_cblPage_cblCfgRd.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_cblPage_cblCfgRd.setStyleSheet("QPushButton {\n"
 "    background-color: #3b8303; /* 按钮背景颜色 */\n"
 "    color: white; /* 文字颜色 */\n"
 "    border-style: solid; /* 边框样式 */\n"
@@ -4354,8 +4354,8 @@ class Ui_MainWindow(object):
 "    background-color: #397303; /* 按下时的背景颜色 */\n"
 "}\n"
 "")
-        self.pushButton_69.setObjectName("pushButton_69")
-        self.horizontalLayout_14.addWidget(self.pushButton_69)
+        self.pushButton_cblPage_cblCfgRd.setObjectName("pushButton_cblPage_cblCfgRd")
+        self.horizontalLayout_14.addWidget(self.pushButton_cblPage_cblCfgRd)
         self.verticalLayout_19.addWidget(self.frame_16)
         self.table_cblPage_cblCfgReg = QtWidgets.QTableWidget(self.tab_cellBal)
         self.table_cblPage_cblCfgReg.setMinimumSize(QtCore.QSize(0, 150))
@@ -4445,10 +4445,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_16.addWidget(self.label_38)
         spacerItem43 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_16.addItem(spacerItem43)
-        self.pushButton_statusRegReInit_6 = QtWidgets.QPushButton(self.frame_17)
-        self.pushButton_statusRegReInit_6.setMinimumSize(QtCore.QSize(110, 0))
-        self.pushButton_statusRegReInit_6.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.pushButton_statusRegReInit_6.setStyleSheet("QPushButton {\n"
+        self.pushButton_cblPage_cblCtrlStop = QtWidgets.QPushButton(self.frame_17)
+        self.pushButton_cblPage_cblCtrlStop.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_cblPage_cblCtrlStop.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_cblPage_cblCtrlStop.setStyleSheet("QPushButton {\n"
 "    background-color: #e84d00; /* 按钮背景颜色 1*/\n"
 "    color: white; /* 文字颜色 */\n"
 "    border-style: solid; /* 边框样式 */\n"
@@ -4468,12 +4468,12 @@ class Ui_MainWindow(object):
 "    background-color: #df4a00; /* 按下时的背景颜色 2*/\n"
 "}\n"
 "")
-        self.pushButton_statusRegReInit_6.setObjectName("pushButton_statusRegReInit_6")
-        self.horizontalLayout_16.addWidget(self.pushButton_statusRegReInit_6)
-        self.pushButton_statusRegClear_7 = QtWidgets.QPushButton(self.frame_17)
-        self.pushButton_statusRegClear_7.setMinimumSize(QtCore.QSize(110, 0))
-        self.pushButton_statusRegClear_7.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.pushButton_statusRegClear_7.setStyleSheet("QPushButton {\n"
+        self.pushButton_cblPage_cblCtrlStop.setObjectName("pushButton_cblPage_cblCtrlStop")
+        self.horizontalLayout_16.addWidget(self.pushButton_cblPage_cblCtrlStop)
+        self.pushButton_cblPage_cblCtrlStart = QtWidgets.QPushButton(self.frame_17)
+        self.pushButton_cblPage_cblCtrlStart.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_cblPage_cblCtrlStart.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_cblPage_cblCtrlStart.setStyleSheet("QPushButton {\n"
 "    background-color: #FFC000; /* 按钮背景颜色 1*/\n"
 "    color: white; /* 文字颜色 */\n"
 "    border-style: solid; /* 边框样式 */\n"
@@ -4493,12 +4493,12 @@ class Ui_MainWindow(object):
 "    background-color: #DEA900; /* 按下时的背景颜色 2*/\n"
 "}\n"
 "")
-        self.pushButton_statusRegClear_7.setObjectName("pushButton_statusRegClear_7")
-        self.horizontalLayout_16.addWidget(self.pushButton_statusRegClear_7)
-        self.pushButton_71 = QtWidgets.QPushButton(self.frame_17)
-        self.pushButton_71.setMinimumSize(QtCore.QSize(110, 0))
-        self.pushButton_71.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.pushButton_71.setStyleSheet("QPushButton {\n"
+        self.pushButton_cblPage_cblCtrlStart.setObjectName("pushButton_cblPage_cblCtrlStart")
+        self.horizontalLayout_16.addWidget(self.pushButton_cblPage_cblCtrlStart)
+        self.pushButton_cblPage_cblCtrlRd = QtWidgets.QPushButton(self.frame_17)
+        self.pushButton_cblPage_cblCtrlRd.setMinimumSize(QtCore.QSize(110, 0))
+        self.pushButton_cblPage_cblCtrlRd.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.pushButton_cblPage_cblCtrlRd.setStyleSheet("QPushButton {\n"
 "    background-color: #3b8303; /* 按钮背景颜色 */\n"
 "    color: white; /* 文字颜色 */\n"
 "    border-style: solid; /* 边框样式 */\n"
@@ -4518,8 +4518,8 @@ class Ui_MainWindow(object):
 "    background-color: #397303; /* 按下时的背景颜色 */\n"
 "}\n"
 "")
-        self.pushButton_71.setObjectName("pushButton_71")
-        self.horizontalLayout_16.addWidget(self.pushButton_71)
+        self.pushButton_cblPage_cblCtrlRd.setObjectName("pushButton_cblPage_cblCtrlRd")
+        self.horizontalLayout_16.addWidget(self.pushButton_cblPage_cblCtrlRd)
         self.verticalLayout_19.addWidget(self.frame_17)
         self.table_cblPage_cblCtrlSimDemo = QtWidgets.QTableWidget(self.tab_cellBal)
         self.table_cblPage_cblCtrlSimDemo.setMaximumSize(QtCore.QSize(16777215, 100))
@@ -4694,7 +4694,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.addWidget(self.tabWidget)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1838, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1888, 26))
         self.menubar.setObjectName("menubar")
         self.menuPython = QtWidgets.QMenu(self.menubar)
         self.menuPython.setObjectName("menuPython")
@@ -6030,8 +6030,8 @@ class Ui_MainWindow(object):
         self.table_cblPage_cblExpTime.setSortingEnabled(__sortingEnabled)
         self.label_5.setText(_translate("MainWindow", "Cell Balancing Operation Duration (in Minutes for ACQMODE 0x1 through 0x4, in Hours for ACQMODE 0x5 through 0x7)"))
         self.label_37.setText(_translate("MainWindow", "CELL BALANCING CONFIGURATION Register Block (Simplified Demonstration)"))
-        self.pushButton_68.setText(_translate("MainWindow", "WRITE+READ"))
-        self.pushButton_69.setText(_translate("MainWindow", "READ BACK"))
+        self.pushButton_cblPage_cblCfgWr.setText(_translate("MainWindow", "WRITE+READ"))
+        self.pushButton_cblPage_cblCfgRd.setText(_translate("MainWindow", "READ BACK"))
         item = self.table_cblPage_cblCfgReg.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
         item = self.table_cblPage_cblCfgReg.verticalHeaderItem(1)
@@ -6060,9 +6060,9 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "0x45"))
         self.table_cblPage_cblCfgReg.setSortingEnabled(__sortingEnabled)
         self.label_38.setText(_translate("MainWindow", "CELL BALANCING CONTROL Register Block (Simplified Demonstration)"))
-        self.pushButton_statusRegReInit_6.setText(_translate("MainWindow", "STOP REQ"))
-        self.pushButton_statusRegClear_7.setText(_translate("MainWindow", "START REQ"))
-        self.pushButton_71.setText(_translate("MainWindow", "READ BACK"))
+        self.pushButton_cblPage_cblCtrlStop.setText(_translate("MainWindow", "STOP REQ"))
+        self.pushButton_cblPage_cblCtrlStart.setText(_translate("MainWindow", "START REQ"))
+        self.pushButton_cblPage_cblCtrlRd.setText(_translate("MainWindow", "READ BACK"))
         item = self.table_cblPage_cblCtrlSimDemo.verticalHeaderItem(0)
         item.setText(_translate("MainWindow", "0"))
         item = self.table_cblPage_cblCtrlSimDemo.verticalHeaderItem(1)

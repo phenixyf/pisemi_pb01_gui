@@ -4379,7 +4379,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
 font-weight: 600; /* 设置字体粗细为600 */</string>
              </property>
              <property name="text">
-              <string>ACQIIRPROC – Process Alerts based on CELLIIR Results (automatically configured based on ACQMODE selection, ignored in Diagnostics)</string>
+              <string>ACQIIRPROC – Process Alerts based on CELLIIR Results (automatically configured based on ACQMODE selection: 0b1 for ACQMODE=0x1, 0b0 for ACQMODE=0x2, 0b0 for ACQMODE=0x3-0xE - ignored in Diagnostics)</string>
              </property>
             </widget>
            </item>

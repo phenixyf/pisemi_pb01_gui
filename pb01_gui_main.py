@@ -906,20 +906,20 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             self.table_meaAcqSumPage_sumDataDev0.item(7, 9).setText(listPmmLocBitsDev0[1])
 
             # fill other rows
-            listOtherSumBitsDev0 = [str(round((maxCellRegDev0 / ADC_FULL_DATA * 5), 5)),
-                                    str(round((minCellRegDev0 / ADC_FULL_DATA * 5), 5)),
-                                    str(round((maxAuxRegDev0 / ADC_FULL_DATA * 100), 2)),
-                                    str(round((minAuxRegDev0 / ADC_FULL_DATA * 100), 2)),
-                                    str(round((totalRegDev0 / ADC_FULL_DATA * 80), 5)),
-                                    str(round((altTotRegDev0 / ADC_FULL_DATA * 80), 5)),
-                                    str(round((pmmCellRegDev0 / ADC_FULL_DATA * 5), 5)),
-                                    str(round((pmmAuxRegDev0 / ADC_FULL_DATA * 100), 2))
+            listOtherSumBitsDev0 = [str(round((maxCellRegDev0 / ADC_FULL_DATA * CELL_SCALE), 5)) + 'V',
+                                    str(round((minCellRegDev0 / ADC_FULL_DATA * CELL_SCALE), 5)) + 'V',
+                                    str(round((maxAuxRegDev0  / ADC_FULL_DATA * 100),        2)) + '%',
+                                    str(round((minAuxRegDev0  / ADC_FULL_DATA * 100),        2)) + '%',
+                                    str(round((totalRegDev0   / ADC_FULL_DATA * HV_SCALE),   5)) + 'V',
+                                    str(round((altTotRegDev0  / ADC_FULL_DATA * HV_SCALE),   5)) + 'V',
+                                    str(round((pmmCellRegDev0 / ADC_FULL_DATA * CELL_SCALE), 5)) + 'V',
+                                    str(round((pmmAuxRegDev0  / ADC_FULL_DATA * 100),        2)) + '%'
                                     ]
             for i in range(6):
                 self.table_meaAcqSumPage_sumDataDev0.item(i + 1, 3).setText(listOtherSumBitsDev0[i])
 
-            self.table_meaAcqSumPage_sumDataDev0.item(8, 3).setText(listOtherSumBitsDev0[5])
-            self.table_meaAcqSumPage_sumDataDev0.item(9, 3).setText(listOtherSumBitsDev0[6])
+            self.table_meaAcqSumPage_sumDataDev0.item(8, 3).setText(listOtherSumBitsDev0[6])
+            self.table_meaAcqSumPage_sumDataDev0.item(9, 3).setText(listOtherSumBitsDev0[7])
 
         ''' read device 1 summary data block '''
         if not self.flagSingleAfe:
@@ -940,14 +940,11 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 pmmAuxRegDev1 = (rtData[22] << 8) | rtData[21]
 
                 # fill value column
-                listSumDataDev1 = [hex(minMaxLocDev1)[2:].upper().zfill(4),
-                                   hex(maxCellRegDev1)[2:].upper().zfill(4),
-                                   hex(minCellRegDev1)[2:].upper().zfill(4),
-                                   hex(maxAuxRegDev1)[2:].upper().zfill(4),
-                                   hex(minAuxRegDev1)[2:].upper().zfill(4), hex(totalRegDev1)[2:].upper().zfill(4),
-                                   hex(altTotRegDev1)[2:].upper().zfill(4), hex(pmmLocDev1)[2:].upper().zfill(4),
-                                   hex(pmmCellRegDev1)[2:].upper().zfill(4),
-                                   hex(pmmAuxRegDev1)[2:].upper().zfill(4)]
+                listSumDataDev1 = [hex(minMaxLocDev1)[2:].upper().zfill(4),  hex(maxCellRegDev1)[2:].upper().zfill(4),
+                                   hex(minCellRegDev1)[2:].upper().zfill(4), hex(maxAuxRegDev1)[2:].upper().zfill(4),
+                                   hex(minAuxRegDev1)[2:].upper().zfill(4),  hex(totalRegDev1)[2:].upper().zfill(4),
+                                   hex(altTotRegDev1)[2:].upper().zfill(4),  hex(pmmLocDev1)[2:].upper().zfill(4),
+                                   hex(pmmCellRegDev1)[2:].upper().zfill(4), hex(pmmAuxRegDev1)[2:].upper().zfill(4)]
 
                 for i in range(10):
                     self.table_meaAcqSumPage_sumDataDev1.item(i, 2).setText(listSumDataDev1[i])
@@ -967,20 +964,19 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 self.table_meaAcqSumPage_sumDataDev1.item(7, 9).setText(listPmmLocBitsDev1[1])
 
                 # fill other rows
-                listOtherSumBitsDev1 = [str(round((maxCellRegDev1 / ADC_FULL_DATA * 5), 5)),
-                                        str(round((minCellRegDev1 / ADC_FULL_DATA * 5), 5)),
-                                        str(round((maxAuxRegDev1 / ADC_FULL_DATA * 100), 2)),
-                                        str(round((minAuxRegDev1 / ADC_FULL_DATA * 100), 2)),
-                                        str(round((totalRegDev1 / ADC_FULL_DATA * 80), 5)),
-                                        str(round((altTotRegDev1 / ADC_FULL_DATA * 80), 5)),
-                                        str(round((pmmCellRegDev1 / ADC_FULL_DATA * 5), 5)),
-                                        str(round((pmmAuxRegDev1 / ADC_FULL_DATA * 100), 2))
-                                        ]
+                listOtherSumBitsDev1 = [str(round((maxCellRegDev1 / ADC_FULL_DATA * CELL_SCALE), 5)) + 'V',
+                                        str(round((minCellRegDev1 / ADC_FULL_DATA * CELL_SCALE), 5)) + 'V',
+                                        str(round((maxAuxRegDev1  / ADC_FULL_DATA * 100),        2)) + '%',
+                                        str(round((minAuxRegDev1  / ADC_FULL_DATA * 100),        2)) + '%',
+                                        str(round((totalRegDev1   / ADC_FULL_DATA * HV_SCALE),   5)) + 'V',
+                                        str(round((altTotRegDev1  / ADC_FULL_DATA * HV_SCALE),   5)) + 'V',
+                                        str(round((pmmCellRegDev1 / ADC_FULL_DATA * CELL_SCALE), 5)) + 'V',
+                                        str(round((pmmAuxRegDev1  / ADC_FULL_DATA * 100),        2)) + '%']
                 for i in range(6):
                     self.table_meaAcqSumPage_sumDataDev1.item(i + 1, 3).setText(listOtherSumBitsDev1[i])
 
-                self.table_meaAcqSumPage_sumDataDev1.item(8, 3).setText(listOtherSumBitsDev1[5])
-                self.table_meaAcqSumPage_sumDataDev1.item(9, 3).setText(listOtherSumBitsDev1[6])
+                self.table_meaAcqSumPage_sumDataDev1.item(8, 3).setText(listOtherSumBitsDev1[6])
+                self.table_meaAcqSumPage_sumDataDev1.item(9, 3).setText(listOtherSumBitsDev1[7])
 
 
     def update_meaAcqDetailPage_alertTable(self):
@@ -1053,7 +1049,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                                               alertAuxUvDev1], self.ledMeaAcqDetailPageDev1)
 
 
-    def update_acquistion_detail_data_table(self, pHexRow, pValRow, pRegAddr, pAuxFlag):
+    def update_meaAcqDetailPage_dataTable(self, pHexRow, pValRow, pRegAddr, pAuxFlag):
         """
         更新 acquistion detail data table
         一次调用只更新 table 中的一个 block
@@ -1066,7 +1062,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                          False - 当前处理非 aux block
         :return:
         """
-        ''' read device 0 CELL IIR DATA block '''
+        """ read device 0 CELL IIR DATA block """
         rtData = pb01_read_block(self.hidBdg, 16, 0, pRegAddr, 0x00)
         if rtData == "message return RX error" or rtData == "pec check error":
             self.message_box(rtData)
@@ -1089,23 +1085,25 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             regData14Dev0 = (rtData[32] << 8) | rtData[31]
             regData15Dev0 = (rtData[34] << 8) | rtData[33]
 
-            listRegDataHexDev0 = [hex(regData0Dev0 )[2:].upper().zfill(4) ,
-                                  hex(regData1Dev0 )[2:].upper().zfill(4) ,
-                                  hex(regData2Dev0 )[2:].upper().zfill(4) ,
-                                  hex(regData3Dev0 )[2:].upper().zfill(4) ,
-                                  hex(regData4Dev0 )[2:].upper().zfill(4) ,
-                                  hex(regData5Dev0 )[2:].upper().zfill(4) ,
-                                  hex(regData6Dev0 )[2:].upper().zfill(4) ,
-                                  hex(regData7Dev0 )[2:].upper().zfill(4) ,
-                                  hex(regData8Dev0 )[2:].upper().zfill(4) ,
-                                  hex(regData9Dev0 )[2:].upper().zfill(4) ,
-                                  hex(regData10Dev0)[2:].upper().zfill(4) ,
-                                  hex(regData11Dev0)[2:].upper().zfill(4) ,
-                                  hex(regData12Dev0)[2:].upper().zfill(4) ,
-                                  hex(regData13Dev0)[2:].upper().zfill(4) ,
-                                  hex(regData14Dev0)[2:].upper().zfill(4) ,
-                                  hex(regData15Dev0)[2:].upper().zfill(4) ]
             if not pAuxFlag:    # cell data
+                ''' hex data '''
+                listRegDataHexDev0 = [hex(regData0Dev0)[2:].upper().zfill(4),
+                                      hex(regData1Dev0)[2:].upper().zfill(4),
+                                      hex(regData2Dev0)[2:].upper().zfill(4),
+                                      hex(regData3Dev0)[2:].upper().zfill(4),
+                                      hex(regData4Dev0)[2:].upper().zfill(4),
+                                      hex(regData5Dev0)[2:].upper().zfill(4),
+                                      hex(regData6Dev0)[2:].upper().zfill(4),
+                                      hex(regData7Dev0)[2:].upper().zfill(4),
+                                      hex(regData8Dev0)[2:].upper().zfill(4),
+                                      hex(regData9Dev0)[2:].upper().zfill(4),
+                                      hex(regData10Dev0)[2:].upper().zfill(4),
+                                      hex(regData11Dev0)[2:].upper().zfill(4),
+                                      hex(regData12Dev0)[2:].upper().zfill(4),
+                                      hex(regData13Dev0)[2:].upper().zfill(4),
+                                      hex(regData14Dev0)[2:].upper().zfill(4),
+                                      hex(regData15Dev0)[2:].upper().zfill(4)]
+                ''' actual data '''
                 listRegDataValDev0 =  [str(round(regData0Dev0  / ADC_FULL_DATA * CELL_SCALE, 5)),
                                        str(round(regData1Dev0  / ADC_FULL_DATA * CELL_SCALE, 5)),
                                        str(round(regData2Dev0  / ADC_FULL_DATA * CELL_SCALE, 5)),
@@ -1123,29 +1121,47 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                        str(round(regData14Dev0 / ADC_FULL_DATA * CELL_SCALE, 5)),
                                        str(round(regData15Dev0 / ADC_FULL_DATA * CELL_SCALE, 5))]
             else:   # AUX data
-                listRegDataValDev0 = [str(round(regData0Dev0  / ADC_FULL_DATA, 2)),
-                                      str(round(regData1Dev0  / ADC_FULL_DATA, 2)),
-                                      str(round(regData2Dev0  / ADC_FULL_DATA, 2)),
-                                      str(round(regData3Dev0  / ADC_FULL_DATA, 2)),
-                                      str(round(regData4Dev0  / ADC_FULL_DATA, 2)),
-                                      str(round(regData5Dev0  / ADC_FULL_DATA, 2)),
-                                      str(round(regData6Dev0  / ADC_FULL_DATA, 2)),
-                                      str(round(regData7Dev0  / ADC_FULL_DATA, 2)),
-                                      str(round(regData8Dev0  / ADC_FULL_DATA, 2)),
-                                      str(round(regData9Dev0  / ADC_FULL_DATA, 2)),
-                                      str(round(regData10Dev0 / ADC_FULL_DATA, 2)),
-                                      str(round(regData11Dev0 / ADC_FULL_DATA, 2)),
-                                      str(round(regData12Dev0 / ADC_FULL_DATA, 2)),
-                                      str(round(regData13Dev0 / ADC_FULL_DATA, 2)),
-                                      str(round(regData14Dev0 / ADC_FULL_DATA, 2)),
-                                      str(round(regData15Dev0 / ADC_FULL_DATA, 2))]
+                ''' hex data '''
+                listRegDataHexDev0 = [hex(regData8Dev0)[2:].upper().zfill(4),       # ALTAUX 0
+                                      hex(regData9Dev0)[2:].upper().zfill(4),
+                                      hex(regData10Dev0)[2:].upper().zfill(4),
+                                      hex(regData11Dev0)[2:].upper().zfill(4),
+                                      hex(regData12Dev0)[2:].upper().zfill(4),
+                                      hex(regData13Dev0)[2:].upper().zfill(4),
+                                      hex(regData14Dev0)[2:].upper().zfill(4),
+                                      hex(regData15Dev0)[2:].upper().zfill(4),      # ALTAUX 7
+                                      hex(regData0Dev0)[2:].upper().zfill(4),       # AUX 0
+                                      hex(regData1Dev0)[2:].upper().zfill(4),
+                                      hex(regData2Dev0)[2:].upper().zfill(4),
+                                      hex(regData3Dev0)[2:].upper().zfill(4),
+                                      hex(regData4Dev0)[2:].upper().zfill(4),
+                                      hex(regData5Dev0)[2:].upper().zfill(4),
+                                      hex(regData6Dev0)[2:].upper().zfill(4),
+                                      hex(regData7Dev0)[2:].upper().zfill(4)]       # AUX 7
+                ''' actual data '''
+                listRegDataValDev0 = [str(round(regData8Dev0  / ADC_FULL_DATA * 100, 2)) + '%',     # ALTAUX 0
+                                      str(round(regData9Dev0  / ADC_FULL_DATA * 100, 2)) + '%',
+                                      str(round(regData10Dev0 / ADC_FULL_DATA * 100, 2)) + '%',
+                                      str(round(regData11Dev0 / ADC_FULL_DATA * 100, 2)) + '%',
+                                      str(round(regData12Dev0 / ADC_FULL_DATA * 100, 2)) + '%',
+                                      str(round(regData13Dev0 / ADC_FULL_DATA * 100, 2)) + '%',
+                                      str(round(regData14Dev0 / ADC_FULL_DATA * 100, 2)) + '%',
+                                      str(round(regData15Dev0 / ADC_FULL_DATA * 100, 2)) + '%',     # ALTAUX 7
+                                      str(round(regData0Dev0  / ADC_FULL_DATA * 100, 2)) + '%',      # AUX 0
+                                      str(round(regData1Dev0  / ADC_FULL_DATA * 100, 2)) + '%',
+                                      str(round(regData2Dev0  / ADC_FULL_DATA * 100, 2)) + '%',
+                                      str(round(regData3Dev0  / ADC_FULL_DATA * 100, 2)) + '%',
+                                      str(round(regData4Dev0  / ADC_FULL_DATA * 100, 2)) + '%',
+                                      str(round(regData5Dev0  / ADC_FULL_DATA * 100, 2)) + '%',
+                                      str(round(regData6Dev0  / ADC_FULL_DATA * 100, 2)) + '%',
+                                      str(round(regData7Dev0  / ADC_FULL_DATA * 100, 2)) + '%']      # AUX 7
 
         # fill table
         for c in range(18, 2, -1):
             self.table_meaAcqDetailData_dataRegDev0.item(pHexRow, c).setText(listRegDataHexDev0[18 - c])
             self.table_meaAcqDetailData_dataRegDev0.item(pValRow, c).setText(listRegDataValDev0[18 - c])
 
-        ''' read device 1 alert register block  '''
+        """ read device 1 alert register block """
         if not self.flagSingleAfe:
             rtData = pb01_read_block(self.hidBdg, 16, 1, pRegAddr, 0x00)
             if rtData == "message return RX error" or rtData == "pec check error":
@@ -1169,23 +1185,25 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 regData14Dev1 = (rtData[32] << 8) | rtData[31]
                 regData15Dev1 = (rtData[34] << 8) | rtData[33]
 
-                listRegDataHexDev1 = [hex(regData0Dev1)[2:].upper().zfill(4),
-                                      hex(regData1Dev1)[2:].upper().zfill(4),
-                                      hex(regData2Dev1)[2:].upper().zfill(4),
-                                      hex(regData3Dev1)[2:].upper().zfill(4),
-                                      hex(regData4Dev1)[2:].upper().zfill(4),
-                                      hex(regData5Dev1)[2:].upper().zfill(4),
-                                      hex(regData6Dev1)[2:].upper().zfill(4),
-                                      hex(regData7Dev1)[2:].upper().zfill(4),
-                                      hex(regData8Dev1)[2:].upper().zfill(4),
-                                      hex(regData9Dev1)[2:].upper().zfill(4),
-                                      hex(regData10Dev1)[2:].upper().zfill(4),
-                                      hex(regData11Dev1)[2:].upper().zfill(4),
-                                      hex(regData12Dev1)[2:].upper().zfill(4),
-                                      hex(regData13Dev1)[2:].upper().zfill(4),
-                                      hex(regData14Dev1)[2:].upper().zfill(4),
-                                      hex(regData15Dev1)[2:].upper().zfill(4)]
                 if not pAuxFlag:    # cell data
+                    ''' hex data '''
+                    listRegDataHexDev1 = [hex(regData0Dev1)[2:].upper().zfill(4),
+                                          hex(regData1Dev1)[2:].upper().zfill(4),
+                                          hex(regData2Dev1)[2:].upper().zfill(4),
+                                          hex(regData3Dev1)[2:].upper().zfill(4),
+                                          hex(regData4Dev1)[2:].upper().zfill(4),
+                                          hex(regData5Dev1)[2:].upper().zfill(4),
+                                          hex(regData6Dev1)[2:].upper().zfill(4),
+                                          hex(regData7Dev1)[2:].upper().zfill(4),
+                                          hex(regData8Dev1)[2:].upper().zfill(4),
+                                          hex(regData9Dev1)[2:].upper().zfill(4),
+                                          hex(regData10Dev1)[2:].upper().zfill(4),
+                                          hex(regData11Dev1)[2:].upper().zfill(4),
+                                          hex(regData12Dev1)[2:].upper().zfill(4),
+                                          hex(regData13Dev1)[2:].upper().zfill(4),
+                                          hex(regData14Dev1)[2:].upper().zfill(4),
+                                          hex(regData15Dev1)[2:].upper().zfill(4)]
+                    ''' actual data '''
                     listRegDataValDev1 = [str(round(regData0Dev1  / ADC_FULL_DATA * CELL_SCALE, 5)),
                                           str(round(regData1Dev1  / ADC_FULL_DATA * CELL_SCALE, 5)),
                                           str(round(regData2Dev1  / ADC_FULL_DATA * CELL_SCALE, 5)),
@@ -1203,22 +1221,40 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                           str(round(regData14Dev1 / ADC_FULL_DATA * CELL_SCALE, 5)),
                                           str(round(regData15Dev1 / ADC_FULL_DATA * CELL_SCALE, 5))]
                 else:   # AUX data
-                    listRegDataValDev1 = [str(round(regData0Dev1  / ADC_FULL_DATA, 2)),
-                                          str(round(regData1Dev1  / ADC_FULL_DATA, 2)),
-                                          str(round(regData2Dev1  / ADC_FULL_DATA, 2)),
-                                          str(round(regData3Dev1  / ADC_FULL_DATA, 2)),
-                                          str(round(regData4Dev1  / ADC_FULL_DATA, 2)),
-                                          str(round(regData5Dev1  / ADC_FULL_DATA, 2)),
-                                          str(round(regData6Dev1  / ADC_FULL_DATA, 2)),
-                                          str(round(regData7Dev1  / ADC_FULL_DATA, 2)),
-                                          str(round(regData8Dev1  / ADC_FULL_DATA, 2)),
-                                          str(round(regData9Dev1  / ADC_FULL_DATA, 2)),
-                                          str(round(regData10Dev1 / ADC_FULL_DATA, 2)),
-                                          str(round(regData11Dev1 / ADC_FULL_DATA, 2)),
-                                          str(round(regData12Dev1 / ADC_FULL_DATA, 2)),
-                                          str(round(regData13Dev1 / ADC_FULL_DATA, 2)),
-                                          str(round(regData14Dev1 / ADC_FULL_DATA, 2)),
-                                          str(round(regData15Dev1 / ADC_FULL_DATA, 2))]
+                    ''' hex data '''
+                    listRegDataHexDev1 = [hex(regData8Dev1)[2:].upper().zfill(4),           # ALTAUX0
+                                          hex(regData9Dev1)[2:].upper().zfill(4),
+                                          hex(regData10Dev1)[2:].upper().zfill(4),
+                                          hex(regData11Dev1)[2:].upper().zfill(4),
+                                          hex(regData12Dev1)[2:].upper().zfill(4),
+                                          hex(regData13Dev1)[2:].upper().zfill(4),
+                                          hex(regData14Dev1)[2:].upper().zfill(4),
+                                          hex(regData15Dev1)[2:].upper().zfill(4),          # ALTAUX0
+                                          hex(regData0Dev1)[2:].upper().zfill(4),           # AUX0
+                                          hex(regData1Dev1)[2:].upper().zfill(4),
+                                          hex(regData2Dev1)[2:].upper().zfill(4),
+                                          hex(regData3Dev1)[2:].upper().zfill(4),
+                                          hex(regData4Dev1)[2:].upper().zfill(4),
+                                          hex(regData5Dev1)[2:].upper().zfill(4),
+                                          hex(regData6Dev1)[2:].upper().zfill(4),
+                                          hex(regData7Dev1)[2:].upper().zfill(4)]           # AUX7
+                    ''' actual data '''
+                    listRegDataValDev1 = [str(round(regData8Dev1  / ADC_FULL_DATA * 100, 2)) + '%',     # ALTAUX0
+                                          str(round(regData9Dev1  / ADC_FULL_DATA * 100, 2)) + '%',
+                                          str(round(regData10Dev1 / ADC_FULL_DATA * 100, 2)) + '%',
+                                          str(round(regData11Dev1 / ADC_FULL_DATA * 100, 2)) + '%',
+                                          str(round(regData12Dev1 / ADC_FULL_DATA * 100, 2)) + '%',
+                                          str(round(regData13Dev1 / ADC_FULL_DATA * 100, 2)) + '%',
+                                          str(round(regData14Dev1 / ADC_FULL_DATA * 100, 2)) + '%',
+                                          str(round(regData15Dev1 / ADC_FULL_DATA * 100, 2)) + '%',     # ALTAUX7
+                                          str(round(regData0Dev1  / ADC_FULL_DATA * 100, 2)) + '%',      # AUX0
+                                          str(round(regData1Dev1  / ADC_FULL_DATA * 100, 2)) + '%',
+                                          str(round(regData2Dev1  / ADC_FULL_DATA * 100, 2)) + '%',
+                                          str(round(regData3Dev1  / ADC_FULL_DATA * 100, 2)) + '%',
+                                          str(round(regData4Dev1  / ADC_FULL_DATA * 100, 2)) + '%',
+                                          str(round(regData5Dev1  / ADC_FULL_DATA * 100, 2)) + '%',
+                                          str(round(regData6Dev1  / ADC_FULL_DATA * 100, 2)) + '%',
+                                          str(round(regData7Dev1  / ADC_FULL_DATA * 100, 2)) + '%']      # AUX7
 
                 # fill table
             for c in range(18, 2, -1):
@@ -2122,7 +2158,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         """ 判断 Acquisition Mode group 中选择了哪个 radio button """
         self.acqMode = self.radioGroup_acqReqPage_acqMode.id(button)
 
-        if self.acqMode == 1 or self.acqMode == 2:   # cell acquisition
+        if self.acqMode == 1:       # normal acquisition acquisition
             ''' check ACQCBALINT & ACQIIRINT radio buttons and update self.acqCtrlVal '''
             # check ACQCBALINT
             self.radioButton_acqReqPage_acqcbalint.setChecked(True)
@@ -2131,7 +2167,20 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             self.radioButton_acqReqPage_acqiirinit.setChecked(True)
             self.flag_radio_acqReqPage_acqiirinit = False
             # update self.acqCtrlVal
-            self.acqCtrlVal = 0x0B40  # 工作在 cell acquisition mode 时 ACQCTRL[4:11] =0x14
+            self.acqCtrlVal = 0x0B40  # 工作在 normal acquisition mode 时 ACQCTRL[4:11] =0xB4
+            self.acqCtrlVal |= self.acqMode  # 根据当前选择的 radio 设置 acquisition mode value
+        elif self.acqMode == 2:     # redundant acquistion mode
+            ''' check ACQCBALINT & ACQIIRINT radio buttons and update self.acqCtrlVal '''
+            # check ACQCBALINT
+            self.radioButton_acqReqPage_acqcbalint.setChecked(True)
+            self.flag_radio_acqReqPage_acqcbalint = False
+            # uncheck ACQIIRINT
+            self.radioButton_acqReqPage_acqiirinit.setAutoExclusive(False)
+            self.radioButton_acqReqPage_acqiirinit.setChecked(False)
+            self.radioButton_acqReqPage_acqiirinit.setAutoExclusive(True)
+            self.flag_radio_acqReqPage_acqiirinit = True
+            # update self.acqCtrlVal
+            self.acqCtrlVal = 0x0840  # 工作在 redundant acquisition mode 时 ACQCTRL[4:11] =0x84
             self.acqCtrlVal |= self.acqMode  # 根据当前选择的 radio 设置 acquisition mode value
         else:   # diagnostic mode
             ''' uncheck ACQCBALINT & ACQIIRINT radio buttons and update self.acqCtrlVal '''
@@ -2259,13 +2308,13 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             self.update_meaAcqDetailPage_alertTable()
 
             """ read meaAcqDetailPage CELL IIR DATA block """
-            self.update_acquistion_detail_data_table(1, 2, 0x90, False)
+            self.update_meaAcqDetailPage_dataTable(1, 2, 0x90, False)
             """ read meaAcqDetailPage CELL DATA block """
-            self.update_acquistion_detail_data_table(4, 5, 0xA0, False)
+            self.update_meaAcqDetailPage_dataTable(4, 5, 0xA0, False)
             """ read meaAcqDetailPage AUXILIARY DATA block """
-            self.update_acquistion_detail_data_table(7, 8, 0xB0, True)
+            self.update_meaAcqDetailPage_dataTable(7, 8, 0xB0, True)
             """ read meaAcqDetailPage ALTERNATE DATA block """
-            self.update_acquistion_detail_data_table(10, 11, 0xC0, False)
+            self.update_meaAcqDetailPage_dataTable(10, 11, 0xC0, False)
 
             ''' diagnostic mode '''
         else:   # diagnostic mode

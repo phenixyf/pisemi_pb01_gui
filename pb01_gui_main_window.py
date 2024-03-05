@@ -5278,7 +5278,7 @@ class Ui_MainWindow(object):
         self.radioButton_acqReqPage_acqcbalint.setText(_translate("MainWindow", "ACQCBALINT - Interrupt CELL Balancing Activity (recommended for general use in Measurements, ignored in Diagnostics)"))
         self.radioButton_acqReqPage_acqiirbyp.setText(_translate("MainWindow", "ACQIIRBYP - Bypass CELLIIR Filters (used in custom diagnostics, not supported in this revision, 0b0 default)"))
         self.radioButton_acqReqPage_acqiirinit.setText(_translate("MainWindow", "ACQIIRINIT - Initialize CELLIIR Filters (recommended for initial Measurement Acquisition, ignored in Diagnostics)"))
-        self.radioButton_acqReqPage_acqiirproc.setText(_translate("MainWindow", "ACQIIRPROC – Process Alerts based on CELLIIR Results (automatically configured based on ACQMODE selection, ignored in Diagnostics)"))
+        self.radioButton_acqReqPage_acqiirproc.setText(_translate("MainWindow", "ACQIIRPROC – Process Alerts based on CELLIIR Results (automatically configured based on ACQMODE selection: 0b1 for ACQMODE=0x1, 0b0 for ACQMODE=0x2, 0b0 for ACQMODE=0x3-0xE - ignored in Diagnostics)"))
         self.radioButton_acqReqPage_alutesten.setText(_translate("MainWindow", "ALUTESTEN – Replace ADC results with ALU Test Stimuli (not supported in this revision, 0b0 default)"))
         self.label_49.setText(_translate("MainWindow", "Oversampling Ratio (ACQOSR) Selection"))
         item = self.table_acqReqPage_osr.verticalHeaderItem(0)

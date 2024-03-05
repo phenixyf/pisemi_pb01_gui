@@ -1610,9 +1610,9 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             self.table_cblPage_cblCtrlSimDemo.item(0, 4).setText(hex(cblCtrlDev0)[2:].upper().zfill(4))
             self.table_cblPage_cblCtrlSimDemo.item(0, 5).setText(hex(cblCtrlDev0)[2:].upper().zfill(4))
 
-
             ''' update dev0 led '''
-            # self.update_status_register_led(status1Dev0, status2Dev0, fmea1Dev0, fmea2Dev0, pDev0LedList)
+            self.update_cblPage_led(cblStatusDev0, pLedListStatusDev0, True)
+            self.update_cblPage_led(cblUvStatDev0, pLedListUvStaDev0, False)
 
         """ device 1 process """
         ''' read device 1 block '''
@@ -1642,12 +1642,44 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 self.table_cblPage_cblCtrlSimDemo.item(1, 4).setText(hex(cblCtrlDev1)[2:].upper().zfill(4))
                 self.table_cblPage_cblCtrlSimDemo.item(1, 5).setText(hex(cblCtrlDev0)[2:].upper().zfill(4))
 
+                ''' update dev1 led '''
+                self.update_cblPage_led(cblStatusDev1, pLedListStatusDev1, True)
+                self.update_cblPage_led(cblUvStatDev1, pLedListUvStaDev1, False)
+
         if dcDev0 != 0x00:
             return dcDev0
         elif dcDev1 != 0x00:
             return dcDev1
         else:
             return 0x00
+
+    def update_cblPage_led(self, pData, pLedList, pStatusFlag):
+        """
+        更新 cblPage 的 led
+        根据 pData 各 bit 的值，更新对应 led 的颜色
+        一次只更新一串 led
+        :param pData: data value
+        :param pLedList: 对应的 led 串
+        :param pStatusFlag: 因 status 和  uvstatus led 颜色显示规则不同，用此参数做区分
+                              True - 传入的是 status 数据
+                              False - 传入的是 uvstatus 数据
+        :return:
+        """
+        if pStatusFlag:
+            for bitCnt in range(16):
+                if pData & (0x8000 >> bitCnt):
+                    if bitCnt < 4:
+                        pLedList[bitCnt].setStyleSheet(led_green_style)
+                    else:
+                        pLedList[bitCnt].setStyleSheet(led_red_style)
+                else:
+                    pLedList[bitCnt].setStyleSheet(led_white_style)
+        else:
+            for bitCnt in range(16):
+                if pData & (0x8000 >> bitCnt):
+                    pLedList[bitCnt].setStyleSheet(led_green_style)
+                else:
+                    pLedList[bitCnt].setStyleSheet(led_white_style)
 
 
     def pushBtn_disable(self, pBtn):

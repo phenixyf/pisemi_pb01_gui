@@ -1562,14 +1562,10 @@ def adjust_cblPage_tables(pExpTable, pCfgTable, pCtrlDemoTable, pCtrlInfTable):
         pCtrlInfTable.item(0, c).setFont(boldFont)  # 字体加粗
 
     ''' insert led '''
-    led16StaDev0 = []
-    led16StaDev1 = []
-    led16UvDev0 = []
-    led16UvDev1 = []
-    led16StaDev0.append(add_led_txt(16, pCtrlInfTable, 2, 3, LED_CBALSTAT_LAB))
-    led16StaDev1.append(add_led_txt(16, pCtrlInfTable, 2, 10, LED_CBALSTAT_LAB))
-    led16UvDev0.append(add_led_txt(16, pCtrlInfTable, 5, 3, LED_CBALUVSTAT_LAB))
-    led16UvDev1.append(add_led_txt(16, pCtrlInfTable, 5, 10, LED_CBALUVSTAT_LAB))
+    led16StaDev0 = add_led_txt(16, pCtrlInfTable, 2, 3, LED_CBALSTAT_LAB)
+    led16StaDev1 = add_led_txt(16, pCtrlInfTable, 2, 10, LED_CBALSTAT_LAB)
+    led16UvDev0 = add_led_txt(16, pCtrlInfTable, 5, 3, LED_CBALUVSTAT_LAB)
+    led16UvDev1 = add_led_txt(16, pCtrlInfTable, 5, 10, LED_CBALUVSTAT_LAB)
 
     return led16StaDev0, led16StaDev1, led16UvDev0, led16UvDev1
 

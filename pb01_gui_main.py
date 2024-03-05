@@ -334,8 +334,11 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
         set_table_item(self.table_cblPage_cblCtrlStaInf, CHAIN_CFG_TABLE_ROWHG, table_cblPage_cblCtrlInfItems)
 
-        adjust_cblPage_tables(self.table_cblPage_cblExpTime, self.table_cblPage_cblCfgReg,
-                              self.table_cblPage_cblCtrlSimDemo, self.table_cblPage_cblCtrlStaInf)
+        self.ledCblPageStatusDev0, self.ledCblPageStatusDev1,\
+        self.ledCblPageUvStaDev0, self.ledCblPageUvStaDev1 = adjust_cblPage_tables(self.table_cblPage_cblExpTime,
+                                                                                   self.table_cblPage_cblCfgReg,
+                                                                                   self.table_cblPage_cblCtrlSimDemo,
+                                                                                   self.table_cblPage_cblCtrlStaInf)
 
         ''' dual afe initial ui as default '''
         self.slot_radio_single_dual_afe()
@@ -811,7 +814,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
     def update_write_read_op(self, pReg, pData, pTable, pRow, pCol):
         """
-        appCfgPage, diagCfgPage write+read button 点击后更新某个寄存信息
+        appCfgPage, diagCfgPage, cblPage write+read button 点击后更新某个寄存信息
         一次只更新一个寄存器
         1个还是 2 个 afe， 函数内部自动判断，不用外部参数
         :param pReg: register address
@@ -837,7 +840,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
     def update_config_readback_op(self, pReg, pTable, pRow, pCol):
         """
-        appCfgPage, diagCfgPage read back button 点击后更新某个寄存信息
+        appCfgPage, diagCfgPage, cblPage read back button 点击后更新某个寄存信息
         一次只更新一个寄存器
         1个还是 2 个 afe， 函数内部自动判断，不用外部参数
         :param pReg: register address
@@ -1562,6 +1565,89 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 pTable.item(pRow, 7).setText(hex(regDataDev1)[2:].upper().zfill(4))  # dev1
                 return regDataDev0, regDataDev1
 
+
+    def update_cblCtrl_block_table(self, pDev0Col, pDev1Col,
+                                   pLedListStatusDev0, pLedListStatusDev1,
+                                   pLedListUvStaDev0, pLedListUvStaDev1):
+        """
+        这个函数执行 read block command 去读取 PB01 CELL BALANCE CONTROL Block 中 5 个寄存器的值
+        因多个 tab 页面有 status table 要去更新，所以用此函数方便代码维护
+        是否读取 dev1 的 status block, 在函数内根据 self.flagSingleAfe 自动判读，不需要额外输入参数
+        :param pDev0Col: dev0 读取到的值填入到哪一列
+        :param pDev1Col: dev1 读取到的值填入到哪一列
+        :param pLedListStatusDev0: 该 table 对应的 dev0 status led 列表
+        :param pLedListStatusDev1: 该 table 对应的 dev1 status led 列表
+        :param pLedListUvStaDev0: 该 table 对应的 dev0 uvstatus led 列表
+        :param pLedListUvStaDev1: 该 table 对应的 dev1 uvstatus led 列表
+        :return: DC byte - DC byte has alert
+                 False - read block fail
+        """
+        dcDev0 = 0
+        dcDev1 = 0
+        """ device 0 process """
+        ''' read device 0 block '''
+        rtDataDev0 = pb01_read_block(self.hidBdg, 5, 0, 0x4A, 0x00)  # read dev0 cell balance control block, alseed=0x00
+        if (rtDataDev0 == "message return RX error" or rtDataDev0 == "pec check error"):
+            self.message_box(rtDataDev0)
+            return False
+        else:
+            cblCtrlDev0   = (rtDataDev0[4]  << 8) | rtDataDev0[3]
+            cblStatusDev0 = (rtDataDev0[6]  << 8) | rtDataDev0[5]
+            cblTimerDev0  = (rtDataDev0[8]  << 8) | rtDataDev0[7]
+            cblCountDev0  = (rtDataDev0[10] << 8) | rtDataDev0[9]
+            cblUvStatDev0 = (rtDataDev0[12] << 8) | rtDataDev0[11]
+            dcDev0 = rtDataDev0[13]
+
+            listCblHexDev0 = [hex(cblCtrlDev0)[2:].upper().zfill(4), hex(cblStatusDev0)[2:].upper().zfill(4),
+                              hex(cblTimerDev0)[2:].upper().zfill(4), hex(cblCountDev0)[2:].upper().zfill(4),
+                              hex(cblUvStatDev0)[2:].upper().zfill(4)]
+
+            ''' fill data into cblPage simplified demonstration table '''
+            for r in range(5):  # fill table
+                self.table_cblPage_cblCtrlStaInf.item(r+1, pDev0Col).setText(listCblHexDev0[r])
+
+            ''' fill data into cblPage status information table '''
+            self.table_cblPage_cblCtrlSimDemo.item(0, 4).setText(hex(cblCtrlDev0)[2:].upper().zfill(4))
+            self.table_cblPage_cblCtrlSimDemo.item(0, 5).setText(hex(cblCtrlDev0)[2:].upper().zfill(4))
+
+
+            ''' update dev0 led '''
+            # self.update_status_register_led(status1Dev0, status2Dev0, fmea1Dev0, fmea2Dev0, pDev0LedList)
+
+        """ device 1 process """
+        ''' read device 1 block '''
+        if self.flagSingleAfe == False:
+            rtDataDev1 = pb01_read_block(self.hidBdg, 5, 1, 0x4A,
+                                         0x00)  # read dev1 cell balance control block, alseed=0x00
+            if (rtDataDev1 == "message return RX error" or rtDataDev1 == "pec check error"):
+                self.message_box(rtDataDev1)
+                return False
+            else:
+                cblCtrlDev1   = (rtDataDev1[4] << 8)  | rtDataDev1[3]
+                cblStatusDev1 = (rtDataDev1[6] << 8)  | rtDataDev1[5]
+                cblTimerDev1  = (rtDataDev1[8] << 8)  | rtDataDev1[7]
+                cblCountDev1  = (rtDataDev1[10] << 8) | rtDataDev1[9]
+                cblUvStatDev1 = (rtDataDev1[12] << 8) | rtDataDev1[11]
+                dcDev1 = rtDataDev1[13]
+
+                listCblHexDev1 = [hex(cblCtrlDev1)[2:].upper().zfill(4), hex(cblStatusDev1)[2:].upper().zfill(4),
+                                  hex(cblTimerDev1)[2:].upper().zfill(4), hex(cblCountDev1)[2:].upper().zfill(4),
+                                  hex(cblUvStatDev1)[2:].upper().zfill(4)]
+
+                ''' fill data into cblPage simplified demonstration table '''
+                for r in range(5):  # fill table
+                    self.table_cblPage_cblCtrlStaInf.item(r+1, pDev1Col).setText(listCblHexDev1[r])
+
+                ''' fill data into cblPage status information table '''
+                self.table_cblPage_cblCtrlSimDemo.item(1, 4).setText(hex(cblCtrlDev1)[2:].upper().zfill(4))
+                self.table_cblPage_cblCtrlSimDemo.item(1, 5).setText(hex(cblCtrlDev0)[2:].upper().zfill(4))
+
+        if dcDev0 != 0x00:
+            return dcDev0
+        elif dcDev1 != 0x00:
+            return dcDev1
+        else:
+            return 0x00
 
 
     def pushBtn_disable(self, pBtn):
@@ -2412,19 +2498,68 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def solt_pushBtn_cblPage_cblCfgWr(self):
-        pass
+        """ configure CBALSEL """
+        self.update_write_read_op(0x45, 0xFFFF, self.table_cblPage_cblCfgReg, 0, 4)
+
+        """ configure CBALTIMECFG """
+        self.update_write_read_op(0x46, 0x0002, self.table_cblPage_cblCfgReg, 1, 4)
+
+        """ configure CBALACQCFG """
+        self.update_write_read_op(0x47, 0x2400, self.table_cblPage_cblCfgReg, 2, 4)
+
+        """ configure CBALUVTHREG """
+        self.update_write_read_op(0x48, 0xFFFF, self.table_cblPage_cblCfgReg, 3, 4)
+
+        """ configure CBALCFG """
+        cablCfgValue = int(self.table_cblPage_cblCfgReg.item(4, 2).text(), 16)
+        self.update_write_read_op(0x49, cablCfgValue, self.table_cblPage_cblCfgReg, 4, 4)
+
 
     def solt_pushBtn_cblPage_cblCfgRd(self):
-        pass
+        """ read CBALSEL  """
+        self.update_config_readback_op(0x45, self.table_cblPage_cblCfgReg, 0, 4)
+
+        """ read CBALTIMECFG  """
+        self.update_config_readback_op(0x46, self.table_cblPage_cblCfgReg, 1, 4)
+
+        """ read CBALACQCFG  """
+        self.update_config_readback_op(0x47, self.table_cblPage_cblCfgReg, 2, 4)
+
+        """ read CBALUVTHREG  """
+        self.update_config_readback_op(0x48, self.table_cblPage_cblCfgReg, 3, 4)
+
+        """ read CBALCFG  """
+        self.update_config_readback_op(0x49, self.table_cblPage_cblCfgReg, 4, 4)
 
     def solt_pushBtn_cblPage_cblCtrlStop(self):
-        pass
+        """ stop cell balance """
+        rtData = pb01_write_all(self.hidBdg, 0x4A, 0x2000, 0x00)  # write all R4A = 0x2000, alseed=0x00
+        if (rtData == "message return RX error" or rtData == "pec check error"):
+            self.message_box(rtData)
+            return False
+        else:
+            """ update cell balance control register table """
+            self.update_cblCtrl_block_table(2, 9,
+                                            self.ledCblPageStatusDev0, self.ledCblPageStatusDev1,
+                                            self.ledCblPageUvStaDev0, self.ledCblPageUvStaDev1)
 
     def solt_pushBtn_cblPage_cblCtrlStart(self):
-        pass
+        """ start cell balance """
+        rtData = pb01_write_all(self.hidBdg, 0x4A, 0x4000, 0x00)  # write all R4A = 0x4000, alseed=0x00
+        if (rtData == "message return RX error" or rtData == "pec check error"):
+            self.message_box(rtData)
+            return False
+        else:
+            """ update cell balance control register table """
+            self.update_cblCtrl_block_table(2, 9,
+                                            self.ledCblPageStatusDev0, self.ledCblPageStatusDev1,
+                                            self.ledCblPageUvStaDev0, self.ledCblPageUvStaDev1)
 
     def solt_pushBtn_cblPage_cblCtrlRd(self):
-        pass
+        """ update cell balance control register table """
+        self.update_cblCtrl_block_table(2, 9,
+                                        self.ledCblPageStatusDev0, self.ledCblPageStatusDev1,
+                                        self.ledCblPageUvStaDev0, self.ledCblPageUvStaDev1)
 
 
     def setupNotification(self):

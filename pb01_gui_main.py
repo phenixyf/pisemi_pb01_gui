@@ -618,6 +618,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                          True - 要填写这三行
                          False - 不要填写这三行
         :return: DC byte - DC byte has alert
+                 True - all operation run well
                  False - read block fail
         """
         dcDev0 = 0
@@ -716,7 +717,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         elif dcDev1 != 0x00:
             return dcDev1
         else:
-            return 0x00
+            return True
 
 
     def read_dc_and_status(self, pDcTable, pLedDcByt, pLedAlertPk,
@@ -1580,6 +1581,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         :param pLedListUvStaDev0: 该 table 对应的 dev0 uvstatus led 列表
         :param pLedListUvStaDev1: 该 table 对应的 dev1 uvstatus led 列表
         :return: DC byte - DC byte has alert
+                 True - operation well
                  False - read block fail
         """
         dcDev0 = 0
@@ -1651,7 +1653,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         elif dcDev1 != 0x00:
             return dcDev1
         else:
-            return 0x00
+            return True
 
     def update_cblPage_led(self, pData, pLedList, pStatusFlag):
         """

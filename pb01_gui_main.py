@@ -105,12 +105,12 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.table_appCfgPage_appCfg.cellChanged.connect(self.slot_table_appCfgPage_appCfg_cellChange)
         self.table_appCfgPage_thresholdReg.cellChanged.connect(self.slot_table_appCfgPage_thReg_cellChange)
         ''' diagnostic configuration page (page4) '''
-        self.pushButton_diagCfgPage_curCfgWR.clicked.connect(self.solt_pushBtn_diagCfgPage_curCfgWR)
-        self.pushButton_diagCfgPage_curCfgRd.clicked.connect(self.solt_pushBtn_diagCfgPage_curCfgRd)
-        self.pushButton_diagCfgPage_diagThWR.clicked.connect(self.solt_pushBtn_diagCfgPage_diagThWR)
-        self.pushButton_diagCfgPage_diagThRd.clicked.connect(self.solt_pushBtn_diagCfgPage_diagThRd)
-        self.pushButton_diagCfgPage_aluTeWR.clicked.connect(self.solt_pushBtn_diagCfgPage_aluTeWR)
-        self.pushButton_diagCfgPage_aluTeRd.clicked.connect(self.solt_pushBtn_diagCfgPage_aluTeRd)
+        self.pushButton_diagCfgPage_curCfgWR.clicked.connect(self.slot_pushBtn_diagCfgPage_curCfgWR)
+        self.pushButton_diagCfgPage_curCfgRd.clicked.connect(self.slot_pushBtn_diagCfgPage_curCfgRd)
+        self.pushButton_diagCfgPage_diagThWR.clicked.connect(self.slot_pushBtn_diagCfgPage_diagThWR)
+        self.pushButton_diagCfgPage_diagThRd.clicked.connect(self.slot_pushBtn_diagCfgPage_diagThRd)
+        self.pushButton_diagCfgPage_aluTeWR.clicked.connect(self.slot_pushBtn_diagCfgPage_aluTeWR)
+        self.pushButton_diagCfgPage_aluTeRd.clicked.connect(self.slot_pushBtn_diagCfgPage_aluTeRd)
         ''' acquisition request page (page5) '''
         self.radioButton_acqReqPage_acqcbalint.clicked.connect(self.solt_radioBtn_acqReqPage_acqcbalint)
         self.radioButton_acqReqPage_acqiirinit.clicked.connect(self.solt_radioBtn_acqReqPage_acqiirinit)
@@ -123,6 +123,40 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.pushButton_cblPage_cblCtrlStop.clicked.connect(self.solt_pushBtn_cblPage_cblCtrlStop)
         self.pushButton_cblPage_cblCtrlStart.clicked.connect(self.solt_pushBtn_cblPage_cblCtrlStart)
         self.pushButton_cblPage_cblCtrlRd.clicked.connect(self.solt_pushBtn_cblPage_cblCtrlRd)
+
+
+    def setupNotification(self):
+        dbh = DEV_BROADCAST_DEVICEINTERFACE()
+        dbh.dbcc_size = ctypes.sizeof(DEV_BROADCAST_DEVICEINTERFACE)
+        dbh.dbcc_devicetype = DBT_DEVTYP_DEVICEINTERFACE
+        dbh.dbcc_classguid = GUID_DEVINTERFACE_USB_DEVICE
+        self.hNofity = RegisterDeviceNotification(int(self.winId()),
+                                                  ctypes.byref(dbh),
+                                                  DEVICE_NOTIFY_WINDOW_HANDLE)
+
+
+    def nativeEvent(self, eventType, msg):
+        message = MSG.from_address(msg.__int__())
+        if message.message == WM_DEVICECHANGE:
+            self.onDeviceChanged(message.wParam, message.lParam)
+        return False, 0
+
+
+    def onDeviceChanged(self, wParam, lParam):
+        if DBT_DEVICEARRIVAL == wParam:
+            dev_info = ctypes.cast(lParam, ctypes.POINTER(DEV_BROADCAST_DEVICEINTERFACE)).contents
+            device_path = ctypes.c_wchar_p(dev_info.dbcc_name).value
+            cycCnt = 0
+            if f"VID_{target_vid:04X}&PID_{target_pid:04X}" in device_path:
+                while (self.open_hid() is not True) and (cycCnt < 5):
+                    self.open_hid()
+                    cycCnt += 1
+
+        elif DBT_DEVICEREMOVECOMPLETE == wParam:
+            dev_info = ctypes.cast(lParam, ctypes.POINTER(DEV_BROADCAST_DEVICEINTERFACE)).contents
+            device_path = ctypes.c_wchar_p(dev_info.dbcc_name).value
+            if f"VID_{target_vid:04X}&PID_{target_pid:04X}" in device_path:
+                self.close_hid()
 
 
     def init_tab_pages(self):
@@ -1732,6 +1766,144 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         pBtn.setDisabled(False)
 
 
+    def slot_radio_single_dual_afe(self):
+        """
+        根据 single afe 和 dual afe radio button 被选择的状态，
+        设置 QTableWidget 显示不同的行数
+        :return:
+        """
+        if self.radioButton_singleAfe.isChecked():
+            self.flagSingleAfe = True
+            # chain configuration page (page1)
+            self.table_chainCfg_devIdBlk.hideRow(1)
+            self.table_chainCfg_uifcfgReg.hideRow(1)
+            self.table_chainCfg_addcfgReg.hideRow(1)
+            self.table_chainCfg_pw.hideColumn(5)
+            self.table_chainCfg_pw.hideColumn(6)
+            self.table_chainCfg_rstReg.hideColumn(5)
+            self.table_chainCfg_rstReg.hideColumn(6)
+            # device manage page (page2)
+            self.table_devMgPage_init.hideColumn(7)
+            self.table_devMgPage_init.hideColumn(8)
+            self.table_devMgPage_init.hideColumn(9)
+            self.table_devMgPage_init.hideColumn(10)
+            self.table_devMgPage_init.hideColumn(11)
+            self.table_devMgPage_cur.hideColumn(7)
+            self.table_devMgPage_cur.hideColumn(8)
+            self.table_devMgPage_cur.hideColumn(9)
+            self.table_devMgPage_cur.hideColumn(10)
+            self.table_devMgPage_cur.hideColumn(11)
+            # application configuration page (page3)
+            self.table_appCfgPage_appCfg.hideColumn(8)
+            self.table_appCfgPage_alertCfg.hideColumn(8)
+            self.table_appCfgPage_thresholdReg.hideColumn(8)
+            self.table_appCfgPage_acqReg.hideColumn(8)
+            # diagnostic configuration page (page4)
+            self.table_diagCfgPage_testCurCfgReg.hideColumn(12)
+            self.table_diagCfgPage_diagThresReg.hideColumn(8)
+            self.table_diagCfgPage_aluTestDiagReg.hideColumn(8)
+            # acquisition request page (page5）
+            self.table_acqReqPage_acqReq.hideRow(1)
+            # measure acquisition summary data page (page6)
+            self.table_meaAcqSumPage_status.hideColumn(7)
+            self.table_meaAcqSumPage_status.hideColumn(8)
+            self.table_meaAcqSumPage_status.hideColumn(9)
+            self.table_meaAcqSumPage_status.hideColumn(10)
+            self.table_meaAcqSumPage_status.hideColumn(11)
+            self.frame_meaAcqSumPage_sumDataDev1.hide()
+            self.table_meaAcqSumPage_sumDataDev1.hide()
+            # measure acquisition detail data page (page7)
+            self.frame_meaAcqDetailPage_alertDev1.hide()
+            self.table_meaAcqDetailData_alertRegDev1.hide()
+            self.frame_meaAcqDetailPage_dataDev1.hide()
+            self.table_meaAcqDetailData_dataRegDev1.hide()
+            # diagnostic acquisition data page (page8)
+            self.table_diagAcqPage_status.hideColumn(7)
+            self.table_diagAcqPage_status.hideColumn(8)
+            self.table_diagAcqPage_status.hideColumn(9)
+            self.table_diagAcqPage_status.hideColumn(10)
+            self.table_diagAcqPage_status.hideColumn(11)
+            self.frame_diagAcqDataPage_alertDev1.hide()
+            self.table_diagAcqPage_alertReg_dev1.hide()
+            self.frame_diagAcqDataPage_dataDev1.hide()
+            self.table_diagAcqPage_dataReg_dev1.hide()
+            # cell balance page (page9)
+            self.table_cblPage_cblCfgReg.hideColumn(5)
+            self.table_cblPage_cblCtrlSimDemo.hideColumn(5)
+            self.table_cblPage_cblCtrlStaInf.hideColumn(9)
+            self.table_cblPage_cblCtrlStaInf.hideColumn(10)
+            self.table_cblPage_cblCtrlStaInf.hideColumn(11)
+            self.table_cblPage_cblCtrlStaInf.hideColumn(12)
+            self.table_cblPage_cblCtrlStaInf.hideColumn(13)
+            self.table_cblPage_cblCtrlStaInf.hideColumn(14)
+            self.table_cblPage_cblCtrlStaInf.hideColumn(15)
+        elif self.radioButton_dualAfe.isChecked():
+            self.flagSingleAfe = False
+            # chain configuration page (page1)
+            self.table_chainCfg_devIdBlk.showRow(1)
+            self.table_chainCfg_uifcfgReg.showRow(1)
+            self.table_chainCfg_addcfgReg.showRow(1)
+            self.table_chainCfg_pw.showColumn(5)
+            self.table_chainCfg_pw.showColumn(6)
+            self.table_chainCfg_rstReg.showColumn(5)
+            self.table_chainCfg_rstReg.showColumn(6)
+            # device manage page (page2)
+            self.table_devMgPage_init.showColumn(7)
+            self.table_devMgPage_init.showColumn(8)
+            self.table_devMgPage_init.showColumn(9)
+            self.table_devMgPage_init.showColumn(10)
+            self.table_devMgPage_init.showColumn(11)
+            self.table_devMgPage_cur.showColumn(7)
+            self.table_devMgPage_cur.showColumn(8)
+            self.table_devMgPage_cur.showColumn(9)
+            self.table_devMgPage_cur.showColumn(10)
+            self.table_devMgPage_cur.showColumn(11)
+            # application configuration page (page3)
+            self.table_appCfgPage_appCfg.showColumn(8)
+            self.table_appCfgPage_alertCfg.showColumn(8)
+            self.table_appCfgPage_thresholdReg.showColumn(8)
+            self.table_appCfgPage_acqReg.showColumn(8)
+            # diagnostic configuration page (page4)
+            self.table_diagCfgPage_testCurCfgReg.showColumn(12)
+            self.table_diagCfgPage_diagThresReg.showColumn(8)
+            self.table_diagCfgPage_aluTestDiagReg.showColumn(8)
+            # acquisition request page (page5）
+            self.table_acqReqPage_acqReq.showRow(1)
+            # measure acquisition summary data page (page6)
+            self.table_meaAcqSumPage_status.showColumn(7)
+            self.table_meaAcqSumPage_status.showColumn(8)
+            self.table_meaAcqSumPage_status.showColumn(9)
+            self.table_meaAcqSumPage_status.showColumn(10)
+            self.table_meaAcqSumPage_status.showColumn(11)
+            self.frame_meaAcqSumPage_sumDataDev1.show()
+            self.table_meaAcqSumPage_sumDataDev1.show()
+            # measure acquisition detail data page (page7)
+            self.frame_meaAcqDetailPage_alertDev1.show()
+            self.table_meaAcqDetailData_alertRegDev1.show()
+            self.frame_meaAcqDetailPage_dataDev1.show()
+            self.table_meaAcqDetailData_dataRegDev1.show()
+            # diagnostic acquisition data page (page8)
+            self.table_diagAcqPage_status.showColumn(7)
+            self.table_diagAcqPage_status.showColumn(8)
+            self.table_diagAcqPage_status.showColumn(9)
+            self.table_diagAcqPage_status.showColumn(10)
+            self.table_diagAcqPage_status.showColumn(11)
+            self.frame_diagAcqDataPage_alertDev1.show()
+            self.table_diagAcqPage_alertReg_dev1.show()
+            self.frame_diagAcqDataPage_dataDev1.show()
+            self.table_diagAcqPage_dataReg_dev1.show()
+            # cell balance page (page9)
+            self.table_cblPage_cblCfgReg.showColumn(5)
+            self.table_cblPage_cblCtrlSimDemo.showColumn(5)
+            self.table_cblPage_cblCtrlStaInf.showColumn(9)
+            self.table_cblPage_cblCtrlStaInf.showColumn(10)
+            self.table_cblPage_cblCtrlStaInf.showColumn(11)
+            self.table_cblPage_cblCtrlStaInf.showColumn(12)
+            self.table_cblPage_cblCtrlStaInf.showColumn(13)
+            self.table_cblPage_cblCtrlStaInf.showColumn(14)
+            self.table_cblPage_cblCtrlStaInf.showColumn(15)
+
+
     def slot_pushBtn_chainCfg_cfg(self):
         time.sleep(BTN_OP_DELAY)
 
@@ -1741,11 +1913,11 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
         """ initial daisy chain """
         daisyChainReturn = pb01_daisy_chain_initial(self.hidBdg, 0x00)
-        if (daisyChainReturn == ("transaction5 time out" or
-                                 "transaction7 time out" or
-                                 "transaction13 time out" or
-                                 "HELLOALL message return error" or
-                                 "clear bridge rx buffer time out")):
+        if ((daisyChainReturn == "transaction5 time out") or
+            (daisyChainReturn == "transaction7 time out") or
+            (daisyChainReturn == "transaction13 time out") or
+            (daisyChainReturn == "HELLOALL message return error") or
+            (daisyChainReturn == "clear bridge rx buffer time out")):
             self.set_warning_message(self.lineEdit_chainCfg_cfgWarn, daisyChainReturn, "WARNING: Daisy chain initial error ")
             return
         else:
@@ -2184,21 +2356,21 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.update_config_readback_op(0x43, self.table_appCfgPage_acqReg, 3, 7)  # ACQAUXSEL
 
 
-    def solt_pushBtn_diagCfgPage_curCfgWR(self):
+    def slot_pushBtn_diagCfgPage_curCfgWR(self):
         time.sleep(BTN_OP_DELAY)
         self.update_write_read_op(0x1C, 0x0001, self.table_diagCfgPage_testCurCfgReg, 0, 11)  # CTSTCFG1  R1C=0x0001
         self.update_write_read_op(0x1D, 0xFFFF, self.table_diagCfgPage_testCurCfgReg, 1, 11)  # CTSTCFG1  R1D=0xFFFF
         self.update_write_read_op(0x1E, 0x00FF, self.table_diagCfgPage_testCurCfgReg, 2, 11)  # AUXTSTCFG R1E=0x00FF
 
 
-    def solt_pushBtn_diagCfgPage_curCfgRd(self):
+    def slot_pushBtn_diagCfgPage_curCfgRd(self):
         time.sleep(BTN_OP_DELAY)
         self.update_config_readback_op(0x1C, self.table_diagCfgPage_testCurCfgReg, 0, 11)  # CTSTCFG1
         self.update_config_readback_op(0x1D, self.table_diagCfgPage_testCurCfgReg, 1, 11)  # CTSTCFG1
         self.update_config_readback_op(0x1E, self.table_diagCfgPage_testCurCfgReg, 2, 11)  # AUXTSTCFG
 
 
-    def solt_pushBtn_diagCfgPage_diagThWR(self):
+    def slot_pushBtn_diagCfgPage_diagThWR(self):
         time.sleep(BTN_OP_DELAY)
         self.update_write_read_op(0x2F, 0x0000, self.table_diagCfgPage_diagThresReg, 0, 7)  # BALSHRTUVTHREG   R2F=0x0000
         self.update_write_read_op(0x30, 0x7FFF, self.table_diagCfgPage_diagThresReg, 0, 7)  # BALOVTHREG       R30=0x7FFF
@@ -2215,7 +2387,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.update_write_read_op(0x3B, 0x0000, self.table_diagCfgPage_diagThresReg, 0, 7)  # AUXRDIAGUVTHREG  R3B=0x0000
 
 
-    def solt_pushBtn_diagCfgPage_diagThRd(self):
+    def slot_pushBtn_diagCfgPage_diagThRd(self):
         time.sleep(BTN_OP_DELAY)
         self.update_config_readback_op(0x2F, self.table_diagCfgPage_diagThresReg, 0, 7)  # BALSHRTUVTHREG
         self.update_config_readback_op(0x30, self.table_diagCfgPage_diagThresReg, 0, 7)  # BALOVTHREG
@@ -2232,7 +2404,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.update_config_readback_op(0x3B, self.table_diagCfgPage_diagThresReg, 0, 7)  # AUXRDIAGUVTHREG
 
 
-    def solt_pushBtn_diagCfgPage_aluTeWR(self):
+    def slot_pushBtn_diagCfgPage_aluTeWR(self):
         time.sleep(BTN_OP_DELAY)
         self.update_write_read_op(0x3C, 0x0000, self.table_diagCfgPage_aluTestDiagReg, 0, 7)  # ALUTESTAREG   R3C=0x0000
         self.update_write_read_op(0x3D, 0x0000, self.table_diagCfgPage_aluTestDiagReg, 0, 7)  # ALUTESTBREG   R3D=0x0000
@@ -2240,7 +2412,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.update_write_read_op(0x3F, 0x0000, self.table_diagCfgPage_aluTestDiagReg, 0, 7)  # ALUTESTDREG   R3F=0x0000
 
 
-    def solt_pushBtn_diagCfgPage_aluTeRd(self):
+    def slot_pushBtn_diagCfgPage_aluTeRd(self):
         time.sleep(BTN_OP_DELAY)
         self.update_config_readback_op(0x3C, self.table_diagCfgPage_aluTestDiagReg, 0, 7)  # ALUTESTAREG
         self.update_config_readback_op(0x3D, self.table_diagCfgPage_aluTestDiagReg, 0, 7)  # ALUTESTBREG
@@ -2618,40 +2790,6 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                         self.ledCblPageUvStaDev0, self.ledCblPageUvStaDev1)
 
 
-    def setupNotification(self):
-        dbh = DEV_BROADCAST_DEVICEINTERFACE()
-        dbh.dbcc_size = ctypes.sizeof(DEV_BROADCAST_DEVICEINTERFACE)
-        dbh.dbcc_devicetype = DBT_DEVTYP_DEVICEINTERFACE
-        dbh.dbcc_classguid = GUID_DEVINTERFACE_USB_DEVICE
-        self.hNofity = RegisterDeviceNotification(int(self.winId()),
-                                                  ctypes.byref(dbh),
-                                                  DEVICE_NOTIFY_WINDOW_HANDLE)
-
-
-    def nativeEvent(self, eventType, msg):
-        message = MSG.from_address(msg.__int__())
-        if message.message == WM_DEVICECHANGE:
-            self.onDeviceChanged(message.wParam, message.lParam)
-        return False, 0
-
-
-    def onDeviceChanged(self, wParam, lParam):
-        if DBT_DEVICEARRIVAL == wParam:
-            dev_info = ctypes.cast(lParam, ctypes.POINTER(DEV_BROADCAST_DEVICEINTERFACE)).contents
-            device_path = ctypes.c_wchar_p(dev_info.dbcc_name).value
-            cycCnt = 0
-            if f"VID_{target_vid:04X}&PID_{target_pid:04X}" in device_path:
-                while (self.open_hid() is not True) and (cycCnt < 5):
-                    self.open_hid()
-                    cycCnt += 1
-
-        elif DBT_DEVICEREMOVECOMPLETE == wParam:
-            dev_info = ctypes.cast(lParam, ctypes.POINTER(DEV_BROADCAST_DEVICEINTERFACE)).contents
-            device_path = ctypes.c_wchar_p(dev_info.dbcc_name).value
-            if f"VID_{target_vid:04X}&PID_{target_pid:04X}" in device_path:
-                self.close_hid()
-
-
     def open_hid(self):
         try:
             if self.hidStatus == False:
@@ -2687,143 +2825,6 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             self.statusMessage.setStyleSheet("QLabel { color : red; }")  # 设置字体颜色为红色
             self.statusMessage.setText("close hid failed ")
             self.hidStatus = True
-
-    def slot_radio_single_dual_afe(self):
-        """
-        根据 single afe 和 dual afe radio button 被选择的状态，
-        设置 QTableWidget 显示不同的行数
-        :return:
-        """
-        if self.radioButton_singleAfe.isChecked():
-            self.flagSingleAfe = True
-            # chain configuration page (page1)
-            self.table_chainCfg_devIdBlk.hideRow(1)
-            self.table_chainCfg_uifcfgReg.hideRow(1)
-            self.table_chainCfg_addcfgReg.hideRow(1)
-            self.table_chainCfg_pw.hideColumn(5)
-            self.table_chainCfg_pw.hideColumn(6)
-            self.table_chainCfg_rstReg.hideColumn(5)
-            self.table_chainCfg_rstReg.hideColumn(6)
-            # device manage page (page2)
-            self.table_devMgPage_init.hideColumn(7)
-            self.table_devMgPage_init.hideColumn(8)
-            self.table_devMgPage_init.hideColumn(9)
-            self.table_devMgPage_init.hideColumn(10)
-            self.table_devMgPage_init.hideColumn(11)
-            self.table_devMgPage_cur.hideColumn(7)
-            self.table_devMgPage_cur.hideColumn(8)
-            self.table_devMgPage_cur.hideColumn(9)
-            self.table_devMgPage_cur.hideColumn(10)
-            self.table_devMgPage_cur.hideColumn(11)
-            # application configuration page (page3)
-            self.table_appCfgPage_appCfg.hideColumn(8)
-            self.table_appCfgPage_alertCfg.hideColumn(8)
-            self.table_appCfgPage_thresholdReg.hideColumn(8)
-            self.table_appCfgPage_acqReg.hideColumn(8)
-            # diagnostic configuration page (page4)
-            self.table_diagCfgPage_testCurCfgReg.hideColumn(12)
-            self.table_diagCfgPage_diagThresReg.hideColumn(8)
-            self.table_diagCfgPage_aluTestDiagReg.hideColumn(8)
-            # acquisition request page (page5）
-            self.table_acqReqPage_acqReq.hideRow(1)
-            # measure acquisition summary data page (page6)
-            self.table_meaAcqSumPage_status.hideColumn(7)
-            self.table_meaAcqSumPage_status.hideColumn(8)
-            self.table_meaAcqSumPage_status.hideColumn(9)
-            self.table_meaAcqSumPage_status.hideColumn(10)
-            self.table_meaAcqSumPage_status.hideColumn(11)
-            self.frame_meaAcqSumPage_sumDataDev1.hide()
-            self.table_meaAcqSumPage_sumDataDev1.hide()
-            # measure acquisition detail data page (page7)
-            self.frame_meaAcqDetailPage_alertDev1.hide()
-            self.table_meaAcqDetailData_alertRegDev1.hide()
-            self.frame_meaAcqDetailPage_dataDev1.hide()
-            self.table_meaAcqDetailData_dataRegDev1.hide()
-            # diagnostic acquisition data page (page8)
-            self.table_diagAcqPage_status.hideColumn(7)
-            self.table_diagAcqPage_status.hideColumn(8)
-            self.table_diagAcqPage_status.hideColumn(9)
-            self.table_diagAcqPage_status.hideColumn(10)
-            self.table_diagAcqPage_status.hideColumn(11)
-            self.frame_diagAcqDataPage_alertDev1.hide()
-            self.table_diagAcqPage_alertReg_dev1.hide()
-            self.frame_diagAcqDataPage_dataDev1.hide()
-            self.table_diagAcqPage_dataReg_dev1.hide()
-            # cell balance page (page9)
-            self.table_cblPage_cblCfgReg.hideColumn(5)
-            self.table_cblPage_cblCtrlSimDemo.hideColumn(5)
-            self.table_cblPage_cblCtrlStaInf.hideColumn(9)
-            self.table_cblPage_cblCtrlStaInf.hideColumn(10)
-            self.table_cblPage_cblCtrlStaInf.hideColumn(11)
-            self.table_cblPage_cblCtrlStaInf.hideColumn(12)
-            self.table_cblPage_cblCtrlStaInf.hideColumn(13)
-            self.table_cblPage_cblCtrlStaInf.hideColumn(14)
-            self.table_cblPage_cblCtrlStaInf.hideColumn(15)
-        elif self.radioButton_dualAfe.isChecked():
-            self.flagSingleAfe = False
-            # chain configuration page (page1)
-            self.table_chainCfg_devIdBlk.showRow(1)
-            self.table_chainCfg_uifcfgReg.showRow(1)
-            self.table_chainCfg_addcfgReg.showRow(1)
-            self.table_chainCfg_pw.showColumn(5)
-            self.table_chainCfg_pw.showColumn(6)
-            self.table_chainCfg_rstReg.showColumn(5)
-            self.table_chainCfg_rstReg.showColumn(6)
-            # device manage page (page2)
-            self.table_devMgPage_init.showColumn(7)
-            self.table_devMgPage_init.showColumn(8)
-            self.table_devMgPage_init.showColumn(9)
-            self.table_devMgPage_init.showColumn(10)
-            self.table_devMgPage_init.showColumn(11)
-            self.table_devMgPage_cur.showColumn(7)
-            self.table_devMgPage_cur.showColumn(8)
-            self.table_devMgPage_cur.showColumn(9)
-            self.table_devMgPage_cur.showColumn(10)
-            self.table_devMgPage_cur.showColumn(11)
-            # application configuration page (page3)
-            self.table_appCfgPage_appCfg.showColumn(8)
-            self.table_appCfgPage_alertCfg.showColumn(8)
-            self.table_appCfgPage_thresholdReg.showColumn(8)
-            self.table_appCfgPage_acqReg.showColumn(8)
-            # diagnostic configuration page (page4)
-            self.table_diagCfgPage_testCurCfgReg.showColumn(12)
-            self.table_diagCfgPage_diagThresReg.showColumn(8)
-            self.table_diagCfgPage_aluTestDiagReg.showColumn(8)
-            # acquisition request page (page5）
-            self.table_acqReqPage_acqReq.showRow(1)
-            # measure acquisition summary data page (page6)
-            self.table_meaAcqSumPage_status.showColumn(7)
-            self.table_meaAcqSumPage_status.showColumn(8)
-            self.table_meaAcqSumPage_status.showColumn(9)
-            self.table_meaAcqSumPage_status.showColumn(10)
-            self.table_meaAcqSumPage_status.showColumn(11)
-            self.frame_meaAcqSumPage_sumDataDev1.show()
-            self.table_meaAcqSumPage_sumDataDev1.show()
-            # measure acquisition detail data page (page7)
-            self.frame_meaAcqDetailPage_alertDev1.show()
-            self.table_meaAcqDetailData_alertRegDev1.show()
-            self.frame_meaAcqDetailPage_dataDev1.show()
-            self.table_meaAcqDetailData_dataRegDev1.show()
-            # diagnostic acquisition data page (page8)
-            self.table_diagAcqPage_status.showColumn(7)
-            self.table_diagAcqPage_status.showColumn(8)
-            self.table_diagAcqPage_status.showColumn(9)
-            self.table_diagAcqPage_status.showColumn(10)
-            self.table_diagAcqPage_status.showColumn(11)
-            self.frame_diagAcqDataPage_alertDev1.show()
-            self.table_diagAcqPage_alertReg_dev1.show()
-            self.frame_diagAcqDataPage_dataDev1.show()
-            self.table_diagAcqPage_dataReg_dev1.show()
-            # cell balance page (page9)
-            self.table_cblPage_cblCfgReg.showColumn(5)
-            self.table_cblPage_cblCtrlSimDemo.showColumn(5)
-            self.table_cblPage_cblCtrlStaInf.showColumn(9)
-            self.table_cblPage_cblCtrlStaInf.showColumn(10)
-            self.table_cblPage_cblCtrlStaInf.showColumn(11)
-            self.table_cblPage_cblCtrlStaInf.showColumn(12)
-            self.table_cblPage_cblCtrlStaInf.showColumn(13)
-            self.table_cblPage_cblCtrlStaInf.showColumn(14)
-            self.table_cblPage_cblCtrlStaInf.showColumn(15)
 
 
 

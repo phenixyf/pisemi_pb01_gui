@@ -529,7 +529,7 @@ def pb01_daisy_chain_initial(pHidDev, pDevAddSeed):
         return "HELLOALL message return error"
 
     ''' check bridge RX is empty '''
-    if max17841_check_msg_return_bridge(pHidDev) == False:
+    if max17841_clear_rx_buf(pHidDev) == False:
         return "clear bridge rx buffer time out"
 
     return [hex(n) for n in return_data]

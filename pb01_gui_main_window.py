@@ -2107,8 +2107,7 @@ class Ui_MainWindow(object):
         self.tab_acqReq = QtWidgets.QWidget()
         self.tab_acqReq.setObjectName("tab_acqReq")
         self.verticalLayout_11 = QtWidgets.QVBoxLayout(self.tab_acqReq)
-        self.verticalLayout_11.setContentsMargins(-1, 2, -1, 2)
-        self.verticalLayout_11.setSpacing(2)
+        self.verticalLayout_11.setSpacing(3)
         self.verticalLayout_11.setObjectName("verticalLayout_11")
         self.frame_24 = QtWidgets.QFrame(self.tab_acqReq)
         self.frame_24.setMaximumSize(QtCore.QSize(16777215, 23))
@@ -2148,14 +2147,14 @@ class Ui_MainWindow(object):
         self.radioButton_acqReqPage_acqcbalint = QtWidgets.QRadioButton(self.frame_35)
         self.radioButton_acqReqPage_acqcbalint.setMinimumSize(QtCore.QSize(0, 20))
         self.radioButton_acqReqPage_acqcbalint.setMaximumSize(QtCore.QSize(16777215, 20))
-        self.radioButton_acqReqPage_acqcbalint.setStyleSheet("font: 12pt \"Calibri\";\n"
+        self.radioButton_acqReqPage_acqcbalint.setStyleSheet("font: 10pt \"Calibri\";\n"
 "font-weight: 600; /* 设置字体粗细为600 */")
         self.radioButton_acqReqPage_acqcbalint.setObjectName("radioButton_acqReqPage_acqcbalint")
         self.verticalLayout_16.addWidget(self.radioButton_acqReqPage_acqcbalint)
         self.radioButton_acqReqPage_acqiirbyp = QtWidgets.QRadioButton(self.frame_35)
         self.radioButton_acqReqPage_acqiirbyp.setMinimumSize(QtCore.QSize(0, 20))
         self.radioButton_acqReqPage_acqiirbyp.setMaximumSize(QtCore.QSize(16777215, 20))
-        self.radioButton_acqReqPage_acqiirbyp.setStyleSheet("font: 12pt \"Calibri\";\n"
+        self.radioButton_acqReqPage_acqiirbyp.setStyleSheet("font: 10pt \"Calibri\";\n"
 "font-weight: 600; /* 设置字体粗细为600 */")
         self.radioButton_acqReqPage_acqiirbyp.setObjectName("radioButton_acqReqPage_acqiirbyp")
         self.verticalLayout_16.addWidget(self.radioButton_acqReqPage_acqiirbyp)
@@ -2171,21 +2170,21 @@ class Ui_MainWindow(object):
         self.radioButton_acqReqPage_acqiirinit = QtWidgets.QRadioButton(self.frame_36)
         self.radioButton_acqReqPage_acqiirinit.setMinimumSize(QtCore.QSize(0, 20))
         self.radioButton_acqReqPage_acqiirinit.setMaximumSize(QtCore.QSize(16777215, 20))
-        self.radioButton_acqReqPage_acqiirinit.setStyleSheet("font: 12pt \"Calibri\";\n"
+        self.radioButton_acqReqPage_acqiirinit.setStyleSheet("font: 10pt \"Calibri\";\n"
 "font-weight: 600; /* 设置字体粗细为600 */")
         self.radioButton_acqReqPage_acqiirinit.setObjectName("radioButton_acqReqPage_acqiirinit")
         self.verticalLayout_8.addWidget(self.radioButton_acqReqPage_acqiirinit)
         self.radioButton_acqReqPage_acqiirproc = QtWidgets.QRadioButton(self.frame_36)
         self.radioButton_acqReqPage_acqiirproc.setMinimumSize(QtCore.QSize(0, 20))
         self.radioButton_acqReqPage_acqiirproc.setMaximumSize(QtCore.QSize(16777215, 20))
-        self.radioButton_acqReqPage_acqiirproc.setStyleSheet("font: 12pt \"Calibri\";\n"
+        self.radioButton_acqReqPage_acqiirproc.setStyleSheet("font: 10pt \"Calibri\";\n"
 "font-weight: 600; /* 设置字体粗细为600 */")
         self.radioButton_acqReqPage_acqiirproc.setObjectName("radioButton_acqReqPage_acqiirproc")
         self.verticalLayout_8.addWidget(self.radioButton_acqReqPage_acqiirproc)
         self.radioButton_acqReqPage_alutesten = QtWidgets.QRadioButton(self.frame_36)
         self.radioButton_acqReqPage_alutesten.setMinimumSize(QtCore.QSize(0, 20))
         self.radioButton_acqReqPage_alutesten.setMaximumSize(QtCore.QSize(16777215, 20))
-        self.radioButton_acqReqPage_alutesten.setStyleSheet("font: 12pt \"Calibri\";\n"
+        self.radioButton_acqReqPage_alutesten.setStyleSheet("font: 10pt \"Calibri\";\n"
 "font-weight: 600; /* 设置字体粗细为600 */")
         self.radioButton_acqReqPage_alutesten.setObjectName("radioButton_acqReqPage_alutesten")
         self.verticalLayout_8.addWidget(self.radioButton_acqReqPage_alutesten)
@@ -2220,7 +2219,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.table_acqReqPage_osr = QtWidgets.QTableWidget(self.tab_acqReq)
-        self.table_acqReqPage_osr.setMaximumSize(QtCore.QSize(270, 100))
+        self.table_acqReqPage_osr.setMaximumSize(QtCore.QSize(260, 90))
         self.table_acqReqPage_osr.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
 "    gridline-color: white; /* 网格线颜色 */\n"
@@ -2264,7 +2263,7 @@ class Ui_MainWindow(object):
         self.table_acqReqPage_osr.verticalHeader().setVisible(False)
         self.horizontalLayout_4.addWidget(self.table_acqReqPage_osr)
         self.label_4 = QtWidgets.QLabel(self.tab_acqReq)
-        self.label_4.setMaximumSize(QtCore.QSize(16777215, 100))
+        self.label_4.setMaximumSize(QtCore.QSize(16777215, 90))
         self.label_4.setStyleSheet("font: 12pt \"Calibri\";")
         self.label_4.setObjectName("label_4")
         self.horizontalLayout_4.addWidget(self.label_4)
@@ -2299,6 +2298,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.frame_20 = QtWidgets.QFrame(self.tab_acqReq)
+        self.frame_20.setMaximumSize(QtCore.QSize(16777215, 100))
         self.frame_20.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_20.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_20.setObjectName("frame_20")
@@ -2329,6 +2329,7 @@ class Ui_MainWindow(object):
         spacerItem19 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem19)
         self.frame_28 = QtWidgets.QFrame(self.tab_acqReq)
+        self.frame_28.setMaximumSize(QtCore.QSize(16777215, 100))
         self.frame_28.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_28.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_28.setObjectName("frame_28")
@@ -2359,6 +2360,7 @@ class Ui_MainWindow(object):
         spacerItem20 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem20)
         self.frame_29 = QtWidgets.QFrame(self.tab_acqReq)
+        self.frame_29.setMaximumSize(QtCore.QSize(16777215, 100))
         self.frame_29.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_29.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_29.setObjectName("frame_29")
@@ -2396,6 +2398,7 @@ class Ui_MainWindow(object):
         spacerItem21 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem21)
         self.frame_30 = QtWidgets.QFrame(self.tab_acqReq)
+        self.frame_30.setMaximumSize(QtCore.QSize(16777215, 100))
         self.frame_30.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_30.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_30.setObjectName("frame_30")
@@ -2436,6 +2439,98 @@ class Ui_MainWindow(object):
         self.label_3.setAlignment(QtCore.Qt.AlignCenter)
         self.label_3.setObjectName("label_3")
         self.verticalLayout_11.addWidget(self.label_3)
+        self.frame_39 = QtWidgets.QFrame(self.tab_acqReq)
+        self.frame_39.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.frame_39.setStyleSheet("QFrame {\n"
+"    background-color: #a0a0a0; /* 设置背景颜色为灰色 */\n"
+"    border-radius: 10px; /* 设置边框圆角的半径为10px */\n"
+"}\n"
+"")
+        self.frame_39.setFrameShape(QtWidgets.QFrame.Box)
+        self.frame_39.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_39.setObjectName("frame_39")
+        self.horizontalLayout_40 = QtWidgets.QHBoxLayout(self.frame_39)
+        self.horizontalLayout_40.setContentsMargins(-1, 0, -1, 0)
+        self.horizontalLayout_40.setObjectName("horizontalLayout_40")
+        self.label_64 = QtWidgets.QLabel(self.frame_39)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_64.sizePolicy().hasHeightForWidth())
+        self.label_64.setSizePolicy(sizePolicy)
+        self.label_64.setMinimumSize(QtCore.QSize(23, 20))
+        self.label_64.setMaximumSize(QtCore.QSize(16777215, 23))
+        self.label_64.setStyleSheet("font: 11pt \"Calibri\";\n"
+"font-weight: 600; /* 设置字体粗细为600 */")
+        self.label_64.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
+        self.label_64.setObjectName("label_64")
+        self.horizontalLayout_40.addWidget(self.label_64)
+        self.verticalLayout_11.addWidget(self.frame_39)
+        self.table_acqReqPage_auxPar = QtWidgets.QTableWidget(self.tab_acqReq)
+        self.table_acqReqPage_auxPar.setMinimumSize(QtCore.QSize(40, 0))
+        self.table_acqReqPage_auxPar.setMaximumSize(QtCore.QSize(16777215, 40))
+        self.table_acqReqPage_auxPar.setStyleSheet("QTableWidget {\n"
+"    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
+"    gridline-color: white; /* 网格线颜色 */\n"
+"    background-color: #f0f0f0; /* 单元格背景颜色 */\n"
+"    font-family: \"Calibri\"; /* 单元格字体 */\n"
+"    font-size: 10pt; /* 单元格字体大小 */\n"
+"}\n"
+"\n"
+"QTableWidget::item {\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"    background-color: #f0f0f0; /* 表头背景颜色 */\n"
+"    padding: 5px; /* 表头内边距 */\n"
+"    border-style: none; /* 表头边框样式 */\n"
+"    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */\n"
+"    border-right: 2px solid white; /* 表头右边框宽度调整为2px */\n"
+"    font-family: \"Calibri\"; /* 表头字体 */\n"
+"    font-size: 10pt; /* 表头字体大小 */\n"
+"    font-weight: 600; /* 表头字体粗细 */\n"
+"}\n"
+"\n"
+"QTableCornerButton::section {\n"
+"    background-color: #f0f0f0; /* 角落按钮背景颜色 */\n"
+"    /* 添加其他您需要的样式 */\n"
+"}\n"
+"")
+        self.table_acqReqPage_auxPar.setObjectName("table_acqReqPage_auxPar")
+        self.table_acqReqPage_auxPar.setColumnCount(8)
+        self.table_acqReqPage_auxPar.setRowCount(1)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_acqReqPage_auxPar.setVerticalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_acqReqPage_auxPar.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_acqReqPage_auxPar.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_acqReqPage_auxPar.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_acqReqPage_auxPar.setHorizontalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_acqReqPage_auxPar.setHorizontalHeaderItem(4, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_acqReqPage_auxPar.setHorizontalHeaderItem(5, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_acqReqPage_auxPar.setHorizontalHeaderItem(6, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.table_acqReqPage_auxPar.setHorizontalHeaderItem(7, item)
+        item = QtWidgets.QTableWidgetItem()
+        brush = QtGui.QBrush(QtGui.QColor(255, 242, 204))
+        brush.setStyle(QtCore.Qt.SolidPattern)
+        item.setBackground(brush)
+        self.table_acqReqPage_auxPar.setItem(0, 0, item)
+        self.table_acqReqPage_auxPar.horizontalHeader().setVisible(False)
+        self.table_acqReqPage_auxPar.verticalHeader().setVisible(False)
+        self.table_acqReqPage_auxPar.verticalHeader().setMinimumSectionSize(30)
+        self.verticalLayout_11.addWidget(self.table_acqReqPage_auxPar)
+        self.label_6 = QtWidgets.QLabel(self.tab_acqReq)
+        self.label_6.setStyleSheet("font: italic 12pt \"Calibri\";")
+        self.label_6.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_6.setObjectName("label_6")
+        self.verticalLayout_11.addWidget(self.label_6)
         self.frame_27 = QtWidgets.QFrame(self.tab_acqReq)
         self.frame_27.setMaximumSize(QtCore.QSize(16777215, 23))
         self.frame_27.setStyleSheet("QFrame {\n"
@@ -2519,6 +2614,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_39.addWidget(self.pushButton_acqReqPage_request)
         self.verticalLayout_11.addWidget(self.frame_27)
         self.table_acqReqPage_acqReq = QtWidgets.QTableWidget(self.tab_acqReq)
+        self.table_acqReqPage_acqReq.setMinimumSize(QtCore.QSize(0, 100))
         self.table_acqReqPage_acqReq.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.table_acqReqPage_acqReq.setStyleSheet("QTableWidget {\n"
 "    border: 2px solid white; /* 边框颜色与粗细调整为2px */\n"
@@ -5314,13 +5410,36 @@ class Ui_MainWindow(object):
 "Complete all WRITE+READ operations on the Application Configuration Screen before issuing any Measurement or Diagnostic Acquisition Requests.\n"
 "In addition, complete all WRITE+READ operations on the Diagnostic Configuration Screen before issuing any Diagnostic Acquisition Requests, except PATH Diagnostic (0x3).\n"
 "In addition, complete the WRITE+READ operation on the Cell Balancing Screen/Cell Balancing Configuration Register Block before issuing either BALSW Short or Open Diagnostic (0x4, 0x5) Requests. \n"
-"\n"
 "Data Screen Updates: \n"
 "Measurement Acquisition Requests (0x1, 0x2) will update the Measurement Acquisition Data Screens.\n"
 "Diagnostic Acquisition Requests (0x3 through 0xC, and 0xE) will update the Diagnostic Acquisition Data Screen.  \n"
-"\n"
 "Simplified Demonstration:\n"
 "For all Diagnostics, any selections above which are ignored will be automatically overridden/re-configured in the Request(s) below."))
+        self.label_64.setText(_translate("MainWindow", "Ratiometric Auxiliary Temperature Calculation Parameters"))
+        item = self.table_acqReqPage_auxPar.verticalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_acqReqPage_auxPar.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "0"))
+        item = self.table_acqReqPage_auxPar.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "1"))
+        item = self.table_acqReqPage_auxPar.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "2"))
+        item = self.table_acqReqPage_auxPar.horizontalHeaderItem(3)
+        item.setText(_translate("MainWindow", "3"))
+        item = self.table_acqReqPage_auxPar.horizontalHeaderItem(4)
+        item.setText(_translate("MainWindow", "4"))
+        item = self.table_acqReqPage_auxPar.horizontalHeaderItem(5)
+        item.setText(_translate("MainWindow", "5"))
+        item = self.table_acqReqPage_auxPar.horizontalHeaderItem(6)
+        item.setText(_translate("MainWindow", "6"))
+        item = self.table_acqReqPage_auxPar.horizontalHeaderItem(7)
+        item.setText(_translate("MainWindow", "7"))
+        __sortingEnabled = self.table_acqReqPage_auxPar.isSortingEnabled()
+        self.table_acqReqPage_auxPar.setSortingEnabled(False)
+        item = self.table_acqReqPage_auxPar.item(0, 0)
+        item.setText(_translate("MainWindow", "0x80"))
+        self.table_acqReqPage_auxPar.setSortingEnabled(__sortingEnabled)
+        self.label_6.setText(_translate("MainWindow", "The parameters above are specific and fixed for the PI21116 EVKit and AUXR Demo Board.  These are used by the software to translate AUXR measurements into Temperature, and are provided for reference only."))
         self.label_51.setText(_translate("MainWindow", "Acquisition Mode (ACQMODE) Selection"))
         self.lineEdit_acqReqPage_acqctrlWarn.setText(_translate("MainWindow", "WARNING:"))
         self.pushButton_acqReqPage_request.setText(_translate("MainWindow", "REQUEST"))

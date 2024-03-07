@@ -4178,13 +4178,7 @@ QTableCornerButton::section {
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_11">
         <property name="spacing">
-         <number>2</number>
-        </property>
-        <property name="topMargin">
-         <number>2</number>
-        </property>
-        <property name="bottomMargin">
-         <number>2</number>
+         <number>3</number>
         </property>
         <item>
          <widget class="QFrame" name="frame_24">
@@ -4285,7 +4279,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true">font: 12pt &quot;Calibri&quot;;
+              <string notr="true">font: 10pt &quot;Calibri&quot;;
 font-weight: 600; /* 设置字体粗细为600 */</string>
              </property>
              <property name="text">
@@ -4308,7 +4302,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true">font: 12pt &quot;Calibri&quot;;
+              <string notr="true">font: 10pt &quot;Calibri&quot;;
 font-weight: 600; /* 设置字体粗细为600 */</string>
              </property>
              <property name="text">
@@ -4352,7 +4346,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true">font: 12pt &quot;Calibri&quot;;
+              <string notr="true">font: 10pt &quot;Calibri&quot;;
 font-weight: 600; /* 设置字体粗细为600 */</string>
              </property>
              <property name="text">
@@ -4375,7 +4369,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true">font: 12pt &quot;Calibri&quot;;
+              <string notr="true">font: 10pt &quot;Calibri&quot;;
 font-weight: 600; /* 设置字体粗细为600 */</string>
              </property>
              <property name="text">
@@ -4398,7 +4392,7 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true">font: 12pt &quot;Calibri&quot;;
+              <string notr="true">font: 10pt &quot;Calibri&quot;;
 font-weight: 600; /* 设置字体粗细为600 */</string>
              </property>
              <property name="text">
@@ -4481,8 +4475,8 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
            <widget class="QTableWidget" name="table_acqReqPage_osr">
             <property name="maximumSize">
              <size>
-              <width>270</width>
-              <height>100</height>
+              <width>260</width>
+              <height>90</height>
              </size>
             </property>
             <property name="styleSheet">
@@ -4549,7 +4543,7 @@ QTableCornerButton::section {
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>100</height>
+              <height>90</height>
              </size>
             </property>
             <property name="styleSheet">
@@ -4632,6 +4626,12 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
            <widget class="QFrame" name="frame_20">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>100</height>
+             </size>
+            </property>
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
             </property>
@@ -4726,6 +4726,12 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
           </item>
           <item>
            <widget class="QFrame" name="frame_28">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>100</height>
+             </size>
+            </property>
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
             </property>
@@ -4820,6 +4826,12 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
           </item>
           <item>
            <widget class="QFrame" name="frame_29">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>100</height>
+             </size>
+            </property>
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
             </property>
@@ -4937,6 +4949,12 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
           </item>
           <item>
            <widget class="QFrame" name="frame_30">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>100</height>
+             </size>
+            </property>
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
             </property>
@@ -5051,13 +5069,200 @@ font-weight: 600; /* 设置字体粗细为600 */</string>
 Complete all WRITE+READ operations on the Application Configuration Screen before issuing any Measurement or Diagnostic Acquisition Requests.
 In addition, complete all WRITE+READ operations on the Diagnostic Configuration Screen before issuing any Diagnostic Acquisition Requests, except PATH Diagnostic (0x3).
 In addition, complete the WRITE+READ operation on the Cell Balancing Screen/Cell Balancing Configuration Register Block before issuing either BALSW Short or Open Diagnostic (0x4, 0x5) Requests. 
-
 Data Screen Updates: 
 Measurement Acquisition Requests (0x1, 0x2) will update the Measurement Acquisition Data Screens.
 Diagnostic Acquisition Requests (0x3 through 0xC, and 0xE) will update the Diagnostic Acquisition Data Screen.  
-
 Simplified Demonstration:
 For all Diagnostics, any selections above which are ignored will be automatically overridden/re-configured in the Request(s) below.</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QFrame" name="frame_39">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>23</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QFrame {
+    background-color: #a0a0a0; /* 设置背景颜色为灰色 */
+    border-radius: 10px; /* 设置边框圆角的半径为10px */
+}
+</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_40">
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_64">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>23</width>
+               <height>20</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>23</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">font: 11pt &quot;Calibri&quot;;
+font-weight: 600; /* 设置字体粗细为600 */</string>
+             </property>
+             <property name="text">
+              <string>Ratiometric Auxiliary Temperature Calculation Parameters</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="table_acqReqPage_auxPar">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QTableWidget {
+    border: 2px solid white; /* 边框颜色与粗细调整为2px */
+    gridline-color: white; /* 网格线颜色 */
+    background-color: #f0f0f0; /* 单元格背景颜色 */
+    font-family: &quot;Calibri&quot;; /* 单元格字体 */
+    font-size: 10pt; /* 单元格字体大小 */
+}
+
+QTableWidget::item {
+}
+
+QHeaderView::section {
+    background-color: #f0f0f0; /* 表头背景颜色 */
+    padding: 5px; /* 表头内边距 */
+    border-style: none; /* 表头边框样式 */
+    border-bottom: 5px solid white; /* 表头下边框宽度调整为2px */
+    border-right: 2px solid white; /* 表头右边框宽度调整为2px */
+    font-family: &quot;Calibri&quot;; /* 表头字体 */
+    font-size: 10pt; /* 表头字体大小 */
+    font-weight: 600; /* 表头字体粗细 */
+}
+
+QTableCornerButton::section {
+    background-color: #f0f0f0; /* 角落按钮背景颜色 */
+    /* 添加其他您需要的样式 */
+}
+</string>
+          </property>
+          <attribute name="horizontalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="verticalHeaderMinimumSectionSize">
+           <number>30</number>
+          </attribute>
+          <row>
+           <property name="text">
+            <string>0</string>
+           </property>
+          </row>
+          <column>
+           <property name="text">
+            <string>0</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>1</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>2</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>3</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>4</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>5</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>6</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>7</string>
+           </property>
+          </column>
+          <item row="0" column="0">
+           <property name="text">
+            <string>0x80</string>
+           </property>
+           <property name="background">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>255</red>
+              <green>242</green>
+              <blue>204</blue>
+             </color>
+            </brush>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_6">
+          <property name="styleSheet">
+           <string notr="true">font: italic 12pt &quot;Calibri&quot;;</string>
+          </property>
+          <property name="text">
+           <string>The parameters above are specific and fixed for the PI21116 EVKit and AUXR Demo Board.  These are used by the software to translate AUXR measurements into Temperature, and are provided for reference only.</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -5244,6 +5449,12 @@ QPushButton:pressed {
         </item>
         <item>
          <widget class="QTableWidget" name="table_acqReqPage_acqReq">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>100</height>
+           </size>
+          </property>
           <property name="maximumSize">
            <size>
             <width>16777215</width>

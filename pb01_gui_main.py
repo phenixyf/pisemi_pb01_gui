@@ -267,12 +267,14 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.radioButton_acqReqPage_dataUpdate.setEnabled(False)
         self.radioButton_acqReqPage_auxaDiagA.setEnabled(False)
         self.radioButton_acqReqPage_auxaDiagB.setEnabled(False)
+        set_table_item(self.table_acqReqPage_auxPar, CHAIN_CFG_TABLE_ROWHG,
+                       table_acqReqPage_auxPar_items)
         set_table_head(self.table_acqReqPage_acqReq, table_acqReqPage_headers,
                        CHAIN_CFG_TABLE_HEHG, 0)
         set_table_item(self.table_acqReqPage_acqReq, CHAIN_CFG_TABLE_ROWHG,
                        table_acqReqPage_items)
 
-        adjust_acqReqPage_tables(self.table_acqReqPage_osr, self.table_acqReqPage_acqReq)
+        adjust_acqReqPage_tables(self.table_acqReqPage_osr, self.table_acqReqPage_auxPar, self.table_acqReqPage_acqReq)
 
         ''' initial measurement acquisition summary data page (page6) '''
         set_table_item(self.table_meaAcqSumPage_dc, CHAIN_CFG_TABLE_ROWHG,

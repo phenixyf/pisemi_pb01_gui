@@ -432,6 +432,10 @@ table_diagCfgPage_aluTeDiag_items = [
 ]
 
 """ acquisition request page tablewidget initial content (page5) """
+table_acqReqPage_auxPar_items = [
+    ["10", "R_THERM (kΩ)", "10", "R0_NTC (kΩ)", "4250", "β_NTC (Kelvin)", "298.15", "T0_NTC (Kelvin)"]
+]
+
 table_acqReqPage_headers = ["Address", "Register", "Pending (hex)", "Actual (hex)",
                             "ACQDONE", "DATARDY", "ACQERR", "(Logic Zero)", "ACQCBALINT",
                             "ACQIIRBYP", "ACQIIRINIT", "ACQIIRPROC", "ALUTESTEN", "ACQOSR[2:0]", "ACQMODE[3:0]"]
@@ -1053,12 +1057,20 @@ def set_diagCfgPage_table_color(pTeCurTable, pDiagThrTable, pAluTable):
                                         & ~Qt.ItemIsEditable & ~Qt.ItemIsSelectable)  # disable cell
 
 
-def adjust_acqReqPage_tables(pOsrTable, pAcqReqTable):
+def adjust_acqReqPage_tables(pOsrTable, pAuxParTable, pAcqReqTable):
+    """ osr table """
     pOsrTable.item(0, 0).setBackground(QColor("#DAE3F3"))  # 紫色
     pOsrTable.item(0, 0).setFlags(pOsrTable.item(0, 0).flags()
                                   & ~Qt.ItemIsEditable & ~Qt.ItemIsSelectable)  # disable cell
     pOsrTable.item(0, 1).setBackground(QColor("#FFF2CC"))  # 黄色
 
+    """ auxiliary parameter table """
+    for i in range(4):
+        pAuxParTable.setColumnWidth(i*2,    pAcqReqTable.columnWidth(0) * 2)
+        pAuxParTable.setColumnWidth(i*2 +1, pAcqReqTable.columnWidth(0) * 3)
+        pAuxParTable.item(0, i*2).setBackground(QColor("#DAE3F3"))  # 紫色
+
+    """ acquisition request table """
     for r in range(2):
         for c in range(3,15):
             if c == 3:

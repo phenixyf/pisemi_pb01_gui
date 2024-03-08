@@ -713,9 +713,9 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 status2Dev1 = (rtStaBlkDev1[6] << 8) | rtStaBlkDev1[5]
                 fmea1Dev1 = (rtStaBlkDev1[8] << 8) | rtStaBlkDev1[7]
                 fmea2Dev1 = (rtStaBlkDev1[10] << 8) | rtStaBlkDev1[9]
-                temp1Dev1 = (rtStaBlkDev0[12] << 8) | rtStaBlkDev0[11]
-                temp2Dev1 = (rtStaBlkDev0[14] << 8) | rtStaBlkDev0[13]
-                gpioDataDev1 = (rtStaBlkDev0[16] << 8) | rtStaBlkDev0[15]
+                temp1Dev1 = (rtStaBlkDev1[12] << 8) | rtStaBlkDev1[11]
+                temp2Dev1 = (rtStaBlkDev1[14] << 8) | rtStaBlkDev1[13]
+                gpioDataDev1 = (rtStaBlkDev1[16] << 8) | rtStaBlkDev1[15]
                 dcDev1 = rtStaBlkDev1[17]
                 listStaDev1 = [hex(status1Dev1)[2:].upper().zfill(4), hex(status2Dev1)[2:].upper().zfill(4),
                                hex(fmea1Dev1)[2:].upper().zfill(4), hex(fmea2Dev1)[2:].upper().zfill(4)]
@@ -757,7 +757,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
     def read_dc_and_status(self, pDcTable, pLedDcByt, pLedAlertPk,
                                  pStatusTable, pLedStatusDev0, pLedStatusDev1):
         """
-        用 readall command 读取 status block 各寄存器
+        用 readall command 读取 status block 中某个寄存器，并获得此次操作的 DC-Byte
         用返回的 DC byte 更新指定页面的 DC table
         用返回的 status block 各寄存器数据更新指定页面的 status table
         :param pDcTable: 指定页面的 dc table
@@ -768,7 +768,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         :param pLedStatusDev1: 指定页面 status table 对应的 dev1 led 串列表
         :return:
         """
-        """ use READ ALL read 4 status registers """
+        """ use READ ALL read one status registers to get DC byte """
         # read status1
         if self.flagSingleAfe:
             rtData = pb01_read_all(self.hidBdg, 0x04, 1, 0x00)

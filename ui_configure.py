@@ -370,20 +370,20 @@ table_appCfgPage_thAndAcq_headers = ["Address", "Register", "Pending (hex)", "Pe
                            "Pending Value", "Pending Field", "Device 0 (hex)", "Device 1 (hex)"]
 
 table_appCfgPage_theresholdReg_items = [
-    ["0x20", "OVTHREG",         "E667",     "4.500",    "V",           " ",   " ",  "FFFF",   "FFFF"],
-    ["0x21", "UVTREG",          "8A3D",     "2.700",    "V",           " ",   " ",  "0000",   "0000"],
-    ["0x22", "BIPOVTHREG",      "051F",     "+0.100",   "V (Bipolar)", " ",   " ",  "7FFF",   "7FFF"],
-    ["0x23", "BIPUVTHREG",      "FAE1",     "-0.100",   "V (Bipolar)", " ",   " ",  "8000",   "8000"],
-    ["0x24", "ALTOVTHREG",      "E667",     "4.500",    "V",           " ",   " ",  "FFFF",   "FFFF"],
-    ["0x25", "ALTUVTHREG",      "8A3D",     "2.700",    "V",           " ",   " ",  "0000",   "0000"],
-    ["0x26", "ALTBIPOVTHREG",   "051F",     "+0.100",   "V (Bipolar)", " ",   " ",  "7FFF",   "7FFF"],
-    ["0x27", "ALTBIPUVTHREG",   "FAE1",     "-0.100",   "V (Bipolar)", " ",   " ",  "8000",   "8000"],
-    ["0x28", "AUXROVTHREG",     "TBD",      "TBD",      "Ratiometric", " ",   " ",  "FFFF",   "FFFF"],
-    ["0x29", "AUXRUVTHREG",     "TBD",      "TBD",      "Ratiometric", " ",   " ",  "0000",   "0000"],
-    ["0x2A", "AUXAOVTHREG",     "FFFF",     "2.500",    "V",           " ",   " ",  "FFFF",   "FFFF"],
-    ["0x2B", "AUXAUVTHREG",     "0000",     "0.000",    "V",           " ",   " ",  "0000",   "0000"],
-    ["0x2C", "MMTHREG",         "0CCD",     "0.250",    "V",           " ",   " ",  "FFFF",   "FFFF"],
-    ["0x2D", "TEMPTHREG",       "0C48",     "120",      "°C",          "248", "°F", "0C48",   "0C48"]
+    ["0x20", "OVTHREG",         "D709",     "4.2",         "V",           " ",   " ",  "FFFF",   "FFFF"],
+    ["0x21", "UVTREG",          "A3D6",     "3.2",         "V",           " ",   " ",  "0000",   "0000"],
+    ["0x22", "BIPOVTHREG",      "051E",     "+0.1",        "V (Bipolar)", " ",   " ",  "7FFF",   "7FFF"],
+    ["0x23", "BIPUVTHREG",      "FAE1",     "-0.1",        "V (Bipolar)", " ",   " ",  "8000",   "8000"],
+    ["0x24", "ALTOVTHREG",      "D709",     "4.2",         "V",           " ",   " ",  "FFFF",   "FFFF"],
+    ["0x25", "ALTUVTHREG",      "A3D6",     "3.2",         "V",           " ",   " ",  "0000",   "0000"],
+    ["0x26", "ALTBIPOVTHREG",   "051E",     "+0.1",        "V (Bipolar)", " ",   " ",  "7FFF",   "7FFF"],
+    ["0x27", "ALTBIPUVTHREG",   "FAE1",     "-0.1",        "V (Bipolar)", " ",   " ",  "8000",   "8000"],
+    ["0x28", "AUXROVTHREG",     "F332",     "95",          "%",           " ",   " ",  "FFFF",   "FFFF"],
+    ["0x29", "AUXRUVTHREG",     "3333",     "20",          "%",           " ",   " ",  "0000",   "0000"],
+    ["0x2A", "AUXAOVTHREG",     "FFFF",     "2.5(TBD)",    "V",           " ",   " ",  "FFFF",   "FFFF"],
+    ["0x2B", "AUXAUVTHREG",     "3333",     "0.0(TBD)",    "V",           " ",   " ",  "0000",   "0000"],
+    ["0x2C", "MMTHREG",         "0CCD",     "1",           "V",           " ",   " ",  "FFFF",   "FFFF"],
+    ["0x2D", "TEMPTHREG",       "0C48",     "120",         "°C",          "248", "°F", "0C48",   "0C48"]
 ]
 
 table_appCfgPage_acqReg_items = [
@@ -407,19 +407,19 @@ table_diagCfgPage_testCfg_items = [
 table_diagCfgPage_diagThre_headers = ["Address", "Register", "Pending (hex)", "Pending Value", "Pending Unit",
                                       "Pending Value", "Pending Unit", "Device 0 (hex)", "Device 1 (hex)"]
 table_diagCfgPage_diagThre_items = [
-    ["0x2F", "BALSHRTUVTHREG",  "0000", "0.000",   "V",           " ", " ", "0000", "0000"],
-    ["0x30", "BALOVTHREG",      "7FFF", "+2.500",  "V(Bipolar)",  " ", " ", "7FFF", "7FFF"],
-    ["0x31", "BALUVTHREG",      "8000", "-2.500",  "V(Bipolar)",  " ", " ", "8000", "8000"],
-    ["0x32", "CELLOPNOVTHREG",  "FFFF", "5.000",   "V",           " ", " ", "FFFF", "FFFF"],
-    ["0x33", "CELLOPNUVTHREG",  "0000", "0.000",   "V",           " ", " ", "0000", "0000"],
-    ["0x34", "BUSOPNOVTHREG",   "7FFF", "+2.500",  "V(Bipolar)",  " ", " ", "7FFF", "7FFF"],
-    ["0x35", "BUSOPNUVTHREG",   "8000", "-2.500",  "V(Bipolar)",  " ", " ", "8000", "8000"],
-    ["0x36", "CELLHVMOVTHREG",  "FFFF", "5.000",   "V",           " ", " ", "FFFF", "FFFF"],
-    ["0x37", "CELLHVMUVTHREG",  "0000", "0.000",   "V",           " ", " ", "0000", "0000"],
-    ["0x38", "BUSHVMOVTHREG",   "7FFF", "+2.500",  "V(Bipolar)",  " ", " ", "7FFF", "7FFF"],
-    ["0x39", "BUSHVMUVTHREG",   "8000", "-2.500",  "V(Bipolar)",  " ", " ", "8000", "8000"],
-    ["0x3A", "AUXRDIAGOVTHREG", "FFFF", "2.500",   "V(Absolute)", " ", " ", "FFFF", "FFFF"],
-    ["0x3B", "AUXRDIAGUVTHREG", "0000", "0.000",   "V(Absolute)", " ", " ", "0000", "0000"]
+    ["0x2F", "BALSHRTUVTHREG",  "9EB7", "3.10",          "V",           " ", " ", "0000", "0000"],
+    ["0x30", "BALOVTHREG",      "0CCC", "+0.25",         "V(Bipolar)",  " ", " ", "7FFF", "7FFF"],
+    ["0x31", "BALUVTHREG",      "0083", "-0.010",        "V(Bipolar)",  " ", " ", "8000", "8000"],
+    ["0x32", "CELLOPNOVTHREG",  "FFFF", "5.000",         "V",           " ", " ", "FFFF", "FFFF"],
+    ["0x33", "CELLOPNUVTHREG",  "9A84", "3.018",         "V",           " ", " ", "0000", "0000"],
+    ["0x34", "BUSOPNOVTHREG",   "0847", "+0.1617",       "V(Bipolar)",  " ", " ", "7FFF", "7FFF"],
+    ["0x35", "BUSOPNUVTHREG",   "F7B8", "-0.1617",       "V(Bipolar)",  " ", " ", "8000", "8000"],
+    ["0x36", "CELLHVMOVTHREG",  "CDD2", "4.00(TBD)",     "V",           " ", " ", "FFFF", "FFFF"],
+    ["0x37", "CELLHVMUVTHREG",  "AD0D", "3.40(TBD)",     "V",           " ", " ", "0000", "0000"],
+    ["0x38", "BUSHVMOVTHREG",   "1062", "+0.3200(TBD)",  "V(Bipolar)",  " ", " ", "7FFF", "7FFF"],
+    ["0x39", "BUSHVMUVTHREG",   "EF9D", "-0.3200(TBD)",  "V(Bipolar)",  " ", " ", "8000", "8000"],
+    ["0x3A", "AUXRDIAGOVTHREG", "A92A", "1.652039374",   "V(Absolute)", " ", " ", "FFFF", "FFFF"],
+    ["0x3B", "AUXRDIAGUVTHREG", "0CFC", "0.126813876",   "V(Absolute)", " ", " ", "0000", "0000"]
 ]
 
 table_diagCfgPage_aluTeDiag_headers = ["Address", "Register", "Pending (hex)", "Pending Value", "Pending Unit",

@@ -5,11 +5,13 @@
 
 """ step1: 导入必须的库和 layout 文件 """
 import sys
+import os
 # from PyQt5.QtWidgets import *
 # from PyQt5.QtCore import *
 # from PyQt5.QtGui import QColor
 import time
-
+from PyQt5.QtWidgets import QFileDialog
+import json
 import numpy as np
 
 from pb01_gui_main_window import Ui_MainWindow
@@ -35,7 +37,10 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.hidBdg = hid.device()
         self.hidStatus = False
         self.setupNotification()
-        ''' status bar '''
+        """ software correction """
+        self.dev0ParList = []
+        self.dev1ParList = []
+        """ status bar """
         self.statusMessage = QLabel()
         self.statusMessage.setFont(QFont('Calibri', 10, QFont.Bold))  # 设置字体和加粗
         self.statusBar().addPermanentWidget(self.statusMessage)
@@ -86,6 +91,8 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.open_hid()
         self.init_tab_pages()
         """  配置信号和槽 """
+        ''' menu bar '''
+        self.actionLoad.triggered.connect(self.slot_menu_load)
         ''' chain configuration page (page1) '''
         self.radioButton_singleAfe.clicked.connect(self.slot_radio_single_dual_afe)
         self.radioButton_dualAfe.clicked.connect(self.slot_radio_single_dual_afe)
@@ -1213,10 +1220,10 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 ''' calculate actual data '''
                 for i in range(8):
                     if (0x01 << i) & pPolAuxCfg:     # convert into percent
-                        listRegDataActualDev0[i] = str(round(listRegDataIntDev0[i + 8] / ADC_FULL_DATA * 100, 2))\
-                                                   + '%'        # ALTAUX
-                        listRegDataActualDev0[i + 8] = str(round(listRegDataIntDev0[i] / ADC_FULL_DATA * 100, 2))\
-                                                       + '%'    # AUX
+                        listRegDataActualDev0[i] = str(round(listRegDataIntDev0[i + 8] /
+                                                             ADC_FULL_DATA * CELL_SCALE, 5)) + 'V'        # ALTAUX
+                        listRegDataActualDev0[i + 8] = str(round(listRegDataIntDev0[i] /
+                                                                 ADC_FULL_DATA * CELL_SCALE, 5)) + 'V'    # AUX
                     else:   # convert into celsius
                         listRegDataActualDev0[i] = str(round(self.cal_ntc_temp_value(listRegDataIntDev0[i + 8]), 2)) \
                                                    + '°C'        # ALTAUX
@@ -1320,10 +1327,10 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                     ''' calculate actual data '''
                 for i in range(8):
                     if (0x01 << i) & pPolAuxCfg:     # convert into percent
-                        listRegDataActualDev1[i] = str(round(listRegDataIntDev1[i + 8] / ADC_FULL_DATA * 100, 2))\
-                                                   + '%'        # ALTAUX
-                        listRegDataActualDev1[i + 8] = str(round(listRegDataIntDev1[i] / ADC_FULL_DATA * 100, 2))\
-                                                       + '%'    # AUX
+                        listRegDataActualDev1[i] = str(round(listRegDataIntDev1[i + 8] /
+                                                             ADC_FULL_DATA * CELL_SCALE, 5)) + 'V'        # ALTAUX
+                        listRegDataActualDev1[i + 8] = str(round(listRegDataIntDev1[i] /
+                                                                 ADC_FULL_DATA * CELL_SCALE, 5)) + 'V'    # AUX
                     else:   # convert into celsius
                         listRegDataActualDev1[i] = str(round(self.cal_ntc_temp_value(listRegDataIntDev1[i + 8]), 2)) \
                                                    + '°C'        # ALTAUX
@@ -1780,6 +1787,77 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         new_style = current_style + " QPushButton {background-color: " + pBkgdColor + ";}"
         pBtn.setStyleSheet(new_style)
         pBtn.setDisabled(False)
+
+    def slot_menu_load(self):
+        ''' open file '''
+        fileName, fileType = QtWidgets.QFileDialog.getOpenFileNames(self, "选取文件", os.getcwd(),
+                                                                   "All Files(*);;Text Files(*.txt)")
+
+        if SCRIPT_DEBUG:
+            print("\r\n")
+            print(f"file name is: ", fileName)
+
+        ''' read device0 id '''
+        if len(fileName) == 1:
+            # At Initialization read devid and load alpha coefficents
+            DEV0ID = (pb01_read_device(self.hidBdg, 0x00, 0x00, 0x00) << 32) \
+                    + (pb01_read_device(self.hidBdg, 0x00, 0x01, 0x00) << 16) \
+                    + pb01_read_device(self.hidBdg, 0x00, 0x02, 0x00)       # read DEVID0/1/2 registers
+            alpha_coeff = json.load(open(fileName[0], "r"))
+            dev0_afa2_adc1_p1 = -float(alpha_coeff[str(DEV0ID)]["afa2_adc1_p1"]) / 2 ** 40
+            dev0_afa1_adc1_p1 = float(alpha_coeff[ str(DEV0ID)]["afa1_adc1_p1"]) / 2 ** 31
+            dev0_afa0_adc1_p1 = float(alpha_coeff[ str(DEV0ID)]["afa0_adc1_p1"]) / 2 ** 16
+            dev0_afa2_adc1_p2 = -float(alpha_coeff[str(DEV0ID)]["afa2_adc1_p2"]) / 2 ** 40
+            dev0_afa1_adc1_p2 = float(alpha_coeff[ str(DEV0ID)]["afa1_adc1_p2"]) / 2 ** 31
+            dev0_afa0_adc1_p2 = float(alpha_coeff[ str(DEV0ID)]["afa0_adc1_p2"]) / 2 ** 16
+            dev0_afa2_adc2_p1 = -float(alpha_coeff[str(DEV0ID)]["afa2_adc2_p1"]) / 2 ** 40
+            dev0_afa1_adc2_p1 = float(alpha_coeff[ str(DEV0ID)]["afa1_adc2_p1"]) / 2 ** 31
+            dev0_afa0_adc2_p1 = float(alpha_coeff[ str(DEV0ID)]["afa0_adc2_p1"]) / 2 ** 16
+            dev0_afa2_adc2_p2 = -float(alpha_coeff[str(DEV0ID)]["afa2_adc2_p2"]) / 2 ** 40
+            dev0_afa1_adc2_p2 = float(alpha_coeff[ str(DEV0ID)]["afa1_adc2_p2"]) / 2 ** 31
+            dev0_afa0_adc2_p2 = float(alpha_coeff[ str(DEV0ID)]["afa0_adc2_p2"]) / 2 ** 16
+            self.dev0ParList = [dev0_afa2_adc1_p1,
+                                dev0_afa1_adc1_p1,
+                                dev0_afa0_adc1_p1,
+                                dev0_afa2_adc1_p2,
+                                dev0_afa1_adc1_p2,
+                                dev0_afa0_adc1_p2,
+                                dev0_afa2_adc2_p1,
+                                dev0_afa1_adc2_p1,
+                                dev0_afa0_adc2_p1,
+                                dev0_afa2_adc2_p2,
+                                dev0_afa1_adc2_p2,
+                                dev0_afa0_adc2_p2]
+            ''' read device1 id '''
+        elif len(fileName) == 2:
+            DEV1ID = (pb01_read_device(self.hidBdg, 0x01, 0x00, 0x00) << 32) \
+                     + (pb01_read_device(self.hidBdg, 0x01, 0x01, 0x00) << 16) \
+                     + pb01_read_device(self.hidBdg, 0x01, 0x02, 0x00)  # read DEVID0/1/2 registers
+            alpha_coeff = json.load(open(fileName[1], "r"))
+            dev1_afa2_adc1_p1 = -float(alpha_coeff[str(DEV1ID)]["afa2_adc1_p1"]) / 2 ** 40
+            dev1_afa1_adc1_p1 = float(alpha_coeff[ str(DEV1ID)]["afa1_adc1_p1"]) / 2 ** 31
+            dev1_afa0_adc1_p1 = float(alpha_coeff[ str(DEV1ID)]["afa0_adc1_p1"]) / 2 ** 16
+            dev1_afa2_adc1_p2 = -float(alpha_coeff[str(DEV1ID)]["afa2_adc1_p2"]) / 2 ** 40
+            dev1_afa1_adc1_p2 = float(alpha_coeff[ str(DEV1ID)]["afa1_adc1_p2"]) / 2 ** 31
+            dev1_afa0_adc1_p2 = float(alpha_coeff[ str(DEV1ID)]["afa0_adc1_p2"]) / 2 ** 16
+            dev1_afa2_adc2_p1 = -float(alpha_coeff[str(DEV1ID)]["afa2_adc2_p1"]) / 2 ** 40
+            dev1_afa1_adc2_p1 = float(alpha_coeff[ str(DEV1ID)]["afa1_adc2_p1"]) / 2 ** 31
+            dev1_afa0_adc2_p1 = float(alpha_coeff[ str(DEV1ID)]["afa0_adc2_p1"]) / 2 ** 16
+            dev1_afa2_adc2_p2 = -float(alpha_coeff[str(DEV1ID)]["afa2_adc2_p2"]) / 2 ** 40
+            dev1_afa1_adc2_p2 = float(alpha_coeff[ str(DEV1ID)]["afa1_adc2_p2"]) / 2 ** 31
+            dev1_afa0_adc2_p2 = float(alpha_coeff[ str(DEV1ID)]["afa0_adc2_p2"]) / 2 ** 16
+            self.dev1ParList = [dev1_afa2_adc1_p1,
+                                dev1_afa1_adc1_p1,
+                                dev1_afa0_adc1_p1,
+                                dev1_afa2_adc1_p2,
+                                dev1_afa1_adc1_p2,
+                                dev1_afa0_adc1_p2,
+                                dev1_afa2_adc2_p1,
+                                dev1_afa1_adc2_p1,
+                                dev1_afa0_adc2_p1,
+                                dev1_afa2_adc2_p2,
+                                dev1_afa1_adc2_p2,
+                                dev1_afa0_adc2_p2]
 
 
     def slot_radio_single_dual_afe(self):
@@ -2449,8 +2527,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             self.message_box(rdData)
             return False
         else:
-            intData = (rdData[3] << 8) | rdData[2]
-            return intData
+            return rdData
 
 
     def solt_radioBtn_acqReqPage_acqcbalint(self):

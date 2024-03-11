@@ -598,11 +598,16 @@ def pb01_read_device(pHidDev, pDevAddr, pRegAddr, pAliveSeed):
     :return: 返回值分三种情况
              "message return RX error": 发出的数据没有正常返回 bridge receive buffer
              "pec check error"： pec check fail
-             数据列表：要读取的数据返回 bridger receive buffer，并被读出，返回的就是从 receive buffer 读出的数据
-                     列表中每个成员都是 int 类型
+             数据列表：要读取的寄存器值
+                     以 int 类型返回，其值就是寄存器值
     """
     cmd = (pDevAddr << 3) | 0x5
-    return pb01_read(pHidDev, 0xC0, 7, [cmd, pRegAddr, 0x00], pAliveSeed)
+    rdData = pb01_read(pHidDev, 0xC0, 7, [cmd, pRegAddr, 0x00], pAliveSeed)
+    if rdData == "message return RX error" or rdData == "pec check error":
+        return rdData
+    else:
+        intData = (rdData[3] << 8) | rdData[2]
+        return intData
 
 
 def pb01_read_block(pHidDev, pBlockSize, pDevAddr, pRegAddr, pAliveSeed):

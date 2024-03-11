@@ -10,6 +10,8 @@ import sys
 # from PyQt5.QtGui import QColor
 import time
 
+import numpy as np
+
 from pb01_gui_main_window import Ui_MainWindow
 from pb01_bridge_driver import *
 from ui_configure import *
@@ -50,7 +52,8 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.ledDevMgPageDcByte = []
         self.ledDevMgPageAlertPk = []
         ''' appCfgPage (page3) '''
-        self.polCfgValue = 0x0000       # register POLARITYCFG(0x44) value
+        self.polCfgValue = 0x0000       # register POLARITYCFG(0x14) value
+        self.auxRefCfgVal = 0x0000      # register AUXREFCFG(0x16) value
         ''' acqReqPage (page5) '''
         self.acqCtrlVal = 0x0B41      # acqReqPage ACQCTRL (0x44) register value
         self.acqMode = 0x01           # acqReqPage acquisition mode value (由 radio button 选择设置）
@@ -1096,7 +1099,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                                               alertAuxUvDev1], self.ledMeaAcqDetailPageDev1)
 
 
-    def update_meaAcqDetailPage_dataTable(self, pHexRow, pValRow, pRegAddr, pPolCfg, pAuxFlag):
+    def update_meaAcqDetailPage_dataTable(self, pHexRow, pValRow, pRegAddr, pPolAuxCfg, pAuxFlag):
         """
         更新 acquistion detail data table
         一次调用只更新 table 中的一个 block
@@ -1104,9 +1107,15 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         :param pHexRow: 当前调用要更新的 hex data 所在行的行号
         :param pValRow: 当前调用要更新的 value data 所在行的行号
         :param pRegAddr: 当前调用要读取的 block 首寄存器地址
-        :param pPolCfg: cell data 根据传入的 pPolCfg 判断是否做 bipolar 处理
-                        pPolCfg bit = 0 - unipolar
-                                bit = 1 - bipolar
+        :param pPolAuxCfg: 此参数根据读取的 block 不同有两种含义
+                           场景1：当前读取的是 cell data
+                           cell data 根据传入的 pPolAuxCfg 判断是否做 bipolar 处理
+                           pPolAuxCfg bit = 0 - unipolar
+                                      bit = 1 - bipolar
+                           场景2：当前读取的是 aux data
+                           aux data 根据传入的 pPolAuxCfg 判断转换成摄氏度还是百分比
+                           pPolAuxCfg bit = 0 - 摄氏度
+                                      bit = 1 - 百分比
         :param pAuxFlag: 因 aux block 计算公式和其它 block 不同，所以用此 flag 来区分
                          True - 当前处理 aux block
                          False - 当前处理非 aux block
@@ -1135,6 +1144,27 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             regData14Dev0 = (rtData[32] << 8) | rtData[31]
             regData15Dev0 = (rtData[34] << 8) | rtData[33]
 
+            ''' int & actual data list '''
+            listRegDataIntDev0 = [regData0Dev0,
+                                  regData1Dev0,
+                                  regData2Dev0,
+                                  regData3Dev0,
+                                  regData4Dev0,
+                                  regData5Dev0,
+                                  regData6Dev0,
+                                  regData7Dev0,
+                                  regData8Dev0,
+                                  regData9Dev0,
+                                  regData10Dev0,
+                                  regData11Dev0,
+                                  regData12Dev0,
+                                  regData13Dev0,
+                                  regData14Dev0,
+                                  regData15Dev0]
+
+            listRegDataActualDev0 = ['0', '0', '0', '0', '0', '0', '0', '0',
+                                     '0', '0', '0', '0', '0', '0', '0', '0']
+
             if not pAuxFlag:    # cell data
                 ''' hex data '''
                 listRegDataHexDev0 = [hex(regData0Dev0)[2:].upper().zfill(4),
@@ -1153,33 +1183,15 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                       hex(regData13Dev0)[2:].upper().zfill(4),
                                       hex(regData14Dev0)[2:].upper().zfill(4),
                                       hex(regData15Dev0)[2:].upper().zfill(4)]
-                ''' actual data '''
-                listRegDataUnipolarDev0 = [regData0Dev0,
-                                           regData1Dev0,
-                                           regData2Dev0,
-                                           regData3Dev0,
-                                           regData4Dev0,
-                                           regData5Dev0,
-                                           regData6Dev0,
-                                           regData7Dev0,
-                                           regData8Dev0,
-                                           regData9Dev0,
-                                           regData10Dev0,
-                                           regData11Dev0,
-                                           regData12Dev0,
-                                           regData13Dev0,
-                                           regData14Dev0,
-                                           regData15Dev0]
-
-                listRegDataValDev0 = []
+                ''' calculate actual data '''
                 for i in range(16):
-                    if (0x0001 << i) & pPolCfg:     # convert into bipolar
-                        listRegDataUnipolarDev0[i] = str(round(
-                            convert_complement_data(listRegDataUnipolarDev0[i], 16) / ADC_FULL_DATA * CELL_SCALE, 5))
+                    if (0x0001 << i) & pPolAuxCfg:     # convert into bipolar
+                        listRegDataActualDev0[i] = str(round(
+                            convert_complement_data(listRegDataIntDev0[i], 16) / ADC_FULL_DATA * CELL_SCALE, 5))
                     else:   # use unipolar
-                        listRegDataUnipolarDev0[i] = str(round(
-                            listRegDataUnipolarDev0[i] / ADC_FULL_DATA * CELL_SCALE, 5))
-                    listRegDataValDev0.append(listRegDataUnipolarDev0[i])
+                        listRegDataActualDev0[i] = str(round(
+                            listRegDataIntDev0[i] / ADC_FULL_DATA * CELL_SCALE, 5))
+                    # listRegDataActualDev0.append(listRegDataIntDev0[i])
             else:   # AUX data
                 ''' hex data '''
                 listRegDataHexDev0 = [hex(regData8Dev0)[2:].upper().zfill(4),       # ALTAUX 0
@@ -1198,28 +1210,23 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                       hex(regData5Dev0)[2:].upper().zfill(4),
                                       hex(regData6Dev0)[2:].upper().zfill(4),
                                       hex(regData7Dev0)[2:].upper().zfill(4)]       # AUX 7
-                ''' actual data '''
-                listRegDataValDev0 = [str(round(regData8Dev0  / ADC_FULL_DATA * 100, 2)) + '%',     # ALTAUX 0
-                                      str(round(regData9Dev0  / ADC_FULL_DATA * 100, 2)) + '%',
-                                      str(round(regData10Dev0 / ADC_FULL_DATA * 100, 2)) + '%',
-                                      str(round(regData11Dev0 / ADC_FULL_DATA * 100, 2)) + '%',
-                                      str(round(regData12Dev0 / ADC_FULL_DATA * 100, 2)) + '%',
-                                      str(round(regData13Dev0 / ADC_FULL_DATA * 100, 2)) + '%',
-                                      str(round(regData14Dev0 / ADC_FULL_DATA * 100, 2)) + '%',
-                                      str(round(regData15Dev0 / ADC_FULL_DATA * 100, 2)) + '%',     # ALTAUX 7
-                                      str(round(regData0Dev0  / ADC_FULL_DATA * 100, 2)) + '%',      # AUX 0
-                                      str(round(regData1Dev0  / ADC_FULL_DATA * 100, 2)) + '%',
-                                      str(round(regData2Dev0  / ADC_FULL_DATA * 100, 2)) + '%',
-                                      str(round(regData3Dev0  / ADC_FULL_DATA * 100, 2)) + '%',
-                                      str(round(regData4Dev0  / ADC_FULL_DATA * 100, 2)) + '%',
-                                      str(round(regData5Dev0  / ADC_FULL_DATA * 100, 2)) + '%',
-                                      str(round(regData6Dev0  / ADC_FULL_DATA * 100, 2)) + '%',
-                                      str(round(regData7Dev0  / ADC_FULL_DATA * 100, 2)) + '%']      # AUX 7
+                ''' calculate actual data '''
+                for i in range(8):
+                    if (0x01 << i) & pPolAuxCfg:     # convert into percent
+                        listRegDataActualDev0[i] = str(round(listRegDataIntDev0[i + 8] / ADC_FULL_DATA * 100, 2))\
+                                                   + '%'        # ALTAUX
+                        listRegDataActualDev0[i + 8] = str(round(listRegDataIntDev0[i] / ADC_FULL_DATA * 100, 2))\
+                                                       + '%'    # AUX
+                    else:   # convert into celsius
+                        listRegDataActualDev0[i] = str(round(self.cal_ntc_temp_value(listRegDataIntDev0[i + 8]), 2)) \
+                                                   + '°C'        # ALTAUX
+                        listRegDataActualDev0[i + 8] = str(round(self.cal_ntc_temp_value(listRegDataIntDev0[i]), 2)) \
+                                                       + '°C'    # AUX
 
         # fill table
         for c in range(18, 2, -1):
             self.table_meaAcqDetailData_dataRegDev0.item(pHexRow, c).setText(listRegDataHexDev0[18 - c])
-            self.table_meaAcqDetailData_dataRegDev0.item(pValRow, c).setText(listRegDataValDev0[18 - c])
+            self.table_meaAcqDetailData_dataRegDev0.item(pValRow, c).setText(listRegDataActualDev0[18 - c])
 
         """ read device 1 alert register block """
         if not self.flagSingleAfe:
@@ -1245,6 +1252,27 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 regData14Dev1 = (rtData[32] << 8) | rtData[31]
                 regData15Dev1 = (rtData[34] << 8) | rtData[33]
 
+                ''' int & actual data list '''
+                listRegDataIntDev1 = [regData0Dev1,
+                                      regData1Dev1,
+                                      regData2Dev1,
+                                      regData3Dev1,
+                                      regData4Dev1,
+                                      regData5Dev1,
+                                      regData6Dev1,
+                                      regData7Dev1,
+                                      regData8Dev1,
+                                      regData9Dev1,
+                                      regData10Dev1,
+                                      regData11Dev1,
+                                      regData12Dev1,
+                                      regData13Dev1,
+                                      regData14Dev1,
+                                      regData15Dev1]
+
+                listRegDataActualDev1 = ['0', '0', '0', '0', '0', '0', '0', '0',
+                                         '0', '0', '0', '0', '0', '0', '0', '0']
+
                 if not pAuxFlag:    # cell data
                     ''' hex data '''
                     listRegDataHexDev1 = [hex(regData0Dev1)[2:].upper().zfill(4),
@@ -1263,33 +1291,14 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                           hex(regData13Dev1)[2:].upper().zfill(4),
                                           hex(regData14Dev1)[2:].upper().zfill(4),
                                           hex(regData15Dev1)[2:].upper().zfill(4)]
-                    ''' actual data '''
-                    listRegDataUnipolarDev1 = [regData0Dev1,
-                                               regData1Dev1,
-                                               regData2Dev1,
-                                               regData3Dev1,
-                                               regData4Dev1,
-                                               regData5Dev1,
-                                               regData6Dev1,
-                                               regData7Dev1,
-                                               regData8Dev1,
-                                               regData9Dev1,
-                                               regData10Dev1,
-                                               regData11Dev1,
-                                               regData12Dev1,
-                                               regData13Dev1,
-                                               regData14Dev1,
-                                               regData15Dev1]
-
-                    listRegDataValDev1 = []
+                    ''' calculate actual data '''
                     for i in range(16):
-                        if (0x0001 << i) & pPolCfg:  # convert into bipolar
-                            listRegDataUnipolarDev1[i] = str(round(
-                                convert_complement_data(listRegDataUnipolarDev1[i], 16) / ADC_FULL_DATA * CELL_SCALE, 5))
+                        if (0x0001 << i) & pPolAuxCfg:  # convert into bipolar
+                            listRegDataActualDev1[i] = str(round(
+                                convert_complement_data(listRegDataIntDev1[i], 16) / ADC_FULL_DATA * CELL_SCALE, 5))
                         else:  # use unipolar
-                            listRegDataUnipolarDev1[i] = str(round(
-                                listRegDataUnipolarDev1[i] / ADC_FULL_DATA * CELL_SCALE, 5))
-                        listRegDataValDev1.append(listRegDataUnipolarDev1[i])
+                            listRegDataActualDev1[i] = str(round(
+                                listRegDataIntDev1[i] / ADC_FULL_DATA * CELL_SCALE, 5))
                 else:   # AUX data
                     ''' hex data '''
                     listRegDataHexDev1 = [hex(regData8Dev1)[2:].upper().zfill(4),           # ALTAUX0
@@ -1308,28 +1317,23 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                           hex(regData5Dev1)[2:].upper().zfill(4),
                                           hex(regData6Dev1)[2:].upper().zfill(4),
                                           hex(regData7Dev1)[2:].upper().zfill(4)]           # AUX7
-                    ''' actual data '''
-                    listRegDataValDev1 = [str(round(regData8Dev1  / ADC_FULL_DATA * 100, 2)) + '%',     # ALTAUX0
-                                          str(round(regData9Dev1  / ADC_FULL_DATA * 100, 2)) + '%',
-                                          str(round(regData10Dev1 / ADC_FULL_DATA * 100, 2)) + '%',
-                                          str(round(regData11Dev1 / ADC_FULL_DATA * 100, 2)) + '%',
-                                          str(round(regData12Dev1 / ADC_FULL_DATA * 100, 2)) + '%',
-                                          str(round(regData13Dev1 / ADC_FULL_DATA * 100, 2)) + '%',
-                                          str(round(regData14Dev1 / ADC_FULL_DATA * 100, 2)) + '%',
-                                          str(round(regData15Dev1 / ADC_FULL_DATA * 100, 2)) + '%',     # ALTAUX7
-                                          str(round(regData0Dev1  / ADC_FULL_DATA * 100, 2)) + '%',      # AUX0
-                                          str(round(regData1Dev1  / ADC_FULL_DATA * 100, 2)) + '%',
-                                          str(round(regData2Dev1  / ADC_FULL_DATA * 100, 2)) + '%',
-                                          str(round(regData3Dev1  / ADC_FULL_DATA * 100, 2)) + '%',
-                                          str(round(regData4Dev1  / ADC_FULL_DATA * 100, 2)) + '%',
-                                          str(round(regData5Dev1  / ADC_FULL_DATA * 100, 2)) + '%',
-                                          str(round(regData6Dev1  / ADC_FULL_DATA * 100, 2)) + '%',
-                                          str(round(regData7Dev1  / ADC_FULL_DATA * 100, 2)) + '%']      # AUX7
+                    ''' calculate actual data '''
+                for i in range(8):
+                    if (0x01 << i) & pPolAuxCfg:     # convert into percent
+                        listRegDataActualDev1[i] = str(round(listRegDataIntDev1[i + 8] / ADC_FULL_DATA * 100, 2))\
+                                                   + '%'        # ALTAUX
+                        listRegDataActualDev1[i + 8] = str(round(listRegDataIntDev1[i] / ADC_FULL_DATA * 100, 2))\
+                                                       + '%'    # AUX
+                    else:   # convert into celsius
+                        listRegDataActualDev1[i] = str(round(self.cal_ntc_temp_value(listRegDataIntDev1[i + 8]), 2)) \
+                                                   + '°C'        # ALTAUX
+                        listRegDataActualDev1[i + 8] = str(round(self.cal_ntc_temp_value(listRegDataIntDev1[i]), 2)) \
+                                                       + '°C'    # AUX
 
                 # fill table
             for c in range(18, 2, -1):
                 self.table_meaAcqDetailData_dataRegDev1.item(pHexRow, c).setText(listRegDataHexDev1[18 - c])
-                self.table_meaAcqDetailData_dataRegDev1.item(pValRow, c).setText(listRegDataValDev1[18 - c])
+                self.table_meaAcqDetailData_dataRegDev1.item(pValRow, c).setText(listRegDataActualDev1[18 - c])
 
 
     def update_diagnostic_data_table(self, pDiagMode):
@@ -1740,6 +1744,16 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                     pLedList[bitCnt].setStyleSheet(led_green_style)
                 else:
                     pLedList[bitCnt].setStyleSheet(led_white_style)
+
+
+    def cal_ntc_temp_value(self, pAdcCode):
+        """
+        按 NTC 电阻公式，由 ADC code(测得的分压值）算出对应的温度值
+        计算结果是摄氏度为单位
+        :param pAdcCode: ADC 采样到的数据。十六进制或 int 格式均可以
+        :return: 计算所得温度值，int 格式
+        """
+        return (NTC_B / (np.log((R_THERM / (65535/pAdcCode - 1)) * (1/R0_NTC)) + NTC_B/NTC_TO)) - 273.15
 
 
     def pushBtn_disable(self, pBtn):
@@ -2249,8 +2263,8 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.update_write_read_op(0x14, self.polCfgValue, self.table_appCfgPage_appCfg, 2, 7)   # customize POLYCFG
         axGpioData = int(self.table_appCfgPage_appCfg.item(3, 2).text(), 16)
         self.update_write_read_op(0x15, axGpioData, self.table_appCfgPage_appCfg, 3, 7)    # customize AUXGPIOCFG
-        axRefData = int(self.table_appCfgPage_appCfg.item(4, 2).text(), 16)
-        self.update_write_read_op(0x16, axRefData, self.table_appCfgPage_appCfg, 4, 7)     # customize AUXREFCFG
+        self.auxRefCfgVal = int(self.table_appCfgPage_appCfg.item(4, 2).text(), 16)
+        self.update_write_read_op(0x16, self.auxRefCfgVal, self.table_appCfgPage_appCfg, 4, 7)     # customize AUXREFCFG
 
 
     def slot_pushBtn_appCfgPage_appCfgRd(self):
@@ -2637,7 +2651,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             """ read meaAcqDetailPage CELL DATA block """
             self.update_meaAcqDetailPage_dataTable(4, 5, 0xA0, self.polCfgValue, False)
             """ read meaAcqDetailPage AUXILIARY DATA block """
-            self.update_meaAcqDetailPage_dataTable(7, 8, 0xB0, self.polCfgValue, True)
+            self.update_meaAcqDetailPage_dataTable(7, 8, 0xB0, self.auxRefCfgVal, True)
             """ read meaAcqDetailPage ALTERNATE DATA block """
             self.update_meaAcqDetailPage_dataTable(10, 11, 0xC0, self.polCfgValue, False)
 

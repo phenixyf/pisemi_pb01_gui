@@ -25,6 +25,12 @@ AUX_SCALE = 2.5        # PB01 aux full scale (2.5V)
 PWR_SCALE = 10         # PB01 power pin like VAA, VIO full scale (10V)
 HV_SCALE = 80          # PB01 hv full scale (80V)
 
+R_THERM = 10000        # NTC 测温电路上拉电阻阻值
+R0_NTC  = 10000        # 使用的 NTC 电阻阻值
+NTC_B = 4250           # NTC B 常数
+NTC_TO = 298.15        # NTC T0 温度 298.15 Kelvin 温度 （25 摄氏度）
+
+
 """ chainCfgPage configure push button style """
 btn_blue_style = "QPushButton {\n"
 "    background-color: #3072B3; /* 按钮背景颜色 */\n"

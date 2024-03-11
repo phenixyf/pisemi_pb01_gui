@@ -2552,13 +2552,13 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         """ re-setup acqReqPage acquisition mode warning bar """
         self.set_default_warn_bar(self.lineEdit_acqReqPage_acqctrlWarn)
 
-        """ kick off the acquisition (write data to R44) """
+        """ step1: kick off the acquisition (write data to R44) """
         rtData = self.afe_write_read_all(0x44, self.acqCtrlVal)  # configure A13 = 0x2000
 
         """ wait 250ms for acquisition to complete """
         time.sleep(0.25)
 
-        """ update acqReqPage acquisition mode table """
+        """ step2: update acqReqPage acquisition mode table """
         if rtData != False:
             if self.flagSingleAfe:  # single afe
                 rdDataDev0 = (rtData[1] << 8) | rtData[0]
@@ -2608,7 +2608,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         else:
             return
 
-        """ read each status register and update DC byte """
+        """ step3(cell acquisition mode): read each status register and update DC byte """
         ''' cell acquisition mode '''
         if self.acqMode == 1 or self.acqMode == 2:
             # read status block and update dc table
@@ -2640,21 +2640,22 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 self.table_meaAcqSumPage_status.item(8, 10).setText(acqCountDev1)
 
 
-            """ read meaAcqSumPage summary data block """
+            """ step4(cell acquisition mode): read meaAcqSumPage summary data block """
             self.update_meaAcqSumPage_sumDataTable()
 
-            """ read meaAcqDetailPage alert register block """
+            """ step5(cell acquisition mode): read meaAcqDetailPage alert register block """
             self.update_meaAcqDetailPage_alertTable()
 
-            """ read meaAcqDetailPage CELL IIR DATA block """
+            """ step6(cell acquisition mode): read meaAcqDetailPage CELL IIR DATA block """
             self.update_meaAcqDetailPage_dataTable(1, 2, 0x90, self.polCfgValue, False)
-            """ read meaAcqDetailPage CELL DATA block """
+            """ step7(cell acquisition mode): read meaAcqDetailPage CELL DATA block """
             self.update_meaAcqDetailPage_dataTable(4, 5, 0xA0, self.polCfgValue, False)
-            """ read meaAcqDetailPage AUXILIARY DATA block """
+            """ step8(cell acquisition mode): read meaAcqDetailPage AUXILIARY DATA block """
             self.update_meaAcqDetailPage_dataTable(7, 8, 0xB0, self.auxRefCfgVal, True)
-            """ read meaAcqDetailPage ALTERNATE DATA block """
+            """ step9(cell acquisition mode): read meaAcqDetailPage ALTERNATE DATA block """
             self.update_meaAcqDetailPage_dataTable(10, 11, 0xC0, self.polCfgValue, False)
 
+            """ step3(diagnostic mode): read each status register and update DC byte """
             ''' diagnostic mode '''
         else:   # diagnostic mode
             # read status block and update dc table
@@ -2692,7 +2693,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             self.update_status_table_extend_register(self.table_diagAcqPage_status, 0xEA, 12)
 
             # read diagnostic alert block
-            ''' read device 0 diagnostic alert block '''
+            '''  step4(diagnostic mode): read device 0 diagnostic alert block '''
             rtData = pb01_read_block(self.hidBdg, 4, 0, 0xD2, 0x00)     # dev0
             if rtData == "message return RX error" or rtData == "pec check error":
                 self.message_box(rtData)

@@ -20,9 +20,9 @@ target_vid = 0x1a86  # 用你的目标VID替换这里
 BTN_OP_DELAY = 0.05  # 防止 button 被连续点击 delay 时间
 
 ADC_FULL_DATA = 65535       # PB01 ADC 满量程数据
-CELL_SCALE = 5         # PB01 cell full scale (5V)
-AUX_SCALE = 2.5        # PB01 aux full scale (2.5V)
-PWR_SCALE = 10         # PB01 power pin like VAA, VIO full scale (10V)
+CELL_SCALE = 5         # PB01 cell full scale (5V, 76.3uV LSB)
+AUX_SCALE = 2.5        # PB01 aux full scale (2.5V, 38.15uV LSB)
+PWR_SCALE = 10         # PB01 power pin like VAA, VIO full scale (10V, 152.6uV LSB)
 HV_SCALE = 80          # PB01 hv full scale (80V)
 
 R_THERM = 10000        # NTC 测温电路上拉电阻阻值
@@ -415,7 +415,7 @@ table_diagCfgPage_diagThre_headers = ["Address", "Register", "Pending (hex)", "P
 table_diagCfgPage_diagThre_items = [
     ["0x2F", "BALSHRTUVTHREG",  "9EB7", "3.10",          "V",           " ", " ", "0000", "0000"],
     ["0x30", "BALOVTHREG",      "0CCC", "+0.25",         "V(Bipolar)",  " ", " ", "7FFF", "7FFF"],
-    ["0x31", "BALUVTHREG",      "0083", "-0.010",        "V(Bipolar)",  " ", " ", "8000", "8000"],
+    ["0x31", "BALUVTHREG",      "0083", "+0.010",        "V(Bipolar)",  " ", " ", "8000", "8000"],
     ["0x32", "CELLOPNOVTHREG",  "FFFF", "5.000",         "V",           " ", " ", "FFFF", "FFFF"],
     ["0x33", "CELLOPNUVTHREG",  "9A84", "3.018",         "V",           " ", " ", "0000", "0000"],
     ["0x34", "BUSOPNOVTHREG",   "0847", "+0.1617",       "V(Bipolar)",  " ", " ", "7FFF", "7FFF"],

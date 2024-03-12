@@ -1224,9 +1224,9 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 for i in range(8):
                     if (0x01 << i) & pPolAuxCfg:     # convert into percent
                         listRegDataActualDev0[i] = str(round(listRegDataIntDev0[i + 8] /
-                                                             ADC_FULL_DATA * CELL_SCALE, 5)) + 'V'        # ALTAUX
+                                                             ADC_FULL_DATA * AUX_SCALE, 5)) + 'V'        # ALTAUX
                         listRegDataActualDev0[i + 8] = str(round(listRegDataIntDev0[i] /
-                                                                 ADC_FULL_DATA * CELL_SCALE, 5)) + 'V'    # AUX
+                                                                 ADC_FULL_DATA * AUX_SCALE, 5)) + 'V'    # AUX
                     else:   # convert into celsius
                         listRegDataActualDev0[i] = str(round(self.cal_ntc_temp_value(listRegDataIntDev0[i + 8]), 2)) \
                                                    + '°C'        # ALTAUX
@@ -1331,9 +1331,9 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                     for i in range(8):
                         if (0x01 << i) & pPolAuxCfg:     # convert into percent
                             listRegDataActualDev1[i] = str(round(listRegDataIntDev1[i + 8] /
-                                                                 ADC_FULL_DATA * CELL_SCALE, 5)) + 'V'        # ALTAUX
+                                                                 ADC_FULL_DATA * AUX_SCALE, 5)) + 'V'        # ALTAUX
                             listRegDataActualDev1[i + 8] = str(round(listRegDataIntDev1[i] /
-                                                                     ADC_FULL_DATA * CELL_SCALE, 5)) + 'V'    # AUX
+                                                                     ADC_FULL_DATA * AUX_SCALE, 5)) + 'V'    # AUX
                         else:   # convert into celsius
                             listRegDataActualDev1[i] = str(round(self.cal_ntc_temp_value(listRegDataIntDev1[i + 8]), 2)) \
                                                        + '°C'        # ALTAUX

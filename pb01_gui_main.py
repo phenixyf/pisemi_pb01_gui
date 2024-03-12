@@ -1642,8 +1642,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                    pLedListUvStaDev0, pLedListUvStaDev1):
         """
         这个函数执行 read block command 去读取 PB01 CELL BALANCE CONTROL Block 中 5 个寄存器的值
-        因多个 tab 页面有 status table 要去更新，所以用此函数方便代码维护
-        是否读取 dev1 的 status block, 在函数内根据 self.flagSingleAfe 自动判读，不需要额外输入参数
+        是否读取 dev1 的 block, 在函数内根据 self.flagSingleAfe 自动判读，不需要额外输入参数
         :param pDev0Col: dev0 读取到的值填入到哪一列
         :param pDev1Col: dev1 读取到的值填入到哪一列
         :param pLedListStatusDev0: 该 table 对应的 dev0 status led 列表
@@ -1675,12 +1674,20 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                               hex(cblUvStatDev0)[2:].upper().zfill(4)]
 
             ''' fill data into cblPage simplified demonstration table '''
-            for r in range(5):  # fill table
-                self.table_cblPage_cblCtrlStaInf.item(r+1, pDev0Col).setText(listCblHexDev0[r])
-
-            ''' fill data into cblPage status information table '''
             self.table_cblPage_cblCtrlSimDemo.item(0, 4).setText(hex(cblCtrlDev0)[2:].upper().zfill(4))
             self.table_cblPage_cblCtrlSimDemo.item(0, 5).setText(hex(cblCtrlDev0)[2:].upper().zfill(4))
+
+            ''' fill data into cblPage status information table '''
+            # fill read back hex data
+            for r in range(5):
+                self.table_cblPage_cblCtrlStaInf.item(r+1, pDev0Col).setText(listCblHexDev0[r])
+
+            # fill CBALTIMER convert value
+            self.table_cblPage_cblCtrlStaInf.item(3, 3).setText(str(cblTimerDev0))
+            # fill CBALCOUNT each convert value
+            self.table_cblPage_cblCtrlStaInf.item(4, 3).setText(str((cblCountDev0 & 0xC000) >> 14))  # hours value
+            self.table_cblPage_cblCtrlStaInf.item(4, 5).setText(str((cblCountDev0 & 0x3F00) >> 8))   # minute value
+            self.table_cblPage_cblCtrlStaInf.item(4, 7).setText(str((cblCountDev0 & 0x003F)))        # second value
 
             ''' update dev0 led '''
             self.update_cblPage_led(cblStatusDev0, pLedListStatusDev0, True)
@@ -1707,12 +1714,23 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                   hex(cblUvStatDev1)[2:].upper().zfill(4)]
 
                 ''' fill data into cblPage simplified demonstration table '''
-                for r in range(5):  # fill table
-                    self.table_cblPage_cblCtrlStaInf.item(r+1, pDev1Col).setText(listCblHexDev1[r])
-
-                ''' fill data into cblPage status information table '''
                 self.table_cblPage_cblCtrlSimDemo.item(1, 4).setText(hex(cblCtrlDev1)[2:].upper().zfill(4))
                 self.table_cblPage_cblCtrlSimDemo.item(1, 5).setText(hex(cblCtrlDev0)[2:].upper().zfill(4))
+
+                ''' fill data into cblPage status information table '''
+                # fill read back hex data
+                for r in range(5):
+                    self.table_cblPage_cblCtrlStaInf.item(r+1, pDev1Col).setText(listCblHexDev1[r])
+
+                # fill CBALTIMER convert value
+                self.table_cblPage_cblCtrlStaInf.item(3, 10).setText(str(cblTimerDev1))
+                # fill CBALCOUNT each convert value
+                self.table_cblPage_cblCtrlStaInf.item(4, 10).setText(
+                    str((cblCountDev1 & 0xC000) >> 14))  # hours value
+                self.table_cblPage_cblCtrlStaInf.item(4, 12).setText(
+                    str((cblCountDev1 & 0x3F00) >> 8))  # minute value
+                self.table_cblPage_cblCtrlStaInf.item(4, 14).setText(str((cblCountDev1 & 0x003F)))  # second value
+
 
                 ''' update dev1 led '''
                 self.update_cblPage_led(cblStatusDev1, pLedListStatusDev1, True)

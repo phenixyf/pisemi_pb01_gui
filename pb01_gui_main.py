@@ -546,20 +546,21 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.update_table_item_data(pDcTable, 0, 1, hex(pDcByte)[2:].upper().zfill(2))
 
         # fill dc byte led into table
-        if not self.update_dc_led(pDcByte, pDcLed):
-            # send alertpacket command
-            alertPkReturn = pb01_17841_alert_packet(self.hidBdg)
-            if alertPkReturn == "message return RX error" or alertPkReturn == "pec check error":
-                self.message_box(alertPkReturn)
-                return
-            else:
-                alertPkData = (alertPkReturn[6] << 40) | (alertPkReturn[5] << 32) | (alertPkReturn[4] << 24) \
-                              | (alertPkReturn[3] << 16) | (alertPkReturn[2] << 8) | alertPkReturn[1]
-                # fill alert packet data in table
-                self.update_table_item_data(pDcTable, 1, 1,
-                                            hex(alertPkData)[2:].upper().zfill(12))  # alert packet data
-                # update alert packet led
-                self.update_alertPk_led(alertPkData, pAlertLed)
+        self.update_dc_led(pDcByte, pDcLed)
+
+        # send alertpacket command
+        alertPkReturn = pb01_17841_alert_packet(self.hidBdg)
+        if alertPkReturn == "message return RX error" or alertPkReturn == "pec check error":
+            self.message_box(alertPkReturn)
+            return
+        else:
+            alertPkData = (alertPkReturn[6] << 40) | (alertPkReturn[5] << 32) | (alertPkReturn[4] << 24) \
+                          | (alertPkReturn[3] << 16) | (alertPkReturn[2] << 8) | alertPkReturn[1]
+            # fill alert packet data in table
+            self.update_table_item_data(pDcTable, 1, 1,
+                                        hex(alertPkData)[2:].upper().zfill(12))  # alert packet data
+            # update alert packet led
+            self.update_alertPk_led(alertPkData, pAlertLed)
 
 
     def update_status_register_led(self, pSt1, pSt2, pFm1, pFm2, pLedList):
@@ -2243,7 +2244,6 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                        self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, True):
             return
 
-
         """ update buttons status """
         # disable
         self.pushBtn_disable(self.pushButton_devMgPage_init)                # initialize
@@ -2324,11 +2324,9 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         """ delay before read status block back """
         time.sleep(0.01)
 
-        """ update status block table """
-        # update devMgPage status block tables
-        if not self.update_status_block_table(self.table_devMgPage_cur, 2, 7,
-                                       self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1, True):
-            return
+        """ read each status register and update DC byte """
+        self.read_dc_and_status(self.table_devMgPage_dc, self.ledDevMgPageDcByte, self.ledDevMgPageAlertPk,
+                                self.table_devMgPage_cur, self.ledDevMgPageCurDev0, self.ledDevMgPageCurDev1)
 
 
     def slot_pushBtn_devMgPage_readBack(self):

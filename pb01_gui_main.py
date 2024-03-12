@@ -77,6 +77,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             else:
                 self.radioGroup_acqReqPage_acqMode.addButton(self.acqMode_radio_list[i], id = i)
         ''' cblPage '''
+        self.cblTime = 0x0002       # cblPage CBALTIMECFG (0x46) register value
         self.cblCfgVal = 0x01F0     # cblPage CBALCFG (0x49) register value
         self.cblMode = 0x0          # cblPage cell balance mode value (由 radio button 选择设置）
         self.radioGroup_cblPage_cblMode = QButtonGroup(self)        # 将 cblPage radio 归为一组
@@ -133,6 +134,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.pushButton_cblPage_cblCtrlStop.clicked.connect(self.solt_pushBtn_cblPage_cblCtrlStop)
         self.pushButton_cblPage_cblCtrlStart.clicked.connect(self.solt_pushBtn_cblPage_cblCtrlStart)
         self.pushButton_cblPage_cblCtrlRd.clicked.connect(self.solt_pushBtn_cblPage_cblCtrlRd)
+        self.table_cblPage_cblExpTime.cellChanged.connect(self.solt_table_cblPage_cblExpTime_cellChange)
 
 
     def setupNotification(self):
@@ -2929,18 +2931,41 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         self.table_cblPage_cblCfgReg.item(4, 2).setText(hex(self.cblCfgVal)[2:].zfill(4).upper())
 
 
+    def solt_table_cblPage_cblExpTime_cellChange(self):
+        curExpTime = self.table_cblPage_cblExpTime.item(0, 0).text()
+
+        if int(curExpTime) < 1 or int(curExpTime) > 5:  # 设置值超出 1 ~ 5 的允许范围
+            self.message_box("configure value should in range 1 ~ 5\r\n"
+                             "please re-configure")
+            # 将 expire time 设成 default 值
+            self.table_cblPage_cblExpTime.item(0, 0).setText('002')
+            # 更新 CBALTIMECFG (0x46) 对应位置的值为 default 值
+            self.table_cblPage_cblCfgReg.item(1, 2).setText(
+                hex(((self.cblTime & 0xF800) | 2))[2:].zfill(4).upper())
+        else:   # 设置值在允许范围内
+            # 将 expire time 更新成新设置值
+            self.table_cblPage_cblExpTime.item(0, 0).setText(hex(int(curExpTime))[2:].zfill(3))
+            # 更新 CBALTIMECFG (0x46) 对应位置的值为新设置值
+            self.table_cblPage_cblCfgReg.item(1, 2).setText(
+                                hex(((self.cblTime & 0xF800) | int(curExpTime)))[2:].zfill(4).upper())
+
+
     def solt_pushBtn_cblPage_cblCfgWr(self):
         """ configure CBALSEL """
-        self.update_write_read_op(0x45, 0xFFFF, self.table_cblPage_cblCfgReg, 0, 4)
+        cbalSelData = int(self.table_cblPage_cblCfgReg.item(0, 2).text(), 16)
+        self.update_write_read_op(0x45, cbalSelData, self.table_cblPage_cblCfgReg, 0, 4)
 
         """ configure CBALTIMECFG """
-        self.update_write_read_op(0x46, 0x0002, self.table_cblPage_cblCfgReg, 1, 4)
+        cbalTimeCfgData = int(self.table_cblPage_cblCfgReg.item(1, 2).text(), 16)
+        self.update_write_read_op(0x46, cbalTimeCfgData, self.table_cblPage_cblCfgReg, 1, 4)
 
         """ configure CBALACQCFG """
-        self.update_write_read_op(0x47, 0x2400, self.table_cblPage_cblCfgReg, 2, 4)
+        cbalAcqCfgData = int(self.table_cblPage_cblCfgReg.item(2, 2).text(), 16)
+        self.update_write_read_op(0x47, cbalAcqCfgData, self.table_cblPage_cblCfgReg, 2, 4)
 
         """ configure CBALUVTHREG """
-        self.update_write_read_op(0x48, 0xFFFF, self.table_cblPage_cblCfgReg, 3, 4)
+        cbalUvThRegData = int(self.table_cblPage_cblCfgReg.item(3, 2).text(), 16)
+        self.update_write_read_op(0x48, cbalUvThRegData, self.table_cblPage_cblCfgReg, 3, 4)
 
         """ configure CBALCFG """
         cablCfgValue = int(self.table_cblPage_cblCfgReg.item(4, 2).text(), 16)

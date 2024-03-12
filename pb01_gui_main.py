@@ -2340,12 +2340,18 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
     def slot_pushBtn_appCfgPage_appCfgWR(self):
         time.sleep(BTN_OP_DELAY)
-        self.update_write_read_op(0x12, 0x3FFF, self.table_appCfgPage_appCfg, 0, 7)     # STATUSCFG R12=0x3FFF
-        self.update_write_read_op(0x13, 0x2000, self.table_appCfgPage_appCfg, 1, 7)     # DEVCFG R13=0x2000
+        staCfgData = int(self.table_appCfgPage_appCfg.item(0, 2).text(), 16)
+        self.update_write_read_op(0x12, staCfgData, self.table_appCfgPage_appCfg, 0, 7)     # STATUSCFG R12=0x3FFF
+
+        devCfgData = int(self.table_appCfgPage_appCfg.item(1, 2).text(), 16)
+        self.update_write_read_op(0x13, devCfgData, self.table_appCfgPage_appCfg, 1, 7)     # DEVCFG R13=0x2000
+
         self.polCfgValue = int(self.table_appCfgPage_appCfg.item(2, 2).text(), 16)
         self.update_write_read_op(0x14, self.polCfgValue, self.table_appCfgPage_appCfg, 2, 7)   # customize POLYCFG
+
         axGpioData = int(self.table_appCfgPage_appCfg.item(3, 2).text(), 16)
         self.update_write_read_op(0x15, axGpioData, self.table_appCfgPage_appCfg, 3, 7)    # customize AUXGPIOCFG
+
         self.auxRefCfgVal = int(self.table_appCfgPage_appCfg.item(4, 2).text(), 16)
         self.update_write_read_op(0x16, self.auxRefCfgVal, self.table_appCfgPage_appCfg, 4, 7)     # customize AUXREFCFG
 
@@ -2378,10 +2384,18 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
     def slot_pushBtn_appCfgPage_alertCfgWR(self):
         time.sleep(BTN_OP_DELAY)
-        self.update_write_read_op(0x18, 0xFFFF, self.table_appCfgPage_alertCfg, 0, 7)  # ALRTOVCFG R18=0xFFFF
-        self.update_write_read_op(0x19, 0xFFFF, self.table_appCfgPage_alertCfg, 1, 7)  # ALRTUVCFG R19=0xFFFF
-        self.update_write_read_op(0x1A, 0xFFFF, self.table_appCfgPage_alertCfg, 2, 7)  # ALRTAUXOVCFG R1A=0xFFFF
-        self.update_write_read_op(0x1B, 0xFFFF, self.table_appCfgPage_alertCfg, 3, 7)  # ALRTAUXUVCFG R1B=0xFFFF
+
+        altOvCfgData = int(self.table_appCfgPage_alertCfg.item(0, 2).text(), 16)
+        self.update_write_read_op(0x18, altOvCfgData, self.table_appCfgPage_alertCfg, 0, 7)  # ALRTOVCFG R18=0xFFFF
+
+        altUvCfgData = int(self.table_appCfgPage_alertCfg.item(1, 2).text(), 16)
+        self.update_write_read_op(0x19, altUvCfgData, self.table_appCfgPage_alertCfg, 1, 7)  # ALRTUVCFG R19=0xFFFF
+
+        altAuxOvCfgData = int(self.table_appCfgPage_alertCfg.item(2, 2).text(), 16)
+        self.update_write_read_op(0x1A, altAuxOvCfgData, self.table_appCfgPage_alertCfg, 2, 7)  # ALRTAUXOVCFG R1A=0xFFFF
+
+        altAuxUvCfgData = int(self.table_appCfgPage_alertCfg.item(3, 2).text(), 16)
+        self.update_write_read_op(0x1B, altAuxUvCfgData, self.table_appCfgPage_alertCfg, 3, 7)  # ALRTAUXUVCFG R1B=0xFFFF
 
 
     def slot_pushBtn_appCfgPage_alertCfgRd(self):
@@ -2394,19 +2408,46 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
     def slot_pushBtn_appCfgPage_thresholdRegWR(self):
         time.sleep(BTN_OP_DELAY)
-        self.update_write_read_op(0x20, 0xE667, self.table_appCfgPage_thresholdReg, 0, 7)  # OVTHREG       R20=0xE667
-        self.update_write_read_op(0x21, 0x8A3D, self.table_appCfgPage_thresholdReg, 1, 7)  # UVTREG        R21=0x8A3D
-        self.update_write_read_op(0x22, 0x051F, self.table_appCfgPage_thresholdReg, 2, 7)  # BIPOVTHREG    R22=0x051F
-        self.update_write_read_op(0x23, 0xFAE1, self.table_appCfgPage_thresholdReg, 3, 7)  # BIPUVTHREG    R23=0xFAE1
-        self.update_write_read_op(0x24, 0xE667, self.table_appCfgPage_thresholdReg, 4, 7)  # ALTOVTHREG    R24=0xE667
-        self.update_write_read_op(0x25, 0x8A3D, self.table_appCfgPage_thresholdReg, 5, 7)  # ALTUVTHREG    R25=0x8A3D
-        self.update_write_read_op(0x26, 0x051F, self.table_appCfgPage_thresholdReg, 6, 7)  # ALTBIPOVTHREG R26=0x051F
-        self.update_write_read_op(0x27, 0xFAE1, self.table_appCfgPage_thresholdReg, 7, 7)  # ALTBIPUVTHREG R27=0xFAE1
-        self.update_write_read_op(0x28, 0xFFFF, self.table_appCfgPage_thresholdReg, 8, 7)  # AUXROVTHREG   R28=0xFFFF
-        self.update_write_read_op(0x29, 0x0000, self.table_appCfgPage_thresholdReg, 9, 7)  # AUXRUVTHREG   R29=0x0000
-        self.update_write_read_op(0x2A, 0xFFFF, self.table_appCfgPage_thresholdReg, 10, 7) # AUXAOVTHREG   R2A=0xFFFF
-        self.update_write_read_op(0x2B, 0x0000, self.table_appCfgPage_thresholdReg, 11, 7) # AUXAUVTHREG   R2B=0x0000
-        self.update_write_read_op(0x2C, 0x0CCD, self.table_appCfgPage_thresholdReg, 12, 7) # MMTHREG       R2C=0x0CCD
+
+        ovThRegData = int(self.table_appCfgPage_thresholdReg.item(0, 2).text(), 16)
+        self.update_write_read_op(0x20, ovThRegData, self.table_appCfgPage_thresholdReg, 0, 7)  # OVTHREG
+
+        uvThRegData = int(self.table_appCfgPage_thresholdReg.item(1, 2).text(), 16)
+        self.update_write_read_op(0x21, uvThRegData, self.table_appCfgPage_thresholdReg, 1, 7)  # UVTREG
+
+        bipOvThRegData = int(self.table_appCfgPage_thresholdReg.item(2, 2).text(), 16)
+        self.update_write_read_op(0x22, bipOvThRegData, self.table_appCfgPage_thresholdReg, 2, 7)  # BIPOVTHREG
+
+        bipUvThRegData = int(self.table_appCfgPage_thresholdReg.item(3, 2).text(), 16)
+        self.update_write_read_op(0x23, bipUvThRegData, self.table_appCfgPage_thresholdReg, 3, 7)  # BIPUVTHREG
+
+        altOvThRegData = int(self.table_appCfgPage_thresholdReg.item(4, 2).text(), 16)
+        self.update_write_read_op(0x24, altOvThRegData, self.table_appCfgPage_thresholdReg, 4, 7)  # ALTOVTHREG
+
+        altUvThRegData = int(self.table_appCfgPage_thresholdReg.item(5, 2).text(), 16)
+        self.update_write_read_op(0x25, altUvThRegData, self.table_appCfgPage_thresholdReg, 5, 7)  # ALTUVTHREG
+
+        altBipOvThRegData = int(self.table_appCfgPage_thresholdReg.item(6, 2).text(), 16)
+        self.update_write_read_op(0x26, altBipOvThRegData, self.table_appCfgPage_thresholdReg, 6, 7)  # ALTBIPOVTHREG
+
+        altBipUvThRegData = int(self.table_appCfgPage_thresholdReg.item(7, 2).text(), 16)
+        self.update_write_read_op(0x27, altBipUvThRegData, self.table_appCfgPage_thresholdReg, 7, 7)  # ALTBIPUVTHREG
+
+        auxrOvThRegData = int(self.table_appCfgPage_thresholdReg.item(8, 2).text(), 16)
+        self.update_write_read_op(0x28, auxrOvThRegData, self.table_appCfgPage_thresholdReg, 8, 7)  # AUXROVTHREG
+
+        auxrUvThRegData = int(self.table_appCfgPage_thresholdReg.item(9, 2).text(), 16)
+        self.update_write_read_op(0x29, auxrUvThRegData, self.table_appCfgPage_thresholdReg, 9, 7)  # AUXRUVTHREG
+
+        auxaOvThRegData = int(self.table_appCfgPage_thresholdReg.item(10, 2).text(), 16)
+        self.update_write_read_op(0x2A, auxaOvThRegData, self.table_appCfgPage_thresholdReg, 10, 7) # AUXAOVTHREG
+
+        auxaUvThRegData = int(self.table_appCfgPage_thresholdReg.item(11, 2).text(), 16)
+        self.update_write_read_op(0x2B, auxaUvThRegData, self.table_appCfgPage_thresholdReg, 11, 7) # AUXAUVTHREG
+
+        mmThRegData = int(self.table_appCfgPage_thresholdReg.item(12, 2).text(), 16)
+        self.update_write_read_op(0x2C, mmThRegData, self.table_appCfgPage_thresholdReg, 12, 7) # MMTHREG
+
         tempThData = int(self.table_appCfgPage_thresholdReg.item(13, 2).text(), 16)
         self.update_write_read_op(0x2D, tempThData, self.table_appCfgPage_thresholdReg, 13, 7)  # TEMPTHREG customized
 
@@ -2441,10 +2482,18 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
     def slot_pushBtn_appCfgPage_acqRegWr(self):
         time.sleep(BTN_OP_DELAY)
-        self.update_write_read_op(0x40, 0x1501, self.table_appCfgPage_acqReg, 0, 7)  # ACQDLY1    R40=0x1501
-        self.update_write_read_op(0x41, 0x3220, self.table_appCfgPage_acqReg, 1, 7)  # ACQDLY2    R41=0x3220
-        self.update_write_read_op(0x42, 0xFFFF, self.table_appCfgPage_acqReg, 2, 7)  # ACQCHSEL   R42=0xFFFF
-        self.update_write_read_op(0x43, 0x00FF, self.table_appCfgPage_acqReg, 3, 7)  # ACQAUXSEL  R43=0x00FF
+
+        acqDly1Data = int(self.table_appCfgPage_acqReg.item(0, 2).text(), 16)
+        self.update_write_read_op(0x40, acqDly1Data, self.table_appCfgPage_acqReg, 0, 7)  # ACQDLY1
+
+        acqDly2Data = int(self.table_appCfgPage_acqReg.item(1, 2).text(), 16)
+        self.update_write_read_op(0x41, acqDly2Data, self.table_appCfgPage_acqReg, 1, 7)  # ACQDLY2
+
+        acqChSelData = int(self.table_appCfgPage_acqReg.item(2, 2).text(), 16)
+        self.update_write_read_op(0x42, acqChSelData, self.table_appCfgPage_acqReg, 2, 7)  # ACQCHSEL
+
+        acqAuxSelData = int(self.table_appCfgPage_acqReg.item(3, 2).text(), 16)
+        self.update_write_read_op(0x43, acqAuxSelData, self.table_appCfgPage_acqReg, 3, 7)  # ACQAUXSEL
 
 
     def slot_pushBtn_appCfgPage_acqRegRd(self):
@@ -2457,9 +2506,15 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
     def slot_pushBtn_diagCfgPage_curCfgWR(self):
         time.sleep(BTN_OP_DELAY)
-        self.update_write_read_op(0x1C, 0x0001, self.table_diagCfgPage_testCurCfgReg, 0, 11)  # CTSTCFG1  R1C=0x0001
-        self.update_write_read_op(0x1D, 0xFFFF, self.table_diagCfgPage_testCurCfgReg, 1, 11)  # CTSTCFG1  R1D=0xFFFF
-        self.update_write_read_op(0x1E, 0x00FF, self.table_diagCfgPage_testCurCfgReg, 2, 11)  # AUXTSTCFG R1E=0x00FF
+
+        ctstCfg1Data = int(self.table_diagCfgPage_testCurCfgReg.item(0, 2).text(), 16)
+        self.update_write_read_op(0x1C, ctstCfg1Data, self.table_diagCfgPage_testCurCfgReg, 0, 11)  # CTSTCFG1
+
+        ctstCfg2Data = int(self.table_diagCfgPage_testCurCfgReg.item(1, 2).text(), 16)
+        self.update_write_read_op(0x1D, ctstCfg2Data, self.table_diagCfgPage_testCurCfgReg, 1, 11)  # CTSTCFG2
+
+        auxTstCfgData = int(self.table_diagCfgPage_testCurCfgReg.item(2, 2).text(), 16)
+        self.update_write_read_op(0x1E, auxTstCfgData, self.table_diagCfgPage_testCurCfgReg, 2, 11)  # AUXTSTCFG
 
 
     def slot_pushBtn_diagCfgPage_curCfgRd(self):
@@ -2471,52 +2526,86 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
 
     def slot_pushBtn_diagCfgPage_diagThWR(self):
         time.sleep(BTN_OP_DELAY)
-        self.update_write_read_op(0x2F, 0x0000, self.table_diagCfgPage_diagThresReg, 0, 7)  # BALSHRTUVTHREG   R2F=0x0000
-        self.update_write_read_op(0x30, 0x7FFF, self.table_diagCfgPage_diagThresReg, 0, 7)  # BALOVTHREG       R30=0x7FFF
-        self.update_write_read_op(0x31, 0x8000, self.table_diagCfgPage_diagThresReg, 0, 7)  # BALUVTHREG       R31=0x8000
-        self.update_write_read_op(0x32, 0xFFFF, self.table_diagCfgPage_diagThresReg, 0, 7)  # CELLOPNOVTHREG   R32=0xFFFF
-        self.update_write_read_op(0x33, 0x0000, self.table_diagCfgPage_diagThresReg, 0, 7)  # CELLOPNUVTHREG   R33=0x0000
-        self.update_write_read_op(0x34, 0x7FFF, self.table_diagCfgPage_diagThresReg, 0, 7)  # BUSOPNOVTHREG    R34=0x7FFF
-        self.update_write_read_op(0x35, 0x8000, self.table_diagCfgPage_diagThresReg, 0, 7)  # BUSOPNUVTHREG    R35=0x8000
-        self.update_write_read_op(0x36, 0xFFFF, self.table_diagCfgPage_diagThresReg, 0, 7)  # CELLHVMOVTHREG   R36=0xFFFF
-        self.update_write_read_op(0x37, 0x0000, self.table_diagCfgPage_diagThresReg, 0, 7)  # CELLHVMUVTHREG   R37=0x0000
-        self.update_write_read_op(0x38, 0x7FFF, self.table_diagCfgPage_diagThresReg, 0, 7)  # BUSHVMOVTHREG    R38=0x7FFF
-        self.update_write_read_op(0x39, 0x8000, self.table_diagCfgPage_diagThresReg, 0, 7)  # BUSHVMUVTHREG    R39=0x8000
-        self.update_write_read_op(0x3A, 0xFFFF, self.table_diagCfgPage_diagThresReg, 0, 7)  # AUXRDIAGOVTHREG  R3A=0xFFFF
-        self.update_write_read_op(0x3B, 0x0000, self.table_diagCfgPage_diagThresReg, 0, 7)  # AUXRDIAGUVTHREG  R3B=0x0000
+
+        balShrtUvThRegData = int(self.table_diagCfgPage_diagThresReg.item(0, 2).text(), 16)
+        self.update_write_read_op(0x2F, balShrtUvThRegData, self.table_diagCfgPage_diagThresReg, 0, 7)  # BALSHRTUVTHREG
+
+        balOvThRegData = int(self.table_diagCfgPage_diagThresReg.item(1, 2).text(), 16)
+        self.update_write_read_op(0x30, balOvThRegData, self.table_diagCfgPage_diagThresReg, 1, 7)  # BALOVTHREG
+
+        balUvThRegData = int(self.table_diagCfgPage_diagThresReg.item(2, 2).text(), 16)
+        self.update_write_read_op(0x31, balUvThRegData, self.table_diagCfgPage_diagThresReg, 2, 7)  # BALUVTHREG
+
+        cellOpnOvThRegData = int(self.table_diagCfgPage_diagThresReg.item(3, 2).text(), 16)
+        self.update_write_read_op(0x32, cellOpnOvThRegData, self.table_diagCfgPage_diagThresReg, 3, 7)  # CELLOPNOVTHREG
+
+        cellOpnUvThRegData = int(self.table_diagCfgPage_diagThresReg.item(4, 2).text(), 16)
+        self.update_write_read_op(0x33, cellOpnUvThRegData, self.table_diagCfgPage_diagThresReg, 4, 7)  # CELLOPNUVTHREG
+
+        busOpnOvThRegData = int(self.table_diagCfgPage_diagThresReg.item(5, 2).text(), 16)
+        self.update_write_read_op(0x34, busOpnOvThRegData, self.table_diagCfgPage_diagThresReg, 5, 7)  # BUSOPNOVTHREG
+
+        busOpnUvThRegData = int(self.table_diagCfgPage_diagThresReg.item(6, 2).text(), 16)
+        self.update_write_read_op(0x35, busOpnUvThRegData, self.table_diagCfgPage_diagThresReg, 6, 7)  # BUSOPNUVTHREG
+
+        cellHvmOvThRegData = int(self.table_diagCfgPage_diagThresReg.item(7, 2).text(), 16)
+        self.update_write_read_op(0x36, cellHvmOvThRegData, self.table_diagCfgPage_diagThresReg, 7, 7)  # CELLHVMOVTHREG
+
+        cellHvmUvThRegData = int(self.table_diagCfgPage_diagThresReg.item(8, 2).text(), 16)
+        self.update_write_read_op(0x37, cellHvmUvThRegData, self.table_diagCfgPage_diagThresReg, 8, 7)  # CELLHVMUVTHREG
+
+        busHvmOvThRegData = int(self.table_diagCfgPage_diagThresReg.item(9, 2).text(), 16)
+        self.update_write_read_op(0x38, busHvmOvThRegData, self.table_diagCfgPage_diagThresReg, 9, 7)  # BUSHVMOVTHREG
+
+        busHvmUvThRegData = int(self.table_diagCfgPage_diagThresReg.item(10, 2).text(), 16)
+        self.update_write_read_op(0x39, busHvmUvThRegData, self.table_diagCfgPage_diagThresReg, 10, 7)  # BUSHVMUVTHREG
+
+        auxrDiagOvThRegData = int(self.table_diagCfgPage_diagThresReg.item(11, 2).text(), 16)
+        self.update_write_read_op(0x3A, auxrDiagOvThRegData, self.table_diagCfgPage_diagThresReg, 11, 7)  # AUXRDIAGOVTHREG
+
+        auxrDiagUvThRegData = int(self.table_diagCfgPage_diagThresReg.item(12, 2).text(), 16)
+        self.update_write_read_op(0x3B, auxrDiagUvThRegData, self.table_diagCfgPage_diagThresReg, 12, 7)  # AUXRDIAGUVTHREG
 
 
     def slot_pushBtn_diagCfgPage_diagThRd(self):
         time.sleep(BTN_OP_DELAY)
         self.update_config_readback_op(0x2F, self.table_diagCfgPage_diagThresReg, 0, 7)  # BALSHRTUVTHREG
-        self.update_config_readback_op(0x30, self.table_diagCfgPage_diagThresReg, 0, 7)  # BALOVTHREG
-        self.update_config_readback_op(0x31, self.table_diagCfgPage_diagThresReg, 0, 7)  # BALUVTHREG
-        self.update_config_readback_op(0x32, self.table_diagCfgPage_diagThresReg, 0, 7)  # CELLOPNOVTHREG
-        self.update_config_readback_op(0x33, self.table_diagCfgPage_diagThresReg, 0, 7)  # CELLOPNUVTHREG
-        self.update_config_readback_op(0x34, self.table_diagCfgPage_diagThresReg, 0, 7)  # BUSOPNOVTHREG
-        self.update_config_readback_op(0x35, self.table_diagCfgPage_diagThresReg, 0, 7)  # BUSOPNUVTHREG
-        self.update_config_readback_op(0x36, self.table_diagCfgPage_diagThresReg, 0, 7)  # CELLHVMOVTHREG
-        self.update_config_readback_op(0x37, self.table_diagCfgPage_diagThresReg, 0, 7)  # CELLHVMUVTHREG
-        self.update_config_readback_op(0x38, self.table_diagCfgPage_diagThresReg, 0, 7)  # BUSHVMOVTHREG
-        self.update_config_readback_op(0x39, self.table_diagCfgPage_diagThresReg, 0, 7)  # BUSHVMUVTHREG
-        self.update_config_readback_op(0x3A, self.table_diagCfgPage_diagThresReg, 0, 7)  # AUXRDIAGOVTHREG
-        self.update_config_readback_op(0x3B, self.table_diagCfgPage_diagThresReg, 0, 7)  # AUXRDIAGUVTHREG
+        self.update_config_readback_op(0x30, self.table_diagCfgPage_diagThresReg, 1, 7)  # BALOVTHREG
+        self.update_config_readback_op(0x31, self.table_diagCfgPage_diagThresReg, 2, 7)  # BALUVTHREG
+        self.update_config_readback_op(0x32, self.table_diagCfgPage_diagThresReg, 3, 7)  # CELLOPNOVTHREG
+        self.update_config_readback_op(0x33, self.table_diagCfgPage_diagThresReg, 4, 7)  # CELLOPNUVTHREG
+        self.update_config_readback_op(0x34, self.table_diagCfgPage_diagThresReg, 5, 7)  # BUSOPNOVTHREG
+        self.update_config_readback_op(0x35, self.table_diagCfgPage_diagThresReg, 6, 7)  # BUSOPNUVTHREG
+        self.update_config_readback_op(0x36, self.table_diagCfgPage_diagThresReg, 7, 7)  # CELLHVMOVTHREG
+        self.update_config_readback_op(0x37, self.table_diagCfgPage_diagThresReg, 8, 7)  # CELLHVMUVTHREG
+        self.update_config_readback_op(0x38, self.table_diagCfgPage_diagThresReg, 9, 7)  # BUSHVMOVTHREG
+        self.update_config_readback_op(0x39, self.table_diagCfgPage_diagThresReg, 10, 7)  # BUSHVMUVTHREG
+        self.update_config_readback_op(0x3A, self.table_diagCfgPage_diagThresReg, 11, 7)  # AUXRDIAGOVTHREG
+        self.update_config_readback_op(0x3B, self.table_diagCfgPage_diagThresReg, 12, 7)  # AUXRDIAGUVTHREG
 
 
     def slot_pushBtn_diagCfgPage_aluTeWR(self):
         time.sleep(BTN_OP_DELAY)
-        self.update_write_read_op(0x3C, 0x0000, self.table_diagCfgPage_aluTestDiagReg, 0, 7)  # ALUTESTAREG   R3C=0x0000
-        self.update_write_read_op(0x3D, 0x0000, self.table_diagCfgPage_aluTestDiagReg, 0, 7)  # ALUTESTBREG   R3D=0x0000
-        self.update_write_read_op(0x3E, 0x0000, self.table_diagCfgPage_aluTestDiagReg, 0, 7)  # ALUTESTCREG   R3E=0x0000
-        self.update_write_read_op(0x3F, 0x0000, self.table_diagCfgPage_aluTestDiagReg, 0, 7)  # ALUTESTDREG   R3F=0x0000
+
+        aluTestARegData = int(self.table_diagCfgPage_aluTestDiagReg.item(0, 2).text(), 16)
+        self.update_write_read_op(0x3C, aluTestARegData, self.table_diagCfgPage_aluTestDiagReg, 0, 7)  # ALUTESTAREG
+
+        aluTestBRegData = int(self.table_diagCfgPage_aluTestDiagReg.item(1, 2).text(), 16)
+        self.update_write_read_op(0x3D, aluTestBRegData, self.table_diagCfgPage_aluTestDiagReg, 1, 7)  # ALUTESTBREG
+
+        aluTestCRegData = int(self.table_diagCfgPage_aluTestDiagReg.item(2, 2).text(), 16)
+        self.update_write_read_op(0x3E, aluTestCRegData, self.table_diagCfgPage_aluTestDiagReg, 2, 7)  # ALUTESTCREG
+
+        aluTestDRegData = int(self.table_diagCfgPage_aluTestDiagReg.item(3, 2).text(), 16)
+        self.update_write_read_op(0x3F, aluTestDRegData, self.table_diagCfgPage_aluTestDiagReg, 3, 7)  # ALUTESTDREG
 
 
     def slot_pushBtn_diagCfgPage_aluTeRd(self):
         time.sleep(BTN_OP_DELAY)
         self.update_config_readback_op(0x3C, self.table_diagCfgPage_aluTestDiagReg, 0, 7)  # ALUTESTAREG
-        self.update_config_readback_op(0x3D, self.table_diagCfgPage_aluTestDiagReg, 0, 7)  # ALUTESTBREG
-        self.update_config_readback_op(0x3E, self.table_diagCfgPage_aluTestDiagReg, 0, 7)  # ALUTESTCREG
-        self.update_config_readback_op(0x3F, self.table_diagCfgPage_aluTestDiagReg, 0, 7)  # ALUTESTDREG
+        self.update_config_readback_op(0x3D, self.table_diagCfgPage_aluTestDiagReg, 1, 7)  # ALUTESTBREG
+        self.update_config_readback_op(0x3E, self.table_diagCfgPage_aluTestDiagReg, 2, 7)  # ALUTESTCREG
+        self.update_config_readback_op(0x3F, self.table_diagCfgPage_aluTestDiagReg, 3, 7)  # ALUTESTDREG
 
 
     def pb01_read_reg(self, pRegAddr):

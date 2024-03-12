@@ -387,8 +387,8 @@ table_appCfgPage_theresholdReg_items = [
     ["0x28", "AUXROVTHREG",     "F332",     "95",          "%",           " ",   " ",  "FFFF",   "FFFF"],
     ["0x29", "AUXRUVTHREG",     "3333",     "20",          "%",           " ",   " ",  "0000",   "0000"],
     ["0x2A", "AUXAOVTHREG",     "FFFF",     "2.5(TBD)",    "V",           " ",   " ",  "FFFF",   "FFFF"],
-    ["0x2B", "AUXAUVTHREG",     "3333",     "0.0(TBD)",    "V",           " ",   " ",  "0000",   "0000"],
-    ["0x2C", "MMTHREG",         "0CCD",     "1",           "V",           " ",   " ",  "FFFF",   "FFFF"],
+    ["0x2B", "AUXAUVTHREG",     "0000",     "0.0(TBD)",    "V",           " ",   " ",  "0000",   "0000"],
+    ["0x2C", "MMTHREG",         "3333",     "1",           "V",           " ",   " ",  "FFFF",   "FFFF"],
     ["0x2D", "TEMPTHREG",       "0C48",     "120",         "°C",          "248", "°F", "0C48",   "0C48"]
 ]
 

@@ -1326,17 +1326,17 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                           hex(regData6Dev1)[2:].upper().zfill(4),
                                           hex(regData7Dev1)[2:].upper().zfill(4)]           # AUX7
                     ''' calculate actual data '''
-                for i in range(8):
-                    if (0x01 << i) & pPolAuxCfg:     # convert into percent
-                        listRegDataActualDev1[i] = str(round(listRegDataIntDev1[i + 8] /
-                                                             ADC_FULL_DATA * CELL_SCALE, 5)) + 'V'        # ALTAUX
-                        listRegDataActualDev1[i + 8] = str(round(listRegDataIntDev1[i] /
-                                                                 ADC_FULL_DATA * CELL_SCALE, 5)) + 'V'    # AUX
-                    else:   # convert into celsius
-                        listRegDataActualDev1[i] = str(round(self.cal_ntc_temp_value(listRegDataIntDev1[i + 8]), 2)) \
-                                                   + '°C'        # ALTAUX
-                        listRegDataActualDev1[i + 8] = str(round(self.cal_ntc_temp_value(listRegDataIntDev1[i]), 2)) \
-                                                       + '°C'    # AUX
+                    for i in range(8):
+                        if (0x01 << i) & pPolAuxCfg:     # convert into percent
+                            listRegDataActualDev1[i] = str(round(listRegDataIntDev1[i + 8] /
+                                                                 ADC_FULL_DATA * CELL_SCALE, 5)) + 'V'        # ALTAUX
+                            listRegDataActualDev1[i + 8] = str(round(listRegDataIntDev1[i] /
+                                                                     ADC_FULL_DATA * CELL_SCALE, 5)) + 'V'    # AUX
+                        else:   # convert into celsius
+                            listRegDataActualDev1[i] = str(round(self.cal_ntc_temp_value(listRegDataIntDev1[i + 8]), 2)) \
+                                                       + '°C'        # ALTAUX
+                            listRegDataActualDev1[i + 8] = str(round(self.cal_ntc_temp_value(listRegDataIntDev1[i]), 2)) \
+                                                           + '°C'    # AUX
 
                 # fill table
             for c in range(18, 2, -1):

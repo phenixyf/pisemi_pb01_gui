@@ -1760,7 +1760,12 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         :param pAdcCode: ADC 采样到的数据。十六进制或 int 格式均可以
         :return: 计算所得温度值，int 格式
         """
-        return (NTC_B / (np.log((R_THERM / (65535/pAdcCode - 1)) * (1/R0_NTC)) + NTC_B/NTC_TO)) - 273.15
+        if 65535 == pAdcCode:
+            return -170
+        elif 0 == pAdcCode:
+            return 170
+        else:
+            return (NTC_B / (np.log((R_THERM / (65535/pAdcCode - 1)) * (1/R0_NTC)) + NTC_B/NTC_TO)) - 273.15
 
 
     def pushBtn_disable(self, pBtn):

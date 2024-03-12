@@ -1196,8 +1196,8 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                 ''' calculate actual data '''
                 for i in range(16):
                     if (0x0001 << i) & pPolAuxCfg:     # convert into bipolar
-                        listRegDataActualDev0[i] = str(round(
-                            convert_complement_data(listRegDataIntDev0[i], 16) / ADC_FULL_DATA * CELL_SCALE, 5))
+                        listRegDataActualDev0[i] = \
+                            f"{convert_complement_data(listRegDataIntDev0[i], 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}"
                     else:   # use unipolar
                         listRegDataActualDev0[i] = str(round(
                             listRegDataIntDev0[i] / ADC_FULL_DATA * CELL_SCALE, 5))
@@ -1304,8 +1304,8 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                     ''' calculate actual data '''
                     for i in range(16):
                         if (0x0001 << i) & pPolAuxCfg:  # convert into bipolar
-                            listRegDataActualDev1[i] = str(round(
-                                convert_complement_data(listRegDataIntDev1[i], 16) / ADC_FULL_DATA * CELL_SCALE, 5))
+                            listRegDataActualDev1[i] = \
+                                f"{convert_complement_data(listRegDataIntDev1[i], 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}"
                         else:  # use unipolar
                             listRegDataActualDev1[i] = str(round(
                                 listRegDataIntDev1[i] / ADC_FULL_DATA * CELL_SCALE, 5))
@@ -1359,16 +1359,16 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
             self.message_box(rtData)
             return
         else:
-            regData0Dev0  =  (rtData[4] << 8)  | rtData[3]
-            regData1Dev0  =  (rtData[6] << 8)  | rtData[5]
-            regData2Dev0  =  (rtData[8] << 8)  | rtData[7]
-            regData3Dev0  =  (rtData[10] << 8) | rtData[9]
-            regData4Dev0  =  (rtData[12] << 8) | rtData[11]
-            regData5Dev0  =  (rtData[14] << 8) | rtData[13]
-            regData6Dev0  =  (rtData[16] << 8) | rtData[15]
-            regData7Dev0  =  (rtData[18] << 8) | rtData[17]
-            regData8Dev0  =  (rtData[20] << 8) | rtData[19]
-            regData9Dev0  =  (rtData[22] << 8) | rtData[21]
+            regData0Dev0  = (rtData[4] << 8)  | rtData[3]
+            regData1Dev0  = (rtData[6] << 8)  | rtData[5]
+            regData2Dev0  = (rtData[8] << 8)  | rtData[7]
+            regData3Dev0  = (rtData[10] << 8) | rtData[9]
+            regData4Dev0  = (rtData[12] << 8) | rtData[11]
+            regData5Dev0  = (rtData[14] << 8) | rtData[13]
+            regData6Dev0  = (rtData[16] << 8) | rtData[15]
+            regData7Dev0  = (rtData[18] << 8) | rtData[17]
+            regData8Dev0  = (rtData[20] << 8) | rtData[19]
+            regData9Dev0  = (rtData[22] << 8) | rtData[21]
             regData10Dev0 = (rtData[24] << 8) | rtData[23]
             regData11Dev0 = (rtData[26] << 8) | rtData[25]
             regData12Dev0 = (rtData[28] << 8) | rtData[27]
@@ -1415,23 +1415,23 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                        str(round(regData16Dev0 / ADC_FULL_DATA * CELL_SCALE, 5))]
             elif pDiagMode == 0x5 or pDiagMode == 0x7 or pDiagMode == 0x9:  # bipolar mode 76.3uV LSB
                 listRegDataValDev0 = [
-                    str(round(convert_complement_data(regData0Dev0 , 16) / ADC_FULL_DATA * CELL_SCALE, 5)),
-                    str(round(convert_complement_data(regData1Dev0 , 16) / ADC_FULL_DATA * CELL_SCALE, 5)),
-                    str(round(convert_complement_data(regData2Dev0 , 16) / ADC_FULL_DATA * CELL_SCALE, 5)),
-                    str(round(convert_complement_data(regData3Dev0 , 16) / ADC_FULL_DATA * CELL_SCALE, 5)),
-                    str(round(convert_complement_data(regData4Dev0 , 16) / ADC_FULL_DATA * CELL_SCALE, 5)),
-                    str(round(convert_complement_data(regData5Dev0 , 16) / ADC_FULL_DATA * CELL_SCALE, 5)),
-                    str(round(convert_complement_data(regData6Dev0 , 16) / ADC_FULL_DATA * CELL_SCALE, 5)),
-                    str(round(convert_complement_data(regData7Dev0 , 16) / ADC_FULL_DATA * CELL_SCALE, 5)),
-                    str(round(convert_complement_data(regData8Dev0 , 16) / ADC_FULL_DATA * CELL_SCALE, 5)),
-                    str(round(convert_complement_data(regData9Dev0 , 16) / ADC_FULL_DATA * CELL_SCALE, 5)),
-                    str(round(convert_complement_data(regData10Dev0, 16) / ADC_FULL_DATA * CELL_SCALE, 5)),
-                    str(round(convert_complement_data(regData11Dev0, 16) / ADC_FULL_DATA * CELL_SCALE, 5)),
-                    str(round(convert_complement_data(regData12Dev0, 16) / ADC_FULL_DATA * CELL_SCALE, 5)),
-                    str(round(convert_complement_data(regData13Dev0, 16) / ADC_FULL_DATA * CELL_SCALE, 5)),
-                    str(round(convert_complement_data(regData14Dev0, 16) / ADC_FULL_DATA * CELL_SCALE, 5)),
-                    str(round(convert_complement_data(regData15Dev0, 16) / ADC_FULL_DATA * CELL_SCALE, 5)),
-                    str(round(convert_complement_data(regData16Dev0, 16) / ADC_FULL_DATA * CELL_SCALE, 5))]
+                    f"{convert_complement_data(regData0Dev0 , 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                    f"{convert_complement_data(regData1Dev0 , 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                    f"{convert_complement_data(regData2Dev0 , 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                    f"{convert_complement_data(regData3Dev0 , 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                    f"{convert_complement_data(regData4Dev0 , 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                    f"{convert_complement_data(regData5Dev0 , 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                    f"{convert_complement_data(regData6Dev0 , 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                    f"{convert_complement_data(regData7Dev0 , 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                    f"{convert_complement_data(regData8Dev0 , 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                    f"{convert_complement_data(regData9Dev0 , 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                    f"{convert_complement_data(regData10Dev0, 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                    f"{convert_complement_data(regData11Dev0, 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                    f"{convert_complement_data(regData12Dev0, 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                    f"{convert_complement_data(regData13Dev0, 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                    f"{convert_complement_data(regData14Dev0, 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                    f"{convert_complement_data(regData15Dev0, 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                    f"{convert_complement_data(regData16Dev0, 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}"]
             elif pDiagMode == 0xA or pDiagMode == 0xB or pDiagMode == 0xC:  # unipolar value 38.15uV LSB
                 listRegDataValDev0 = [str(round(regData0Dev0  / ADC_FULL_DATA * AUX_SCALE, 5)),
                                       str(round(regData1Dev0  / ADC_FULL_DATA * AUX_SCALE, 5)),
@@ -1452,22 +1452,22 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                       str(round(regData16Dev0 / ADC_FULL_DATA * AUX_SCALE, 5))]
             else:   #pDiagMode == 0x3
                 listRegDataValDev0 = [str(round(regData0Dev0 / ADC_FULL_DATA * CELL_SCALE, 5)),
-                                      str(round(convert_complement_data(regData1Dev0, 16) / ADC_FULL_DATA * CELL_SCALE,    5)),
-                                      str(round(convert_complement_data(regData2Dev0, 16) / ADC_FULL_DATA * CELL_SCALE,    5)),
-                                      str(round(convert_complement_data(regData3Dev0, 16) / ADC_FULL_DATA * AUX_SCALE,  5)),
+                                      f"{convert_complement_data(regData1Dev0, 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                                      f"{convert_complement_data(regData2Dev0, 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                                      f"{convert_complement_data(regData3Dev0, 16) / ADC_FULL_DATA *  AUX_SCALE:+.5f}",
                                       str(round(regData4Dev0 / ADC_FULL_DATA * CELL_SCALE,    5)),
                                       str(round(regData5Dev0 / ADC_FULL_DATA * AUX_SCALE,  5)),
                                       str(round(regData6Dev0 / ADC_FULL_DATA * PWR_SCALE,   5)),
                                       str(round(regData7Dev0 / ADC_FULL_DATA * PWR_SCALE,   5)),
                                       str(round(regData8Dev0 / ADC_FULL_DATA * CELL_SCALE, 5)),
-                                      str(round(convert_complement_data(regData9Dev0, 16) / ADC_FULL_DATA * CELL_SCALE,    5)),
-                                      str(round(convert_complement_data(regData10Dev0, 16) / ADC_FULL_DATA * CELL_SCALE,   5)),
-                                      str(round(convert_complement_data(regData11Dev0, 16) / ADC_FULL_DATA * AUX_SCALE, 5)),
+                                      f"{convert_complement_data(regData9Dev0, 16) / ADC_FULL_DATA *  CELL_SCALE:+.5f}",
+                                      f"{convert_complement_data(regData10Dev0, 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                                      f"{convert_complement_data(regData11Dev0, 16) / ADC_FULL_DATA *  AUX_SCALE:+.5f}",
                                       str(round(regData12Dev0 / ADC_FULL_DATA * CELL_SCALE,   5)),
                                       str(round(regData13Dev0 / ADC_FULL_DATA * AUX_SCALE, 5)),
                                       str(round(regData14Dev0 / ADC_FULL_DATA * PWR_SCALE,  5)),
                                       str(round(regData15Dev0 / ADC_FULL_DATA * PWR_SCALE,  5)),
-                                      str(round(convert_complement_data(regData16Dev0, 16) / ADC_FULL_DATA * CELL_SCALE,   5))]
+                                      f"{convert_complement_data(regData16Dev0, 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}"]
 
         # fill table
         for c in range(19, 2, -1):
@@ -1537,23 +1537,23 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                           str(round(regData16Dev1 / ADC_FULL_DATA * CELL_SCALE, 5))]
                 elif pDiagMode == 0x5 or pDiagMode == 0x7 or pDiagMode == 0x9:  # bipolar mode 76.3uV LSB
                     listRegDataValDev1 = [
-                        str(round(convert_complement_data(regData0Dev1 , 16)  / ADC_FULL_DATA * CELL_SCALE, 5)),
-                        str(round(convert_complement_data(regData1Dev1 , 16)  / ADC_FULL_DATA * CELL_SCALE, 5)),
-                        str(round(convert_complement_data(regData2Dev1 , 16)  / ADC_FULL_DATA * CELL_SCALE, 5)),
-                        str(round(convert_complement_data(regData3Dev1 , 16)  / ADC_FULL_DATA * CELL_SCALE, 5)),
-                        str(round(convert_complement_data(regData4Dev1 , 16)  / ADC_FULL_DATA * CELL_SCALE, 5)),
-                        str(round(convert_complement_data(regData5Dev1 , 16)  / ADC_FULL_DATA * CELL_SCALE, 5)),
-                        str(round(convert_complement_data(regData6Dev1 , 16)  / ADC_FULL_DATA * CELL_SCALE, 5)),
-                        str(round(convert_complement_data(regData7Dev1 , 16)  / ADC_FULL_DATA * CELL_SCALE, 5)),
-                        str(round(convert_complement_data(regData8Dev1 , 16)  / ADC_FULL_DATA * CELL_SCALE, 5)),
-                        str(round(convert_complement_data(regData9Dev1 , 16)  / ADC_FULL_DATA * CELL_SCALE, 5)),
-                        str(round(convert_complement_data(regData10Dev1, 16) / ADC_FULL_DATA * CELL_SCALE, 5)),
-                        str(round(convert_complement_data(regData11Dev1, 16) / ADC_FULL_DATA * CELL_SCALE, 5)),
-                        str(round(convert_complement_data(regData12Dev1, 16) / ADC_FULL_DATA * CELL_SCALE, 5)),
-                        str(round(convert_complement_data(regData13Dev1, 16) / ADC_FULL_DATA * CELL_SCALE, 5)),
-                        str(round(convert_complement_data(regData14Dev1, 16) / ADC_FULL_DATA * CELL_SCALE, 5)),
-                        str(round(convert_complement_data(regData15Dev1, 16) / ADC_FULL_DATA * CELL_SCALE, 5)),
-                        str(round(convert_complement_data(regData16Dev1, 16) / ADC_FULL_DATA * CELL_SCALE, 5))]
+                        f"{convert_complement_data(regData0Dev1 , 16)  / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                        f"{convert_complement_data(regData1Dev1 , 16)  / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                        f"{convert_complement_data(regData2Dev1 , 16)  / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                        f"{convert_complement_data(regData3Dev1 , 16)  / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                        f"{convert_complement_data(regData4Dev1 , 16)  / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                        f"{convert_complement_data(regData5Dev1 , 16)  / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                        f"{convert_complement_data(regData6Dev1 , 16)  / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                        f"{convert_complement_data(regData7Dev1 , 16)  / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                        f"{convert_complement_data(regData8Dev1 , 16)  / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                        f"{convert_complement_data(regData9Dev1 , 16)  / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                        f"{convert_complement_data(regData10Dev1, 16)  / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                        f"{convert_complement_data(regData11Dev1, 16)  / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                        f"{convert_complement_data(regData12Dev1, 16)  / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                        f"{convert_complement_data(regData13Dev1, 16)  / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                        f"{convert_complement_data(regData14Dev1, 16)  / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                        f"{convert_complement_data(regData15Dev1, 16)  / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                        f"{convert_complement_data(regData16Dev1, 16)  / ADC_FULL_DATA * CELL_SCALE:+.5f}"]
                 elif pDiagMode == 0xA or pDiagMode == 0xB or pDiagMode == 0xC:  # unipolar value 38.15uV LSB
                     listRegDataValDev1 = [str(round(regData0Dev1 / ADC_FULL_DATA * AUX_SCALE, 5)),
                                           str(round(regData1Dev1 / ADC_FULL_DATA * AUX_SCALE, 5)),
@@ -1574,29 +1574,22 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                                           str(round(regData16Dev1 / ADC_FULL_DATA * AUX_SCALE, 5))]
                 else:  # pDiagMode == 0x3
                     listRegDataValDev1 = [str(round(regData0Dev1 / ADC_FULL_DATA * CELL_SCALE, 5)),
-                                          str(round(convert_complement_data(regData1Dev1, 16) / ADC_FULL_DATA * CELL_SCALE,
-                                                    5)),
-                                          str(round(convert_complement_data(regData2Dev1, 16) / ADC_FULL_DATA * CELL_SCALE,
-                                                    5)),
-                                          str(round(convert_complement_data(regData3Dev1, 16) / ADC_FULL_DATA * AUX_SCALE,
-                                                    5)),
+                                          f"{convert_complement_data(regData1Dev1, 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                                          f"{convert_complement_data(regData2Dev1, 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                                          f"{convert_complement_data(regData3Dev1, 16) / ADC_FULL_DATA *  AUX_SCALE:+.5f}",
                                           str(round(regData4Dev1 / ADC_FULL_DATA * CELL_SCALE, 5)),
                                           str(round(regData5Dev1 / ADC_FULL_DATA * AUX_SCALE, 5)),
                                           str(round(regData6Dev1 / ADC_FULL_DATA * PWR_SCALE, 5)),
                                           str(round(regData7Dev1 / ADC_FULL_DATA * PWR_SCALE, 5)),
                                           str(round(regData8Dev1 / ADC_FULL_DATA * CELL_SCALE, 5)),
-                                          str(round(convert_complement_data(regData9Dev1, 16) / ADC_FULL_DATA * CELL_SCALE,
-                                                    5)),
-                                          str(round(convert_complement_data(regData10Dev1, 16) / ADC_FULL_DATA * CELL_SCALE,
-                                                    5)),
-                                          str(round(convert_complement_data(regData11Dev1, 16) / ADC_FULL_DATA * AUX_SCALE,
-                                                    5)),
+                                          f"{convert_complement_data(regData9Dev1, 16)  / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                                          f"{convert_complement_data(regData10Dev1, 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}",
+                                          f"{convert_complement_data(regData11Dev1, 16) / ADC_FULL_DATA *  AUX_SCALE:+.5f}",
                                           str(round(regData12Dev1 / ADC_FULL_DATA * CELL_SCALE, 5)),
                                           str(round(regData13Dev1 / ADC_FULL_DATA * AUX_SCALE, 5)),
                                           str(round(regData14Dev1 / ADC_FULL_DATA * PWR_SCALE, 5)),
                                           str(round(regData15Dev1 / ADC_FULL_DATA * PWR_SCALE, 5)),
-                                          str(round(convert_complement_data(regData16Dev1, 16) / ADC_FULL_DATA * CELL_SCALE,
-                                                    5))]
+                                          f"{convert_complement_data(regData16Dev1, 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}"]
 
                 # fill table
             for c in range(19, 2, -1):

@@ -14,13 +14,13 @@ from PyQt5.QtWidgets import QFileDialog
 import json
 import numpy as np
 
-from pb01_gui_main_window import Ui_MainWindow
+from pb01_gui_main_window import Ui_PISEMI_PB01
 from pb01_bridge_driver import *
 from ui_configure import *
 from assist import *
 
 
-class Pb01MainWindow(QMainWindow, Ui_MainWindow):
+class Pb01MainWindow(QMainWindow, Ui_PISEMI_PB01):
 
     def __init__(self, parent=None):
         super(QMainWindow, self).__init__(parent)
@@ -1775,11 +1775,11 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         :return: 计算所得温度值，int 格式
         """
         if 65535 == pAdcCode:
-            return -170
+            pAdcCode = 65534
         elif 0 == pAdcCode:
-            return 170
-        else:
-            return (NTC_B / (np.log((R_THERM / (65535/pAdcCode - 1)) * (1/R0_NTC)) + NTC_B/NTC_TO)) - 273.15
+            pAdcCode = 1
+
+        return (NTC_B / (np.log((R_THERM / (65535/pAdcCode - 1)) * (1/R0_NTC)) + NTC_B/NTC_TO)) - 273.15
 
 
     def pushBtn_disable(self, pBtn):

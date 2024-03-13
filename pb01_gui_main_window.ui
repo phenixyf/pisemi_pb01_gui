@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>PISEMI_PB01</class>
+ <widget class="QMainWindow" name="PISEMI_PB01">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>PISEMI PB01 GUI</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>pisemi128x128.ico</normaloff>pisemi128x128.ico</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_3">

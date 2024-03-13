@@ -38,8 +38,18 @@ class Pb01MainWindow(QMainWindow, Ui_PISEMI_PB01):
         self.hidStatus = False
         self.setupNotification()
         """ software correction """
-        self.dev0ParList = []
-        self.dev1ParList = []
+        self.afa2_adc1_p1 = [0, 0]
+        self.afa1_adc1_p1 = [0, 0]
+        self.afa0_adc1_p1 = [0, 0]
+        self.afa2_adc1_p2 = [0, 0]
+        self.afa1_adc1_p2 = [0, 0]
+        self.afa0_adc1_p2 = [0, 0]
+        self.afa2_adc2_p1 = [0, 0]
+        self.afa1_adc2_p1 = [0, 0]
+        self.afa0_adc2_p1 = [0, 0]
+        self.afa2_adc2_p2 = [0, 0]
+        self.afa1_adc2_p2 = [0, 0]
+        self.afa0_adc2_p2 = [0, 0]
         """ status bar """
         self.statusMessage = QLabel()
         self.statusMessage.setFont(QFont('Calibri', 10, QFont.Bold))  # 设置字体和加粗
@@ -97,6 +107,7 @@ class Pb01MainWindow(QMainWindow, Ui_PISEMI_PB01):
         ''' chain configuration page (page1) '''
         self.radioButton_singleAfe.clicked.connect(self.slot_radio_single_dual_afe)
         self.radioButton_dualAfe.clicked.connect(self.slot_radio_single_dual_afe)
+        self.radioButton_chainCfg_swCorEn.clicked.connect(self.slot_radioBtn_chainCfg_swCorEn)
         self.pushButton_chainCfg_cfg.clicked.connect(self.slot_pushBtn_chainCfg_cfg)
         self.pushButton_chainCfg_reset.clicked.connect(self.slot_pushBtn_chainCfg_reset)
         ''' device management page (page2) '''
@@ -170,13 +181,81 @@ class Pb01MainWindow(QMainWindow, Ui_PISEMI_PB01):
             if f"VID_{target_vid:04X}&PID_{target_pid:04X}" in device_path:
                 self.close_hid()
 
+    def software_calibration(self, pTemList):
+        """
+        此函数用作 PB01 前期版本,针对 ADC 温漂的软件校准
+        在每次读取 ADC 前，先读取当前芯片温度，通过读取寄存器 TEMPREG1(0x08) TEMPREG2(0x09) 获取当前温度，然后调用该函数做校准
+        读取温度的操作在函数外执行，将读到的温度作为参数传入
+        :param pTemList: 当前芯片读到的温度。daisy-chain 中 AFE 数量可能是 1 或 2，所以此参数为一个列表
+                         列表中有一个元素时，表示只有 1 个 AFE; 有两个元素时，表示有 2 个 AFE。
+                         pTemList = [[temp1_dev0, temp2_dev0], [temp1_dev1, temp2_dev1]]
+        :return:
+        """
+
+        devNum = len(pTemList)
+
+        temp1 = [0, 0]
+        temp2 = [0, 0]
+        alpha0_adc1_p1_trim = [0, 0]
+        alpha0_adc1_p2_trim = [0, 0]
+        alpha0_adc2_p1_trim = [0, 0]
+        alpha0_adc2_p2_trim = [0, 0]
+
+        for dut in range(devNum):
+            # read die temp
+            temp1[dut] = pTemList[dut][0]  # TEMP1REG
+            temp2[dut] = pTemList[dut][1]  # TEMP2REG
+
+            alpha0_adc1_p1_trim[dut] = int((self.afa2_adc1_p1[dut] * temp1[dut] * temp1[dut] +
+                                            self.afa1_adc1_p1[dut] * temp1[dut] + self.afa0_adc1_p1[dut]) * 2 ** 16)
+            alpha0_adc1_p2_trim[dut] = int((self.afa2_adc1_p2[dut] * temp1[dut] * temp1[dut] +
+                                            self.afa1_adc1_p2[dut] * temp1[dut] + self.afa0_adc1_p2[dut]) * 2 ** 16)
+            alpha0_adc2_p1_trim[dut] = int((self.afa2_adc2_p1[dut] * temp2[dut] * temp2[dut] +
+                                            self.afa1_adc2_p1[dut] * temp2[dut] + self.afa0_adc2_p1[dut]) * 2 ** 16)
+            alpha0_adc2_p2_trim[dut] = int((self.afa2_adc2_p2[dut] * temp2[dut] * temp2[dut] +
+                                            self.afa1_adc2_p2[dut] * temp2[dut] + self.afa0_adc2_p2[dut]) * 2 ** 16)
+
+            # enter FT Mode
+            pb01_write_all(self.hidBdg, 0x60, 0x84D8, 0x00)
+            pb01_write_all(self.hidBdg, 0x60, 0x3F2C, 0x00)
+
+            pb01_write_all(self.hidBdg, 0x70, 0x0001, 0x00)  # set OTP remap bit to 1
+
+            pb01_write_all(self.hidBdg, 0x9E, ((alpha0_adc1_p1_trim[dut] >> 16) & 0b1), 0x00)  # write ALPHA0_ADC1_PATH1
+            pb01_write_all(self.hidBdg, 0x9F, (alpha0_adc1_p1_trim[dut] & 0xFFFF), 0x00)
+
+            pb01_write_all(self.hidBdg, 0xA2, ((alpha0_adc1_p2_trim[dut] >> 16) & 0b1), 0x00)  # write ALPHA0_ADC1_PATH2
+            pb01_write_all(self.hidBdg, 0xA3, (alpha0_adc1_p2_trim[dut] & 0xFFFF), 0x00)
+
+            pb01_write_all(self.hidBdg, 0xA6, ((alpha0_adc2_p1_trim[dut] >> 16) & 0b1), 0x00)  # write ALPHA0_ADC2_PATH1
+            pb01_write_all(self.hidBdg, 0xA7, (alpha0_adc2_p1_trim[dut] & 0xFFFF), 0x00)
+
+            pb01_write_all(self.hidBdg, 0xAA, ((alpha0_adc2_p2_trim[dut] >> 16) & 0b1), 0x00)  # write ALPHA0_ADC2_PATH2
+            pb01_write_all(self.hidBdg, 0xAB, (alpha0_adc2_p2_trim[dut] & 0xFFFF), 0x00)
+
+            # Zero out Alpha2 and Alpha1 coefficients.  Only required Once per power up.
+            pb01_write_all(self.hidBdg, 0x9C, 0x0000, 0x00)
+            pb01_write_all(self.hidBdg, 0x9D, 0x0000, 0x00)
+
+            pb01_write_all(self.hidBdg, 0xA0, 0x0000, 0x00)
+            pb01_write_all(self.hidBdg, 0xA1, 0x0000, 0x00)
+
+            pb01_write_all(self.hidBdg, 0xA4, 0x0000, 0x00)
+            pb01_write_all(self.hidBdg, 0xA5, 0x0000, 0x00)
+
+            pb01_write_all(self.hidBdg, 0xA8, 0x0000, 0x00)
+            pb01_write_all(self.hidBdg, 0xA9, 0x0000, 0x00)
+
+            pb01_write_all(self.hidBdg, 0x70, 0x0000, 0x00)  # set OTP remap bit to 0
+            pb01_write_all(self.hidBdg, 0x60, 0x0000, 0x00)  # exit FT mode
+
 
     def init_tab_pages(self):
         ''' inital chain configuration page (page1) '''
         # initial single AFE radio
         self.radioButton_dualAfe.setChecked(True)
         # self.radioButton_singleAfe.setChecked(True)
-        self.radio_chainCfg_swCorEn.hide()
+        # self.radioButton_chainCfg_swCorEn.hide()
 
         set_table_head(self.table_chainCfg_devIdBlk, table_chainCfg_devidHead,
                        CHAIN_CFG_TABLE_HEHG, 0)
@@ -1817,6 +1896,10 @@ class Pb01MainWindow(QMainWindow, Ui_PISEMI_PB01):
             print(f"file name is: ", fileName)
 
 
+    def slot_radioBtn_chainCfg_swCorEn(self):
+        pass
+
+
     def slot_radio_single_dual_afe(self):
         """
         根据 single afe 和 dual afe radio button 被选择的状态，
@@ -2071,6 +2154,7 @@ class Pb01MainWindow(QMainWindow, Ui_PISEMI_PB01):
         time.sleep(0.01)
 
         """ read device 0 id block """
+        dev0Id = 0x000000000000
         rtIdBlkDev0 = pb01_read_block(self.hidBdg, 4, 0, 0x00, 0x00)  # read dev0 id block, alseed=0x00
         if rtIdBlkDev0 == "message return RX error" or rtIdBlkDev0 == "pec check error":
             self.message_box(rtIdBlkDev0)
@@ -2092,7 +2176,10 @@ class Pb01MainWindow(QMainWindow, Ui_PISEMI_PB01):
                 self.update_table_item_data(self.table_chainCfg_devIdBlk, 0, i,
                                             listIdDev0[i - 3])  # device 0
 
+            dev0Id = (devid0 << 32) + (devid1 << 16) + devid2
+
         """ read device 1 id block """
+        dev1Id = 0x000000000000
         if self.flagSingleAfe == False:
             rtIdBlkDev1 = pb01_read_block(self.hidBdg, 4, 1, 0x00, 0x00)  # read dev1 id block, alseed=0x00
             if rtIdBlkDev1 == "message return RX error" or rtIdBlkDev1 == "pec check error":
@@ -2114,6 +2201,29 @@ class Pb01MainWindow(QMainWindow, Ui_PISEMI_PB01):
                 for i in range(3, 11):
                     self.update_table_item_data(self.table_chainCfg_devIdBlk, 1, i,
                                                 listIdDev1[i - 3])  # device 0
+
+                dev1Id = (devid0 << 32) + (devid1 << 16) + devid2
+
+        """ load external jason file for software calibration """
+        DEVID = [dev0Id, dev1Id]
+
+        if self.radioButton_chainCfg_swCorEn.isChecked():
+            alpha_coeff = json.load(open("evkit_alpha_trim.json", "r"))  # all device data is in one json file
+
+            # At Initialization read devid and load alpha coefficents
+            for n in range(2):
+                self.afa2_adc1_p1[n] = -float(alpha_coeff[str(DEVID[n])]["afa2_adc1_p1"]) / 2 ** 40
+                self.afa1_adc1_p1[n] = float(alpha_coeff[str(DEVID[n])]["afa1_adc1_p1"]) / 2 ** 31
+                self.afa0_adc1_p1[n] = float(alpha_coeff[str(DEVID[n])]["afa0_adc1_p1"]) / 2 ** 16
+                self.afa2_adc1_p2[n] = -float(alpha_coeff[str(DEVID[n])]["afa2_adc1_p2"]) / 2 ** 40
+                self.afa1_adc1_p2[n] = float(alpha_coeff[str(DEVID[n])]["afa1_adc1_p2"]) / 2 ** 31
+                self.afa0_adc1_p2[n] = float(alpha_coeff[str(DEVID[n])]["afa0_adc1_p2"]) / 2 ** 16
+                self.afa2_adc2_p1[n] = -float(alpha_coeff[str(DEVID[n])]["afa2_adc2_p1"]) / 2 ** 40
+                self.afa1_adc2_p1[n] = float(alpha_coeff[str(DEVID[n])]["afa1_adc2_p1"]) / 2 ** 31
+                self.afa0_adc2_p1[n] = float(alpha_coeff[str(DEVID[n])]["afa0_adc2_p1"]) / 2 ** 16
+                self.afa2_adc2_p2[n] = -float(alpha_coeff[str(DEVID[n])]["afa2_adc2_p2"]) / 2 ** 40
+                self.afa1_adc2_p2[n] = float(alpha_coeff[str(DEVID[n])]["afa1_adc2_p2"]) / 2 ** 31
+                self.afa0_adc2_p2[n] = float(alpha_coeff[str(DEVID[n])]["afa0_adc2_p2"]) / 2 ** 16
 
         ''' update status block table '''
         # update chainCfgPage status block table
@@ -2671,6 +2781,20 @@ class Pb01MainWindow(QMainWindow, Ui_PISEMI_PB01):
         """
         """ re-setup acqReqPage acquisition mode warning bar """
         self.set_default_warn_bar(self.lineEdit_acqReqPage_acqctrlWarn)
+
+        """ software calibration """
+        if self.radioButton_chainCfg_swCorEn.isChecked():
+            temp1_dev0 = pb01_read_device(self.hidBdg, 0, 0x08, 0x00)
+            temp2_dev0 = pb01_read_device(self.hidBdg, 0, 0x09, 0x00)
+            temList = [[temp1_dev0, temp2_dev0]]
+
+            if not self.flagSingleAfe:
+                temp1_dev1 = pb01_read_device(self.hidBdg, 1, 0x08, 0x00)
+                temp2_dev1 = pb01_read_device(self.hidBdg, 1, 0x09, 0x00)
+                temList = [[temp1_dev0, temp2_dev0], [temp1_dev1, temp2_dev1]]
+
+            self.software_calibration(temList)
+
 
         """ step1: kick off the acquisition (write data to R44) """
         rtData = self.afe_write_read_all(0x44, self.acqCtrlVal)  # configure A13 = 0x2000

@@ -1432,7 +1432,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                     f"{convert_complement_data(regData14Dev0, 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}",
                     f"{convert_complement_data(regData15Dev0, 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}",
                     f"{convert_complement_data(regData16Dev0, 16) / ADC_FULL_DATA * CELL_SCALE:+.5f}"]
-            elif pDiagMode == 0xA or pDiagMode == 0xB or pDiagMode == 0xC:  # unipolar value 38.15uV LSB
+            elif pDiagMode == 0xA or pDiagMode == 0xB or pDiagMode == 0xC or pDiagMode == 0xE:  # unipolar value 38.15uV LSB
                 listRegDataValDev0 = [str(round(regData0Dev0  / ADC_FULL_DATA * AUX_SCALE, 5)),
                                       str(round(regData1Dev0  / ADC_FULL_DATA * AUX_SCALE, 5)),
                                       str(round(regData2Dev0  / ADC_FULL_DATA * AUX_SCALE, 5)),
@@ -1554,7 +1554,7 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                         f"{convert_complement_data(regData14Dev1, 16)  / ADC_FULL_DATA * CELL_SCALE:+.5f}",
                         f"{convert_complement_data(regData15Dev1, 16)  / ADC_FULL_DATA * CELL_SCALE:+.5f}",
                         f"{convert_complement_data(regData16Dev1, 16)  / ADC_FULL_DATA * CELL_SCALE:+.5f}"]
-                elif pDiagMode == 0xA or pDiagMode == 0xB or pDiagMode == 0xC:  # unipolar value 38.15uV LSB
+                elif pDiagMode == 0xA or pDiagMode == 0xB or pDiagMode == 0xC or pDiagMode == 0xE:  # unipolar value 38.15uV LSB
                     listRegDataValDev1 = [str(round(regData0Dev1 / ADC_FULL_DATA * AUX_SCALE, 5)),
                                           str(round(regData1Dev1 / ADC_FULL_DATA * AUX_SCALE, 5)),
                                           str(round(regData2Dev1 / ADC_FULL_DATA * AUX_SCALE, 5)),
@@ -1815,68 +1815,6 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
         if SCRIPT_DEBUG:
             print("\r\n")
             print(f"file name is: ", fileName)
-
-        ''' read device0 id '''
-        if len(fileName) == 1:
-            # At Initialization read devid and load alpha coefficents
-            DEV0ID = (pb01_read_device(self.hidBdg, 0x00, 0x00, 0x00) << 32) \
-                    + (pb01_read_device(self.hidBdg, 0x00, 0x01, 0x00) << 16) \
-                    + pb01_read_device(self.hidBdg, 0x00, 0x02, 0x00)       # read DEVID0/1/2 registers
-            alpha_coeff = json.load(open(fileName[0], "r"))
-            dev0_afa2_adc1_p1 = -float(alpha_coeff[str(DEV0ID)]["afa2_adc1_p1"]) / 2 ** 40
-            dev0_afa1_adc1_p1 = float(alpha_coeff[ str(DEV0ID)]["afa1_adc1_p1"]) / 2 ** 31
-            dev0_afa0_adc1_p1 = float(alpha_coeff[ str(DEV0ID)]["afa0_adc1_p1"]) / 2 ** 16
-            dev0_afa2_adc1_p2 = -float(alpha_coeff[str(DEV0ID)]["afa2_adc1_p2"]) / 2 ** 40
-            dev0_afa1_adc1_p2 = float(alpha_coeff[ str(DEV0ID)]["afa1_adc1_p2"]) / 2 ** 31
-            dev0_afa0_adc1_p2 = float(alpha_coeff[ str(DEV0ID)]["afa0_adc1_p2"]) / 2 ** 16
-            dev0_afa2_adc2_p1 = -float(alpha_coeff[str(DEV0ID)]["afa2_adc2_p1"]) / 2 ** 40
-            dev0_afa1_adc2_p1 = float(alpha_coeff[ str(DEV0ID)]["afa1_adc2_p1"]) / 2 ** 31
-            dev0_afa0_adc2_p1 = float(alpha_coeff[ str(DEV0ID)]["afa0_adc2_p1"]) / 2 ** 16
-            dev0_afa2_adc2_p2 = -float(alpha_coeff[str(DEV0ID)]["afa2_adc2_p2"]) / 2 ** 40
-            dev0_afa1_adc2_p2 = float(alpha_coeff[ str(DEV0ID)]["afa1_adc2_p2"]) / 2 ** 31
-            dev0_afa0_adc2_p2 = float(alpha_coeff[ str(DEV0ID)]["afa0_adc2_p2"]) / 2 ** 16
-            self.dev0ParList = [dev0_afa2_adc1_p1,
-                                dev0_afa1_adc1_p1,
-                                dev0_afa0_adc1_p1,
-                                dev0_afa2_adc1_p2,
-                                dev0_afa1_adc1_p2,
-                                dev0_afa0_adc1_p2,
-                                dev0_afa2_adc2_p1,
-                                dev0_afa1_adc2_p1,
-                                dev0_afa0_adc2_p1,
-                                dev0_afa2_adc2_p2,
-                                dev0_afa1_adc2_p2,
-                                dev0_afa0_adc2_p2]
-            ''' read device1 id '''
-        elif len(fileName) == 2:
-            DEV1ID = (pb01_read_device(self.hidBdg, 0x01, 0x00, 0x00) << 32) \
-                     + (pb01_read_device(self.hidBdg, 0x01, 0x01, 0x00) << 16) \
-                     + pb01_read_device(self.hidBdg, 0x01, 0x02, 0x00)  # read DEVID0/1/2 registers
-            alpha_coeff = json.load(open(fileName[1], "r"))
-            dev1_afa2_adc1_p1 = -float(alpha_coeff[str(DEV1ID)]["afa2_adc1_p1"]) / 2 ** 40
-            dev1_afa1_adc1_p1 = float(alpha_coeff[ str(DEV1ID)]["afa1_adc1_p1"]) / 2 ** 31
-            dev1_afa0_adc1_p1 = float(alpha_coeff[ str(DEV1ID)]["afa0_adc1_p1"]) / 2 ** 16
-            dev1_afa2_adc1_p2 = -float(alpha_coeff[str(DEV1ID)]["afa2_adc1_p2"]) / 2 ** 40
-            dev1_afa1_adc1_p2 = float(alpha_coeff[ str(DEV1ID)]["afa1_adc1_p2"]) / 2 ** 31
-            dev1_afa0_adc1_p2 = float(alpha_coeff[ str(DEV1ID)]["afa0_adc1_p2"]) / 2 ** 16
-            dev1_afa2_adc2_p1 = -float(alpha_coeff[str(DEV1ID)]["afa2_adc2_p1"]) / 2 ** 40
-            dev1_afa1_adc2_p1 = float(alpha_coeff[ str(DEV1ID)]["afa1_adc2_p1"]) / 2 ** 31
-            dev1_afa0_adc2_p1 = float(alpha_coeff[ str(DEV1ID)]["afa0_adc2_p1"]) / 2 ** 16
-            dev1_afa2_adc2_p2 = -float(alpha_coeff[str(DEV1ID)]["afa2_adc2_p2"]) / 2 ** 40
-            dev1_afa1_adc2_p2 = float(alpha_coeff[ str(DEV1ID)]["afa1_adc2_p2"]) / 2 ** 31
-            dev1_afa0_adc2_p2 = float(alpha_coeff[ str(DEV1ID)]["afa0_adc2_p2"]) / 2 ** 16
-            self.dev1ParList = [dev1_afa2_adc1_p1,
-                                dev1_afa1_adc1_p1,
-                                dev1_afa0_adc1_p1,
-                                dev1_afa2_adc1_p2,
-                                dev1_afa1_adc1_p2,
-                                dev1_afa0_adc1_p2,
-                                dev1_afa2_adc2_p1,
-                                dev1_afa1_adc2_p1,
-                                dev1_afa0_adc2_p1,
-                                dev1_afa2_adc2_p2,
-                                dev1_afa1_adc2_p2,
-                                dev1_afa0_adc2_p2]
 
 
     def slot_radio_single_dual_afe(self):
@@ -2932,12 +2870,14 @@ class Pb01MainWindow(QMainWindow, Ui_MainWindow):
                              "please re-configure")
             # 将 expire time 设成 default 值
             self.table_cblPage_cblExpTime.item(0, 0).setText('002')
+            self.table_cblPage_cblExpTime.item(0, 1).setText('2')
             # 更新 CBALTIMECFG (0x46) 对应位置的值为 default 值
             self.table_cblPage_cblCfgReg.item(1, 2).setText(
                 hex(((self.cblTime & 0xF800) | 2))[2:].zfill(4).upper())
         else:   # 设置值在允许范围内
             # 将 expire time 更新成新设置值
             self.table_cblPage_cblExpTime.item(0, 0).setText(hex(int(curExpTime))[2:].zfill(3))
+            self.table_cblPage_cblExpTime.item(0, 1).setText(f"{int(curExpTime)}")
             # 更新 CBALTIMECFG (0x46) 对应位置的值为新设置值
             self.table_cblPage_cblCfgReg.item(1, 2).setText(
                                 hex(((self.cblTime & 0xF800) | int(curExpTime)))[2:].zfill(4).upper())

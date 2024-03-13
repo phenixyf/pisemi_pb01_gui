@@ -420,10 +420,10 @@ table_diagCfgPage_diagThre_items = [
     ["0x33", "CELLOPNUVTHREG",  "9A84", "3.018",         "V",           " ", " ", "0000", "0000"],
     ["0x34", "BUSOPNOVTHREG",   "0847", "+0.1617",       "V(Bipolar)",  " ", " ", "7FFF", "7FFF"],
     ["0x35", "BUSOPNUVTHREG",   "F7B8", "-0.1617",       "V(Bipolar)",  " ", " ", "8000", "8000"],
-    ["0x36", "CELLHVMOVTHREG",  "CDD2", "4.00(TBD)",     "V",           " ", " ", "FFFF", "FFFF"],
-    ["0x37", "CELLHVMUVTHREG",  "AD0D", "3.40(TBD)",     "V",           " ", " ", "0000", "0000"],
-    ["0x38", "BUSHVMOVTHREG",   "1062", "+0.3200(TBD)",  "V(Bipolar)",  " ", " ", "7FFF", "7FFF"],
-    ["0x39", "BUSHVMUVTHREG",   "EF9D", "-0.3200(TBD)",  "V(Bipolar)",  " ", " ", "8000", "8000"],
+    ["0x36", "CELLHVMOVTHREG",  "E143", "4.400",         "V",           " ", " ", "FFFF", "FFFF"],
+    ["0x37", "CELLHVMUVTHREG",  "B84E", "3.600",         "V",           " ", " ", "0000", "0000"],
+    ["0x38", "BUSHVMOVTHREG",   "1062", "+0.320",        "V(Bipolar)",  " ", " ", "7FFF", "7FFF"],
+    ["0x39", "BUSHVMUVTHREG",   "EF9D", "-0.320",        "V(Bipolar)",  " ", " ", "8000", "8000"],
     ["0x3A", "AUXRDIAGOVTHREG", "A92A", "1.652039374",   "V(Absolute)", " ", " ", "FFFF", "FFFF"],
     ["0x3B", "AUXRDIAGUVTHREG", "0CFC", "0.126813876",   "V(Absolute)", " ", " ", "0000", "0000"]
 ]

@@ -2989,7 +2989,7 @@ class Pb01MainWindow(QMainWindow, Ui_PISEMI_PB01):
     def solt_table_cblPage_cblExpTime_cellChange(self):
         curExpTime = self.table_cblPage_cblExpTime.item(0, 0).text()
 
-        if int(curExpTime) < 1 or int(curExpTime) > 5:  # 设置值超出 1 ~ 5 的允许范围
+        if int(curExpTime,16) < 1 or int(curExpTime,16) > 5:  # 设置值超出 1 ~ 5 的允许范围
             self.message_box("configure value should in range 1 ~ 5\r\n"
                              "please re-configure")
             # 将 expire time 设成 default 值

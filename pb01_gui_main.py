@@ -2155,6 +2155,7 @@ class Pb01MainWindow(QMainWindow, Ui_PISEMI_PB01):
 
         """ read device 0 id block """
         dev0Id = 0x000000000000
+        afeNum = 1
         rtIdBlkDev0 = pb01_read_block(self.hidBdg, 4, 0, 0x00, 0x00)  # read dev0 id block, alseed=0x00
         if rtIdBlkDev0 == "message return RX error" or rtIdBlkDev0 == "pec check error":
             self.message_box(rtIdBlkDev0)
@@ -2181,6 +2182,7 @@ class Pb01MainWindow(QMainWindow, Ui_PISEMI_PB01):
         """ read device 1 id block """
         dev1Id = 0x000000000000
         if self.flagSingleAfe == False:
+            afeNum = 2
             rtIdBlkDev1 = pb01_read_block(self.hidBdg, 4, 1, 0x00, 0x00)  # read dev1 id block, alseed=0x00
             if rtIdBlkDev1 == "message return RX error" or rtIdBlkDev1 == "pec check error":
                 self.message_box(rtIdBlkDev1)
@@ -2211,7 +2213,7 @@ class Pb01MainWindow(QMainWindow, Ui_PISEMI_PB01):
             alpha_coeff = json.load(open("evkit_alpha_trim.json", "r"))  # all device data is in one json file
 
             # At Initialization read devid and load alpha coefficents
-            for n in range(2):
+            for n in range(afeNum):
                 self.afa2_adc1_p1[n] = -float(alpha_coeff[str(DEVID[n])]["afa2_adc1_p1"]) / 2 ** 40
                 self.afa1_adc1_p1[n] = float(alpha_coeff[str(DEVID[n])]["afa1_adc1_p1"]) / 2 ** 31
                 self.afa0_adc1_p1[n] = float(alpha_coeff[str(DEVID[n])]["afa0_adc1_p1"]) / 2 ** 16
